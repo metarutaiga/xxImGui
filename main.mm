@@ -4,15 +4,15 @@
 #include <sys/stat.h>
 
 #include "imgui/imgui.h"
-#include "imgui/misc/freetype/imgui_freetype.h"
 
+#include "implement/imgui_freetype.h"
 #include "implement/imgui_impl_osx.h"
 #include "implement/imgui_impl_xx.h"
 
-#include "graphic/xxGraphicGLES2.h"
-#include "graphic/xxGraphicMetal.h"
-#include "graphic/xxGraphicNULL.h"
-#include "graphic/xxGraphicVulkan.h"
+#include "xxGraphic/xxGraphicGLES2.h"
+#include "xxGraphic/xxGraphicMetal.h"
+#include "xxGraphic/xxGraphicNULL.h"
+#include "xxGraphic/xxGraphicVulkan.h"
 
 #include <stdio.h>
 
@@ -27,6 +27,10 @@ static uint64_t g_instance = 0;
 static uint64_t g_device = 0;
 static uint64_t g_renderPass = 0;
 static uint64_t g_swapchain = 0;
+
+// Allocator Wrapper
+static void* MallocWrapper(size_t size, void* user_data)    { IM_UNUSED(user_data); return calloc(size, 1); }
+static void  FreeWrapper(void* ptr, void* user_data)        { IM_UNUSED(user_data); free(ptr);              }
 
 //-----------------------------------------------------------------------------------
 // ImGuiExampleView
@@ -453,6 +457,7 @@ static uint64_t g_swapchain = 0;
 
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
+    ImGui::SetAllocatorFunctions(MallocWrapper, FreeWrapper);
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
