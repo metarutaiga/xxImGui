@@ -17,10 +17,6 @@
 		D644A07D231ED90400B75B77 /* imstb_textedit.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A073231ED90300B75B77 /* imstb_textedit.h */; };
 		D644A07E231ED90400B75B77 /* imstb_truetype.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A074231ED90400B75B77 /* imstb_truetype.h */; };
 		D644A07F231ED90400B75B77 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A075231ED90400B75B77 /* imgui.cpp */; };
-		D644A084231ED93C00B75B77 /* imgui_freetype.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A082231ED93C00B75B77 /* imgui_freetype.h */; };
-		D644A085231ED93C00B75B77 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A083231ED93C00B75B77 /* imgui_freetype.cpp */; };
-		D644A088231ED9F300B75B77 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D644A087231ED9F300B75B77 /* libfreetype.dylib */; };
-		D6DA664623258F3000953C5B /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A083231ED93C00B75B77 /* imgui_freetype.cpp */; };
 		D6DA664723258F3000953C5B /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
 		D6DA664823258F3000953C5B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		D6DA664923258F3000953C5B /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
@@ -52,8 +48,6 @@
 		D644A073231ED90300B75B77 /* imstb_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_textedit.h; path = ../imgui/imstb_textedit.h; sourceTree = "<group>"; };
 		D644A074231ED90400B75B77 /* imstb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_truetype.h; path = ../imgui/imstb_truetype.h; sourceTree = "<group>"; };
 		D644A075231ED90400B75B77 /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../imgui/imgui.cpp; sourceTree = "<group>"; };
-		D644A082231ED93C00B75B77 /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../imgui/misc/freetype/imgui_freetype.h; sourceTree = "<group>"; };
-		D644A083231ED93C00B75B77 /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../imgui/misc/freetype/imgui_freetype.cpp; sourceTree = "<group>"; };
 		D644A087231ED9F300B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D644A088231ED9F300B75B77 /* libfreetype.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +72,6 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				D644A080231ED91800B75B77 /* misc */,
 				D644A070231ED90300B75B77 /* imconfig.h */,
 				D644A06F231ED90300B75B77 /* imgui_demo.cpp */,
 				D644A06D231ED90300B75B77 /* imgui_draw.cpp */,
@@ -104,23 +96,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D644A080231ED91800B75B77 /* misc */ = {
-			isa = PBXGroup;
-			children = (
-				D644A081231ED92500B75B77 /* freetype */,
-			);
-			name = misc;
-			sourceTree = "<group>";
-		};
-		D644A081231ED92500B75B77 /* freetype */ = {
-			isa = PBXGroup;
-			children = (
-				D644A083231ED93C00B75B77 /* imgui_freetype.cpp */,
-				D644A082231ED93C00B75B77 /* imgui_freetype.h */,
-			);
-			name = freetype;
-			sourceTree = "<group>";
-		};
 		D644A086231ED9F300B75B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +113,6 @@
 			files = (
 				D644A07C231ED90400B75B77 /* imgui.h in Headers */,
 				D644A07A231ED90400B75B77 /* imconfig.h in Headers */,
-				D644A084231ED93C00B75B77 /* imgui_freetype.h in Headers */,
 				D644A07E231ED90400B75B77 /* imstb_truetype.h in Headers */,
 				D644A07D231ED90400B75B77 /* imstb_textedit.h in Headers */,
 				D644A07B231ED90400B75B77 /* imstb_rectpack.h in Headers */,
@@ -227,7 +201,6 @@
 				D6DA664723258F3000953C5B /* imgui_demo.cpp in Sources */,
 				D6DA664823258F3000953C5B /* imgui_draw.cpp in Sources */,
 				D6DA664923258F3000953C5B /* imgui_widgets.cpp in Sources */,
-				D6DA664623258F3000953C5B /* imgui_freetype.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +212,6 @@
 				D644A079231ED90400B75B77 /* imgui_demo.cpp in Sources */,
 				D644A077231ED90400B75B77 /* imgui_draw.cpp in Sources */,
 				D644A078231ED90400B75B77 /* imgui_widgets.cpp in Sources */,
-				D644A085231ED93C00B75B77 /* imgui_freetype.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +278,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_USER_CONFIG=\\\"../implement/imgui_user_config.h\\\"",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -315,10 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../imgui,
-					../freetype/include,
-				);
+				HEADER_SEARCH_PATHS = ../imgui;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
@@ -370,16 +340,17 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_USER_CONFIG=\\\"../implement/imgui_user_config.h\\\"",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					../imgui,
-					../freetype/include,
-				);
+				HEADER_SEARCH_PATHS = ../imgui;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
