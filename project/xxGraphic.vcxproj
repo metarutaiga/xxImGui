@@ -79,6 +79,7 @@
     <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib_xrandr.h" />
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicCGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D10.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D10_1.h" />
@@ -92,16 +93,23 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3D9On12.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D9PS.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3DAsm.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMantle.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMantleAsm.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicMetal.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicNULL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicVulkan.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\xxGraphic\xxGraphicCGL.mm" />
+    <None Include="..\xxGraphic\xxGraphicEAGL.mm" />
+    <None Include="..\xxGraphic\xxGraphicMetal.mm" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
