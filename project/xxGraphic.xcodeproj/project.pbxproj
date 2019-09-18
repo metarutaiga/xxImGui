@@ -176,13 +176,9 @@
 		D6A727EB23231180009981AD /* xxGraphicWGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicWGL.h; path = ../xxGraphic/xxGraphicWGL.h; sourceTree = "<group>"; };
 		D6A727F0232318E4009981AD /* xxGraphicMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicMetal.h; path = ../xxGraphic/xxGraphicMetal.h; sourceTree = "<group>"; };
 		D6A727F1232318E4009981AD /* xxGraphicMetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicMetal.mm; path = ../xxGraphic/xxGraphicMetal.mm; sourceTree = "<group>"; };
-		D6A727F423240EAA009981AD /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		D6A727F6232414A7009981AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D6A727FA232424DF009981AD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		D6A727FD23242545009981AD /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		D6B33854232020990096D02F /* xxGraphicCGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicCGL.mm; path = ../xxGraphic/xxGraphicCGL.mm; sourceTree = "<group>"; };
 		D6B33855232020990096D02F /* xxGraphicCGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicCGL.h; path = ../xxGraphic/xxGraphicCGL.h; sourceTree = "<group>"; };
-		D6B3385A232043FE0096D02F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		D6B3385C232044100096D02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D6D0AA6323283A3D0044D0CF /* xxGraphicEAGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicEAGL.mm; path = ../xxGraphic/xxGraphicEAGL.mm; sourceTree = "<group>"; };
 		D6D0AA6423283A3E0044D0CF /* xxGraphicEAGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicEAGL.h; path = ../xxGraphic/xxGraphicEAGL.h; sourceTree = "<group>"; };
@@ -387,12 +383,8 @@
 		D6B33859232043FD0096D02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D6A727FD23242545009981AD /* CoreFoundation.framework */,
-				D6A727FA232424DF009981AD /* CoreVideo.framework */,
-				D6A727F6232414A7009981AD /* QuartzCore.framework */,
-				D6A727F423240EAA009981AD /* Metal.framework */,
 				D6B3385C232044100096D02F /* Cocoa.framework */,
-				D6B3385A232043FE0096D02F /* OpenGL.framework */,
+				D6A727F6232414A7009981AD /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -48,7 +48,6 @@
 		D644A073231ED90300B75B77 /* imstb_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_textedit.h; path = ../imgui/imstb_textedit.h; sourceTree = "<group>"; };
 		D644A074231ED90400B75B77 /* imstb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_truetype.h; path = ../imgui/imstb_truetype.h; sourceTree = "<group>"; };
 		D644A075231ED90400B75B77 /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../imgui/imgui.cpp; sourceTree = "<group>"; };
-		D644A087231ED9F300B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +82,6 @@
 				D644A073231ED90300B75B77 /* imstb_textedit.h */,
 				D644A074231ED90400B75B77 /* imstb_truetype.h */,
 				D644A042231ED82900B75B77 /* Products */,
-				D644A086231ED9F300B75B77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,14 +92,6 @@
 				D6022C3523258B5D00B9BFB8 /* libimgui.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D644A086231ED9F300B75B77 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D644A087231ED9F300B75B77 /* libfreetype.dylib */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
