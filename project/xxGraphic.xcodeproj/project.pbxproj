@@ -131,6 +131,7 @@
 		D690A36C232C346500A149EF /* xxGraphicVulkanAsm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xxGraphicVulkanAsm.h; path = ../xxGraphic/xxGraphicVulkanAsm.h; sourceTree = "<group>"; };
 		D690A37523300D3800A149EF /* spirv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spirv.h; path = ../xxGraphic/vulkan/spirv.h; sourceTree = "<group>"; };
 		D690A37623300D3800A149EF /* GLSL.std.450.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLSL.std.450.h; path = ../xxGraphic/vulkan/GLSL.std.450.h; sourceTree = "<group>"; };
+		D690A37F2332DAB700A149EF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../xxGraphic/LICENSE.txt; sourceTree = "<group>"; };
 		D6A72796232310F2009981AD /* xxGraphicD3DAsm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3DAsm.h; path = ../xxGraphic/xxGraphicD3DAsm.h; sourceTree = "<group>"; };
 		D6A72797232310F2009981AD /* xxGraphicD3D11On12.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D11On12.cpp; path = ../xxGraphic/xxGraphicD3D11On12.cpp; sourceTree = "<group>"; };
 		D6A72798232310F3009981AD /* xxGraphicD3D8PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D8PS.h; path = ../xxGraphic/xxGraphicD3D8PS.h; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 				D6CA4E292327F563008FFA94 /* NULL */,
 				D6B338582320214C0096D02F /* OpenGL */,
 				D690A331232AC4E700A149EF /* Vulkan */,
+				D690A37F2332DAB700A149EF /* LICENSE.txt */,
 				D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */,
 				D644A0A4231EDE9B00B75B77 /* xxGraphic.h */,
 				D6A727E92323117F009981AD /* xxGraphicInternal.h */,
