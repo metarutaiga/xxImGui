@@ -10,7 +10,6 @@
 //  [ ] Platform: Multi-viewport / platform windows.
 
 #include "imgui/imgui.h"
-#include "imgui/imgui_internal.h"
 #include "imgui_impl_osx.h"
 #import <Cocoa/Cocoa.h>
 
@@ -582,11 +581,10 @@ static void ImGui_ImplOSX_InitPlatformInterface()
     platform_io.Platform_OnChangedViewport = ImGui_ImplOSX_OnChangedViewport; // FIXME-DPI
 
     // Register main window handle (which is owned by the main application, not by us)
-    ImGuiViewportP* main_viewport = (ImGuiViewportP*)ImGui::GetMainViewport();
+    ImGuiViewport* main_viewport = ImGui::GetMainViewport();
     ImGuiViewportDataOSX* data = IM_NEW(ImGuiViewportDataOSX)();
     data->window = g_Window;
     data->windowOwned = false;
-    main_viewport->PlatformWindowCreated = true;
     main_viewport->PlatformUserData = data;
     main_viewport->PlatformHandle = (__bridge void*)g_Window;
 }

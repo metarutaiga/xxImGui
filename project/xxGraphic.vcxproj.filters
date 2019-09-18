@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicNULL.cpp" />
     <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D8.cpp">
       <Filter>Direct3D</Filter>
@@ -61,11 +60,13 @@
     <ClCompile Include="..\xxGraphic\xxGraphicVulkanAsm.cpp">
       <Filter>Vulkan</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicNULL.cpp">
+      <Filter>NULL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicInternal.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicNULL.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\d3d8.h">
       <Filter>Direct3D\dxsdk</Filter>
@@ -232,6 +233,18 @@
     <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h">
       <Filter>Vulkan</Filter>
     </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicNULL.h">
+      <Filter>NULL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicCGL.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicMetal.h">
+      <Filter>Metal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">
@@ -258,5 +271,22 @@
     <Filter Include="Vulkan\vulkan">
       <UniqueIdentifier>{54d2876b-c5ea-4bc2-9633-39e77311f489}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NULL">
+      <UniqueIdentifier>{127dac66-70ae-43f1-b8ca-948b50b9efdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Metal">
+      <UniqueIdentifier>{b86fbe60-02d3-42bc-b061-3c0b3d1071ef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\xxGraphic\xxGraphicCGL.mm">
+      <Filter>OpenGL</Filter>
+    </None>
+    <None Include="..\xxGraphic\xxGraphicEAGL.mm">
+      <Filter>OpenGL</Filter>
+    </None>
+    <None Include="..\xxGraphic\xxGraphicMetal.mm">
+      <Filter>Metal</Filter>
+    </None>
   </ItemGroup>
 </Project>
