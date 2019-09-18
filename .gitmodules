@@ -4,3 +4,6 @@
 [submodule "freetype"]
 	path = freetype
 	url = https://github.com/metarutaiga/freetype2
+[submodule "imgui"]
+	path = imgui
+	url = https://github.com/ocornut/imgui
