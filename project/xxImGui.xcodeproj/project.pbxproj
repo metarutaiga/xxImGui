@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D6022C6823258E9500B9BFB8 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0F2231F12BE00B75B77 /* main.mm */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D6022C6C23258EB800B9BFB8 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6022C6B23258EB800B9BFB8 /* libfreetype.a */; };
 		D6022C6E23258EB800B9BFB8 /* libimgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6022C6D23258EB800B9BFB8 /* libimgui.a */; };
@@ -17,7 +16,6 @@
 		D644A0ED231F116C00B75B77 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D644A0EC231F116C00B75B77 /* libimgui.dylib */; };
 		D644A0EF231F117E00B75B77 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D644A0EE231F117E00B75B77 /* libxxGraphic.dylib */; };
 		D644A0F1231F119400B75B77 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D644A0F0231F119400B75B77 /* Cocoa.framework */; };
-		D644A0F3231F12BE00B75B77 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0F2231F12BE00B75B77 /* main.mm */; };
 		D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		D690A37E2332873B00A149EF /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D690A37D2332873B00A149EF /* libfreetype.dylib */; };
 		D690A3812333F7FA00A149EF /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D690A3802333F7FA00A149EF /* info.plist */; };
@@ -26,6 +24,8 @@
 		D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
 		D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
 		D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
+		D690A3962334291E00A149EF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D690A3932334291E00A149EF /* main.mm */; };
+		D690A3972334291E00A149EF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D690A3932334291E00A149EF /* main.mm */; };
 		D6A727F92324181D009981AD /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A727F82324181D009981AD /* Metal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D6D0AA62232836D10044D0CF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A7280223243208009981AD /* QuartzCore.framework */; };
 		D6DA66572325A4E800953C5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DA66562325A4E800953C5B /* UIKit.framework */; };
@@ -57,17 +57,17 @@
 		D644A0EC231F116C00B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0EE231F117E00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0F0231F119400B75B77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D644A0F2231F12BE00B75B77 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = ../main.mm; sourceTree = "<group>"; };
 		D690A379233286EF00A149EF /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../implement/imgui_freetype.cpp; sourceTree = "<group>"; };
 		D690A37A233286EF00A149EF /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../implement/imgui_freetype.h; sourceTree = "<group>"; };
 		D690A37B233286EF00A149EF /* imgui_user_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_user_config.h; path = ../implement/imgui_user_config.h; sourceTree = "<group>"; };
 		D690A37D2332873B00A149EF /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D690A3802333F7FA00A149EF /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
-		D690A3822333FB7300A149EF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
 		D690A3862333FE7B00A149EF /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = ../main/Renderer.cpp; sourceTree = "<group>"; };
 		D690A3872333FE7B00A149EF /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Renderer.h; path = ../main/Renderer.h; sourceTree = "<group>"; };
 		D690A38A23341A8400A149EF /* DearImGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DearImGui.cpp; path = ../main/DearImGui.cpp; sourceTree = "<group>"; };
 		D690A38B23341A8400A149EF /* DearImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DearImGui.h; path = ../main/DearImGui.h; sourceTree = "<group>"; };
+		D690A3922334291E00A149EF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main/main.cpp; sourceTree = "<group>"; };
+		D690A3932334291E00A149EF /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = ../main/main.mm; sourceTree = "<group>"; };
 		D6A727F82324181D009981AD /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		D6A7280223243208009981AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D6DA66562325A4E800953C5B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -122,8 +122,6 @@
 				D644A0DA231F107D00B75B77 /* implement */,
 				D690A3852333FDBC00A149EF /* main */,
 				D6F3891B232978A000EE9716 /* project */,
-				D690A3822333FB7300A149EF /* main.cpp */,
-				D644A0F2231F12BE00B75B77 /* main.mm */,
 				D644A0C7231F021F00B75B77 /* Products */,
 				D644A0EB231F116C00B75B77 /* Frameworks */,
 			);
@@ -174,6 +172,8 @@
 		D690A3852333FDBC00A149EF /* main */ = {
 			isa = PBXGroup;
 			children = (
+				D690A3922334291E00A149EF /* main.cpp */,
+				D690A3932334291E00A149EF /* main.mm */,
 				D690A3862333FE7B00A149EF /* Renderer.cpp */,
 				D690A3872333FE7B00A149EF /* Renderer.h */,
 				D690A38A23341A8400A149EF /* DearImGui.cpp */,
@@ -309,7 +309,7 @@
 				D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */,
 				D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */,
 				D690A3892333FE7B00A149EF /* Renderer.cpp in Sources */,
-				D6022C6823258E9500B9BFB8 /* main.mm in Sources */,
+				D690A3972334291E00A149EF /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +322,7 @@
 				D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */,
 				D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */,
 				D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */,
-				D644A0F3231F12BE00B75B77 /* main.mm in Sources */,
+				D690A3962334291E00A149EF /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
