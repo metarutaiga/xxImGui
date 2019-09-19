@@ -43,8 +43,10 @@ static void ImGui_ImplOSX_UpdateMonitors();
 @end
 
 // Functions
-bool ImGui_ImplOSX_Init(NSView* view)
+bool ImGui_ImplOSX_Init(void* view_)
 {
+    NSView* view = (__bridge NSView*)view_;
+
     ImGuiIO& io = ImGui::GetIO();
 
     // Setup back-end capabilities flags
@@ -163,8 +165,10 @@ static void ImGui_ImplOSX_UpdateMouseCursor()
     }
 }
 
-void ImGui_ImplOSX_NewFrame(NSView* view)
+void ImGui_ImplOSX_NewFrame(void* view_)
 {
+    NSView* view = (__bridge NSView*)view_;
+
     // Setup display size
     ImGuiIO& io = ImGui::GetIO();
     NSSize size = [view convertRectToBacking:[view bounds]].size;
@@ -202,8 +206,11 @@ static void resetKeys()
         io.KeysDown[n] = false;
 }
 
-bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
+bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
 {
+    NSEvent* event = (__bridge NSEvent*)event_;
+    NSView* view = (__bridge NSView*)view_;
+
     ImGuiIO& io = ImGui::GetIO();
 
     if (event.type == NSEventTypeLeftMouseDown || event.type == NSEventTypeRightMouseDown || event.type == NSEventTypeOtherMouseDown)
@@ -350,14 +357,14 @@ struct ImGuiViewportDataOSX
 
 @implementation ImGui_ImplOSX_ViewController
 -(void)loadView                         { self.view = [[NSView alloc] init];            }
--(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)mouseDown:(NSEvent *)event       { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)mouseUp:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)mouseMoved:(NSEvent *)event      { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)mouseDragged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self.view);  }
--(void)scrollWheel:(NSEvent *)event     { ImGui_ImplOSX_HandleEvent(event, self.view);  }
+-(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)mouseDown:(NSEvent *)event       { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)mouseUp:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)mouseMoved:(NSEvent *)event      { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)mouseDragged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)scrollWheel:(NSEvent *)event     { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
 @end
 
 static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)

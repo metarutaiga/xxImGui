@@ -21,8 +21,9 @@
 
 //---- Define assertion handler. Defaults to calling assert().
 //#define IM_ASSERT(_EXPR)  MyAssert(_EXPR)
+//#define IM_ASSERT(_EXPR)  ((void)(_EXPR))     // Disable asserts
 #ifndef _DEBUG
-#define IM_ASSERT(_EXPR)  ((void)(_EXPR))     // Disable asserts
+#define IM_ASSERT(_EXPR)    ((void)(_EXPR))     // Disable asserts
 #endif
 
 //---- Define attributes of all API symbols declarations, e.g. for DLL under Windows 
