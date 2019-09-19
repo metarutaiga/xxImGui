@@ -146,7 +146,9 @@
     <ClCompile Include="..\implement\imgui_freetype.cpp" />
     <ClCompile Include="..\implement\imgui_impl_win32.cpp" />
     <ClCompile Include="..\implement\imgui_impl_xx.cpp" />
-    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\main\DearImGui.cpp" />
+    <ClCompile Include="..\main\main.cpp" />
+    <ClCompile Include="..\main\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="freetype.vcxproj">
@@ -165,9 +167,12 @@
     <ClInclude Include="..\implement\imgui_impl_win32.h" />
     <ClInclude Include="..\implement\imgui_impl_xx.h" />
     <ClInclude Include="..\implement\imgui_user_config.h" />
+    <ClInclude Include="..\main\DearImGui.h" />
+    <ClInclude Include="..\main\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\implement\imgui_impl_osx.mm" />
+    <None Include="..\main\main.mm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

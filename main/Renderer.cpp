@@ -4,6 +4,7 @@
 // Copyright (c) 2019 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
+#include <xxGraphic/xxGraphic.h>
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
 #include <xxGraphic/xxGraphicD3D8.h>
@@ -45,7 +46,11 @@ bool Renderer::Create(void* view, const char* shortName)
 
     if (shortName == nullptr)
     {
+#if defined(xxWINDOWS)
+        shortName = "D3D11";
+#elif defined(xxMACOS) || defined(xxIOS)
         shortName = "Metal";
+#endif
     }
 
     switch (xxHash(shortName))
