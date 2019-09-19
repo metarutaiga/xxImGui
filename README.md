@@ -15,7 +15,7 @@ A simulate Next-Generation Graphic API for ImGui
 | OpenGL ES 2.0   | ❌      | ⭕  | ⭕   | ⭕      | 03-05-2007 |
 | Mantle          |         |     |       | 🚑      | 09-25-2013 |
 | Metal           |         | ⭕  | ⭕    |         | 06-02-2014 |
-| Vulkan          | ❌      | ⭕  | ⭕    | ❌     | 12-18-2015 |
+| Vulkan          | ❌      | ⭕  | ⭕    | ⭕     | 12-18-2015 |
 | ATI3DCIF        |         |     |       |         | 10-08-1996 |
 | RRedline        |         |     |       |         | 12-02-1996 |
 | Glide 2         |         |     |       |         | 07-17-1996 |
