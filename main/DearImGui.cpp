@@ -4,8 +4,10 @@
 // Copyright (c) 2019 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
+#include <sys/stat.h>
 #include "implement/imgui_freetype.h"
 #include "implement/imgui_impl_osx.h"
+#include "implement/imgui_impl_win32.h"
 #include "implement/imgui_impl_xx.h"
 #include "Renderer.h"
 #include "DearImGui.h"
@@ -35,6 +37,8 @@ void DearImGui::Create(void* view, float scale)
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+    //io.ConfigViewportsNoAutoMerge = true;
+    //io.ConfigViewportsNoTaskBarIcon = true;
     io.IniFilename = NULL;
 
     // Setup Dear ImGui style
@@ -54,6 +58,8 @@ void DearImGui::Create(void* view, float scale)
     // Setup Platform/Renderer bindings
 #if defined(xxMACOS)
     ImGui_ImplOSX_Init(view);
+#elif defined(xxWINDOWS)
+    ImGui_ImplWin32_Init(view);
 #endif
     ImGui_ImplXX_Init(Renderer::g_instance, 0, Renderer::g_device, Renderer::g_renderPass);
 
@@ -87,12 +93,32 @@ void DearImGui::Create(void* view, float scale)
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
     font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
     io.Fonts->AddFontFromFileTTF("/System/Library/Fonts/PingFang.ttc", 16.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
+#elif defined(xxWINDOWS)
+    font_config.SizePixels          = 13.0f * io.FontGlobalScale;
+    font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
+    font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
+    if (io.FontGlobalScale == 1.0f)
+    {
+        struct stat st;
+        if (stat("C:\\Windows\\Fonts\\msgothic.ttc", &st) == 0)
+            io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msgothic.ttc", 13.0f, &font_config, io.Fonts->GetGlyphRangesJapanese());
+        else if (stat("C:\\Windows\\Fonts\\mingliu.ttc", &st) == 0)
+            io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\mingliu.ttc", 13.0f, &font_config, io.Fonts->GetGlyphRangesJapanese());
+    }
+    else
+    {
+        struct stat st;
+        if (stat("C:\\Windows\\Fonts\\meiryo.ttc", &st) == 0)
+            io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\meiryo.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
+        else if (stat("C:\\Windows\\Fonts\\msjh.ttc", &st) == 0)
+            io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msjh.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
+    }
 #endif
     io.FontGlobalScale              = 1.0f;
     ImGuiFreeType::BuildFontAtlas(io.Fonts);
 }
 //------------------------------------------------------------------------------
-void DearImGui::Update(void* view)
+void* DearImGui::Update(void* view)
 {
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
@@ -104,11 +130,14 @@ void DearImGui::Update(void* view)
     rect.size.width *= contentScaleFactor;
     rect.size.height *= contentScaleFactor;
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
+#elif defined(xxWINDOWS)
+    ImGui_ImplWin32_NewFrame();
 #endif
     ImGui::NewFrame();
 
     // Graphic API
     const char* graphicShortName = nullptr;
+    bool recreateWindow = false;
     if (ImGui::BeginMainMenuBar())
     {
         if (ImGui::BeginMenu("Graphic"))
@@ -127,6 +156,19 @@ void DearImGui::Update(void* view)
                     graphicShortName = Renderer::GetGraphicShortName(i);
                     break;
                 }
+            }
+
+            if (graphicShortName != nullptr)
+            {
+                bool flipCurrent =  strstr(deviceStringCurrent, "Ex") || \
+                                    strstr(deviceStringCurrent, "10") || \
+                                    strstr(deviceStringCurrent, "11") || \
+                                    strstr(deviceStringCurrent, "12.");
+                bool flipTarget =   strstr(deviceStringTarget, "Ex") || \
+                                    strstr(deviceStringTarget, "10") || \
+                                    strstr(deviceStringTarget, "11") || \
+                                    strstr(deviceStringTarget, "12.");
+                recreateWindow = (flipCurrent && flipTarget == false);
             }
 
             ImGui::EndMenu();
@@ -223,8 +265,25 @@ void DearImGui::Update(void* view)
         ImGui_ImplXX_Shutdown();
 #if defined(xxMACOS)
         ImGui_ImplOSX_Shutdown();
+#elif defined(xxWINDOWS)
+        ImGui_ImplWin32_Shutdown();
 #endif
         Renderer::Shutdown();
+#if defined(xxWINDOWS)
+        if (recreateWindow)
+        {
+            wchar_t className[256];
+            wchar_t textName[256];
+            RECT rect;
+            GetClassNameW((HWND)view, className, 256);
+            GetWindowTextW((HWND)view, textName, 256);
+            GetWindowRect((HWND)view, &rect);
+            ::DestroyWindow((HWND)view);
+            view = ::CreateWindowW(className, textName, WS_OVERLAPPEDWINDOW, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, nullptr, nullptr, GetModuleHandleW(nullptr), nullptr);
+            ::ShowWindow((HWND)view, SW_SHOWDEFAULT);
+            ::UpdateWindow((HWND)view);
+        }
+#endif
 #if defined(xxMACOS) || defined(xxIOS)
         id window = objc_msgSend((id)view, sel_getUid("window"));
         Renderer::Create(window, graphicShortName);
@@ -233,9 +292,13 @@ void DearImGui::Update(void* view)
 #endif
 #if defined(xxMACOS)
         ImGui_ImplOSX_Init(view);
+#elif defined(xxWINDOWS)
+        ImGui_ImplWin32_Init(view);
 #endif
         ImGui_ImplXX_Init(Renderer::g_instance, 0, Renderer::g_device, Renderer::g_renderPass);
     }
+
+    return view;
 }
 //------------------------------------------------------------------------------
 void DearImGui::Shutdown()
@@ -243,14 +306,16 @@ void DearImGui::Shutdown()
     ImGui_ImplXX_Shutdown();
 #if defined(xxMACOS)
     ImGui_ImplOSX_Shutdown();
+#elif defined(xxWINDOWS)
+    ImGui_ImplWin32_Shutdown();
 #endif
     ImGui::DestroyContext();
 }
 //------------------------------------------------------------------------------
+#if defined(xxMACOS)
 void DearImGui::HandleEventOSX(void* event, void* view)
 {
-#if defined(xxMACOS)
     ImGui_ImplOSX_HandleEvent(event, view);
-#endif
 }
+#endif
 //------------------------------------------------------------------------------
