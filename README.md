@@ -1,6 +1,14 @@
 # xxImGui
 A simulate Next-Generation Graphic API for ImGui
 
+### Library Dependencies
+| Library   | Note                                                     |
+| --------- | -------------------------------------------------------- |
+| imgui     | https://github.com/ocornut/imgui                         |
+| freetype2 | https://git.savannah.gnu.org/cgit/freetype/freetype2.git |
+| xxGraphic | https://github.com/metarutaiga/xxGraphic                 |
+
+### Supported Graphic API
 | API             | Android | iOS | macOS | Windows | Note       |
 | --------------- | ------- | --- | ----- | ------- | ---------- |
 | Direct3D 8.0    |         |     |       | ⭕      | 11-09-2000 |
