@@ -158,6 +158,7 @@ void* DearImGui::Update(void* view)
                 }
             }
 
+            // We need to create window when device is running in FlipEx Mode
             if (graphicShortName != nullptr)
             {
                 bool flipCurrent =  strstr(deviceStringCurrent, "Ex") || \
@@ -269,21 +270,30 @@ void* DearImGui::Update(void* view)
         ImGui_ImplWin32_Shutdown();
 #endif
         Renderer::Shutdown();
+
 #if defined(xxWINDOWS)
+        // To recreate window that we need to reset window setting
         if (recreateWindow)
         {
-            wchar_t className[256];
-            wchar_t textName[256];
-            RECT rect;
+            wchar_t className[256] = {};
+            wchar_t textName[256] = {};
+            DWORD style = 0;
+            RECT rect = { 0, 0, 1280, 720 };
+            HWND hWndParent = nullptr;
+            HMODULE hInstance = nullptr;
             GetClassNameW((HWND)view, className, 256);
             GetWindowTextW((HWND)view, textName, 256);
             GetWindowRect((HWND)view, &rect);
+            style = (DWORD)GetWindowLongW((HWND)view, GWL_STYLE);
+            hWndParent = (HWND)GetWindowLongW((HWND)view, GWL_HWNDPARENT);
+            hInstance = (HMODULE)GetWindowLongW((HWND)view, GWL_HINSTANCE);
             ::DestroyWindow((HWND)view);
-            view = ::CreateWindowW(className, textName, WS_OVERLAPPEDWINDOW, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, nullptr, nullptr, GetModuleHandleW(nullptr), nullptr);
+            view = ::CreateWindowW(className, textName, style, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, hWndParent, nullptr, hInstance, nullptr);
             ::ShowWindow((HWND)view, SW_SHOWDEFAULT);
             ::UpdateWindow((HWND)view);
         }
 #endif
+
 #if defined(xxMACOS) || defined(xxIOS)
         id window = objc_msgSend((id)view, sel_getUid("window"));
         Renderer::Create(window, graphicShortName);
