@@ -1,8 +1,8 @@
 // dear imgui: standalone example application
 // If you are new to dear imgui, see examples/README.txt and documentation at the top of imgui.cpp.
 
-#include "main/Renderer.h"
-#include "main/DearImGui.h"
+#include "Renderer.h"
+#include "DearImGui.h"
 #include "implement/imgui_impl_win32.h"
 
 #define NOMINMAX

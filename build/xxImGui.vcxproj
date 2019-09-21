@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -102,7 +102,7 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -118,7 +118,7 @@
       <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -134,7 +134,7 @@
       <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -143,12 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\implement\imgui_freetype.cpp" />
-    <ClCompile Include="..\implement\imgui_impl_win32.cpp" />
-    <ClCompile Include="..\implement\imgui_impl_xx.cpp" />
-    <ClCompile Include="..\main\DearImGui.cpp" />
-    <ClCompile Include="..\main\main.cpp" />
-    <ClCompile Include="..\main\Renderer.cpp" />
+    <ClCompile Include="..\xxImGui\implement\imgui_freetype.cpp" />
+    <ClCompile Include="..\xxImGui\implement\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\xxImGui\implement\imgui_impl_xx.cpp" />
+    <ClCompile Include="..\xxImGui\DearImGui.cpp" />
+    <ClCompile Include="..\xxImGui\main.cpp" />
+    <ClCompile Include="..\xxImGui\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="freetype.vcxproj">
@@ -162,17 +162,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\implement\imgui_freetype.h" />
-    <ClInclude Include="..\implement\imgui_impl_osx.h" />
-    <ClInclude Include="..\implement\imgui_impl_win32.h" />
-    <ClInclude Include="..\implement\imgui_impl_xx.h" />
-    <ClInclude Include="..\implement\imgui_user_config.h" />
-    <ClInclude Include="..\main\DearImGui.h" />
-    <ClInclude Include="..\main\Renderer.h" />
+    <ClInclude Include="..\xxImGui\implement\imgui_freetype.h" />
+    <ClInclude Include="..\xxImGui\implement\imgui_impl_osx.h" />
+    <ClInclude Include="..\xxImGui\implement\imgui_impl_win32.h" />
+    <ClInclude Include="..\xxImGui\implement\imgui_impl_xx.h" />
+    <ClInclude Include="..\xxImGui\implement\imgui_user_config.h" />
+    <ClInclude Include="..\xxImGui\DearImGui.h" />
+    <ClInclude Include="..\xxImGui\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\implement\imgui_impl_osx.mm" />
-    <None Include="..\main\main.mm" />
+    <None Include="..\xxImGui\implement\imgui_impl_osx.mm" />
+    <None Include="..\xxImGui\main.mm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxImGui", "project\xxImGui.vcxproj", "{4165A294-21F2-44CA-9B38-E3F935ABADF5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxImGui", "build\xxImGui.vcxproj", "{4165A294-21F2-44CA-9B38-E3F935ABADF5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "project\freetype.vcxproj", "{D98A83DF-490D-46D9-809C-55C80BA9275F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "build\freetype.vcxproj", "{D98A83DF-490D-46D9-809C-55C80BA9275F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "project\imgui.vcxproj", "{9B49443B-7FAE-479E-8CDF-29919A9F786F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "build\imgui.vcxproj", "{9B49443B-7FAE-479E-8CDF-29919A9F786F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxGraphic", "project\xxGraphic.vcxproj", "{81C889FC-6908-4066-8C73-3215DF6FFFC9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxGraphic", "build\xxGraphic.vcxproj", "{81C889FC-6908-4066-8C73-3215DF6FFFC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
