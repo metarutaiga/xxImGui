@@ -118,35 +118,35 @@ static struct { const char* shortName; const char* fullName; } g_graphicList[] =
 {
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
-    { "D3D8",           xxGetDeviceStringD3D8(0)            },
-    { "D3D8PS",         xxGetDeviceStringD3D8PS(0)          },
+    { "D3D8",           xxGetDeviceNameD3D8()           },
+    { "D3D8PS",         xxGetDeviceNameD3D8PS()         },
 #endif
-    { "D3D9",           xxGetDeviceStringD3D9(0)            },
-    { "D3D9PS",         xxGetDeviceStringD3D9PS(0)          },
-    { "D3D9Ex",         xxGetDeviceStringD3D9Ex(0)          },
-    { "D3D9ExPS",       xxGetDeviceStringD3D9ExPS(0)        },
-    { "D3D9On12",       xxGetDeviceStringD3D9On12(0)        },
-    { "D3D9On12PS",     xxGetDeviceStringD3D9On12PS(0)      },
-    { "D3D9On12Ex",     xxGetDeviceStringD3D9On12Ex(0)      },
-    { "D3D9On12ExPS",   xxGetDeviceStringD3D9On12ExPS(0)    },
-    { "D3D10",          xxGetDeviceStringD3D10(0)           },
-    { "D3D10_1",        xxGetDeviceStringD3D10_1(0)         },
-    { "D3D11",          xxGetDeviceStringD3D11(0)           },
-    { "D3D11On12",      xxGetDeviceStringD3D11On12(0)       },
-    { "D3D12",          xxGetDeviceStringD3D12(0)           },
+    { "D3D9",           xxGetDeviceNameD3D9()           },
+    { "D3D9PS",         xxGetDeviceNameD3D9PS()         },
+    { "D3D9Ex",         xxGetDeviceNameD3D9Ex()         },
+    { "D3D9ExPS",       xxGetDeviceNameD3D9ExPS()       },
+    { "D3D9On12",       xxGetDeviceNameD3D9On12()       },
+    { "D3D9On12PS",     xxGetDeviceNameD3D9On12PS()     },
+    { "D3D9On12Ex",     xxGetDeviceNameD3D9On12Ex()     },
+    { "D3D9On12ExPS",   xxGetDeviceNameD3D9On12ExPS()   },
+    { "D3D10",          xxGetDeviceNameD3D10()          },
+    { "D3D10_1",        xxGetDeviceNameD3D10_1()        },
+    { "D3D11",          xxGetDeviceNameD3D11()          },
+    { "D3D11On12",      xxGetDeviceNameD3D11On12()      },
+    { "D3D12",          xxGetDeviceNameD3D12()          },
 #endif
 
-    { "GLES2",          xxGetDeviceStringGLES2(0)           },
+    { "GLES2",          xxGetDeviceNameGLES2()          },
 #if defined(xxMACOS) || defined(xxIOS)
-    { "Metal",          xxGetDeviceStringMetal(0)           },
+    { "Metal",          xxGetDeviceNameMetal()          },
 #endif
-    { "NULL",           xxGetDeviceStringNULL(0)            },
-    { "Vulkan",         xxGetDeviceStringVulkan(0)          },
+    { "NULL",           xxGetDeviceNameNULL()           },
+    { "Vulkan",         xxGetDeviceNameVulkan()         },
 };
 //------------------------------------------------------------------------------
 const char* Renderer::GetCurrentFullName()
 {
-    return xxGetDeviceString(0);
+    return xxGetDeviceName();
 }
 //------------------------------------------------------------------------------
 const char* Renderer::GetGraphicFullName(int index)

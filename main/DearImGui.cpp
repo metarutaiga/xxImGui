@@ -285,8 +285,8 @@ void* DearImGui::Update(void* view)
             GetWindowTextW((HWND)view, textName, 256);
             GetWindowRect((HWND)view, &rect);
             style = (DWORD)GetWindowLongW((HWND)view, GWL_STYLE);
-            hWndParent = (HWND)GetWindowLongW((HWND)view, GWL_HWNDPARENT);
-            hInstance = (HMODULE)GetWindowLongW((HWND)view, GWL_HINSTANCE);
+            hWndParent = (HWND)GetWindowLongPtrW((HWND)view, GWLP_HWNDPARENT);
+            hInstance = (HMODULE)GetWindowLongPtrW((HWND)view, GWLP_HINSTANCE);
             ::DestroyWindow((HWND)view);
             view = ::CreateWindowW(className, textName, style, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, hWndParent, nullptr, hInstance, nullptr);
             ::ShowWindow((HWND)view, SW_SHOWDEFAULT);
