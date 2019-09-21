@@ -50,6 +50,8 @@ bool Renderer::Create(void* view, const char* shortName)
         shortName = "D3D11";
 #elif defined(xxMACOS) || defined(xxIOS)
         shortName = "Metal";
+#else
+        shortName = "GLES2";
 #endif
     }
 
@@ -135,7 +137,6 @@ static struct { const char* shortName; const char* fullName; } g_graphicList[] =
     { "D3D11On12",      xxGetDeviceNameD3D11On12()      },
     { "D3D12",          xxGetDeviceNameD3D12()          },
 #endif
-
     { "GLES2",          xxGetDeviceNameGLES2()          },
 #if defined(xxMACOS) || defined(xxIOS)
     { "Metal",          xxGetDeviceNameMetal()          },

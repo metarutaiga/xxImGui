@@ -2,15 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:project/freetype.xcodeproj">
+      location = "group:build/freetype.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:project/imgui.xcodeproj">
+      location = "group:build/imgui.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:project/xxGraphic.xcodeproj">
+      location = "group:build/xxGraphic.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:project/xxImGui.xcodeproj">
+      location = "group:build/xxImGui.xcodeproj">
    </FileRef>
 </Workspace>

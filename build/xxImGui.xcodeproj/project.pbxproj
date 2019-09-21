@@ -50,24 +50,24 @@
 		D6022C6D23258EB800B9BFB8 /* libimgui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C6F23258EB800B9BFB8 /* libxxGraphic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../implement/imgui_impl_osx.h; sourceTree = "<group>"; };
-		D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_osx.mm; path = ../implement/imgui_impl_osx.mm; sourceTree = "<group>"; };
-		D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_xx.cpp; path = ../implement/imgui_impl_xx.cpp; sourceTree = "<group>"; };
-		D644A0E8231F109C00B75B77 /* imgui_impl_xx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_xx.h; path = ../implement/imgui_impl_xx.h; sourceTree = "<group>"; };
+		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
+		D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_osx.mm; path = ../xxImGui/implement/imgui_impl_osx.mm; sourceTree = "<group>"; };
+		D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_xx.cpp; path = ../xxImGui/implement/imgui_impl_xx.cpp; sourceTree = "<group>"; };
+		D644A0E8231F109C00B75B77 /* imgui_impl_xx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_xx.h; path = ../xxImGui/implement/imgui_impl_xx.h; sourceTree = "<group>"; };
 		D644A0EC231F116C00B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0EE231F117E00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0F0231F119400B75B77 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D690A379233286EF00A149EF /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../implement/imgui_freetype.cpp; sourceTree = "<group>"; };
-		D690A37A233286EF00A149EF /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../implement/imgui_freetype.h; sourceTree = "<group>"; };
-		D690A37B233286EF00A149EF /* imgui_user_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_user_config.h; path = ../implement/imgui_user_config.h; sourceTree = "<group>"; };
+		D690A379233286EF00A149EF /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../xxImGui/implement/imgui_freetype.cpp; sourceTree = "<group>"; };
+		D690A37A233286EF00A149EF /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../xxImGui/implement/imgui_freetype.h; sourceTree = "<group>"; };
+		D690A37B233286EF00A149EF /* imgui_user_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_user_config.h; path = ../xxImGui/implement/imgui_user_config.h; sourceTree = "<group>"; };
 		D690A37D2332873B00A149EF /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D690A3802333F7FA00A149EF /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
-		D690A3862333FE7B00A149EF /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = ../main/Renderer.cpp; sourceTree = "<group>"; };
-		D690A3872333FE7B00A149EF /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Renderer.h; path = ../main/Renderer.h; sourceTree = "<group>"; };
-		D690A38A23341A8400A149EF /* DearImGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DearImGui.cpp; path = ../main/DearImGui.cpp; sourceTree = "<group>"; };
-		D690A38B23341A8400A149EF /* DearImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DearImGui.h; path = ../main/DearImGui.h; sourceTree = "<group>"; };
-		D690A3922334291E00A149EF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main/main.cpp; sourceTree = "<group>"; };
-		D690A3932334291E00A149EF /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = ../main/main.mm; sourceTree = "<group>"; };
+		D690A3862333FE7B00A149EF /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = ../xxImGui/Renderer.cpp; sourceTree = "<group>"; };
+		D690A3872333FE7B00A149EF /* Renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Renderer.h; path = ../xxImGui/Renderer.h; sourceTree = "<group>"; };
+		D690A38A23341A8400A149EF /* DearImGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DearImGui.cpp; path = ../xxImGui/DearImGui.cpp; sourceTree = "<group>"; };
+		D690A38B23341A8400A149EF /* DearImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DearImGui.h; path = ../xxImGui/DearImGui.h; sourceTree = "<group>"; };
+		D690A3922334291E00A149EF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../xxImGui/main.cpp; sourceTree = "<group>"; };
+		D690A3932334291E00A149EF /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = ../xxImGui/main.mm; sourceTree = "<group>"; };
 		D6A727F82324181D009981AD /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		D6A7280223243208009981AD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D6DA66562325A4E800953C5B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -402,7 +402,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"IMGUI_USER_CONFIG=\\\"../implement/imgui_user_config.h\\\"",
+					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -470,7 +470,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"IMGUI_USER_CONFIG=\\\"../implement/imgui_user_config.h\\\"",
+					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
