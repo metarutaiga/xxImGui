@@ -114,8 +114,8 @@ void DearImGui::Create(void* view, float scale)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msjh.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
     }
 #endif
-    io.FontGlobalScale              = 1.0f;
     ImGuiFreeType::BuildFontAtlas(io.Fonts);
+    io.FontGlobalScale              = 1.0f;
 }
 //------------------------------------------------------------------------------
 void* DearImGui::Update(void* view)
