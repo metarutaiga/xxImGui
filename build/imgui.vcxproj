@@ -110,6 +110,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -125,6 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -136,12 +138,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -155,12 +158,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
