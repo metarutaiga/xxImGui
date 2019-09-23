@@ -7,6 +7,7 @@
 #include <xxGraphic/xxGraphic.h>
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
+#include <xxGraphic/xxGraphicD3D7.h>
 #include <xxGraphic/xxGraphicD3D8.h>
 #include <xxGraphic/xxGraphicD3D8PS.h>
 #endif
@@ -59,6 +60,7 @@ bool Renderer::Create(void* view, const char* shortName)
     {
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
+    case xxHash("D3D7"):        g_instance = xxCreateInstanceD3D7();            break;
     case xxHash("D3D8"):        g_instance = xxCreateInstanceD3D8();            break;
     case xxHash("D3D8PS"):      g_instance = xxCreateInstanceD3D8PS();          break;
 #endif
@@ -120,6 +122,7 @@ static struct { const char* shortName; const char* fullName; } g_graphicList[] =
 {
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
+    { "D3D7",           xxGetDeviceNameD3D7()           },
     { "D3D8",           xxGetDeviceNameD3D8()           },
     { "D3D8PS",         xxGetDeviceNameD3D8PS()         },
 #endif

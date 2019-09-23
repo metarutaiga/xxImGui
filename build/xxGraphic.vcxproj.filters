@@ -63,6 +63,9 @@
     <ClCompile Include="..\xxGraphic\xxGraphicNULL.cpp">
       <Filter>NULL</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicD3D7.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxGraphicMetal.h">
       <Filter>Metal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicD3D7.h">
+      <Filter>Direct3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
