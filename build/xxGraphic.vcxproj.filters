@@ -66,6 +66,9 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D7.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicD3D6.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -250,6 +253,21 @@
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxGraphicD3D7.h">
       <Filter>Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicD3D6.h">
+      <Filter>Direct3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\dxsdk\d3d.h">
+      <Filter>Direct3D\dxsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\dxsdk\d3dcaps.h">
+      <Filter>Direct3D\dxsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\dxsdk\d3dtypes.h">
+      <Filter>Direct3D\dxsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h">
+      <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

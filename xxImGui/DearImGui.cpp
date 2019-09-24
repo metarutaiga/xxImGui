@@ -61,7 +61,7 @@ void DearImGui::Create(void* view, float scale)
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_Init(view);
 #endif
-    ImGui_ImplXX_Init(Renderer::g_instance, 0, Renderer::g_device, Renderer::g_renderPass);
+    ImGui_ImplXX_Init(Renderer::g_instance, Renderer::g_device, Renderer::g_renderPass);
 
     // Load Fonts
     // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
@@ -305,7 +305,7 @@ void* DearImGui::Update(void* view)
 #elif defined(xxWINDOWS)
         ImGui_ImplWin32_Init(view);
 #endif
-        ImGui_ImplXX_Init(Renderer::g_instance, 0, Renderer::g_device, Renderer::g_renderPass);
+        ImGui_ImplXX_Init(Renderer::g_instance, Renderer::g_device, Renderer::g_renderPass);
     }
 
     return view;
