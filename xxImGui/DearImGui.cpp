@@ -162,12 +162,12 @@ void* DearImGui::Update(void* view)
             if (graphicShortName != nullptr)
             {
                 bool flipCurrent =  strstr(deviceStringCurrent, "Ex") || \
-                                    strstr(deviceStringCurrent, "10") || \
-                                    strstr(deviceStringCurrent, "11") || \
+                                    strstr(deviceStringCurrent, "10.") || \
+                                    strstr(deviceStringCurrent, "11.") || \
                                     strstr(deviceStringCurrent, "12.");
                 bool flipTarget =   strstr(deviceStringTarget, "Ex") || \
-                                    strstr(deviceStringTarget, "10") || \
-                                    strstr(deviceStringTarget, "11") || \
+                                    strstr(deviceStringTarget, "10.") || \
+                                    strstr(deviceStringTarget, "11.") || \
                                     strstr(deviceStringTarget, "12.");
                 recreateWindow = (flipCurrent && flipTarget == false);
             }

@@ -76,17 +76,18 @@ bool Renderer::Create(void* view, const char* shortName)
     case xxHash("D3D9On12ExPS"):g_instance = xxCreateInstanceD3D9On12ExPS();    break;
     case xxHash("D3D10"):       g_instance = xxCreateInstanceD3D10();           break;
     case xxHash("D3D10_1"):     g_instance = xxCreateInstanceD3D10_1();         break;
+    default:
     case xxHash("D3D11"):       g_instance = xxCreateInstanceD3D11();           break;
     case xxHash("D3D11On12"):   g_instance = xxCreateInstanceD3D11On12();       break;
     case xxHash("D3D12"):       g_instance = xxCreateInstanceD3D12();           break;
 #endif
     case xxHash("GLES2"):       g_instance = xxCreateInstanceGLES2();           break;
 #if defined(xxMACOS) || defined(xxIOS)
+    default:
     case xxHash("Metal"):       g_instance = xxCreateInstanceMetal();           break;
 #endif
     case xxHash("NULL"):        g_instance = xxCreateInstanceNULL();            break;
     case xxHash("Vulkan"):      g_instance = xxCreateInstanceVulkan();          break;
-    default:                                                                    break;
     }
     if (g_instance == 0)
         return false;
