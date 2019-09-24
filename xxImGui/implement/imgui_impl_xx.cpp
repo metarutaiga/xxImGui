@@ -16,7 +16,6 @@
 #include "xxGraphic/xxGraphic.h"
 
 static uint64_t g_instance = 0;
-static uint64_t g_physicalDevice = 0;
 static uint64_t g_device = 0;
 static uint64_t g_renderPass = 0;
 static int      g_bufferIndex = 0;
@@ -207,15 +206,15 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     }
 }
 
-bool ImGui_ImplXX_Init(uint64_t instance, uint64_t physicalDevice, uint64_t device, uint64_t renderPass)
+bool ImGui_ImplXX_Init(uint64_t instance, uint64_t device, uint64_t renderPass)
 {
     g_instance = instance;
-    g_physicalDevice = physicalDevice;
     g_device = device;
     g_renderPass = renderPass;
 
     const char* deviceString = xxGetDeviceName();
     g_halfPixel = false;
+    g_halfPixel |= (strncmp(deviceString, "Direct3D 6", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 7", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 8", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 9", 10) == 0);
@@ -236,8 +235,8 @@ void ImGui_ImplXX_Shutdown()
 {
     ImGui_ImplXX_ShutdownPlatformInterface();
     ImGui_ImplXX_InvalidateDeviceObjects();
+    g_renderPass = 0;
     g_device = 0;
-    g_physicalDevice = 0;
     g_instance = 0;
 }
 
