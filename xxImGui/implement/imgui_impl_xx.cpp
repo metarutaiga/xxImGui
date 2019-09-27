@@ -254,7 +254,7 @@ static bool ImGui_ImplXX_CreateFontsTexture()
     if (g_fontTexture == 0)
         return false;
     unsigned int stride = 0;
-    void* map = xxMapTexture(g_device, g_fontTexture, stride, 0, 0, 1);
+    void* map = xxMapTexture(g_device, g_fontTexture, &stride, 0, 0, 1);
     if (map == nullptr)
         return false;
     for (int y = 0; y < height; y++)

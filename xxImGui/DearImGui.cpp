@@ -23,6 +23,8 @@
 static void* MallocWrapper(size_t size, void* user_data)    { IM_UNUSED(user_data); return calloc(size, 1); }
 static void  FreeWrapper(void* ptr, void* user_data)        { IM_UNUSED(user_data); free(ptr);              }
 
+const char* DearImGui::g_graphicShortName = nullptr;
+bool        DearImGui::g_recreateWindow = false;
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
@@ -118,7 +120,28 @@ void DearImGui::Create(void* view, float scale)
     io.FontGlobalScale              = 1.0f;
 }
 //------------------------------------------------------------------------------
-void* DearImGui::Update(void* view)
+void DearImGui::Shutdown()
+{
+    ImGui_ImplXX_Shutdown();
+#if defined(xxMACOS)
+    ImGui_ImplOSX_Shutdown();
+#elif defined(xxWINDOWS)
+    ImGui_ImplWin32_Shutdown();
+#endif
+    ImGui::DestroyContext();
+}
+//------------------------------------------------------------------------------
+void DearImGui::Suspend()
+{
+    ImGui_ImplXX_InvalidateDeviceObjects();
+}
+//------------------------------------------------------------------------------
+void DearImGui::Resume()
+{
+    ImGui_ImplXX_CreateDeviceObjects();
+}
+//------------------------------------------------------------------------------
+void DearImGui::Update()
 {
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
@@ -136,8 +159,6 @@ void* DearImGui::Update(void* view)
     ImGui::NewFrame();
 
     // Graphic API
-    const char* graphicShortName = nullptr;
-    bool recreateWindow = false;
     if (ImGui::BeginMainMenuBar())
     {
         if (ImGui::BeginMenu("Graphic"))
@@ -153,13 +174,13 @@ void* DearImGui::Update(void* view)
                 bool selected = (deviceStringTarget == deviceStringCurrent);
                 if (ImGui::MenuItem(deviceStringTarget, nullptr, &selected))
                 {
-                    graphicShortName = Renderer::GetGraphicShortName(i);
+                    g_graphicShortName = Renderer::GetGraphicShortName(i);
                     break;
                 }
             }
 
             // We need to create window when device is running in FlipEx Mode
-            if (graphicShortName != nullptr)
+            if (g_graphicShortName != nullptr)
             {
                 bool flipCurrent =  strstr(deviceStringCurrent, "Ex") || \
                                     strstr(deviceStringCurrent, "10.") || \
@@ -169,7 +190,7 @@ void* DearImGui::Update(void* view)
                                     strstr(deviceStringTarget, "10.") || \
                                     strstr(deviceStringTarget, "11.") || \
                                     strstr(deviceStringTarget, "12.");
-                recreateWindow = (flipCurrent && flipTarget == false);
+                g_recreateWindow = (flipCurrent && flipTarget == false);
             }
 
             ImGui::EndMenu();
@@ -180,7 +201,6 @@ void* DearImGui::Update(void* view)
     // Global data for the demo
     static bool show_demo_window = true;
     static bool show_another_window = false;
-    static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
     if (show_demo_window)
@@ -198,7 +218,7 @@ void* DearImGui::Update(void* view)
         ImGui::Checkbox("Another Window", &show_another_window);
 
         ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-        ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+        ImGui::ColorEdit3("clear color", Renderer::g_clearColor); // Edit 3 floats representing a color
 
         if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
             counter++;
@@ -223,35 +243,10 @@ void* DearImGui::Update(void* view)
     // Rendering
     ImGui::EndFrame();
     ImGui::Render();
-
-    int width = (int)ImGui::GetIO().DisplaySize.x;
-    int height = (int)ImGui::GetIO().DisplaySize.y;
-
-    uint64_t commandBuffer = xxGetCommandBuffer(Renderer::g_device, Renderer::g_swapchain);
-    uint64_t framebuffer = xxGetFramebuffer(Renderer::g_device, Renderer::g_swapchain);
-    xxBeginCommandBuffer(commandBuffer);
-
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, Renderer::g_renderPass, width, height, clear_color.x, clear_color.y, clear_color.z, clear_color.w, 1.0f, 0);
-    ImGui_ImplXX_RenderDrawData(ImGui::GetDrawData(), commandEncoder);
-    xxEndRenderPass(commandEncoder, framebuffer, Renderer::g_renderPass);
-
-    xxEndCommandBuffer(commandBuffer);
-    xxSubmitCommandBuffer(commandBuffer, Renderer::g_swapchain);
-
-    xxPresentSwapchain(Renderer::g_swapchain);
-
-    if (xxTestDevice(Renderer::g_device) == false)
-    {
-        ImGui_ImplXX_InvalidateDeviceObjects();
-#if defined(xxMACOS) || defined(xxIOS)
-        id window = objc_msgSend((id)view, sel_getUid("window"));
-        Renderer::Reset(window);
-#else
-        Renderer::Reset(view);
-#endif
-        ImGui_ImplXX_CreateDeviceObjects();
-    }
-
+}
+//------------------------------------------------------------------------------
+void* DearImGui::PostUpdate(void* view)
+{
     // Update and Render additional Platform Windows
     ImGuiIO& io = ImGui::GetIO();
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -261,8 +256,11 @@ void* DearImGui::Update(void* view)
     }
 
     // Recreate Graphic API
-    if (graphicShortName != nullptr)
+    if (g_graphicShortName != nullptr)
     {
+        const char* graphicShortName = g_graphicShortName;
+        g_graphicShortName = nullptr;
+
         ImGui_ImplXX_Shutdown();
 #if defined(xxMACOS)
         ImGui_ImplOSX_Shutdown();
@@ -271,10 +269,12 @@ void* DearImGui::Update(void* view)
 #endif
         Renderer::Shutdown();
 
-#if defined(xxWINDOWS)
         // To recreate window that we need to reset window setting
-        if (recreateWindow)
+        if (g_recreateWindow)
         {
+            g_recreateWindow = false;
+
+#if defined(xxWINDOWS)
             wchar_t className[256] = {};
             wchar_t textName[256] = {};
             DWORD style = 0;
@@ -291,8 +291,8 @@ void* DearImGui::Update(void* view)
             view = ::CreateWindowW(className, textName, style, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, hWndParent, nullptr, hInstance, nullptr);
             ::ShowWindow((HWND)view, SW_SHOWDEFAULT);
             ::UpdateWindow((HWND)view);
-        }
 #endif
+        }
 
 #if defined(xxMACOS) || defined(xxIOS)
         id window = objc_msgSend((id)view, sel_getUid("window"));
@@ -311,15 +311,9 @@ void* DearImGui::Update(void* view)
     return view;
 }
 //------------------------------------------------------------------------------
-void DearImGui::Shutdown()
+void DearImGui::Render(uint64_t commandEncoder)
 {
-    ImGui_ImplXX_Shutdown();
-#if defined(xxMACOS)
-    ImGui_ImplOSX_Shutdown();
-#elif defined(xxWINDOWS)
-    ImGui_ImplWin32_Shutdown();
-#endif
-    ImGui::DestroyContext();
+    ImGui_ImplXX_RenderDrawData(ImGui::GetDrawData(), commandEncoder);
 }
 //------------------------------------------------------------------------------
 #if defined(xxMACOS)

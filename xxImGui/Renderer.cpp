@@ -31,10 +31,18 @@
 
 #include "Renderer.h"
 
-uint64_t Renderer::g_instance = 0;
-uint64_t Renderer::g_device = 0;
-uint64_t Renderer::g_renderPass = 0;
-uint64_t Renderer::g_swapchain = 0;
+uint64_t    Renderer::g_instance = 0;
+uint64_t    Renderer::g_device = 0;
+uint64_t    Renderer::g_renderPass = 0;
+uint64_t    Renderer::g_swapchain = 0;
+uint64_t    Renderer::g_currentCommandBuffer = 0;
+uint64_t    Renderer::g_currentCommandEncoder = 0;
+uint64_t    Renderer::g_currentCommandFramebuffer = 0;
+int         Renderer::g_width = 0;
+int         Renderer::g_height = 0;
+float       Renderer::g_clearColor[4] = { 0.45f, 0.55f, 0.60f, 1.00f };
+float       Renderer::g_clearDepth = 1.0f;
+char        Renderer::g_clearStencil = 0;
 //==============================================================================
 //  Renderer
 //==============================================================================
@@ -106,6 +114,8 @@ void Renderer::Reset(void* view, int width, int height)
         xxResetDevice(g_device);
         g_swapchain = 0;
         g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, width, height);
+        g_width = width;
+        g_height = height;
     }
 }
 //------------------------------------------------------------------------------
@@ -119,6 +129,40 @@ void Renderer::Shutdown()
     g_renderPass = 0;
     g_device = 0;
     g_instance = 0;
+}
+//------------------------------------------------------------------------------
+uint64_t Renderer::Begin()
+{
+    uint64_t commandBuffer = xxGetCommandBuffer(g_device, g_swapchain);
+    uint64_t framebuffer = xxGetFramebuffer(g_device, g_swapchain);
+    xxBeginCommandBuffer(commandBuffer);
+
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, g_width, g_height, g_clearColor[0], g_clearColor[1], g_clearColor[2], g_clearColor[3], g_clearDepth, g_clearStencil);
+
+    g_currentCommandBuffer = commandBuffer;
+    g_currentCommandEncoder = commandEncoder;
+    g_currentCommandFramebuffer = framebuffer;
+
+    return commandEncoder;
+}
+//------------------------------------------------------------------------------
+void Renderer::End()
+{
+    xxEndRenderPass(g_currentCommandEncoder, g_currentCommandFramebuffer, g_renderPass);
+
+    xxEndCommandBuffer(g_currentCommandBuffer);
+    xxSubmitCommandBuffer(g_currentCommandBuffer, g_swapchain);
+
+    g_currentCommandBuffer = 0;
+    g_currentCommandEncoder = 0;
+    g_currentCommandFramebuffer = 0;
+}
+//------------------------------------------------------------------------------
+bool Renderer::Present()
+{
+    xxPresentSwapchain(g_swapchain);
+
+    return xxTestDevice(g_device);
 }
 //------------------------------------------------------------------------------
 static struct { const char* shortName; const char* fullName; } g_graphicList[] =

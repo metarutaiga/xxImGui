@@ -16,10 +16,10 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
 {
     ImGui_ImplWin32_EnableDpiAwareness();
-    float scale = ImGui_ImplWin32_GetDpiScaleForHwnd(nullptr);
+    float scale = ImGui_ImplWin32_GetDpiScaleForHwnd(NULL);
 
     // Create application window
-    WNDCLASSEXW wc = { sizeof(WNDCLASSEXW), CS_OWNDC, WndProc, 0, 0, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, L"ImGui Example", NULL };
+    WNDCLASSEXW wc = { sizeof(WNDCLASSEXW), CS_OWNDC, WndProc, 0, 0, GetModuleHandleW(NULL), NULL, NULL, NULL, NULL, L"ImGui Example", NULL };
     ::RegisterClassExW(&wc);
     HWND hWnd = ::CreateWindowW(wc.lpszClassName, L"Dear ImGui XX Example", WS_OVERLAPPEDWINDOW, 100, 100, 1280 * scale, 800 * scale, NULL, NULL, wc.hInstance, NULL);
 
@@ -33,7 +33,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
     // Main loop
     MSG msg = {};
     bool recreateWindow = false;
-    while (msg.message != WM_QUIT || recreateWindow == true)
+    while (msg.message != WM_QUIT)
     {
         // Poll and handle messages (inputs, window resize, etc.)
         // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
@@ -44,21 +44,37 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
         {
             ::TranslateMessage(&msg);
             ::DispatchMessageW(&msg);
+
+            // Recreate window when SwapEffect is changed.
+            if (msg.message == WM_QUIT && recreateWindow)
+            {
+                msg.message = 0;
+                recreateWindow = false;
+            }
             continue;
         }
 
-        // Recreate window when SwapEffect is changed.
-        if (recreateWindow == true)
+        DearImGui::Update();
+
+        uint64_t commandEncoder = Renderer::Begin();
+        if (commandEncoder)
         {
-            recreateWindow = false;
-            continue;
+            DearImGui::Render(commandEncoder);
+            Renderer::End();
+            if (Renderer::Present() == false)
+            {
+                DearImGui::Suspend();
+                Renderer::Reset(hWnd);
+                DearImGui::Resume();
+            }
         }
 
-        HWND result = (HWND)DearImGui::Update(hWnd);
+        HWND result = (HWND)DearImGui::PostUpdate(hWnd);
         if (hWnd != result)
         {
             hWnd = result;
             recreateWindow = true;
+            continue;
         }
     }
 
