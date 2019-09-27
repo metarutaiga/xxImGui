@@ -59,7 +59,17 @@
 
 -(void)updateAndDraw
 {
-    DearImGui::Update((__bridge void*)self);
+    DearImGui::Update();
+
+    uint64_t commandEncoder = Renderer::Begin();
+    if (commandEncoder)
+    {
+        DearImGui::Render(commandEncoder);
+        Renderer::End();
+        Renderer::Present();
+    }
+
+    DearImGui::PostUpdate((__bridge void*)self);
 }
 
 -(void)reset

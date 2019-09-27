@@ -15,6 +15,10 @@ public:
     static void Reset(void* view, int width = 0, int height = 0);
     static void Shutdown();
 
+    static uint64_t Begin();
+    static void End();
+    static bool Present();
+
     static const char* GetCurrentFullName();
     static const char* GetGraphicFullName(int index);
     static const char* GetGraphicShortName(int index);
@@ -24,4 +28,14 @@ public:
     static uint64_t g_device;
     static uint64_t g_renderPass;
     static uint64_t g_swapchain;
+
+    static uint64_t g_currentCommandBuffer;
+    static uint64_t g_currentCommandEncoder;
+    static uint64_t g_currentCommandFramebuffer;
+
+    static int      g_width;
+    static int      g_height;
+    static float    g_clearColor[4];
+    static float    g_clearDepth;
+    static char     g_clearStencil;
 };

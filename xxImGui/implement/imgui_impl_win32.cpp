@@ -541,10 +541,10 @@ static void ImGui_ImplWin32_CreateWindow(ImGuiViewport* viewport)
     // Create window
     RECT rect = { (LONG)viewport->Pos.x, (LONG)viewport->Pos.y, (LONG)(viewport->Pos.x + viewport->Size.x), (LONG)(viewport->Pos.y + viewport->Size.y) };
     ::AdjustWindowRectEx(&rect, data->DwStyle, FALSE, data->DwExStyle);
-    data->Hwnd = ::CreateWindowEx(
-        data->DwExStyle, _T("ImGui Platform"), _T("Untitled"), data->DwStyle,   // Style, class name, window name
+    data->Hwnd = ::CreateWindowExW(
+        data->DwExStyle, L"ImGui Platform", L"Untitled", data->DwStyle,         // Style, class name, window name
         rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top,    // Window area
-        parent_window, NULL, ::GetModuleHandle(NULL), NULL);                    // Parent window, Menu, Instance, Param
+        parent_window, NULL, ::GetModuleHandleW(NULL), NULL);                   // Parent window, Menu, Instance, Param
     data->HwndOwned = true;
     viewport->PlatformRequestResize = false;
     viewport->PlatformHandle = viewport->PlatformHandleRaw = data->Hwnd;
@@ -780,20 +780,20 @@ static void ImGui_ImplWin32_UpdateMonitors()
 
 static void ImGui_ImplWin32_InitPlatformInterface()
 {
-    WNDCLASSEX wcex;
-    wcex.cbSize = sizeof(WNDCLASSEX);
+    WNDCLASSEXW wcex;
+    wcex.cbSize = sizeof(WNDCLASSEXW);
     wcex.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
     wcex.lpfnWndProc = ImGui_ImplWin32_WndProcHandler_PlatformWindow;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
-    wcex.hInstance = ::GetModuleHandle(NULL);
+    wcex.hInstance = ::GetModuleHandleW(NULL);
     wcex.hIcon = NULL;
     wcex.hCursor = NULL;
     wcex.hbrBackground = (HBRUSH)(COLOR_BACKGROUND + 1);
     wcex.lpszMenuName = NULL;
-    wcex.lpszClassName = _T("ImGui Platform");
+    wcex.lpszClassName = L"ImGui Platform";
     wcex.hIconSm = NULL;
-    ::RegisterClassEx(&wcex);
+    ::RegisterClassExW(&wcex);
 
     ImGui_ImplWin32_UpdateMonitors();
 
@@ -829,5 +829,5 @@ static void ImGui_ImplWin32_InitPlatformInterface()
 
 static void ImGui_ImplWin32_ShutdownPlatformInterface()
 {
-    ::UnregisterClass(_T("ImGui Platform"), ::GetModuleHandle(NULL));
+    ::UnregisterClassW(L"ImGui Platform", ::GetModuleHandleW(NULL));
 }
