@@ -141,7 +141,7 @@ void DearImGui::Resume()
     ImGui_ImplXX_CreateDeviceObjects();
 }
 //------------------------------------------------------------------------------
-void DearImGui::Update()
+void DearImGui::NewFrame()
 {
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
@@ -197,7 +197,10 @@ void DearImGui::Update()
         }
         ImGui::EndMainMenuBar();
     }
-
+}
+//------------------------------------------------------------------------------
+void DearImGui::Update()
+{
     // Global data for the demo
     static bool show_demo_window = true;
     static bool show_another_window = false;

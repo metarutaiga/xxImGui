@@ -2,6 +2,7 @@
 // If you are new to dear imgui, see examples/README.txt and documentation at the top of imgui.cpp.
 
 #include "Renderer.h"
+#include "Plugin.h"
 #include "DearImGui.h"
 #include "implement/imgui_impl_win32.h"
 
@@ -24,6 +25,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
     HWND hWnd = ::CreateWindowW(wc.lpszClassName, L"Dear ImGui XX Example", WS_OVERLAPPEDWINDOW, 100, 100, 1280 * scale, 800 * scale, NULL, NULL, wc.hInstance, NULL);
 
     Renderer::Create(hWnd);
+    Plugin::Create("plugin");
     DearImGui::Create(hWnd, scale);
 
     // Show the window
@@ -54,11 +56,14 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
             continue;
         }
 
+        DearImGui::NewFrame();
+        Plugin::Update();
         DearImGui::Update();
 
         uint64_t commandEncoder = Renderer::Begin();
         if (commandEncoder)
         {
+            Plugin::Render(commandEncoder);
             DearImGui::Render(commandEncoder);
             Renderer::End();
             if (Renderer::Present() == false)
@@ -79,6 +84,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
     }
 
     DearImGui::Shutdown();
+    Plugin::Shutdown();
     Renderer::Shutdown();
 
     ::DestroyWindow(hWnd);

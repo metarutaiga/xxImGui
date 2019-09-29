@@ -4,12 +4,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxImGui", "build\xxImGui.vcxproj", "{4165A294-21F2-44CA-9B38-E3F935ABADF5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F85E386-DA52-436B-82BF-1D6E494F4408} = {2F85E386-DA52-436B-82BF-1D6E494F4408}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "build\freetype.vcxproj", "{D98A83DF-490D-46D9-809C-55C80BA9275F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "imgui", "build\imgui.vcxproj", "{9B49443B-7FAE-479E-8CDF-29919A9F786F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxGraphic", "build\xxGraphic.vcxproj", "{81C889FC-6908-4066-8C73-3215DF6FFFC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugin", "plugin", "{FA21E5FB-C5DB-4CAD-B843-3913FDFD3DD5}"
+	ProjectSection(SolutionItems) = preProject
+		plugin\interface.h = plugin\interface.h
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sample", "plugin\sample\sample.vcxproj", "{2F85E386-DA52-436B-82BF-1D6E494F4408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +61,20 @@ Global
 		{81C889FC-6908-4066-8C73-3215DF6FFFC9}.Release|Win32.Build.0 = Release|Win32
 		{81C889FC-6908-4066-8C73-3215DF6FFFC9}.Release|x64.ActiveCfg = Release|x64
 		{81C889FC-6908-4066-8C73-3215DF6FFFC9}.Release|x64.Build.0 = Release|x64
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Debug|Win32.Build.0 = Debug|Win32
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Debug|x64.ActiveCfg = Debug|x64
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Debug|x64.Build.0 = Debug|x64
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Release|Win32.ActiveCfg = Release|Win32
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Release|Win32.Build.0 = Release|Win32
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Release|x64.ActiveCfg = Release|x64
+		{2F85E386-DA52-436B-82BF-1D6E494F4408}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F85E386-DA52-436B-82BF-1D6E494F4408} = {FA21E5FB-C5DB-4CAD-B843-3913FDFD3DD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32BE026C-479C-45E0-B740-DA621F56B7F3}
