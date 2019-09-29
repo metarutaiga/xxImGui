@@ -158,6 +158,7 @@
     <ClCompile Include="..\xxImGui\implement\imgui_impl_xx.cpp" />
     <ClCompile Include="..\xxImGui\DearImGui.cpp" />
     <ClCompile Include="..\xxImGui\main.cpp" />
+    <ClCompile Include="..\xxImGui\Plugin.cpp" />
     <ClCompile Include="..\xxImGui\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +179,7 @@
     <ClInclude Include="..\xxImGui\implement\imgui_impl_xx.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_user_config.h" />
     <ClInclude Include="..\xxImGui\DearImGui.h" />
+    <ClInclude Include="..\xxImGui\Plugin.h" />
     <ClInclude Include="..\xxImGui\Renderer.h" />
   </ItemGroup>
   <ItemGroup>

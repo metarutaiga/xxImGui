@@ -11,8 +11,9 @@
       <Filter>implement</Filter>
     </ClCompile>
     <ClCompile Include="..\xxImGui\DearImGui.cpp" />
-    <ClCompile Include="..\xxImGui\main.cpp" />
     <ClCompile Include="..\xxImGui\Renderer.cpp" />
+    <ClCompile Include="..\xxImGui\main.cpp" />
+    <ClCompile Include="..\xxImGui\Plugin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="implement">
@@ -37,6 +38,7 @@
     </ClInclude>
     <ClInclude Include="..\xxImGui\DearImGui.h" />
     <ClInclude Include="..\xxImGui\Renderer.h" />
+    <ClInclude Include="..\xxImGui\Plugin.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\xxImGui\implement\imgui_impl_osx.mm">
