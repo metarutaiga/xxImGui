@@ -158,11 +158,16 @@ void DearImGui::NewFrame()
 #endif
     ImGui::NewFrame();
 
+    static bool showAbout = false;
+
     // Graphic API
     if (ImGui::BeginMainMenuBar())
     {
-        if (ImGui::BeginMenu("Graphic"))
+        if (ImGui::BeginMenu("xxGraphic"))
         {
+            ImGui::MenuItem("About xxGraphic", nullptr, &showAbout);
+            ImGui::Separator();
+
             const char* deviceStringCurrent = Renderer::GetCurrentFullName();
             const char* deviceStringTarget = "";
 
@@ -196,6 +201,18 @@ void DearImGui::NewFrame()
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
+    }
+
+    if (showAbout)
+    {
+        if (ImGui::Begin("About xxGraphic", &showAbout))
+        {
+            ImGui::Text("%s", "xxGraphic");
+            ImGui::Text("%s", "Copyright (c) 2019 TAiGA");
+            ImGui::Separator();
+            ImGui::Text("Build Date : %s %s", __DATE__, __TIME__);
+            ImGui::End();
+        }
     }
 }
 //------------------------------------------------------------------------------

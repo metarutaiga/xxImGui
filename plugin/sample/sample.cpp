@@ -4,24 +4,24 @@
 // Copyright (c) 2019 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
-#include "../interface.h"
+#include <interface.h>
 
 #define PLUGIN_NAME     "Sample"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
 //------------------------------------------------------------------------------
-xxAPI const char* Create(const CreateData& createData)
+pluginAPI const char* Create(const CreateData& createData)
 {
     return PLUGIN_NAME;
 }
 //------------------------------------------------------------------------------
-xxAPI void Shutdown(const ShutdownData& shutdownData)
+pluginAPI void Shutdown(const ShutdownData& shutdownData)
 {
 
 }
 //------------------------------------------------------------------------------
-xxAPI void Update(const UpdateData& updateData)
+pluginAPI void Update(const UpdateData& updateData)
 {
     static bool showAbout = false;
 
@@ -47,7 +47,7 @@ xxAPI void Update(const UpdateData& updateData)
     }
 }
 //------------------------------------------------------------------------------
-xxAPI void Render(const RenderData& renderData)
+pluginAPI void Render(const RenderData& renderData)
 {
 
 }
