@@ -5,8 +5,14 @@
 #include "Renderer.h"
 #include "DearImGui.h"
 
+static bool g_initialized = false;
+
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jobject obj, jobject surface)
 {
+    if (g_initialized)
+        return;
+    g_initialized = true;
+
     ANativeWindow* window = nullptr;
     if (surface != nullptr)
     {
@@ -21,7 +27,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jobje
         height = ANativeWindow_getHeight(window);
     }
 
-    Renderer::Create(window, width, height);
+    Renderer::Create(window, width, height, "VK");
     DearImGui::Create(window, 2.0f);
 }
 
@@ -48,7 +54,9 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jobject
         Renderer::End();
         if (Renderer::Present() == false)
         {
+            DearImGui::Suspend();
             Renderer::Reset(Renderer::g_view, Renderer::g_width, Renderer::g_height);
+            DearImGui::Resume();
         }
     }
 
@@ -59,6 +67,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_shutdown(JNIEnv* env, job
 {
     DearImGui::Shutdown();
     Renderer::Shutdown();
+
+    g_initialized = false;
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_pause(JNIEnv* env, jobject obj)
