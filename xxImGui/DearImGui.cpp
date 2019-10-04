@@ -318,9 +318,9 @@ void* DearImGui::PostUpdate(void* view)
 
 #if defined(xxMACOS) || defined(xxIOS)
         id window = objc_msgSend((id)view, sel_getUid("window"));
-        Renderer::Create(window, graphicShortName);
+        Renderer::Create(window, Renderer::g_width, Renderer::g_width, graphicShortName);
 #else
-        Renderer::Create(view, graphicShortName);
+        Renderer::Create(view, Renderer::g_width, Renderer::g_width, graphicShortName);
 #endif
 #if defined(xxMACOS)
         ImGui_ImplOSX_Init(view);
