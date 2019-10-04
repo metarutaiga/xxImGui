@@ -17,6 +17,7 @@
 package com.xx;
 
 import android.content.Context;
+import android.view.MotionEvent;
 
 class View extends SurfaceView
 {
@@ -45,6 +46,25 @@ class View extends SurfaceView
         super.onResume();
         Activity.resume();
         PAUSE = false;
+    }
+
+    @Override
+    public boolean onTouchEvent(final MotionEvent event)
+    {
+        queueEvent(new Runnable()
+            {
+                public void run()
+                {
+                    int[] location = new int[2];
+                    getLocationInWindow(location);
+
+                    float x = event.getRawX() - location[0];
+                    float y = event.getRawY() - location[1];
+
+                    Activity.touch(event.getAction(), x, y);
+                }
+            });
+        return true;
     }
 
     private class Renderer implements SurfaceView.Renderer
