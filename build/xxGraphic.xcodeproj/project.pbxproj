@@ -17,6 +17,13 @@
 		D644A0B1231EDE9B00B75B77 /* xxGraphicGLES2.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A0A7231EDE9B00B75B77 /* xxGraphicGLES2.h */; };
 		D644A0B2231EDE9B00B75B77 /* xxSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A0A8231EDE9B00B75B77 /* xxSystem.h */; };
 		D644A0B3231EDE9B00B75B77 /* xxGraphicGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A9231EDE9B00B75B77 /* xxGraphicGL.cpp */; };
+		D667B7A6234730960092806F /* khrplatform.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7A0234730950092806F /* khrplatform.h */; };
+		D667B7A7234730960092806F /* gl3platform.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7A1234730950092806F /* gl3platform.h */; };
+		D667B7A8234730960092806F /* eglplatform.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7A2234730960092806F /* eglplatform.h */; };
+		D667B7A9234730960092806F /* egl.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7A3234730960092806F /* egl.h */; };
+		D667B7AA234730960092806F /* wgl.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7A4234730960092806F /* wgl.h */; };
+		D667B7AB234730960092806F /* gl32.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7A5234730960092806F /* gl32.h */; };
+		D667B7AF234730AA0092806F /* xxGraphicEGL.h in Headers */ = {isa = PBXBuildFile; fileRef = D667B7AD234730A90092806F /* xxGraphicEGL.h */; };
 		D690A352232AC52400A149EF /* vulkan_core.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A33F232AC52300A149EF /* vulkan_core.h */; };
 		D690A353232AC52400A149EF /* vulkan_xcb.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A340232AC52300A149EF /* vulkan_xcb.h */; };
 		D690A354232AC52400A149EF /* vk_layer.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A341232AC52300A149EF /* vk_layer.h */; };
@@ -75,6 +82,8 @@
 		D6DA664E23258F6F00953C5B /* xxGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */; };
 		D6DA664F23258F7A00953C5B /* xxGraphicNULL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A6231EDE9B00B75B77 /* xxGraphicNULL.cpp */; };
 		D6DA665023258F8E00953C5B /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
+		D6F761C3233C8E9F006BE7E1 /* xxGraphicD3D7.h in Headers */ = {isa = PBXBuildFile; fileRef = D6F761BF233C8E9F006BE7E1 /* xxGraphicD3D7.h */; };
+		D6F761C4233C8E9F006BE7E1 /* xxGraphicD3D6.h in Headers */ = {isa = PBXBuildFile; fileRef = D6F761C0233C8E9F006BE7E1 /* xxGraphicD3D6.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,10 +111,14 @@
 		D644A0A7231EDE9B00B75B77 /* xxGraphicGLES2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicGLES2.h; path = ../xxGraphic/xxGraphicGLES2.h; sourceTree = "<group>"; };
 		D644A0A8231EDE9B00B75B77 /* xxSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxSystem.h; path = ../xxGraphic/xxSystem.h; sourceTree = "<group>"; };
 		D644A0A9231EDE9B00B75B77 /* xxGraphicGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicGL.cpp; path = ../xxGraphic/xxGraphicGL.cpp; sourceTree = "<group>"; };
-		D644A0B5231EDEBB00B75B77 /* gl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gl2.h; path = ../xxGraphic/gl/gl2.h; sourceTree = "<group>"; };
-		D644A0B6231EDEBB00B75B77 /* gl2platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gl2platform.h; path = ../xxGraphic/gl/gl2platform.h; sourceTree = "<group>"; };
-		D644A0B7231EDEBB00B75B77 /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khrplatform.h; path = ../xxGraphic/gl/khrplatform.h; sourceTree = "<group>"; };
-		D644A0B8231EDEBB00B75B77 /* gl2ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gl2ext.h; path = ../xxGraphic/gl/gl2ext.h; sourceTree = "<group>"; };
+		D667B7A0234730950092806F /* khrplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = khrplatform.h; path = ../xxGraphic/gl/khrplatform.h; sourceTree = "<group>"; };
+		D667B7A1234730950092806F /* gl3platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gl3platform.h; path = ../xxGraphic/gl/gl3platform.h; sourceTree = "<group>"; };
+		D667B7A2234730960092806F /* eglplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = eglplatform.h; path = ../xxGraphic/gl/eglplatform.h; sourceTree = "<group>"; };
+		D667B7A3234730960092806F /* egl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = egl.h; path = ../xxGraphic/gl/egl.h; sourceTree = "<group>"; };
+		D667B7A4234730960092806F /* wgl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wgl.h; path = ../xxGraphic/gl/wgl.h; sourceTree = "<group>"; };
+		D667B7A5234730960092806F /* gl32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gl32.h; path = ../xxGraphic/gl/gl32.h; sourceTree = "<group>"; };
+		D667B7AC234730A90092806F /* xxGraphicEGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicEGL.cpp; path = ../xxGraphic/xxGraphicEGL.cpp; sourceTree = "<group>"; };
+		D667B7AD234730A90092806F /* xxGraphicEGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicEGL.h; path = ../xxGraphic/xxGraphicEGL.h; sourceTree = "<group>"; };
 		D690A33F232AC52300A149EF /* vulkan_core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vulkan_core.h; path = ../xxGraphic/vulkan/vulkan_core.h; sourceTree = "<group>"; };
 		D690A340232AC52300A149EF /* vulkan_xcb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vulkan_xcb.h; path = ../xxGraphic/vulkan/vulkan_xcb.h; sourceTree = "<group>"; };
 		D690A341232AC52300A149EF /* vk_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vk_layer.h; path = ../xxGraphic/vulkan/vk_layer.h; sourceTree = "<group>"; };
@@ -183,6 +196,10 @@
 		D6B3385C232044100096D02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D6D0AA6323283A3D0044D0CF /* xxGraphicEAGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicEAGL.mm; path = ../xxGraphic/xxGraphicEAGL.mm; sourceTree = "<group>"; };
 		D6D0AA6423283A3E0044D0CF /* xxGraphicEAGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicEAGL.h; path = ../xxGraphic/xxGraphicEAGL.h; sourceTree = "<group>"; };
+		D6F761BE233C8E9F006BE7E1 /* xxGraphicD3D6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D6.cpp; path = ../xxGraphic/xxGraphicD3D6.cpp; sourceTree = "<group>"; };
+		D6F761BF233C8E9F006BE7E1 /* xxGraphicD3D7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D7.h; path = ../xxGraphic/xxGraphicD3D7.h; sourceTree = "<group>"; };
+		D6F761C0233C8E9F006BE7E1 /* xxGraphicD3D6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D6.h; path = ../xxGraphic/xxGraphicD3D6.h; sourceTree = "<group>"; };
+		D6F761C1233C8E9F006BE7E1 /* xxGraphicD3D7.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D7.cpp; path = ../xxGraphic/xxGraphicD3D7.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,10 +254,12 @@
 		D644A0B4231EDEA400B75B77 /* gl */ = {
 			isa = PBXGroup;
 			children = (
-				D644A0B5231EDEBB00B75B77 /* gl2.h */,
-				D644A0B8231EDEBB00B75B77 /* gl2ext.h */,
-				D644A0B6231EDEBB00B75B77 /* gl2platform.h */,
-				D644A0B7231EDEBB00B75B77 /* khrplatform.h */,
+				D667B7A3234730960092806F /* egl.h */,
+				D667B7A2234730960092806F /* eglplatform.h */,
+				D667B7A1234730950092806F /* gl3platform.h */,
+				D667B7A5234730960092806F /* gl32.h */,
+				D667B7A0234730950092806F /* khrplatform.h */,
+				D667B7A4234730960092806F /* wgl.h */,
 			);
 			name = gl;
 			sourceTree = "<group>";
@@ -290,6 +309,10 @@
 			children = (
 				D6A727C823231125009981AD /* dxsdk */,
 				D6A727A2232310F3009981AD /* xxGraphicD3D.h */,
+				D6F761BE233C8E9F006BE7E1 /* xxGraphicD3D6.cpp */,
+				D6F761C0233C8E9F006BE7E1 /* xxGraphicD3D6.h */,
+				D6F761C1233C8E9F006BE7E1 /* xxGraphicD3D7.cpp */,
+				D6F761BF233C8E9F006BE7E1 /* xxGraphicD3D7.h */,
 				D6A7279B232310F3009981AD /* xxGraphicD3D8.cpp */,
 				D6A727A9232310F4009981AD /* xxGraphicD3D8.h */,
 				D6A727A7232310F4009981AD /* xxGraphicD3D8PS.cpp */,
@@ -370,6 +393,8 @@
 				D644A0B4231EDEA400B75B77 /* gl */,
 				D6B33855232020990096D02F /* xxGraphicCGL.h */,
 				D6B33854232020990096D02F /* xxGraphicCGL.mm */,
+				D667B7AC234730A90092806F /* xxGraphicEGL.cpp */,
+				D667B7AD234730A90092806F /* xxGraphicEGL.h */,
 				D6D0AA6423283A3E0044D0CF /* xxGraphicEAGL.h */,
 				D6D0AA6323283A3D0044D0CF /* xxGraphicEAGL.mm */,
 				D644A0A9231EDE9B00B75B77 /* xxGraphicGL.cpp */,
@@ -408,7 +433,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D690A362232AC52400A149EF /* vulkan_ggp.h in Headers */,
+				D667B7A8234730960092806F /* eglplatform.h in Headers */,
 				D644A0AE231EDE9B00B75B77 /* xxGraphic.h in Headers */,
+				D667B7A9234730960092806F /* egl.h in Headers */,
+				D667B7AF234730AA0092806F /* xxGraphicEGL.h in Headers */,
+				D6F761C4233C8E9F006BE7E1 /* xxGraphicD3D6.h in Headers */,
 				D6A727BB232310F4009981AD /* xxGraphicD3D.h in Headers */,
 				D6A727C2232310F4009981AD /* xxGraphicD3D8.h in Headers */,
 				D690A35C232AC52400A149EF /* vulkan_win32.h in Headers */,
@@ -437,14 +466,19 @@
 				D690A35D232AC52400A149EF /* vulkan_vi.h in Headers */,
 				D690A35F232AC52400A149EF /* vulkan_fuchsia.h in Headers */,
 				D690A37723300D3800A149EF /* spirv.h in Headers */,
+				D667B7AA234730960092806F /* wgl.h in Headers */,
 				D6A727B7232310F4009981AD /* xxGraphicD3D12.h in Headers */,
 				D6A727AF232310F4009981AD /* xxGraphicD3DAsm.h in Headers */,
 				D644A0AB231EDE9B00B75B77 /* xxGraphicGL.h in Headers */,
 				D644A0B1231EDE9B00B75B77 /* xxGraphicGLES2.h in Headers */,
 				D690A357232AC52400A149EF /* vulkan.h in Headers */,
 				D690A35A232AC52400A149EF /* vulkan_xlib.h in Headers */,
+				D6F761C3233C8E9F006BE7E1 /* xxGraphicD3D7.h in Headers */,
+				D667B7A7234730960092806F /* gl3platform.h in Headers */,
 				D6B338572320209A0096D02F /* xxGraphicCGL.h in Headers */,
 				D6A727EE23231180009981AD /* xxGraphicWGL.h in Headers */,
+				D667B7AB234730960092806F /* gl32.h in Headers */,
+				D667B7A6234730960092806F /* khrplatform.h in Headers */,
 				D690A356232AC52400A149EF /* vk_sdk_platform.h in Headers */,
 				D6A727EC23231180009981AD /* xxGraphicInternal.h in Headers */,
 				D690A364232AC52400A149EF /* vk_icd.h in Headers */,

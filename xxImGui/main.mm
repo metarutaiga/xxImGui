@@ -75,7 +75,20 @@
 
 -(void)reset
 {
-    Renderer::Reset((__bridge void*)[self window]);
+    int width = 0;
+    int height = 0;
+#if defined(xxMACOS)
+    float scale = [self.window backingScaleFactor];
+    NSRect rect = [[self window] frame];
+    width = rect.size.width * scale;
+    height = rect.size.height * scale;
+#elif defined(xxIOS)
+    float scale = [[UIScreen mainScreen] nativeScale];
+    CGRect rect = [[self window] bounds];
+    width = rect.size.width * scale;
+    height = rect.size.height  * scale;
+#endif
+    Renderer::Reset((__bridge void*)[self window], width, height);
 }
 
 -(BOOL)acceptsFirstResponder
@@ -276,13 +289,19 @@
     self.window.contentViewController = [[ImGuiExampleViewController alloc] init];
     self.window.contentViewController.view = view;
     [self.window makeKeyAndOrderFront:NSApp];
+    NSRect rect = [view frame];
+    int width = rect.size.width * scale;
+    int height = rect.size.height * scale;
 #elif defined(xxIOS)
     self.window.rootViewController = [[ImGuiExampleViewController alloc] init];
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
+    CGRect rect = [view bounds];
+    int width = rect.size.width * scale;
+    int height = rect.size.height  * scale;
 #endif
 
-    Renderer::Create((__bridge void*)self.window);
+    Renderer::Create((__bridge void*)self.window, width, height);
     DearImGui::Create((__bridge void*)view, scale);
 }
 

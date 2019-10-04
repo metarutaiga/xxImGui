@@ -11,8 +11,8 @@
 class Renderer
 {
 public:
-    static bool Create(void* view, const char* shortName = nullptr);
-    static void Reset(void* view, int width = 0, int height = 0);
+    static bool Create(void* view, int width, int height, const char* shortName = nullptr);
+    static void Reset(void* view, int width, int height);
     static void Shutdown();
 
     static uint64_t Begin();

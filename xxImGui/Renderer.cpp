@@ -47,7 +47,7 @@ char        Renderer::g_clearStencil = 0;
 //==============================================================================
 //  Renderer
 //==============================================================================
-bool Renderer::Create(void* view, const char* shortName)
+bool Renderer::Create(void* view, int width, int height, const char* shortName)
 {
     if (g_instance != 0)
         return false;
@@ -105,8 +105,8 @@ bool Renderer::Create(void* view, const char* shortName)
     g_renderPass = xxCreateRenderPass(g_device, true, true, true, true, true, true);
     g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, 0, 0, 0);
     g_view = view;
-    g_width = 0;
-    g_height = 0;
+    g_width = width;
+    g_height = height;
     return true;
 }
 //------------------------------------------------------------------------------
