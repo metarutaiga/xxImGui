@@ -22,7 +22,7 @@ A simulate Next-Generation Graphic API for ImGui
 | Direct3D 11.0   |         |     |       | ⭕      |
 | Direct3D 11On12 |         |     |       | ⭕      |
 | Direct3D 12.0   |         |     |       | ⭕      |
-| OpenGL ES 2.0   | ❌      | ⭕  | ⭕   | ⭕      |
+| OpenGL ES 2.0   | ⭕      | ⭕  | ⭕   | ⭕      |
 | Mantle          |         |     |       | 🚑      |
 | Metal           |         | ⭕  | ⭕    |         |
-| Vulkan          | ❌      | ⭕  | ⭕    | ⭕     |
+| Vulkan          | ⭕      | ⭕  | ⭕    | ⭕     |
