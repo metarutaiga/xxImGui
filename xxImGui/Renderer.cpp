@@ -38,6 +38,7 @@ uint64_t    Renderer::g_swapchain = 0;
 uint64_t    Renderer::g_currentCommandBuffer = 0;
 uint64_t    Renderer::g_currentCommandEncoder = 0;
 uint64_t    Renderer::g_currentCommandFramebuffer = 0;
+void*       Renderer::g_view = nullptr;
 int         Renderer::g_width = 0;
 int         Renderer::g_height = 0;
 float       Renderer::g_clearColor[4] = { 0.45f, 0.55f, 0.60f, 1.00f };
@@ -102,7 +103,10 @@ bool Renderer::Create(void* view, const char* shortName)
 
     g_device = xxCreateDevice(g_instance);
     g_renderPass = xxCreateRenderPass(g_device, true, true, true, true, true, true);
-    g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, 0, 0);
+    g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, 0, 0, 0);
+    g_view = view;
+    g_width = 0;
+    g_height = 0;
     return true;
 }
 //------------------------------------------------------------------------------
@@ -110,10 +114,10 @@ void Renderer::Reset(void* view, int width, int height)
 {
     if (g_swapchain)
     {
-        xxDestroySwapchain(g_swapchain);
-        xxResetDevice(g_device);
+        uint64_t oldSwapchain = g_swapchain;
         g_swapchain = 0;
-        g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, width, height);
+        g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, width, height, oldSwapchain);
+        g_view = view;
         g_width = width;
         g_height = height;
     }

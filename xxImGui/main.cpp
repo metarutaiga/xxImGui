@@ -56,7 +56,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
             continue;
         }
 
-        DearImGui::NewFrame();
+        DearImGui::NewFrame(hWnd);
         Plugin::Update();
         DearImGui::Update();
 

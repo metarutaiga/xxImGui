@@ -33,6 +33,7 @@ public:
     static uint64_t g_currentCommandEncoder;
     static uint64_t g_currentCommandFramebuffer;
 
+    static void*    g_view;
     static int      g_width;
     static int      g_height;
     static float    g_clearColor[4];

@@ -59,7 +59,7 @@
 
 -(void)updateAndDraw
 {
-	DearImGui::NewFrame();
+	DearImGui::NewFrame((__bridge void*)self);
     DearImGui::Update();
 
     uint64_t commandEncoder = Renderer::Begin();

@@ -141,7 +141,7 @@ void DearImGui::Resume()
     ImGui_ImplXX_CreateDeviceObjects();
 }
 //------------------------------------------------------------------------------
-void DearImGui::NewFrame()
+void DearImGui::NewFrame(void* view)
 {
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
@@ -155,6 +155,8 @@ void DearImGui::NewFrame()
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_NewFrame();
+#else
+    ImGui::GetIO().DisplaySize = ImVec2(Renderer::g_width, Renderer::g_height);
 #endif
     ImGui::NewFrame();
 
