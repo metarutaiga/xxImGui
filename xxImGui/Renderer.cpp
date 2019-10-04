@@ -60,7 +60,7 @@ bool Renderer::Create(void* view, int width, int height, const char* shortName)
 #if defined(xxWINDOWS)
         shortName = "D3D11";
 #elif defined(xxMACOS) || defined(xxIOS)
-        shortName = "Metal";
+        shortName = "MTL";
 #else
         shortName = "GLES2";
 #endif
@@ -90,20 +90,23 @@ bool Renderer::Create(void* view, int width, int height, const char* shortName)
     case xxHash("D3D11On12"):   g_instance = xxCreateInstanceD3D11On12();       break;
     case xxHash("D3D12"):       g_instance = xxCreateInstanceD3D12();           break;
 #endif
+#if defined(xxANDROID)
+    default:
+#endif
     case xxHash("GLES2"):       g_instance = xxCreateInstanceGLES2();           break;
 #if defined(xxMACOS) || defined(xxIOS)
     default:
-    case xxHash("Metal"):       g_instance = xxCreateInstanceMetal();           break;
+    case xxHash("MTL"):         g_instance = xxCreateInstanceMetal();           break;
 #endif
     case xxHash("NULL"):        g_instance = xxCreateInstanceNULL();            break;
-    case xxHash("Vulkan"):      g_instance = xxCreateInstanceVulkan();          break;
+    case xxHash("VK"):          g_instance = xxCreateInstanceVulkan();          break;
     }
     if (g_instance == 0)
         return false;
 
     g_device = xxCreateDevice(g_instance);
     g_renderPass = xxCreateRenderPass(g_device, true, true, true, true, true, true);
-    g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, 0, 0, 0);
+    g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, width, height, 0);
     g_view = view;
     g_width = width;
     g_height = height;
@@ -194,10 +197,10 @@ static struct { const char* shortName; const char* fullName; } g_graphicList[] =
 #endif
     { "GLES2",          xxGetDeviceNameGLES2()          },
 #if defined(xxMACOS) || defined(xxIOS)
-    { "Metal",          xxGetDeviceNameMetal()          },
+    { "MTL",            xxGetDeviceNameMetal()          },
 #endif
     { "NULL",           xxGetDeviceNameNULL()           },
-    { "Vulkan",         xxGetDeviceNameVulkan()         },
+    { "VK",             xxGetDeviceNameVulkan()         },
 };
 //------------------------------------------------------------------------------
 const char* Renderer::GetCurrentFullName()

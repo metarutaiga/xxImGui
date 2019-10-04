@@ -24,7 +24,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
     ::RegisterClassExW(&wc);
     HWND hWnd = ::CreateWindowW(wc.lpszClassName, L"Dear ImGui XX Example", WS_OVERLAPPEDWINDOW, 100, 100, 1280 * scale, 800 * scale, NULL, NULL, wc.hInstance, NULL);
 
-    Renderer::Create(hWnd);
+    Renderer::Create(hWnd, 1280 * scale, 800 * scale);
     Plugin::Create("plugin");
     DearImGui::Create(hWnd, scale);
 
@@ -69,7 +69,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int)
             if (Renderer::Present() == false)
             {
                 DearImGui::Suspend();
-                Renderer::Reset(hWnd);
+                Renderer::Reset(hWnd, Renderer::g_width, Renderer::g_height);
                 DearImGui::Resume();
             }
         }
