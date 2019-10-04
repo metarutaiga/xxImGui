@@ -8,4 +8,6 @@ project/build/
 *.xcbkptlist
 xcschememanagement.plist
 IDEWorkspaceChecks.plist
-
+build/AndroidStudio/.idea
+build/AndroidStudio/.gitignore
+build/AndroidStudio/app/.gitignore

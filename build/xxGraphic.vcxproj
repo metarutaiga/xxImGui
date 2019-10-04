@@ -34,6 +34,7 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D9On12.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D9PS.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3DAsm.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGL.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicMantle.cpp" />
@@ -57,9 +58,10 @@
     <ClInclude Include="..\xxGraphic\dxsdk\d3dcaps.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\d3dtypes.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h" />
-    <ClInclude Include="..\xxGraphic\gl\gl2.h" />
-    <ClInclude Include="..\xxGraphic\gl\gl2ext.h" />
-    <ClInclude Include="..\xxGraphic\gl\gl2platform.h" />
+    <ClInclude Include="..\xxGraphic\gl\egl.h" />
+    <ClInclude Include="..\xxGraphic\gl\eglplatform.h" />
+    <ClInclude Include="..\xxGraphic\gl\gl32.h" />
+    <ClInclude Include="..\xxGraphic\gl\gl3platform.h" />
     <ClInclude Include="..\xxGraphic\gl\khrplatform.h" />
     <ClInclude Include="..\xxGraphic\gl\wgl.h" />
     <ClInclude Include="..\xxGraphic\gr\amdil.h" />
@@ -102,6 +104,7 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3D9PS.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3DAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicEGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicInternal.h" />

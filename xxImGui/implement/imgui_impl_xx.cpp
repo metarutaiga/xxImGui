@@ -362,7 +362,7 @@ static void ImGui_ImplXX_CreateWindow(ImGuiViewport* viewport)
     void* handle = viewport->PlatformHandleRaw ? viewport->PlatformHandleRaw : viewport->PlatformHandle;
     IM_ASSERT(handle != 0);
 
-    data->Swapchain = xxCreateSwapchain(g_device, g_renderPass, handle, (int)viewport->Size.x, (int)viewport->Size.y);
+    data->Swapchain = xxCreateSwapchain(g_device, g_renderPass, handle, (int)viewport->Size.x, (int)viewport->Size.y, 0);
     data->RenderPass = xxCreateRenderPass(g_device, true, true, true, true, true, true);
     data->Handle = handle;
     data->Width = (int)viewport->Size.x;
@@ -388,8 +388,7 @@ static void ImGui_ImplXX_DestroyWindow(ImGuiViewport* viewport)
 static void ImGui_ImplXX_SetWindowSize(ImGuiViewport* viewport, ImVec2 size)
 {
     ImGuiViewportDataXX* data = (ImGuiViewportDataXX*)viewport->RendererUserData;
-    xxDestroySwapchain(data->Swapchain);
-    data->Swapchain = xxCreateSwapchain(g_device, g_renderPass, data->Handle, (int)size.x, (int)size.y);
+    data->Swapchain = xxCreateSwapchain(g_device, g_renderPass, data->Handle, (int)size.x, (int)size.y, data->Swapchain);
     data->Width = (int)size.x;
     data->Height = (int)size.y;
     IM_ASSERT(data->Swapchain != 0);

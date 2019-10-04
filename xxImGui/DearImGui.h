@@ -17,7 +17,7 @@ public:
     static void Suspend();
     static void Resume();
 
-    static void NewFrame();
+    static void NewFrame(void* view);
     static void Update();
     static void* PostUpdate(void* view);
 

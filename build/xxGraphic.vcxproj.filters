@@ -69,6 +69,9 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D6.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -145,15 +148,6 @@
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h">
       <Filter>OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\gl2.h">
-      <Filter>OpenGL\gl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\gl2ext.h">
-      <Filter>OpenGL\gl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\gl2platform.h">
-      <Filter>OpenGL\gl</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\gl\khrplatform.h">
       <Filter>OpenGL\gl</Filter>
@@ -268,6 +262,21 @@
     </ClInclude>
     <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h">
       <Filter>Direct3D\dxsdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicEGL.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\gl\egl.h">
+      <Filter>OpenGL\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\gl\eglplatform.h">
+      <Filter>OpenGL\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\gl\gl3platform.h">
+      <Filter>OpenGL\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\gl\gl32.h">
+      <Filter>OpenGL\gl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
