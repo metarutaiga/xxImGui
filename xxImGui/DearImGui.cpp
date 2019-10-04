@@ -345,3 +345,24 @@ void DearImGui::HandleEventOSX(void* event, void* view)
 }
 #endif
 //------------------------------------------------------------------------------
+#if defined(xxANDROID)
+void DearImGui::HandleEventAndroid(int type, float x, float y)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    switch (type)
+    {
+    case 0: // ACTION_DOWN
+        io.MousePos = ImVec2(x, y);
+        io.MouseDown[0] = true;
+        break;
+    case 1: // ACTION_UP
+        io.MousePos = ImVec2(x, y);
+        io.MouseDown[0] = false;
+        break;
+    case 2: // ACTION_MOVE
+        io.MousePos = ImVec2(x, y);
+        break;
+    }
+}
+#endif
+//------------------------------------------------------------------------------

@@ -78,3 +78,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_pause(JNIEnv* env, jobjec
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resume(JNIEnv* env, jobject obj)
 {
 }
+
+extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_touch(JNIEnv* env, jobject obj, jint type, jfloat x, jfloat y)
+{
+    DearImGui::HandleEventAndroid(type, x, y);
+}

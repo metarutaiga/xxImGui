@@ -24,6 +24,7 @@ public:
     static void Render(uint64_t commandEncoder);
 
     static void HandleEventOSX(void* event, void* view);
+    static void HandleEventAndroid(int type, float x, float y);
 
 protected:
     static const char*  g_graphicShortName;

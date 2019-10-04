@@ -58,4 +58,5 @@ public class Activity extends android.app.Activity
     public static native void shutdown();
     public static native void pause();
     public static native void resume();
+    public static native void touch(int type, float x, float y);
 }

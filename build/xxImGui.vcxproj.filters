@@ -14,6 +14,7 @@
     <ClCompile Include="..\xxImGui\Renderer.cpp" />
     <ClCompile Include="..\xxImGui\main.cpp" />
     <ClCompile Include="..\xxImGui\Plugin.cpp" />
+    <ClCompile Include="..\xxImGui\mainJNI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="implement">
