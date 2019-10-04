@@ -7,19 +7,27 @@
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jobject obj, jobject surface)
 {
-    void* window = nullptr;
+    ANativeWindow* window = nullptr;
     if (surface != nullptr)
     {
         window = ANativeWindow_fromSurface(env, surface);
     }
 
-    Renderer::Create(window);
+    int width = 1280;
+    int height = 720;
+    if (window != nullptr)
+    {
+        width = ANativeWindow_getWidth(window);
+        height = ANativeWindow_getHeight(window);
+    }
+
+    Renderer::Create(window, width, height);
     DearImGui::Create(window, 2.0f);
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resize(JNIEnv* env, jobject obj, jint width, jint height, jobject surface)
 {
-    void* window = nullptr;
+    ANativeWindow* window = nullptr;
     if (surface != nullptr)
     {
         window = ANativeWindow_fromSurface(env, surface);
@@ -40,7 +48,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jobject
         Renderer::End();
         if (Renderer::Present() == false)
         {
-            Renderer::Reset(Renderer::g_view);
+            Renderer::Reset(Renderer::g_view, Renderer::g_width, Renderer::g_height);
         }
     }
 
