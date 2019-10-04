@@ -27,7 +27,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jobje
         height = ANativeWindow_getHeight(window);
     }
 
-    Renderer::Create(window, width, height, "VK");
+    Renderer::Create(window, width, height);
     DearImGui::Create(window, 2.0f);
 }
 
