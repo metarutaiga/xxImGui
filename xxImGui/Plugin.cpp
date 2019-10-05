@@ -53,17 +53,17 @@ void Plugin::Create(const char* path)
                 continue;
 
             snprintf(temp, 256, "%s/%s/%s", app, path, data.cFileName);
-            HMODULE library = LoadLibraryA(temp);
+            void* library = xxLoadLibrary(temp);
             if (library == nullptr)
                 continue;
 
-            PFN_PLUGIN_CREATE create = (PFN_PLUGIN_CREATE)GetProcAddress(library, "Create");
-            PFN_PLUGIN_SHUTDOWN shutdown = (PFN_PLUGIN_SHUTDOWN)GetProcAddress(library, "Shutdown");
-            PFN_PLUGIN_UPDATE update = (PFN_PLUGIN_UPDATE)GetProcAddress(library, "Update");
-            PFN_PLUGIN_RENDER render = (PFN_PLUGIN_RENDER)GetProcAddress(library, "Render");
+            PFN_PLUGIN_CREATE create = (PFN_PLUGIN_CREATE)xxGetProcAddress(library, "Create");
+            PFN_PLUGIN_SHUTDOWN shutdown = (PFN_PLUGIN_SHUTDOWN)xxGetProcAddress(library, "Shutdown");
+            PFN_PLUGIN_UPDATE update = (PFN_PLUGIN_UPDATE)xxGetProcAddress(library, "Update");
+            PFN_PLUGIN_RENDER render = (PFN_PLUGIN_RENDER)xxGetProcAddress(library, "Render");
             if (create == nullptr || shutdown == nullptr || update == nullptr || render == nullptr)
             {
-                FreeLibrary(library);
+                xxFreeLibrary(library);
                 continue;
             }
 
@@ -98,11 +98,7 @@ void Plugin::Shutdown()
     for (int i = 0; i < g_pluginLibraries.size(); ++i)
     {
         void* library = g_pluginLibraries[i];
-#if defined(xxWINDOWS)
-        FreeLibrary(HMODULE(library));
-#else
-        dlclose(library);
-#endif
+        xxFreeLibrary(library);
     }
 
     g_pluginLibraries.clear();
