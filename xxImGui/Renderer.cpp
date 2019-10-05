@@ -52,7 +52,7 @@ bool Renderer::Create(void* view, int width, int height, const char* shortName)
     if (g_instance != 0)
         return false;
 
-    if (view == nullptr)
+    if (view == nullptr || width == 0 || height == 0)
         return false;
 
     if (shortName == nullptr)
@@ -115,15 +115,18 @@ bool Renderer::Create(void* view, int width, int height, const char* shortName)
 //------------------------------------------------------------------------------
 void Renderer::Reset(void* view, int width, int height)
 {
-    if (g_swapchain)
-    {
-        uint64_t oldSwapchain = g_swapchain;
-        g_swapchain = 0;
-        g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, width, height, oldSwapchain);
-        g_view = view;
-        g_width = width;
-        g_height = height;
-    }
+    if (g_swapchain == 0)
+        return;
+
+    if (view == nullptr || width == 0 || height == 0)
+        return;
+
+    uint64_t oldSwapchain = g_swapchain;
+    g_swapchain = 0;
+    g_swapchain = xxCreateSwapchain(g_device, g_renderPass, view, width, height, oldSwapchain);
+    g_view = view;
+    g_width = width;
+    g_height = height;
 }
 //------------------------------------------------------------------------------
 void Renderer::Shutdown()
