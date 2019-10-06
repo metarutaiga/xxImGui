@@ -24,7 +24,6 @@
 
 #include "imgui_freetype.h"
 #include "imgui_internal.h"     // ImMin,ImMax,ImFontAtlasBuild*,
-#include <stdint.h>
 #include <ft2build.h>
 #include FT_FREETYPE_H          // <freetype/freetype.h>
 #include FT_MODULE_H            // <freetype/ftmodapi.h>
@@ -86,7 +85,7 @@ namespace
     // Font parameters and metrics.
     struct FontInfo
     {
-        uint32_t    PixelHeight;        // Size this font was generated with.
+        ImU32       PixelHeight;        // Size this font was generated with.
         float       Ascender;           // The pixel extents above the baseline in pixels (typically positive).
         float       Descender;          // The extents below the baseline in pixels (typically negative).
         float       LineSpacing;        // The baseline-to-baseline distance. Note that it usually is larger than the sum of the ascender and descender taken as absolute values. There is also no guarantee that no glyphs extend above or below subsequent baselines when using this distance. Think of it as a value the designer of the font finds appropriate.
@@ -101,9 +100,9 @@ namespace
         bool                    InitFont(FT_Library ft_library, const ImFontConfig& cfg, unsigned int extra_user_flags); // Initialize from an external data buffer. Doesn't copy data, and you must ensure it stays valid up to this object lifetime.
         void                    CloseFont();
         void                    SetPixelHeight(int pixel_height); // Change font pixel size. All following calls to RasterizeGlyph() will use this size
-        const FT_Glyph_Metrics* LoadGlyph(uint32_t in_codepoint);
+        const FT_Glyph_Metrics* LoadGlyph(ImU32 in_codepoint);
         const FT_Bitmap*        RenderGlyphAndGetInfo(GlyphInfo* out_glyph_info);
-        void                    BlitGlyph(const FT_Bitmap* ft_bitmap, uint8_t* dst, uint32_t dst_pitch, unsigned char* multiply_table = NULL);
+        void                    BlitGlyph(const FT_Bitmap* ft_bitmap, ImU8* dst, ImU32 dst_pitch, unsigned char* multiply_table = NULL);
         ~FreeTypeFont()         { CloseFont(); }
 
         // [Internals]
@@ -119,7 +118,7 @@ namespace
 
     bool FreeTypeFont::InitFont(FT_Library ft_library, const ImFontConfig& cfg, unsigned int extra_user_flags)
     {
-        FT_Error error = FT_New_Memory_Face(ft_library, (uint8_t*)cfg.FontData, (uint32_t)cfg.FontDataSize, (uint32_t)cfg.FontNo, &Face);
+        FT_Error error = FT_New_Memory_Face(ft_library, (ImU8*)cfg.FontData, (ImU32)cfg.FontDataSize, (ImU32)cfg.FontNo, &Face);
         if (error != 0)
             return false;
         error = FT_Select_Charmap(Face, FT_ENCODING_UNICODE);
@@ -151,7 +150,7 @@ namespace
             LoadFlags &= ~FT_LOAD_NO_BITMAP;
 
         memset(&Info, 0, sizeof(Info));
-        SetPixelHeight((uint32_t)cfg.SizePixels);
+        SetPixelHeight((ImU32)cfg.SizePixels);
 
         return true;
     }
@@ -173,14 +172,14 @@ namespace
         FT_Size_RequestRec req;
         req.type = (UserFlags & ImGuiFreeType::Bitmap) ? FT_SIZE_REQUEST_TYPE_NOMINAL : FT_SIZE_REQUEST_TYPE_REAL_DIM;
         req.width = 0;
-        req.height = (uint32_t)pixel_height * 64;
+        req.height = (ImU32)pixel_height * 64;
         req.horiResolution = 0;
         req.vertResolution = 0;
         FT_Request_Size(Face, &req);
 
         // Update font info
         FT_Size_Metrics metrics = Face->size->metrics;
-        Info.PixelHeight = (uint32_t)pixel_height;
+        Info.PixelHeight = (ImU32)pixel_height;
         Info.Ascender = (float)FT_CEIL(metrics.ascender);
         Info.Descender = (float)FT_CEIL(metrics.descender);
         Info.LineSpacing = (float)FT_CEIL(metrics.height);
@@ -188,9 +187,9 @@ namespace
         Info.MaxAdvanceWidth = (float)FT_CEIL(metrics.max_advance);
     }
 
-    const FT_Glyph_Metrics* FreeTypeFont::LoadGlyph(uint32_t codepoint)
+    const FT_Glyph_Metrics* FreeTypeFont::LoadGlyph(ImU32 codepoint)
     {
-        uint32_t glyph_index = FT_Get_Char_Index(Face, codepoint);
+        ImU32 glyph_index = FT_Get_Char_Index(Face, codepoint);
         if (glyph_index == 0)
             return NULL;
         FT_Error error = FT_Load_Glyph(Face, glyph_index, LoadFlags);
@@ -233,13 +232,13 @@ namespace
         return ft_bitmap;
     }
 
-    void FreeTypeFont::BlitGlyph(const FT_Bitmap* ft_bitmap, uint8_t* dst, uint32_t dst_pitch, unsigned char* multiply_table)
+    void FreeTypeFont::BlitGlyph(const FT_Bitmap* ft_bitmap, ImU8* dst, ImU32 dst_pitch, unsigned char* multiply_table)
     {
         IM_ASSERT(ft_bitmap != NULL);
-        const uint32_t w = ft_bitmap->width;
-        const uint32_t h = ft_bitmap->rows;
-        const uint8_t* src = ft_bitmap->buffer;
-        const uint32_t src_pitch = ft_bitmap->pitch;
+        const ImU32 w = ft_bitmap->width;
+        const ImU32 h = ft_bitmap->rows;
+        const ImU8* src = ft_bitmap->buffer;
+        const ImU32 src_pitch = ft_bitmap->pitch;
 
         switch (ft_bitmap->pixel_mode)
         {
@@ -247,26 +246,26 @@ namespace
             {
                 if (multiply_table == NULL)
                 {
-                    for (uint32_t y = 0; y < h; y++, src += src_pitch, dst += dst_pitch)
+                    for (ImU32 y = 0; y < h; y++, src += src_pitch, dst += dst_pitch)
                         memcpy(dst, src, w);
                 }
                 else
                 {
-                    for (uint32_t y = 0; y < h; y++, src += src_pitch, dst += dst_pitch)
-                        for (uint32_t x = 0; x < w; x++)
+                    for (ImU32 y = 0; y < h; y++, src += src_pitch, dst += dst_pitch)
+                        for (ImU32 x = 0; x < w; x++)
                             dst[x] = multiply_table[src[x]];
                 }
                 break;
             }
         case FT_PIXEL_MODE_MONO: // Monochrome image, 1 bit per pixel. The bits in each byte are ordered from MSB to LSB.
             {
-                uint8_t color0 = multiply_table ? multiply_table[0] : 0;
-                uint8_t color1 = multiply_table ? multiply_table[255] : 255;
-                for (uint32_t y = 0; y < h; y++, src += src_pitch, dst += dst_pitch)
+                ImU8 color0 = multiply_table ? multiply_table[0] : 0;
+                ImU8 color1 = multiply_table ? multiply_table[255] : 255;
+                for (ImU32 y = 0; y < h; y++, src += src_pitch, dst += dst_pitch)
                 {
-                    uint8_t bits = 0;
-                    const uint8_t* bits_ptr = src;
-                    for (uint32_t x = 0; x < w; x++, bits <<= 1)
+                    ImU8 bits = 0;
+                    const ImU8* bits_ptr = src;
+                    for (ImU32 x = 0; x < w; x++, bits <<= 1)
                     {
                         if ((x & 7) == 0)
                             bits = *bits_ptr++;
@@ -291,7 +290,7 @@ namespace
 struct ImFontBuildSrcGlyphFT
 {
     GlyphInfo           Info;
-    uint32_t            Codepoint;
+    ImU32               Codepoint;
     unsigned char*      BitmapData;         // Point within one of the dst_tmp_bitmap_buffers[] array
 };
 
@@ -382,7 +381,7 @@ bool ImFontAtlasBuildWithFreeType(FT_Library ft_library, ImFontAtlas* atlas, uns
             {
                 if (dst_tmp.GlyphsSet.GetBit(codepoint))    // Don't overwrite existing glyphs. We could make this an option (e.g. MergeOverwrite)
                     continue;
-                uint32_t glyph_index = FT_Get_Char_Index(src_tmp.Font.Face, codepoint); // It is actually in the font? (FIXME-OPT: We are not storing the glyph_index..)
+                ImU32 glyph_index = FT_Get_Char_Index(src_tmp.Font.Face, codepoint); // It is actually in the font? (FIXME-OPT: We are not storing the glyph_index..)
                 if (glyph_index == 0)
                     continue;
 
