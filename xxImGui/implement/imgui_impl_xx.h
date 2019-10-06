@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <stdint.h>
+#include <xxGraphic/xxGraphic.h>
 
 IMGUI_IMPL_API bool     ImGui_ImplXX_Init(uint64_t instance, uint64_t device, uint64_t renderPass);
 IMGUI_IMPL_API void     ImGui_ImplXX_Shutdown();
