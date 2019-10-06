@@ -45,6 +45,39 @@ float       Renderer::g_clearColor[4] = { 0.45f, 0.55f, 0.60f, 1.00f };
 float       Renderer::g_clearDepth = 1.0f;
 char        Renderer::g_clearStencil = 0;
 //==============================================================================
+//  List
+//==============================================================================
+static struct { const char* shortName; const char* fullName; uint64_t (*createInstance)(); } g_graphicList[] =
+{
+#if defined(xxWINDOWS)
+#if defined(_M_IX86)
+    { "D3D6",           xxGetDeviceNameD3D6(),          xxCreateInstanceD3D6            },
+    { "D3D7",           xxGetDeviceNameD3D7(),          xxCreateInstanceD3D7            },
+    { "D3D8",           xxGetDeviceNameD3D8(),          xxCreateInstanceD3D8            },
+    { "D3D8PS",         xxGetDeviceNameD3D8PS(),        xxCreateInstanceD3D8PS          },
+#endif
+    { "D3D9",           xxGetDeviceNameD3D9(),          xxCreateInstanceD3D9            },
+    { "D3D9PS",         xxGetDeviceNameD3D9PS(),        xxCreateInstanceD3D9PS          },
+    { "D3D9Ex",         xxGetDeviceNameD3D9Ex(),        xxCreateInstanceD3D9Ex          },
+    { "D3D9ExPS",       xxGetDeviceNameD3D9ExPS(),      xxCreateInstanceD3D9ExPS        },
+    { "D3D9On12",       xxGetDeviceNameD3D9On12(),      xxCreateInstanceD3D9On12        },
+    { "D3D9On12PS",     xxGetDeviceNameD3D9On12PS(),    xxCreateInstanceD3D9On12PS      },
+    { "D3D9On12Ex",     xxGetDeviceNameD3D9On12Ex(),    xxCreateInstanceD3D9On12Ex      },
+    { "D3D9On12ExPS",   xxGetDeviceNameD3D9On12ExPS(),  xxCreateInstanceD3D9On12ExPS    },
+    { "D3D10",          xxGetDeviceNameD3D10(),         xxCreateInstanceD3D10           },
+    { "D3D10_1",        xxGetDeviceNameD3D10_1(),       xxCreateInstanceD3D10_1         },
+    { "D3D11",          xxGetDeviceNameD3D11(),         xxCreateInstanceD3D11           },
+    { "D3D11On12",      xxGetDeviceNameD3D11On12(),     xxCreateInstanceD3D11On12       },
+    { "D3D12",          xxGetDeviceNameD3D12(),         xxCreateInstanceD3D12           },
+#endif
+    { "GLES2",          xxGetDeviceNameGLES2(),         xxCreateInstanceGLES2           },
+#if defined(xxMACOS) || defined(xxIOS)
+    { "MTL",            xxGetDeviceNameMetal(),         xxCreateInstanceMetal           },
+#endif
+    { "NULL",           xxGetDeviceNameNULL(),          xxCreateInstanceNULL            },
+    { "VK",             xxGetDeviceNameVulkan(),        xxCreateInstanceVulkan          },
+};
+//==============================================================================
 //  Renderer
 //==============================================================================
 bool Renderer::Create(void* view, int width, int height, const char* shortName)
@@ -66,40 +99,13 @@ bool Renderer::Create(void* view, int width, int height, const char* shortName)
 #endif
     }
 
-    switch (xxHash(shortName))
+    unsigned int hashShortName = xxHash(shortName);
+    for (int i = 0; i < xxCountOf(g_graphicList); ++i)
     {
-#if defined(xxWINDOWS)
-#if defined(_M_IX86)
-    case xxHash("D3D6"):        g_instance = xxCreateInstanceD3D6();            break;
-    case xxHash("D3D7"):        g_instance = xxCreateInstanceD3D7();            break;
-    case xxHash("D3D8"):        g_instance = xxCreateInstanceD3D8();            break;
-    case xxHash("D3D8PS"):      g_instance = xxCreateInstanceD3D8PS();          break;
-#endif
-    case xxHash("D3D9"):        g_instance = xxCreateInstanceD3D9();            break;
-    case xxHash("D3D9PS"):      g_instance = xxCreateInstanceD3D9PS();          break;
-    case xxHash("D3D9Ex"):      g_instance = xxCreateInstanceD3D9Ex();          break;
-    case xxHash("D3D9ExPS"):    g_instance = xxCreateInstanceD3D9ExPS();        break;
-    case xxHash("D3D9On12"):    g_instance = xxCreateInstanceD3D9On12();        break;
-    case xxHash("D3D9On12PS"):  g_instance = xxCreateInstanceD3D9On12PS();      break;
-    case xxHash("D3D9On12Ex"):  g_instance = xxCreateInstanceD3D9On12Ex();      break;
-    case xxHash("D3D9On12ExPS"):g_instance = xxCreateInstanceD3D9On12ExPS();    break;
-    case xxHash("D3D10"):       g_instance = xxCreateInstanceD3D10();           break;
-    case xxHash("D3D10_1"):     g_instance = xxCreateInstanceD3D10_1();         break;
-    default:
-    case xxHash("D3D11"):       g_instance = xxCreateInstanceD3D11();           break;
-    case xxHash("D3D11On12"):   g_instance = xxCreateInstanceD3D11On12();       break;
-    case xxHash("D3D12"):       g_instance = xxCreateInstanceD3D12();           break;
-#endif
-#if defined(xxANDROID)
-    default:
-#endif
-    case xxHash("GLES2"):       g_instance = xxCreateInstanceGLES2();           break;
-#if defined(xxMACOS) || defined(xxIOS)
-    default:
-    case xxHash("MTL"):         g_instance = xxCreateInstanceMetal();           break;
-#endif
-    case xxHash("NULL"):        g_instance = xxCreateInstanceNULL();            break;
-    case xxHash("VK"):          g_instance = xxCreateInstanceVulkan();          break;
+        if (xxHash(g_graphicList[i].shortName) != hashShortName)
+            continue;
+        g_instance = g_graphicList[i].createInstance();
+        break;
     }
     if (g_instance == 0)
         return false;
@@ -174,37 +180,6 @@ bool Renderer::Present()
 
     return xxTestDevice(g_device);
 }
-//------------------------------------------------------------------------------
-static struct { const char* shortName; const char* fullName; } g_graphicList[] =
-{
-#if defined(xxWINDOWS)
-#if defined(_M_IX86)
-    { "D3D6",           xxGetDeviceNameD3D6()           },
-    { "D3D7",           xxGetDeviceNameD3D7()           },
-    { "D3D8",           xxGetDeviceNameD3D8()           },
-    { "D3D8PS",         xxGetDeviceNameD3D8PS()         },
-#endif
-    { "D3D9",           xxGetDeviceNameD3D9()           },
-    { "D3D9PS",         xxGetDeviceNameD3D9PS()         },
-    { "D3D9Ex",         xxGetDeviceNameD3D9Ex()         },
-    { "D3D9ExPS",       xxGetDeviceNameD3D9ExPS()       },
-    { "D3D9On12",       xxGetDeviceNameD3D9On12()       },
-    { "D3D9On12PS",     xxGetDeviceNameD3D9On12PS()     },
-    { "D3D9On12Ex",     xxGetDeviceNameD3D9On12Ex()     },
-    { "D3D9On12ExPS",   xxGetDeviceNameD3D9On12ExPS()   },
-    { "D3D10",          xxGetDeviceNameD3D10()          },
-    { "D3D10_1",        xxGetDeviceNameD3D10_1()        },
-    { "D3D11",          xxGetDeviceNameD3D11()          },
-    { "D3D11On12",      xxGetDeviceNameD3D11On12()      },
-    { "D3D12",          xxGetDeviceNameD3D12()          },
-#endif
-    { "GLES2",          xxGetDeviceNameGLES2()          },
-#if defined(xxMACOS) || defined(xxIOS)
-    { "MTL",            xxGetDeviceNameMetal()          },
-#endif
-    { "NULL",           xxGetDeviceNameNULL()           },
-    { "VK",             xxGetDeviceNameVulkan()         },
-};
 //------------------------------------------------------------------------------
 const char* Renderer::GetCurrentFullName()
 {
