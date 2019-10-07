@@ -44,7 +44,7 @@ void Plugin::Create(const char* path)
     snprintf(temp, 256, "%s/%s/*", app, path);
 #endif
 
-    WIN32_FIND_DATA data;
+    WIN32_FIND_DATAA data;
     HANDLE handle = FindFirstFileA(temp, &data);
     if (handle != INVALID_HANDLE_VALUE)
     {
