@@ -101,18 +101,16 @@ void DearImGui::Create(void* view, float scale)
     font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
     if (io.FontGlobalScale == 1.0f)
     {
-        struct stat st;
-        if (stat("C:\\Windows\\Fonts\\msgothic.ttc", &st) == 0)
+        if (GetFileAttributesA("C:\\Windows\\Fonts\\msgothic.ttc") != INVALID_FILE_ATTRIBUTES)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msgothic.ttc", 13.0f, &font_config, io.Fonts->GetGlyphRangesJapanese());
-        else if (stat("C:\\Windows\\Fonts\\mingliu.ttc", &st) == 0)
+        else if (GetFileAttributesA("C:\\Windows\\Fonts\\mingliu.ttc") != INVALID_FILE_ATTRIBUTES)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\mingliu.ttc", 13.0f, &font_config, io.Fonts->GetGlyphRangesJapanese());
     }
     else
     {
-        struct stat st;
-        if (stat("C:\\Windows\\Fonts\\meiryo.ttc", &st) == 0)
+        if (GetFileAttributesA("C:\\Windows\\Fonts\\meiryo.ttc") != INVALID_FILE_ATTRIBUTES)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\meiryo.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
-        else if (stat("C:\\Windows\\Fonts\\msjh.ttc", &st) == 0)
+        else if (GetFileAttributesA("C:\\Windows\\Fonts\\msjh.ttc") != INVALID_FILE_ATTRIBUTES)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msjh.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
     }
 #endif
