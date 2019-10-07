@@ -16,7 +16,7 @@ extern "C" BOOL WINAPI _DllMainCRTStartup(HANDLE handle, DWORD reason, LPVOID pr
 extern "C" int wWinMainCRTStartup()
 {
     _DllMainCRTStartup(NULL, DLL_PROCESS_ATTACH, NULL);
-    int result = wWinMain(GetModuleHandleA(NULL), NULL, L"", 0);
+    int result = wWinMain(GetModuleHandle(NULL), NULL, L"", 0);
     ExitProcess(result);
     return result;
 }
