@@ -32,6 +32,11 @@
     <ClInclude Include="..\imgui\imstb_textedit.h" />
     <ClInclude Include="..\imgui\imstb_truetype.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="xxMiniCRT.vcxproj">
+      <Project>{1e136574-0e51-4a54-bb25-0c0ec04a2ac3}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{9B49443B-7FAE-479E-8CDF-29919A9F786F}</ProjectGuid>
@@ -157,6 +162,7 @@
       <AdditionalOptions>/Zc:__cplusplus /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -180,6 +186,7 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <AdditionalOptions>/Zc:__cplusplus /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
