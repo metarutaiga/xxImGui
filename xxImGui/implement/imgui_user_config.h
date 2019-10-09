@@ -14,11 +14,7 @@
 #pragma once
 
 //---- Using 64-bits texture ID (default is 32-bits)
-#if defined(_MSC_VER) && (_MSC_VER < 1600)
-    typedef unsigned long long uint64_t;
-#else
-#   include <stdint.h>
-#endif
+#include <stdint.h>
 #define ImTextureID uint64_t
 
 //---- Custom Vertex layout
