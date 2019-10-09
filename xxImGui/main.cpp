@@ -5,24 +5,16 @@
 #include "Plugin.h"
 #include "DearImGui.h"
 #include "implement/imgui_impl_win32.h"
+#include "xxMiniCRT/xxMSVCRT.h"
 
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <tchar.h>
 
-#ifndef _DEBUG
 #define USE_MINICRT 1
 #if USE_MINICRT
-extern "C" BOOL WINAPI _DllMainCRTStartup(HANDLE handle, DWORD reason, LPVOID preserved);
-extern "C" int wWinMainCRTStartup()
-{
-    _DllMainCRTStartup(NULL, DLL_PROCESS_ATTACH, NULL);
-    int result = wWinMain(GetModuleHandle(NULL), NULL, L"", 0);
-    ExitProcess(result);
-    return result;
-}
-#endif
+IMPLEMENT_MINICRT();
 #endif
 
 // Forward declarations of helper functions

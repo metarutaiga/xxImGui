@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="..\xxMiniCRT\xxMSVCRT.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\xxMiniCRT\xxMSVCRT.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{1E136574-0E51-4A54-BB25-0C0EC04A2AC3}</ProjectGuid>
