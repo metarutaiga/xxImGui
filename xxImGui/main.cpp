@@ -11,7 +11,9 @@
 #include <Windows.h>
 #include <tchar.h>
 
-#if 0
+#ifndef _DEBUG
+#define USE_MINICRT 1
+#if USE_MINICRT
 extern "C" BOOL WINAPI _DllMainCRTStartup(HANDLE handle, DWORD reason, LPVOID preserved);
 extern "C" int wWinMainCRTStartup()
 {
@@ -20,6 +22,7 @@ extern "C" int wWinMainCRTStartup()
     ExitProcess(result);
     return result;
 }
+#endif
 #endif
 
 // Forward declarations of helper functions

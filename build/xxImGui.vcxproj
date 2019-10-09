@@ -136,6 +136,7 @@
       <AdditionalOptions>/Zc:__cplusplus /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>false</ExceptionHandling>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -156,6 +157,7 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <AdditionalOptions>/Zc:__cplusplus /Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>
       <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -187,6 +189,9 @@
     </ProjectReference>
     <ProjectReference Include="xxGraphic.vcxproj">
       <Project>{81c889fc-6908-4066-8c73-3215df6fffc9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="xxMiniCRT.vcxproj">
+      <Project>{1e136574-0e51-4a54-bb25-0c0ec04a2ac3}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
