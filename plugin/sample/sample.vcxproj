@@ -81,13 +81,13 @@
     <OutDir>$(SolutionDir)bin\plugin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(Configuration).$(PlatformTarget)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration).$(PlatformTarget)</TargetName>
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\plugin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(Configuration).$(PlatformTarget)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration).$(PlatformTarget)</TargetName>
-    <LinkIncremental>true</LinkIncremental>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -160,6 +160,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\build\imgui.vcxproj">
       <Project>{9b49443b-7fae-479e-8cdf-29919a9f786f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\build\xxMiniCRT.vcxproj">
+      <Project>{1e136574-0e51-4a54-bb25-0c0ec04a2ac3}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
