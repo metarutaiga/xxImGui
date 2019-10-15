@@ -115,7 +115,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     {
         xxDestroyBuffer(g_device, vertexBuffer);
         vertexBufferSize = draw_data->TotalVtxCount + 5000;
-        vertexBuffer = xxCreateVertexBuffer(g_device, vertexBufferSize * sizeof(ImDrawVert));
+        vertexBuffer = xxCreateVertexBuffer(g_device, vertexBufferSize * sizeof(ImDrawVert), g_vertexAttribute);
         if (vertexBuffer == 0)
             return;
     }
