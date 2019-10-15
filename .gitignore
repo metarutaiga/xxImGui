@@ -3,6 +3,7 @@ bin/
 lib/
 temp/
 project/build/
+*.vcxproj.user
 *.xcscheme
 *.xcuserstate
 *.xcbkptlist

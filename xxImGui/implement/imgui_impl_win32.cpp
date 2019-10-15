@@ -334,22 +334,22 @@ IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARA
 // At this point ImGui_ImplWin32_EnableDpiAwareness() is just a helper called by main.cpp, we don't call it automatically.
 //---------------------------------------------------------------------------------------------------------
 
-typedef BOOL(WINAPI * PFN_VerifyVersionInfoW)(LPOSVERSIONINFOEXW, DWORD, DWORDLONG);
+typedef BOOL(WINAPI * PFN_VerifyVersionInfo)(LPOSVERSIONINFOEX, DWORD, DWORDLONG);
 typedef ULONGLONG(WINAPI * PFN_VerSetConditionMask)(ULONGLONG, DWORD, BYTE);
 
 static BOOL IsWindowsVersionOrGreater(WORD major, WORD minor, WORD sp)
 {
     static HINSTANCE kernel32_dll = ::LoadLibraryA("kernel32.dll"); // Reference counted per-process
     PFN_VerSetConditionMask VerSetConditionMaskFn = (PFN_VerSetConditionMask)GetProcAddress(kernel32_dll, "VerSetConditionMask");
-    PFN_VerifyVersionInfoW VerifyVersionInfoWFn = (PFN_VerifyVersionInfoW)GetProcAddress(kernel32_dll, "VerifyVersionInfoW");
-    if (VerSetConditionMaskFn && VerifyVersionInfoWFn)
+    PFN_VerifyVersionInfo VerifyVersionInfoFn = (PFN_VerifyVersionInfo)GetProcAddress(kernel32_dll, _CRT_STRINGIZE(VerifyVersionInfo));
+    if (VerSetConditionMaskFn && VerifyVersionInfoFn)
     {
-        OSVERSIONINFOEXW osvi = { sizeof(osvi), major, minor, 0, 0,{ 0 }, sp };
+        OSVERSIONINFOEX osvi = { sizeof(osvi), major, minor, 0, 0,{ 0 }, sp };
         DWORD mask = VER_MAJORVERSION | VER_MINORVERSION | VER_SERVICEPACKMAJOR;
         ULONGLONG cond = VerSetConditionMaskFn(0, VER_MAJORVERSION, VER_GREATER_EQUAL);
         cond = VerSetConditionMaskFn(cond, VER_MINORVERSION, VER_GREATER_EQUAL);
         cond = VerSetConditionMaskFn(cond, VER_SERVICEPACKMAJOR, VER_GREATER_EQUAL);
-        return VerifyVersionInfoWFn(&osvi, mask, cond);
+        return VerifyVersionInfoFn(&osvi, mask, cond);
     }
     return FALSE;
 }
@@ -726,7 +726,7 @@ typedef BOOL(WINAPI * PFN_GetMonitorInfo)(HMONITOR, LPMONITORINFO);
 static BOOL CALLBACK ImGui_ImplWin32_UpdateMonitors_EnumFunc(HMONITOR monitor, HDC, LPRECT, LPARAM)
 {
     static HINSTANCE user32_dll = ::LoadLibraryA("user32.dll"); // Reference counted per-process
-    if (PFN_GetMonitorInfo GetMonitorInfoFn = (PFN_GetMonitorInfo)::GetProcAddress(user32_dll, "GetMonitorInfoA"))
+    if (PFN_GetMonitorInfo GetMonitorInfoFn = (PFN_GetMonitorInfo)::GetProcAddress(user32_dll, _CRT_STRINGIZE(GetMonitorInfo)))
     {
         MONITORINFO info = { 0 };
         info.cbSize = sizeof(MONITORINFO);
