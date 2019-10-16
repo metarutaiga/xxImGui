@@ -23,6 +23,9 @@
 #include <xxGraphic/xxGraphicD3D12.h>
 #endif
 #include <xxGraphic/xxGraphicGLES2.h>
+#include <xxGraphic/xxGraphicGLES3.h>
+#include <xxGraphic/xxGraphicGLES31.h>
+#include <xxGraphic/xxGraphicGLES32.h>
 #if defined(xxMACOS) || defined(xxIOS)
 #include <xxGraphic/xxGraphicMetal.h>
 #endif
@@ -71,6 +74,9 @@ static struct { const char* shortName; const char* fullName; uint64_t (*createIn
     { "D3D12",          xxGetDeviceNameD3D12(),         xxCreateInstanceD3D12           },
 #endif
     { "GLES2",          xxGetDeviceNameGLES2(),         xxCreateInstanceGLES2           },
+    { "GLES3",          xxGetDeviceNameGLES3(),         xxCreateInstanceGLES3           },
+    { "GLES31",         xxGetDeviceNameGLES31(),        xxCreateInstanceGLES31          },
+    { "GLES32",         xxGetDeviceNameGLES32(),        xxCreateInstanceGLES32          },
 #if defined(xxMACOS) || defined(xxIOS)
     { "MTL",            xxGetDeviceNameMetal(),         xxCreateInstanceMetal           },
 #endif

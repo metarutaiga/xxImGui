@@ -72,6 +72,15 @@
     <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicGLES3.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicGLES31.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -277,6 +286,15 @@
     </ClInclude>
     <ClInclude Include="..\xxGraphic\gl\gl32.h">
       <Filter>OpenGL\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicGLES32.h">
+      <Filter>OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

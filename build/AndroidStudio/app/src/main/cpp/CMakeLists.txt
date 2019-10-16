@@ -142,6 +142,9 @@ add_library( xxGraphic
              ../../../../../../xxGraphic/xxGraphicEGL.cpp
              ../../../../../../xxGraphic/xxGraphicGL.cpp
              ../../../../../../xxGraphic/xxGraphicGLES2.cpp
+             ../../../../../../xxGraphic/xxGraphicGLES3.cpp
+             ../../../../../../xxGraphic/xxGraphicGLES31.cpp
+             ../../../../../../xxGraphic/xxGraphicGLES32.cpp
              ../../../../../../xxGraphic/xxGraphicNULL.cpp
              ../../../../../../xxGraphic/xxGraphicVulkan.cpp
              ../../../../../../xxGraphic/xxGraphicVulkanAsm.cpp

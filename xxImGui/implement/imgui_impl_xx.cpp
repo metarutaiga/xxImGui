@@ -53,7 +53,7 @@ static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t comman
         float T = draw_data->DisplayPos.y;
         float B = draw_data->DisplayPos.y + draw_data->DisplaySize.y;
 
-        // Half-Pixel Offset in Direct3D 8.0 / 9.0
+        // Half-Pixel Offset in Legacy Direct3D
         if (g_halfPixel)
         {
             L += 0.5f;
