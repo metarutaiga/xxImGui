@@ -37,6 +37,9 @@
     <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGL.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicGLES3.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicGLES31.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicMantle.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicMantleAsm.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicNULL.cpp" />
@@ -107,6 +110,9 @@
     <ClInclude Include="..\xxGraphic\xxGraphicEGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicGLES32.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMantle.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMantleAsm.h" />
