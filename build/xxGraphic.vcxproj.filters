@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\d3d8.h">
       <Filter>Direct3D\dxsdk</Filter>
@@ -109,9 +108,6 @@
     </ClInclude>
     <ClInclude Include="..\xxGraphic\dxsdk\d3d9on12.h">
       <Filter>Direct3D\dxsdk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D.h">
-      <Filter>Direct3D</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxGraphicD3D8.h">
       <Filter>Direct3D</Filter>
@@ -296,6 +292,13 @@
     <ClInclude Include="..\xxGraphic\xxGraphicGLES32.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h">
+      <Filter>Direct3D\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h">
+      <Filter>OpenGL\internal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">
@@ -327,6 +330,12 @@
     </Filter>
     <Filter Include="Metal">
       <UniqueIdentifier>{b86fbe60-02d3-42bc-b061-3c0b3d1071ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct3D\internal">
+      <UniqueIdentifier>{49b69ff1-0652-4ff1-bc6f-5f9b42aa3850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL\internal">
+      <UniqueIdentifier>{c3011753-b73c-4828-8f5b-35c69ff52d18}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

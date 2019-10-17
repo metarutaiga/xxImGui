@@ -70,6 +70,9 @@
     <ClInclude Include="..\xxGraphic\gr\amdil.h" />
     <ClInclude Include="..\xxGraphic\gr\mantle.h" />
     <ClInclude Include="..\xxGraphic\gr\mantleWsiWinExt.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_icd.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_layer.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_platform.h" />
@@ -91,7 +94,6 @@
     <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib_xrandr.h" />
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicCGL.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D10.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D10_1.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D11.h" />
@@ -113,7 +115,6 @@
     <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES32.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMantle.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMantleAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicMetal.h" />
