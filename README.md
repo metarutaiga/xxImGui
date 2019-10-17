@@ -27,6 +27,6 @@ A simulate Next-Generation Graphic API for ImGui
 | OpenGL ES 3.0   | ⭕     | ⭕ | ⭕   | ⭕     |
 | OpenGL ES 3.1   | ⭕     |     |       | ⭕     |
 | OpenGL ES 3.2   | ⭕     |     |       | ⭕     |
-| Mantle          |         |     |       | 🚑     |
+| Mantle          |         |     |       | 🚑    |
 | Metal           |         | ⭕ | ⭕   |         |
 | Vulkan          | ⭕     | ⭕ | ⭕   | ⭕     |

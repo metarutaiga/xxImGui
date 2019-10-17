@@ -154,6 +154,10 @@ target_compile_definitions( xxGraphic
                             PUBLIC
                             XX_BUILD_LIBRARY )
 
+target_include_directories( xxGraphic
+                            PUBLIC
+                            ../../../../../../xxGraphic )
+
 target_link_libraries( xxGraphic
                        ${log-lib}
                        android )
