@@ -97,7 +97,11 @@ pluginAPI void Update(const UpdateData& updateData)
                 // 8. Set Local Matrix
                 root->SetLocalMatrix({ xxVector4::Z, -xxVector4::Y, xxVector4::X, xxVector4::WHITE });
                 child->SetLocalMatrix({ xxVector4::Y, -xxVector4::X, xxVector4::Z, xxVector4::WHITE });
-                grandChild->SetLocalMatrix({ xxVector4::Y, -xxVector4::X, xxVector4::Z, xxVector4::WHITE });
+                child->SetRotate({ xxVector3::Y, -xxVector3::X, xxVector3::Z });
+                child->SetTranslate(xxVector3::WHITE);
+                child->SetScale(2.0f);
+                child->UpdateRotateTranslateScale();
+                grandChild->SetLocalMatrix({ xxVector4::X, -xxVector4::Z, xxVector4::Y, xxVector4::WHITE });
                 step += snprintf(text + step, sizeof(text) - step, "SetLocalMatrix\n");
 
                 // 9. Update
