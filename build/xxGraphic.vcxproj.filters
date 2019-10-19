@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
-    <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D8.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
@@ -81,10 +80,18 @@
     <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxSystem.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxNode.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxVector.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
-    <ClInclude Include="..\xxGraphic\xxSystem.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\d3d8.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
@@ -299,6 +306,15 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h">
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxSystem.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxNode.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxVector.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">
@@ -336,6 +352,9 @@
     </Filter>
     <Filter Include="OpenGL\internal">
       <UniqueIdentifier>{c3011753-b73c-4828-8f5b-35c69ff52d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{8a6714fc-4e85-4724-952c-bd4f179747eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
