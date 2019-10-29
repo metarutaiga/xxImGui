@@ -19,7 +19,7 @@ package com.xx;
 import android.content.Context;
 import android.view.MotionEvent;
 
-class View extends SurfaceView
+class View extends android.view.NativeSurfaceView
 {
     private static boolean PAUSE = false;
     private Renderer RENDERER = new Renderer();
@@ -67,7 +67,7 @@ class View extends SurfaceView
         return true;
     }
 
-    private class Renderer implements SurfaceView.Renderer
+    private class Renderer implements android.view.NativeSurfaceView.Renderer
     {
         public void onDrawFrame()
         {
