@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xx;
+package android.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -27,14 +27,14 @@ import java.util.ArrayList;
  * An implementation of SurfaceView that uses the dedicated surface for
  * displaying API rendering.
  */
-public class SurfaceView extends android.view.SurfaceView implements SurfaceHolder.Callback2
+public class NativeSurfaceView extends android.view.SurfaceView implements SurfaceHolder.Callback2
 {
-    private final static String TAG = "SurfaceView";
+    private final static String TAG = "NativeSurfaceView";
 
     /**
      * Standard View constructor.
      */
-    public SurfaceView(Context context)
+    public NativeSurfaceView(Context context)
     {
         super(context);
         init();
@@ -43,7 +43,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
     /**
      * Standard View constructor.
      */
-    public SurfaceView(Context context, AttributeSet attrs)
+    public NativeSurfaceView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
         init();
@@ -96,7 +96,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
     /**
      * This method is part of the SurfaceHolder.Callback interface, and is
-     * not normally called or subclassed by clients of SurfaceView.
+     * not normally called or subclassed by clients of NativeSurfaceView.
      */
     public void surfaceCreated(SurfaceHolder holder)
     {
@@ -105,7 +105,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
     /**
      * This method is part of the SurfaceHolder.Callback interface, and is
-     * not normally called or subclassed by clients of SurfaceView.
+     * not normally called or subclassed by clients of NativeSurfaceView.
      */
     public void surfaceDestroyed(SurfaceHolder holder)
     {
@@ -115,7 +115,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
     /**
      * This method is part of the SurfaceHolder.Callback interface, and is
-     * not normally called or subclassed by clients of SurfaceView.
+     * not normally called or subclassed by clients of NativeSurfaceView.
      */
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h)
     {
@@ -124,7 +124,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
     /**
      * This method is part of the SurfaceHolder.Callback2 interface, and is
-     * not normally called or subclassed by clients of SurfaceView.
+     * not normally called or subclassed by clients of NativeSurfaceView.
      */
     @Deprecated
     @Override
@@ -160,7 +160,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
     /**
      * This method is used as part of the View class and is not normally
-     * called or subclassed by clients of SurfaceView.
+     * called or subclassed by clients of NativeSurfaceView.
      */
     @Override
     protected void onAttachedToWindow()
@@ -213,12 +213,12 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
      */
     static class RenderThread extends Thread
     {
-        RenderThread(WeakReference<SurfaceView> surfaceViewWeakRef)
+        RenderThread(WeakReference<NativeSurfaceView> nativeSurfaceViewWeakRef)
         {
             super();
             mWidth = 0;
             mHeight = 0;
-            mSurfaceViewWeakRef = surfaceViewWeakRef;
+            mNativeSurfaceViewWeakRef = nativeSurfaceViewWeakRef;
         }
 
         @Override
@@ -351,7 +351,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
                     if (createAPISurface)
                     {
-                        SurfaceView view = mSurfaceViewWeakRef.get();
+                        NativeSurfaceView view = mNativeSurfaceViewWeakRef.get();
                         if (view != null)
                         {
                             view.mRenderer.onSurfaceCreated();
@@ -366,7 +366,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
                     if (sizeChanged)
                     {
-                        SurfaceView view = mSurfaceViewWeakRef.get();
+                        NativeSurfaceView view = mNativeSurfaceViewWeakRef.get();
                         if (view != null)
                         {
                             view.mRenderer.onSurfaceChanged(w, h);
@@ -374,7 +374,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
                         sizeChanged = false;
                     }
 
-                    SurfaceView view = mSurfaceViewWeakRef.get();
+                    NativeSurfaceView view = mNativeSurfaceViewWeakRef.get();
                     if (view != null)
                     {
                         view.mRenderer.onDrawFrame();
@@ -589,7 +589,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
          * called. This weak reference allows the SurfaceView to be garbage collected while
          * the RenderThread is still alive.
          */
-        private WeakReference<SurfaceView> mSurfaceViewWeakRef;
+        private WeakReference<NativeSurfaceView> mNativeSurfaceViewWeakRef;
     }
 
     private void checkRenderThreadState()
@@ -613,7 +613,7 @@ public class SurfaceView extends android.view.SurfaceView implements SurfaceHold
 
     private static final RenderThreadManager sRenderThreadManager = new RenderThreadManager();
 
-    private final WeakReference<SurfaceView> mThisWeakRef = new WeakReference<SurfaceView>(this);
+    private final WeakReference<NativeSurfaceView> mThisWeakRef = new WeakReference<NativeSurfaceView>(this);
     private RenderThread mRenderThread;
     private Renderer mRenderer;
     private boolean mDetached;

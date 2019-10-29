@@ -276,10 +276,15 @@ bool ImGui_ImplXX_CreateDeviceObjects()
     ImGui_ImplXX_CreateDeviceObjectsForPlatformWindows();
 
     ImDrawVert vert;
+    int attributes[] =
+    {
+        0, (int)xxOffsetOf(ImDrawVert, pos),  3, xxSizeOf(vert.pos) + xxSizeOf(vert.z),
+        0, (int)xxOffsetOf(ImDrawVert, col),  4, xxSizeOf(vert.col),
+        0, (int)xxOffsetOf(ImDrawVert, uv),   2, xxSizeOf(vert.uv)
+    };
+
     g_fontSampler = xxCreateSampler(g_device, false, false, false, true, true, true, 1);
-    g_vertexAttribute = xxCreateVertexAttribute(g_device, 3, 0, xxOffsetOf(ImDrawVert, pos),  3, xxSizeOf(vert.pos) + xxSizeOf(vert.z),
-                                                             0, xxOffsetOf(ImDrawVert, col),  4, xxSizeOf(vert.col),
-                                                             0, xxOffsetOf(ImDrawVert, uv),   2, xxSizeOf(vert.uv));
+    g_vertexAttribute = xxCreateVertexAttribute(g_device, 3, attributes);
     g_vertexShader = xxCreateVertexShader(g_device, "default", g_vertexAttribute);
     g_fragmentShader = xxCreateFragmentShader(g_device, "default");
     for (unsigned int i = 0; i < 4; ++i)

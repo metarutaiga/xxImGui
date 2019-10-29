@@ -46,8 +46,11 @@
     <ClCompile Include="..\xxGraphic\xxGraphicVulkan.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicVulkanAsm.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicWGL.cpp" />
+    <ClCompile Include="..\xxGraphic\xxMaterial.cpp" />
+    <ClCompile Include="..\xxGraphic\xxMesh.cpp" />
     <ClCompile Include="..\xxGraphic\xxNode.cpp" />
     <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
+    <ClCompile Include="..\xxGraphic\xxImage.cpp" />
     <ClCompile Include="..\xxGraphic\xxVector.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -124,8 +127,11 @@
     <ClInclude Include="..\xxGraphic\xxGraphicVulkan.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h" />
+    <ClInclude Include="..\xxGraphic\xxMaterial.h" />
+    <ClInclude Include="..\xxGraphic\xxMesh.h" />
     <ClInclude Include="..\xxGraphic\xxNode.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\xxGraphic\xxImage.h" />
     <ClInclude Include="..\xxGraphic\xxVector.h" />
   </ItemGroup>
   <ItemGroup>
