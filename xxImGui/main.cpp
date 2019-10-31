@@ -32,8 +32,8 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
     HWND hWnd = ::CreateWindow(wc.lpszClassName, _T("Dear ImGui XX Example"), WS_OVERLAPPEDWINDOW, 100, 100, 1280 * scale, 720 * scale, NULL, NULL, wc.hInstance, NULL);
 
     Renderer::Create(hWnd, 1280 * scale, 720 * scale);
-    Plugin::Create("plugin");
     DearImGui::Create(hWnd, scale);
+    Plugin::Create("plugin");
 
     // Show the window
     ::ShowWindow(hWnd, SW_SHOWDEFAULT);
@@ -90,8 +90,8 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
         }
     }
 
-    DearImGui::Shutdown();
     Plugin::Shutdown();
+    DearImGui::Shutdown();
     Renderer::Shutdown();
 
     ::DestroyWindow(hWnd);
