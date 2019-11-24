@@ -80,24 +80,22 @@
     <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxSystem.cpp">
+    <ClCompile Include="..\xxGraphic\utility\xxImage.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxNode.cpp">
+    <ClCompile Include="..\xxGraphic\utility\xxMaterial.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxVector.cpp">
+    <ClCompile Include="..\xxGraphic\utility\xxMath.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxMesh.cpp">
+    <ClCompile Include="..\xxGraphic\utility\xxMesh.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxMaterial.cpp">
+    <ClCompile Include="..\xxGraphic\utility\xxNode.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxImage.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -315,24 +313,22 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h">
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxSystem.h">
+    <ClInclude Include="..\xxGraphic\utility\xxImage.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxNode.h">
+    <ClInclude Include="..\xxGraphic\utility\xxMaterial.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxVector.h">
+    <ClInclude Include="..\xxGraphic\utility\xxMath.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxMesh.h">
+    <ClInclude Include="..\xxGraphic\utility\xxMesh.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxMaterial.h">
+    <ClInclude Include="..\xxGraphic\utility\xxNode.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxImage.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">

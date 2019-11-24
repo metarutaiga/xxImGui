@@ -254,12 +254,12 @@ static bool ImGui_ImplXX_CreateFontsTexture()
     if (g_fontTexture == 0)
         return false;
     unsigned int stride = 0;
-    void* map = xxMapTexture(g_device, g_fontTexture, &stride, 0, 0, 1);
+    void* map = xxMapTexture(g_device, g_fontTexture, &stride, 0, 0);
     if (map == nullptr)
         return false;
     for (int y = 0; y < height; y++)
         memcpy((char*)map + stride * y, pixels + (width * bytes_per_pixel) * y, (width * bytes_per_pixel));
-    xxUnmapTexture(g_device, g_fontTexture, 0, 0, 1);
+    xxUnmapTexture(g_device, g_fontTexture, 0, 0);
 
     // Store our identifier
     io.Fonts->TexID = (ImTextureID)g_fontTexture;
