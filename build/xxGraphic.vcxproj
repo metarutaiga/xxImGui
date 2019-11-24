@@ -19,6 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\xxGraphic\utility\xxImage.cpp" />
+    <ClCompile Include="..\xxGraphic\utility\xxMaterial.cpp" />
+    <ClCompile Include="..\xxGraphic\utility\xxMath.cpp" />
+    <ClCompile Include="..\xxGraphic\utility\xxMesh.cpp" />
+    <ClCompile Include="..\xxGraphic\utility\xxNode.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D10.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D10_1.cpp" />
@@ -46,12 +51,7 @@
     <ClCompile Include="..\xxGraphic\xxGraphicVulkan.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicVulkanAsm.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicWGL.cpp" />
-    <ClCompile Include="..\xxGraphic\xxMaterial.cpp" />
-    <ClCompile Include="..\xxGraphic\xxMesh.cpp" />
-    <ClCompile Include="..\xxGraphic\xxNode.cpp" />
     <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
-    <ClCompile Include="..\xxGraphic\xxImage.cpp" />
-    <ClCompile Include="..\xxGraphic\xxVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\dxsdk\d3d.h" />
@@ -78,6 +78,11 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h" />
+    <ClInclude Include="..\xxGraphic\utility\xxImage.h" />
+    <ClInclude Include="..\xxGraphic\utility\xxMaterial.h" />
+    <ClInclude Include="..\xxGraphic\utility\xxMath.h" />
+    <ClInclude Include="..\xxGraphic\utility\xxMesh.h" />
+    <ClInclude Include="..\xxGraphic\utility\xxNode.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_icd.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_layer.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_platform.h" />
@@ -127,12 +132,7 @@
     <ClInclude Include="..\xxGraphic\xxGraphicVulkan.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h" />
-    <ClInclude Include="..\xxGraphic\xxMaterial.h" />
-    <ClInclude Include="..\xxGraphic\xxMesh.h" />
-    <ClInclude Include="..\xxGraphic\xxNode.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
-    <ClInclude Include="..\xxGraphic\xxImage.h" />
-    <ClInclude Include="..\xxGraphic\xxVector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\xxGraphic\xxGraphicCGL.mm" />
