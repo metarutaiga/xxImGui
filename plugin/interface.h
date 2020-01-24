@@ -19,7 +19,7 @@
 
 struct CreateData
 {
-
+    const char* baseFolder;
 };
 
 struct ShutdownData
@@ -30,6 +30,7 @@ struct ShutdownData
 struct UpdateData
 {
     float       time;
+    float       windowScale;
 };
 
 struct RenderData

@@ -78,6 +78,7 @@ void Plugin::Create(const char* path)
     }
 
     CreateData createData;
+    createData.baseFolder = app;
     for (int i = 0; i < g_pluginCreates.size(); ++i)
     {
         PFN_PLUGIN_CREATE create = g_pluginCreates[i];
@@ -113,6 +114,7 @@ void Plugin::Update()
 {
     UpdateData updateData;
     updateData.time = xxGetCurrentTime();
+    updateData.windowScale = ImGui::GetStyle().MouseCursorScale;
     for (int i = 0; i < g_pluginUpdates.size(); ++i)
     {
         PFN_PLUGIN_UPDATE update = g_pluginUpdates[i];

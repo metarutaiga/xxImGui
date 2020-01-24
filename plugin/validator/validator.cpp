@@ -36,7 +36,7 @@ pluginAPI void Update(const UpdateData& updateData)
         {
             ImGui::MenuItem("Validate Node", nullptr, &showNode);
             ImGui::Separator();
-            ImGui::MenuItem("About Validator", nullptr, &showAbout);
+            ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -61,7 +61,7 @@ pluginAPI void Update(const UpdateData& updateData)
 
     if (showAbout)
     {
-        if (ImGui::Begin("About Validator", &showAbout))
+        if (ImGui::Begin("About " PLUGIN_NAME, &showAbout))
         {
             ImGui::Text("%s Plugin Version %d.%d", PLUGIN_NAME, PLUGIN_MAJOR, PLUGIN_MINOR);
             ImGui::Separator();
