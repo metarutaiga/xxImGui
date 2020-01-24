@@ -29,7 +29,7 @@ pluginAPI void Update(const UpdateData& updateData)
     {
         if (ImGui::BeginMenu(PLUGIN_NAME))
         {
-            ImGui::MenuItem("About Sample", nullptr, &showAbout);
+            ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -37,7 +37,7 @@ pluginAPI void Update(const UpdateData& updateData)
 
     if (showAbout)
     {
-        if (ImGui::Begin("About Sample", &showAbout))
+        if (ImGui::Begin("About " PLUGIN_NAME, &showAbout))
         {
             ImGui::Text("%s Plugin Version %d.%d", PLUGIN_NAME, PLUGIN_MAJOR, PLUGIN_MINOR);
             ImGui::Separator();
