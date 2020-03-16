@@ -25,8 +25,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xxMiniCRT", "build\xxMiniCR
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "validator", "plugin\validator\validator.vcxproj", "{8EAEFFBB-EF31-41B8-BD7F-8C391A39A284}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShaderTranslator", "plugin\ShaderTranslator\ShaderTranslator.vcxproj", "{A17A023E-A583-46B3-980B-77C9C10C3824}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -91,14 +89,6 @@ Global
 		{8EAEFFBB-EF31-41B8-BD7F-8C391A39A284}.Release|Win32.Build.0 = Release|Win32
 		{8EAEFFBB-EF31-41B8-BD7F-8C391A39A284}.Release|x64.ActiveCfg = Release|x64
 		{8EAEFFBB-EF31-41B8-BD7F-8C391A39A284}.Release|x64.Build.0 = Release|x64
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Debug|Win32.Build.0 = Debug|Win32
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Debug|x64.ActiveCfg = Debug|x64
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Debug|x64.Build.0 = Debug|x64
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Release|Win32.ActiveCfg = Release|Win32
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Release|Win32.Build.0 = Release|Win32
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Release|x64.ActiveCfg = Release|x64
-		{A17A023E-A583-46B3-980B-77C9C10C3824}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,7 +96,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2F85E386-DA52-436B-82BF-1D6E494F4408} = {FA21E5FB-C5DB-4CAD-B843-3913FDFD3DD5}
 		{8EAEFFBB-EF31-41B8-BD7F-8C391A39A284} = {FA21E5FB-C5DB-4CAD-B843-3913FDFD3DD5}
-		{A17A023E-A583-46B3-980B-77C9C10C3824} = {FA21E5FB-C5DB-4CAD-B843-3913FDFD3DD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {32BE026C-479C-45E0-B740-DA621F56B7F3}

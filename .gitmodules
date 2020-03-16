@@ -10,6 +10,3 @@
 [submodule "xxMiniCRT"]
 	path = xxMiniCRT
 	url = https://github.com/metarutaiga/xxMiniCRT
-[submodule "plugin/ShaderTranslator"]
-	path = plugin/ShaderTranslator
-	url = https://github.com/metarutaiga/ShaderTranslator
