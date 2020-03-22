@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30EDB9ED2427CDBF00D599B5 /* xxImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E32427CDBF00D599B5 /* xxImage.h */; };
+		30EDB9EE2427CDBF00D599B5 /* xxMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E42427CDBF00D599B5 /* xxMesh.h */; };
+		30EDB9EF2427CDBF00D599B5 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */; };
+		30EDB9F02427CDBF00D599B5 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */; };
+		30EDB9F12427CDBF00D599B5 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E62427CDBF00D599B5 /* xxNode.cpp */; };
+		30EDB9F22427CDBF00D599B5 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E62427CDBF00D599B5 /* xxNode.cpp */; };
+		30EDB9F32427CDBF00D599B5 /* xxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E72427CDBF00D599B5 /* xxNode.h */; };
+		30EDB9F42427CDBF00D599B5 /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E82427CDBF00D599B5 /* xxImage.cpp */; };
+		30EDB9F52427CDBF00D599B5 /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E82427CDBF00D599B5 /* xxImage.cpp */; };
+		30EDB9F62427CDBF00D599B5 /* xxMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E92427CDBF00D599B5 /* xxMath.h */; };
+		30EDB9F72427CDBF00D599B5 /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9EA2427CDBF00D599B5 /* xxMaterial.cpp */; };
+		30EDB9F82427CDBF00D599B5 /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9EA2427CDBF00D599B5 /* xxMaterial.cpp */; };
+		30EDB9F92427CDBF00D599B5 /* xxMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9EB2427CDBF00D599B5 /* xxMaterial.h */; };
+		30EDB9FA2427CDBF00D599B5 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */; };
+		30EDB9FB2427CDBF00D599B5 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */; };
 		D644A0AA231EDE9B00B75B77 /* xxGraphicNULL.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */; };
 		D644A0AB231EDE9B00B75B77 /* xxGraphicGL.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A0A1231EDE9A00B75B77 /* xxGraphicGL.h */; };
 		D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
@@ -106,6 +121,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30EDB9E32427CDBF00D599B5 /* xxImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxImage.h; path = ../xxGraphic/utility/xxImage.h; sourceTree = "<group>"; };
+		30EDB9E42427CDBF00D599B5 /* xxMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMesh.h; path = ../xxGraphic/utility/xxMesh.h; sourceTree = "<group>"; };
+		30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMesh.cpp; path = ../xxGraphic/utility/xxMesh.cpp; sourceTree = "<group>"; };
+		30EDB9E62427CDBF00D599B5 /* xxNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxNode.cpp; path = ../xxGraphic/utility/xxNode.cpp; sourceTree = "<group>"; };
+		30EDB9E72427CDBF00D599B5 /* xxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxNode.h; path = ../xxGraphic/utility/xxNode.h; sourceTree = "<group>"; };
+		30EDB9E82427CDBF00D599B5 /* xxImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxImage.cpp; path = ../xxGraphic/utility/xxImage.cpp; sourceTree = "<group>"; };
+		30EDB9E92427CDBF00D599B5 /* xxMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMath.h; path = ../xxGraphic/utility/xxMath.h; sourceTree = "<group>"; };
+		30EDB9EA2427CDBF00D599B5 /* xxMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMaterial.cpp; path = ../xxGraphic/utility/xxMaterial.cpp; sourceTree = "<group>"; };
+		30EDB9EB2427CDBF00D599B5 /* xxMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMaterial.h; path = ../xxGraphic/utility/xxMaterial.h; sourceTree = "<group>"; };
+		30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMath.cpp; path = ../xxGraphic/utility/xxMath.cpp; sourceTree = "<group>"; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicNULL.h; path = ../xxGraphic/xxGraphicNULL.h; sourceTree = "<group>"; };
@@ -236,6 +261,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30EDB9E22427CDA600D599B5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				30EDB9E82427CDBF00D599B5 /* xxImage.cpp */,
+				30EDB9E32427CDBF00D599B5 /* xxImage.h */,
+				30EDB9EA2427CDBF00D599B5 /* xxMaterial.cpp */,
+				30EDB9EB2427CDBF00D599B5 /* xxMaterial.h */,
+				30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */,
+				30EDB9E92427CDBF00D599B5 /* xxMath.h */,
+				30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */,
+				30EDB9E42427CDBF00D599B5 /* xxMesh.h */,
+				30EDB9E62427CDBF00D599B5 /* xxNode.cpp */,
+				30EDB9E72427CDBF00D599B5 /* xxNode.h */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		D644A089231EDDFA00B75B77 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +287,7 @@
 				D6CA4E292327F563008FFA94 /* NULL */,
 				D6B338582320214C0096D02F /* OpenGL */,
 				D690A331232AC4E700A149EF /* Vulkan */,
+				30EDB9E22427CDA600D599B5 /* Utility */,
 				D690A37F2332DAB700A149EF /* LICENSE.txt */,
 				D667B7C323589E970092806F /* xxGraphicInternal.h */,
 				D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */,
@@ -455,6 +498,7 @@
 			files = (
 				D690A362232AC52400A149EF /* vulkan_ggp.h in Headers */,
 				D667B7A8234730960092806F /* eglplatform.h in Headers */,
+				30EDB9ED2427CDBF00D599B5 /* xxImage.h in Headers */,
 				D644A0AE231EDE9B00B75B77 /* xxGraphic.h in Headers */,
 				D667B7A9234730960092806F /* egl.h in Headers */,
 				D667B7AF234730AA0092806F /* xxGraphicEGL.h in Headers */,
@@ -470,11 +514,14 @@
 				D690A35B232AC52400A149EF /* vulkan_wayland.h in Headers */,
 				D6A727BF232310F4009981AD /* xxGraphicD3D9Ex.h in Headers */,
 				D690A358232AC52400A149EF /* vk_platform.h in Headers */,
+				30EDB9F62427CDBF00D599B5 /* xxMath.h in Headers */,
 				D6A727C7232310F4009981AD /* xxGraphicD3D9On12.h in Headers */,
 				D690A35E232AC52400A149EF /* vulkan_xlib_xrandr.h in Headers */,
+				30EDB9F32427CDBF00D599B5 /* xxNode.h in Headers */,
 				D6A727C1232310F4009981AD /* xxGraphicD3D9PS.h in Headers */,
 				D6A727C3232310F4009981AD /* xxGraphicD3D10.h in Headers */,
 				D667B7BB23577DC40092806F /* xxGraphicGLES3.h in Headers */,
+				30EDB9EE2427CDBF00D599B5 /* xxMesh.h in Headers */,
 				D6D0AA6623283A3E0044D0CF /* xxGraphicEAGL.h in Headers */,
 				D6A727B9232310F4009981AD /* xxGraphicD3D10_1.h in Headers */,
 				D690A361232AC52400A149EF /* vulkan_prototype.h in Headers */,
@@ -494,6 +541,7 @@
 				D6A727AF232310F4009981AD /* xxGraphicD3DAsm.h in Headers */,
 				D644A0AB231EDE9B00B75B77 /* xxGraphicGL.h in Headers */,
 				D644A0B1231EDE9B00B75B77 /* xxGraphicGLES2.h in Headers */,
+				30EDB9F92427CDBF00D599B5 /* xxMaterial.h in Headers */,
 				D690A357232AC52400A149EF /* vulkan.h in Headers */,
 				D690A35A232AC52400A149EF /* vulkan_xlib.h in Headers */,
 				D6F761C3233C8E9F006BE7E1 /* xxGraphicD3D7.h in Headers */,
@@ -597,12 +645,17 @@
 				D6DA664E23258F6F00953C5B /* xxGraphic.cpp in Sources */,
 				D6DA664C23258F6F00953C5B /* xxGraphicGL.cpp in Sources */,
 				D6DA664D23258F6F00953C5B /* xxGraphicGLES2.cpp in Sources */,
+				30EDB9F52427CDBF00D599B5 /* xxImage.cpp in Sources */,
 				D6B70EC823283AEC000FFCBB /* xxGraphicEAGL.mm in Sources */,
+				30EDB9F02427CDBF00D599B5 /* xxMesh.cpp in Sources */,
 				D6DA664B23258F6F00953C5B /* xxGraphicMetal.mm in Sources */,
 				D6DA664F23258F7A00953C5B /* xxGraphicNULL.cpp in Sources */,
 				D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
+				30EDB9F82427CDBF00D599B5 /* xxMaterial.cpp in Sources */,
+				30EDB9F22427CDBF00D599B5 /* xxNode.cpp in Sources */,
 				D6DA665023258F8E00953C5B /* xxSystem.cpp in Sources */,
+				30EDB9FB2427CDBF00D599B5 /* xxMath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +665,8 @@
 			files = (
 				D644A0AD231EDE9B00B75B77 /* xxGraphic.cpp in Sources */,
 				D6B338562320209A0096D02F /* xxGraphicCGL.mm in Sources */,
+				30EDB9EF2427CDBF00D599B5 /* xxMesh.cpp in Sources */,
+				30EDB9F42427CDBF00D599B5 /* xxImage.cpp in Sources */,
 				D667B7B923577DC40092806F /* xxGraphicGLES32.cpp in Sources */,
 				D667B7BA23577DC40092806F /* xxGraphicGLES3.cpp in Sources */,
 				D644A0B3231EDE9B00B75B77 /* xxGraphicGL.cpp in Sources */,
@@ -620,7 +675,10 @@
 				D6A727F3232318E4009981AD /* xxGraphicMetal.mm in Sources */,
 				D644A0B0231EDE9B00B75B77 /* xxGraphicNULL.cpp in Sources */,
 				D690A368232AC54600A149EF /* xxGraphicVulkan.cpp in Sources */,
+				30EDB9F12427CDBF00D599B5 /* xxNode.cpp in Sources */,
 				D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
+				30EDB9FA2427CDBF00D599B5 /* xxMath.cpp in Sources */,
+				30EDB9F72427CDBF00D599B5 /* xxMaterial.cpp in Sources */,
 				D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

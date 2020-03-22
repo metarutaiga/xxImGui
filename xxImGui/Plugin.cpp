@@ -18,64 +18,63 @@ static ImVector<PFN_PLUGIN_RENDER>      g_pluginRenders;
 //------------------------------------------------------------------------------
 void Plugin::Create(const char* path)
 {
-    char app[256];
-#if defined(xxWINDOWS)
-    GetModuleFileNameA(nullptr, app, sizeof(app));
-    if (char* slash = strrchr(app, '\\'))
-        (*slash) = '\0';
-#else
-    app[0] = '\0';
+    const char* app = xxGetExecutablePath();
+    const char* configuration = "";
+    const char* arch = "";
+    const char* extension = "";
+#if defined(_DEBUG)
+    configuration = "debug";
+#elif defined(NDEBUG)
+    configuration = "release";
 #endif
-
-    char temp[256];
 #if defined(_M_AMD64)
-#   if defined(_DEBUG)
-    snprintf(temp, 256, "%s/%s/*.debug.x64.dll", app, path);
-#   else
-    snprintf(temp, 256, "%s/%s/*.release.x64.dll", app, path);
-#   endif
+    arch = ".x64";
 #elif defined(_M_IX86)
-#   if defined(_DEBUG)
-    snprintf(temp, 256, "%s/%s/*.debug.x86.dll", app, path);
-#   else
-    snprintf(temp, 256, "%s/%s/*.release.x86.dll", app, path);
-#   endif
-#else
-    snprintf(temp, 256, "%s/%s/*", app, path);
+    arch = ".x86";
+#endif
+#if defined(xxWINDOWS)
+    extension = ".dll";
+#elif defined(xxMACOS)
+    extension = ".dylib";
 #endif
 
-    WIN32_FIND_DATAA data;
-    HANDLE handle = FindFirstFileA(temp, &data);
-    if (handle != INVALID_HANDLE_VALUE)
+    char temp[4096];
+#if defined(xxWINDOWS)
+    snprintf(temp, 4096, "%s/%s", app, path);
+#elif defined(xxMACOS)
+    snprintf(temp, 4096, "%s/../../..", app);
+#endif
+
+    uint64_t handle = 0;
+    while (const char* filename = xxOpenDirectory(&handle, temp, configuration, arch, extension, nullptr))
     {
-        do {
-            if (data.cFileName[0] == '.')
-                continue;
+#if defined(xxWINDOWS)
+        snprintf(temp, 4096, "%s/%s/%s", app, path, filename);
+#elif defined(xxMACOS)
+        snprintf(temp, 4096, "%s/../../../%s", app, filename);
+#endif
+        void* library = xxLoadLibrary(temp);
+        if (library == nullptr)
+            continue;
 
-            snprintf(temp, 256, "%s/%s/%s", app, path, data.cFileName);
-            void* library = xxLoadLibrary(temp);
-            if (library == nullptr)
-                continue;
+        PFN_PLUGIN_CREATE create = (PFN_PLUGIN_CREATE)xxGetProcAddress(library, "Create");
+        PFN_PLUGIN_SHUTDOWN shutdown = (PFN_PLUGIN_SHUTDOWN)xxGetProcAddress(library, "Shutdown");
+        PFN_PLUGIN_UPDATE update = (PFN_PLUGIN_UPDATE)xxGetProcAddress(library, "Update");
+        PFN_PLUGIN_RENDER render = (PFN_PLUGIN_RENDER)xxGetProcAddress(library, "Render");
+        if (create == nullptr || shutdown == nullptr || update == nullptr || render == nullptr)
+        {
+            xxFreeLibrary(library);
+            continue;
+        }
+        xxLog("Plugin", "Loaded : %s", filename);
 
-            PFN_PLUGIN_CREATE create = (PFN_PLUGIN_CREATE)xxGetProcAddress(library, "Create");
-            PFN_PLUGIN_SHUTDOWN shutdown = (PFN_PLUGIN_SHUTDOWN)xxGetProcAddress(library, "Shutdown");
-            PFN_PLUGIN_UPDATE update = (PFN_PLUGIN_UPDATE)xxGetProcAddress(library, "Update");
-            PFN_PLUGIN_RENDER render = (PFN_PLUGIN_RENDER)xxGetProcAddress(library, "Render");
-            if (create == nullptr || shutdown == nullptr || update == nullptr || render == nullptr)
-            {
-                xxFreeLibrary(library);
-                continue;
-            }
-
-            g_pluginLibraries.push_back(library);
-            g_pluginCreates.push_back(create);
-            g_pluginShutdowns.push_back(shutdown);
-            g_pluginUpdates.push_back(update);
-            g_pluginRenders.push_back(render);
-        } while (FindNextFileA(handle, &data) == TRUE);
-
-        FindClose(handle);
+        g_pluginLibraries.push_back(library);
+        g_pluginCreates.push_back(create);
+        g_pluginShutdowns.push_back(shutdown);
+        g_pluginUpdates.push_back(update);
+        g_pluginRenders.push_back(render);
     }
+    xxCloseDirectory(&handle);
 
     CreateData createData;
     createData.baseFolder = app;
@@ -110,7 +109,7 @@ void Plugin::Shutdown()
     g_pluginRenders.clear();
 }
 //------------------------------------------------------------------------------
-void Plugin::Update()
+bool Plugin::Update()
 {
     UpdateData updateData;
     updateData.time = xxGetCurrentTime();
@@ -120,6 +119,8 @@ void Plugin::Update()
         PFN_PLUGIN_UPDATE update = g_pluginUpdates[i];
         update(updateData);
     }
+
+    return g_pluginUpdates.empty() == false;
 }
 //------------------------------------------------------------------------------
 void Plugin::Render(uint64_t commandEncoder)

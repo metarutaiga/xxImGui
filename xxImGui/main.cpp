@@ -64,8 +64,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
         }
 
         DearImGui::NewFrame(hWnd);
-        Plugin::Update();
-        DearImGui::Update();
+        DearImGui::Update(Plugin::Update() == false);
 
         uint64_t commandEncoder = Renderer::Begin();
         if (commandEncoder)
