@@ -18,7 +18,7 @@ public:
     static void Resume();
 
     static void NewFrame(void* view);
-    static void Update();
+    static void Update(bool demo);
     static void* PostUpdate(void* view);
 
     static void Render(uint64_t commandEncoder);

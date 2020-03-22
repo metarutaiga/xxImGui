@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300264C2242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
+		300264C3242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D6022C6C23258EB800B9BFB8 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6022C6B23258EB800B9BFB8 /* libfreetype.a */; };
 		D6022C6E23258EB800B9BFB8 /* libimgui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6022C6D23258EB800B9BFB8 /* libimgui.a */; };
@@ -45,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300264C0242687B7004559E0 /* Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Plugin.cpp; path = ../xxImGui/Plugin.cpp; sourceTree = "<group>"; };
+		300264C1242687B7004559E0 /* Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plugin.h; path = ../xxImGui/Plugin.h; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C6B23258EB800B9BFB8 /* libfreetype.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C6D23258EB800B9BFB8 /* libimgui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,12 +176,14 @@
 		D690A3852333FDBC00A149EF /* main */ = {
 			isa = PBXGroup;
 			children = (
-				D690A3922334291E00A149EF /* main.cpp */,
-				D690A3932334291E00A149EF /* main.mm */,
-				D690A3862333FE7B00A149EF /* Renderer.cpp */,
-				D690A3872333FE7B00A149EF /* Renderer.h */,
 				D690A38A23341A8400A149EF /* DearImGui.cpp */,
 				D690A38B23341A8400A149EF /* DearImGui.h */,
+				D690A3922334291E00A149EF /* main.cpp */,
+				D690A3932334291E00A149EF /* main.mm */,
+				300264C0242687B7004559E0 /* Plugin.cpp */,
+				300264C1242687B7004559E0 /* Plugin.h */,
+				D690A3862333FE7B00A149EF /* Renderer.cpp */,
+				D690A3872333FE7B00A149EF /* Renderer.h */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300264C3242687B7004559E0 /* Plugin.cpp in Sources */,
 				D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */,
 				D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */,
 				D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */,
@@ -320,6 +327,7 @@
 				D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */,
 				D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */,
 				D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */,
+				300264C2242687B7004559E0 /* Plugin.cpp in Sources */,
 				D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */,
 				D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */,
 				D690A3962334291E00A149EF /* main.mm in Sources */,

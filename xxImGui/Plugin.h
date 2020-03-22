@@ -14,6 +14,6 @@ public:
     static void Create(const char* path);
     static void Shutdown();
 
-    static void Update();
+    static bool Update();
     static void Render(uint64_t commandEncoder);
 };

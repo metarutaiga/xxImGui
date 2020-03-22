@@ -216,8 +216,15 @@ void DearImGui::NewFrame(void* view)
     }
 }
 //------------------------------------------------------------------------------
-void DearImGui::Update()
+void DearImGui::Update(bool demo)
 {
+    if (demo == false)
+    {
+        ImGui::EndFrame();
+        ImGui::Render();
+        return;
+    }
+
     // Global data for the demo
     static bool show_demo_window = true;
     static bool show_another_window = false;

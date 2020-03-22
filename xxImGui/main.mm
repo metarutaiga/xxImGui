@@ -2,6 +2,7 @@
 // If you are new to dear imgui, see examples/README.txt and documentation at the top of imgui.cpp.
 
 #include "Renderer.h"
+#include "Plugin.h"
 #include "DearImGui.h"
 
 #include <stdio.h>
@@ -60,11 +61,12 @@
 -(void)updateAndDraw
 {
     DearImGui::NewFrame((__bridge void*)self);
-    DearImGui::Update();
+    DearImGui::Update(Plugin::Update() == false);
 
     uint64_t commandEncoder = Renderer::Begin();
     if (commandEncoder)
     {
+        Plugin::Render(commandEncoder);
         DearImGui::Render(commandEncoder);
         Renderer::End();
         Renderer::Present();
@@ -303,10 +305,12 @@
 
     Renderer::Create((__bridge void*)self.window, width, height);
     DearImGui::Create((__bridge void*)view, scale);
+    Plugin::Create("plugin");
 }
 
 -(void)shutdown
 {
+    Plugin::Shutdown();
     DearImGui::Shutdown();
     Renderer::Shutdown();
 }
