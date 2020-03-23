@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Renderer.h"
+#include "Plugin.h"
 #include "DearImGui.h"
 
 static bool g_initialized = false;
@@ -29,6 +30,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jobje
 
     Renderer::Create(window, width, height);
     DearImGui::Create(window, 2.0f);
+    Plugin::Create("plugin");
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resize(JNIEnv* env, jobject obj, jint width, jint height, jobject surface)
@@ -45,7 +47,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resize(JNIEnv* env, jobje
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jobject obj)
 {
     DearImGui::NewFrame(Renderer::g_view);
-    DearImGui::Update();
+    DearImGui::Update(Plugin::Update() == false);
 
     uint64_t commandEncoder = Renderer::Begin();
     if (commandEncoder)
@@ -65,6 +67,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jobject
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_shutdown(JNIEnv* env, jobject obj)
 {
+    Plugin::Shutdown();
     DearImGui::Shutdown();
     Renderer::Shutdown();
 

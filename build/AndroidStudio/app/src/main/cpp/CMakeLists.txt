@@ -20,6 +20,7 @@ add_library( # Sets the name of the library.
              dummy.cpp
              ../../../../../../xxImGui/DearImGui.cpp
              ../../../../../../xxImGui/mainJNI.cpp
+             ../../../../../../xxImGui/Plugin.cpp
              ../../../../../../xxImGui/Renderer.cpp
              ../../../../../../xxImGui/implement/imgui_impl_xx.cpp
              ../../../../../../xxImGui/implement/imgui_freetype.cpp )
@@ -138,6 +139,11 @@ target_include_directories( imgui
 
 add_library( xxGraphic
              SHARED
+             ../../../../../../xxGraphic/utility/xxImage.cpp
+             ../../../../../../xxGraphic/utility/xxMaterial.cpp
+             ../../../../../../xxGraphic/utility/xxMath.cpp
+             ../../../../../../xxGraphic/utility/xxMesh.cpp
+             ../../../../../../xxGraphic/utility/xxNode.cpp
              ../../../../../../xxGraphic/xxGraphic.cpp
              ../../../../../../xxGraphic/xxGraphicEGL.cpp
              ../../../../../../xxGraphic/xxGraphicGL.cpp
@@ -161,3 +167,41 @@ target_include_directories( xxGraphic
 target_link_libraries( xxGraphic
                        ${log-lib}
                        android )
+
+# sample
+
+add_library( sample
+             SHARED
+             ../../../../../../plugin/sample/sample.cpp )
+
+target_compile_definitions( sample
+                            PUBLIC
+                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h" )
+
+target_include_directories( sample
+                            PUBLIC
+                            ../../../../../..
+                            ../../../../../../plugin )
+
+target_link_libraries( sample
+                       imgui )
+
+# validator
+
+add_library( validator
+             SHARED
+             ../../../../../../plugin/validator/validator.cpp )
+
+target_compile_definitions( validator
+                            PUBLIC
+                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h" )
+
+target_include_directories( validator
+                            PUBLIC
+                            ../../../../../..
+                            ../../../../../../xxGraphic
+                            ../../../../../../plugin )
+
+target_link_libraries( validator
+                       imgui
+                       xxGraphic )

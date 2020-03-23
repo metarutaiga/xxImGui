@@ -17,3 +17,4 @@ build/AndroidStudio/local.properties
 build/AndroidStudio/app/.cxx
 build/AndroidStudio/app/.gitignore
 build/AndroidStudio/app/build
+build/AndroidStudio/build
