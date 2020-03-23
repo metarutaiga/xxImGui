@@ -36,6 +36,8 @@ void Plugin::Create(const char* path)
     extension = ".dll";
 #elif defined(xxMACOS)
     extension = ".dylib";
+#elif defined(xxANDROID)
+    extension = ".so";
 #endif
 
     char temp[4096];
@@ -43,6 +45,8 @@ void Plugin::Create(const char* path)
     snprintf(temp, 4096, "%s/%s", app, path);
 #elif defined(xxMACOS)
     snprintf(temp, 4096, "%s/../../..", app);
+#elif defined(xxANDROID)
+    snprintf(temp, 4096, "%s", app);
 #endif
 
     uint64_t handle = 0;
@@ -52,6 +56,8 @@ void Plugin::Create(const char* path)
         snprintf(temp, 4096, "%s/%s/%s", app, path, filename);
 #elif defined(xxMACOS)
         snprintf(temp, 4096, "%s/../../../%s", app, filename);
+#elif defined(xxANDROID)
+        snprintf(temp, 4096, "%s/%s", app, filename);
 #endif
         void* library = xxLoadLibrary(temp);
         if (library == nullptr)
