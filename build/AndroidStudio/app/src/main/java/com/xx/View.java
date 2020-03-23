@@ -21,7 +21,7 @@ import android.view.MotionEvent;
 
 class View extends android.view.NativeSurfaceView
 {
-    private static boolean PAUSE = false;
+    private boolean PAUSE = false;
     private Renderer RENDERER = new Renderer();
 
     public View(Context context)
@@ -51,19 +51,16 @@ class View extends android.view.NativeSurfaceView
     @Override
     public boolean onTouchEvent(final MotionEvent event)
     {
-        queueEvent(new Runnable()
-            {
-                public void run()
-                {
-                    int[] location = new int[2];
-                    getLocationInWindow(location);
+        queueEvent(() ->
+        {
+            int[] location = new int[2];
+            View.this.getLocationInWindow(location);
 
-                    float x = event.getRawX() - location[0];
-                    float y = event.getRawY() - location[1];
+            float x = event.getRawX() - location[0];
+            float y = event.getRawY() - location[1];
 
-                    Activity.touch(event.getAction(), x, y);
-                }
-            });
+            Activity.touch(event.getAction(), x, y);
+        });
         return true;
     }
 
