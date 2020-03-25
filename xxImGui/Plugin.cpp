@@ -6,7 +6,7 @@
 //==============================================================================
 #include "xxGraphic/xxSystem.h"
 #include "DearImGui.h"
-
+#include "Renderer.h"
 #include "Plugin.h"
 
 static ImVector<void*>                  g_pluginLibraries;
@@ -118,6 +118,7 @@ void Plugin::Shutdown()
 bool Plugin::Update()
 {
     UpdateData updateData;
+    updateData.device = Renderer::g_device;
     updateData.time = xxGetCurrentTime();
     updateData.windowScale = ImGui::GetStyle().MouseCursorScale;
     for (int i = 0; i < g_pluginUpdates.size(); ++i)
@@ -132,6 +133,7 @@ bool Plugin::Update()
 void Plugin::Render(uint64_t commandEncoder)
 {
     RenderData renderData;
+    renderData.device = Renderer::g_device;
     renderData.commandEncoder = commandEncoder;
     for (int i = 0; i < g_pluginRenders.size(); ++i)
     {

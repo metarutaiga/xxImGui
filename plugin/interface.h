@@ -29,12 +29,14 @@ struct ShutdownData
 
 struct UpdateData
 {
+    uint64_t    device;
     float       time;
     float       windowScale;
 };
 
 struct RenderData
 {
+    uint64_t    device;
     uint64_t    commandEncoder;
 };
 

@@ -152,7 +152,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
 
     // Render command lists
     // (Because we merged all buffers into a single one, we maintain our own offset into them)
-    bool boundTexture = false;
+    ImTextureID boundTextureID = 0;
     int global_vtx_offset = 0;
     int global_idx_offset = 0;
     ImVec2 clip_off = draw_data->DisplayPos;
@@ -164,7 +164,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
             const ImDrawCmd* pcmd = &cmd_list->CmdBuffer[cmd_i];
             if (pcmd->UserCallback != NULL)
             {
-                boundTexture = false;
+                boundTextureID = 0;
 
                 // User callback, registered via ImDrawList::AddCallback()
                 // (ImDrawCallback_ResetRenderState is a special callback value used by the user to request the renderer to reset render state.)
@@ -190,9 +190,9 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
 
                 // Texture
-                if (boundTexture == false)
+                if (boundTextureID != pcmd->TextureId)
                 {
-                    boundTexture = true;
+                    boundTextureID = pcmd->TextureId;
                     xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
                     xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
                 }
@@ -250,7 +250,7 @@ static bool ImGui_ImplXX_CreateFontsTexture()
 
     // Upload texture to graphics system
     xxDestroyTexture(g_fontTexture);
-    g_fontTexture = xxCreateTexture(g_device, 0, width, height, 1, 1, 1);
+    g_fontTexture = xxCreateTexture(g_device, 0, width, height, 1, 1, 1, nullptr);
     if (g_fontTexture == 0)
         return false;
     unsigned int stride = 0;
