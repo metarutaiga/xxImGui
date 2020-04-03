@@ -23,9 +23,9 @@ void Plugin::Create(const char* path)
     const char* arch = "";
     const char* extension = "";
 #if defined(_DEBUG)
-    configuration = "debug";
+    configuration = "Debug";
 #elif defined(NDEBUG)
-    configuration = "release";
+    configuration = "Release";
 #endif
 #if defined(_M_AMD64)
     arch = ".x64";
@@ -42,7 +42,7 @@ void Plugin::Create(const char* path)
 
     char temp[4096];
 #if defined(xxWINDOWS)
-    snprintf(temp, 4096, "%s/%s", app, path);
+    snprintf(temp, 4096, "%s\\%s", app, path);
 #elif defined(xxMACOS)
     snprintf(temp, 4096, "%s/../../..", app);
 #elif defined(xxANDROID)
@@ -50,10 +50,10 @@ void Plugin::Create(const char* path)
 #endif
 
     uint64_t handle = 0;
-    while (const char* filename = xxOpenDirectory(&handle, temp, configuration, arch, extension, nullptr))
+    while (char* filename = xxOpenDirectory(&handle, temp, configuration, arch, extension, nullptr))
     {
 #if defined(xxWINDOWS)
-        snprintf(temp, 4096, "%s/%s/%s", app, path, filename);
+        snprintf(temp, 4096, "%s\\%s\\%s", app, path, filename);
 #elif defined(xxMACOS)
         snprintf(temp, 4096, "%s/../../../%s", app, filename);
 #elif defined(xxANDROID)
@@ -61,7 +61,10 @@ void Plugin::Create(const char* path)
 #endif
         void* library = xxLoadLibrary(temp);
         if (library == nullptr)
+        {
+            free(filename);
             continue;
+        }
 
         PFN_PLUGIN_CREATE create = (PFN_PLUGIN_CREATE)xxGetProcAddress(library, "Create");
         PFN_PLUGIN_SHUTDOWN shutdown = (PFN_PLUGIN_SHUTDOWN)xxGetProcAddress(library, "Shutdown");
@@ -70,9 +73,11 @@ void Plugin::Create(const char* path)
         if (create == nullptr || shutdown == nullptr || update == nullptr || render == nullptr)
         {
             xxFreeLibrary(library);
+            free(filename);
             continue;
         }
         xxLog("Plugin", "Loaded : %s", filename);
+        free(filename);
 
         g_pluginLibraries.push_back(library);
         g_pluginCreates.push_back(create);
