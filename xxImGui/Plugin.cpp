@@ -16,7 +16,7 @@ static ImVector<PFN_PLUGIN_SHUTDOWN>    g_pluginShutdowns;
 static ImVector<PFN_PLUGIN_UPDATE>      g_pluginUpdates;
 static ImVector<PFN_PLUGIN_RENDER>      g_pluginRenders;
 //------------------------------------------------------------------------------
-void Plugin::Create(const char* path)
+void Plugin::Create(const char* path, uint64_t device)
 {
     const char* app = xxGetExecutablePath();
     const char* configuration = "";
@@ -88,6 +88,7 @@ void Plugin::Create(const char* path)
     xxCloseDirectory(&handle);
 
     CreateData createData;
+    createData.device = device;
     createData.baseFolder = app;
     for (int i = 0; i < g_pluginCreates.size(); ++i)
     {
