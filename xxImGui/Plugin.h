@@ -11,7 +11,7 @@
 class Plugin
 {
 public:
-    static void Create(const char* path);
+    static void Create(const char* path, uint64_t device);
     static void Shutdown();
 
     static bool Update();
