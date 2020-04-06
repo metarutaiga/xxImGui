@@ -305,7 +305,7 @@
 
     Renderer::Create((__bridge void*)self.window, width, height);
     DearImGui::Create((__bridge void*)view, scale);
-    Plugin::Create("plugin");
+    Plugin::Create("plugin", Renderer::g_device);
 }
 
 -(void)shutdown
