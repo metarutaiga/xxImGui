@@ -33,7 +33,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
 
     Renderer::Create(hWnd, 1280 * scale, 720 * scale);
     DearImGui::Create(hWnd, scale);
-    Plugin::Create("plugin");
+    Plugin::Create("plugin", Renderer::g_device);
 
     // Show the window
     ::ShowWindow(hWnd, SW_SHOWDEFAULT);

@@ -19,6 +19,7 @@
 
 struct CreateData
 {
+    uint64_t    device;
     const char* baseFolder;
 };
 
