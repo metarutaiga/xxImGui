@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Dear ImGui Source
 //
-// Copyright (c) 2019 TAiGA
+// Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include <sys/stat.h>
@@ -208,7 +208,7 @@ void DearImGui::NewFrame(void* view)
         if (ImGui::Begin("About xxGraphic", &showAbout))
         {
             ImGui::Text("%s", "xxGraphic");
-            ImGui::Text("%s", "Copyright (c) 2019 TAiGA");
+            ImGui::Text("%s", "Copyright (c) 2019-2020 TAiGA");
             ImGui::Separator();
             ImGui::Text("Build Date : %s %s", __DATE__, __TIME__);
             ImGui::End();
@@ -218,6 +218,15 @@ void DearImGui::NewFrame(void* view)
 //------------------------------------------------------------------------------
 void DearImGui::Update(bool demo)
 {
+    if (ImGui::BeginMainMenuBar())
+    {
+        char fps[16];
+        snprintf(fps, 16, "%.1f FPS ", ImGui::GetIO().Framerate);
+        ImGui::SetCursorPosX(ImGui::GetIO().DisplaySize.x - ImGui::CalcTextSize(fps).x);
+        ImGui::TextUnformatted(fps);
+        ImGui::EndMainMenuBar();
+    }
+
     if (demo == false)
     {
         ImGui::EndFrame();
