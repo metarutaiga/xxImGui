@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Dear ImGui Header
 //
-// Copyright (c) 2019 TAiGA
+// Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #pragma once
