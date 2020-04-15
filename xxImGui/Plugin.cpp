@@ -34,7 +34,7 @@ void Plugin::Create(const char* path, uint64_t device)
     arch = ".x86";
 #endif
     extension = ".dll";
-#elif defined(xxMACOS)
+#elif defined(xxMACOS) || defined(xxIOS)
     extension = ".dylib";
 #elif defined(xxANDROID)
     extension = ".so";
@@ -45,6 +45,8 @@ void Plugin::Create(const char* path, uint64_t device)
     snprintf(temp, 4096, "%s\\%s", app, path);
 #elif defined(xxMACOS)
     snprintf(temp, 4096, "%s/../../..", app);
+#elif defined(xxIOS)
+    snprintf(temp, 4096, "%s/Frameworks", app);
 #elif defined(xxANDROID)
     snprintf(temp, 4096, "%s", app);
 #endif
@@ -56,6 +58,8 @@ void Plugin::Create(const char* path, uint64_t device)
         snprintf(temp, 4096, "%s\\%s\\%s", app, path, filename);
 #elif defined(xxMACOS)
         snprintf(temp, 4096, "%s/../../../%s", app, filename);
+#elif defined(xxIOS)
+        snprintf(temp, 4096, "%s/Frameworks/%s", app, filename);
 #elif defined(xxANDROID)
         snprintf(temp, 4096, "%s/%s", app, filename);
 #endif

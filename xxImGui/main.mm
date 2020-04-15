@@ -85,10 +85,9 @@
     width = rect.size.width * scale;
     height = rect.size.height * scale;
 #elif defined(xxIOS)
-    float scale = [[UIScreen mainScreen] nativeScale];
     CGRect rect = [[self window] bounds];
-    width = rect.size.width * scale;
-    height = rect.size.height  * scale;
+    width = rect.size.width;
+    height = rect.size.height;
 #endif
     Renderer::Reset((__bridge void*)[self window], width, height);
 }
@@ -299,8 +298,8 @@
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
     CGRect rect = [view bounds];
-    int width = rect.size.width * scale;
-    int height = rect.size.height  * scale;
+    int width = rect.size.width;
+    int height = rect.size.height;
 #endif
 
     Renderer::Create((__bridge void*)self.window, width, height);

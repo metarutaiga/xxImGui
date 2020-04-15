@@ -211,20 +211,22 @@
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXECUTABLE_EXTENSION = dylib;
+				LD_DYLIB_INSTALL_NAME = "@rpath/libimgui.dylib";
 				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 			};
 			name = Debug;
 		};
 		D6022C3D23258B5D00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXECUTABLE_EXTENSION = dylib;
+				LD_DYLIB_INSTALL_NAME = "@rpath/libimgui.dylib";
 				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		300264C7242691A3004559E0 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300264C6242691A3004559E0 /* libimgui.dylib */; };
+		3039F9D82447498C00E671A7 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
+		3039F9DD244749AE00E671A7 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039F9DC244749AE00E671A7 /* libimgui.dylib */; };
+		3039F9DF244749AE00E671A7 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039F9DE244749AE00E671A7 /* libxxGraphic.dylib */; };
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
 		30EDB9FD2427CE6200D599B5 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */; };
 /* End PBXBuildFile section */
@@ -27,6 +30,8 @@
 /* Begin PBXFileReference section */
 		300264BE24266097004559E0 /* libmbedtls.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libmbedtls.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		300264C6242691A3004559E0 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3039F9DC244749AE00E671A7 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3039F9DE244749AE00E671A7 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3039F9DD244749AE00E671A7 /* libimgui.dylib in Frameworks */,
+				3039F9DF244749AE00E671A7 /* libxxGraphic.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,8 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3039F9DC244749AE00E671A7 /* libimgui.dylib */,
+				3039F9DE244749AE00E671A7 /* libxxGraphic.dylib */,
 				30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */,
 				300264C6242691A3004559E0 /* libimgui.dylib */,
 				300264BE24266097004559E0 /* libmbedtls.dylib */,
@@ -168,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3039F9D82447498C00E671A7 /* validator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,20 +195,24 @@
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXECUTABLE_EXTENSION = dylib;
+				LD_DYLIB_INSTALL_NAME = "@rpath/libvalidator.dylib";
 				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../../lib;
+				SYMROOT = ../../build/build;
 			};
 			name = Debug;
 		};
 		D6022C3D23258B5D00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXECUTABLE_EXTENSION = dylib;
+				LD_DYLIB_INSTALL_NAME = "@rpath/libvalidator.dylib";
 				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../../lib;
+				SYMROOT = ../../build/build;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
