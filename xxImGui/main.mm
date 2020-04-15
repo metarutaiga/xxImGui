@@ -23,6 +23,7 @@
 @end
 #elif defined(xxIOS)
 @interface ImGuiExampleView : UIView
+@property (nonatomic) Boolean resetSize;
 @end
 #endif
 
@@ -60,6 +61,13 @@
 
 -(void)updateAndDraw
 {
+#if defined(xxIOS)
+    if (_resetSize)
+    {
+        _resetSize = NO;
+        [self reset];
+    }
+#endif
     DearImGui::NewFrame((__bridge void*)self);
     DearImGui::Update(Plugin::Update() == false);
 
@@ -85,9 +93,10 @@
     width = rect.size.width * scale;
     height = rect.size.height * scale;
 #elif defined(xxIOS)
+    float scale = [[UIScreen mainScreen] nativeScale];
     CGRect rect = [[self window] bounds];
-    width = rect.size.width;
-    height = rect.size.height;
+    width = rect.size.width * scale;
+    height = rect.size.height * scale;
 #endif
     Renderer::Reset((__bridge void*)[self window], width, height);
 }
@@ -140,7 +149,8 @@
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    Renderer::Reset((__bridge void*)[self.view window], size.width, size.height);
+    ImGuiExampleView* view = (ImGuiExampleView*)self.view;
+    view.resetSize = YES;
 }
 
 // This touch mapping is super cheesy/hacky. We treat any touch on the screen
@@ -298,8 +308,8 @@
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
     CGRect rect = [view bounds];
-    int width = rect.size.width;
-    int height = rect.size.height;
+    int width = rect.size.width * scale;
+    int height = rect.size.height  * scale;
 #endif
 
     Renderer::Create((__bridge void*)self.window, width, height);

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3039FA02244766EF00E671A7 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039FA01244766EE00E671A7 /* IOSurface.framework */; };
+		3039FA062447670900E671A7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039FA052447670900E671A7 /* OpenGLES.framework */; };
 		30EDB9ED2427CDBF00D599B5 /* xxImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E32427CDBF00D599B5 /* xxImage.h */; };
 		30EDB9EE2427CDBF00D599B5 /* xxMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E42427CDBF00D599B5 /* xxMesh.h */; };
 		30EDB9EF2427CDBF00D599B5 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */; };
@@ -124,6 +126,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3039FA01244766EE00E671A7 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
+		3039FA052447670900E671A7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		30EDB9E32427CDBF00D599B5 /* xxImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxImage.h; path = ../xxGraphic/utility/xxImage.h; sourceTree = "<group>"; };
 		30EDB9E42427CDBF00D599B5 /* xxMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMesh.h; path = ../xxGraphic/utility/xxMesh.h; sourceTree = "<group>"; };
 		30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMesh.cpp; path = ../xxGraphic/utility/xxMesh.cpp; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3039FA062447670900E671A7 /* OpenGLES.framework in Frameworks */,
+				3039FA02244766EF00E671A7 /* IOSurface.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +483,8 @@
 		D6B33859232043FD0096D02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3039FA052447670900E671A7 /* OpenGLES.framework */,
+				3039FA01244766EE00E671A7 /* IOSurface.framework */,
 				D6B3385C232044100096D02F /* Cocoa.framework */,
 				D6A727F6232414A7009981AD /* QuartzCore.framework */,
 			);
