@@ -405,20 +405,22 @@
 		D6022C2F232588CD00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXECUTABLE_EXTENSION = dylib;
+				LD_DYLIB_INSTALL_NAME = "@rpath/libfreetype.dylib";
 				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 			};
 			name = Debug;
 		};
 		D6022C30232588CD00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EXECUTABLE_EXTENSION = dylib;
+				LD_DYLIB_INSTALL_NAME = "@rpath/libfreetype.dylib";
 				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
