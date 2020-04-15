@@ -27,8 +27,8 @@
 		300264BE24266097004559E0 /* libmbedtls.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libmbedtls.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
 		300264C6242691A3004559E0 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* librtmp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = librtmp.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* librtmp.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = librtmp.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +71,8 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* librtmp.dylib */,
-				D6022C3523258B5D00B9BFB8 /* librtmp.a */,
+				D644A041231ED82900B75B77 /* libsample.dylib */,
+				D6022C3523258B5D00B9BFB8 /* libsample.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,8 +103,8 @@
 			dependencies = (
 			);
 			name = "sample (iOS)";
-			productName = "librtmp (iOS)";
-			productReference = D6022C3523258B5D00B9BFB8 /* librtmp.a */;
+			productName = sample;
+			productReference = D6022C3523258B5D00B9BFB8 /* libsample.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D644A040231ED82900B75B77 /* sample (macOS) */ = {
@@ -120,8 +120,8 @@
 			dependencies = (
 			);
 			name = "sample (macOS)";
-			productName = librtmp;
-			productReference = D644A041231ED82900B75B77 /* librtmp.dylib */;
+			productName = sample;
+			productReference = D644A041231ED82900B75B77 /* libsample.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -181,16 +181,20 @@
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
+				SYMROOT = ../../lib;
 			};
 			name = Debug;
 		};
 		D6022C3D23258B5D00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
+				SYMROOT = ../../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

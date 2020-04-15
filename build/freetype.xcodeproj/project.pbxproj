@@ -100,7 +100,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D6022C28232588CC00B9BFB8 /* libfreetype.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C28232588CC00B9BFB8 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FEA231EC9B800B75B77 /* ftpatent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpatent.c; path = ../freetype/src/base/ftpatent.c; sourceTree = "<group>"; };
 		D6449FEB231EC9B800B75B77 /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = ../freetype/src/base/ftsystem.c; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
-				D6022C28232588CC00B9BFB8 /* libfreetype.a */,
+				D6022C28232588CC00B9BFB8 /* libfreetype.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 			);
 			name = "freetype (iOS)";
 			productName = freetype;
-			productReference = D6022C28232588CC00B9BFB8 /* libfreetype.a */;
+			productReference = D6022C28232588CC00B9BFB8 /* libfreetype.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D6449FD9231EC3D800B75B77 /* freetype (macOS) */ = {
@@ -405,6 +405,8 @@
 		D6022C2F232588CD00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
 				SYMROOT = ../lib;
 			};
@@ -413,6 +415,8 @@
 		D6022C30232588CD00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
 				SYMROOT = ../lib;
 				VALIDATE_PRODUCT = YES;

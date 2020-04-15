@@ -29,8 +29,8 @@
 		300264C6242691A3004559E0 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* librtmp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = librtmp.a; path = libvalidator.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* librtmp.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = librtmp.dylib; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* librtmp.dylib */,
-				D6022C3523258B5D00B9BFB8 /* librtmp.a */,
+				D644A041231ED82900B75B77 /* libvalidator.dylib */,
+				D6022C3523258B5D00B9BFB8 /* libvalidator.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,8 +107,8 @@
 			dependencies = (
 			);
 			name = "validator (iOS)";
-			productName = "librtmp (iOS)";
-			productReference = D6022C3523258B5D00B9BFB8 /* librtmp.a */;
+			productName = validator;
+			productReference = D6022C3523258B5D00B9BFB8 /* libvalidator.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D644A040231ED82900B75B77 /* validator (macOS) */ = {
@@ -124,8 +124,8 @@
 			dependencies = (
 			);
 			name = "validator (macOS)";
-			productName = librtmp;
-			productReference = D644A041231ED82900B75B77 /* librtmp.dylib */;
+			productName = validator;
+			productReference = D644A041231ED82900B75B77 /* libvalidator.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -185,16 +185,20 @@
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
+				SYMROOT = ../../lib;
 			};
 			name = Debug;
 		};
 		D6022C3D23258B5D00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
+				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
+				SYMROOT = ../../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
