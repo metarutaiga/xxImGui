@@ -138,8 +138,8 @@
 		30EDB9EA2427CDBF00D599B5 /* xxMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMaterial.cpp; path = ../xxGraphic/utility/xxMaterial.cpp; sourceTree = "<group>"; };
 		30EDB9EB2427CDBF00D599B5 /* xxMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMaterial.h; path = ../xxGraphic/utility/xxMaterial.h; sourceTree = "<group>"; };
 		30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMath.cpp; path = ../xxGraphic/utility/xxMath.cpp; sourceTree = "<group>"; };
-		D6022C4223258BB600B9BFB8 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A092231EDDFA00B75B77 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = libxxGraphic.bundle; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicNULL.h; path = ../xxGraphic/xxGraphicNULL.h; sourceTree = "<group>"; };
 		D644A0A1231EDE9A00B75B77 /* xxGraphicGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicGL.h; path = ../xxGraphic/xxGraphicGL.h; sourceTree = "<group>"; };
 		D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxSystem.cpp; path = ../xxGraphic/xxSystem.cpp; sourceTree = "<group>"; };
@@ -311,8 +311,8 @@
 		D644A093231EDDFA00B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */,
-				D6022C4223258BB600B9BFB8 /* libxxGraphic.dylib */,
+				D644A092231EDDFA00B75B77 /* libxxGraphic.bundle */,
+				D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -593,7 +593,7 @@
 			);
 			name = "xxGraphic (iOS)";
 			productName = "xxGraphic (iOS)";
-			productReference = D6022C4223258BB600B9BFB8 /* libxxGraphic.dylib */;
+			productReference = D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D644A091231EDDFA00B75B77 /* xxGraphic (macOS) */ = {
@@ -610,7 +610,7 @@
 			);
 			name = "xxGraphic (macOS)";
 			productName = xxGraphic;
-			productReference = D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */;
+			productReference = D644A092231EDDFA00B75B77 /* libxxGraphic.bundle */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -703,10 +703,6 @@
 		D6022C4923258BB600B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXECUTABLE_EXTENSION = dylib;
-				LD_DYLIB_INSTALL_NAME = "@rpath/libxxGraphic.dylib";
-				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -714,10 +710,6 @@
 		D6022C4A23258BB600B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXECUTABLE_EXTENSION = dylib;
-				LD_DYLIB_INSTALL_NAME = "@rpath/libxxGraphic.dylib";
-				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -758,8 +750,11 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_EXTENSION = bundle;
+				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -776,6 +771,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../xxGraphic;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
@@ -821,8 +818,11 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = bundle;
+				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -833,6 +833,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../xxGraphic;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				PRODUCT_NAME = xxGraphic;
@@ -847,9 +849,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -863,9 +862,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
 				PROVISIONING_PROFILE_SPECIFIER = "";
