@@ -100,8 +100,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D6022C28232588CC00B9BFB8 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6449FDA231EC3D800B75B77 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = libfreetype.bundle; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FEA231EC9B800B75B77 /* ftpatent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpatent.c; path = ../freetype/src/base/ftpatent.c; sourceTree = "<group>"; };
 		D6449FEB231EC9B800B75B77 /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = ../freetype/src/base/ftsystem.c; sourceTree = "<group>"; };
 		D6449FEC231EC9B800B75B77 /* fttype1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fttype1.c; path = ../freetype/src/base/fttype1.c; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 		D6449FDB231EC3D800B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
-				D6022C28232588CC00B9BFB8 /* libfreetype.dylib */,
+				D6449FDA231EC3D800B75B77 /* libfreetype.bundle */,
+				D6022C28232588CC00B9BFB8 /* libfreetype.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 			);
 			name = "freetype (iOS)";
 			productName = freetype;
-			productReference = D6022C28232588CC00B9BFB8 /* libfreetype.dylib */;
+			productReference = D6022C28232588CC00B9BFB8 /* libfreetype.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D6449FD9231EC3D800B75B77 /* freetype (macOS) */ = {
@@ -268,7 +268,7 @@
 			);
 			name = "freetype (macOS)";
 			productName = freetype;
-			productReference = D6449FDA231EC3D800B75B77 /* libfreetype.dylib */;
+			productReference = D6449FDA231EC3D800B75B77 /* libfreetype.bundle */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -405,10 +405,6 @@
 		D6022C2F232588CD00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXECUTABLE_EXTENSION = dylib;
-				LD_DYLIB_INSTALL_NAME = "@rpath/libfreetype.dylib";
-				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -416,10 +412,6 @@
 		D6022C30232588CD00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EXECUTABLE_EXTENSION = dylib;
-				LD_DYLIB_INSTALL_NAME = "@rpath/libfreetype.dylib";
-				MACH_O_TYPE = mh_dylib;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -460,8 +452,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -479,6 +473,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../freetype/include;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
@@ -524,8 +520,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -541,6 +539,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../freetype/include;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				PRODUCT_NAME = freetype;
