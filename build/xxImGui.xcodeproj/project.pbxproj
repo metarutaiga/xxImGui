@@ -17,6 +17,9 @@
 		302A326A2448BC8E000B2AE9 /* libfreetype.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302A32522448BB21000B2AE9 /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		302A326B2448BC8E000B2AE9 /* libimgui.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302A32542448BB21000B2AE9 /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		302A326C2448BC8E000B2AE9 /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302A32562448BB22000B2AE9 /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		302A32712448BE1D000B2AE9 /* libfreetype.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 303DDEAF2448B7580042A480 /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		302A32722448BE1D000B2AE9 /* libimgui.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 303DDEB12448B7580042A480 /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		302A32732448BE1D000B2AE9 /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 303DDEB32448B7580042A480 /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		303DDEB02448B7580042A480 /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEAF2448B7580042A480 /* libfreetype.bundle */; };
 		303DDEB22448B7580042A480 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB12448B7580042A480 /* libimgui.bundle */; };
 		303DDEB42448B7580042A480 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB32448B7580042A480 /* libxxGraphic.bundle */; };
@@ -48,6 +51,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		302A32702448BE13000B2AE9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				302A32712448BE1D000B2AE9 /* libfreetype.bundle in CopyFiles */,
+				302A32722448BE1D000B2AE9 /* libimgui.bundle in CopyFiles */,
+				302A32732448BE1D000B2AE9 /* libxxGraphic.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3039F9692447314F00E671A7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +265,7 @@
 				D644A0C2231F021F00B75B77 /* Sources */,
 				D644A0C3231F021F00B75B77 /* Frameworks */,
 				D644A0C4231F021F00B75B77 /* Resources */,
+				302A32702448BE13000B2AE9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
