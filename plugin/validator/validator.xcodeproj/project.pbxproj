@@ -34,7 +34,7 @@
 		303DDEA92448B7000042A480 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 			name = "validator (macOS)";
 			productName = validator;
 			productReference = D644A041231ED82900B75B77 /* libvalidator.bundle */;
-			productType = "com.apple.product-type.library.dynamic";
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -194,7 +194,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../../build/build;
 			};
 			name = Debug;
 		};
@@ -202,7 +201,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../../build/build;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -273,6 +271,7 @@
 				PRODUCT_NAME = validator;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -340,6 +339,7 @@
 				PRODUCT_NAME = validator;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -348,7 +348,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
 			};
 			name = Debug;
 		};
@@ -356,7 +355,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
 			};
 			name = Release;
 		};
