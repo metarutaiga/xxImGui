@@ -126,11 +126,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302A32612448BBEF000B2AE9 /* QuartzCore.framework in Frameworks */,
+				302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */,
 				302A32532448BB21000B2AE9 /* libfreetype.bundle in Frameworks */,
 				302A32552448BB21000B2AE9 /* libimgui.bundle in Frameworks */,
 				302A32572448BB22000B2AE9 /* libxxGraphic.bundle in Frameworks */,
-				302A32612448BBEF000B2AE9 /* QuartzCore.framework in Frameworks */,
-				302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,12 +138,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				303DDEB02448B7580042A480 /* libfreetype.bundle in Frameworks */,
-				303DDEB22448B7580042A480 /* libimgui.bundle in Frameworks */,
-				303DDEB42448B7580042A480 /* libxxGraphic.bundle in Frameworks */,
 				303DDECC2448B80C0042A480 /* AppKit.framework in Frameworks */,
 				303DDEB82448B7680042A480 /* Metal.framework in Frameworks */,
 				303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */,
+				303DDEB02448B7580042A480 /* libfreetype.bundle in Frameworks */,
+				303DDEB22448B7580042A480 /* libimgui.bundle in Frameworks */,
+				303DDEB42448B7580042A480 /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +467,7 @@
 				PRODUCT_NAME = xxImGui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -533,6 +534,7 @@
 				PRODUCT_NAME = xxImGui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -544,7 +546,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				SYMROOT = ../bin;
 			};
 			name = Debug;
 		};
@@ -555,7 +556,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				SYMROOT = ../bin;
 			};
 			name = Release;
 		};

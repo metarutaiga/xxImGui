@@ -30,7 +30,7 @@
 		302A324E2448BAF1000B2AE9 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		303DDEAB2448B70A0042A480 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,7 @@
 			name = "sample (macOS)";
 			productName = sample;
 			productReference = D644A041231ED82900B75B77 /* libsample.bundle */;
-			productType = "com.apple.product-type.library.dynamic";
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -186,7 +186,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../../build/build;
 			};
 			name = Debug;
 		};
@@ -194,7 +193,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../../build/build;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -264,6 +262,7 @@
 				PRODUCT_NAME = sample;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -330,6 +329,7 @@
 				PRODUCT_NAME = sample;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -338,7 +338,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
 			};
 			name = Debug;
 		};
@@ -346,7 +345,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
 			};
 			name = Release;
 		};
