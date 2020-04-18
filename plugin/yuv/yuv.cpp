@@ -158,6 +158,7 @@ pluginAPI void Update(const UpdateData& updateData)
         if (ImGui::Begin("Dialog", &showDialog, ImGuiWindowFlags_AlwaysAutoResize))
         {
             static int format = 0;
+            static uint64_t tsc = 0;
 
             bool click = false;
             click |= ImGui::RadioButton("YU12", &format, 0);
@@ -177,28 +178,33 @@ pluginAPI void Update(const UpdateData& updateData)
                     int sizeY = lennaWidth * lennaHeight;
                     int sizeUV = lennaWidth / 2 * lennaHeight / 2;
 
+                    uint64_t startTSC = xxTSC();
                     switch (format)
                     {
                     default:
                     case 0:
-                        yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, 4);
+                        yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, 4, true);
                         break;
                     case 1:
-                        yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, 4);
+                        yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, 4, true);
                         break;
                     case 2:
-                        yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, 4);
+                        yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, 4, true);
                         break;
                     case 3:
-                        yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, 4);
+                        yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, 4, true);
                         break;
                     }
+                    tsc = xxTSC() - startTSC;
 
                     loadTextureFromImage<4, 4>(target, updateData.device, temp, lennaWidth, lennaHeight);
 
                     free(temp);
                 }
             }
+
+            ImGui::SameLine();
+            ImGui::Text("TSC : %llu", tsc);
 
             if (source == 0)
             {
