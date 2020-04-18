@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Plugin Source
 //
-// Copyright (c) 2019 TAiGA
+// Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include "xxGraphic/xxSystem.h"
@@ -22,6 +22,7 @@ void Plugin::Create(const char* path, uint64_t device)
     const char* configuration = "";
     const char* arch = "";
     const char* extension = "";
+#if defined(xxWINDOWS)
 #if defined(_DEBUG)
     configuration = "Debug";
 #elif defined(NDEBUG)
@@ -32,10 +33,9 @@ void Plugin::Create(const char* path, uint64_t device)
 #elif defined(_M_IX86)
     arch = ".x86";
 #endif
-#if defined(xxWINDOWS)
     extension = ".dll";
-#elif defined(xxMACOS)
-    extension = ".dylib";
+#elif defined(xxMACOS) || defined(xxIOS)
+    extension = ".bundle";
 #elif defined(xxANDROID)
     extension = ".so";
 #endif
@@ -45,6 +45,8 @@ void Plugin::Create(const char* path, uint64_t device)
     snprintf(temp, 4096, "%s\\%s", app, path);
 #elif defined(xxMACOS)
     snprintf(temp, 4096, "%s/../../..", app);
+#elif defined(xxIOS)
+    snprintf(temp, 4096, "%s/Frameworks", app);
 #elif defined(xxANDROID)
     snprintf(temp, 4096, "%s", app);
 #endif
@@ -56,6 +58,8 @@ void Plugin::Create(const char* path, uint64_t device)
         snprintf(temp, 4096, "%s\\%s\\%s", app, path, filename);
 #elif defined(xxMACOS)
         snprintf(temp, 4096, "%s/../../../%s", app, filename);
+#elif defined(xxIOS)
+        snprintf(temp, 4096, "%s/Frameworks/%s", app, filename);
 #elif defined(xxANDROID)
         snprintf(temp, 4096, "%s/%s", app, filename);
 #endif

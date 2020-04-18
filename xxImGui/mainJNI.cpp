@@ -31,8 +31,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
     xxJNIEnv = env;
 
     Renderer::Create(window, width, height);
-    DearImGui::Create(window, 2.0f);
-    Plugin::Create("plugin");
+    DearImGui::Create(window, 3.0f);
+    Plugin::Create("plugin", Renderer::g_device);
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resize(JNIEnv* env, jclass obj, jint width, jint height, jobject surface)
