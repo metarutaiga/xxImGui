@@ -347,14 +347,12 @@
 		D644A04D231ED82900B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
 			};
 			name = Debug;
 		};
 		D644A04E231ED82900B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
 			};
 			name = Release;
 		};
