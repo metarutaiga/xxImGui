@@ -8,7 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		300264C5242690D0004559E0 /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; };
-		300264C7242691A3004559E0 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300264C6242691A3004559E0 /* libimgui.dylib */; };
+		302D20DC244AC55400D84267 /* yuv2rgb.h in Headers */ = {isa = PBXBuildFile; fileRef = 302D20D8244AC55400D84267 /* yuv2rgb.h */; };
+		302D20DD244AC55400D84267 /* rgb2yuv.h in Headers */ = {isa = PBXBuildFile; fileRef = 302D20D9244AC55400D84267 /* rgb2yuv.h */; };
+		302D20DE244AC55400D84267 /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; };
+		302D20DF244AC55400D84267 /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; };
+		302D20E0244AC55400D84267 /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; };
+		302D20E1244AC55400D84267 /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; };
+		30B096B4244ACE370096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B3244ACE370096E6DC /* libimgui.dylib */; };
+		30B096B6244ACE370096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B5244ACE370096E6DC /* libxxGraphic.dylib */; };
+		30B096C0244AD3090096E6DC /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; };
+		30B096C2244AD37A0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C1244AD37A0096E6DC /* libimgui.bundle */; };
+		30B096C4244AD37A0096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,11 +34,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		300264BE24266097004559E0 /* libmbedtls.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libmbedtls.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		300264C4242690D0004559E0 /* yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yuv.cpp; sourceTree = "<group>"; };
-		300264C6242691A3004559E0 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* librtmp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = librtmp.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* librtmp.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = librtmp.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		302D20D8244AC55400D84267 /* yuv2rgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb.h; path = ../../xxYUV/yuv2rgb.h; sourceTree = "<group>"; };
+		302D20D9244AC55400D84267 /* rgb2yuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgb2yuv.h; path = ../../xxYUV/rgb2yuv.h; sourceTree = "<group>"; };
+		302D20DA244AC55400D84267 /* rgb2yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgb2yuv.cpp; path = ../../xxYUV/rgb2yuv.cpp; sourceTree = "<group>"; };
+		302D20DB244AC55400D84267 /* yuv2rgb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb.cpp; path = ../../xxYUV/yuv2rgb.cpp; sourceTree = "<group>"; };
+		30B096B3244ACE370096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096B5244ACE370096E6DC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096C1244AD37A0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B096C2244AD37A0096E6DC /* libimgui.bundle in Frameworks */,
+				30B096C4244AD37A0096E6DC /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C7242691A3004559E0 /* libimgui.dylib in Frameworks */,
+				30B096B4244ACE370096E6DC /* libimgui.dylib in Frameworks */,
+				30B096B6244ACE370096E6DC /* libxxGraphic.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,16 +72,30 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				300264C6242691A3004559E0 /* libimgui.dylib */,
-				300264BE24266097004559E0 /* libmbedtls.dylib */,
+				30B096C1244AD37A0096E6DC /* libimgui.bundle */,
+				30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */,
+				30B096B3244ACE370096E6DC /* libimgui.dylib */,
+				30B096B5244ACE370096E6DC /* libxxGraphic.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		302D20D6244AC53A00D84267 /* xxYUV */ = {
+			isa = PBXGroup;
+			children = (
+				302D20DA244AC55400D84267 /* rgb2yuv.cpp */,
+				302D20D9244AC55400D84267 /* rgb2yuv.h */,
+				302D20DB244AC55400D84267 /* yuv2rgb.cpp */,
+				302D20D8244AC55400D84267 /* yuv2rgb.h */,
+			);
+			name = xxYUV;
 			sourceTree = "<group>";
 		};
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
 				300264C4242690D0004559E0 /* yuv.cpp */,
+				302D20D6244AC53A00D84267 /* xxYUV */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -71,8 +104,8 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* librtmp.dylib */,
-				D6022C3523258B5D00B9BFB8 /* librtmp.a */,
+				D644A041231ED82900B75B77 /* libyuv.dylib */,
+				D6022C3523258B5D00B9BFB8 /* libyuv.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +117,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302D20DD244AC55400D84267 /* rgb2yuv.h in Headers */,
+				302D20DC244AC55400D84267 /* yuv2rgb.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +139,7 @@
 			);
 			name = "yuv (iOS)";
 			productName = "librtmp (iOS)";
-			productReference = D6022C3523258B5D00B9BFB8 /* librtmp.a */;
+			productReference = D6022C3523258B5D00B9BFB8 /* libyuv.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D644A040231ED82900B75B77 /* yuv (macOS) */ = {
@@ -121,8 +156,8 @@
 			);
 			name = "yuv (macOS)";
 			productName = librtmp;
-			productReference = D644A041231ED82900B75B77 /* librtmp.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
+			productReference = D644A041231ED82900B75B77 /* libyuv.dylib */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -164,6 +199,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B096C0244AD3090096E6DC /* yuv.cpp in Sources */,
+				302D20DF244AC55400D84267 /* rgb2yuv.cpp in Sources */,
+				302D20E1244AC55400D84267 /* yuv2rgb.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +210,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				300264C5242690D0004559E0 /* yuv.cpp in Sources */,
+				302D20E0244AC55400D84267 /* yuv2rgb.cpp in Sources */,
+				302D20DE244AC55400D84267 /* rgb2yuv.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +222,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 			};
 			name = Debug;
 		};
@@ -190,7 +229,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -232,12 +270,17 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -256,6 +299,7 @@
 				PRODUCT_NAME = yuv;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -297,10 +341,14 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = " ";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -318,6 +366,7 @@
 				PRODUCT_NAME = yuv;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -325,16 +374,14 @@
 		D644A04D231ED82900B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
 		D644A04E231ED82900B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Release;
 		};
