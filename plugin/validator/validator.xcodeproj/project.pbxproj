@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300264C7242691A3004559E0 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 300264C6242691A3004559E0 /* libimgui.dylib */; };
+		302A324B2448BAE8000B2AE9 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A324A2448BAE8000B2AE9 /* libimgui.bundle */; };
+		302A324D2448BAE8000B2AE9 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A324C2448BAE8000B2AE9 /* libxxGraphic.bundle */; };
+		3039F9D82447498C00E671A7 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
+		303DDEA82448B7000042A480 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEA72448B7000042A480 /* libimgui.bundle */; };
+		303DDEAA2448B7000042A480 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEA92448B7000042A480 /* libxxGraphic.bundle */; };
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
-		30EDB9FD2427CE6200D599B5 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,12 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		300264BE24266097004559E0 /* libmbedtls.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libmbedtls.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		300264C6242691A3004559E0 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		302A324A2448BAE8000B2AE9 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		302A324C2448BAE8000B2AE9 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		303DDEA72448B7000042A480 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		303DDEA92448B7000042A480 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
-		30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* librtmp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = librtmp.a; path = libvalidator.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* librtmp.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = librtmp.dylib; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302A324B2448BAE8000B2AE9 /* libimgui.bundle in Frameworks */,
+				302A324D2448BAE8000B2AE9 /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C7242691A3004559E0 /* libimgui.dylib in Frameworks */,
-				30EDB9FD2427CE6200D599B5 /* libxxGraphic.dylib in Frameworks */,
+				303DDEA82448B7000042A480 /* libimgui.bundle in Frameworks */,
+				303DDEAA2448B7000042A480 /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,9 +62,10 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30EDB9FC2427CE6200D599B5 /* libxxGraphic.dylib */,
-				300264C6242691A3004559E0 /* libimgui.dylib */,
-				300264BE24266097004559E0 /* libmbedtls.dylib */,
+				302A324A2448BAE8000B2AE9 /* libimgui.bundle */,
+				302A324C2448BAE8000B2AE9 /* libxxGraphic.bundle */,
+				303DDEA72448B7000042A480 /* libimgui.bundle */,
+				303DDEA92448B7000042A480 /* libxxGraphic.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -75,8 +82,8 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* librtmp.dylib */,
-				D6022C3523258B5D00B9BFB8 /* librtmp.a */,
+				D644A041231ED82900B75B77 /* libvalidator.bundle */,
+				D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,8 +114,8 @@
 			dependencies = (
 			);
 			name = "validator (iOS)";
-			productName = "librtmp (iOS)";
-			productReference = D6022C3523258B5D00B9BFB8 /* librtmp.a */;
+			productName = validator;
+			productReference = D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D644A040231ED82900B75B77 /* validator (macOS) */ = {
@@ -124,9 +131,9 @@
 			dependencies = (
 			);
 			name = "validator (macOS)";
-			productName = librtmp;
-			productReference = D644A041231ED82900B75B77 /* librtmp.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
+			productName = validator;
+			productReference = D644A041231ED82900B75B77 /* libvalidator.bundle */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -168,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3039F9D82447498C00E671A7 /* validator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +194,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 			};
 			name = Debug;
 		};
@@ -194,7 +201,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -234,8 +240,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -255,12 +263,15 @@
 					../../xxGraphic,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = validator;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -300,8 +311,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -319,11 +332,14 @@
 					../../xxGraphic,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
 				PRODUCT_NAME = validator;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -332,7 +348,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
 			};
 			name = Debug;
 		};
@@ -340,7 +355,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../bin/$(CONFIGURATION)";
-				SYMROOT = ../../bin;
 			};
 			name = Release;
 		};

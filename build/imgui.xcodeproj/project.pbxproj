@@ -36,8 +36,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D6022C3523258B5D00B9BFB8 /* libimgui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A06C231ED90300B75B77 /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../imgui/imgui_internal.h; sourceTree = "<group>"; };
 		D644A06D231ED90300B75B77 /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../imgui/imgui_draw.cpp; sourceTree = "<group>"; };
 		D644A06E231ED90300B75B77 /* imgui_widgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_widgets.cpp; path = ../imgui/imgui_widgets.cpp; sourceTree = "<group>"; };
@@ -88,8 +88,8 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* libimgui.dylib */,
-				D6022C3523258B5D00B9BFB8 /* libimgui.a */,
+				D644A041231ED82900B75B77 /* libimgui.bundle */,
+				D6022C3523258B5D00B9BFB8 /* libimgui.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,7 +127,7 @@
 			);
 			name = "imgui (iOS)";
 			productName = "imgui (iOS)";
-			productReference = D6022C3523258B5D00B9BFB8 /* libimgui.a */;
+			productReference = D6022C3523258B5D00B9BFB8 /* libimgui.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D644A040231ED82900B75B77 /* imgui (macOS) */ = {
@@ -144,8 +144,8 @@
 			);
 			name = "imgui (macOS)";
 			productName = imgui;
-			productReference = D644A041231ED82900B75B77 /* libimgui.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
+			productReference = D644A041231ED82900B75B77 /* libimgui.bundle */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -212,7 +212,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 			};
 			name = Debug;
 		};
@@ -220,7 +219,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
-				SYMROOT = ../lib;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -260,8 +258,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -280,12 +280,15 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../imgui;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = imgui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -325,8 +328,10 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -342,11 +347,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../imgui;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				PRODUCT_NAME = imgui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SYMROOT = ../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -354,14 +362,12 @@
 		D644A04D231ED82900B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				SYMROOT = ../bin;
 			};
 			name = Debug;
 		};
 		D644A04E231ED82900B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				SYMROOT = ../bin;
 			};
 			name = Release;
 		};

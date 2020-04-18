@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Plugin Sample Source
 //
-// Copyright (c) 2019 TAiGA
+// Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include <interface.h>

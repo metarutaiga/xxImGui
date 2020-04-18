@@ -23,6 +23,7 @@
 @end
 #elif defined(xxIOS)
 @interface ImGuiExampleView : UIView
+@property (nonatomic) Boolean resetSize;
 @end
 #endif
 
@@ -60,6 +61,13 @@
 
 -(void)updateAndDraw
 {
+#if defined(xxIOS)
+    if (_resetSize)
+    {
+        _resetSize = NO;
+        [self reset];
+    }
+#endif
     DearImGui::NewFrame((__bridge void*)self);
     DearImGui::Update(Plugin::Update() == false);
 
@@ -88,7 +96,7 @@
     float scale = [[UIScreen mainScreen] nativeScale];
     CGRect rect = [[self window] bounds];
     width = rect.size.width * scale;
-    height = rect.size.height  * scale;
+    height = rect.size.height * scale;
 #endif
     Renderer::Reset((__bridge void*)[self window], width, height);
 }
@@ -141,7 +149,8 @@
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    Renderer::Reset((__bridge void*)[self.view window], size.width, size.height);
+    ImGuiExampleView* view = (ImGuiExampleView*)self.view;
+    view.resetSize = YES;
 }
 
 // This touch mapping is super cheesy/hacky. We treat any touch on the screen
@@ -305,7 +314,7 @@
 
     Renderer::Create((__bridge void*)self.window, width, height);
     DearImGui::Create((__bridge void*)view, scale);
-    Plugin::Create("plugin");
+    Plugin::Create("plugin", Renderer::g_device);
 }
 
 -(void)shutdown
