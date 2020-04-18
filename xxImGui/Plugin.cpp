@@ -34,7 +34,9 @@ void Plugin::Create(const char* path, uint64_t device)
     arch = ".x86";
 #endif
     extension = ".dll";
-#elif defined(xxMACOS) || defined(xxIOS)
+#elif defined(xxMACOS)
+    extension = ".dylib";
+#elif defined(xxIOS)
     extension = ".bundle";
 #elif defined(xxANDROID)
     extension = ".so";

@@ -101,7 +101,7 @@
 
 /* Begin PBXFileReference section */
 		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6449FDA231EC3D800B75B77 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FEA231EC9B800B75B77 /* ftpatent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpatent.c; path = ../freetype/src/base/ftpatent.c; sourceTree = "<group>"; };
 		D6449FEB231EC9B800B75B77 /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = ../freetype/src/base/ftsystem.c; sourceTree = "<group>"; };
 		D6449FEC231EC9B800B75B77 /* fttype1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fttype1.c; path = ../freetype/src/base/fttype1.c; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		D6449FDB231EC3D800B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6449FDA231EC3D800B75B77 /* libfreetype.bundle */,
+				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
 				D6022C28232588CC00B9BFB8 /* libfreetype.bundle */,
 			);
 			name = Products;
@@ -268,7 +268,7 @@
 			);
 			name = "freetype (macOS)";
 			productName = freetype;
-			productReference = D6449FDA231EC3D800B75B77 /* libfreetype.bundle */;
+			productReference = D6449FDA231EC3D800B75B77 /* libfreetype.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -555,12 +555,14 @@
 		D6449FE6231EC3D800B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
 		D6449FE7231EC3D800B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Release;
 		};
