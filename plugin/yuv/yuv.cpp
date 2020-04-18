@@ -64,8 +64,12 @@ static void loadTextureFromImage(uint64_t& texture, uint64_t device, const void*
 //------------------------------------------------------------------------------
 pluginAPI const char* Create(const CreateData& createData)
 {
-    char path[MAX_PATH];
-    snprintf(path, MAX_PATH, "%s/%s/%s", createData.baseFolder, "resource", "lenna.rgb");
+    char path[1024];
+#if defined(xxMACOS)
+    snprintf(path, 1024, "%s/../%s/%s", createData.baseFolder, "Resources", "lenna.rgb");
+#else
+    snprintf(path, 1024, "%s/%s/%s", createData.baseFolder, "resource", "lenna.rgb");
+#endif
 
     FILE* file = fopen(path, "rb");
     if (file)
@@ -153,17 +157,6 @@ pluginAPI void Update(const UpdateData& updateData)
     {
         if (ImGui::Begin("Dialog", &showDialog, ImGuiWindowFlags_AlwaysAutoResize))
         {
-            if (source == 0)
-            {
-                loadTextureFromImage<4, 3>(source, updateData.device, lennaRGB, lennaWidth, lennaHeight);
-            }
-            ImGui::Image((ImTextureID)source, ImVec2(lennaWidth, lennaHeight));
-            if (target != 0)
-            {
-                ImGui::SameLine();
-                ImGui::Image((ImTextureID)target, ImVec2(lennaWidth, lennaHeight));
-            }
-
             static int format = 0;
 
             bool click = false;
@@ -206,6 +199,21 @@ pluginAPI void Update(const UpdateData& updateData)
                     free(temp);
                 }
             }
+
+            if (source == 0)
+            {
+                loadTextureFromImage<4, 3>(source, updateData.device, lennaRGB, lennaWidth, lennaHeight);
+            }
+            if (source != 0)
+            {
+                ImGui::Image((ImTextureID)source, ImVec2(lennaWidth, lennaHeight));
+            }
+            if (target != 0)
+            {
+                ImGui::SameLine();
+                ImGui::Image((ImTextureID)target, ImVec2(lennaWidth, lennaHeight));
+            }
+
             ImGui::End();
         }
     }
