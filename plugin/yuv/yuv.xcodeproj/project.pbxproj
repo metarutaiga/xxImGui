@@ -44,7 +44,7 @@
 		30B096C1244AD37A0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +268,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				EXECUTABLE_EXTENSION = bundle;
@@ -293,6 +294,8 @@
 					../../imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
 				ONLY_ACTIVE_ARCH = YES;
@@ -339,6 +342,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_EXTENSION = bundle;
@@ -361,6 +365,8 @@
 					../../imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
+				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
 				PRODUCT_NAME = yuv;
@@ -375,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
+				OTHER_CFLAGS = "-mavx2";
 			};
 			name = Debug;
 		};
@@ -382,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
+				OTHER_CFLAGS = "-mavx2";
 			};
 			name = Release;
 		};
