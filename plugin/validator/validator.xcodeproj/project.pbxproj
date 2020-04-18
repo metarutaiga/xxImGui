@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		302A324B2448BAE8000B2AE9 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A324A2448BAE8000B2AE9 /* libimgui.bundle */; };
-		302A324D2448BAE8000B2AE9 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A324C2448BAE8000B2AE9 /* libxxGraphic.bundle */; };
 		3039F9D82447498C00E671A7 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
-		303DDEA82448B7000042A480 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEA72448B7000042A480 /* libimgui.bundle */; };
-		303DDEAA2448B7000042A480 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEA92448B7000042A480 /* libxxGraphic.bundle */; };
+		30B096BA244ACE5E0096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B9244ACE5E0096E6DC /* libimgui.dylib */; };
+		30B096BC244ACE5E0096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */; };
+		30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C5244AD3940096E6DC /* libimgui.bundle */; };
+		30B096C8244AD3940096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C7244AD3940096E6DC /* libxxGraphic.bundle */; };
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
 /* End PBXBuildFile section */
 
@@ -28,13 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		302A324A2448BAE8000B2AE9 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302A324C2448BAE8000B2AE9 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		303DDEA72448B7000042A480 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		303DDEA92448B7000042A480 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096B9244ACE5E0096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096C5244AD3940096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096C7244AD3940096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,8 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				302A324B2448BAE8000B2AE9 /* libimgui.bundle in Frameworks */,
-				302A324D2448BAE8000B2AE9 /* libxxGraphic.bundle in Frameworks */,
+				30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */,
+				30B096C8244AD3940096E6DC /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				303DDEA82448B7000042A480 /* libimgui.bundle in Frameworks */,
-				303DDEAA2448B7000042A480 /* libxxGraphic.bundle in Frameworks */,
+				30B096BA244ACE5E0096E6DC /* libimgui.dylib in Frameworks */,
+				30B096BC244ACE5E0096E6DC /* libxxGraphic.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,10 +62,10 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				302A324A2448BAE8000B2AE9 /* libimgui.bundle */,
-				302A324C2448BAE8000B2AE9 /* libxxGraphic.bundle */,
-				303DDEA72448B7000042A480 /* libimgui.bundle */,
-				303DDEA92448B7000042A480 /* libxxGraphic.bundle */,
+				30B096C5244AD3940096E6DC /* libimgui.bundle */,
+				30B096C7244AD3940096E6DC /* libxxGraphic.bundle */,
+				30B096B9244ACE5E0096E6DC /* libimgui.dylib */,
+				30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* libvalidator.bundle */,
+				D644A041231ED82900B75B77 /* libvalidator.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */,
 			);
 			name = Products;
@@ -132,7 +132,7 @@
 			);
 			name = "validator (macOS)";
 			productName = validator;
-			productReference = D644A041231ED82900B75B77 /* libvalidator.bundle */;
+			productReference = D644A041231ED82900B75B77 /* libvalidator.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -347,12 +347,14 @@
 		D644A04D231ED82900B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
 		D644A04E231ED82900B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Release;
 		};

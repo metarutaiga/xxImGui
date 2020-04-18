@@ -139,7 +139,7 @@
 		30EDB9EB2427CDBF00D599B5 /* xxMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMaterial.h; path = ../xxGraphic/utility/xxMaterial.h; sourceTree = "<group>"; };
 		30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMath.cpp; path = ../xxGraphic/utility/xxMath.cpp; sourceTree = "<group>"; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A092231EDDFA00B75B77 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicNULL.h; path = ../xxGraphic/xxGraphicNULL.h; sourceTree = "<group>"; };
 		D644A0A1231EDE9A00B75B77 /* xxGraphicGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicGL.h; path = ../xxGraphic/xxGraphicGL.h; sourceTree = "<group>"; };
 		D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxSystem.cpp; path = ../xxGraphic/xxSystem.cpp; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 		D644A093231EDDFA00B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A092231EDDFA00B75B77 /* libxxGraphic.bundle */,
+				D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */,
 				D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */,
 			);
 			name = Products;
@@ -610,7 +610,7 @@
 			);
 			name = "xxGraphic (macOS)";
 			productName = xxGraphic;
-			productReference = D644A092231EDDFA00B75B77 /* libxxGraphic.bundle */;
+			productReference = D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -849,12 +849,14 @@
 		D644A09E231EDDFA00B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Debug;
 		};
 		D644A09F231EDDFA00B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXECUTABLE_EXTENSION = dylib;
 			};
 			name = Release;
 		};
