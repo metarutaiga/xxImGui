@@ -9,30 +9,31 @@
 /* Begin PBXBuildFile section */
 		300264C2242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		300264C3242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
+		30034545244ACD9300E90C44 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; };
+		30034547244ACD9300E90C44 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; };
+		30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; };
+		3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; };
+		3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; };
 		302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A325E2448BB9E000B2AE9 /* UIKit.framework */; };
-		302D20B7244AB5CC00D84267 /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20B6244AB5CC00D84267 /* libfreetype.bundle */; };
-		302D20B9244AB5CC00D84267 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20B8244AB5CC00D84267 /* libimgui.bundle */; };
-		302D20BB244AB5CC00D84267 /* libsample.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20BA244AB5CC00D84267 /* libsample.bundle */; };
-		302D20BD244AB5CC00D84267 /* libvalidator.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20BC244AB5CC00D84267 /* libvalidator.bundle */; };
-		302D20BF244AB5CC00D84267 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20BE244AB5CC00D84267 /* libxxGraphic.bundle */; };
-		302D20C0244AB5DD00D84267 /* libfreetype.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20B6244AB5CC00D84267 /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20C1244AB5DD00D84267 /* libimgui.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20B8244AB5CC00D84267 /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20C2244AB5DD00D84267 /* libsample.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20BA244AB5CC00D84267 /* libsample.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20C3244AB5DD00D84267 /* libvalidator.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20BC244AB5CC00D84267 /* libvalidator.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20C4244AB5DD00D84267 /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20BE244AB5CC00D84267 /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20C6244AB5EB00D84267 /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20C5244AB5EB00D84267 /* libfreetype.bundle */; };
-		302D20C8244AB5EB00D84267 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20C7244AB5EB00D84267 /* libimgui.bundle */; };
-		302D20CA244AB5EB00D84267 /* libsample.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20C9244AB5EB00D84267 /* libsample.bundle */; };
-		302D20CC244AB5EB00D84267 /* libvalidator.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20CB244AB5EB00D84267 /* libvalidator.bundle */; };
-		302D20CE244AB5EB00D84267 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20CD244AB5EB00D84267 /* libxxGraphic.bundle */; };
-		302D20CF244AB60700D84267 /* libfreetype.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20C5244AB5EB00D84267 /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20D0244AB60700D84267 /* libimgui.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20C7244AB5EB00D84267 /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20D1244AB60700D84267 /* libsample.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20C9244AB5EB00D84267 /* libsample.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20D2244AB60700D84267 /* libvalidator.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20CB244AB5EB00D84267 /* libvalidator.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		302D20D3244AB60700D84267 /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 302D20CD244AB5EB00D84267 /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; };
+		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096A2244ACDC40096E6DC /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A1244ACDC40096E6DC /* libfreetype.bundle */; };
+		30B096A4244ACDC40096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A3244ACDC40096E6DC /* libimgui.bundle */; };
+		30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A5244ACDC50096E6DC /* libsample.bundle */; };
+		30B096A8244ACDC50096E6DC /* libvalidator.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A7244ACDC50096E6DC /* libvalidator.bundle */; };
+		30B096AA244ACDC50096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; };
+		30B096AD244ACDDD0096E6DC /* libfreetype.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A1244ACDC40096E6DC /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096AE244ACDDD0096E6DC /* libimgui.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A3244ACDC40096E6DC /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096AF244ACDDD0096E6DC /* libsample.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A5244ACDC50096E6DC /* libsample.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096B0244ACDDD0096E6DC /* libvalidator.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A7244ACDC50096E6DC /* libvalidator.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -64,11 +65,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				302D20C0244AB5DD00D84267 /* libfreetype.bundle in CopyFiles */,
-				302D20C1244AB5DD00D84267 /* libimgui.bundle in CopyFiles */,
-				302D20C2244AB5DD00D84267 /* libsample.bundle in CopyFiles */,
-				302D20C3244AB5DD00D84267 /* libvalidator.bundle in CopyFiles */,
-				302D20C4244AB5DD00D84267 /* libxxGraphic.bundle in CopyFiles */,
+				30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */,
+				30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */,
+				30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */,
+				30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */,
+				30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,11 +79,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				302D20CF244AB60700D84267 /* libfreetype.bundle in CopyFiles */,
-				302D20D0244AB60700D84267 /* libimgui.bundle in CopyFiles */,
-				302D20D1244AB60700D84267 /* libsample.bundle in CopyFiles */,
-				302D20D2244AB60700D84267 /* libvalidator.bundle in CopyFiles */,
-				302D20D3244AB60700D84267 /* libxxGraphic.bundle in CopyFiles */,
+				30B096AD244ACDDD0096E6DC /* libfreetype.bundle in CopyFiles */,
+				30B096AE244ACDDD0096E6DC /* libimgui.bundle in CopyFiles */,
+				30B096AF244ACDDD0096E6DC /* libsample.bundle in CopyFiles */,
+				30B096B0244ACDDD0096E6DC /* libvalidator.bundle in CopyFiles */,
+				30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,22 +92,23 @@
 /* Begin PBXFileReference section */
 		300264C0242687B7004559E0 /* Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Plugin.cpp; path = ../xxImGui/Plugin.cpp; sourceTree = "<group>"; };
 		300264C1242687B7004559E0 /* Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plugin.h; path = ../xxImGui/Plugin.h; sourceTree = "<group>"; };
+		30034544244ACD9300E90C44 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30034546244ACD9300E90C44 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30034548244ACD9300E90C44 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3003454A244ACD9300E90C44 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3003454C244ACD9300E90C44 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		302A325E2448BB9E000B2AE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		302D20B6244AB5CC00D84267 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20B8244AB5CC00D84267 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20BA244AB5CC00D84267 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20BC244AB5CC00D84267 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20BE244AB5CC00D84267 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20C5244AB5EB00D84267 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20C7244AB5EB00D84267 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20C9244AB5EB00D84267 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20CB244AB5EB00D84267 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20CD244AB5EB00D84267 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		302D20D4244AB62200D84267 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		3039F98524473A2000E671A7 /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		3039F986244743DB00E671A7 /* mainJNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mainJNI.cpp; path = ../xxImGui/mainJNI.cpp; sourceTree = "<group>"; };
 		303DDEB52448B7630042A480 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		303DDEB72448B7680042A480 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		30B096A1244ACDC40096E6DC /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096A3244ACDC40096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096A5244ACDC50096E6DC /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096A7244ACDC50096E6DC /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B096CC244AD3ED0096E6DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
@@ -140,12 +142,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B096A2244ACDC40096E6DC /* libfreetype.bundle in Frameworks */,
+				30B096A4244ACDC40096E6DC /* libimgui.bundle in Frameworks */,
+				30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */,
+				30B096A8244ACDC50096E6DC /* libvalidator.bundle in Frameworks */,
+				30B096AA244ACDC50096E6DC /* libxxGraphic.bundle in Frameworks */,
+				30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */,
 				302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */,
-				302D20C6244AB5EB00D84267 /* libfreetype.bundle in Frameworks */,
-				302D20C8244AB5EB00D84267 /* libimgui.bundle in Frameworks */,
-				302D20CA244AB5EB00D84267 /* libsample.bundle in Frameworks */,
-				302D20CC244AB5EB00D84267 /* libvalidator.bundle in Frameworks */,
-				302D20CE244AB5EB00D84267 /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,14 +156,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30034545244ACD9300E90C44 /* libfreetype.dylib in Frameworks */,
+				30034547244ACD9300E90C44 /* libimgui.dylib in Frameworks */,
+				30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */,
+				3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */,
+				3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */,
 				302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */,
 				303DDEB82448B7680042A480 /* Metal.framework in Frameworks */,
 				303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */,
-				302D20B7244AB5CC00D84267 /* libfreetype.bundle in Frameworks */,
-				302D20B9244AB5CC00D84267 /* libimgui.bundle in Frameworks */,
-				302D20BB244AB5CC00D84267 /* libsample.bundle in Frameworks */,
-				302D20BD244AB5CC00D84267 /* libvalidator.bundle in Frameworks */,
-				302D20BF244AB5CC00D84267 /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,20 +208,21 @@
 		D644A0EB231F116C00B75B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				302A325E2448BB9E000B2AE9 /* UIKit.framework */,
-				302D20C5244AB5EB00D84267 /* libfreetype.bundle */,
-				302D20C7244AB5EB00D84267 /* libimgui.bundle */,
-				302D20C9244AB5EB00D84267 /* libsample.bundle */,
-				302D20CB244AB5EB00D84267 /* libvalidator.bundle */,
-				302D20CD244AB5EB00D84267 /* libxxGraphic.bundle */,
+				30B096CC244AD3ED0096E6DC /* QuartzCore.framework */,
+				30034544244ACD9300E90C44 /* libfreetype.dylib */,
+				30034546244ACD9300E90C44 /* libimgui.dylib */,
+				30034548244ACD9300E90C44 /* libsample.dylib */,
+				3003454A244ACD9300E90C44 /* libvalidator.dylib */,
+				3003454C244ACD9300E90C44 /* libxxGraphic.dylib */,
 				302D20D4244AB62200D84267 /* AppKit.framework */,
 				303DDEB72448B7680042A480 /* Metal.framework */,
 				303DDEB52448B7630042A480 /* OpenGL.framework */,
-				302D20B6244AB5CC00D84267 /* libfreetype.bundle */,
-				302D20B8244AB5CC00D84267 /* libimgui.bundle */,
-				302D20BA244AB5CC00D84267 /* libsample.bundle */,
-				302D20BC244AB5CC00D84267 /* libvalidator.bundle */,
-				302D20BE244AB5CC00D84267 /* libxxGraphic.bundle */,
+				30B096A1244ACDC40096E6DC /* libfreetype.bundle */,
+				30B096A3244ACDC40096E6DC /* libimgui.bundle */,
+				30B096A5244ACDC50096E6DC /* libsample.bundle */,
+				30B096A7244ACDC50096E6DC /* libvalidator.bundle */,
+				30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */,
+				302A325E2448BB9E000B2AE9 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
