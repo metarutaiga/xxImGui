@@ -39,6 +39,7 @@
 		30B096B2244ACDDD0096E6DC /* libyuv.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096AB244ACDC50096E6DC /* libyuv.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096BF244ACEF60096E6DC /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096BE244ACEF60096E6DC /* lenna.rgb */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
+		CE4E3DF0244E7A0000CEDC62 /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096BE244ACEF60096E6DC /* lenna.rgb */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -101,6 +102,16 @@
 			dstSubfolderSpec = 7;
 			files = (
 				30B096BF244ACEF60096E6DC /* lenna.rgb in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE4E3DEF244E79F900CEDC62 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				CE4E3DF0244E7A0000CEDC62 /* lenna.rgb in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +308,7 @@
 				D6022C4C23258C4E00B9BFB8 /* Frameworks */,
 				D6022C4D23258C4E00B9BFB8 /* Resources */,
 				3039F9692447314F00E671A7 /* CopyFiles */,
+				CE4E3DEF244E79F900CEDC62 /* CopyFiles */,
 			);
 			buildRules = (
 			);
