@@ -9,17 +9,22 @@
 #include <xxYUV/yuv2rgb.h>
 #include <interface.h>
 
+#define LIBYUV 1
+#if defined(LIBYUV)
+#include <libyuv.h>
+#endif
+
 #define PLUGIN_NAME     "YUV"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
 static int lennaWidth = 512;
 static int lennaHeight = 512;
-static char* lennaRGB = nullptr;
-static char* lennaYU12 = nullptr;
-static char* lennaYV12 = nullptr;
-static char* lennaNV12 = nullptr;
-static char* lennaNV21 = nullptr;
+static unsigned char* lennaRGB = nullptr;
+static unsigned char* lennaYU12 = nullptr;
+static unsigned char* lennaYV12 = nullptr;
+static unsigned char* lennaNV12 = nullptr;
+static unsigned char* lennaNV21 = nullptr;
 
 static uint64_t source = 0;
 static uint64_t target = 0;
@@ -67,6 +72,8 @@ pluginAPI const char* Create(const CreateData& createData)
     char path[1024];
 #if defined(xxMACOS)
     snprintf(path, 1024, "%s/../%s/%s", createData.baseFolder, "Resources", "lenna.rgb");
+#elif defined(xxIOS)
+    snprintf(path, 1024, "%s/%s", createData.baseFolder, "lenna.rgb");
 #else
     snprintf(path, 1024, "%s/%s/%s", createData.baseFolder, "resource", "lenna.rgb");
 #endif
@@ -74,7 +81,7 @@ pluginAPI const char* Create(const CreateData& createData)
     FILE* file = fopen(path, "rb");
     if (file)
     {
-        lennaRGB = (char*)malloc(3 * lennaWidth * lennaHeight);
+        lennaRGB = (unsigned char*)malloc(3 * lennaWidth * lennaHeight);
         if (lennaRGB)
         {
             fread(lennaRGB, 3, lennaWidth * lennaHeight, file);
@@ -85,28 +92,28 @@ pluginAPI const char* Create(const CreateData& createData)
         int sizeUV = lennaWidth / 2 * lennaHeight / 2;
 
         // YU12
-        lennaYU12 = (char*)malloc(sizeY + 2 * sizeUV);
+        lennaYU12 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
         if (lennaYU12 && lennaRGB)
         {
             rgb2yuv_yu12(lennaWidth, lennaHeight, lennaRGB, lennaYU12);
         }
 
         // YV12
-        lennaYV12 = (char*)malloc(sizeY + 2 * sizeUV);
+        lennaYV12 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
         if (lennaYV12 && lennaRGB)
         {
             rgb2yuv_yv12(lennaWidth, lennaHeight, lennaRGB, lennaYV12);
         }
 
         // NV12
-        lennaNV12 = (char*)malloc(sizeY + 2 * sizeUV);
+        lennaNV12 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
         if (lennaNV12 && lennaRGB)
         {
             rgb2yuv_nv12(lennaWidth, lennaHeight, lennaRGB, lennaNV12);
         }
 
         // NV21
-        lennaNV21 = (char*)malloc(sizeY + 2 * sizeUV);
+        lennaNV21 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
         if (lennaNV21 && lennaRGB)
         {
             rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21);
@@ -170,6 +177,12 @@ pluginAPI void Update(const UpdateData& updateData)
             click |= ImGui::RadioButton("NV21", &format, 3);
             ImGui::SameLine();
 
+#if LIBYUV
+            static bool libyuv = false;
+            click |= ImGui::Checkbox("libYUV", &libyuv);
+            ImGui::SameLine();
+#endif
+
             if (ImGui::Button("Convert") || click)
             {
                 unsigned char* temp = (unsigned char*)malloc(4 * lennaWidth * lennaHeight);
@@ -179,23 +192,54 @@ pluginAPI void Update(const UpdateData& updateData)
                     int sizeUV = lennaWidth / 2 * lennaHeight / 2;
 
                     uint64_t startTSC = xxTSC();
-                    switch (format)
+                    for (int i = 0; i < 100; ++i)
                     {
-                    default:
-                    case 0:
-                        yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, 4, true);
-                        break;
-                    case 1:
-                        yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, 4, true);
-                        break;
-                    case 2:
-                        yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, 4, true);
-                        break;
-                    case 3:
-                        yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, 4, true);
-                        break;
+                        switch (format)
+                        {
+                        default:
+                        case 0:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::H420ToARGB(lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, 4, true);
+                            break;
+                        case 1:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::H420ToARGB(lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, 4, true);
+                            break;
+                        case 2:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::NV12ToARGB(lennaNV12, lennaWidth, lennaNV12 + sizeY, lennaWidth, temp, lennaWidth * 4, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, 4, true);
+                            break;
+                        case 3:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::NV21ToARGB(lennaNV21, lennaWidth, lennaNV21 + sizeY, lennaWidth, temp, lennaWidth * 4, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, 4, true);
+                            break;
+                        }
                     }
-                    tsc = xxTSC() - startTSC;
+                    tsc = (xxTSC() - startTSC) / 100;
 
                     loadTextureFromImage<4, 4>(target, updateData.device, temp, lennaWidth, lennaHeight);
 

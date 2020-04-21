@@ -13,3 +13,6 @@
 [submodule "xxYUV"]
 	path = xxYUV
 	url = https://github.com/metarutaiga/xxYUV
+[submodule "libyuv"]
+	path = libyuv
+	url = https://chromium.googlesource.com/libyuv/libyuv
