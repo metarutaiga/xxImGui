@@ -67,15 +67,15 @@ static void loadTextureFromImage(uint64_t& texture, uint64_t device, const void*
     }
 }
 //------------------------------------------------------------------------------
-pluginAPI const char* Create(const CreateData& createData)
+static void loadTexture(const char* baseFolder, bool videoRange)
 {
     char path[1024];
 #if defined(xxMACOS)
-    snprintf(path, 1024, "%s/../%s/%s", createData.baseFolder, "Resources", "lenna.rgb");
+    snprintf(path, 1024, "%s/../%s/%s", baseFolder, "Resources", "lenna.rgb");
 #elif defined(xxIOS)
-    snprintf(path, 1024, "%s/%s", createData.baseFolder, "lenna.rgb");
+    snprintf(path, 1024, "%s/%s", baseFolder, "lenna.rgb");
 #else
-    snprintf(path, 1024, "%s/%s/%s", createData.baseFolder, "resource", "lenna.rgb");
+    snprintf(path, 1024, "%s/%s/%s", baseFolder, "resource", "lenna.rgb");
 #endif
 
     FILE* file = fopen(path, "rb");
@@ -119,6 +119,11 @@ pluginAPI const char* Create(const CreateData& createData)
             rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21);
         }
     }
+}
+//------------------------------------------------------------------------------
+pluginAPI const char* Create(const CreateData& createData)
+{
+    loadTexture(createData.baseFolder, false);
 
     return PLUGIN_NAME;
 }
@@ -164,10 +169,33 @@ pluginAPI void Update(const UpdateData& updateData)
     {
         if (ImGui::Begin("Dialog", &showDialog, ImGuiWindowFlags_AlwaysAutoResize))
         {
-            static int format = 0;
-            static uint64_t tsc = 0;
-
             bool click = false;
+
+            static bool encodeFullRange = false;
+            click |= ImGui::Checkbox("Encode FullRange", &encodeFullRange);
+            ImGui::SameLine();
+
+            if (click)
+            {
+                if (lennaYU12 && lennaRGB)
+                {
+                    rgb2yuv_yu12(lennaWidth, lennaHeight, lennaRGB, lennaYU12, encodeFullRange);
+                }
+                if (lennaYV12 && lennaRGB)
+                {
+                    rgb2yuv_yv12(lennaWidth, lennaHeight, lennaRGB, lennaYV12, encodeFullRange);
+                }
+                if (lennaNV12 && lennaRGB)
+                {
+                    rgb2yuv_nv12(lennaWidth, lennaHeight, lennaRGB, lennaNV12, encodeFullRange);
+                }
+                if (lennaNV21 && lennaRGB)
+                {
+                    rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21, encodeFullRange);
+                }
+            }
+
+            static int format = 0;
             click |= ImGui::RadioButton("YU12", &format, 0);
             ImGui::SameLine();
             click |= ImGui::RadioButton("YV12", &format, 1);
@@ -175,10 +203,9 @@ pluginAPI void Update(const UpdateData& updateData)
             click |= ImGui::RadioButton("NV12", &format, 2);
             ImGui::SameLine();
             click |= ImGui::RadioButton("NV21", &format, 3);
-            ImGui::SameLine();
 
-            static bool fullRange = false;
-            click |= ImGui::Checkbox("FullRange", &fullRange);
+            static bool decodeFullRange = false;
+            click |= ImGui::Checkbox("Decode FullRange", &decodeFullRange);
             ImGui::SameLine();
 
 #if LIBYUV
@@ -187,6 +214,7 @@ pluginAPI void Update(const UpdateData& updateData)
             ImGui::SameLine();
 #endif
 
+            static uint64_t tsc = 0;
             if (ImGui::Button("Convert") || click)
             {
                 unsigned char* temp = (unsigned char*)xxAlignedAlloc(4 * lennaWidth * lennaHeight, 64);
@@ -209,7 +237,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, fullRange, 4, true);
+                            yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, decodeFullRange, 4, true);
                             break;
                         case 1:
 #if LIBYUV
@@ -219,7 +247,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, fullRange, 4, true);
+                            yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, decodeFullRange, 4, true);
                             break;
                         case 2:
 #if LIBYUV
@@ -229,7 +257,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, fullRange, 4, true);
+                            yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, decodeFullRange, 4, true);
                             break;
                         case 3:
 #if LIBYUV
@@ -239,7 +267,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, fullRange, 4, true);
+                            yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, decodeFullRange, 4, true);
                             break;
                         }
                     }
