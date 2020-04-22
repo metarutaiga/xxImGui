@@ -92,28 +92,28 @@ pluginAPI const char* Create(const CreateData& createData)
         int sizeUV = lennaWidth / 2 * lennaHeight / 2;
 
         // YU12
-        lennaYU12 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
+        lennaYU12 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaYU12 && lennaRGB)
         {
             rgb2yuv_yu12(lennaWidth, lennaHeight, lennaRGB, lennaYU12);
         }
 
         // YV12
-        lennaYV12 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
+        lennaYV12 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaYV12 && lennaRGB)
         {
             rgb2yuv_yv12(lennaWidth, lennaHeight, lennaRGB, lennaYV12);
         }
 
         // NV12
-        lennaNV12 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
+        lennaNV12 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaNV12 && lennaRGB)
         {
             rgb2yuv_nv12(lennaWidth, lennaHeight, lennaRGB, lennaNV12);
         }
 
         // NV21
-        lennaNV21 = (unsigned char*)malloc(sizeY + 2 * sizeUV);
+        lennaNV21 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaNV21 && lennaRGB)
         {
             rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21);
@@ -126,10 +126,10 @@ pluginAPI const char* Create(const CreateData& createData)
 pluginAPI void Shutdown(const ShutdownData& shutdownData)
 {
     free(lennaRGB);
-    free(lennaYU12);
-    free(lennaYV12);
-    free(lennaNV12);
-    free(lennaNV21);
+    xxAlignedFree(lennaYU12);
+    xxAlignedFree(lennaYV12);
+    xxAlignedFree(lennaNV12);
+    xxAlignedFree(lennaNV21);
 }
 //------------------------------------------------------------------------------
 pluginAPI void Update(const UpdateData& updateData)
@@ -177,6 +177,10 @@ pluginAPI void Update(const UpdateData& updateData)
             click |= ImGui::RadioButton("NV21", &format, 3);
             ImGui::SameLine();
 
+            static bool fullRange = false;
+            click |= ImGui::Checkbox("FullRange", &fullRange);
+            ImGui::SameLine();
+
 #if LIBYUV
             static bool libyuv = false;
             click |= ImGui::Checkbox("libYUV", &libyuv);
@@ -185,7 +189,7 @@ pluginAPI void Update(const UpdateData& updateData)
 
             if (ImGui::Button("Convert") || click)
             {
-                unsigned char* temp = (unsigned char*)malloc(4 * lennaWidth * lennaHeight);
+                unsigned char* temp = (unsigned char*)xxAlignedAlloc(4 * lennaWidth * lennaHeight, 64);
                 if (temp)
                 {
                     int sizeY = lennaWidth * lennaHeight;
@@ -205,7 +209,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, 4, true);
+                            yuv2rgb_yu12(lennaWidth, lennaHeight, lennaYU12, temp, fullRange, 4, true);
                             break;
                         case 1:
 #if LIBYUV
@@ -215,7 +219,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, 4, true);
+                            yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, fullRange, 4, true);
                             break;
                         case 2:
 #if LIBYUV
@@ -225,7 +229,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, 4, true);
+                            yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, fullRange, 4, true);
                             break;
                         case 3:
 #if LIBYUV
@@ -235,7 +239,7 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, 4, true);
+                            yuv2rgb_nv21(lennaWidth, lennaHeight, lennaNV21, temp, fullRange, 4, true);
                             break;
                         }
                     }
@@ -243,7 +247,7 @@ pluginAPI void Update(const UpdateData& updateData)
 
                     loadTextureFromImage<4, 4>(target, updateData.device, temp, lennaWidth, lennaHeight);
 
-                    free(temp);
+                    xxAlignedFree(temp);
                 }
             }
 
