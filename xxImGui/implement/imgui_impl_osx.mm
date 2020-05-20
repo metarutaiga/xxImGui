@@ -383,6 +383,7 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
     [window setOpaque:NO];
     [window orderFront:NSApp];
     [window setLevel:NSFloatingWindowLevel];
+    [window setHidesOnDeactivate:YES];
 
     ImGui_ImplOSX_ViewController* viewController = [[ImGui_ImplOSX_ViewController alloc] init];
     window.contentViewController = viewController;
