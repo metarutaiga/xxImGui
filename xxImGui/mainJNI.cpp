@@ -8,7 +8,7 @@
 
 static bool g_initialized = false;
 
-extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclass obj, jobject surface)
+extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclass obj, jobject context, jobject surface)
 {
     if (g_initialized)
         return;
@@ -28,7 +28,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
         height = ANativeWindow_getHeight(window);
     }
 
-    xxJNIEnv = env;
+    xxAndroidJNIEnv = env;
+    xxAndroidContext = context;
 
     Renderer::Create(window, width, height);
     DearImGui::Create(window, 3.0f);
@@ -46,8 +47,11 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resize(JNIEnv* env, jclas
     Renderer::Reset(window, width, height);
 }
 
-extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass obj)
+extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass obj, jobject context)
 {
+    xxAndroidJNIEnv = env;
+    xxAndroidContext = context;
+
     DearImGui::NewFrame(Renderer::g_view);
     DearImGui::Update(Plugin::Update() == false);
 

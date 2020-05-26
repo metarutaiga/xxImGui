@@ -52,9 +52,9 @@ public class Activity extends android.app.Activity
      * A native method that is implemented by the 'xxImGui' native library,
      * which is packaged with this application.
      */
-    public static native void create(Surface surface);
+    public static native void create(Context context, Surface surface);
     public static native void resize(int width, int height, Surface surface);
-    public static native void step();
+    public static native void step(Context context);
     public static native void shutdown();
     public static native void pause();
     public static native void resume();
