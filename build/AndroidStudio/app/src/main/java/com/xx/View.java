@@ -79,7 +79,7 @@ class View extends android.view.NativeSurfaceView
                 }
                 return;
             }
-            Activity.step();
+            Activity.step(getContext());
         }
 
         public void onSurfaceChanged(int width, int height)
@@ -89,7 +89,7 @@ class View extends android.view.NativeSurfaceView
 
         public void onSurfaceCreated()
         {
-            Activity.create(getHolder().getSurface());
+            Activity.create(getContext(), getHolder().getSurface());
         }
     }
 }
