@@ -16,6 +16,7 @@
 
 package com.xx;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Surface;
 
