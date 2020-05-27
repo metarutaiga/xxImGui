@@ -28,6 +28,15 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
         height = ANativeWindow_getHeight(window);
     }
 
+    env->GetJavaVM(&xxAndroidJavaVM);
+    if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_6) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_6;
+    else if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_4) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_4;
+    else if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_2) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_2;
+    else if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_1) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_1;
     xxAndroidJNIEnv = env;
     xxAndroidContext = context;
 
