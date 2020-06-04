@@ -7,25 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300264C5242690D0004559E0 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		3039F9D92447499200E671A7 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
-		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
-		CE69D74C2488E44600D883C2 /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libsample.dylib */; };
+		CE69D74E2488E59300D883C2 /* libConcurrencyNetworkFramework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */; };
+		CE93ADE624872A38008E7535 /* FrameworkHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = CE93ADE524872A38008E7535 /* FrameworkHeader.h */; };
+		CE985F7224860B100003DD8A /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F6E24860B100003DD8A /* Event.h */; };
+		CE985F7424860B100003DD8A /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7024860B100003DD8A /* Framework.cpp */; };
+		CE985F7524860B100003DD8A /* Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F7124860B100003DD8A /* Framework.h */; };
+		CE985F7A24862BC90003DD8A /* Connect.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F7724862BC90003DD8A /* Connect.h */; };
+		CE985F7B24862BC90003DD8A /* Listen.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F7824862BC90003DD8A /* Listen.h */; };
+		CE985F7F24862C1F0003DD8A /* Listen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7C24862C1F0003DD8A /* Listen.cpp */; };
+		CE985F8024862C1F0003DD8A /* Listen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7C24862C1F0003DD8A /* Listen.cpp */; };
+		CE985F8124862C1F0003DD8A /* Connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7D24862C1F0003DD8A /* Connect.cpp */; };
+		CE985F8224862C1F0003DD8A /* Connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7D24862C1F0003DD8A /* Connect.cpp */; };
+		CE985F872486524B0003DD8A /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F852486524B0003DD8A /* Log.h */; };
+		CE985F882486524B0003DD8A /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F862486524B0003DD8A /* Log.cpp */; };
+		CE985F892486524B0003DD8A /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F862486524B0003DD8A /* Log.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CE69D74B2488E43F00D883C2 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = xxImGui.app/Contents/Frameworks;
-			dstSubfolderSpec = 16;
-			files = (
-				CE69D74C2488E44600D883C2 /* libsample.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D6022C3323258B5D00B9BFB8 /* CopyFiles */ = {
+		303FD9C3244C7F7200A8B5A9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -34,14 +33,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE69D74D2488E58A00D883C2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = xxImGui.app/Contents/Frameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				CE69D74E2488E59300D883C2 /* libConcurrencyNetworkFramework.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
-		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE93ADE524872A38008E7535 /* FrameworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameworkHeader.h; path = ../ConcurrencyNetworkFramework/FrameworkHeader.h; sourceTree = "<group>"; };
+		CE985F6E24860B100003DD8A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../ConcurrencyNetworkFramework/Event.h; sourceTree = "<group>"; };
+		CE985F7024860B100003DD8A /* Framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Framework.cpp; path = ../ConcurrencyNetworkFramework/Framework.cpp; sourceTree = "<group>"; };
+		CE985F7124860B100003DD8A /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Framework.h; path = ../ConcurrencyNetworkFramework/Framework.h; sourceTree = "<group>"; };
+		CE985F7724862BC90003DD8A /* Connect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connect.h; path = ../ConcurrencyNetworkFramework/Connect.h; sourceTree = "<group>"; };
+		CE985F7824862BC90003DD8A /* Listen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listen.h; path = ../ConcurrencyNetworkFramework/Listen.h; sourceTree = "<group>"; };
+		CE985F7C24862C1F0003DD8A /* Listen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listen.cpp; path = ../ConcurrencyNetworkFramework/Listen.cpp; sourceTree = "<group>"; };
+		CE985F7D24862C1F0003DD8A /* Connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connect.cpp; path = ../ConcurrencyNetworkFramework/Connect.cpp; sourceTree = "<group>"; };
+		CE985F852486524B0003DD8A /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../ConcurrencyNetworkFramework/Log.h; sourceTree = "<group>"; };
+		CE985F862486524B0003DD8A /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Log.cpp; path = ../ConcurrencyNetworkFramework/Log.cpp; sourceTree = "<group>"; };
+		D6022C3523258B5D00B9BFB8 /* libConcurrencyNetworkFramework.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrencyNetworkFramework.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrencyNetworkFramework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,8 +81,6 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30B096C9244AD39C0096E6DC /* libimgui.bundle */,
-				30B096B7244ACE500096E6DC /* libimgui.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -76,17 +88,26 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				300264C4242690D0004559E0 /* sample.cpp */,
-				D644A042231ED82900B75B77 /* Products */,
+				CE985F7D24862C1F0003DD8A /* Connect.cpp */,
+				CE985F7724862BC90003DD8A /* Connect.h */,
+				CE985F7C24862C1F0003DD8A /* Listen.cpp */,
+				CE985F7824862BC90003DD8A /* Listen.h */,
+				CE985F862486524B0003DD8A /* Log.cpp */,
+				CE985F852486524B0003DD8A /* Log.h */,
+				CE985F6E24860B100003DD8A /* Event.h */,
+				CE985F7024860B100003DD8A /* Framework.cpp */,
+				CE985F7124860B100003DD8A /* Framework.h */,
+				CE93ADE524872A38008E7535 /* FrameworkHeader.h */,
 				300264BD24266097004559E0 /* Frameworks */,
+				D644A042231ED82900B75B77 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* libsample.dylib */,
-				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
+				D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */,
+				D6022C3523258B5D00B9BFB8 /* libConcurrencyNetworkFramework.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,45 +119,51 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE985F7A24862BC90003DD8A /* Connect.h in Headers */,
+				CE985F872486524B0003DD8A /* Log.h in Headers */,
+				CE985F7B24862BC90003DD8A /* Listen.h in Headers */,
+				CE985F7224860B100003DD8A /* Event.h in Headers */,
+				CE985F7524860B100003DD8A /* Framework.h in Headers */,
+				CE93ADE624872A38008E7535 /* FrameworkHeader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D6022C3423258B5D00B9BFB8 /* sample (iOS) */ = {
+		D6022C3423258B5D00B9BFB8 /* ConcurrencyNetworkFramework (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */;
+			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "ConcurrencyNetworkFramework (iOS)" */;
 			buildPhases = (
 				D6022C3123258B5D00B9BFB8 /* Sources */,
 				D6022C3223258B5D00B9BFB8 /* Frameworks */,
-				D6022C3323258B5D00B9BFB8 /* CopyFiles */,
+				303FD9C3244C7F7200A8B5A9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "sample (iOS)";
-			productName = sample;
-			productReference = D6022C3523258B5D00B9BFB8 /* libsample.bundle */;
+			name = "ConcurrencyNetworkFramework (iOS)";
+			productName = "librtmp (iOS)";
+			productReference = D6022C3523258B5D00B9BFB8 /* libConcurrencyNetworkFramework.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D644A040231ED82900B75B77 /* sample (macOS) */ = {
+		D644A040231ED82900B75B77 /* ConcurrencyNetworkFramework (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */;
+			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "ConcurrencyNetworkFramework (macOS)" */;
 			buildPhases = (
 				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				CE69D74B2488E43F00D883C2 /* CopyFiles */,
+				CE69D74D2488E58A00D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "sample (macOS)";
-			productName = sample;
-			productReference = D644A041231ED82900B75B77 /* libsample.dylib */;
+			name = "ConcurrencyNetworkFramework (macOS)";
+			productName = librtmp;
+			productReference = D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -145,7 +172,7 @@
 		D644A039231ED82900B75B77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1140;
 				TargetAttributes = {
 					D6022C3423258B5D00B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
@@ -155,7 +182,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "sample" */;
+			buildConfigurationList = D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "ConcurrencyNetworkFramework" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -168,8 +195,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D644A040231ED82900B75B77 /* sample (macOS) */,
-				D6022C3423258B5D00B9BFB8 /* sample (iOS) */,
+				D644A040231ED82900B75B77 /* ConcurrencyNetworkFramework (macOS) */,
+				D6022C3423258B5D00B9BFB8 /* ConcurrencyNetworkFramework (iOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -179,7 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039F9D92447499200E671A7 /* sample.cpp in Sources */,
+				CE985F892486524B0003DD8A /* Log.cpp in Sources */,
+				CE985F8224862C1F0003DD8A /* Connect.cpp in Sources */,
+				CE985F8024862C1F0003DD8A /* Listen.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C5242690D0004559E0 /* sample.cpp in Sources */,
+				CE985F7F24862C1F0003DD8A /* Listen.cpp in Sources */,
+				CE985F8124862C1F0003DD8A /* Connect.cpp in Sources */,
+				CE985F882486524B0003DD8A /* Log.cpp in Sources */,
+				CE985F7424860B100003DD8A /* Framework.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +230,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Debug;
 		};
@@ -205,6 +238,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -260,21 +294,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					..,
-					../..,
-					../../imgui,
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OBJROOT = ../../temp;
+				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = sample;
+				PRODUCT_NAME = ConcurrencyNetworkFramework;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SYMROOT = ../../bin;
+				SYMROOT = ../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -321,27 +350,22 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = " ";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					..,
-					../..,
-					../../imgui,
-				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OBJROOT = ../../temp;
-				PRODUCT_NAME = sample;
+				OBJROOT = ../temp;
+				PRODUCT_NAME = ConcurrencyNetworkFramework;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SYMROOT = ../../bin;
+				SYMROOT = ../bin;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -363,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */ = {
+		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "ConcurrencyNetworkFramework (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6022C3C23258B5D00B9BFB8 /* Debug */,
@@ -372,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "sample" */ = {
+		D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "ConcurrencyNetworkFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D644A04A231ED82900B75B77 /* Debug */,
@@ -381,7 +405,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */ = {
+		D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "ConcurrencyNetworkFramework (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D644A04D231ED82900B75B77 /* Debug */,

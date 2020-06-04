@@ -4,6 +4,16 @@
    <Group
       location = "container:"
       name = "plugin">
+      <Group
+         location = "container:"
+         name = "Network">
+         <FileRef
+            location = "group:plugin/framework/framework.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:build/ConcurrencyNetworkFramework.xcodeproj">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:plugin/yuv/yuv.xcodeproj">
       </FileRef>

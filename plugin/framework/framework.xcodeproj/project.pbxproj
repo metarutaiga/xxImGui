@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300264C5242690D0004559E0 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		3039F9D92447499200E671A7 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
+		300264C5242690D0004559E0 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* framework.cpp */; };
+		3039F9D92447499200E671A7 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* framework.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
-		CE69D74C2488E44600D883C2 /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libsample.dylib */; };
+		CE69D7462488E3EE00D883C2 /* libframework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libframework.dylib */; };
+		CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CE69D74B2488E43F00D883C2 /* CopyFiles */ = {
+		CE69D7442488E38600D883C2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = xxImGui.app/Contents/Frameworks;
 			dstSubfolderSpec = 16;
 			files = (
-				CE69D74C2488E44600D883C2 /* libsample.dylib in CopyFiles */,
+				CE69D7462488E3EE00D883C2 /* libframework.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,11 +38,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
+		300264C4242690D0004559E0 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConcurrencyNetworkFramework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libframework.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libframework.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libframework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libframework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */,
 				30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +70,7 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */,
 				30B096C9244AD39C0096E6DC /* libimgui.bundle */,
 				30B096B7244ACE500096E6DC /* libimgui.dylib */,
 			);
@@ -76,7 +80,7 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				300264C4242690D0004559E0 /* sample.cpp */,
+				300264C4242690D0004559E0 /* framework.cpp */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -85,8 +89,8 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* libsample.dylib */,
-				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
+				D644A041231ED82900B75B77 /* libframework.dylib */,
+				D6022C3523258B5D00B9BFB8 /* libframework.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +108,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D6022C3423258B5D00B9BFB8 /* sample (iOS) */ = {
+		D6022C3423258B5D00B9BFB8 /* framework (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */;
+			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "framework (iOS)" */;
 			buildPhases = (
 				D6022C3123258B5D00B9BFB8 /* Sources */,
 				D6022C3223258B5D00B9BFB8 /* Frameworks */,
@@ -116,27 +120,27 @@
 			);
 			dependencies = (
 			);
-			name = "sample (iOS)";
-			productName = sample;
-			productReference = D6022C3523258B5D00B9BFB8 /* libsample.bundle */;
+			name = "framework (iOS)";
+			productName = framework;
+			productReference = D6022C3523258B5D00B9BFB8 /* libframework.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D644A040231ED82900B75B77 /* sample (macOS) */ = {
+		D644A040231ED82900B75B77 /* framework (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */;
+			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "framework (macOS)" */;
 			buildPhases = (
 				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				CE69D74B2488E43F00D883C2 /* CopyFiles */,
+				CE69D7442488E38600D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "sample (macOS)";
-			productName = sample;
-			productReference = D644A041231ED82900B75B77 /* libsample.dylib */;
+			name = "framework (macOS)";
+			productName = framework;
+			productReference = D644A041231ED82900B75B77 /* libframework.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -155,7 +159,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "sample" */;
+			buildConfigurationList = D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "framework" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -168,8 +172,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D644A040231ED82900B75B77 /* sample (macOS) */,
-				D6022C3423258B5D00B9BFB8 /* sample (iOS) */,
+				D644A040231ED82900B75B77 /* framework (macOS) */,
+				D6022C3423258B5D00B9BFB8 /* framework (iOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -179,7 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039F9D92447499200E671A7 /* sample.cpp in Sources */,
+				3039F9D92447499200E671A7 /* framework.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C5242690D0004559E0 /* sample.cpp in Sources */,
+				300264C5242690D0004559E0 /* framework.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +275,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = sample;
+				PRODUCT_NAME = framework;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYMROOT = ../../bin;
@@ -338,7 +342,7 @@
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
-				PRODUCT_NAME = sample;
+				PRODUCT_NAME = framework;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYMROOT = ../../bin;
@@ -363,7 +367,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */ = {
+		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "framework (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6022C3C23258B5D00B9BFB8 /* Debug */,
@@ -372,7 +376,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "sample" */ = {
+		D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D644A04A231ED82900B75B77 /* Debug */,
@@ -381,7 +385,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */ = {
+		D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "framework (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D644A04D231ED82900B75B77 /* Debug */,
