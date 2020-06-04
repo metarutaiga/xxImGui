@@ -16,3 +16,6 @@
 [submodule "libyuv"]
 	path = libyuv
 	url = https://chromium.googlesource.com/libyuv/libyuv
+[submodule "ConcurrencyNetworkFramework"]
+	path = ConcurrencyNetworkFramework
+	url = https://github.com/metarutaiga/ConcurrencyNetworkFramework

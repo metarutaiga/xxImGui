@@ -13,9 +13,20 @@
 		30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C5244AD3940096E6DC /* libimgui.bundle */; };
 		30B096C8244AD3940096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C7244AD3940096E6DC /* libxxGraphic.bundle */; };
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
+		CE69D74A2488E43700D883C2 /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libvalidator.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CE69D7492488E41100D883C2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = xxImGui.app/Contents/Frameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				CE69D74A2488E43700D883C2 /* libvalidator.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3323258B5D00B9BFB8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +136,7 @@
 				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
+				CE69D7492488E41100D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
