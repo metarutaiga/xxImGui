@@ -14,6 +14,8 @@ class Client
     std::string address;
     std::string port;
 
+    char message[256];
+
 public:
     Client(const char* address, const char* port);
     ~Client();
