@@ -14,11 +14,13 @@ Client::Client(const char* address, const char* port)
     thiz.client = nullptr;
     thiz.address = address;
     thiz.port = port;
+    thiz.message[0] = '\0';
 }
 //------------------------------------------------------------------------------
 Client::~Client()
 {
-    delete thiz.client;
+    if (thiz.client)
+        thiz.client->Disconnect();
 }
 //------------------------------------------------------------------------------
 bool Client::Update(const UpdateData& updateData)
@@ -37,7 +39,7 @@ bool Client::Update(const UpdateData& updateData)
                 client = new Connect(thiz.address.c_str(), thiz.port.c_str());
                 if (client && client->Start() == false)
                 {
-                    delete client;
+                    client->Disconnect();
                     client = nullptr;
                 }
             }
@@ -46,8 +48,17 @@ bool Client::Update(const UpdateData& updateData)
         ImGui::SameLine();
         if (ImGui::Button("Disconnect"))
         {
-            delete client;
+            client->Disconnect();
             client = nullptr;
+        }
+
+        ImGui::InputText("MESSAGE", message, sizeof(message));
+        if (ImGui::Button("Send"))
+        {
+            if (client)
+            {
+                client->Send({ message, message + strlen(message) });
+            }
         }
 
         ImGui::End();
