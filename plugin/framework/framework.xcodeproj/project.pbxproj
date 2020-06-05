@@ -13,6 +13,9 @@
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
 		CE69D7462488E3EE00D883C2 /* libframework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libframework.dylib */; };
 		CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */; };
+		CE91E8882489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
+		CE91E8892489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
+		CE91E88A2489CCAD00912424 /* client.h in Headers */ = {isa = PBXBuildFile; fileRef = CE91E8872489CCAD00912424 /* client.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +45,8 @@
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConcurrencyNetworkFramework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE91E8862489CCAD00912424 /* client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
+		CE91E8872489CCAD00912424 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libframework.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libframework.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libframework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libframework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,6 +85,8 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
+				CE91E8862489CCAD00912424 /* client.cpp */,
+				CE91E8872489CCAD00912424 /* client.h */,
 				300264C4242690D0004559E0 /* framework.cpp */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
@@ -102,6 +109,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE91E88A2489CCAD00912424 /* client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3039F9D92447499200E671A7 /* framework.cpp in Sources */,
+				CE91E8892489CCAD00912424 /* client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				300264C5242690D0004559E0 /* framework.cpp in Sources */,
+				CE91E8882489CCAD00912424 /* client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

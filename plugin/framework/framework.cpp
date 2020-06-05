@@ -1,24 +1,69 @@
 //==============================================================================
 // xxImGui : Plugin Framework Source
 //
-// Copyright (c) 2019-2020 TAiGA
+// Copyright (c) 2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
-#include "../../ConcurrencyNetworkFramework/Listen.h"
-#include "../../ConcurrencyNetworkFramework/Log.h"
-#include "../../ConcurrencyNetworkFramework/Framework.h"
 #include <mutex>
 #include <thread>
 #include <interface.h>
+#include "../../ConcurrencyNetworkFramework/Listen.h"
+#include "../../ConcurrencyNetworkFramework/Log.h"
+#include "../../ConcurrencyNetworkFramework/Framework.h"
+#include "client.h"
 
 #define PLUGIN_NAME     "Framework"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
-static Framework* framework = nullptr;
 static Listen* server = nullptr;
+static Framework* framework = nullptr;
 static std::thread* frameworkThread = nullptr;
+static std::vector<Client*> clients;
 
+static std::string logInfo;
+static std::string logError;
+static std::mutex logMutex;
+
+//------------------------------------------------------------------------------
+static void startFramework()
+{
+    if (server == nullptr || framework == nullptr)
+    {
+        logMutex.lock();
+        logInfo.clear();
+        logError.clear();
+        logMutex.unlock();
+        Log::SetOutput([](int level, const char* output)
+        {
+            logMutex.lock();
+            (level < 0 ? logError : logInfo) += output;
+            logMutex.unlock();
+        });
+
+        server = new Listen("127.0.0.1", "7777");
+        framework = new Framework;
+        framework->Server(server);
+        frameworkThread = new std::thread([]{ framework->Dispatch(); });
+    }
+}
+//------------------------------------------------------------------------------
+static void shutdownFramework()
+{
+    if (frameworkThread)
+    {
+        framework->Terminate();
+        frameworkThread->join();
+
+        delete frameworkThread;
+        delete framework;
+        delete server;
+
+        frameworkThread = nullptr;
+        framework = nullptr;
+        server = nullptr;
+    }
+}
 //------------------------------------------------------------------------------
 pluginAPI const char* Create(const CreateData& createData)
 {
@@ -27,7 +72,7 @@ pluginAPI const char* Create(const CreateData& createData)
 //------------------------------------------------------------------------------
 pluginAPI void Shutdown(const ShutdownData& shutdownData)
 {
-
+    shutdownFramework();
 }
 //------------------------------------------------------------------------------
 pluginAPI void Update(const UpdateData& updateData)
@@ -39,9 +84,9 @@ pluginAPI void Update(const UpdateData& updateData)
     {
         if (ImGui::BeginMenu(PLUGIN_NAME))
         {
-            ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
-            ImGui::Separator();
             ImGui::MenuItem("Framework", nullptr, &showFramework);
+            ImGui::Separator();
+            ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -60,55 +105,51 @@ pluginAPI void Update(const UpdateData& updateData)
 
     if (showFramework)
     {
+        ImVec2 pos = {};
+
         if (ImGui::Begin("Framework", &showFramework))
         {
-            static std::string log;
-            static std::mutex logMutex;
+            pos = ImGui::GetWindowPos();
+            pos.x += ImGui::GetWindowWidth();
 
             if (ImGui::Button("Start Framework"))
             {
-                if (server == nullptr || framework == nullptr)
-                {
-                    log.clear();
-                    Log::SetOutput([](const char* output)
-                    {
-                        logMutex.lock();
-                        log += output;
-                        logMutex.unlock();
-                    });
-
-                    server = new Listen("127.0.0.1", "7777");
-                    framework = new Framework;
-                    framework->Server(server);
-                    frameworkThread = new std::thread([]{ framework->Dispatch(); });
-                }
+                startFramework();
             }
 
             ImGui::SameLine();
             if (ImGui::Button("Stop Framework"))
             {
-                if (frameworkThread)
-                {
-                    framework->Terminate();
-                    frameworkThread->join();
-
-                    delete frameworkThread;
-                    delete framework;
-                    delete server;
-
-                    frameworkThread = nullptr;
-                    framework = nullptr;
-                    server = nullptr;
-                }
+                shutdownFramework();
             }
 
-            ImVec2 windowSize = ImVec2(320 * updateData.windowScale, 240 * updateData.windowScale);
+            ImGui::SameLine();
+            if (ImGui::Button("Add Client"))
+            {
+                clients.emplace_back(new Client("127.0.0.1", "7777"));
+            }
+
+            ImVec2 windowSize = ImVec2(800 * updateData.windowScale, 200 * updateData.windowScale);
 
             logMutex.lock();
-            ImGui::InputTextMultiline("LOG", &log.front(), log.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputTextMultiline("INFO", &logInfo.front(), logInfo.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputTextMultiline("ERROR", &logError.front(), logError.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
             logMutex.unlock();
 
             ImGui::End();
+        }
+
+        for (auto it = clients.begin(); it != clients.end(); ++it)
+        {
+            ImGui::SetNextWindowPos(pos, ImGuiCond_FirstUseEver);
+            if ((*it)->Update(updateData) == false)
+            {
+                delete (*it);
+                clients.erase(it);
+                break;
+            }
+
+            pos.y += 96;
         }
     }
 }
