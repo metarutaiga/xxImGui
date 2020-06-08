@@ -140,11 +140,11 @@ pluginAPI void Update(const UpdateData& updateData)
             {
                 benchmark = !benchmark;
             }
-            if (benchmark)
+            if (benchmark && framework)
             {
-                size_t bucket = 64;
-                size_t create = rand() % 64;
-                size_t remove = rand() % 64;
+                size_t bucket = 32;
+                size_t create = rand() % bucket;
+                size_t remove = rand() % bucket;
 
                 while (connects.size() < create)
                 {
@@ -170,6 +170,8 @@ pluginAPI void Update(const UpdateData& updateData)
                     connect->Disconnect();
                 connects.clear();
             }
+
+            ImGui::Text("Active Thread : %d", Connect::GetActiveThreadCount());
 
             ImVec2 windowSize = ImVec2(800 * updateData.windowScale, 200 * updateData.windowScale);
 
