@@ -6,10 +6,10 @@
 //==============================================================================
 #pragma once
 
-class Connect;
+class Connection;
 class Client
 {
-    Connect* client;
+    Connection* client;
 
     std::string address;
     std::string port;

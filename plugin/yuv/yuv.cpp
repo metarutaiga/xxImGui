@@ -222,6 +222,7 @@ pluginAPI void Update(const UpdateData& updateData)
                 {
                     int sizeY = lennaWidth * lennaHeight;
                     int sizeUV = lennaWidth / 2 * lennaHeight / 2;
+                    memset(temp, 0, 4 * lennaWidth * lennaHeight);
 
                     uint64_t startTSC = xxTSC();
                     for (int i = 0; i < 100; ++i)

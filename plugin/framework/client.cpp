@@ -5,7 +5,7 @@
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include <interface.h>
-#include "../../ConcurrencyNetworkFramework/Connect.h"
+#include "../../ConcurrencyNetworkFramework/Connection.h"
 #include "client.h"
 
 //------------------------------------------------------------------------------
@@ -36,8 +36,8 @@ bool Client::Update(const UpdateData& updateData)
         {
             if (client == nullptr)
             {
-                client = new Connect(thiz.address.c_str(), thiz.port.c_str());
-                if (client && client->Start() == false)
+                client = new Connection(thiz.address.c_str(), thiz.port.c_str());
+                if (client && client->Connect() == false)
                 {
                     client->Disconnect();
                     client = nullptr;
@@ -57,7 +57,8 @@ bool Client::Update(const UpdateData& updateData)
         {
             if (client)
             {
-                client->Send({ message, message + strlen(message) });
+                BufferPtr bufferPtr = BufferPtr::make_shared(message, message + strlen(message));
+                client->Send(bufferPtr);
             }
         }
 
