@@ -8,19 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		CE69D74E2488E59300D883C2 /* libConcurrencyNetworkFramework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */; };
-		CE93ADE624872A38008E7535 /* FrameworkHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = CE93ADE524872A38008E7535 /* FrameworkHeader.h */; };
-		CE985F7224860B100003DD8A /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F6E24860B100003DD8A /* Event.h */; };
-		CE985F7424860B100003DD8A /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7024860B100003DD8A /* Framework.cpp */; };
-		CE985F7524860B100003DD8A /* Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F7124860B100003DD8A /* Framework.h */; };
-		CE985F7A24862BC90003DD8A /* Connect.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F7724862BC90003DD8A /* Connect.h */; };
-		CE985F7B24862BC90003DD8A /* Listen.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F7824862BC90003DD8A /* Listen.h */; };
-		CE985F7F24862C1F0003DD8A /* Listen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7C24862C1F0003DD8A /* Listen.cpp */; };
-		CE985F8024862C1F0003DD8A /* Listen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7C24862C1F0003DD8A /* Listen.cpp */; };
-		CE985F8124862C1F0003DD8A /* Connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7D24862C1F0003DD8A /* Connect.cpp */; };
-		CE985F8224862C1F0003DD8A /* Connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F7D24862C1F0003DD8A /* Connect.cpp */; };
-		CE985F872486524B0003DD8A /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = CE985F852486524B0003DD8A /* Log.h */; };
-		CE985F882486524B0003DD8A /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F862486524B0003DD8A /* Log.cpp */; };
-		CE985F892486524B0003DD8A /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE985F862486524B0003DD8A /* Log.cpp */; };
+		D6DFCEBF2493B956001F32F4 /* Listener.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEB42493B955001F32F4 /* Listener.h */; };
+		D6DFCEC02493B956001F32F4 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEB52493B955001F32F4 /* Log.cpp */; };
+		D6DFCEC12493B956001F32F4 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEB52493B955001F32F4 /* Log.cpp */; };
+		D6DFCEC22493B956001F32F4 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEB62493B955001F32F4 /* Log.h */; };
+		D6DFCEC32493B956001F32F4 /* Event.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEB72493B955001F32F4 /* Event.h */; };
+		D6DFCEC42493B956001F32F4 /* Connection.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEB82493B955001F32F4 /* Connection.h */; };
+		D6DFCEC52493B956001F32F4 /* FrameworkHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEBA2493B956001F32F4 /* FrameworkHeader.h */; };
+		D6DFCEC62493B956001F32F4 /* Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEBB2493B956001F32F4 /* Framework.h */; };
+		D6DFCEC72493B956001F32F4 /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBC2493B956001F32F4 /* Framework.cpp */; };
+		D6DFCEC82493B956001F32F4 /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBC2493B956001F32F4 /* Framework.cpp */; };
+		D6DFCEC92493B956001F32F4 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBD2493B956001F32F4 /* Connection.cpp */; };
+		D6DFCECA2493B956001F32F4 /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBD2493B956001F32F4 /* Connection.cpp */; };
+		D6DFCECB2493B956001F32F4 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBE2493B956001F32F4 /* Listener.cpp */; };
+		D6DFCECC2493B956001F32F4 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBE2493B956001F32F4 /* Listener.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,18 +47,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CE93ADE524872A38008E7535 /* FrameworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameworkHeader.h; path = ../ConcurrencyNetworkFramework/FrameworkHeader.h; sourceTree = "<group>"; };
-		CE985F6E24860B100003DD8A /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../ConcurrencyNetworkFramework/Event.h; sourceTree = "<group>"; };
-		CE985F7024860B100003DD8A /* Framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Framework.cpp; path = ../ConcurrencyNetworkFramework/Framework.cpp; sourceTree = "<group>"; };
-		CE985F7124860B100003DD8A /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Framework.h; path = ../ConcurrencyNetworkFramework/Framework.h; sourceTree = "<group>"; };
-		CE985F7724862BC90003DD8A /* Connect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connect.h; path = ../ConcurrencyNetworkFramework/Connect.h; sourceTree = "<group>"; };
-		CE985F7824862BC90003DD8A /* Listen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listen.h; path = ../ConcurrencyNetworkFramework/Listen.h; sourceTree = "<group>"; };
-		CE985F7C24862C1F0003DD8A /* Listen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listen.cpp; path = ../ConcurrencyNetworkFramework/Listen.cpp; sourceTree = "<group>"; };
-		CE985F7D24862C1F0003DD8A /* Connect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connect.cpp; path = ../ConcurrencyNetworkFramework/Connect.cpp; sourceTree = "<group>"; };
-		CE985F852486524B0003DD8A /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../ConcurrencyNetworkFramework/Log.h; sourceTree = "<group>"; };
-		CE985F862486524B0003DD8A /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Log.cpp; path = ../ConcurrencyNetworkFramework/Log.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libConcurrencyNetworkFramework.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrencyNetworkFramework.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libConcurrencyNetworkFramework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6DFCEB42493B955001F32F4 /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../ConcurrencyNetworkFramework/Listener.h; sourceTree = "<group>"; };
+		D6DFCEB52493B955001F32F4 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Log.cpp; path = ../ConcurrencyNetworkFramework/Log.cpp; sourceTree = "<group>"; };
+		D6DFCEB62493B955001F32F4 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../ConcurrencyNetworkFramework/Log.h; sourceTree = "<group>"; };
+		D6DFCEB72493B955001F32F4 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../ConcurrencyNetworkFramework/Event.h; sourceTree = "<group>"; };
+		D6DFCEB82493B955001F32F4 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connection.h; path = ../ConcurrencyNetworkFramework/Connection.h; sourceTree = "<group>"; };
+		D6DFCEB92493B956001F32F4 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../ConcurrencyNetworkFramework/LICENSE.txt; sourceTree = "<group>"; };
+		D6DFCEBA2493B956001F32F4 /* FrameworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameworkHeader.h; path = ../ConcurrencyNetworkFramework/FrameworkHeader.h; sourceTree = "<group>"; };
+		D6DFCEBB2493B956001F32F4 /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Framework.h; path = ../ConcurrencyNetworkFramework/Framework.h; sourceTree = "<group>"; };
+		D6DFCEBC2493B956001F32F4 /* Framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Framework.cpp; path = ../ConcurrencyNetworkFramework/Framework.cpp; sourceTree = "<group>"; };
+		D6DFCEBD2493B956001F32F4 /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connection.cpp; path = ../ConcurrencyNetworkFramework/Connection.cpp; sourceTree = "<group>"; };
+		D6DFCEBE2493B956001F32F4 /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listener.cpp; path = ../ConcurrencyNetworkFramework/Listener.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,16 +90,17 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				CE985F7D24862C1F0003DD8A /* Connect.cpp */,
-				CE985F7724862BC90003DD8A /* Connect.h */,
-				CE985F7C24862C1F0003DD8A /* Listen.cpp */,
-				CE985F7824862BC90003DD8A /* Listen.h */,
-				CE985F862486524B0003DD8A /* Log.cpp */,
-				CE985F852486524B0003DD8A /* Log.h */,
-				CE985F6E24860B100003DD8A /* Event.h */,
-				CE985F7024860B100003DD8A /* Framework.cpp */,
-				CE985F7124860B100003DD8A /* Framework.h */,
-				CE93ADE524872A38008E7535 /* FrameworkHeader.h */,
+				D6DFCEBD2493B956001F32F4 /* Connection.cpp */,
+				D6DFCEB82493B955001F32F4 /* Connection.h */,
+				D6DFCEB72493B955001F32F4 /* Event.h */,
+				D6DFCEBC2493B956001F32F4 /* Framework.cpp */,
+				D6DFCEBB2493B956001F32F4 /* Framework.h */,
+				D6DFCEBA2493B956001F32F4 /* FrameworkHeader.h */,
+				D6DFCEB92493B956001F32F4 /* LICENSE.txt */,
+				D6DFCEBE2493B956001F32F4 /* Listener.cpp */,
+				D6DFCEB42493B955001F32F4 /* Listener.h */,
+				D6DFCEB52493B955001F32F4 /* Log.cpp */,
+				D6DFCEB62493B955001F32F4 /* Log.h */,
 				300264BD24266097004559E0 /* Frameworks */,
 				D644A042231ED82900B75B77 /* Products */,
 			);
@@ -119,12 +122,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE985F7A24862BC90003DD8A /* Connect.h in Headers */,
-				CE985F872486524B0003DD8A /* Log.h in Headers */,
-				CE985F7B24862BC90003DD8A /* Listen.h in Headers */,
-				CE985F7224860B100003DD8A /* Event.h in Headers */,
-				CE985F7524860B100003DD8A /* Framework.h in Headers */,
-				CE93ADE624872A38008E7535 /* FrameworkHeader.h in Headers */,
+				D6DFCEC32493B956001F32F4 /* Event.h in Headers */,
+				D6DFCEC52493B956001F32F4 /* FrameworkHeader.h in Headers */,
+				D6DFCEBF2493B956001F32F4 /* Listener.h in Headers */,
+				D6DFCEC62493B956001F32F4 /* Framework.h in Headers */,
+				D6DFCEC42493B956001F32F4 /* Connection.h in Headers */,
+				D6DFCEC22493B956001F32F4 /* Log.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,9 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE985F892486524B0003DD8A /* Log.cpp in Sources */,
-				CE985F8224862C1F0003DD8A /* Connect.cpp in Sources */,
-				CE985F8024862C1F0003DD8A /* Listen.cpp in Sources */,
+				D6DFCECA2493B956001F32F4 /* Connection.cpp in Sources */,
+				D6DFCEC82493B956001F32F4 /* Framework.cpp in Sources */,
+				D6DFCEC12493B956001F32F4 /* Log.cpp in Sources */,
+				D6DFCECC2493B956001F32F4 /* Listener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,10 +220,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE985F7F24862C1F0003DD8A /* Listen.cpp in Sources */,
-				CE985F8124862C1F0003DD8A /* Connect.cpp in Sources */,
-				CE985F882486524B0003DD8A /* Log.cpp in Sources */,
-				CE985F7424860B100003DD8A /* Framework.cpp in Sources */,
+				D6DFCEC92493B956001F32F4 /* Connection.cpp in Sources */,
+				D6DFCEC72493B956001F32F4 /* Framework.cpp in Sources */,
+				D6DFCEC02493B956001F32F4 /* Log.cpp in Sources */,
+				D6DFCECB2493B956001F32F4 /* Listener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

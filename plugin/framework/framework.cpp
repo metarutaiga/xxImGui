@@ -7,8 +7,8 @@
 #include <mutex>
 #include <thread>
 #include <interface.h>
-#include "../../ConcurrencyNetworkFramework/Connect.h"
-#include "../../ConcurrencyNetworkFramework/Listen.h"
+#include "../../ConcurrencyNetworkFramework/Connection.h"
+#include "../../ConcurrencyNetworkFramework/Listener.h"
 #include "../../ConcurrencyNetworkFramework/Log.h"
 #include "../../ConcurrencyNetworkFramework/Framework.h"
 #include "client.h"
@@ -17,12 +17,12 @@
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
-static Listen* server = nullptr;
+static Listener* server = nullptr;
 static Framework* framework = nullptr;
 static std::thread* frameworkThread = nullptr;
 static std::vector<Client*> clients;
 
-static std::vector<Connect*> connects;
+static std::vector<Connection*> connects;
 static bool benchmark = false;
 
 static std::string logInfo;
@@ -45,7 +45,7 @@ static void startFramework()
             logMutex.unlock();
         });
 
-        server = new Listen("127.0.0.1", "7777");
+        server = new Listener("127.0.0.1", "7777");
         framework = new Framework;
         framework->Server(server);
         frameworkThread = new std::thread([]{ framework->Dispatch(); });
@@ -148,8 +148,8 @@ pluginAPI void Update(const UpdateData& updateData)
 
                 while (connects.size() < create)
                 {
-                    Connect* connect = new Connect("127.0.0.1", "7777");
-                    if (connect && connect->Start() == false)
+                    Connection* connect = new Connection("127.0.0.1", "7777");
+                    if (connect && connect->Connect() == false)
                     {
                         connect->Disconnect();
                         continue;
@@ -159,19 +159,19 @@ pluginAPI void Update(const UpdateData& updateData)
 
                 while (connects.size() > remove)
                 {
-                    Connect* connect = connects.back();
+                    Connection* connect = connects.back();
                     connect->Disconnect();
                     connects.pop_back();
                 }
             }
             else
             {
-                for (Connect* connect : connects)
+                for (Connection* connect : connects)
                     connect->Disconnect();
                 connects.clear();
             }
 
-            ImGui::Text("Active Thread : %d", Connect::GetActiveThreadCount());
+            ImGui::Text("Active Thread : %d", Connection::GetActiveThreadCount());
 
             ImVec2 windowSize = ImVec2(800 * updateData.windowScale, 200 * updateData.windowScale);
 
@@ -199,7 +199,7 @@ pluginAPI void Update(const UpdateData& updateData)
                 break;
             }
 
-            pos.y += 96;
+            pos.y += 90 * updateData.windowScale;
         }
     }
 }
