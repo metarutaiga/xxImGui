@@ -7,15 +7,18 @@
 #include <mutex>
 #include <thread>
 #include <interface.h>
-#include "../../ConcurrencyNetworkFramework/Connection.h"
-#include "../../ConcurrencyNetworkFramework/Listener.h"
-#include "../../ConcurrencyNetworkFramework/Log.h"
-#include "../../ConcurrencyNetworkFramework/Framework.h"
-#include "client.h"
+#include "ConcurrencyNetworkFramework/Connection.h"
+#include "ConcurrencyNetworkFramework/Framework.h"
+#include "ConcurrencyNetworkFramework/Listener.h"
+#include "ConcurrencyNetworkFramework/Log.h"
+#include "Client.h"
 
 #define PLUGIN_NAME     "Framework"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
+
+#define SERVER_IP       "127.0.0.1"
+#define SERVER_PORT     "5227"
 
 static Listener* server = nullptr;
 static Framework* framework = nullptr;
@@ -45,15 +48,18 @@ static void startFramework()
             logMutex.unlock();
         });
 
-        server = new Listener("127.0.0.1", "7777");
+        server = new Listener(SERVER_IP, SERVER_PORT);
         framework = new Framework;
         framework->Server(server);
-        frameworkThread = new std::thread([]{ framework->Dispatch(); });
+        frameworkThread = new std::thread([]{ framework->Dispatch(4); });
     }
 }
 //------------------------------------------------------------------------------
 static void shutdownFramework()
 {
+    for (Connection* connect : connects)
+        connect->Disconnect();
+    connects.clear();
     if (frameworkThread)
     {
         framework->Terminate();
@@ -69,6 +75,43 @@ static void shutdownFramework()
     }
 }
 //------------------------------------------------------------------------------
+static void benchmarkFramework()
+{
+    if (benchmark && frameworkThread)
+    {
+        size_t bucket = 32;
+        size_t create = rand() % bucket;
+        size_t remove = rand() % bucket;
+
+        while (connects.size() < create)
+        {
+            Connection* connect = new Connection(SERVER_IP, SERVER_PORT);
+            if (connect && connect->ConnectTCP() == false)
+            {
+                connect->Disconnect();
+                continue;
+            }
+            connect->Send(Buffer::Get(4));
+            connect->ConnectUDP();
+            connect->Send(Buffer::Get(4));
+            connects.emplace_back(connect);
+        }
+
+        while (connects.size() > remove)
+        {
+            Connection* connect = connects.back();
+            connect->Disconnect();
+            connects.pop_back();
+        }
+    }
+    else
+    {
+        for (Connection* connect : connects)
+            connect->Disconnect();
+        connects.clear();
+    }
+}
+//------------------------------------------------------------------------------
 pluginAPI const char* Create(const CreateData& createData)
 {
     return PLUGIN_NAME;
@@ -76,6 +119,11 @@ pluginAPI const char* Create(const CreateData& createData)
 //------------------------------------------------------------------------------
 pluginAPI void Shutdown(const ShutdownData& shutdownData)
 {
+    for (Client* client : clients)
+    {
+        delete client;
+    }
+    clients.clear();
     shutdownFramework();
 }
 //------------------------------------------------------------------------------
@@ -89,6 +137,11 @@ pluginAPI void Update(const UpdateData& updateData)
         if (ImGui::BeginMenu(PLUGIN_NAME))
         {
             ImGui::MenuItem("Framework", nullptr, &showFramework);
+            ImGui::Separator();
+            if (ImGui::MenuItem("Add Client", nullptr, nullptr))
+            {
+                clients.emplace_back(new Client(SERVER_IP, SERVER_PORT));
+            }
             ImGui::Separator();
             ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
             ImGui::EndMenu();
@@ -107,10 +160,10 @@ pluginAPI void Update(const UpdateData& updateData)
         }
     }
 
+    ImVec2 pos = {};
+
     if (showFramework)
     {
-        ImVec2 pos = {};
-
         if (ImGui::Begin("Framework", &showFramework))
         {
             pos = ImGui::GetWindowPos();
@@ -132,7 +185,7 @@ pluginAPI void Update(const UpdateData& updateData)
             ImGui::SameLine();
             if (ImGui::Button("Add Client"))
             {
-                clients.emplace_back(new Client("127.0.0.1", "7777"));
+                clients.emplace_back(new Client(SERVER_IP, SERVER_PORT));
             }
 
             ImGui::SameLine();
@@ -140,49 +193,25 @@ pluginAPI void Update(const UpdateData& updateData)
             {
                 benchmark = !benchmark;
             }
-            if (benchmark && framework)
-            {
-                size_t bucket = 32;
-                size_t create = rand() % bucket;
-                size_t remove = rand() % bucket;
+            benchmarkFramework();
 
-                while (connects.size() < create)
-                {
-                    Connection* connect = new Connection("127.0.0.1", "7777");
-                    if (connect && connect->Connect() == false)
-                    {
-                        connect->Disconnect();
-                        continue;
-                    }
-                    connects.emplace_back(connect);
-                }
-
-                while (connects.size() > remove)
-                {
-                    Connection* connect = connects.back();
-                    connect->Disconnect();
-                    connects.pop_back();
-                }
-            }
-            else
-            {
-                for (Connection* connect : connects)
-                    connect->Disconnect();
-                connects.clear();
-            }
-
-            ImGui::Text("Active Thread : %d", Connection::GetActiveThreadCount());
+            ImGui::Text("Active Thread : %d/%d/%d/%d Pool Size: %d/%d", Connection::GetActiveThreadCount(0),
+                                                                        Connection::GetActiveThreadCount(1),
+                                                                        Connection::GetActiveThreadCount(2),
+                                                                        Connection::GetActiveThreadCount(3),
+                                                                        Buffer::Used(),
+                                                                        Buffer::Unused());
 
             ImVec2 windowSize = ImVec2(800 * updateData.windowScale, 200 * updateData.windowScale);
 
             logMutex.lock();
-            ImGui::InputTextMultiline("INFO", &logInfo.front(), logInfo.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputTextMultiline("INFO", logInfo.size() ? &logInfo.front() : "", logInfo.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
             ImGui::BeginChild("INFO");
-            ImGui::SetScrollHere(1);
+            ImGui::SetScrollHereY(1);
             ImGui::EndChild();
-            ImGui::InputTextMultiline("ERROR", &logError.front(), logError.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputTextMultiline("ERROR", logError.size() ? &logError.front() : "", logError.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
             ImGui::BeginChild("ERROR");
-            ImGui::SetScrollHere(1);
+            ImGui::SetScrollHereY(1);
             ImGui::EndChild();
             logMutex.unlock();
 
