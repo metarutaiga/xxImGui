@@ -30,26 +30,32 @@ bool Client::Update(const UpdateData& updateData)
     char label[64];
     snprintf(label, 64, "Client %p", this);
 
-    if (ImGui::Begin(label, &result))
+    if (ImGui::Begin(label, &result, ImGuiWindowFlags_AlwaysAutoResize))
     {
-        if (ImGui::Button("Connect"))
+        if (client == nullptr)
         {
-            if (client == nullptr)
+            if (ImGui::Button("Connect"))
             {
                 client = new Connection(thiz.address.c_str(), thiz.port.c_str());
-                if (client && client->Connect() == false)
+                if (client && client->ConnectTCP() == false)
                 {
                     client->Disconnect();
                     client = nullptr;
                 }
             }
         }
-
-        ImGui::SameLine();
-        if (ImGui::Button("Disconnect"))
+        else
         {
-            client->Disconnect();
-            client = nullptr;
+            if (ImGui::Button("Disconnect") || client->Alive() == false)
+            {
+                client->Disconnect();
+                client = nullptr;
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("ConnectUDP"))
+            {
+                client->ConnectUDP();
+            }
         }
 
         ImGui::InputText("MESSAGE", message, sizeof(message));
@@ -57,8 +63,7 @@ bool Client::Update(const UpdateData& updateData)
         {
             if (client)
             {
-                BufferPtr bufferPtr = BufferPtr::make_shared(message, message + strlen(message));
-                client->Send(bufferPtr);
+                client->Send(Buffer::Get(4));
             }
         }
 
