@@ -32,6 +32,10 @@ void Plugin::Create(const char* path, uint64_t device)
     arch = ".x64";
 #elif defined(_M_IX86)
     arch = ".x86";
+#elif defined(_M_ARM64)
+    arch = ".arm64";
+#elif defined(_M_ARM)
+    arch = ".arm";
 #endif
     extension = ".dll";
 #elif defined(xxMACOS)
