@@ -214,7 +214,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_INC_SETJMPEX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -280,7 +280,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_INC_SETJMPEX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -327,7 +327,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_INC_SETJMPEX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -353,7 +353,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_INC_SETJMPEX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
