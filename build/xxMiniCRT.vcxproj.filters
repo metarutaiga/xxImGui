@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Object Include="..\xxMiniCRT\chkstk.x64.obj" />
+    <Object Include="..\xxMiniCRT\chkstk.x86.obj" />
+    <Object Include="..\xxMiniCRT\arm\chkstk.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\divide.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\gs_cookie.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\helpexcept.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\secpushpop.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\armsecgs.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\gs_report.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\gshandler.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\fptoi64.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\arm\i64tofp.obj">
+      <Filter>arm</Filter>
+    </Object>
+    <Object Include="..\xxMiniCRT\chkstk.arm64.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\xxMiniCRT\xxMSVCRT.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\xxMiniCRT\xxMSVCRT.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="arm">
+      <UniqueIdentifier>{40e671ca-a0f3-4f34-b6c6-ec1cf2ee5371}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
