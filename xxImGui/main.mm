@@ -92,7 +92,7 @@
     int height = 0;
 #if defined(xxMACOS)
     float scale = [self.window backingScaleFactor];
-    NSRect rect = [[self window] frame];
+    NSRect rect = [[[self window] contentView] frame];
     width = rect.size.width * scale;
     height = rect.size.height * scale;
 #elif defined(xxIOS)
