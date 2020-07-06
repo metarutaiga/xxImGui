@@ -135,6 +135,8 @@ bool Plugin::Update()
 {
     UpdateData updateData;
     updateData.device = Renderer::g_device;
+    updateData.width = Renderer::g_width;
+    updateData.height = Renderer::g_height;
     updateData.time = xxGetCurrentTime();
     updateData.windowScale = ImGui::GetStyle().MouseCursorScale;
     for (int i = 0; i < g_pluginUpdates.size(); ++i)

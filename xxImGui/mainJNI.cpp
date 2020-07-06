@@ -67,6 +67,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
     uint64_t commandEncoder = Renderer::Begin();
     if (commandEncoder)
     {
+        Plugin::Render(commandEncoder);
         DearImGui::Render(commandEncoder);
         Renderer::End();
         if (Renderer::Present() == false)
