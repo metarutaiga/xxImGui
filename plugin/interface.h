@@ -31,6 +31,8 @@ struct ShutdownData
 struct UpdateData
 {
     uint64_t    device;
+    int         width;
+    int         height;
     float       time;
     float       windowScale;
 };
