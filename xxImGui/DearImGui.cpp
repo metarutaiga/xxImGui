@@ -141,6 +141,11 @@ void DearImGui::Resume()
 //------------------------------------------------------------------------------
 void DearImGui::NewFrame(void* view)
 {
+    static float previousTime;
+    float time = xxGetCurrentTime();
+    ImGui::GetIO().DeltaTime = time - previousTime;
+    previousTime = time;
+
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
 #if defined(xxMACOS)

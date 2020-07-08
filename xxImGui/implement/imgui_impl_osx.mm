@@ -24,7 +24,6 @@
 
 // Data
 static NSWindow*        g_Window = nil;
-static CFAbsoluteTime   g_Time = 0.0;
 static NSCursor*        g_MouseCursors[ImGuiMouseCursor_COUNT] = { 0 };
 static bool             g_MouseCursorHidden = false;
 static bool             g_WantUpdateMonitors = true;
@@ -175,13 +174,6 @@ void ImGui_ImplOSX_NewFrame(void* view_)
     io.DisplaySize = ImVec2(size.width, size.height);
     if (g_WantUpdateMonitors)
         ImGui_ImplOSX_UpdateMonitors();
-
-    // Setup time step
-    if (g_Time == 0.0)
-        g_Time = CFAbsoluteTimeGetCurrent();
-    CFAbsoluteTime current_time = CFAbsoluteTimeGetCurrent();
-    io.DeltaTime = current_time - g_Time;
-    g_Time = current_time;
 
     ImGui_ImplOSX_UpdateMouseCursor();
 }
