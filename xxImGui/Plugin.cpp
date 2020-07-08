@@ -153,6 +153,8 @@ void Plugin::Render(uint64_t commandEncoder)
     RenderData renderData;
     renderData.device = Renderer::g_device;
     renderData.commandEncoder = commandEncoder;
+    renderData.width = Renderer::g_width;
+    renderData.height = Renderer::g_height;
     for (int i = 0; i < g_pluginRenders.size(); ++i)
     {
         PFN_PLUGIN_RENDER render = g_pluginRenders[i];

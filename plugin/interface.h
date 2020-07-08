@@ -41,6 +41,8 @@ struct RenderData
 {
     uint64_t    device;
     uint64_t    commandEncoder;
+    int         width;
+    int         height;
 };
 
 typedef const char* (*PFN_PLUGIN_CREATE)(const CreateData&);
