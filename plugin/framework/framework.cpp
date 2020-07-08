@@ -4,14 +4,12 @@
 // Copyright (c) 2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
-#include <mutex>
-#include <thread>
 #include <interface.h>
 #include "ConcurrencyNetworkFramework/Connection.h"
 #include "ConcurrencyNetworkFramework/Framework.h"
 #include "ConcurrencyNetworkFramework/Listener.h"
 #include "ConcurrencyNetworkFramework/Log.h"
-#include "Client.h"
+#include "client.h"
 
 #define PLUGIN_NAME     "Framework"
 #define PLUGIN_MAJOR    1
@@ -205,11 +203,11 @@ pluginAPI void Update(const UpdateData& updateData)
             ImVec2 windowSize = ImVec2(800 * updateData.windowScale, 200 * updateData.windowScale);
 
             logMutex.lock();
-            ImGui::InputTextMultiline("INFO", logInfo.size() ? &logInfo.front() : "", logInfo.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputTextMultiline("INFO", logInfo.size() ? &logInfo.front() : (char*)"", logInfo.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
             ImGui::BeginChild("INFO");
             ImGui::SetScrollHereY(1);
             ImGui::EndChild();
-            ImGui::InputTextMultiline("ERROR", logError.size() ? &logError.front() : "", logError.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
+            ImGui::InputTextMultiline("ERROR", logError.size() ? &logError.front() : (char*)"", logError.size(), windowSize, ImGuiInputTextFlags_ReadOnly);
             ImGui::BeginChild("ERROR");
             ImGui::SetScrollHereY(1);
             ImGui::EndChild();

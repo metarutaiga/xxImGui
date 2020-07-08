@@ -175,26 +175,6 @@ pluginAPI void Update(const UpdateData& updateData)
             click |= ImGui::Checkbox("Encode FullRange", &encodeFullRange);
             ImGui::SameLine();
 
-            if (click)
-            {
-                if (lennaYU12 && lennaRGB)
-                {
-                    rgb2yuv_yu12(lennaWidth, lennaHeight, lennaRGB, lennaYU12, encodeFullRange);
-                }
-                if (lennaYV12 && lennaRGB)
-                {
-                    rgb2yuv_yv12(lennaWidth, lennaHeight, lennaRGB, lennaYV12, encodeFullRange);
-                }
-                if (lennaNV12 && lennaRGB)
-                {
-                    rgb2yuv_nv12(lennaWidth, lennaHeight, lennaRGB, lennaNV12, encodeFullRange);
-                }
-                if (lennaNV21 && lennaRGB)
-                {
-                    rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21, encodeFullRange);
-                }
-            }
-
             static int format = 0;
             click |= ImGui::RadioButton("YU12", &format, 0);
             ImGui::SameLine();
@@ -214,14 +194,91 @@ pluginAPI void Update(const UpdateData& updateData)
             ImGui::SameLine();
 #endif
 
-            static uint64_t tsc = 0;
+            static uint64_t encodeTSC = 0;
+            static uint64_t decodeTSC = 0;
             if (ImGui::Button("Convert") || click)
             {
                 unsigned char* temp = (unsigned char*)xxAlignedAlloc(4 * lennaWidth * lennaHeight, 64);
+                int sizeY = lennaWidth * lennaHeight;
+                int sizeUV = lennaWidth / 2 * lennaHeight / 2;
+
                 if (temp)
                 {
-                    int sizeY = lennaWidth * lennaHeight;
-                    int sizeUV = lennaWidth / 2 * lennaHeight / 2;
+                    for (int y = 0; y < lennaHeight; ++y)
+                    {
+                        for (int x = 0; x < lennaWidth; ++x)
+                        {
+                            temp[(y * lennaWidth + x) * 4 + 0] = lennaRGB[(y * lennaWidth + x) * 3 + 0];
+                            temp[(y * lennaWidth + x) * 4 + 1] = lennaRGB[(y * lennaWidth + x) * 3 + 1];
+                            temp[(y * lennaWidth + x) * 4 + 2] = lennaRGB[(y * lennaWidth + x) * 3 + 2];
+                        }
+                    }
+
+                    uint64_t startTSC = xxTSC();
+                    for (int i = 0; i < 100; ++i)
+                    {
+                        switch (format)
+                        {
+                        default:
+                        case 0:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::ARGBToI420(temp, lennaWidth * 4, lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            if (lennaYU12 && temp)
+                            {
+                                rgb2yuv_yu12(lennaWidth, lennaHeight, temp, lennaYU12, 4, false, encodeFullRange);
+                            }
+                            break;
+                        case 1:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::ARGBToI420(temp, lennaWidth * 4, lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            if (lennaYV12 && lennaRGB)
+                            {
+                                rgb2yuv_yv12(lennaWidth, lennaHeight, temp, lennaYV12, 4, false, encodeFullRange);
+                            }
+                            break;
+                        case 2:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::ARGBToNV12(temp, lennaWidth * 4, lennaNV12, lennaWidth, lennaNV12 + sizeY, lennaWidth, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            if (lennaNV12 && lennaRGB)
+                            {
+                                rgb2yuv_nv12(lennaWidth, lennaHeight, temp, lennaNV12, 4, false, encodeFullRange);
+                            }
+                            break;
+                        case 3:
+#if LIBYUV
+                            if (libyuv)
+                            {
+                                libyuv::ARGBToNV21(temp, lennaWidth * 4, lennaNV21, lennaWidth, lennaNV21 + sizeY, lennaWidth, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+                            if (lennaNV21 && lennaRGB)
+                            {
+                                rgb2yuv_nv21(lennaWidth, lennaHeight, temp, lennaNV21, 4, false, encodeFullRange);
+                            }
+                            break;
+                        }
+                    }
+                    encodeTSC = (xxTSC() - startTSC) / 100;
+                }
+
+                if (temp)
+                {
                     memset(temp, 0, 4 * lennaWidth * lennaHeight);
 
                     uint64_t startTSC = xxTSC();
@@ -272,16 +329,13 @@ pluginAPI void Update(const UpdateData& updateData)
                             break;
                         }
                     }
-                    tsc = (xxTSC() - startTSC) / 100;
+                    decodeTSC = (xxTSC() - startTSC) / 100;
 
                     loadTextureFromImage<4, 4>(target, updateData.device, temp, lennaWidth, lennaHeight);
-
-                    xxAlignedFree(temp);
                 }
-            }
 
-            ImGui::SameLine();
-            ImGui::Text("TSC : %llu", tsc);
+                xxAlignedFree(temp);
+            }
 
             if (source == 0)
             {
@@ -296,6 +350,9 @@ pluginAPI void Update(const UpdateData& updateData)
                 ImGui::SameLine();
                 ImGui::Image((ImTextureID)target, ImVec2(lennaWidth, lennaHeight));
             }
+
+            ImGui::Text("Encode TSC : %llu", encodeTSC);
+            ImGui::Text("Decode TSC : %llu", decodeTSC);
 
             ImGui::End();
         }
