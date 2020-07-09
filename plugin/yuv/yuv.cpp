@@ -224,7 +224,8 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                libyuv::ARGBToI420(temp, lennaWidth * 4, lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, lennaWidth, lennaWidth);
+                                auto converter = encodeFullRange ? libyuv::ARGBToJ420 : libyuv::ARGBToI420;
+                                converter(temp, lennaWidth * 4, lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, lennaWidth, lennaWidth);
                                 break;
                             }
 #endif
@@ -237,7 +238,8 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                libyuv::ARGBToI420(temp, lennaWidth * 4, lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, lennaWidth, lennaWidth);
+                                auto converter = encodeFullRange ? libyuv::ARGBToJ420 : libyuv::ARGBToI420;
+                                converter(temp, lennaWidth * 4, lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, lennaWidth, lennaWidth);
                                 break;
                             }
 #endif
@@ -291,7 +293,8 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                libyuv::H420ToARGB(lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaWidth);
+                                auto converter = decodeFullRange ? libyuv::J420ToARGB : libyuv::I420ToARGB;
+                                converter(lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaWidth);
                                 break;
                             }
 #endif
@@ -301,7 +304,8 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                libyuv::H420ToARGB(lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaWidth);
+                                auto converter = decodeFullRange ? libyuv::J420ToARGB : libyuv::I420ToARGB;
+                                converter(lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaWidth);
                                 break;
                             }
 #endif
