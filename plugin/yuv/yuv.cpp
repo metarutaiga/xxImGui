@@ -53,10 +53,17 @@ static void loadTextureFromImage(uint64_t& texture, uint64_t device, const void*
                 char* output = pointer;
                 for (unsigned int x = 0; x < width; ++x)
                 {
+#if defined(xxMACOS) || defined(xxWINDOWS)
                     if (targetPixel >= 1) (*output++) = (sourcePixel >= 1) ? input[x * sourcePixel + 0] : -1;
                     if (targetPixel >= 2) (*output++) = (sourcePixel >= 2) ? input[x * sourcePixel + 1] : -1;
                     if (targetPixel >= 3) (*output++) = (sourcePixel >= 3) ? input[x * sourcePixel + 2] : -1;
                     if (targetPixel >= 4) (*output++) = (sourcePixel >= 4) ? input[x * sourcePixel + 3] : -1;
+#else
+                    if (targetPixel >= 1) (*output++) = (sourcePixel >= 1) ? input[x * sourcePixel + 2] : -1;
+                    if (targetPixel >= 2) (*output++) = (sourcePixel >= 2) ? input[x * sourcePixel + 1] : -1;
+                    if (targetPixel >= 3) (*output++) = (sourcePixel >= 3) ? input[x * sourcePixel + 0] : -1;
+                    if (targetPixel >= 4) (*output++) = (sourcePixel >= 4) ? input[x * sourcePixel + 3] : -1;
+#endif
                 }
                 pointer += stride;
                 input += width * sourcePixel;
@@ -95,28 +102,28 @@ static void loadTexture(const char* baseFolder, bool videoRange)
         lennaYU12 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaYU12 && lennaRGB)
         {
-            rgb2yuv_yu12(lennaWidth, lennaHeight, lennaRGB, lennaYU12);
+            rgb2yuv_yu12(lennaWidth, lennaHeight, lennaRGB, lennaYU12, 3, true);
         }
 
         // YV12
         lennaYV12 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaYV12 && lennaRGB)
         {
-            rgb2yuv_yv12(lennaWidth, lennaHeight, lennaRGB, lennaYV12);
+            rgb2yuv_yv12(lennaWidth, lennaHeight, lennaRGB, lennaYV12, 3, true);
         }
 
         // NV12
         lennaNV12 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaNV12 && lennaRGB)
         {
-            rgb2yuv_nv12(lennaWidth, lennaHeight, lennaRGB, lennaNV12);
+            rgb2yuv_nv12(lennaWidth, lennaHeight, lennaRGB, lennaNV12, 3, true);
         }
 
         // NV21
         lennaNV21 = (unsigned char*)xxAlignedAlloc(sizeY + 2 * sizeUV, 64);
         if (lennaNV21 && lennaRGB)
         {
-            rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21);
+            rgb2yuv_nv21(lennaWidth, lennaHeight, lennaRGB, lennaNV21, 3, true);
         }
     }
 }
@@ -229,9 +236,9 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            if (lennaYU12 && temp)
+                            if (temp && lennaYU12)
                             {
-                                rgb2yuv_yu12(lennaWidth, lennaHeight, temp, lennaYU12, 4, false, encodeFullRange);
+                                rgb2yuv_yu12(lennaWidth, lennaHeight, temp, lennaYU12, 4, true, encodeFullRange);
                             }
                             break;
                         case 1:
@@ -243,9 +250,9 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            if (lennaYV12 && lennaRGB)
+                            if (temp && lennaYV12)
                             {
-                                rgb2yuv_yv12(lennaWidth, lennaHeight, temp, lennaYV12, 4, false, encodeFullRange);
+                                rgb2yuv_yv12(lennaWidth, lennaHeight, temp, lennaYV12, 4, true, encodeFullRange);
                             }
                             break;
                         case 2:
@@ -256,9 +263,9 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            if (lennaNV12 && lennaRGB)
+                            if (temp && lennaNV12)
                             {
-                                rgb2yuv_nv12(lennaWidth, lennaHeight, temp, lennaNV12, 4, false, encodeFullRange);
+                                rgb2yuv_nv12(lennaWidth, lennaHeight, temp, lennaNV12, 4, true, encodeFullRange);
                             }
                             break;
                         case 3:
@@ -269,9 +276,9 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
-                            if (lennaNV21 && lennaRGB)
+                            if (temp && lennaNV21)
                             {
-                                rgb2yuv_nv21(lennaWidth, lennaHeight, temp, lennaNV21, 4, false, encodeFullRange);
+                                rgb2yuv_nv21(lennaWidth, lennaHeight, temp, lennaNV21, 4, true, encodeFullRange);
                             }
                             break;
                         }
