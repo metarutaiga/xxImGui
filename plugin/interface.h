@@ -40,7 +40,9 @@ struct UpdateData
 struct RenderData
 {
     uint64_t    device;
+    uint64_t    commandBuffer;
     uint64_t    commandEncoder;
+    uint64_t    commandFramebuffer;
     int         width;
     int         height;
 };
