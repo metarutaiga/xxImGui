@@ -152,7 +152,9 @@ void Plugin::Render(uint64_t commandEncoder)
 {
     RenderData renderData;
     renderData.device = Renderer::g_device;
+    renderData.commandBuffer = Renderer::g_currentCommandBuffer;
     renderData.commandEncoder = commandEncoder;
+    renderData.commandFramebuffer = Renderer::g_currentCommandFramebuffer;
     renderData.width = Renderer::g_width;
     renderData.height = Renderer::g_height;
     for (int i = 0; i < g_pluginRenders.size(); ++i)
