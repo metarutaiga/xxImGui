@@ -354,12 +354,12 @@ pluginAPI void Update(const UpdateData& updateData)
             }
             if (source != 0)
             {
-                ImGui::Image((ImTextureID)source, ImVec2(lennaWidth, lennaHeight));
+                ImGui::Image((ImTextureID)source, ImVec2(lennaWidth * updateData.windowScale, lennaHeight * updateData.windowScale));
             }
             if (target != 0)
             {
                 ImGui::SameLine();
-                ImGui::Image((ImTextureID)target, ImVec2(lennaWidth, lennaHeight));
+                ImGui::Image((ImTextureID)target, ImVec2(lennaWidth * updateData.windowScale, lennaHeight * updateData.windowScale));
             }
 
             ImGui::Text("Encode TSC : %llu", encodeTSC);
