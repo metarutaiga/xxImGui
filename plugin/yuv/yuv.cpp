@@ -203,11 +203,14 @@ pluginAPI void Update(const UpdateData& updateData)
 
             static uint64_t encodeTSC = 0;
             static uint64_t decodeTSC = 0;
+            static float encodeTime = 0.0f;
+            static float decodeTime = 0.0f;
             if (ImGui::Button("Convert") || click)
             {
                 unsigned char* temp = (unsigned char*)xxAlignedAlloc(4 * lennaWidth * lennaHeight, 64);
                 int sizeY = lennaWidth * lennaHeight;
                 int sizeUV = lennaWidth / 2 * lennaHeight / 2;
+                int count = 1000;
 
                 if (temp)
                 {
@@ -222,7 +225,7 @@ pluginAPI void Update(const UpdateData& updateData)
                     }
 
                     uint64_t startTSC = xxTSC();
-                    for (int i = 0; i < 100; ++i)
+                    for (int i = 0; i < count; ++i)
                     {
                         switch (format)
                         {
@@ -283,7 +286,8 @@ pluginAPI void Update(const UpdateData& updateData)
                             break;
                         }
                     }
-                    encodeTSC = (xxTSC() - startTSC) / 100;
+                    encodeTSC = (xxTSC() - startTSC) / count;
+                    encodeTime = encodeTSC / float(xxTSCFrequency());
                 }
 
                 if (temp)
@@ -291,7 +295,7 @@ pluginAPI void Update(const UpdateData& updateData)
                     memset(temp, 0, 4 * lennaWidth * lennaHeight);
 
                     uint64_t startTSC = xxTSC();
-                    for (int i = 0; i < 100; ++i)
+                    for (int i = 0; i < count; ++i)
                     {
                         switch (format)
                         {
@@ -340,7 +344,8 @@ pluginAPI void Update(const UpdateData& updateData)
                             break;
                         }
                     }
-                    decodeTSC = (xxTSC() - startTSC) / 100;
+                    decodeTSC = (xxTSC() - startTSC) / count;
+                    decodeTime = decodeTSC / float(xxTSCFrequency());
 
                     loadTextureFromImage<4, 4>(target, updateData.device, temp, lennaWidth, lennaHeight);
                 }
@@ -362,8 +367,8 @@ pluginAPI void Update(const UpdateData& updateData)
                 ImGui::Image((ImTextureID)target, ImVec2(lennaWidth * updateData.windowScale, lennaHeight * updateData.windowScale));
             }
 
-            ImGui::Text("Encode TSC : %llu", encodeTSC);
-            ImGui::Text("Decode TSC : %llu", decodeTSC);
+            ImGui::Text("Encode TSC : %.3fus %llu", encodeTime * 1000.0f, encodeTSC);
+            ImGui::Text("Decode TSC : %.3fus %llu", decodeTime * 1000.0f, decodeTSC);
 
             ImGui::End();
         }
