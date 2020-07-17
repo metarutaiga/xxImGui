@@ -6,6 +6,7 @@
 #include "Plugin.h"
 #include "DearImGui.h"
 
+static bool g_imguiUpdate = true;
 static bool g_initialized = false;
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclass obj, jobject context, jobject surface)
@@ -62,20 +63,30 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
     xxAndroidContext = context;
 
     DearImGui::NewFrame(Renderer::g_view);
-    DearImGui::Update(Plugin::Update() == false);
+    g_imguiUpdate |= Plugin::Update();
+    g_imguiUpdate |= DearImGui::Update(Plugin::Count() == 0);
 
-    uint64_t commandEncoder = Renderer::Begin();
-    if (commandEncoder)
+    if (g_imguiUpdate)
     {
-        Plugin::Render(commandEncoder);
-        DearImGui::Render(commandEncoder);
-        Renderer::End();
-        if (Renderer::Present() == false)
+        g_imguiUpdate = false;
+
+        uint64_t commandEncoder = Renderer::Begin();
+        if (commandEncoder)
         {
-            DearImGui::Suspend();
-            Renderer::Reset(Renderer::g_view, Renderer::g_width, Renderer::g_height);
-            DearImGui::Resume();
+            DearImGui::Render(commandEncoder);
+            Plugin::Render(commandEncoder);
+            Renderer::End();
+            if (Renderer::Present() == false)
+            {
+                DearImGui::Suspend();
+                Renderer::Reset(Renderer::g_view, Renderer::g_width, Renderer::g_height);
+                DearImGui::Resume();
+            }
         }
+    }
+    else
+    {
+        xxSleep(10);
     }
 
     DearImGui::PostUpdate(Renderer::g_view);
@@ -100,5 +111,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resume(JNIEnv* env, jclas
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_touch(JNIEnv* env, jclass obj, jint type, jfloat x, jfloat y)
 {
+    g_imguiUpdate = true;
+
     DearImGui::HandleEventAndroid(type, x, y);
 }

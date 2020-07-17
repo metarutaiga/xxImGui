@@ -203,6 +203,8 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
     NSEvent* event = (__bridge NSEvent*)event_;
     NSView* view = (__bridge NSView*)view_;
 
+    [view setValue:@YES forKey:@"imguiUpdate"];
+
     ImGuiIO& io = ImGui::GetIO();
 
     if (event.type == NSEventTypeLeftMouseDown || event.type == NSEventTypeRightMouseDown || event.type == NSEventTypeOtherMouseDown)
@@ -344,6 +346,13 @@ struct ImGuiViewportDataOSX
     ~ImGuiViewportDataOSX() { IM_ASSERT(window == nil); }
 };
 
+@interface ImGui_ImplOSX_View : NSView
+@property (nonatomic) Boolean imguiUpdate;
+@end
+
+@implementation ImGui_ImplOSX_View
+@end
+
 @interface ImGui_ImplOSX_ViewController : NSViewController
 @end
 
@@ -381,7 +390,7 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
 
     ImGui_ImplOSX_ViewController* viewController = [[ImGui_ImplOSX_ViewController alloc] init];
     window.contentViewController = viewController;
-    window.contentViewController.view = [[NSView alloc] initWithFrame:rect];
+    window.contentViewController.view = [[ImGui_ImplOSX_View alloc] initWithFrame:rect];
 
     data->window = window;
     data->windowOwned = true;

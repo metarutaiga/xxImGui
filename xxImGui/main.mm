@@ -19,10 +19,12 @@
 
 #if defined(xxMACOS)
 @interface ImGuiExampleView : NSView
+@property (nonatomic) Boolean imguiUpdate;
 @property (nonatomic) NSTimer* animationTimer;
 @end
 #elif defined(xxIOS)
 @interface ImGuiExampleView : UIView
+@property (nonatomic) Boolean imguiUpdate;
 @property (nonatomic) Boolean resetSize;
 @end
 #endif
@@ -34,6 +36,7 @@
 {
     self = [super initWithFrame:frameRect];
 
+    self.imguiUpdate = YES;
     self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(updateAndDraw) userInfo:nil repeats:YES];
 
     [self setWantsLayer:YES];
@@ -51,6 +54,8 @@
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+
+    self.imguiUpdate = YES;
 
     CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateAndDraw)];
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
@@ -71,15 +76,25 @@
         }
 #endif
         DearImGui::NewFrame((__bridge void*)self);
-        DearImGui::Update(Plugin::Update() == false);
+        self.imguiUpdate |= Plugin::Update();
+        self.imguiUpdate |= DearImGui::Update(Plugin::Count() == 0);
 
-        uint64_t commandEncoder = Renderer::Begin();
-        if (commandEncoder)
+        if (self.imguiUpdate)
         {
-            Plugin::Render(commandEncoder);
-            DearImGui::Render(commandEncoder);
-            Renderer::End();
-            Renderer::Present();
+            self.imguiUpdate = NO;
+
+            uint64_t commandEncoder = Renderer::Begin();
+            if (commandEncoder)
+            {
+                Plugin::Render(commandEncoder);
+                DearImGui::Render(commandEncoder);
+                Renderer::End();
+                Renderer::Present();
+            }
+        }
+        else
+        {
+            xxSleep(10);
         }
 
         DearImGui::PostUpdate((__bridge void*)self);
