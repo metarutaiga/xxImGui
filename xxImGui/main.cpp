@@ -41,6 +41,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
 
     // Main loop
     MSG msg = {};
+    bool imguiUpdate = true;
     bool recreateWindow = false;
     while (msg.message != WM_QUIT)
     {
@@ -60,24 +61,36 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
                 msg.message = 0;
                 recreateWindow = false;
             }
+
+            imguiUpdate = true;
             continue;
         }
 
         DearImGui::NewFrame(hWnd);
-        DearImGui::Update(Plugin::Update() == false);
+        imguiUpdate |= Plugin::Update();
+        imguiUpdate |= DearImGui::Update(Plugin::Count() == 0);
 
-        uint64_t commandEncoder = Renderer::Begin();
-        if (commandEncoder)
+        if (imguiUpdate)
         {
-            Plugin::Render(commandEncoder);
-            DearImGui::Render(commandEncoder);
-            Renderer::End();
-            if (Renderer::Present() == false)
+            imguiUpdate = false;
+
+            uint64_t commandEncoder = Renderer::Begin();
+            if (commandEncoder)
             {
-                DearImGui::Suspend();
-                Renderer::Reset(hWnd, Renderer::g_width, Renderer::g_height);
-                DearImGui::Resume();
+                Plugin::Render(commandEncoder);
+                DearImGui::Render(commandEncoder);
+                Renderer::End();
+                if (Renderer::Present() == false)
+                {
+                    DearImGui::Suspend();
+                    Renderer::Reset(hWnd, Renderer::g_width, Renderer::g_height);
+                    DearImGui::Resume();
+                }
             }
+        }
+        else
+        {
+            xxSleep(10);
         }
 
         HWND result = (HWND)DearImGui::PostUpdate(hWnd);

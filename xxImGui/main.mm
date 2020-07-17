@@ -19,10 +19,12 @@
 
 #if defined(xxMACOS)
 @interface ImGuiExampleView : NSView
+@property (nonatomic) Boolean imguiUpdate;
 @property (nonatomic) NSTimer* animationTimer;
 @end
 #elif defined(xxIOS)
 @interface ImGuiExampleView : UIView
+@property (nonatomic) Boolean imguiUpdate;
 @property (nonatomic) Boolean resetSize;
 @end
 #endif
@@ -34,6 +36,7 @@
 {
     self = [super initWithFrame:frameRect];
 
+    self.imguiUpdate = YES;
     self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(updateAndDraw) userInfo:nil repeats:YES];
 
     [self setWantsLayer:YES];
@@ -52,6 +55,8 @@
 {
     self = [super initWithFrame:frame];
 
+    self.imguiUpdate = YES;
+
     CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateAndDraw)];
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 
@@ -61,26 +66,39 @@
 
 -(void)updateAndDraw
 {
+    @autoreleasepool
+    {
 #if defined(xxIOS)
-    if (_resetSize)
-    {
-        _resetSize = NO;
-        [self reset];
-    }
+        if (_resetSize)
+        {
+            _resetSize = NO;
+            [self reset];
+        }
 #endif
-    DearImGui::NewFrame((__bridge void*)self);
-    DearImGui::Update(Plugin::Update() == false);
+        DearImGui::NewFrame((__bridge void*)self);
+        self.imguiUpdate |= Plugin::Update();
+        self.imguiUpdate |= DearImGui::Update(Plugin::Count() == 0);
 
-    uint64_t commandEncoder = Renderer::Begin();
-    if (commandEncoder)
-    {
-        Plugin::Render(commandEncoder);
-        DearImGui::Render(commandEncoder);
-        Renderer::End();
-        Renderer::Present();
+        if (self.imguiUpdate)
+        {
+            self.imguiUpdate = NO;
+
+            uint64_t commandEncoder = Renderer::Begin();
+            if (commandEncoder)
+            {
+                Plugin::Render(commandEncoder);
+                DearImGui::Render(commandEncoder);
+                Renderer::End();
+                Renderer::Present();
+            }
+        }
+        else
+        {
+            xxSleep(10);
+        }
+
+        DearImGui::PostUpdate((__bridge void*)self);
     }
-
-    DearImGui::PostUpdate((__bridge void*)self);
 }
 
 -(void)reset
@@ -89,7 +107,7 @@
     int height = 0;
 #if defined(xxMACOS)
     float scale = [self.window backingScaleFactor];
-    NSRect rect = [[self window] frame];
+    NSRect rect = [[[self window] contentView] frame];
     width = rect.size.width * scale;
     height = rect.size.height * scale;
 #elif defined(xxIOS)

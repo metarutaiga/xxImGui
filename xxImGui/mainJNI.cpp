@@ -6,9 +6,10 @@
 #include "Plugin.h"
 #include "DearImGui.h"
 
+static bool g_imguiUpdate = true;
 static bool g_initialized = false;
 
-extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclass obj, jobject surface)
+extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclass obj, jobject context, jobject surface)
 {
     if (g_initialized)
         return;
@@ -28,7 +29,17 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
         height = ANativeWindow_getHeight(window);
     }
 
-    xxJNIEnv = env;
+    env->GetJavaVM(&xxAndroidJavaVM);
+    if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_6) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_6;
+    else if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_4) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_4;
+    else if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_2) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_2;
+    else if (xxAndroidJavaVM->GetEnv((void**)&env, JNI_VERSION_1_1) == JNI_OK)
+        xxAndroidJNIVersion = JNI_VERSION_1_1;
+    xxAndroidJNIEnv = env;
+    xxAndroidContext = context;
 
     Renderer::Create(window, width, height);
     DearImGui::Create(window, 3.0f);
@@ -46,22 +57,36 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resize(JNIEnv* env, jclas
     Renderer::Reset(window, width, height);
 }
 
-extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass obj)
+extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass obj, jobject context)
 {
-    DearImGui::NewFrame(Renderer::g_view);
-    DearImGui::Update(Plugin::Update() == false);
+    xxAndroidJNIEnv = env;
+    xxAndroidContext = context;
 
-    uint64_t commandEncoder = Renderer::Begin();
-    if (commandEncoder)
+    DearImGui::NewFrame(Renderer::g_view);
+    g_imguiUpdate |= Plugin::Update();
+    g_imguiUpdate |= DearImGui::Update(Plugin::Count() == 0);
+
+    if (g_imguiUpdate)
     {
-        DearImGui::Render(commandEncoder);
-        Renderer::End();
-        if (Renderer::Present() == false)
+        g_imguiUpdate = false;
+
+        uint64_t commandEncoder = Renderer::Begin();
+        if (commandEncoder)
         {
-            DearImGui::Suspend();
-            Renderer::Reset(Renderer::g_view, Renderer::g_width, Renderer::g_height);
-            DearImGui::Resume();
+            DearImGui::Render(commandEncoder);
+            Plugin::Render(commandEncoder);
+            Renderer::End();
+            if (Renderer::Present() == false)
+            {
+                DearImGui::Suspend();
+                Renderer::Reset(Renderer::g_view, Renderer::g_width, Renderer::g_height);
+                DearImGui::Resume();
+            }
         }
+    }
+    else
+    {
+        xxSleep(10);
     }
 
     DearImGui::PostUpdate(Renderer::g_view);
@@ -86,5 +111,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_resume(JNIEnv* env, jclas
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_touch(JNIEnv* env, jclass obj, jint type, jfloat x, jfloat y)
 {
+    g_imguiUpdate = true;
+
     DearImGui::HandleEventAndroid(type, x, y);
 }

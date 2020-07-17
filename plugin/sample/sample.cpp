@@ -21,7 +21,7 @@ pluginAPI void Shutdown(const ShutdownData& shutdownData)
 
 }
 //------------------------------------------------------------------------------
-pluginAPI void Update(const UpdateData& updateData)
+pluginAPI bool Update(const UpdateData& updateData)
 {
     static bool showAbout = false;
 
@@ -45,6 +45,8 @@ pluginAPI void Update(const UpdateData& updateData)
             ImGui::End();
         }
     }
+
+    return false;
 }
 //------------------------------------------------------------------------------
 pluginAPI void Render(const RenderData& renderData)

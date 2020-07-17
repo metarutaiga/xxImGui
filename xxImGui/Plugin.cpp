@@ -32,6 +32,10 @@ void Plugin::Create(const char* path, uint64_t device)
     arch = ".x64";
 #elif defined(_M_IX86)
     arch = ".x86";
+#elif defined(_M_ARM64)
+    arch = ".arm64";
+#elif defined(_M_ARM)
+    arch = ".arm";
 #endif
     extension = ".dll";
 #elif defined(xxMACOS)
@@ -127,26 +131,39 @@ void Plugin::Shutdown()
     g_pluginRenders.clear();
 }
 //------------------------------------------------------------------------------
+int Plugin::Count()
+{
+    return (int)g_pluginUpdates.size();
+}
+//------------------------------------------------------------------------------
 bool Plugin::Update()
 {
+    bool updated = false;
+
     UpdateData updateData;
     updateData.device = Renderer::g_device;
+    updateData.width = Renderer::g_width;
+    updateData.height = Renderer::g_height;
     updateData.time = xxGetCurrentTime();
     updateData.windowScale = ImGui::GetStyle().MouseCursorScale;
     for (int i = 0; i < g_pluginUpdates.size(); ++i)
     {
         PFN_PLUGIN_UPDATE update = g_pluginUpdates[i];
-        update(updateData);
+        updated |= update(updateData);
     }
 
-    return g_pluginUpdates.empty() == false;
+    return updated;
 }
 //------------------------------------------------------------------------------
 void Plugin::Render(uint64_t commandEncoder)
 {
     RenderData renderData;
     renderData.device = Renderer::g_device;
+    renderData.commandBuffer = Renderer::g_currentCommandBuffer;
     renderData.commandEncoder = commandEncoder;
+    renderData.commandFramebuffer = Renderer::g_currentCommandFramebuffer;
+    renderData.width = Renderer::g_width;
+    renderData.height = Renderer::g_height;
     for (int i = 0; i < g_pluginRenders.size(); ++i)
     {
         PFN_PLUGIN_RENDER render = g_pluginRenders[i];

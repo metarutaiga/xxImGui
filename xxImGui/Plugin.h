@@ -14,6 +14,7 @@ public:
     static void Create(const char* path, uint64_t device);
     static void Shutdown();
 
+    static int Count();
     static bool Update();
     static void Render(uint64_t commandEncoder);
 };
