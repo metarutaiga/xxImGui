@@ -31,6 +31,8 @@ struct ShutdownData
 struct UpdateData
 {
     uint64_t    device;
+    int         width;
+    int         height;
     float       time;
     float       windowScale;
 };
@@ -38,10 +40,14 @@ struct UpdateData
 struct RenderData
 {
     uint64_t    device;
+    uint64_t    commandBuffer;
     uint64_t    commandEncoder;
+    uint64_t    commandFramebuffer;
+    int         width;
+    int         height;
 };
 
 typedef const char* (*PFN_PLUGIN_CREATE)(const CreateData&);
 typedef void (*PFN_PLUGIN_SHUTDOWN)(const ShutdownData&);
-typedef void (*PFN_PLUGIN_UPDATE)(const UpdateData&);
+typedef bool (*PFN_PLUGIN_UPDATE)(const UpdateData&);
 typedef void (*PFN_PLUGIN_RENDER)(const RenderData&);

@@ -24,7 +24,6 @@
 
 // Data
 static NSWindow*        g_Window = nil;
-static CFAbsoluteTime   g_Time = 0.0;
 static NSCursor*        g_MouseCursors[ImGuiMouseCursor_COUNT] = { 0 };
 static bool             g_MouseCursorHidden = false;
 static bool             g_WantUpdateMonitors = true;
@@ -176,13 +175,6 @@ void ImGui_ImplOSX_NewFrame(void* view_)
     if (g_WantUpdateMonitors)
         ImGui_ImplOSX_UpdateMonitors();
 
-    // Setup time step
-    if (g_Time == 0.0)
-        g_Time = CFAbsoluteTimeGetCurrent();
-    CFAbsoluteTime current_time = CFAbsoluteTimeGetCurrent();
-    io.DeltaTime = current_time - g_Time;
-    g_Time = current_time;
-
     ImGui_ImplOSX_UpdateMouseCursor();
 }
 
@@ -210,6 +202,8 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
 {
     NSEvent* event = (__bridge NSEvent*)event_;
     NSView* view = (__bridge NSView*)view_;
+
+    [view setValue:@YES forKey:@"imguiUpdate"];
 
     ImGuiIO& io = ImGui::GetIO();
 
@@ -352,6 +346,13 @@ struct ImGuiViewportDataOSX
     ~ImGuiViewportDataOSX() { IM_ASSERT(window == nil); }
 };
 
+@interface ImGui_ImplOSX_View : NSView
+@property (nonatomic) Boolean imguiUpdate;
+@end
+
+@implementation ImGui_ImplOSX_View
+@end
+
 @interface ImGui_ImplOSX_ViewController : NSViewController
 @end
 
@@ -382,11 +383,14 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
     [window setAcceptsMouseMovedEvents:YES];
     [window setOpaque:NO];
     [window orderFront:NSApp];
+#if 0
     [window setLevel:NSFloatingWindowLevel];
+    [window setHidesOnDeactivate:YES];
+#endif
 
     ImGui_ImplOSX_ViewController* viewController = [[ImGui_ImplOSX_ViewController alloc] init];
     window.contentViewController = viewController;
-    window.contentViewController.view = [[NSView alloc] initWithFrame:rect];
+    window.contentViewController.view = [[ImGui_ImplOSX_View alloc] initWithFrame:rect];
 
     data->window = window;
     data->windowOwned = true;

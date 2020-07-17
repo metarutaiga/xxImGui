@@ -25,7 +25,7 @@ pluginAPI void Shutdown(const ShutdownData& shutdownData)
 
 }
 //------------------------------------------------------------------------------
-pluginAPI void Update(const UpdateData& updateData)
+pluginAPI bool Update(const UpdateData& updateData)
 {
     static bool showNode = false;
     static bool showAbout = false;
@@ -69,6 +69,8 @@ pluginAPI void Update(const UpdateData& updateData)
             ImGui::End();
         }
     }
+
+    return false;
 }
 //------------------------------------------------------------------------------
 pluginAPI void Render(const RenderData& renderData)
@@ -109,7 +111,7 @@ void ValidateNode(float time, char* text, size_t count)
 
     // 6. Attach GrandChild
     bool attachGrandChild = child->AttachChild(grandChild);
-    step += snprintf(text + step, count - step, "Attach Child : %s\n", attachChild ? "TRUE" : "FALSE");
+    step += snprintf(text + step, count - step, "Attach Child : %s\n", attachGrandChild ? "TRUE" : "FALSE");
 
     // 7. Get Child's Children Count
     step += snprintf(text + step, count - step, "Child's Children Count : %u\n", child->GetChildCount());
