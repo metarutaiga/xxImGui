@@ -22,6 +22,7 @@ static void  FreeWrapper(void* ptr, void* user_data)        { IM_UNUSED(user_dat
 
 const char* DearImGui::g_graphicShortName = nullptr;
 bool        DearImGui::g_recreateWindow = false;
+bool        DearImGui::g_powerSaving = false;
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
@@ -169,6 +170,8 @@ void DearImGui::NewFrame(void* view)
         {
             ImGui::MenuItem("About xxGraphic", nullptr, &showAbout);
             ImGui::Separator();
+            ImGui::MenuItem("Power Saving", nullptr, &g_powerSaving);
+            ImGui::Separator();
 
             const char* deviceStringCurrent = Renderer::GetCurrentFullName();
             const char* deviceStringTarget = "";
@@ -218,9 +221,9 @@ void DearImGui::NewFrame(void* view)
     }
 }
 //------------------------------------------------------------------------------
-void DearImGui::Update(bool demo)
+bool DearImGui::Update(bool demo)
 {
-    if (ImGui::BeginMainMenuBar())
+    if (g_powerSaving == false && ImGui::BeginMainMenuBar())
     {
         char fps[16];
         snprintf(fps, 16, "%.1f FPS ", ImGui::GetIO().Framerate);
@@ -233,7 +236,7 @@ void DearImGui::Update(bool demo)
     {
         ImGui::EndFrame();
         ImGui::Render();
-        return;
+        return g_powerSaving == false;
     }
 
     // Global data for the demo
@@ -281,6 +284,8 @@ void DearImGui::Update(bool demo)
     // Rendering
     ImGui::EndFrame();
     ImGui::Render();
+
+    return true;
 }
 //------------------------------------------------------------------------------
 void* DearImGui::PostUpdate(void* view)
