@@ -353,18 +353,23 @@ pluginAPI void Update(const UpdateData& updateData)
                 xxAlignedFree(temp);
             }
 
+            float windowScale = updateData.windowScale;
+#if defined(xxIOS)
+            windowScale = 1.0f;
+#endif
+
             if (source == 0)
             {
                 loadTextureFromImage<4, 3>(source, updateData.device, lennaRGB, lennaWidth, lennaHeight);
             }
             if (source != 0)
             {
-                ImGui::Image((ImTextureID)source, ImVec2(lennaWidth * updateData.windowScale, lennaHeight * updateData.windowScale));
+                ImGui::Image((ImTextureID)source, ImVec2(lennaWidth * windowScale, lennaHeight * windowScale));
             }
             if (target != 0)
             {
                 ImGui::SameLine();
-                ImGui::Image((ImTextureID)target, ImVec2(lennaWidth * updateData.windowScale, lennaHeight * updateData.windowScale));
+                ImGui::Image((ImTextureID)target, ImVec2(lennaWidth * windowScale, lennaHeight * windowScale));
             }
 
             ImGui::Text("Encode TSC : %.3fus %llu", encodeTime * 1000.0f, encodeTSC);
