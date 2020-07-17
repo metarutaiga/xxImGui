@@ -13,10 +13,7 @@
 #include "DearImGui.h"
 
 #if defined(xxMACOS) || defined(xxIOS)
-#   define OBJC_OLD_DISPATCH_PROTOTYPES 1
 #   include <CoreGraphics/CoreGraphics.h>
-#   include <objc/runtime.h>
-#   include <objc/message.h>
 #endif
 
 // Allocator Wrapper
