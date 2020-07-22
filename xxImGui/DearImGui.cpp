@@ -225,10 +225,17 @@ bool DearImGui::Update(bool demo)
 {
     if (g_powerSaving == false && ImGui::BeginMainMenuBar())
     {
-        char fps[16];
-        snprintf(fps, 16, "%.1f FPS ", ImGui::GetIO().Framerate);
-        ImGui::SetCursorPosX(ImGui::GetIO().DisplaySize.x - ImGui::CalcTextSize(fps).x);
-        ImGui::TextUnformatted(fps);
+        char text[64];
+        snprintf(text, sizeof(text), "%.1f FPS ", ImGui::GetIO().Framerate);
+        ImGui::SetCursorPosX(ImGui::GetIO().DisplaySize.x - ImGui::CalcTextSize(text).x);
+        ImGui::TextUnformatted(text);
+        if (ImGui::IsItemHovered())
+        {
+            time_t t = time(NULL);
+            struct tm *tm = localtime(&t);
+            strftime(text, sizeof(text), "%c", tm);
+            ImGui::SetTooltip("%s", text);
+        }
         ImGui::EndMainMenuBar();
     }
 

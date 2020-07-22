@@ -24,12 +24,15 @@ pluginAPI void Shutdown(const ShutdownData& shutdownData)
 pluginAPI bool Update(const UpdateData& updateData)
 {
     static bool showAbout = false;
+    static bool showClock = false;
 
     if (ImGui::BeginMainMenuBar())
     {
         if (ImGui::BeginMenu(PLUGIN_NAME))
         {
             ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
+            ImGui::Separator();
+            ImGui::MenuItem("Clock", nullptr, &showClock);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -43,6 +46,18 @@ pluginAPI bool Update(const UpdateData& updateData)
             ImGui::Separator();
             ImGui::Text("Build Date : %s %s", __DATE__, __TIME__);
             ImGui::End();
+        }
+    }
+
+    if (showClock)
+    {
+        if (ImGui::Begin("Clock", &showClock))
+        {
+            char text[64];
+            time_t t = time(NULL);
+            struct tm *tm = localtime(&t);
+            strftime(text, sizeof(text), "%c", tm);
+            ImGui::TextUnformatted(text);
         }
     }
 
