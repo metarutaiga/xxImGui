@@ -357,7 +357,7 @@ struct ImGuiViewportDataOSX
 @end
 
 @implementation ImGui_ImplOSX_ViewController
--(void)loadView                         { self.view = [[NSView alloc] init];            }
+-(void)loadView                         { self.view = [NSView new]; }
 -(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
 -(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
 -(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
@@ -388,7 +388,7 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
     [window setHidesOnDeactivate:YES];
 #endif
 
-    ImGui_ImplOSX_ViewController* viewController = [[ImGui_ImplOSX_ViewController alloc] init];
+    ImGui_ImplOSX_ViewController* viewController = [ImGui_ImplOSX_ViewController new];
     window.contentViewController = viewController;
     window.contentViewController.view = [[ImGui_ImplOSX_View alloc] initWithFrame:rect];
 
