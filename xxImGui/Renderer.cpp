@@ -28,6 +28,7 @@
 #include <xxGraphic/xxGraphicGLES32.h>
 #if defined(xxMACOS) || defined(xxIOS)
 #include <xxGraphic/xxGraphicMetal.h>
+#include <xxGraphic/xxGraphicMetal2.h>
 #endif
 #include <xxGraphic/xxGraphicNULL.h>
 #include <xxGraphic/xxGraphicVulkan.h>
@@ -82,6 +83,7 @@ static struct { const char* shortName; const char* fullName; uint64_t (*createIn
 #endif
 #if defined(xxMACOS) || defined(xxIOS)
     { "MTL",            xxGetDeviceNameMetal(),         xxCreateInstanceMetal           },
+    { "MTL2",           xxGetDeviceNameMetal2(),        xxCreateInstanceMetal2          },
 #endif
     { "NULL",           xxGetDeviceNameNULL(),          xxCreateInstanceNULL            },
     { "VK",             xxGetDeviceNameVulkan(),        xxCreateInstanceVulkan          },

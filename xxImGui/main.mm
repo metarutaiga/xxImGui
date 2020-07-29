@@ -152,7 +152,7 @@
 
 #if TARGET_OS_OSX
 
--(void)loadView                         { self.view = [[NSView alloc] init];            }
+-(void)loadView                         { self.view = [NSView new]; }
 -(void)keyUp:(NSEvent *)event           { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
 -(void)keyDown:(NSEvent *)event         { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
 -(void)flagsChanged:(NSEvent *)event    { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
@@ -200,8 +200,8 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
--(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event  { [self updateIOWithTouchEvent:event];  }
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event  { [self updateIOWithTouchEvent:event];  }
 
 #endif
 
@@ -227,15 +227,17 @@
 #if defined(xxMACOS)
 -(void)setupMenu
 {
-    NSMenu* mainMenuBar = [[NSMenu alloc] init];
+    NSMenu* mainMenuBar = [NSMenu new];
     NSMenu* appMenu;
     NSMenuItem* menuItem;
 
     appMenu = [[NSMenu alloc] initWithTitle:@"Dear ImGui XX Example"];
-    menuItem = [appMenu addItemWithTitle:@"Quit Dear ImGui XX Example" action:@selector(terminate:) keyEquivalent:@"q"];
+    menuItem = [appMenu addItemWithTitle:@"Quit Dear ImGui XX Example"
+                                  action:@selector(terminate:)
+                           keyEquivalent:@"q"];
     [menuItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
 
-    menuItem = [[NSMenuItem alloc] init];
+    menuItem = [NSMenuItem new];
     [menuItem setSubmenu:appMenu];
 
     [mainMenuBar addItem:menuItem];
@@ -244,7 +246,6 @@
     [NSApp setMainMenu:mainMenuBar];
 }
 
-
 -(NSWindow*)window
 {
     if (_window != nil)
@@ -252,7 +253,10 @@
 
     NSRect viewRect = NSMakeRect(100.0, 100.0, 100.0 + 1280.0, 100 + 720.0);
 
-    _window = [[NSWindow alloc] initWithContentRect:viewRect styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable|NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:YES];
+    _window = [[NSWindow alloc] initWithContentRect:viewRect
+                                          styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable
+                                            backing:NSBackingStoreBuffered
+                                              defer:YES];
     [_window setTitle:@"Dear ImGui XX Example"];
     [_window setAcceptsMouseMovedEvents:YES];
     [_window setOpaque:YES];
@@ -315,14 +319,14 @@
 
     ImGuiExampleView* view = [[ImGuiExampleView alloc] initWithFrame:self.window.frame];
 #if defined(xxMACOS)
-    self.window.contentViewController = [[ImGuiExampleViewController alloc] init];
+    self.window.contentViewController = [ImGuiExampleViewController new];
     self.window.contentViewController.view = view;
     [self.window makeKeyAndOrderFront:NSApp];
     NSRect rect = [view frame];
     int width = rect.size.width * scale;
     int height = rect.size.height * scale;
 #elif defined(xxIOS)
-    self.window.rootViewController = [[ImGuiExampleViewController alloc] init];
+    self.window.rootViewController = [ImGuiExampleViewController new];
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
     CGRect rect = [view bounds];
@@ -341,7 +345,6 @@
     DearImGui::Shutdown();
     Renderer::Shutdown();
 }
-
 @end
 
 int main(int argc, char* argv[])
@@ -350,7 +353,7 @@ int main(int argc, char* argv[])
     @autoreleasepool
     {
         NSApp = [NSApplication sharedApplication];
-        ImGuiExampleAppDelegate* delegate = [[ImGuiExampleAppDelegate alloc] init];
+        ImGuiExampleAppDelegate* delegate = [ImGuiExampleAppDelegate new];
         [[NSApplication sharedApplication] setDelegate:delegate];
         [NSApp run];
         return NSApplicationMain(argc, (const char**)argv);

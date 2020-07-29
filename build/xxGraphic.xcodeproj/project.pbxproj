@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3039FA02244766EF00E671A7 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039FA01244766EE00E671A7 /* IOSurface.framework */; };
-		3039FA062447670900E671A7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039FA052447670900E671A7 /* OpenGLES.framework */; };
 		30EDB9ED2427CDBF00D599B5 /* xxImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E32427CDBF00D599B5 /* xxImage.h */; };
 		30EDB9EE2427CDBF00D599B5 /* xxMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 30EDB9E42427CDBF00D599B5 /* xxMesh.h */; };
 		30EDB9EF2427CDBF00D599B5 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E52427CDBF00D599B5 /* xxMesh.cpp */; };
@@ -27,6 +26,10 @@
 		CE4050B82445613000F30E38 /* xxGraphicGLES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B423577DC40092806F /* xxGraphicGLES3.cpp */; };
 		CE4050B92445613000F30E38 /* xxGraphicGLES31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B123577DC40092806F /* xxGraphicGLES31.cpp */; };
 		CE4050BA2445613000F30E38 /* xxGraphicGLES32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B323577DC40092806F /* xxGraphicGLES32.cpp */; };
+		CE9D56B724D163B20037EBE6 /* xxGraphicInternalMetal.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9D56B624D163B20037EBE6 /* xxGraphicInternalMetal.h */; };
+		CE9D56BA24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */; };
+		CE9D56BB24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */; };
+		CE9D56BC24D165130037EBE6 /* xxGraphicMetal2.h in Headers */ = {isa = PBXBuildFile; fileRef = CE9D56B924D165130037EBE6 /* xxGraphicMetal2.h */; };
 		D644A0AA231EDE9B00B75B77 /* xxGraphicNULL.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */; };
 		D644A0AB231EDE9B00B75B77 /* xxGraphicGL.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A0A1231EDE9A00B75B77 /* xxGraphicGL.h */; };
 		D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
@@ -138,6 +141,9 @@
 		30EDB9EA2427CDBF00D599B5 /* xxMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMaterial.cpp; path = ../xxGraphic/utility/xxMaterial.cpp; sourceTree = "<group>"; };
 		30EDB9EB2427CDBF00D599B5 /* xxMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMaterial.h; path = ../xxGraphic/utility/xxMaterial.h; sourceTree = "<group>"; };
 		30EDB9EC2427CDBF00D599B5 /* xxMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxMath.cpp; path = ../xxGraphic/utility/xxMath.cpp; sourceTree = "<group>"; };
+		CE9D56B624D163B20037EBE6 /* xxGraphicInternalMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicInternalMetal.h; path = ../xxGraphic/internal/xxGraphicInternalMetal.h; sourceTree = "<group>"; };
+		CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicMetal2.mm; path = ../xxGraphic/xxGraphicMetal2.mm; sourceTree = "<group>"; };
+		CE9D56B924D165130037EBE6 /* xxGraphicMetal2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicMetal2.h; path = ../xxGraphic/xxGraphicMetal2.h; sourceTree = "<group>"; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicNULL.h; path = ../xxGraphic/xxGraphicNULL.h; sourceTree = "<group>"; };
@@ -253,7 +259,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039FA062447670900E671A7 /* OpenGLES.framework in Frameworks */,
 				3039FA02244766EF00E671A7 /* IOSurface.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,8 +452,11 @@
 		D6A727EF232318C7009981AD /* Metal */ = {
 			isa = PBXGroup;
 			children = (
+				CE9D56B624D163B20037EBE6 /* xxGraphicInternalMetal.h */,
 				D6A727F0232318E4009981AD /* xxGraphicMetal.h */,
 				D6A727F1232318E4009981AD /* xxGraphicMetal.mm */,
+				CE9D56B924D165130037EBE6 /* xxGraphicMetal2.h */,
+				CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */,
 			);
 			name = Metal;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 				D667B7C023589E6B0092806F /* xxGraphicInternalGL.h in Headers */,
 				D667B7A6234730960092806F /* khrplatform.h in Headers */,
 				D690A356232AC52400A149EF /* vk_sdk_platform.h in Headers */,
+				CE9D56B724D163B20037EBE6 /* xxGraphicInternalMetal.h in Headers */,
 				D667B7C223589E840092806F /* xxGraphicInternalD3D.h in Headers */,
 				D690A364232AC52400A149EF /* vk_icd.h in Headers */,
 				D690A369232AC54600A149EF /* xxGraphicVulkan.h in Headers */,
@@ -572,6 +581,7 @@
 				D6A727E023231154009981AD /* xxGraphicMantleAsm.h in Headers */,
 				D6A727F2232318E4009981AD /* xxGraphicMetal.h in Headers */,
 				D644A0AA231EDE9B00B75B77 /* xxGraphicNULL.h in Headers */,
+				CE9D56BC24D165130037EBE6 /* xxGraphicMetal2.h in Headers */,
 				D644A0B2231EDE9B00B75B77 /* xxSystem.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +678,7 @@
 				30EDB9F82427CDBF00D599B5 /* xxMaterial.cpp in Sources */,
 				30EDB9FB2427CDBF00D599B5 /* xxMath.cpp in Sources */,
 				30EDB9F02427CDBF00D599B5 /* xxMesh.cpp in Sources */,
+				CE9D56BB24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */,
 				30EDB9F22427CDBF00D599B5 /* xxNode.cpp in Sources */,
 				D6DA665023258F8E00953C5B /* xxSystem.cpp in Sources */,
 			);
@@ -692,6 +703,7 @@
 				30EDB9F72427CDBF00D599B5 /* xxMaterial.cpp in Sources */,
 				30EDB9FA2427CDBF00D599B5 /* xxMath.cpp in Sources */,
 				30EDB9EF2427CDBF00D599B5 /* xxMesh.cpp in Sources */,
+				CE9D56BA24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */,
 				30EDB9F12427CDBF00D599B5 /* xxNode.cpp in Sources */,
 				D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */,
 			);
