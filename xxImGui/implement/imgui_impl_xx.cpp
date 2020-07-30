@@ -147,9 +147,6 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
     xxSetIndexBuffer(commandEncoder, indexBuffer);
 
-    // Setup desired xx state
-    ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
-
     // Render command lists
     // (Because we merged all buffers into a single one, we maintain our own offset into them)
     ImTextureID boundTextureID = 0;
@@ -193,6 +190,10 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 if (boundTextureID != pcmd->TextureId)
                 {
                     boundTextureID = pcmd->TextureId;
+
+                    // Setup desired xx state
+                    ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
+
                     xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
                     xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
                 }
