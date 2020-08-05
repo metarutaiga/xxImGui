@@ -585,7 +585,7 @@ bool ImFontAtlasBuildWithFreeType(FT_Library ft_library, ImFontAtlas* atlas, uns
             float v0 = (ty) / (float)atlas->TexHeight;
             float u1 = (tx + info.Width) / (float)atlas->TexWidth;
             float v1 = (ty + info.Height) / (float)atlas->TexHeight;
-            dst_font->AddGlyph((ImWchar)src_glyph.Codepoint, x0, y0, x1, y1, u0, v0, u1, v1, char_advance_x_mod);
+            dst_font->AddGlyph(&cfg, (ImWchar)src_glyph.Codepoint, x0, y0, x1, y1, u0, v0, u1, v1, char_advance_x_mod);
         }
 
         src_tmp.Rects = NULL;
