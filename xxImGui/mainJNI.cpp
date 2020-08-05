@@ -42,7 +42,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
     xxAndroidContext = context;
 
     Renderer::Create(window, width, height);
-    DearImGui::Create(window, 3.0f);
+    DearImGui::Create(window, 2.0f);
     Plugin::Create("plugin", Renderer::g_device);
 }
 
