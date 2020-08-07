@@ -13,6 +13,8 @@
 		30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C5244AD3940096E6DC /* libimgui.bundle */; };
 		30B096C8244AD3940096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C7244AD3940096E6DC /* libxxGraphic.bundle */; };
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
+		30F22EF224DDA30D00C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */; };
+		30F22EF424DDA31400C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +35,8 @@
 		30B096C5244AD3940096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C7244AD3940096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
+		30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -44,6 +48,7 @@
 			files = (
 				30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */,
 				30B096C8244AD3940096E6DC /* libxxGraphic.bundle in Frameworks */,
+				30F22EF424DDA31400C0F4EC /* libxxGraphicPlus.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +58,7 @@
 			files = (
 				30B096BA244ACE5E0096E6DC /* libimgui.dylib in Frameworks */,
 				30B096BC244ACE5E0096E6DC /* libxxGraphic.dylib in Frameworks */,
+				30F22EF224DDA30D00C0F4EC /* libxxGraphicPlus.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +68,8 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */,
+				30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */,
 				30B096C5244AD3940096E6DC /* libimgui.bundle */,
 				30B096C7244AD3940096E6DC /* libxxGraphic.bundle */,
 				30B096B9244ACE5E0096E6DC /* libimgui.dylib */,

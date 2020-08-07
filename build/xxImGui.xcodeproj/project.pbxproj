@@ -14,7 +14,6 @@
 		30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; };
 		3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; };
 		3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; };
-		302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A325E2448BB9E000B2AE9 /* UIKit.framework */; };
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; };
@@ -34,6 +33,11 @@
 		30B096B0244ACDDD0096E6DC /* libvalidator.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A7244ACDC50096E6DC /* libvalidator.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
+		30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; };
+		30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; };
+		30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
+		30F22EFE24DDA67100C0F4EC /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
+		30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFF24DDA69E00C0F4EC /* UIKit.framework */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -70,6 +74,7 @@
 				30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */,
 				30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */,
 				30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */,
+				30F22EFE24DDA67100C0F4EC /* libxxGraphicPlus.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +89,7 @@
 				30B096AF244ACDDD0096E6DC /* libsample.bundle in CopyFiles */,
 				30B096B0244ACDDD0096E6DC /* libvalidator.bundle in CopyFiles */,
 				30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */,
+				30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +103,6 @@
 		30034548244ACD9300E90C44 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3003454A244ACD9300E90C44 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3003454C244ACD9300E90C44 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		302A325E2448BB9E000B2AE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		302D20D4244AB62200D84267 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		3039F98524473A2000E671A7 /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		3039F986244743DB00E671A7 /* mainJNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mainJNI.cpp; path = ../xxImGui/mainJNI.cpp; sourceTree = "<group>"; };
@@ -109,6 +114,9 @@
 		30B096A7244ACDC50096E6DC /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096CC244AD3ED0096E6DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F22EFF24DDA69E00C0F4EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
@@ -147,8 +155,9 @@
 				30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */,
 				30B096A8244ACDC50096E6DC /* libvalidator.bundle in Frameworks */,
 				30B096AA244ACDC50096E6DC /* libxxGraphic.bundle in Frameworks */,
+				30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */,
 				30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */,
-				302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */,
+				30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +170,7 @@
 				30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */,
 				3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */,
 				3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */,
+				30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */,
 				302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */,
 				303DDEB82448B7680042A480 /* Metal.framework in Frameworks */,
 				303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */,
@@ -208,12 +218,12 @@
 		D644A0EB231F116C00B75B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30B096CC244AD3ED0096E6DC /* QuartzCore.framework */,
 				30034544244ACD9300E90C44 /* libfreetype.dylib */,
 				30034546244ACD9300E90C44 /* libimgui.dylib */,
 				30034548244ACD9300E90C44 /* libsample.dylib */,
 				3003454A244ACD9300E90C44 /* libvalidator.dylib */,
 				3003454C244ACD9300E90C44 /* libxxGraphic.dylib */,
+				30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */,
 				302D20D4244AB62200D84267 /* AppKit.framework */,
 				303DDEB72448B7680042A480 /* Metal.framework */,
 				303DDEB52448B7630042A480 /* OpenGL.framework */,
@@ -222,7 +232,9 @@
 				30B096A5244ACDC50096E6DC /* libsample.bundle */,
 				30B096A7244ACDC50096E6DC /* libvalidator.bundle */,
 				30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */,
-				302A325E2448BB9E000B2AE9 /* UIKit.framework */,
+				30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */,
+				30B096CC244AD3ED0096E6DC /* QuartzCore.framework */,
+				30F22EFF24DDA69E00C0F4EC /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
