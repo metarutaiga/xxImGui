@@ -10,6 +10,14 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+add_compile_options( -fno-exceptions
+                     -fno-rtti
+                     -fvisibility=hidden )
+
+if(${ANDROID_SYSROOT_ABI} STREQUAL "arm")
+    add_compile_options( -mno-global-merge )
+endif()
+
 add_library( # Sets the name of the library.
              xxImGui
 
@@ -129,7 +137,8 @@ add_library( imgui
 
 target_compile_definitions( imgui
                             PUBLIC
-                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h" )
+                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h"
+                            IMGUI_API=__attribute__\(\(visibility\(\"default\"\)\)\) )
 
 target_include_directories( imgui
                             PUBLIC
