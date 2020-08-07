@@ -139,11 +139,6 @@ target_include_directories( imgui
 
 add_library( xxGraphic
              SHARED
-             ../../../../../xxGraphic/utility/xxImage.cpp
-             ../../../../../xxGraphic/utility/xxMaterial.cpp
-             ../../../../../xxGraphic/utility/xxMath.cpp
-             ../../../../../xxGraphic/utility/xxMesh.cpp
-             ../../../../../xxGraphic/utility/xxNode.cpp
              ../../../../../xxGraphic/xxGraphic.cpp
              ../../../../../xxGraphic/xxGraphicEGL.cpp
              ../../../../../xxGraphic/xxGraphicGL.cpp
@@ -167,6 +162,29 @@ target_include_directories( xxGraphic
 target_link_libraries( xxGraphic
                        ${log-lib}
                        android )
+
+# xxGraphicPlus
+
+add_library( xxGraphicPlus
+             SHARED
+             ../../../../../xxGraphic/utility/xxImage.cpp
+             ../../../../../xxGraphic/utility/xxMaterial.cpp
+             ../../../../../xxGraphic/utility/xxMath.cpp
+             ../../../../../xxGraphic/utility/xxMesh.cpp
+             ../../../../../xxGraphic/utility/xxNode.cpp )
+
+target_compile_definitions( xxGraphicPlus
+                            PUBLIC
+                            XX_BUILD_LIBRARY )
+
+target_include_directories( xxGraphicPlus
+                            PUBLIC
+                            ../../../../../xxGraphic )
+
+target_link_libraries( xxGraphicPlus
+                       ${log-lib}
+                       android
+                       xxGraphic )
 
 # sample
 
@@ -204,4 +222,5 @@ target_include_directories( validator
 
 target_link_libraries( validator
                        imgui
-                       xxGraphic )
+                       xxGraphic
+                       xxGraphicPlus )
