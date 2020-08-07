@@ -80,21 +80,6 @@
     <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\utility\xxImage.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\xxGraphic\utility\xxMaterial.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\xxGraphic\utility\xxMath.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\xxGraphic\utility\xxMesh.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
-    <ClCompile Include="..\xxGraphic\utility\xxNode.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -313,21 +298,6 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h">
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\utility\xxImage.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\utility\xxMaterial.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\utility\xxMath.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\utility\xxMesh.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\utility\xxNode.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
   </ItemGroup>
   <ItemGroup>
@@ -366,9 +336,6 @@
     </Filter>
     <Filter Include="OpenGL\internal">
       <UniqueIdentifier>{c3011753-b73c-4828-8f5b-35c69ff52d18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utility">
-      <UniqueIdentifier>{8a6714fc-4e85-4724-952c-bd4f179747eb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
