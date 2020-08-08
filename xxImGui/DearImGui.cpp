@@ -189,6 +189,7 @@ void DearImGui::NewFrame(void* view)
                 }
             }
 
+#if defined(xxWINDOWS)
             // We need to create window when device is running in FlipEx Mode
             if (g_graphicShortName != nullptr)
             {
@@ -202,6 +203,7 @@ void DearImGui::NewFrame(void* view)
                                     strstr(deviceStringTarget, "12.");
                 g_recreateWindow = (flipCurrent && flipTarget == false);
             }
+#endif
 
             ImGui::EndMenu();
         }

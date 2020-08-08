@@ -213,12 +213,14 @@ bool ImGui_ImplXX_Init(uint64_t instance, uint64_t device, uint64_t renderPass)
     g_device = device;
     g_renderPass = renderPass;
 
+#if defined(xxWINDOWS)
     const char* deviceString = xxGetDeviceName();
     g_halfPixel = false;
     g_halfPixel |= (strncmp(deviceString, "Direct3D 6", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 7", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 8", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 9", 10) == 0);
+#endif
 
     // Setup back-end capabilities flags
     ImGuiIO& io = ImGui::GetIO();
