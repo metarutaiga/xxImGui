@@ -184,7 +184,7 @@ add_library( xxGraphicPlus
 
 target_compile_definitions( xxGraphicPlus
                             PUBLIC
-                            XX_BUILD_LIBRARY )
+                            XXPLUS_BUILD_LIBRARY )
 
 target_include_directories( xxGraphicPlus
                             PUBLIC
