@@ -14,6 +14,7 @@ add_compile_options( -fno-exceptions
                      -fno-rtti
                      -fvisibility=hidden )
 
+# ARMv7 hidden symbols is broken since ndk-r17
 if(${ANDROID_SYSROOT_ABI} STREQUAL "arm")
     add_compile_options( -mno-global-merge )
 endif()

@@ -34,10 +34,10 @@
 		30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
 		30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; };
-		30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; };
+		30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
-		30F22EFE24DDA67100C0F4EC /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFF24DDA69E00C0F4EC /* UIKit.framework */; };
+		CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -74,7 +74,7 @@
 				30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */,
 				30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */,
 				30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */,
-				30F22EFE24DDA67100C0F4EC /* libxxGraphicPlus.dylib in CopyFiles */,
+				CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
