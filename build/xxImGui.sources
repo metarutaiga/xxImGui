@@ -1,0 +1,11 @@
+﻿/DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
+/I..\..\..
+/I..\..\..\freetype\include
+/I..\..\..\imgui
+..\..\..\xxImGui\implement\imgui_impl_win32.cpp
+..\..\..\xxImGui\implement\imgui_impl_xx.cpp
+..\..\..\xxImGui\implement\imgui_freetype.cpp
+..\..\..\xxImGui\DearImGui.cpp
+..\..\..\xxImGui\Renderer.cpp
+..\..\..\xxImGui\main.cpp
+..\..\..\xxImGui\Plugin.cpp
