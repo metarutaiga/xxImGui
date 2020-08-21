@@ -12,15 +12,20 @@ if not "%4" == "" set WindowsSDKVersion=%4
 if not %VisualStudioYear% == 2015 goto newVC
 
 :oldVC
-if %Platform% == x64 set PlatformOld=amd64
-if %Platform% == arm set PlatformOld=arm
+if "%Platform%" == "x86" set PlatformBin=amd64_x86
+if "%Platform%" == "x64" set PlatformBin=amd64
+if "%Platform%" == "arm" set PlatformBin=amd64_arm
+
+if "%Platform%" == "x86" set PlatformLib=
+if "%Platform%" == "x64" set PlatformLib=amd64
+if "%Platform%" == "arm" set PlatformLib=arm
 
 set VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 14.0
 set VCINSTALLDIR=%VSINSTALLDIR%\VC
 
-set PATH="%VCINSTALLDIR%\bin\%PlatformOld%";%PATH%
+set PATH="%VCINSTALLDIR%\bin\%PlatformBin%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
-set LIB="%VCINSTALLDIR%\lib\%PlatformOld%";%LIB%
+set LIB="%VCINSTALLDIR%\lib\%PlatformLib%";%LIB%
 goto winSDK
 
 :newVC
