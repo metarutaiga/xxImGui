@@ -6,8 +6,9 @@ set VisualStudioVersion=14.27.29110
 set WindowsSDKVersion=10.0.19041.0
 if not "%1" == "" set Platform=%1
 if not "%2" == "" set VisualStudioYear=%2
-if not "%3" == "" set VisualStudioVersion=%3
-if not "%4" == "" set WindowsSDKVersion=%4
+if not "%3" == "" set VisualStudioEdition=%3
+if not "%4" == "" set VisualStudioVersion=%4
+if not "%5" == "" set WindowsSDKVersion=%5
 
 if not %VisualStudioYear% == 2015 goto newVC
 
@@ -48,6 +49,8 @@ set LIB="%WindowsSdkDir%\lib\%WindowsSDKVersion%\um\%Platform%";%LIB%
 
 if "%1" == "" echo vcvars.bat [Platform] [VisualStudioYear] [VisualStudioEdition] [VisualStudioVersion] [WindowsSDKVersion]
 if "%1" == "" echo For example:
+if "%1" == "" echo   vcvars.bat x64 2015
+if "%1" == "" echo   vcvars.bat x64 2017 Community 14.13.26128
 if "%1" == "" echo   vcvars.bat x64 2019 Community 14.27.29110 10.0.19041.0
 
 set CL=/I"%VCINSTALLDIR%\include" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\shared" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\ucrt" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\um"
