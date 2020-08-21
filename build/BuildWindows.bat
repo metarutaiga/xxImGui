@@ -1,12 +1,12 @@
 @echo off
 if "%1" == "" goto option
 if not "%1" == "x86" if not "%1" == "x64" if not "%1" == "arm" if not "%1" == "arm64" goto build
-call BuildWindows.bat lib xxMiniCRT %1 %2 %3 %4
-call BuildWindows.bat dll freetype %1 %2 %3 %4
-call BuildWindows.bat dll imgui %1 %2 %3 %4
-call BuildWindows.bat dll xxGraphic %1 %2 %3 %4
-call BuildWindows.bat dll xxGraphicPlus %1 %2 %3 %4
-call BuildWindows.bat exe xxImGui %1 %2 %3 %4
+call BuildWindows.bat lib xxMiniCRT %1 %2 %3 %4 %5
+call BuildWindows.bat dll freetype %1 %2 %3 %4 %5
+call BuildWindows.bat dll imgui %1 %2 %3 %4 %5
+call BuildWindows.bat dll xxGraphic %1 %2 %3 %4 %5
+call BuildWindows.bat dll xxGraphicPlus %1 %2 %3 %4 %5
+call BuildWindows.bat exe xxImGui %1 %2 %3 %4 %5
 exit
 goto :eof
 
@@ -15,7 +15,7 @@ echo BuildWindows.bat [Platform] [VisualStudioYear] [VisualStudioEdition] [Visua
 exit
 
 :build
-call vcvars.bat %3 %4 %5 %6
+call vcvars.bat %3 %4 %5 %6 %7
 cd ..
 mkdir lib >nul 2>nul
 mkdir temp >nul 2>nul
