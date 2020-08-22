@@ -1,0 +1,7 @@
+﻿/DPLUGIN_BUILD_LIBRARY
+/DIMGUI_USER_CONFIG=\"../../xxImGui/implement/imgui_user_config.h\"
+/I..\..\..
+/I..\..\..\imgui
+/I..\..\..\plugin
+/I..\..\..\xxGraphic
+..\..\..\plugin\validator\validator.cpp
