@@ -2,7 +2,7 @@
 set Platform=x64
 set VisualStudioYear=2019
 set VisualStudioEdition=Community
-set VisualStudioVersion=14.27.29110
+set VisualStudioVersion=14.24.28314
 set WindowsSDKVersion=10.0.19041.0
 if not "%1" == "" set Platform=%1
 if not "%2" == "" set VisualStudioYear=%2
@@ -51,6 +51,6 @@ if "%1" == "" echo vcvars.bat [Platform] [VisualStudioYear] [VisualStudioEdition
 if "%1" == "" echo For example:
 if "%1" == "" echo   vcvars.bat x64 2015
 if "%1" == "" echo   vcvars.bat x64 2017 Community 14.13.26128
-if "%1" == "" echo   vcvars.bat x64 2019 Community 14.27.29110 10.0.19041.0
+if "%1" == "" echo   vcvars.bat x64 2019 Community 14.24.28314 10.0.19041.0
 
 set CL=/I"%VCINSTALLDIR%\include" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\shared" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\ucrt" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\um"
