@@ -38,17 +38,18 @@ mkdir temp\%2\%3 >nul 2>nul
 cd temp
 cd %2
 cd %3
-cl.exe /MP /nologo /c /O2 /GS- /GR- /Zc:threadSafeInit- /fp:fast @..\..\..\build\%2.sources
+cl.exe /MP /nologo /c /O2 /GS- /GR- /Zc:threadSafeInit- /fp:fast /Z7 @..\..\..\build\%2.sources
 del ..\..\..\bin\%2.Release.%3.lib >nul 2>nul
-set LOCALLIB=..\..\..\bin\*.Release.%3.lib ..\..\..\lib\*.Release.%3.lib
-if "%3" == "x86"    (set LOCALLIB=%LOCALLIB% ..\..\..\xxMiniCRT\chkstk.x86.obj)
-if "%3" == "x64"    (set LOCALLIB=%LOCALLIB% ..\..\..\xxMiniCRT\chkstk.x64.obj)
-if "%3" == "arm"    (set LOCALLIB=%LOCALLIB% ..\..\..\xxMiniCRT\arm\*.obj)
-if "%3" == "arm64"  (set LOCALLIB=%LOCALLIB% ..\..\..\xxMiniCRT\chkstk.arm64.obj)
+set LINKOPT=kernel32.lib user32.lib ..\..\..\bin\*.Release.%3.lib ..\..\..\lib\*.Release.%3.lib /DEBUG /OPT:REF /OPT:ICF 
+if "%3" == "x86"    (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\chkstk.x86.obj)
+if "%3" == "x64"    (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\chkstk.x64.obj)
+if "%3" == "arm"    (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\arm\*.obj)
+if "%3" == "arm64"  (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\chkstk.arm64.obj)
 if "%1" == "lib"    (lib  /nologo *.obj /OUT:..\..\..\lib\%2.Release.%3.lib)
-if "%1" == "dll"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.dll %LOCALLIB% kernel32.lib user32.lib /dll)
-if "%1" == "exe"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.exe %LOCALLIB% kernel32.lib user32.lib /LIBPATH:..\..\..\lib)
-if "%1" == "plugin" (link /nologo *.obj /OUT:..\..\..\bin\plugin\%2.Release.%3.dll %LOCALLIB% kernel32.lib user32.lib /dll)
+if "%1" == "dll"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.dll %LINKOPT% /dll)
+if "%1" == "exe"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.exe %LINKOPT% /LIBPATH:..\..\..\lib )
+if "%1" == "plugin" (link /nologo *.obj /OUT:..\..\..\bin\plugin\%2.Release.%3.dll %LINKOPT% /dll)
+set LINKOPT=
 cd ..
 cd ..
 cd ..
