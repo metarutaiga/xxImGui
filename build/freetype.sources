@@ -5,7 +5,6 @@
 /D_INC_SETJMPEX
 /DNDEBUG
 /I..\..\..\freetype\include
-/wd4819
 ..\..\..\freetype\src\autofit\autofit.c
 ..\..\..\freetype\src\base\ftbase.c
 ..\..\..\freetype\src\base\ftbbox.c
