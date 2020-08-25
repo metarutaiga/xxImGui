@@ -25,6 +25,7 @@ pluginAPI bool Update(const UpdateData& updateData)
 {
     static bool showAbout = false;
     static bool showClock = false;
+    static bool showTimer = false;
 
     if (ImGui::BeginMainMenuBar())
     {
@@ -33,6 +34,8 @@ pluginAPI bool Update(const UpdateData& updateData)
             ImGui::MenuItem("About " PLUGIN_NAME, nullptr, &showAbout);
             ImGui::Separator();
             ImGui::MenuItem("Clock", nullptr, &showClock);
+            ImGui::Separator();
+            ImGui::MenuItem("Timer", nullptr, &showTimer);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -58,6 +61,15 @@ pluginAPI bool Update(const UpdateData& updateData)
             struct tm *tm = localtime(&t);
             strftime(text, sizeof(text), "%c", tm);
             ImGui::TextUnformatted(text);
+        }
+    }
+
+    if (showTimer)
+    {
+        if (ImGui::Begin("Timer", &showTimer))
+        {
+            ImGui::Text("Current Time : %f", ImGui::GetTime());
+            ImGui::Text("Delta Time : %f", ImGuiIO().DeltaTime);
         }
     }
 
