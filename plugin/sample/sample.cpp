@@ -6,6 +6,10 @@
 //==============================================================================
 #include <interface.h>
 
+#if defined(xxANDROID) || defined(xxMACOS) || defined(xxIOS)
+#   include <sys/time.h>
+#endif
+
 #define PLUGIN_NAME     "Sample"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
@@ -58,7 +62,7 @@ pluginAPI bool Update(const UpdateData& updateData)
         {
             char text[64];
             time_t t = time(NULL);
-            struct tm *tm = localtime(&t);
+            struct tm* tm = localtime(&t);
             strftime(text, sizeof(text), "%c", tm);
             ImGui::TextUnformatted(text);
         }
@@ -70,6 +74,20 @@ pluginAPI bool Update(const UpdateData& updateData)
         {
             ImGui::Text("Current Time : %f", ImGui::GetTime());
             ImGui::Text("Delta Time : %f", ImGuiIO().DeltaTime);
+#if defined(xxANDROID) || defined(xxMACOS) || defined(xxIOS)
+            static timeval startSystem;
+            static float startLibrary;
+            timeval system;
+            gettimeofday(&system, nullptr);
+            float library = ImGui::GetTime() * 1000.0f;
+            if (startSystem.tv_sec == 0)
+                startSystem = system;
+            if (startLibrary == 0.0f)
+                startLibrary = library;
+            float floatSystem = (system.tv_sec - startSystem.tv_sec) * 1000.0f + (system.tv_usec - startSystem.tv_usec) / 1000.0f;
+            float accuracy = (library - startLibrary) - floatSystem;
+            ImGui::Text("Accuracy Time : %f=%f-%f", accuracy, (library - startLibrary), floatSystem);
+#endif
         }
     }
 
