@@ -14,9 +14,9 @@ A simulate Next-Generation Graphic API for ImGui
 | --------------- | ------- | --- | ----- | ------- | -------------- |
 | Direct3D 6.0    |         |     |       | ⭕       |                |
 | Direct3D 7.0    |         |     |       | ⭕       |                |
-| Direct3D 8.0    |         |     |       | ⭕       |                |
-| Direct3D 9.0    |         |     |       | ⭕       | 🚑              |
-| Direct3D 9Ex    |         |     |       | ⭕       | 🚑              |
+| Direct3D 8.0    |         |     | 🍷     | ⭕       |                |
+| Direct3D 9.0    |         |     | 🍷     | ⭕       | 🚑              |
+| Direct3D 9Ex    |         |     | 🍷     | ⭕       | 🚑              |
 | Direct3D 9On12  |         |     |       | ⭕       | 🚑              |
 | Direct3D 10.0   |         |     |       | ⭕       | ⭕              |
 | Direct3D 10.1   |         |     |       | ⭕       | ⭕              |
