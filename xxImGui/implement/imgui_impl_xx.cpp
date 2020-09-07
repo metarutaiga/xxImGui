@@ -15,6 +15,24 @@
 
 #include "xxGraphic/xxGraphic.h"
 
+struct ImGuiViewportDataXX
+{
+    uint64_t                Swapchain = 0;
+    uint64_t                RenderPass = 0;
+    void*                   Handle = nullptr;
+    int                     Width = 0;
+    int                     Height = 0;
+
+    int                     BufferIndex = 0;
+    uint64_t                VertexBuffers[4] = {};
+    int                     VertexBufferSizes[4] = {};
+    uint64_t                IndexBuffers[4] = {};
+    int                     IndexBufferSizes[4] = {};
+    uint64_t                ConstantBuffers[4] = {};
+
+    ~ImGuiViewportDataXX()  { IM_ASSERT(Swapchain == 0); IM_ASSERT(RenderPass == 0); }
+};
+
 static uint64_t g_instance = 0;
 static uint64_t g_device = 0;
 static uint64_t g_renderPass = 0;
@@ -98,12 +116,15 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     if (draw_data->DisplaySize.x <= 0.0f || draw_data->DisplaySize.y <= 0.0f)
         return;
 
-    int&        bufferIndex = g_bufferIndex;
-    uint64_t&   vertexBuffer = g_vertexBuffers[bufferIndex];
-    int&        vertexBufferSize = g_vertexBufferSizes[bufferIndex];
-    uint64_t&   indexBuffer = g_indexBuffers[bufferIndex];
-    int&        indexBufferSize = g_indexBufferSizes[bufferIndex];
-    uint64_t&   constantBuffer = g_constantBuffers[bufferIndex];
+    ImGuiViewportDataXX* ownerViewport = nullptr;
+    if (draw_data->OwnerViewport && draw_data->OwnerViewport->RendererUserData)
+        ownerViewport = (ImGuiViewportDataXX*)draw_data->OwnerViewport->RendererUserData;
+    int&        bufferIndex         = ownerViewport ? ownerViewport->BufferIndex                    : g_bufferIndex;
+    uint64_t&   vertexBuffer        = ownerViewport ? ownerViewport->VertexBuffers[bufferIndex]     : g_vertexBuffers[bufferIndex];
+    int&        vertexBufferSize    = ownerViewport ? ownerViewport->VertexBufferSizes[bufferIndex] : g_vertexBufferSizes[bufferIndex];
+    uint64_t&   indexBuffer         = ownerViewport ? ownerViewport->IndexBuffers[bufferIndex]      : g_indexBuffers[bufferIndex];
+    int&        indexBufferSize     = ownerViewport ? ownerViewport->IndexBufferSizes[bufferIndex]  : g_indexBufferSizes[bufferIndex];
+    uint64_t&   constantBuffer      = ownerViewport ? ownerViewport->ConstantBuffers[bufferIndex]   : g_constantBuffers[bufferIndex];
 
     // Swap buffer
     bufferIndex++;
@@ -126,6 +147,10 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
         indexBuffer = xxCreateIndexBuffer(g_device, indexBufferSize * sizeof(ImDrawIdx));
         if (indexBuffer == 0)
             return;
+    }
+    if (constantBuffer == 0)
+    {
+        constantBuffer = xxCreateConstantBuffer(g_device, 16 * sizeof(float));
     }
 
     // Copy and convert all vertices into a swapped buffer.
@@ -290,10 +315,6 @@ bool ImGui_ImplXX_CreateDeviceObjects()
     g_vertexAttribute = xxCreateVertexAttribute(g_device, 3, attributes);
     g_vertexShader = xxCreateVertexShader(g_device, "default", g_vertexAttribute);
     g_fragmentShader = xxCreateFragmentShader(g_device, "default");
-    for (unsigned int i = 0; i < 4; ++i)
-    {
-        g_constantBuffers[i] = xxCreateConstantBuffer(g_device, 16 * sizeof(float));
-    }
     g_blendState = xxCreateBlendState(g_device, true);
     g_depthStencilState = xxCreateDepthStencilState(g_device, false, false);
     g_rasterizerState = xxCreateRasterizerState(g_device, false, true);
@@ -348,18 +369,6 @@ void ImGui_ImplXX_NewFrame()
 // If you are new to dear imgui or creating a new binding for dear imgui, it is recommended that you completely ignore this section first..
 //--------------------------------------------------------------------------------------------------------
 
-struct ImGuiViewportDataXX
-{
-    uint64_t                Swapchain;
-    uint64_t                RenderPass;
-    void*                   Handle;
-    int                     Width;
-    int                     Height;
-
-    ImGuiViewportDataXX()   { Swapchain = 0; Handle = nullptr; }
-    ~ImGuiViewportDataXX()  { IM_ASSERT(Swapchain == 0); IM_ASSERT(RenderPass == 0); }
-};
-
 static void ImGui_ImplXX_CreateWindow(ImGuiViewport* viewport)
 {
     ImGuiViewportDataXX* data = IM_NEW(ImGuiViewportDataXX)();
@@ -384,6 +393,15 @@ static void ImGui_ImplXX_DestroyWindow(ImGuiViewport* viewport)
     // The main viewport (owned by the application) will always have RendererUserData == NULL since we didn't create the data for it.
     if (ImGuiViewportDataXX* data = (ImGuiViewportDataXX*)viewport->RendererUserData)
     {
+        for (unsigned int i = 0; i < 4; ++i)
+        {
+            xxDestroyBuffer(g_device, data->VertexBuffers[i]);
+            xxDestroyBuffer(g_device, data->IndexBuffers[i]);
+            xxDestroyBuffer(g_device, data->ConstantBuffers[i]);
+            data->VertexBuffers[i] = 0;
+            data->IndexBuffers[i] = 0;
+            data->ConstantBuffers[i] = 0;
+        }
         xxDestroySwapchain(data->Swapchain);
         xxDestroyRenderPass(data->RenderPass);
         data->Swapchain = 0;
