@@ -61,7 +61,7 @@ pluginAPI bool Update(const UpdateData& updateData)
         if (ImGui::Begin("Clock", &showClock))
         {
             char text[64];
-            time_t t = time(NULL);
+            time_t t = time(nullptr);
             struct tm* tm = localtime(&t);
             strftime(text, sizeof(text), "%c", tm);
             ImGui::TextUnformatted(text);

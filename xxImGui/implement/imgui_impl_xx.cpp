@@ -408,7 +408,7 @@ static void ImGui_ImplXX_DestroyWindow(ImGuiViewport* viewport)
         data->RenderPass = 0;
         IM_DELETE(data);
     }
-    viewport->RendererUserData = NULL;
+    viewport->RendererUserData = nullptr;
 }
 
 static void ImGui_ImplXX_SetWindowSize(ImGuiViewport* viewport, ImVec2 size)
