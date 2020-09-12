@@ -81,8 +81,6 @@
 
         if (self.imguiUpdate)
         {
-            self.imguiUpdate = NO;
-
             uint64_t commandEncoder = Renderer::Begin();
             if (commandEncoder)
             {
@@ -92,12 +90,12 @@
                 Renderer::Present();
             }
         }
-        else
-        {
-            xxSleep(10);
-        }
 
-        DearImGui::PostUpdate((__bridge void*)self);
+        DearImGui::PostUpdate((__bridge void*)self, self.imguiUpdate);
+        self.imguiUpdate = NO;
+
+        if (DearImGui::PowerSaving())
+            xxSleep(1);
     }
 }
 

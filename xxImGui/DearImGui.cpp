@@ -22,7 +22,7 @@ static void  FreeWrapper(void* ptr, void* user_data)        { IM_UNUSED(user_dat
 
 const char* DearImGui::g_graphicShortName = nullptr;
 bool        DearImGui::g_recreateWindow = false;
-bool        DearImGui::g_powerSaving = false;
+bool        DearImGui::g_powerSaving = true;
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
@@ -297,14 +297,17 @@ bool DearImGui::Update(bool demo)
     return true;
 }
 //------------------------------------------------------------------------------
-void* DearImGui::PostUpdate(void* view)
+void* DearImGui::PostUpdate(void* view, bool render)
 {
     // Update and Render additional Platform Windows
     ImGuiIO& io = ImGui::GetIO();
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
         ImGui::UpdatePlatformWindows();
-        ImGui::RenderPlatformWindowsDefault();
+        if (render)
+        {
+            ImGui::RenderPlatformWindowsDefault();
+        }
     }
 
     // Recreate Graphic API
@@ -366,6 +369,11 @@ void* DearImGui::PostUpdate(void* view)
 void DearImGui::Render(uint64_t commandEncoder)
 {
     ImGui_ImplXX_RenderDrawData(ImGui::GetDrawData(), commandEncoder);
+}
+//------------------------------------------------------------------------------
+bool DearImGui::PowerSaving()
+{
+    return g_powerSaving;
 }
 //------------------------------------------------------------------------------
 #if defined(xxMACOS)
