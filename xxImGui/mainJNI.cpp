@@ -68,8 +68,6 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
 
     if (g_imguiUpdate)
     {
-        g_imguiUpdate = false;
-
         uint64_t commandEncoder = Renderer::Begin();
         if (commandEncoder)
         {
@@ -84,12 +82,12 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
             }
         }
     }
-    else
-    {
-        xxSleep(10);
-    }
 
-    DearImGui::PostUpdate(Renderer::g_view);
+    DearImGui::PostUpdate(Renderer::g_view, g_imguiUpdate);
+    g_imguiUpdate = false;
+
+    if (DearImGui::PowerSaving())
+        xxSleep(1);
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_shutdown(JNIEnv* env, jclass obj)

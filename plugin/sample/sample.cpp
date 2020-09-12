@@ -30,6 +30,7 @@ pluginAPI bool Update(const UpdateData& updateData)
     static bool showAbout = false;
     static bool showClock = false;
     static bool showTimer = false;
+    bool updated = false;
 
     if (ImGui::BeginMainMenuBar())
     {
@@ -60,11 +61,17 @@ pluginAPI bool Update(const UpdateData& updateData)
     {
         if (ImGui::Begin("Clock", &showClock))
         {
-            char text[64];
+            char textPrevious[64];
+            char textCurrent[64];
             time_t t = time(nullptr);
             struct tm* tm = localtime(&t);
-            strftime(text, sizeof(text), "%c", tm);
-            ImGui::TextUnformatted(text);
+            strftime(textCurrent, sizeof(textCurrent), "%c", tm);
+            ImGui::TextUnformatted(textCurrent);
+            if (strcmp(textPrevious, textCurrent) != 0)
+            {
+                strcpy(textPrevious, textCurrent);
+                updated = true;
+            }
         }
     }
 
@@ -88,10 +95,11 @@ pluginAPI bool Update(const UpdateData& updateData)
             float accuracy = (library - startLibrary) - floatSystem;
             ImGui::Text("Accuracy Time : %f=%f-%f", accuracy, (library - startLibrary), floatSystem);
 #endif
+            updated = true;
         }
     }
 
-    return false;
+    return updated;
 }
 //------------------------------------------------------------------------------
 pluginAPI void Render(const RenderData& renderData)

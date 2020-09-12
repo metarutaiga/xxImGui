@@ -72,8 +72,6 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
 
         if (imguiUpdate)
         {
-            imguiUpdate = false;
-
             uint64_t commandEncoder = Renderer::Begin();
             if (commandEncoder)
             {
@@ -88,12 +86,13 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
                 }
             }
         }
-        else
-        {
-            xxSleep(10);
-        }
 
-        HWND result = (HWND)DearImGui::PostUpdate(hWnd);
+        HWND result = (HWND)DearImGui::PostUpdate(hWnd, imguiUpdate);
+        imguiUpdate = false;
+
+        if (DearImGui::PowerSaving())
+            xxSleep(1);
+
         if (hWnd != result)
         {
             hWnd = result;

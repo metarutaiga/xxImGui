@@ -19,9 +19,11 @@ public:
 
     static void NewFrame(void* view);
     static bool Update(bool demo);
-    static void* PostUpdate(void* view);
+    static void* PostUpdate(void* view, bool render);
 
     static void Render(uint64_t commandEncoder);
+
+    static bool PowerSaving();
 
     static void HandleEventOSX(void* event, void* view);
     static void HandleEventAndroid(int type, float x, float y);
