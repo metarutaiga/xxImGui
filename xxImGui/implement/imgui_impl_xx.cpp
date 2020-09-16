@@ -209,6 +209,18 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 int clip_y = (int)clip_rect.y;
                 int clip_width = (int)(clip_rect.z - clip_rect.x);
                 int clip_height = (int)(clip_rect.w - clip_rect.y);
+                if (draw_data->OwnerViewport)
+                {
+                    ImVec2 size = draw_data->OwnerViewport->GetWorkSize();
+                    if (clip_x < 0)
+                        clip_x = 0;
+                    if (clip_y < 0)
+                        clip_y = 0;
+                    if (clip_width > size.x - clip_x)
+                        clip_width = size.x - clip_x;
+                    if (clip_height > size.y - clip_y)
+                        clip_height = size.y - clip_y;
+                }
                 xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
 
                 // Texture
