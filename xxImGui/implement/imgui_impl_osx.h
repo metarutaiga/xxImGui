@@ -9,7 +9,9 @@
 //  [ ] Platform: Keys are all generally very broken. Best using [event keycode] and not [event characters]..
 //  [ ] Platform: Multi-viewport / platform windows.
 
-IMGUI_API bool        ImGui_ImplOSX_Init(void* view);
-IMGUI_API void        ImGui_ImplOSX_Shutdown();
-IMGUI_API void        ImGui_ImplOSX_NewFrame(void* view);
-IMGUI_API bool        ImGui_ImplOSX_HandleEvent(void* event, void* view);
+#include "imgui/imgui.h"// IMGUI_IMPL_API
+
+IMGUI_IMPL_API bool     ImGui_ImplOSX_Init(void* view);
+IMGUI_IMPL_API void     ImGui_ImplOSX_Shutdown();
+IMGUI_IMPL_API void     ImGui_ImplOSX_NewFrame(void* view);
+IMGUI_IMPL_API bool     ImGui_ImplOSX_HandleEvent(void* event, void* view);
