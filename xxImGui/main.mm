@@ -95,7 +95,7 @@
         self.imguiUpdate = NO;
 
         if (DearImGui::PowerSaving())
-            xxSleep(1);
+            xxSleep(1000 / 120);
     }
 }
 
