@@ -3,7 +3,7 @@
 	url = https://github.com/metarutaiga/xxGraphic
 [submodule "freetype"]
 	path = freetype
-	url = https://github.com/metarutaiga/freetype2
+	url = https://github.com/freetype/freetype2
 [submodule "imgui"]
 	path = imgui
 	url = https://github.com/ocornut/imgui
