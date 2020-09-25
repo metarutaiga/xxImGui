@@ -2,12 +2,12 @@
 A simulate Next-Generation Graphic API for ImGui
 
 ### Library Dependencies
-| Library   | Note                                                     |
-| --------- | -------------------------------------------------------- |
-| imgui     | https://github.com/ocornut/imgui                         |
-| freetype2 | https://git.savannah.gnu.org/cgit/freetype/freetype2.git |
-| xxGraphic | https://github.com/metarutaiga/xxGraphic                 |
-| xxMiniCRT | https://github.com/metarutaiga/xxMiniCRT                 |
+| Library   | Note                                     |
+| --------- | ---------------------------------------- |
+| imgui     | https://github.com/ocornut/imgui         |
+| freetype2 | https://github.com/freetype/freetype2    |
+| xxGraphic | https://github.com/metarutaiga/xxGraphic |
+| xxMiniCRT | https://github.com/metarutaiga/xxMiniCRT |
 
 ### Supported Graphic API
 | API             | Android | iOS | macOS | Windows | Windows on ARM |
