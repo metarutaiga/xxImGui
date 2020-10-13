@@ -1,6 +1,9 @@
 @echo off
 set Platform=x64
 set VisualStudioYear=2019
+set VisualStudioEdition=Community
+set VisualStudioVersion=14.24.28314
+set WindowsSDKVersion=10.0.19041.0
 for /D %%s in ("C:\Program Files (x86)\Microsoft Visual Studio\%VisualStudioYear%\*") do set VisualStudioEdition=%%~nxs
 for /D %%s in ("C:\Program Files (x86)\Microsoft Visual Studio\%VisualStudioYear%\%VisualStudioEdition%\VC\Tools\MSVC\*") do set VisualStudioVersion=%%~nxs
 for /D %%s in ("C:\Program Files (x86)\Windows Kits\10\Include\*") do set WindowsSDKVersion=%%~nxs
