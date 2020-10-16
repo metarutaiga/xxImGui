@@ -19,6 +19,7 @@ IMPLEMENT_MINICRT();
 
 // Forward declarations of helper functions
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+VOID WINAPI ShouldUseDarkMode(HWND hWnd);
 
 // Main code
 int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, int showCmd)
@@ -31,43 +32,8 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
     ::RegisterClassEx(&wc);
     HWND hWnd = ::CreateWindow(wc.lpszClassName, _T("Dear ImGui XX Example"), WS_OVERLAPPEDWINDOW, 100, 100, 1280 * scale, 720 * scale, NULL, NULL, wc.hInstance, NULL);
 
-    // Dark Title
-    HMODULE user32 = LoadLibraryA("user32.dll");
-    if (user32)
-    {
-        BOOL(WINAPI * SetWindowCompositionAttribute)(HWND hWnd, void*);
-        (void*&)SetWindowCompositionAttribute = GetProcAddress(user32, "SetWindowCompositionAttribute");
-        if (SetWindowCompositionAttribute)
-        {
-            struct WINDOWCOMPOSITIONATTRIBDATA
-            {
-                DWORD Attrib;
-                PVOID pvData;
-                SIZE_T cbData;
-            };
-
-            BOOL dark = TRUE;
-            DWORD WCA_USEDARKMODECOLORS = 26;
-            WINDOWCOMPOSITIONATTRIBDATA dataDark = { WCA_USEDARKMODECOLORS, &dark, sizeof(dark) };
-            SetWindowCompositionAttribute(hWnd, &dataDark);
-        }
-
-        FreeLibrary(user32);
-    }
-
-    // Dark Mode
-    HMODULE uxtheme = LoadLibraryA("uxtheme.dll");
-    if (uxtheme)
-    {
-        BOOL(WINAPI * AllowDarkModeForApp)(BOOL allow);
-        (void*&)AllowDarkModeForApp = GetProcAddress(uxtheme, MAKEINTRESOURCEA(135));
-        if (AllowDarkModeForApp)
-        {
-            AllowDarkModeForApp(TRUE);
-        }
-
-        FreeLibrary(uxtheme);
-    }
+    // Use dark mode
+    ShouldUseDarkMode(hWnd);
 
     Renderer::Create(hWnd, 1280 * scale, 720 * scale);
     DearImGui::Create(hWnd, scale);
@@ -186,4 +152,67 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         break;
     }
     return ::DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
+// Win32 dark mode
+VOID WINAPI ShouldUseDarkMode(HWND hWnd)
+{
+    DWORD darkMode = TRUE;
+
+    HMODULE ntdll = LoadLibraryA("ntdll.dll");
+    HMODULE uxtheme = LoadLibraryA("uxtheme.dll");
+    if (ntdll && uxtheme)
+    {
+        VOID(WINAPI * RtlGetNtVersionNumbers)(DWORD*, DWORD*, DWORD*);
+        (void*&)RtlGetNtVersionNumbers = GetProcAddress(ntdll, "RtlGetNtVersionNumbers");
+        if (RtlGetNtVersionNumbers)
+        {
+            DWORD major = 0;
+            DWORD minor = 0;
+            DWORD buildNumber = 0;
+            RtlGetNtVersionNumbers(&major, &minor, &buildNumber);
+            buildNumber &= ~0xF0000000;
+            if (major >= 10 && buildNumber >= 17763 && buildNumber <= 19041)
+            {
+                BOOL(WINAPI * ShouldAppsUseDarkMode)();
+                (void*&)ShouldAppsUseDarkMode = GetProcAddress(uxtheme, MAKEINTRESOURCEA(132));
+                if (ShouldAppsUseDarkMode)
+                {
+                    darkMode = ShouldAppsUseDarkMode();
+                }
+
+                DWORD(WINAPI * SetPreferredAppMode)(DWORD mode);
+                (void*&)SetPreferredAppMode = GetProcAddress(uxtheme, MAKEINTRESOURCEA(135));
+                if (SetPreferredAppMode)
+                {
+                    SetPreferredAppMode(darkMode);
+                }
+            }
+        }
+
+        FreeLibrary(ntdll);
+        FreeLibrary(uxtheme);
+    }
+
+    HMODULE user32 = LoadLibraryA("user32.dll");
+    if (user32)
+    {
+        struct WINCOMPATTRDATA
+        {
+            DWORD dwAttribute;
+            LPCVOID pvAttribute;
+            DWORD cbAttribute;
+        };
+
+        BOOL(WINAPI * SetWindowCompositionAttribute)(HWND hWnd, WINCOMPATTRDATA* pAttrData);
+        (void*&)SetWindowCompositionAttribute = GetProcAddress(user32, "SetWindowCompositionAttribute");
+        if (SetWindowCompositionAttribute)
+        {
+            DWORD WCA_USEDARKMODECOLORS = 26;
+            WINCOMPATTRDATA data = { WCA_USEDARKMODECOLORS, &darkMode, sizeof(darkMode) };
+            SetWindowCompositionAttribute(hWnd, &data);
+        }
+
+        FreeLibrary(user32);
+    }
 }
