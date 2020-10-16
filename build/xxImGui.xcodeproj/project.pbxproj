@@ -38,6 +38,9 @@
 		30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFF24DDA69E00C0F4EC /* UIKit.framework */; };
 		CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CEB0D82725399A300068F86C /* Default-844h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82425399A300068F86C /* Default-844h@3x.png */; };
+		CEB0D82825399A300068F86C /* Default-926h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82525399A300068F86C /* Default-926h@3x.png */; };
+		CEB0D82925399A300068F86C /* Default-780h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82625399A300068F86C /* Default-780h@3x.png */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -119,6 +122,9 @@
 		30F22EFF24DDA69E00C0F4EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE7582A4250B2D01003487A8 /* imgui_impl_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_impl_win32.h; path = ../xxImGui/implement/imgui_impl_win32.h; sourceTree = "<group>"; };
 		CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_win32.cpp; path = ../xxImGui/implement/imgui_impl_win32.cpp; sourceTree = "<group>"; };
+		CEB0D82425399A300068F86C /* Default-844h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-844h@3x.png"; sourceTree = "<group>"; };
+		CEB0D82525399A300068F86C /* Default-926h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-926h@3x.png"; sourceTree = "<group>"; };
+		CEB0D82625399A300068F86C /* Default-780h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-780h@3x.png"; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
@@ -266,8 +272,11 @@
 				D6F38922232978BA00EE9716 /* Default-568h@2x.png */,
 				D6F3891E232978B900EE9716 /* Default-667h@2x.png */,
 				D6F38920232978BA00EE9716 /* Default-Landscape-736h@3x.png */,
+				CEB0D82625399A300068F86C /* Default-780h@3x.png */,
 				D6F3891D232978B900EE9716 /* Default-812h@3x.png */,
+				CEB0D82425399A300068F86C /* Default-844h@3x.png */,
 				D6F3892C23297A4900EE9716 /* Default-896h@2x.png */,
+				CEB0D82525399A300068F86C /* Default-926h@3x.png */,
 				D6F38921232978BA00EE9716 /* Default-Landscape@2x.png */,
 				D6F3892E23297C7800EE9716 /* Default-Landscape-1080h@2x.png */,
 				D6F3891F232978B900EE9716 /* Default-Landscape-1112h@2x.png */,
@@ -359,8 +368,11 @@
 				D6F38929232978BA00EE9716 /* Default-568h@2x.png in Resources */,
 				D6F38925232978BA00EE9716 /* Default-667h@2x.png in Resources */,
 				D6F38927232978BA00EE9716 /* Default-Landscape-736h@3x.png in Resources */,
+				CEB0D82925399A300068F86C /* Default-780h@3x.png in Resources */,
 				D6F38924232978BA00EE9716 /* Default-812h@3x.png in Resources */,
+				CEB0D82725399A300068F86C /* Default-844h@3x.png in Resources */,
 				D6F3892D23297A4900EE9716 /* Default-896h@2x.png in Resources */,
+				CEB0D82825399A300068F86C /* Default-926h@3x.png in Resources */,
 				D6F38928232978BA00EE9716 /* Default-Landscape@2x.png in Resources */,
 				D6F3892F23297C7800EE9716 /* Default-Landscape-1080h@2x.png in Resources */,
 				D6F38926232978BA00EE9716 /* Default-Landscape-1112h@2x.png in Resources */,
