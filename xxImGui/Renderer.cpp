@@ -164,7 +164,7 @@ uint64_t Renderer::Begin()
     uint64_t framebuffer = xxGetFramebuffer(g_device, g_swapchain);
     xxBeginCommandBuffer(commandBuffer);
 
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, g_width, g_height, g_clearColor[0], g_clearColor[1], g_clearColor[2], g_clearColor[3], g_clearDepth, g_clearStencil);
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, g_width, g_height, g_clearColor, g_clearDepth, g_clearStencil);
 
     g_currentCommandBuffer = commandBuffer;
     g_currentCommandEncoder = commandEncoder;

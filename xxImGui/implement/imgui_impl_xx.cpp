@@ -440,7 +440,8 @@ static void ImGui_ImplXX_RenderWindow(ImGuiViewport* viewport, void*)
     uint64_t framebuffer = xxGetFramebuffer(g_device, data->Swapchain);
     xxBeginCommandBuffer(commandBuffer);
 
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width, data->Height, 0, 0, 0, 0, 1.0f, 0);
+    float color[] = { 0, 0, 0, 0 };
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width, data->Height, color, 1.0f, 0);
     ImGui_ImplXX_RenderDrawData(viewport->DrawData, commandEncoder);
     xxEndRenderPass(commandEncoder, framebuffer, data->RenderPass);
 

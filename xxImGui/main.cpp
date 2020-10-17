@@ -159,12 +159,12 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
 {
     DWORD darkMode = TRUE;
 
-    HMODULE ntdll = LoadLibraryA("ntdll.dll");
-    HMODULE uxtheme = LoadLibraryA("uxtheme.dll");
+    HMODULE ntdll = ::LoadLibraryA("ntdll.dll");
+    HMODULE uxtheme = ::LoadLibraryA("uxtheme.dll");
     if (ntdll && uxtheme)
     {
         VOID(WINAPI * RtlGetNtVersionNumbers)(DWORD*, DWORD*, DWORD*);
-        (void*&)RtlGetNtVersionNumbers = GetProcAddress(ntdll, "RtlGetNtVersionNumbers");
+        (void*&)RtlGetNtVersionNumbers = ::GetProcAddress(ntdll, "RtlGetNtVersionNumbers");
         if (RtlGetNtVersionNumbers)
         {
             DWORD major = 0;
@@ -175,14 +175,14 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
             if (major >= 10 && buildNumber >= 17763 && buildNumber <= 19041)
             {
                 BOOL(WINAPI * ShouldAppsUseDarkMode)();
-                (void*&)ShouldAppsUseDarkMode = GetProcAddress(uxtheme, MAKEINTRESOURCEA(132));
+                (void*&)ShouldAppsUseDarkMode = ::GetProcAddress(uxtheme, MAKEINTRESOURCEA(132));
                 if (ShouldAppsUseDarkMode)
                 {
                     darkMode = ShouldAppsUseDarkMode();
                 }
 
                 DWORD(WINAPI * SetPreferredAppMode)(DWORD mode);
-                (void*&)SetPreferredAppMode = GetProcAddress(uxtheme, MAKEINTRESOURCEA(135));
+                (void*&)SetPreferredAppMode = ::GetProcAddress(uxtheme, MAKEINTRESOURCEA(135));
                 if (SetPreferredAppMode)
                 {
                     SetPreferredAppMode(darkMode);
@@ -190,11 +190,11 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
             }
         }
 
-        FreeLibrary(ntdll);
-        FreeLibrary(uxtheme);
+        ::FreeLibrary(ntdll);
+        ::FreeLibrary(uxtheme);
     }
 
-    HMODULE user32 = LoadLibraryA("user32.dll");
+    HMODULE user32 = ::LoadLibraryA("user32.dll");
     if (user32)
     {
         struct WINCOMPATTRDATA
@@ -204,8 +204,8 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
             DWORD cbAttribute;
         };
 
-        BOOL(WINAPI * SetWindowCompositionAttribute)(HWND hWnd, WINCOMPATTRDATA* pAttrData);
-        (void*&)SetWindowCompositionAttribute = GetProcAddress(user32, "SetWindowCompositionAttribute");
+        BOOL(WINAPI * SetWindowCompositionAttribute)(HWND, WINCOMPATTRDATA*);
+        (void*&)SetWindowCompositionAttribute = ::GetProcAddress(user32, "SetWindowCompositionAttribute");
         if (SetWindowCompositionAttribute)
         {
             DWORD WCA_USEDARKMODECOLORS = 26;
@@ -213,6 +213,6 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
             SetWindowCompositionAttribute(hWnd, &data);
         }
 
-        FreeLibrary(user32);
+        ::FreeLibrary(user32);
     }
 }
