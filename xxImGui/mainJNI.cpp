@@ -1,6 +1,6 @@
 #include <android/native_window_jni.h>
 #include <jni.h>
-#include <string>
+#include <locale.h>
 
 #include "Renderer.h"
 #include "Plugin.h"
@@ -14,6 +14,8 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
     if (g_initialized)
         return;
     g_initialized = true;
+
+    setlocale(LC_ALL, "ja_JP.UTF-8");
 
     ANativeWindow* window = nullptr;
     if (surface != nullptr)
