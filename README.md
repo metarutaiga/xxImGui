@@ -6,6 +6,7 @@ A simulate Next-Generation Graphic API for ImGui
 | --------- | ---------------------------------------- |
 | imgui     | https://github.com/ocornut/imgui         |
 | freetype2 | https://github.com/freetype/freetype2    |
+| stb       | https://github.com/nothings/stb          |
 | xxGraphic | https://github.com/metarutaiga/xxGraphic |
 | xxMiniCRT | https://github.com/metarutaiga/xxMiniCRT |
 
