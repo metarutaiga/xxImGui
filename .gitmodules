@@ -10,3 +10,6 @@
 [submodule "xxMiniCRT"]
 	path = xxMiniCRT
 	url = https://github.com/metarutaiga/xxMiniCRT
+[submodule "stb"]
+	path = stb
+	url = https://github.com/nothings/stb
