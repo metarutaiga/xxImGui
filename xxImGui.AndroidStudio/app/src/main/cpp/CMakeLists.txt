@@ -145,7 +145,8 @@ target_compile_definitions( imgui
 
 target_include_directories( imgui
                             PUBLIC
-                            ../../../../../imgui )
+                            ../../../../../imgui
+                            ../../../../../stb )
 
 # xxGraphic
 
