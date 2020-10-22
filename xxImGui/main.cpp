@@ -11,7 +11,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include <tchar.h>
-#include <locale.h>
 
 #define USE_MINICRT 1
 #if USE_MINICRT
@@ -25,8 +24,6 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd);
 // Main code
 int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, int showCmd)
 {
-    setlocale(LC_ALL, "ja_JP.UTF-8");
-
     ImGui_ImplWin32_EnableDpiAwareness();
     float scale = ImGui_ImplWin32_GetDpiScaleForHwnd(NULL);
 
