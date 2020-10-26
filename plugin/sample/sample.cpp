@@ -4,6 +4,7 @@
 // Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
+#define _CRT_SECURE_NO_WARNINGS
 #include <interface.h>
 
 #if defined(xxANDROID) || defined(xxMACOS) || defined(xxIOS)
