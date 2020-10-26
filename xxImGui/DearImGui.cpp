@@ -4,6 +4,7 @@
 // Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
+#define _CRT_SECURE_NO_WARNINGS
 #include <sys/stat.h>
 #include "implement/imgui_freetype.h"
 #include "implement/imgui_impl_osx.h"

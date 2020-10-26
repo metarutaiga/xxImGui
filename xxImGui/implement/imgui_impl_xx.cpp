@@ -209,6 +209,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 int clip_y = (int)clip_rect.y;
                 int clip_width = (int)(clip_rect.z - clip_rect.x);
                 int clip_height = (int)(clip_rect.w - clip_rect.y);
+#if defined(__APPLE__)
                 if (draw_data->OwnerViewport)
                 {
                     ImVec2 size = draw_data->OwnerViewport->GetWorkSize();
@@ -221,6 +222,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                     if (clip_height > size.y - clip_y)
                         clip_height = size.y - clip_y;
                 }
+#endif
                 xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
 
                 // Texture
