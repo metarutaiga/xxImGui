@@ -36,7 +36,7 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
     ShouldUseDarkMode(hWnd);
 
     Renderer::Create(hWnd, 1280 * scale, 720 * scale);
-    DearImGui::Create(hWnd, scale);
+    DearImGui::Create(hWnd, scale, scale);
     Plugin::Create("plugin", Renderer::g_device);
 
     // Show the window

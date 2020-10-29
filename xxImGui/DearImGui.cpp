@@ -27,7 +27,7 @@ bool        DearImGui::g_powerSaving = true;
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
-void DearImGui::Create(void* view, float scale)
+void DearImGui::Create(void* view, float scale, float font)
 {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
@@ -53,7 +53,7 @@ void DearImGui::Create(void* view, float scale)
         style.WindowRounding = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
-    io.FontGlobalScale = scale;
+    io.FontGlobalScale = font;
     style.ScaleAllSizes(scale);
 
     // Setup Platform/Renderer bindings
@@ -114,7 +114,7 @@ void DearImGui::Create(void* view, float scale)
     }
 #endif
     ImGuiFreeType::BuildFontAtlas(io.Fonts);
-    io.FontGlobalScale              = 1.0f;
+    io.FontGlobalScale              = scale / font;
 }
 //------------------------------------------------------------------------------
 void DearImGui::Shutdown()
@@ -369,7 +369,9 @@ void* DearImGui::PostUpdate(void* view, bool render)
 //------------------------------------------------------------------------------
 void DearImGui::Render(uint64_t commandEncoder)
 {
-    ImGui_ImplXX_RenderDrawData(ImGui::GetDrawData(), commandEncoder);
+    ImDrawData* drawData = ImGui::GetDrawData();
+    drawData->FramebufferScale = ImVec2(Renderer::g_scale, Renderer::g_scale);
+    ImGui_ImplXX_RenderDrawData(drawData, commandEncoder);
 }
 //------------------------------------------------------------------------------
 bool DearImGui::PowerSaving()
