@@ -11,7 +11,7 @@
 class DearImGui
 {
 public:
-    static void Create(void* view, float scale);
+    static void Create(void* view, float scale, float font);
     static void Shutdown();
 
     static void Suspend();

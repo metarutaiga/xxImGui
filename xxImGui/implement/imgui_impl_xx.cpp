@@ -61,7 +61,7 @@ static void ImGui_ImplXX_InvalidateDeviceObjectsForPlatformWindows();
 
 static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t commandEncoder, uint64_t constantBuffer)
 {
-    xxSetViewport(commandEncoder, 0, 0, (int)draw_data->DisplaySize.x, (int)draw_data->DisplaySize.y, 0.0f, 1.0f);
+    xxSetViewport(commandEncoder, 0, 0, (int)draw_data->DisplaySize.x * draw_data->FramebufferScale.x, (int)draw_data->DisplaySize.y * draw_data->FramebufferScale.y, 0.0f, 1.0f);
 
     // Setup orthographic projection matrix
     // Our visible imgui space lies from draw_data->DisplayPos (top left) to draw_data->DisplayPos+data_data->DisplaySize (bottom right). DisplayPos is (0,0) for single viewport apps.
@@ -112,8 +112,10 @@ static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t comman
 // (this used to be set in io.RenderDrawListsFn and called by ImGui::Render(), but you can now call this directly from your main loop)
 void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
 {
-    // Avoid rendering when minimized
-    if (draw_data->DisplaySize.x <= 0.0f || draw_data->DisplaySize.y <= 0.0f)
+    // Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)
+    int fb_width = (int)(draw_data->DisplaySize.x * draw_data->FramebufferScale.x);
+    int fb_height = (int)(draw_data->DisplaySize.y * draw_data->FramebufferScale.y);
+    if (fb_width <= 0 || fb_height <= 0 || draw_data->CmdListsCount == 0)
         return;
 
     ImGuiViewportDataXX* ownerViewport = nullptr;
@@ -172,12 +174,15 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
     xxSetIndexBuffer(commandEncoder, indexBuffer);
 
+    // Will project scissor/clipping rectangles into framebuffer space
+    ImVec2 clip_off = draw_data->DisplayPos;         // (0,0) unless using multi-viewports
+    ImVec2 clip_scale = draw_data->FramebufferScale; // (1,1) unless using retina display which are often (2,2)
+
     // Render command lists
     // (Because we merged all buffers into a single one, we maintain our own offset into them)
     ImTextureID boundTextureID = 0;
     int global_vtx_offset = 0;
     int global_idx_offset = 0;
-    ImVec2 clip_off = draw_data->DisplayPos;
     for (int n = 0; n < draw_data->CmdListsCount; n++)
     {
         const ImDrawList* cmd_list = draw_data->CmdLists[n];
@@ -199,10 +204,10 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
             {
                 // Project scissor/clipping rectangles into framebuffer space
                 ImVec4 clip_rect;
-                clip_rect.x = (pcmd->ClipRect.x - clip_off.x);
-                clip_rect.y = (pcmd->ClipRect.y - clip_off.y);
-                clip_rect.z = (pcmd->ClipRect.z - clip_off.x);
-                clip_rect.w = (pcmd->ClipRect.w - clip_off.y);
+                clip_rect.x = (pcmd->ClipRect.x - clip_off.x) * clip_scale.x;
+                clip_rect.y = (pcmd->ClipRect.y - clip_off.y) * clip_scale.y;
+                clip_rect.z = (pcmd->ClipRect.z - clip_off.x) * clip_scale.x;
+                clip_rect.w = (pcmd->ClipRect.w - clip_off.y) * clip_scale.y;
 
                 // Apply scissor/clipping rectangle
                 int clip_x = (int)clip_rect.x;
@@ -210,18 +215,14 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 int clip_width = (int)(clip_rect.z - clip_rect.x);
                 int clip_height = (int)(clip_rect.w - clip_rect.y);
 #if defined(__APPLE__)
-                if (draw_data->OwnerViewport)
-                {
-                    ImVec2 size = draw_data->OwnerViewport->GetWorkSize();
-                    if (clip_x < 0)
-                        clip_x = 0;
-                    if (clip_y < 0)
-                        clip_y = 0;
-                    if (clip_width > size.x - clip_x)
-                        clip_width = size.x - clip_x;
-                    if (clip_height > size.y - clip_y)
-                        clip_height = size.y - clip_y;
-                }
+                if (clip_x < 0)
+                    clip_x = 0;
+                if (clip_y < 0)
+                    clip_y = 0;
+                if (clip_width > fb_width - clip_x)
+                    clip_width = fb_width - clip_x;
+                if (clip_height > fb_height - clip_y)
+                    clip_height = fb_height - clip_y;
 #endif
                 xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
 
@@ -295,7 +296,7 @@ static bool ImGui_ImplXX_CreateFontsTexture()
     g_fontTexture = xxCreateTexture(g_device, 0, width, height, 1, 1, 1, nullptr);
     if (g_fontTexture == 0)
         return false;
-    unsigned int stride = 0;
+    int stride = 0;
     void* map = xxMapTexture(g_device, g_fontTexture, &stride, 0, 0);
     if (map == nullptr)
         return false;
@@ -438,12 +439,16 @@ static void ImGui_ImplXX_RenderWindow(ImGuiViewport* viewport, void*)
 {
     ImGuiViewportDataXX* data = (ImGuiViewportDataXX*)viewport->RendererUserData;
 
+    float scale = 1.0f;
     uint64_t commandBuffer = xxGetCommandBuffer(g_device, data->Swapchain);
-    uint64_t framebuffer = xxGetFramebuffer(g_device, data->Swapchain);
+    uint64_t framebuffer = xxGetFramebuffer(g_device, data->Swapchain, &scale);
     xxBeginCommandBuffer(commandBuffer);
 
+    viewport->DpiScale = scale;
+    viewport->DrawData->FramebufferScale = ImVec2(scale, scale);
+
     float color[] = { 0, 0, 0, 0 };
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width, data->Height, color, 1.0f, 0);
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width * scale, data->Height * scale, color, 1.0f, 0);
     ImGui_ImplXX_RenderDrawData(viewport->DrawData, commandEncoder);
     xxEndRenderPass(commandEncoder, framebuffer, data->RenderPass);
 

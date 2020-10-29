@@ -321,19 +321,17 @@
     self.window.contentViewController.view = view;
     [self.window makeKeyAndOrderFront:NSApp];
     NSRect rect = [view frame];
-    int width = rect.size.width * scale;
-    int height = rect.size.height * scale;
 #elif defined(xxIOS)
     self.window.rootViewController = [ImGuiExampleViewController new];
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
     CGRect rect = [view bounds];
-    int width = rect.size.width * scale;
-    int height = rect.size.height  * scale;
 #endif
+    int width = rect.size.width;
+    int height = rect.size.height;
 
     Renderer::Create((__bridge void*)self.window, width, height);
-    DearImGui::Create((__bridge void*)view, scale);
+    DearImGui::Create((__bridge void*)view, 1.0f, scale);
     Plugin::Create("plugin", Renderer::g_device);
 }
 
