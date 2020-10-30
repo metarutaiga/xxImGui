@@ -23,7 +23,11 @@ static void  FreeWrapper(void* ptr, void* user_data)        { IM_UNUSED(user_dat
 
 const char* DearImGui::g_graphicShortName = nullptr;
 bool        DearImGui::g_recreateWindow = false;
+#if defined(xxIOS)
+bool        DearImGui::g_powerSaving = false;
+#else
 bool        DearImGui::g_powerSaving = true;
+#endif
 //==============================================================================
 //  Dear ImGui
 //==============================================================================

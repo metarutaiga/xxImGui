@@ -101,20 +101,13 @@
 
 -(void)reset
 {
-    int width = 0;
-    int height = 0;
 #if defined(xxMACOS)
-    float scale = [self.window backingScaleFactor];
-    NSRect rect = [[[self window] contentView] frame];
-    width = rect.size.width * scale;
-    height = rect.size.height * scale;
+    NSSize size = [[[self window] contentView] frame].size;
 #elif defined(xxIOS)
-    float scale = [[UIScreen mainScreen] nativeScale];
-    CGRect rect = [[self window] bounds];
-    width = rect.size.width * scale;
-    height = rect.size.height * scale;
+    CGSize size = [[self window] bounds].size;
 #endif
-    Renderer::Reset((__bridge void*)[self window], width, height);
+
+    Renderer::Reset((__bridge void*)[self window], size.width, size.height);
 }
 
 -(BOOL)acceptsFirstResponder
@@ -176,11 +169,8 @@
 // interaction actually works surprisingly well.
 -(void)updateIOWithTouchEvent:(UIEvent *)event
 {
-    float scale = [self.view contentScaleFactor];
     UITouch* anyTouch = event.allTouches.anyObject;
     CGPoint touchLocation = [anyTouch locationInView:self.view];
-    touchLocation.x *= scale;
-    touchLocation.y *= scale;
     ImGuiIO& io = ImGui::GetIO();
     io.MousePos = ImVec2(touchLocation.x, touchLocation.y);
 
@@ -320,17 +310,15 @@
     self.window.contentViewController = [ImGuiExampleViewController new];
     self.window.contentViewController.view = view;
     [self.window makeKeyAndOrderFront:NSApp];
-    NSRect rect = [view frame];
+    NSSize size = [view frame].size;
 #elif defined(xxIOS)
     self.window.rootViewController = [ImGuiExampleViewController new];
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
-    CGRect rect = [view bounds];
+    CGSize size = [view bounds].size;
 #endif
-    int width = rect.size.width;
-    int height = rect.size.height;
 
-    Renderer::Create((__bridge void*)self.window, width, height);
+    Renderer::Create((__bridge void*)self.window, size.width, size.height);
     DearImGui::Create((__bridge void*)view, 1.0f, scale);
     Plugin::Create("plugin", Renderer::g_device);
 }
