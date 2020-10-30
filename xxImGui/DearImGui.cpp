@@ -156,9 +156,8 @@ void DearImGui::NewFrame(void* view)
 #elif defined(xxIOS)
     CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("contentScaleFactor"));
     CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("bounds"));
-    rect.size.width *= contentScaleFactor;
-    rect.size.height *= contentScaleFactor;
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
+    ImGui::GetIO().DisplayFramebufferScale = ImVec2(contentScaleFactor, contentScaleFactor);
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_NewFrame();
 #else
