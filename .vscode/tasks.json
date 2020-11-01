@@ -2,13 +2,11 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "type": "shell",
-    "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
-    "presentation": { "reveal": "silent" },
-    "problemMatcher": "$msCompile",
     "tasks": [
         {
             "label": "Debug (x86)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Debug",
                 "/p:Platform=Win32",
@@ -18,10 +16,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Release (x86)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Release",
                 "/p:Platform=Win32",
@@ -31,10 +33,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Debug (x64)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Debug",
                 "/p:Platform=x64",
@@ -44,10 +50,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Release (x64)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Release",
                 "/p:Platform=x64",
@@ -57,10 +67,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Debug (arm)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Debug",
                 "/p:Platform=ARM",
@@ -70,10 +84,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Release (arm)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Release",
                 "/p:Platform=ARM",
@@ -83,10 +101,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Debug (arm64)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Debug",
                 "/p:Platform=ARM64",
@@ -96,10 +118,14 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "Release (arm64)",
+            "type": "shell",
+            "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe",
             "args": [
                 "/p:Configuration=Release",
                 "/p:Platform=ARM64",
@@ -109,7 +135,9 @@
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build"
+            "group": "build",
+            "presentation": { "reveal": "silent" },
+            "problemMatcher": "$msCompile"
         }
     ]
 }
