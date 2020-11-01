@@ -29,7 +29,7 @@
             "name": "Release (x64)",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/xxImGui.Release.x86.exe",
+            "program": "${workspaceFolder}/bin/xxImGui.Release.x64.exe",
             "cwd": "${workspaceFolder}/bin"
         },
         {
