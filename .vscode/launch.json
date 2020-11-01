@@ -9,88 +9,56 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Debug.x86.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Release (x86)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Release.x86.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Debug (x64)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Debug.x64.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Release (x64)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Release.x86.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Debug (arm)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Debug.arm.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Release (arm)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Release.arm.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Debug (arm64)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Debug.arm64.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         },
         {
             "name": "Release (arm64)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/xxImGui.Release.arm64.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false
+            "cwd": "${workspaceFolder}/bin"
         }
     ]
 }
