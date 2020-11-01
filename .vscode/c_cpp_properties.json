@@ -7,8 +7,6 @@
             ],
             "defines": [
                 "_DEBUG",
-                "UNICODE",
-                "_UNICODE",
                 "IMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\""
             ],
             "windowsSdkVersion": "10.0.19041.0",
