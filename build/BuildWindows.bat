@@ -27,6 +27,9 @@ echo BuildWindows.bat x64 2019 Community 14.24.28314 10.0.19041.0
 goto :eof
 
 :build
+set BACKUP_PATH=%PATH%
+set BACKUP_INCLUDE=%INCLUDE%
+set BACKUP_LIB=%LIB%
 call vcvars.bat %3 %4 %5 %6 %7
 cd ..
 mkdir bin >nul 2>nul
@@ -54,4 +57,7 @@ cd ..
 cd ..
 cd ..
 cd build
+set PATH=%BACKUP_PATH%
+set INCLUDE=%BACKUP_INCLUDE%
+set LIB=%BACKUP_LIB%
 goto :eof
