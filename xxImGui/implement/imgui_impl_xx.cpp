@@ -174,6 +174,8 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
     xxSetIndexBuffer(commandEncoder, indexBuffer);
 
+    ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
+
     // Will project scissor/clipping rectangles into framebuffer space
     ImVec2 clip_off = draw_data->DisplayPos;         // (0,0) unless using multi-viewports
     ImVec2 clip_scale = draw_data->FramebufferScale; // (1,1) unless using retina display which are often (2,2)
@@ -209,37 +211,27 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 clip_rect.z = (pcmd->ClipRect.z - clip_off.x) * clip_scale.x;
                 clip_rect.w = (pcmd->ClipRect.w - clip_off.y) * clip_scale.y;
 
-                // Apply scissor/clipping rectangle
-                int clip_x = (int)clip_rect.x;
-                int clip_y = (int)clip_rect.y;
-                int clip_width = (int)(clip_rect.z - clip_rect.x);
-                int clip_height = (int)(clip_rect.w - clip_rect.y);
-#if defined(__APPLE__)
-                if (clip_x < 0)
-                    clip_x = 0;
-                if (clip_y < 0)
-                    clip_y = 0;
-                if (clip_width > fb_width - clip_x)
-                    clip_width = fb_width - clip_x;
-                if (clip_height > fb_height - clip_y)
-                    clip_height = fb_height - clip_y;
-#endif
-                xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
-
-                // Texture
-                if (boundTextureID != pcmd->TextureId)
+                if (clip_rect.x < fb_width && clip_rect.y < fb_height && clip_rect.z >= 0.0f && clip_rect.w >= 0.0f)
                 {
-                    boundTextureID = pcmd->TextureId;
+                    // Apply scissor/clipping rectangle
+                    int clip_x = (int)clip_rect.x;
+                    int clip_y = (int)clip_rect.y;
+                    int clip_width = (int)(clip_rect.z - clip_rect.x);
+                    int clip_height = (int)(clip_rect.w - clip_rect.y);
+                    xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
 
-                    // Setup desired xx state
-                    ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
+                    // Texture
+                    if (boundTextureID != pcmd->TextureId)
+                    {
+                        boundTextureID = pcmd->TextureId;
 
-                    xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
-                    xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
+                        xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
+                        xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
+                    }
+
+                    // Draw
+                    xxDrawIndexed(commandEncoder, indexBuffer, pcmd->ElemCount, 1, pcmd->IdxOffset + global_idx_offset, pcmd->VtxOffset + global_vtx_offset, 0);
                 }
-
-                // Draw
-                xxDrawIndexed(commandEncoder, indexBuffer, pcmd->ElemCount, 1, pcmd->IdxOffset + global_idx_offset, pcmd->VtxOffset + global_vtx_offset, 0);
             }
         }
         global_idx_offset += cmd_list->IdxBuffer.Size;
