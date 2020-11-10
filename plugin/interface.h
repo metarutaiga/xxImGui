@@ -33,9 +33,6 @@ struct UpdateData
     uint64_t    instance;
     uint64_t    device;
     uint64_t    renderPass;
-    uint64_t*   commandBuffer;
-    uint64_t*   commandEncoder;
-    uint64_t*   commandFramebuffer;
     int         width;
     int         height;
     float       time;
