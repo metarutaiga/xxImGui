@@ -17,6 +17,7 @@
 
 struct ImGuiViewportDataXX
 {
+    uint64_t                CommandEncoder = 0;
     uint64_t                Swapchain = 0;
     uint64_t                RenderPass = 0;
     void*                   Handle = nullptr;
@@ -440,9 +441,10 @@ static void ImGui_ImplXX_RenderWindow(ImGuiViewport* viewport, void*)
     viewport->DrawData->FramebufferScale = ImVec2(scale, scale);
 
     float color[] = { 0, 0, 0, 0 };
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width * scale, data->Height * scale, color, 1.0f, 0);
-    ImGui_ImplXX_RenderDrawData(viewport->DrawData, commandEncoder);
-    xxEndRenderPass(commandEncoder, framebuffer, data->RenderPass);
+    data->CommandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width * scale, data->Height * scale, color, 1.0f, 0);
+    ImGui_ImplXX_RenderDrawData(viewport->DrawData, data->CommandEncoder);
+    xxEndRenderPass(data->CommandEncoder, framebuffer, data->RenderPass);
+    data->CommandEncoder = 0;
 
     xxEndCommandBuffer(commandBuffer);
     xxSubmitCommandBuffer(commandBuffer, data->Swapchain);

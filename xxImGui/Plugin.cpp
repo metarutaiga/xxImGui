@@ -141,7 +141,12 @@ bool Plugin::Update()
     bool updated = false;
 
     UpdateData updateData;
+    updateData.instance = Renderer::g_instance;
     updateData.device = Renderer::g_device;
+    updateData.renderPass = Renderer::g_renderPass;
+    updateData.commandBuffer = &Renderer::g_currentCommandBuffer;
+    updateData.commandEncoder = &Renderer::g_currentCommandEncoder;
+    updateData.commandFramebuffer = &Renderer::g_currentCommandFramebuffer;
     updateData.width = Renderer::g_width;
     updateData.height = Renderer::g_height;
     updateData.time = xxGetCurrentTime();
@@ -155,12 +160,14 @@ bool Plugin::Update()
     return updated;
 }
 //------------------------------------------------------------------------------
-void Plugin::Render(uint64_t commandEncoder)
+void Plugin::Render()
 {
     RenderData renderData;
+    renderData.instance = Renderer::g_instance;
     renderData.device = Renderer::g_device;
+    renderData.renderPass = Renderer::g_renderPass;
     renderData.commandBuffer = Renderer::g_currentCommandBuffer;
-    renderData.commandEncoder = commandEncoder;
+    renderData.commandEncoder = Renderer::g_currentCommandEncoder;
     renderData.commandFramebuffer = Renderer::g_currentCommandFramebuffer;
     renderData.width = Renderer::g_width;
     renderData.height = Renderer::g_height;

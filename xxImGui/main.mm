@@ -84,8 +84,8 @@
             uint64_t commandEncoder = Renderer::Begin();
             if (commandEncoder)
             {
-                Plugin::Render(commandEncoder);
                 DearImGui::Render(commandEncoder);
+                Plugin::Render();
                 Renderer::End();
                 Renderer::Present();
             }
