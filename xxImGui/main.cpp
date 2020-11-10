@@ -79,8 +79,8 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
             uint64_t commandEncoder = Renderer::Begin();
             if (commandEncoder)
             {
-                Plugin::Render(commandEncoder);
                 DearImGui::Render(commandEncoder);
+                Plugin::Render();
                 Renderer::End();
                 if (Renderer::Present() == false)
                 {
