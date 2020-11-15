@@ -10,6 +10,17 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+add_compile_options( -fno-exceptions
+                     -fno-rtti
+                     -fvisibility=hidden )
+
+set (CMAKE_SHARED_LINKER_FLAGS "-fuse-ld=lld -Wl,--build-id=sha1")
+
+# ARMv7 hidden symbols is broken since ndk-r17
+if(${ANDROID_SYSROOT_ABI} STREQUAL "arm")
+    add_compile_options( -mno-global-merge )
+endif()
+
 add_library( # Sets the name of the library.
              xxImGui
 
@@ -129,21 +140,18 @@ add_library( imgui
 
 target_compile_definitions( imgui
                             PUBLIC
-                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h" )
+                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h"
+                            IMGUI_API=__attribute__\(\(visibility\(\"default\"\)\)\) )
 
 target_include_directories( imgui
                             PUBLIC
-                            ../../../../../imgui )
+                            ../../../../../imgui
+                            ../../../../../stb )
 
 # xxGraphic
 
 add_library( xxGraphic
              SHARED
-             ../../../../../xxGraphic/utility/xxImage.cpp
-             ../../../../../xxGraphic/utility/xxMaterial.cpp
-             ../../../../../xxGraphic/utility/xxMath.cpp
-             ../../../../../xxGraphic/utility/xxMesh.cpp
-             ../../../../../xxGraphic/utility/xxNode.cpp
              ../../../../../xxGraphic/xxGraphic.cpp
              ../../../../../xxGraphic/xxGraphicEGL.cpp
              ../../../../../xxGraphic/xxGraphicGL.cpp
@@ -167,6 +175,29 @@ target_include_directories( xxGraphic
 target_link_libraries( xxGraphic
                        ${log-lib}
                        android )
+
+# xxGraphicPlus
+
+add_library( xxGraphicPlus
+             SHARED
+             ../../../../../xxGraphic/utility/xxImage.cpp
+             ../../../../../xxGraphic/utility/xxMaterial.cpp
+             ../../../../../xxGraphic/utility/xxMath.cpp
+             ../../../../../xxGraphic/utility/xxMesh.cpp
+             ../../../../../xxGraphic/utility/xxNode.cpp )
+
+target_compile_definitions( xxGraphicPlus
+                            PUBLIC
+                            XXPLUS_BUILD_LIBRARY )
+
+target_include_directories( xxGraphicPlus
+                            PUBLIC
+                            ../../../../../xxGraphic )
+
+target_link_libraries( xxGraphicPlus
+                       ${log-lib}
+                       android
+                       xxGraphic )
 
 # sample
 
@@ -204,4 +235,5 @@ target_include_directories( validator
 
 target_link_libraries( validator
                        imgui
-                       xxGraphic )
+                       xxGraphic
+                       xxGraphicPlus )

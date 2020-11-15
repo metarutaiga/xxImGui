@@ -56,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30317BB12560D61700F69115 /* thread */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = thread; path = ../ConcurrencyNetworkFramework/HackingSTL/thread; sourceTree = "<group>"; };
+		30317BB22560D61700F69115 /* semaphore */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = semaphore; path = ../ConcurrencyNetworkFramework/HackingSTL/semaphore; sourceTree = "<group>"; };
 		30DDC0B324B5E86300D7B6DA /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base.cpp; path = ../ConcurrencyNetworkFramework/Base.cpp; sourceTree = "<group>"; };
 		30DDC0B424B5E86300D7B6DA /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../ConcurrencyNetworkFramework/Socket.cpp; sourceTree = "<group>"; };
 		30DDC0B524B5E86300D7B6DA /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base.h; path = ../ConcurrencyNetworkFramework/Base.h; sourceTree = "<group>"; };
@@ -102,9 +104,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		30317BAE2560D5ED00F69115 /* HackingSTL */ = {
+			isa = PBXGroup;
+			children = (
+				30317BB22560D61700F69115 /* semaphore */,
+				30317BB12560D61700F69115 /* thread */,
+			);
+			name = HackingSTL;
+			sourceTree = "<group>";
+		};
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
+				30317BAE2560D5ED00F69115 /* HackingSTL */,
 				30DDC0B324B5E86300D7B6DA /* Base.cpp */,
 				30DDC0B524B5E86300D7B6DA /* Base.h */,
 				30DDC0B724B5E86300D7B6DA /* Buffer.cpp */,
@@ -199,7 +211,7 @@
 		D644A039231ED82900B75B77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					D6022C3423258B5D00B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
@@ -332,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -399,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;

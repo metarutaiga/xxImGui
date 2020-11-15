@@ -16,5 +16,5 @@ public:
 
     static int Count();
     static bool Update();
-    static void Render(uint64_t commandEncoder);
+    static void Render();
 };

@@ -43,7 +43,7 @@ static void loadTextureFromImage(uint64_t& texture, uint64_t device, const void*
     texture = xxCreateTexture(device, 0, width, height, 1, 1, 1, nullptr);
     if (texture)
     {
-        unsigned int stride = 0;
+        int stride = 0;
         char* pointer = (char*)xxMapTexture(device, texture, &stride, 0, 0);
         if (pointer)
         {

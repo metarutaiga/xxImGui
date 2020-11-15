@@ -28,6 +28,7 @@
 #include <xxGraphic/xxGraphicGLES32.h>
 #if defined(xxMACOS) || defined(xxIOS)
 #include <xxGraphic/xxGraphicMetal.h>
+#include <xxGraphic/xxGraphicMetal2.h>
 #endif
 #include <xxGraphic/xxGraphicNULL.h>
 #include <xxGraphic/xxGraphicVulkan.h>
@@ -44,6 +45,7 @@ uint64_t    Renderer::g_currentCommandFramebuffer = 0;
 void*       Renderer::g_view = nullptr;
 int         Renderer::g_width = 0;
 int         Renderer::g_height = 0;
+float       Renderer::g_scale = 1.0f;
 float       Renderer::g_clearColor[4] = { 0.45f, 0.55f, 0.60f, 1.00f };
 float       Renderer::g_clearDepth = 1.0f;
 char        Renderer::g_clearStencil = 0;
@@ -82,6 +84,7 @@ static struct { const char* shortName; const char* fullName; uint64_t (*createIn
 #endif
 #if defined(xxMACOS) || defined(xxIOS)
     { "MTL",            xxGetDeviceNameMetal(),         xxCreateInstanceMetal           },
+    { "MTL2",           xxGetDeviceNameMetal2(),        xxCreateInstanceMetal2          },
 #endif
     { "NULL",           xxGetDeviceNameNULL(),          xxCreateInstanceNULL            },
     { "VK",             xxGetDeviceNameVulkan(),        xxCreateInstanceVulkan          },
@@ -159,10 +162,10 @@ void Renderer::Shutdown()
 uint64_t Renderer::Begin()
 {
     uint64_t commandBuffer = xxGetCommandBuffer(g_device, g_swapchain);
-    uint64_t framebuffer = xxGetFramebuffer(g_device, g_swapchain);
+    uint64_t framebuffer = xxGetFramebuffer(g_device, g_swapchain, &g_scale);
     xxBeginCommandBuffer(commandBuffer);
 
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, g_width, g_height, g_clearColor[0], g_clearColor[1], g_clearColor[2], g_clearColor[3], g_clearDepth, g_clearStencil);
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, g_width * g_scale, g_height * g_scale, g_clearColor, g_clearDepth, g_clearStencil);
 
     g_currentCommandBuffer = commandBuffer;
     g_currentCommandEncoder = commandEncoder;

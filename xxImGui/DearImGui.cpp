@@ -4,6 +4,7 @@
 // Copyright (c) 2019-2020 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
+#define _CRT_SECURE_NO_WARNINGS
 #include <sys/stat.h>
 #include "implement/imgui_freetype.h"
 #include "implement/imgui_impl_osx.h"
@@ -22,11 +23,15 @@ static void  FreeWrapper(void* ptr, void* user_data)        { IM_UNUSED(user_dat
 
 const char* DearImGui::g_graphicShortName = nullptr;
 bool        DearImGui::g_recreateWindow = false;
+#if defined(xxIOS)
 bool        DearImGui::g_powerSaving = false;
+#else
+bool        DearImGui::g_powerSaving = true;
+#endif
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
-void DearImGui::Create(void* view, float scale)
+void DearImGui::Create(void* view, float scale, float font)
 {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
@@ -39,7 +44,7 @@ void DearImGui::Create(void* view, float scale)
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
-    io.IniFilename = NULL;
+    io.IniFilename = nullptr;
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
@@ -52,7 +57,7 @@ void DearImGui::Create(void* view, float scale)
         style.WindowRounding = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
-    io.FontGlobalScale = scale;
+    io.FontGlobalScale = font;
     style.ScaleAllSizes(scale);
 
     // Setup Platform/Renderer bindings
@@ -113,7 +118,7 @@ void DearImGui::Create(void* view, float scale)
     }
 #endif
     ImGuiFreeType::BuildFontAtlas(io.Fonts);
-    io.FontGlobalScale              = 1.0f;
+    io.FontGlobalScale              = scale / font;
 }
 //------------------------------------------------------------------------------
 void DearImGui::Shutdown()
@@ -151,9 +156,8 @@ void DearImGui::NewFrame(void* view)
 #elif defined(xxIOS)
     CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("contentScaleFactor"));
     CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("bounds"));
-    rect.size.width *= contentScaleFactor;
-    rect.size.height *= contentScaleFactor;
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
+    ImGui::GetIO().DisplayFramebufferScale = ImVec2(contentScaleFactor, contentScaleFactor);
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_NewFrame();
 #else
@@ -189,6 +193,7 @@ void DearImGui::NewFrame(void* view)
                 }
             }
 
+#if defined(xxWINDOWS)
             // We need to create window when device is running in FlipEx Mode
             if (g_graphicShortName != nullptr)
             {
@@ -202,6 +207,7 @@ void DearImGui::NewFrame(void* view)
                                     strstr(deviceStringTarget, "12.");
                 g_recreateWindow = (flipCurrent && flipTarget == false);
             }
+#endif
 
             ImGui::EndMenu();
         }
@@ -225,10 +231,17 @@ bool DearImGui::Update(bool demo)
 {
     if (g_powerSaving == false && ImGui::BeginMainMenuBar())
     {
-        char fps[16];
-        snprintf(fps, 16, "%.1f FPS ", ImGui::GetIO().Framerate);
-        ImGui::SetCursorPosX(ImGui::GetIO().DisplaySize.x - ImGui::CalcTextSize(fps).x);
-        ImGui::TextUnformatted(fps);
+        char text[64];
+        snprintf(text, sizeof(text), "%.1f FPS ", ImGui::GetIO().Framerate);
+        ImGui::SetCursorPosX(ImGui::GetIO().DisplaySize.x - ImGui::CalcTextSize(text).x);
+        ImGui::TextUnformatted(text);
+        if (ImGui::IsItemHovered())
+        {
+            time_t t = time(NULL);
+            struct tm *tm = localtime(&t);
+            strftime(text, sizeof(text), "%c", tm);
+            ImGui::SetTooltip("%s", text);
+        }
         ImGui::EndMainMenuBar();
     }
 
@@ -288,14 +301,17 @@ bool DearImGui::Update(bool demo)
     return true;
 }
 //------------------------------------------------------------------------------
-void* DearImGui::PostUpdate(void* view)
+void* DearImGui::PostUpdate(void* view, bool render)
 {
     // Update and Render additional Platform Windows
     ImGuiIO& io = ImGui::GetIO();
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
         ImGui::UpdatePlatformWindows();
-        ImGui::RenderPlatformWindowsDefault();
+        if (render)
+        {
+            ImGui::RenderPlatformWindowsDefault();
+        }
     }
 
     // Recreate Graphic API
@@ -356,7 +372,14 @@ void* DearImGui::PostUpdate(void* view)
 //------------------------------------------------------------------------------
 void DearImGui::Render(uint64_t commandEncoder)
 {
-    ImGui_ImplXX_RenderDrawData(ImGui::GetDrawData(), commandEncoder);
+    ImDrawData* drawData = ImGui::GetDrawData();
+    drawData->FramebufferScale = ImVec2(Renderer::g_scale, Renderer::g_scale);
+    ImGui_ImplXX_RenderDrawData(drawData, commandEncoder);
+}
+//------------------------------------------------------------------------------
+bool DearImGui::PowerSaving()
+{
+    return g_powerSaving;
 }
 //------------------------------------------------------------------------------
 #if defined(xxMACOS)

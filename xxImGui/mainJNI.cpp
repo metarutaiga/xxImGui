@@ -1,6 +1,5 @@
 #include <android/native_window_jni.h>
 #include <jni.h>
-#include <string>
 
 #include "Renderer.h"
 #include "Plugin.h"
@@ -42,7 +41,7 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_create(JNIEnv* env, jclas
     xxAndroidContext = context;
 
     Renderer::Create(window, width, height);
-    DearImGui::Create(window, 3.0f);
+    DearImGui::Create(window, 2.0f, 2.0f);
     Plugin::Create("plugin", Renderer::g_device);
 }
 
@@ -68,13 +67,11 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
 
     if (g_imguiUpdate)
     {
-        g_imguiUpdate = false;
-
         uint64_t commandEncoder = Renderer::Begin();
         if (commandEncoder)
         {
             DearImGui::Render(commandEncoder);
-            Plugin::Render(commandEncoder);
+            Plugin::Render();
             Renderer::End();
             if (Renderer::Present() == false)
             {
@@ -84,12 +81,12 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
             }
         }
     }
-    else
-    {
-        xxSleep(10);
-    }
 
-    DearImGui::PostUpdate(Renderer::g_view);
+    DearImGui::PostUpdate(Renderer::g_view, g_imguiUpdate);
+    g_imguiUpdate = false;
+
+    if (DearImGui::PowerSaving())
+        xxSleep(1000 / 120);
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_shutdown(JNIEnv* env, jclass obj)

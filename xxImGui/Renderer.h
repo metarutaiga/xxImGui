@@ -36,6 +36,7 @@ public:
     static void*    g_view;
     static int      g_width;
     static int      g_height;
+    static float    g_scale;
     static float    g_clearColor[4];
     static float    g_clearDepth;
     static char     g_clearStencil;

@@ -15,15 +15,28 @@
 
 #include "xxGraphic/xxGraphic.h"
 
+struct ImGuiViewportDataXX
+{
+    uint64_t                CommandEncoder = 0;
+    uint64_t                Swapchain = 0;
+    uint64_t                RenderPass = 0;
+    void*                   Handle = nullptr;
+    int                     Width = 0;
+    int                     Height = 0;
+
+    int                     BufferIndex = 0;
+    uint64_t                VertexBuffers[4] = {};
+    int                     VertexBufferSizes[4] = {};
+    uint64_t                IndexBuffers[4] = {};
+    int                     IndexBufferSizes[4] = {};
+    uint64_t                ConstantBuffers[4] = {};
+
+    ~ImGuiViewportDataXX()  { IM_ASSERT(Swapchain == 0); IM_ASSERT(RenderPass == 0); }
+};
+
 static uint64_t g_instance = 0;
 static uint64_t g_device = 0;
 static uint64_t g_renderPass = 0;
-static int      g_bufferIndex = 0;
-static uint64_t g_vertexBuffers[4] = {};
-static int      g_vertexBufferSizes[4] = {};
-static uint64_t g_indexBuffers[4] = {};
-static int      g_indexBufferSizes[4] = {};
-static uint64_t g_constantBuffers[4] = {};
 static uint64_t g_fontTexture = 0;
 static uint64_t g_fontSampler = 0;
 static uint64_t g_vertexAttribute = 0;
@@ -43,7 +56,9 @@ static void ImGui_ImplXX_InvalidateDeviceObjectsForPlatformWindows();
 
 static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t commandEncoder, uint64_t constantBuffer)
 {
-    xxSetViewport(commandEncoder, 0, 0, (int)draw_data->DisplaySize.x, (int)draw_data->DisplaySize.y, 0.0f, 1.0f);
+    int width = (int)(draw_data->DisplaySize.x * draw_data->FramebufferScale.x);
+    int height = (int)(draw_data->DisplaySize.y * draw_data->FramebufferScale.y);
+    xxSetViewport(commandEncoder, 0, 0, width, height, 0.0f, 1.0f);
 
     // Setup orthographic projection matrix
     // Our visible imgui space lies from draw_data->DisplayPos (top left) to draw_data->DisplayPos+data_data->DisplaySize (bottom right). DisplayPos is (0,0) for single viewport apps.
@@ -94,16 +109,23 @@ static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t comman
 // (this used to be set in io.RenderDrawListsFn and called by ImGui::Render(), but you can now call this directly from your main loop)
 void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
 {
-    // Avoid rendering when minimized
-    if (draw_data->DisplaySize.x <= 0.0f || draw_data->DisplaySize.y <= 0.0f)
+    // Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)
+    int fb_width = (int)(draw_data->DisplaySize.x * draw_data->FramebufferScale.x);
+    int fb_height = (int)(draw_data->DisplaySize.y * draw_data->FramebufferScale.y);
+    if (fb_width <= 0 || fb_height <= 0 || draw_data->CmdListsCount == 0)
         return;
 
-    int&        bufferIndex = g_bufferIndex;
-    uint64_t&   vertexBuffer = g_vertexBuffers[bufferIndex];
-    int&        vertexBufferSize = g_vertexBufferSizes[bufferIndex];
-    uint64_t&   indexBuffer = g_indexBuffers[bufferIndex];
-    int&        indexBufferSize = g_indexBufferSizes[bufferIndex];
-    uint64_t&   constantBuffer = g_constantBuffers[bufferIndex];
+    if (draw_data->OwnerViewport == nullptr || draw_data->OwnerViewport->RendererUserData == nullptr)
+        return;
+    ImGuiViewportDataXX* data = (ImGuiViewportDataXX*)draw_data->OwnerViewport->RendererUserData;
+
+    // Render buffers per viewport
+    int&        bufferIndex         = data->BufferIndex;
+    uint64_t&   vertexBuffer        = data->VertexBuffers[bufferIndex];
+    int&        vertexBufferSize    = data->VertexBufferSizes[bufferIndex];
+    uint64_t&   indexBuffer         = data->IndexBuffers[bufferIndex];
+    int&        indexBufferSize     = data->IndexBufferSizes[bufferIndex];
+    uint64_t&   constantBuffer      = data->ConstantBuffers[bufferIndex];
 
     // Swap buffer
     bufferIndex++;
@@ -127,6 +149,10 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
         if (indexBuffer == 0)
             return;
     }
+    if (constantBuffer == 0)
+    {
+        constantBuffer = xxCreateConstantBuffer(g_device, 16 * sizeof(float));
+    }
 
     // Copy and convert all vertices into a swapped buffer.
     ImDrawVert* vtx_dst = (ImDrawVert*)xxMapBuffer(g_device, vertexBuffer);
@@ -147,15 +173,17 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
     xxSetIndexBuffer(commandEncoder, indexBuffer);
 
-    // Setup desired xx state
     ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
+
+    // Will project scissor/clipping rectangles into framebuffer space
+    ImVec2 clip_off = draw_data->DisplayPos;         // (0,0) unless using multi-viewports
+    ImVec2 clip_scale = draw_data->FramebufferScale; // (1,1) unless using retina display which are often (2,2)
 
     // Render command lists
     // (Because we merged all buffers into a single one, we maintain our own offset into them)
     ImTextureID boundTextureID = 0;
     int global_vtx_offset = 0;
     int global_idx_offset = 0;
-    ImVec2 clip_off = draw_data->DisplayPos;
     for (int n = 0; n < draw_data->CmdListsCount; n++)
     {
         const ImDrawList* cmd_list = draw_data->CmdLists[n];
@@ -164,41 +192,50 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
             const ImDrawCmd* pcmd = &cmd_list->CmdBuffer[cmd_i];
             if (pcmd->UserCallback != NULL)
             {
-                boundTextureID = 0;
-
                 // User callback, registered via ImDrawList::AddCallback()
                 // (ImDrawCallback_ResetRenderState is a special callback value used by the user to request the renderer to reset render state.)
                 if (pcmd->UserCallback == ImDrawCallback_ResetRenderState)
+                {
                     ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
+                    boundTextureID = 0;
+                }
                 else
+                {
+                    data->CommandEncoder = commandEncoder;
                     pcmd->UserCallback(cmd_list, pcmd);
+                    data->CommandEncoder = 0;
+                }
             }
             else
             {
                 // Project scissor/clipping rectangles into framebuffer space
                 ImVec4 clip_rect;
-                clip_rect.x = (pcmd->ClipRect.x - clip_off.x);
-                clip_rect.y = (pcmd->ClipRect.y - clip_off.y);
-                clip_rect.z = (pcmd->ClipRect.z - clip_off.x);
-                clip_rect.w = (pcmd->ClipRect.w - clip_off.y);
+                clip_rect.x = (pcmd->ClipRect.x - clip_off.x) * clip_scale.x;
+                clip_rect.y = (pcmd->ClipRect.y - clip_off.y) * clip_scale.y;
+                clip_rect.z = (pcmd->ClipRect.z - clip_off.x) * clip_scale.x;
+                clip_rect.w = (pcmd->ClipRect.w - clip_off.y) * clip_scale.y;
 
-                // Apply scissor/clipping rectangle
-                int clip_x = (int)clip_rect.x;
-                int clip_y = (int)clip_rect.y;
-                int clip_width = (int)(clip_rect.z - clip_rect.x);
-                int clip_height = (int)(clip_rect.w - clip_rect.y);
-                xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
-
-                // Texture
-                if (boundTextureID != pcmd->TextureId)
+                if (clip_rect.x < fb_width && clip_rect.y < fb_height && clip_rect.z >= 0.0f && clip_rect.w >= 0.0f)
                 {
-                    boundTextureID = pcmd->TextureId;
-                    xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
-                    xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
-                }
+                    // Apply scissor/clipping rectangle
+                    int clip_x = (int)clip_rect.x;
+                    int clip_y = (int)clip_rect.y;
+                    int clip_width = (int)(clip_rect.z - clip_rect.x);
+                    int clip_height = (int)(clip_rect.w - clip_rect.y);
+                    xxSetScissor(commandEncoder, clip_x, clip_y, clip_width, clip_height);
 
-                // Draw
-                xxDrawIndexed(commandEncoder, indexBuffer, pcmd->ElemCount, 1, pcmd->IdxOffset + global_idx_offset, pcmd->VtxOffset + global_vtx_offset, 0);
+                    // Texture
+                    if (boundTextureID != pcmd->TextureId)
+                    {
+                        boundTextureID = pcmd->TextureId;
+
+                        xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
+                        xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
+                    }
+
+                    // Draw
+                    xxDrawIndexed(commandEncoder, indexBuffer, pcmd->ElemCount, 1, pcmd->IdxOffset + global_idx_offset, pcmd->VtxOffset + global_vtx_offset, 0);
+                }
             }
         }
         global_idx_offset += cmd_list->IdxBuffer.Size;
@@ -212,12 +249,14 @@ bool ImGui_ImplXX_Init(uint64_t instance, uint64_t device, uint64_t renderPass)
     g_device = device;
     g_renderPass = renderPass;
 
+#if defined(xxWINDOWS)
     const char* deviceString = xxGetDeviceName();
     g_halfPixel = false;
     g_halfPixel |= (strncmp(deviceString, "Direct3D 6", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 7", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 8", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 9", 10) == 0);
+#endif
 
     // Setup back-end capabilities flags
     ImGuiIO& io = ImGui::GetIO();
@@ -253,7 +292,7 @@ static bool ImGui_ImplXX_CreateFontsTexture()
     g_fontTexture = xxCreateTexture(g_device, 0, width, height, 1, 1, 1, nullptr);
     if (g_fontTexture == 0)
         return false;
-    unsigned int stride = 0;
+    int stride = 0;
     void* map = xxMapTexture(g_device, g_fontTexture, &stride, 0, 0);
     if (map == nullptr)
         return false;
@@ -287,10 +326,6 @@ bool ImGui_ImplXX_CreateDeviceObjects()
     g_vertexAttribute = xxCreateVertexAttribute(g_device, 3, attributes);
     g_vertexShader = xxCreateVertexShader(g_device, "default", g_vertexAttribute);
     g_fragmentShader = xxCreateFragmentShader(g_device, "default");
-    for (unsigned int i = 0; i < 4; ++i)
-    {
-        g_constantBuffers[i] = xxCreateConstantBuffer(g_device, 16 * sizeof(float));
-    }
     g_blendState = xxCreateBlendState(g_device, true);
     g_depthStencilState = xxCreateDepthStencilState(g_device, false, false);
     g_rasterizerState = xxCreateRasterizerState(g_device, false, true);
@@ -303,15 +338,6 @@ void ImGui_ImplXX_InvalidateDeviceObjects()
 {
     if (g_device == 0)
         return;
-    for (unsigned int i = 0; i < 4; ++i)
-    {
-        xxDestroyBuffer(g_device, g_vertexBuffers[i]);
-        xxDestroyBuffer(g_device, g_indexBuffers[i]);
-        xxDestroyBuffer(g_device, g_constantBuffers[i]);
-        g_vertexBuffers[i] = 0;
-        g_indexBuffers[i] = 0;
-        g_constantBuffers[i] = 0;
-    }
     xxDestroyTexture(g_fontTexture);
     xxDestroySampler(g_fontSampler);
     xxDestroyVertexAttribute(g_vertexAttribute);
@@ -345,22 +371,13 @@ void ImGui_ImplXX_NewFrame()
 // If you are new to dear imgui or creating a new binding for dear imgui, it is recommended that you completely ignore this section first..
 //--------------------------------------------------------------------------------------------------------
 
-struct ImGuiViewportDataXX
-{
-    uint64_t                Swapchain;
-    uint64_t                RenderPass;
-    void*                   Handle;
-    int                     Width;
-    int                     Height;
-
-    ImGuiViewportDataXX()   { Swapchain = 0; Handle = nullptr; }
-    ~ImGuiViewportDataXX()  { IM_ASSERT(Swapchain == 0); IM_ASSERT(RenderPass == 0); }
-};
-
 static void ImGui_ImplXX_CreateWindow(ImGuiViewport* viewport)
 {
     ImGuiViewportDataXX* data = IM_NEW(ImGuiViewportDataXX)();
     viewport->RendererUserData = data;
+
+    if (ImGui::GetMainViewport() == viewport)
+        return;
 
     // PlatformHandleRaw should always be a HWND, whereas PlatformHandle might be a higher-level handle (e.g. GLFWWindow*, SDL_Window*).
     // Some back-ends will leave PlatformHandleRaw NULL, in which case we assume PlatformHandle will contain the HWND.
@@ -381,13 +398,22 @@ static void ImGui_ImplXX_DestroyWindow(ImGuiViewport* viewport)
     // The main viewport (owned by the application) will always have RendererUserData == NULL since we didn't create the data for it.
     if (ImGuiViewportDataXX* data = (ImGuiViewportDataXX*)viewport->RendererUserData)
     {
+        for (unsigned int i = 0; i < 4; ++i)
+        {
+            xxDestroyBuffer(g_device, data->VertexBuffers[i]);
+            xxDestroyBuffer(g_device, data->IndexBuffers[i]);
+            xxDestroyBuffer(g_device, data->ConstantBuffers[i]);
+            data->VertexBuffers[i] = 0;
+            data->IndexBuffers[i] = 0;
+            data->ConstantBuffers[i] = 0;
+        }
         xxDestroySwapchain(data->Swapchain);
         xxDestroyRenderPass(data->RenderPass);
         data->Swapchain = 0;
         data->RenderPass = 0;
         IM_DELETE(data);
     }
-    viewport->RendererUserData = NULL;
+    viewport->RendererUserData = nullptr;
 }
 
 static void ImGui_ImplXX_SetWindowSize(ImGuiViewport* viewport, ImVec2 size)
@@ -403,11 +429,16 @@ static void ImGui_ImplXX_RenderWindow(ImGuiViewport* viewport, void*)
 {
     ImGuiViewportDataXX* data = (ImGuiViewportDataXX*)viewport->RendererUserData;
 
+    float scale = 1.0f;
     uint64_t commandBuffer = xxGetCommandBuffer(g_device, data->Swapchain);
-    uint64_t framebuffer = xxGetFramebuffer(g_device, data->Swapchain);
+    uint64_t framebuffer = xxGetFramebuffer(g_device, data->Swapchain, &scale);
     xxBeginCommandBuffer(commandBuffer);
 
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, data->Width, data->Height, 0, 0, 0, 0, 1.0f, 0);
+    viewport->DpiScale = scale;
+    viewport->DrawData->FramebufferScale = ImVec2(scale, scale);
+
+    float color[] = { 0, 0, 0, 0 };
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, (int)(data->Width * scale), (int)(data->Height * scale), color, 1.0f, 0);
     ImGui_ImplXX_RenderDrawData(viewport->DrawData, commandEncoder);
     xxEndRenderPass(commandEncoder, framebuffer, data->RenderPass);
 
@@ -439,7 +470,7 @@ static void ImGui_ImplXX_ShutdownPlatformInterface()
 static void ImGui_ImplXX_CreateDeviceObjectsForPlatformWindows()
 {
     ImGuiPlatformIO& platform_io = ImGui::GetPlatformIO();
-    for (int i = 1; i < platform_io.Viewports.Size; i++)
+    for (int i = 0; i < platform_io.Viewports.Size; i++)
         if (!platform_io.Viewports[i]->RendererUserData)
             ImGui_ImplXX_CreateWindow(platform_io.Viewports[i]);
 }
@@ -447,7 +478,7 @@ static void ImGui_ImplXX_CreateDeviceObjectsForPlatformWindows()
 static void ImGui_ImplXX_InvalidateDeviceObjectsForPlatformWindows()
 {
     ImGuiPlatformIO& platform_io = ImGui::GetPlatformIO();
-    for (int i = 1; i < platform_io.Viewports.Size; i++)
+    for (int i = 0; i < platform_io.Viewports.Size; i++)
         if (platform_io.Viewports[i]->RendererUserData)
             ImGui_ImplXX_DestroyWindow(platform_io.Viewports[i]);
 }

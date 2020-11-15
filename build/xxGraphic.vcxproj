@@ -35,11 +35,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\xxGraphic\utility\xxImage.cpp" />
-    <ClCompile Include="..\xxGraphic\utility\xxMaterial.cpp" />
-    <ClCompile Include="..\xxGraphic\utility\xxMath.cpp" />
-    <ClCompile Include="..\xxGraphic\utility\xxMesh.cpp" />
-    <ClCompile Include="..\xxGraphic\utility\xxNode.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D10.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D10_1.cpp" />
@@ -94,11 +89,6 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h" />
-    <ClInclude Include="..\xxGraphic\utility\xxImage.h" />
-    <ClInclude Include="..\xxGraphic\utility\xxMaterial.h" />
-    <ClInclude Include="..\xxGraphic\utility\xxMath.h" />
-    <ClInclude Include="..\xxGraphic\utility\xxMesh.h" />
-    <ClInclude Include="..\xxGraphic\utility\xxNode.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_icd.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_layer.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_platform.h" />
@@ -164,7 +154,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{81C889FC-6908-4066-8C73-3215DF6FFFC9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>xxGL</RootNamespace>
+    <RootNamespace>xxGraphic</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>xxGraphic</ProjectName>
   </PropertyGroup>
