@@ -1,0 +1,8 @@
+﻿/DXXPLUS_BUILD_LIBRARY
+/DNDEBUG
+/I..\..\..\xxGraphic
+..\..\..\xxGraphic\utility\xxImage.cpp
+..\..\..\xxGraphic\utility\xxMaterial.cpp
+..\..\..\xxGraphic\utility\xxMath.cpp
+..\..\..\xxGraphic\utility\xxMesh.cpp
+..\..\..\xxGraphic\utility\xxNode.cpp

@@ -15,7 +15,6 @@
 		3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; };
 		3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; };
 		3003454F244ACD9300E90C44 /* libyuv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454E244ACD9300E90C44 /* libyuv.dylib */; };
-		302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A325E2448BB9E000B2AE9 /* UIKit.framework */; };
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; };
@@ -36,12 +35,18 @@
 		30B096B2244ACDDD0096E6DC /* libyuv.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096AB244ACDC50096E6DC /* libyuv.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096BF244ACEF60096E6DC /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096BE244ACEF60096E6DC /* lenna.rgb */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
+		30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; };
+		30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
+		30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFF24DDA69E00C0F4EC /* UIKit.framework */; };
 		CE4E3DF0244E7A0000CEDC62 /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096BE244ACEF60096E6DC /* lenna.rgb */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CEB0D82725399A300068F86C /* Default-844h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82425399A300068F86C /* Default-844h@3x.png */; };
+		CEB0D82825399A300068F86C /* Default-926h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82525399A300068F86C /* Default-926h@3x.png */; };
+		CEB0D82925399A300068F86C /* Default-780h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82625399A300068F86C /* Default-780h@3x.png */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
-		D690A3812333F7FA00A149EF /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D690A3802333F7FA00A149EF /* info.plist */; };
 		D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		D690A3892333FE7B00A149EF /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
@@ -71,6 +76,7 @@
 				30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */,
 				30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */,
 				30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */,
+				CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +140,14 @@
 		30B096AB244ACDC50096E6DC /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096BE244ACEF60096E6DC /* lenna.rgb */ = {isa = PBXFileReference; lastKnownFileType = text; name = lenna.rgb; path = ../bin/resource/lenna.rgb; sourceTree = "<group>"; };
 		30B096CC244AD3ED0096E6DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F22EFF24DDA69E00C0F4EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CE7582A4250B2D01003487A8 /* imgui_impl_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_impl_win32.h; path = ../xxImGui/implement/imgui_impl_win32.h; sourceTree = "<group>"; };
+		CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_win32.cpp; path = ../xxImGui/implement/imgui_impl_win32.cpp; sourceTree = "<group>"; };
+		CEB0D82425399A300068F86C /* Default-844h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-844h@3x.png"; sourceTree = "<group>"; };
+		CEB0D82525399A300068F86C /* Default-926h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-926h@3x.png"; sourceTree = "<group>"; };
+		CEB0D82625399A300068F86C /* Default-780h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-780h@3x.png"; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
@@ -172,9 +186,10 @@
 				30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */,
 				30B096A8244ACDC50096E6DC /* libvalidator.bundle in Frameworks */,
 				30B096AA244ACDC50096E6DC /* libxxGraphic.bundle in Frameworks */,
+				30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */,
 				30B096AC244ACDC50096E6DC /* libyuv.bundle in Frameworks */,
 				30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */,
-				302A325F2448BB9E000B2AE9 /* UIKit.framework in Frameworks */,
+				30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +202,7 @@
 				30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */,
 				3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */,
 				3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */,
+				30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */,
 				3003454F244ACD9300E90C44 /* libyuv.dylib in Frameworks */,
 				302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */,
 				303DDEB82448B7680042A480 /* Metal.framework in Frameworks */,
@@ -226,6 +242,8 @@
 				D690A37A233286EF00A149EF /* imgui_freetype.h */,
 				D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */,
 				D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */,
+				CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */,
+				CE7582A4250B2D01003487A8 /* imgui_impl_win32.h */,
 				D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */,
 				D644A0E8231F109C00B75B77 /* imgui_impl_xx.h */,
 				D690A37B233286EF00A149EF /* imgui_user_config.h */,
@@ -236,12 +254,12 @@
 		D644A0EB231F116C00B75B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				30B096CC244AD3ED0096E6DC /* QuartzCore.framework */,
 				30034544244ACD9300E90C44 /* libfreetype.dylib */,
 				30034546244ACD9300E90C44 /* libimgui.dylib */,
 				30034548244ACD9300E90C44 /* libsample.dylib */,
 				3003454A244ACD9300E90C44 /* libvalidator.dylib */,
 				3003454C244ACD9300E90C44 /* libxxGraphic.dylib */,
+				30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */,
 				3003454E244ACD9300E90C44 /* libyuv.dylib */,
 				302D20D4244AB62200D84267 /* AppKit.framework */,
 				303DDEB72448B7680042A480 /* Metal.framework */,
@@ -251,8 +269,11 @@
 				30B096A5244ACDC50096E6DC /* libsample.bundle */,
 				30B096A7244ACDC50096E6DC /* libvalidator.bundle */,
 				30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */,
+				30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */,
 				30B096AB244ACDC50096E6DC /* libyuv.bundle */,
 				302A325E2448BB9E000B2AE9 /* UIKit.framework */,
+				30B096CC244AD3ED0096E6DC /* QuartzCore.framework */,
+				30F22EFF24DDA69E00C0F4EC /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,8 +301,11 @@
 				D6F38922232978BA00EE9716 /* Default-568h@2x.png */,
 				D6F3891E232978B900EE9716 /* Default-667h@2x.png */,
 				D6F38920232978BA00EE9716 /* Default-Landscape-736h@3x.png */,
+				CEB0D82625399A300068F86C /* Default-780h@3x.png */,
 				D6F3891D232978B900EE9716 /* Default-812h@3x.png */,
+				CEB0D82425399A300068F86C /* Default-844h@3x.png */,
 				D6F3892C23297A4900EE9716 /* Default-896h@2x.png */,
+				CEB0D82525399A300068F86C /* Default-926h@3x.png */,
 				D6F38921232978BA00EE9716 /* Default-Landscape@2x.png */,
 				D6F3892E23297C7800EE9716 /* Default-Landscape-1080h@2x.png */,
 				D6F3891F232978B900EE9716 /* Default-Landscape-1112h@2x.png */,
@@ -338,7 +362,7 @@
 		D644A0BE231F021F00B75B77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					D6022C4E23258C4E00B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
@@ -375,8 +399,11 @@
 				D6F38929232978BA00EE9716 /* Default-568h@2x.png in Resources */,
 				D6F38925232978BA00EE9716 /* Default-667h@2x.png in Resources */,
 				D6F38927232978BA00EE9716 /* Default-Landscape-736h@3x.png in Resources */,
+				CEB0D82925399A300068F86C /* Default-780h@3x.png in Resources */,
 				D6F38924232978BA00EE9716 /* Default-812h@3x.png in Resources */,
+				CEB0D82725399A300068F86C /* Default-844h@3x.png in Resources */,
 				D6F3892D23297A4900EE9716 /* Default-896h@2x.png in Resources */,
+				CEB0D82825399A300068F86C /* Default-926h@3x.png in Resources */,
 				D6F38928232978BA00EE9716 /* Default-Landscape@2x.png in Resources */,
 				D6F3892F23297C7800EE9716 /* Default-Landscape-1080h@2x.png in Resources */,
 				D6F38926232978BA00EE9716 /* Default-Landscape-1112h@2x.png in Resources */,
@@ -389,7 +416,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D690A3812333F7FA00A149EF /* info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,10 +426,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C3242687B7004559E0 /* Plugin.cpp in Sources */,
 				D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */,
 				D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */,
 				D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */,
+				300264C3242687B7004559E0 /* Plugin.cpp in Sources */,
 				D690A3892333FE7B00A149EF /* Renderer.cpp in Sources */,
 				D690A3972334291E00A149EF /* main.mm in Sources */,
 			);
@@ -416,9 +442,9 @@
 				D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */,
 				D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */,
 				D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */,
+				D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */,
 				300264C2242687B7004559E0 /* Plugin.cpp in Sources */,
 				D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */,
-				D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */,
 				D690A3962334291E00A149EF /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +528,7 @@
 					"_DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -514,7 +541,7 @@
 					../freetype/include,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
@@ -572,6 +599,7 @@
 					"NDEBUG=1",
 					"$(inherited)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -584,7 +612,7 @@
 					../freetype/include,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.xx.imgui;

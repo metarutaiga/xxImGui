@@ -50,6 +50,16 @@
 			<key>UILaunchImageMinimumOSVersion</key>
 			<string>8.0</string>
 			<key>UILaunchImageName</key>
+			<string>Default-780h</string>
+			<key>UILaunchImageOrientation</key>
+			<string>Portrait</string>
+			<key>UILaunchImageSize</key>
+			<string>{360, 780}</string>
+		</dict>
+		<dict>
+			<key>UILaunchImageMinimumOSVersion</key>
+			<string>8.0</string>
+			<key>UILaunchImageName</key>
 			<string>Default-812h</string>
 			<key>UILaunchImageOrientation</key>
 			<string>Portrait</string>
@@ -60,11 +70,31 @@
 			<key>UILaunchImageMinimumOSVersion</key>
 			<string>8.0</string>
 			<key>UILaunchImageName</key>
+			<string>Default-844h</string>
+			<key>UILaunchImageOrientation</key>
+			<string>Portrait</string>
+			<key>UILaunchImageSize</key>
+			<string>{390, 844}</string>
+		</dict>
+		<dict>
+			<key>UILaunchImageMinimumOSVersion</key>
+			<string>8.0</string>
+			<key>UILaunchImageName</key>
 			<string>Default-896h</string>
 			<key>UILaunchImageOrientation</key>
 			<string>Portrait</string>
 			<key>UILaunchImageSize</key>
 			<string>{414, 896}</string>
+		</dict>
+		<dict>
+			<key>UILaunchImageMinimumOSVersion</key>
+			<string>8.0</string>
+			<key>UILaunchImageName</key>
+			<string>Default-926h</string>
+			<key>UILaunchImageOrientation</key>
+			<string>Portrait</string>
+			<key>UILaunchImageSize</key>
+			<string>{428, 926}</string>
 		</dict>
 		<dict>
 			<key>UILaunchImageMinimumOSVersion</key>

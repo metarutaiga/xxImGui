@@ -81,42 +81,33 @@
 
         if (self.imguiUpdate)
         {
-            self.imguiUpdate = NO;
-
             uint64_t commandEncoder = Renderer::Begin();
             if (commandEncoder)
             {
-                Plugin::Render(commandEncoder);
                 DearImGui::Render(commandEncoder);
+                Plugin::Render();
                 Renderer::End();
                 Renderer::Present();
             }
         }
-        else
-        {
-            xxSleep(10);
-        }
 
-        DearImGui::PostUpdate((__bridge void*)self);
+        DearImGui::PostUpdate((__bridge void*)self, self.imguiUpdate);
+        self.imguiUpdate = NO;
+
+        if (DearImGui::PowerSaving())
+            xxSleep(1000 / 120);
     }
 }
 
 -(void)reset
 {
-    int width = 0;
-    int height = 0;
 #if defined(xxMACOS)
-    float scale = [self.window backingScaleFactor];
-    NSRect rect = [[[self window] contentView] frame];
-    width = rect.size.width * scale;
-    height = rect.size.height * scale;
+    NSSize size = [[[self window] contentView] frame].size;
 #elif defined(xxIOS)
-    float scale = [[UIScreen mainScreen] nativeScale];
-    CGRect rect = [[self window] bounds];
-    width = rect.size.width * scale;
-    height = rect.size.height * scale;
+    CGSize size = [[self window] bounds].size;
 #endif
-    Renderer::Reset((__bridge void*)[self window], width, height);
+
+    Renderer::Reset((__bridge void*)[self window], size.width, size.height);
 }
 
 -(BOOL)acceptsFirstResponder
@@ -152,7 +143,7 @@
 
 #if TARGET_OS_OSX
 
--(void)loadView                         { self.view = [[NSView alloc] init];            }
+-(void)loadView                         { self.view = [NSView new]; }
 -(void)keyUp:(NSEvent *)event           { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
 -(void)keyDown:(NSEvent *)event         { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
 -(void)flagsChanged:(NSEvent *)event    { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
@@ -178,11 +169,8 @@
 // interaction actually works surprisingly well.
 -(void)updateIOWithTouchEvent:(UIEvent *)event
 {
-    float scale = [self.view contentScaleFactor];
     UITouch* anyTouch = event.allTouches.anyObject;
     CGPoint touchLocation = [anyTouch locationInView:self.view];
-    touchLocation.x *= scale;
-    touchLocation.y *= scale;
     ImGuiIO& io = ImGui::GetIO();
     io.MousePos = ImVec2(touchLocation.x, touchLocation.y);
 
@@ -200,8 +188,8 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
--(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event  { [self updateIOWithTouchEvent:event];  }
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event  { [self updateIOWithTouchEvent:event];  }
 
 #endif
 
@@ -227,15 +215,17 @@
 #if defined(xxMACOS)
 -(void)setupMenu
 {
-    NSMenu* mainMenuBar = [[NSMenu alloc] init];
+    NSMenu* mainMenuBar = [NSMenu new];
     NSMenu* appMenu;
     NSMenuItem* menuItem;
 
     appMenu = [[NSMenu alloc] initWithTitle:@"Dear ImGui XX Example"];
-    menuItem = [appMenu addItemWithTitle:@"Quit Dear ImGui XX Example" action:@selector(terminate:) keyEquivalent:@"q"];
+    menuItem = [appMenu addItemWithTitle:@"Quit Dear ImGui XX Example"
+                                  action:@selector(terminate:)
+                           keyEquivalent:@"q"];
     [menuItem setKeyEquivalentModifierMask:NSEventModifierFlagCommand];
 
-    menuItem = [[NSMenuItem alloc] init];
+    menuItem = [NSMenuItem new];
     [menuItem setSubmenu:appMenu];
 
     [mainMenuBar addItem:menuItem];
@@ -244,7 +234,6 @@
     [NSApp setMainMenu:mainMenuBar];
 }
 
-
 -(NSWindow*)window
 {
     if (_window != nil)
@@ -252,7 +241,10 @@
 
     NSRect viewRect = NSMakeRect(100.0, 100.0, 100.0 + 1280.0, 100 + 720.0);
 
-    _window = [[NSWindow alloc] initWithContentRect:viewRect styleMask:NSWindowStyleMaskTitled|NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable|NSWindowStyleMaskClosable backing:NSBackingStoreBuffered defer:YES];
+    _window = [[NSWindow alloc] initWithContentRect:viewRect
+                                          styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable
+                                            backing:NSBackingStoreBuffered
+                                              defer:YES];
     [_window setTitle:@"Dear ImGui XX Example"];
     [_window setAcceptsMouseMovedEvents:YES];
     [_window setOpaque:YES];
@@ -315,23 +307,19 @@
 
     ImGuiExampleView* view = [[ImGuiExampleView alloc] initWithFrame:self.window.frame];
 #if defined(xxMACOS)
-    self.window.contentViewController = [[ImGuiExampleViewController alloc] init];
+    self.window.contentViewController = [ImGuiExampleViewController new];
     self.window.contentViewController.view = view;
     [self.window makeKeyAndOrderFront:NSApp];
-    NSRect rect = [view frame];
-    int width = rect.size.width * scale;
-    int height = rect.size.height * scale;
+    NSSize size = [view frame].size;
 #elif defined(xxIOS)
-    self.window.rootViewController = [[ImGuiExampleViewController alloc] init];
+    self.window.rootViewController = [ImGuiExampleViewController new];
     self.window.rootViewController.view = view;
     [self.window makeKeyAndVisible];
-    CGRect rect = [view bounds];
-    int width = rect.size.width * scale;
-    int height = rect.size.height  * scale;
+    CGSize size = [view bounds].size;
 #endif
 
-    Renderer::Create((__bridge void*)self.window, width, height);
-    DearImGui::Create((__bridge void*)view, scale);
+    Renderer::Create((__bridge void*)self.window, size.width, size.height);
+    DearImGui::Create((__bridge void*)view, 1.0f, scale);
     Plugin::Create("plugin", Renderer::g_device);
 }
 
@@ -341,7 +329,6 @@
     DearImGui::Shutdown();
     Renderer::Shutdown();
 }
-
 @end
 
 int main(int argc, char* argv[])
@@ -350,7 +337,7 @@ int main(int argc, char* argv[])
     @autoreleasepool
     {
         NSApp = [NSApplication sharedApplication];
-        ImGuiExampleAppDelegate* delegate = [[ImGuiExampleAppDelegate alloc] init];
+        ImGuiExampleAppDelegate* delegate = [ImGuiExampleAppDelegate new];
         [[NSApplication sharedApplication] setDelegate:delegate];
         [NSApp run];
         return NSApplicationMain(argc, (const char**)argv);
