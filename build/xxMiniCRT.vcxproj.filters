@@ -34,6 +34,7 @@
       <Filter>arm</Filter>
     </Object>
     <Object Include="..\xxMiniCRT\chkstk.arm64.obj" />
+    <Object Include="..\xxMiniCRT\atlssup.x86.obj" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\xxMiniCRT\xxMSVCRT.cpp" />
