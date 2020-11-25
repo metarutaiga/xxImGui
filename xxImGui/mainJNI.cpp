@@ -83,10 +83,11 @@ extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_step(JNIEnv* env, jclass 
     }
 
     DearImGui::PostUpdate(Renderer::g_view, g_imguiUpdate);
-    g_imguiUpdate = false;
 
-    if (DearImGui::PowerSaving())
+    if (g_imguiUpdate == false && DearImGui::PowerSaving())
         xxSleep(1000 / 120);
+
+    g_imguiUpdate = false;
 }
 
 extern "C" JNIEXPORT void JNICALL Java_com_xx_Activity_shutdown(JNIEnv* env, jclass obj)
