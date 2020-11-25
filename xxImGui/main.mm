@@ -92,10 +92,11 @@
         }
 
         DearImGui::PostUpdate((__bridge void*)self, self.imguiUpdate);
-        self.imguiUpdate = NO;
 
-        if (DearImGui::PowerSaving())
+        if (self.imguiUpdate == NO && DearImGui::PowerSaving())
             xxSleep(1000 / 120);
+
+        self.imguiUpdate = NO;
     }
 }
 
