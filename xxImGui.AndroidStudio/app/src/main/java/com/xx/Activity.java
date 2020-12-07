@@ -17,8 +17,10 @@
 package com.xx;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Surface;
+import android.view.WindowManager;
 
 public class Activity extends android.app.Activity
 {
@@ -29,6 +31,22 @@ public class Activity extends android.app.Activity
         super.onCreate(icicle);
         mView = new View(getApplication());
         setContentView(mView);
+
+        int options = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19)
+            options = View.GONE;
+        getWindow().getDecorView().setSystemUiVisibility(options);
+        if (Build.VERSION.SDK_INT >= 28)
+        {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            getWindow().setAttributes(lp);
+        }
     }
 
     @Override protected void onPause()
