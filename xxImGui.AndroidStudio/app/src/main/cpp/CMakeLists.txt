@@ -15,7 +15,7 @@ add_compile_options( -fno-exceptions
                      -fno-threadsafe-statics
                      -fvisibility=hidden )
 
-set( CMAKE_SHARED_LINKER_FLAGS "-fuse-ld=lld -nostdlib++ -Wl,--build-id=sha1 -Wl,--Tbss=0x400" )
+set( CMAKE_SHARED_LINKER_FLAGS "-fuse-ld=lld -Wl,--build-id=sha1 -Wl,--Tbss=0x400" )
 
 # ARMv7 hidden symbols is broken since ndk-r17
 if(${ANDROID_SYSROOT_ABI} STREQUAL "arm")
