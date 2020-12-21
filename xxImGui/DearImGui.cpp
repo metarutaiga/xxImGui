@@ -406,6 +406,17 @@ void DearImGui::HandleEventAndroid(int type, float x, float y)
     case 2: // ACTION_MOVE
         io.MousePos = ImVec2(x, y);
         break;
+    case 3: // ACTION_CANCEL
+    case 4: // ACTION_OUTSIDE
+    case 7: // ACTION_HOVER_MOVE
+    case 9: // ACTION_HOVER_ENTER
+    case 10:// ACTION_HOVER_EXIT
+        io.MouseDown[0] = false;
+        break;
+    case 5: // ACTION_POINTER_DOWN
+    case 6: // ACTION_POINTER_UP
+    case 8: // ACTION_SCROLL
+        break;
     }
 }
 #endif
