@@ -26,6 +26,7 @@ public class Activity extends android.app.Activity
 {
     View mView;
 
+    @SuppressWarnings("deprecation")
     @Override protected void onCreate(Bundle icicle)
     {
         super.onCreate(icicle);
