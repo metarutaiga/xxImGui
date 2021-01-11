@@ -11,6 +11,7 @@
 		3039F9D92447499200E671A7 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
+		CE93601F25AC457A00CEF503 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,11 +30,19 @@
 		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE93601825AC454200CEF503 /* sample.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sample.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE93601625AC454200CEF503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3223258B5D00B9BFB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,6 +85,7 @@
 			children = (
 				D644A041231ED82900B75B77 /* libsample.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
+				CE93601825AC454200CEF503 /* sample.dll */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +93,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CE93601425AC454200CEF503 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D644A03D231ED82900B75B77 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,6 +110,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CE93601725AC454200CEF503 /* sample (Windows) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */;
+			buildPhases = (
+				CE93601425AC454200CEF503 /* Headers */,
+				CE93601525AC454200CEF503 /* Sources */,
+				CE93601625AC454200CEF503 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "sample (Windows)";
+			productName = "sample (Windows)";
+			productReference = CE93601825AC454200CEF503 /* sample.dll */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		D6022C3423258B5D00B9BFB8 /* sample (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */;
@@ -135,6 +169,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					CE93601725AC454200CEF503 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					D6022C3423258B5D00B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -158,11 +195,20 @@
 			targets = (
 				D644A040231ED82900B75B77 /* sample (macOS) */,
 				D6022C3423258B5D00B9BFB8 /* sample (iOS) */,
+				CE93601725AC454200CEF503 /* sample (Windows) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE93601525AC454200CEF503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE93601F25AC457A00CEF503 /* sample.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3123258B5D00B9BFB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,6 +228,66 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CE93601925AC454200CEF503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dll;
+				EXECUTABLE_PREFIX = "";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"x86_64-pc-win32",
+					"-I../../WindowsHeaders/include",
+					"-I../../WindowsHeaders/shared",
+					"-I../../WindowsHeaders/um",
+					"-I../../WindowsHeaders/ucrt",
+					"-Wno-comment",
+					"-Wno-expansion-to-defined",
+					"-Wno-ignored-attributes",
+					"-Wno-ignored-pragma-intrinsic",
+					"-Wno-macro-redefined",
+					"-Wno-microsoft-cast",
+					"-Wno-nonportable-include-path",
+					"-Wno-pragma-pack",
+					"-Wno-unreachable-code",
+					"-Wno-unused-command-line-argument",
+					"-Wno-unused-variable",
+					"-Wno-unused-value",
+				);
+			};
+			name = Debug;
+		};
+		CE93601A25AC454200CEF503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dll;
+				EXECUTABLE_PREFIX = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"x86_64-pc-win32",
+					"-I../../WindowsHeaders/include",
+					"-I../../WindowsHeaders/shared",
+					"-I../../WindowsHeaders/um",
+					"-I../../WindowsHeaders/ucrt",
+					"-Wno-comment",
+					"-Wno-expansion-to-defined",
+					"-Wno-ignored-attributes",
+					"-Wno-ignored-pragma-intrinsic",
+					"-Wno-macro-redefined",
+					"-Wno-microsoft-cast",
+					"-Wno-nonportable-include-path",
+					"-Wno-pragma-pack",
+					"-Wno-unreachable-code",
+					"-Wno-unused-command-line-argument",
+					"-Wno-unused-variable",
+					"-Wno-unused-value",
+				);
+			};
+			name = Release;
+		};
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -242,7 +348,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					PLUGIN_BUILD_LIBRARY,
+					"DEBUG=1",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -312,7 +421,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = " ";
+				GCC_PREPROCESSOR_DEFINITIONS = PLUGIN_BUILD_LIBRARY;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -355,6 +464,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE93601925AC454200CEF503 /* Debug */,
+				CE93601A25AC454200CEF503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
