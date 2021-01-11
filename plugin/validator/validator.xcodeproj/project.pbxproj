@@ -15,6 +15,7 @@
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
 		30F22EF224DDA30D00C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22EF424DDA31400C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */; };
+		CE93604725AC476F00CEF503 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,11 +38,19 @@
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE93603325AC470300CEF503 /* validator.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = validator.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE93603125AC470300CEF503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3223258B5D00B9BFB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,6 +101,7 @@
 			children = (
 				D644A041231ED82900B75B77 /* libvalidator.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */,
+				CE93603325AC470300CEF503 /* validator.dll */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +109,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CE93602F25AC470300CEF503 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D644A03D231ED82900B75B77 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -109,6 +126,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CE93603225AC470300CEF503 /* validator (Windows) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE93603D25AC470300CEF503 /* Build configuration list for PBXNativeTarget "validator (Windows)" */;
+			buildPhases = (
+				CE93602F25AC470300CEF503 /* Headers */,
+				CE93603025AC470300CEF503 /* Sources */,
+				CE93603125AC470300CEF503 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "validator (Windows)";
+			productName = "validator (Windows)";
+			productReference = CE93603325AC470300CEF503 /* validator.dll */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		D6022C3423258B5D00B9BFB8 /* validator (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "validator (iOS)" */;
@@ -151,6 +185,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					CE93603225AC470300CEF503 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					D6022C3423258B5D00B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -174,11 +211,20 @@
 			targets = (
 				D644A040231ED82900B75B77 /* validator (macOS) */,
 				D6022C3423258B5D00B9BFB8 /* validator (iOS) */,
+				CE93603225AC470300CEF503 /* validator (Windows) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE93603025AC470300CEF503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE93604725AC476F00CEF503 /* validator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3123258B5D00B9BFB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +244,66 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CE93603B25AC470300CEF503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dll;
+				EXECUTABLE_PREFIX = "";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"x86_64-pc-win32",
+					"-I../../WindowsHeaders/include",
+					"-I../../WindowsHeaders/shared",
+					"-I../../WindowsHeaders/um",
+					"-I../../WindowsHeaders/ucrt",
+					"-Wno-comment",
+					"-Wno-expansion-to-defined",
+					"-Wno-ignored-attributes",
+					"-Wno-ignored-pragma-intrinsic",
+					"-Wno-macro-redefined",
+					"-Wno-microsoft-cast",
+					"-Wno-nonportable-include-path",
+					"-Wno-pragma-pack",
+					"-Wno-unreachable-code",
+					"-Wno-unused-command-line-argument",
+					"-Wno-unused-variable",
+					"-Wno-unused-value",
+				);
+			};
+			name = Debug;
+		};
+		CE93603C25AC470300CEF503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dll;
+				EXECUTABLE_PREFIX = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"x86_64-pc-win32",
+					"-I../../WindowsHeaders/include",
+					"-I../../WindowsHeaders/shared",
+					"-I../../WindowsHeaders/um",
+					"-I../../WindowsHeaders/ucrt",
+					"-Wno-comment",
+					"-Wno-expansion-to-defined",
+					"-Wno-ignored-attributes",
+					"-Wno-ignored-pragma-intrinsic",
+					"-Wno-macro-redefined",
+					"-Wno-microsoft-cast",
+					"-Wno-nonportable-include-path",
+					"-Wno-pragma-pack",
+					"-Wno-unreachable-code",
+					"-Wno-unused-command-line-argument",
+					"-Wno-unused-variable",
+					"-Wno-unused-value",
+				);
+			};
+			name = Release;
+		};
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -258,7 +364,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					PLUGIN_BUILD_LIBRARY,
+					"DEBUG=1",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -329,7 +438,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = " ";
+				GCC_PREPROCESSOR_DEFINITIONS = PLUGIN_BUILD_LIBRARY;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -373,6 +482,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE93603D25AC470300CEF503 /* Build configuration list for PBXNativeTarget "validator (Windows)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE93603B25AC470300CEF503 /* Debug */,
+				CE93603C25AC470300CEF503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "validator (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

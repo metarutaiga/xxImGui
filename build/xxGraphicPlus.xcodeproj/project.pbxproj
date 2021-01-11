@@ -24,6 +24,11 @@
 		30F22EF024DDA2EA00C0F4EC /* xxMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F22EE124DDA2EA00C0F4EC /* xxMaterial.h */; };
 		30F22EF624DDA33500C0F4EC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF524DDA33500C0F4EC /* libxxGraphic.dylib */; };
 		30F22EF824DDA33B00C0F4EC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF724DDA33B00C0F4EC /* libxxGraphic.bundle */; };
+		CE93600925AC440100CEF503 /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
+		CE93600A25AC440100CEF503 /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EE024DDA2EA00C0F4EC /* xxMaterial.cpp */; };
+		CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
+		CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
+		CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,11 +56,19 @@
 		30F22EE124DDA2EA00C0F4EC /* xxMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMaterial.h; path = ../xxGraphic/utility/xxMaterial.h; sourceTree = "<group>"; };
 		30F22EF524DDA33500C0F4EC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EF724DDA33B00C0F4EC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphicPlus.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A092231EDDFA00B75B77 /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE935FF325AC43B300CEF503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3F23258BB600B9BFB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -98,6 +111,7 @@
 			children = (
 				D644A092231EDDFA00B75B77 /* libxxGraphicPlus.dylib */,
 				D6022C4223258BB600B9BFB8 /* libxxGraphicPlus.bundle */,
+				CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +128,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CE935FF125AC43B300CEF503 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D644A08E231EDDFA00B75B77 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +150,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CE935FF425AC43B300CEF503 /* xxGraphicPlus (Windows) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE935FFF25AC43B300CEF503 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (Windows)" */;
+			buildPhases = (
+				CE935FF125AC43B300CEF503 /* Headers */,
+				CE935FF225AC43B300CEF503 /* Sources */,
+				CE935FF325AC43B300CEF503 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "xxGraphicPlus (Windows)";
+			productName = "xxGraphicPlus (Windows)";
+			productReference = CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		D6022C4123258BB600B9BFB8 /* xxGraphicPlus (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6022C4823258BB600B9BFB8 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (iOS)" */;
@@ -171,6 +209,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					CE935FF425AC43B300CEF503 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					D6022C4123258BB600B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -194,11 +235,24 @@
 			targets = (
 				D644A091231EDDFA00B75B77 /* xxGraphicPlus (macOS) */,
 				D6022C4123258BB600B9BFB8 /* xxGraphicPlus (iOS) */,
+				CE935FF425AC43B300CEF503 /* xxGraphicPlus (Windows) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE935FF225AC43B300CEF503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE93600925AC440100CEF503 /* xxImage.cpp in Sources */,
+				CE93600A25AC440100CEF503 /* xxMaterial.cpp in Sources */,
+				CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */,
+				CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */,
+				CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3E23258BB600B9BFB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,6 +280,66 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CE935FFD25AC43B300CEF503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dll;
+				EXECUTABLE_PREFIX = "";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"x86_64-pc-win32",
+					"-I../WindowsHeaders/include",
+					"-I../WindowsHeaders/shared",
+					"-I../WindowsHeaders/um",
+					"-I../WindowsHeaders/ucrt",
+					"-Wno-comment",
+					"-Wno-expansion-to-defined",
+					"-Wno-ignored-attributes",
+					"-Wno-ignored-pragma-intrinsic",
+					"-Wno-macro-redefined",
+					"-Wno-microsoft-cast",
+					"-Wno-nonportable-include-path",
+					"-Wno-pragma-pack",
+					"-Wno-unreachable-code",
+					"-Wno-unused-command-line-argument",
+					"-Wno-unused-variable",
+					"-Wno-unused-value",
+				);
+			};
+			name = Debug;
+		};
+		CE935FFE25AC43B300CEF503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = dll;
+				EXECUTABLE_PREFIX = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"x86_64-pc-win32",
+					"-I../WindowsHeaders/include",
+					"-I../WindowsHeaders/shared",
+					"-I../WindowsHeaders/um",
+					"-I../WindowsHeaders/ucrt",
+					"-Wno-comment",
+					"-Wno-expansion-to-defined",
+					"-Wno-ignored-attributes",
+					"-Wno-ignored-pragma-intrinsic",
+					"-Wno-macro-redefined",
+					"-Wno-microsoft-cast",
+					"-Wno-nonportable-include-path",
+					"-Wno-pragma-pack",
+					"-Wno-unreachable-code",
+					"-Wno-unused-command-line-argument",
+					"-Wno-unused-variable",
+					"-Wno-unused-value",
+				);
+			};
+			name = Release;
+		};
 		D6022C4923258BB600B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -287,6 +401,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
+					XXPLUS_BUILD_LIBRARY,
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -355,6 +470,10 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					XXPLUS_BUILD_LIBRARY,
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -393,6 +512,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE935FFF25AC43B300CEF503 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (Windows)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE935FFD25AC43B300CEF503 /* Debug */,
+				CE935FFE25AC43B300CEF503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D6022C4823258BB600B9BFB8 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
