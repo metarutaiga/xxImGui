@@ -247,13 +247,14 @@
 		CE93603B25AC470300CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = dll;
 				EXECUTABLE_PREFIX = "";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
 					"-target",
-					"x86_64-pc-win32",
+					"x86_64-pc-windows-msvc",
 					"-D_HAS_EXCEPTIONS=1",
 					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
 					"-I../../WindowsHeaders/include",
@@ -279,13 +280,15 @@
 		CE93603C25AC470300CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = dll;
 				EXECUTABLE_PREFIX = "";
+				GCC_OPTIMIZATION_LEVEL = z;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
 					"-target",
-					"x86_64-pc-win32",
+					"x86_64-pc-windows-msvc",
 					"-D_HAS_EXCEPTIONS=1",
 					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
 					"-I../../WindowsHeaders/include",
