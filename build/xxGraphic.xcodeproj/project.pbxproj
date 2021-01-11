@@ -88,12 +88,12 @@
 		D690A362232AC52400A149EF /* vulkan_ggp.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A34F232AC52400A149EF /* vulkan_ggp.h */; };
 		D690A363232AC52400A149EF /* vulkan_android.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A350232AC52400A149EF /* vulkan_android.h */; };
 		D690A364232AC52400A149EF /* vk_icd.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A351232AC52400A149EF /* vk_icd.h */; };
-		D690A368232AC54600A149EF /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; };
+		D690A368232AC54600A149EF /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
 		D690A369232AC54600A149EF /* xxGraphicVulkan.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A367232AC54600A149EF /* xxGraphicVulkan.h */; };
 		D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		D690A36F232C346500A149EF /* xxGraphicVulkanAsm.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A36C232C346500A149EF /* xxGraphicVulkanAsm.h */; };
-		D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; };
+		D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
 		D690A37723300D3800A149EF /* spirv.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A37523300D3800A149EF /* spirv.h */; };
 		D690A37823300D3800A149EF /* GLSL.std.450.h in Headers */ = {isa = PBXBuildFile; fileRef = D690A37623300D3800A149EF /* GLSL.std.450.h */; };
 		D6A727AF232310F4009981AD /* xxGraphicD3DAsm.h in Headers */ = {isa = PBXBuildFile; fileRef = D6A72796232310F2009981AD /* xxGraphicD3DAsm.h */; };
