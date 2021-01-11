@@ -9,7 +9,7 @@
 #include <imgui/imgui.h>
 #include <xxGraphic/xxSystem.h>
 
-#if defined(PLUGIN_BUILD_LIBRARY)
+#if defined(_MSC_VER) && defined(PLUGIN_BUILD_LIBRARY)
 #   define pluginAPI xxEXTERN __declspec(dllexport)
 #elif defined(_MSC_VER)
 #   define pluginAPI xxEXTERN __declspec(dllimport)
