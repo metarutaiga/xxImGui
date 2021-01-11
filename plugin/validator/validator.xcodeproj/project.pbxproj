@@ -254,6 +254,8 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-win32",
+					"-D_HAS_EXCEPTIONS=1",
+					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
 					"-I../../WindowsHeaders/include",
 					"-I../../WindowsHeaders/shared",
 					"-I../../WindowsHeaders/um",
@@ -284,6 +286,8 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-win32",
+					"-D_HAS_EXCEPTIONS=1",
+					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
 					"-I../../WindowsHeaders/include",
 					"-I../../WindowsHeaders/shared",
 					"-I../../WindowsHeaders/um",
