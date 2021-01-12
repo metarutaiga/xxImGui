@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3039F9D82447498C00E671A7 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
+		30A9A7DF25ADC80D000FA104 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
 		30B096BA244ACE5E0096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B9244ACE5E0096E6DC /* libimgui.dylib */; };
 		30B096BC244ACE5E0096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */; };
 		30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C5244AD3940096E6DC /* libimgui.bundle */; };
@@ -31,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30A9A7CC25ADC7D3000FA104 /* libvalidator.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libvalidator.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B9244ACE5E0096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C5244AD3940096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30A9A7CA25ADC7D3000FA104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE93603125AC470300CEF503 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -102,6 +111,7 @@
 				D644A041231ED82900B75B77 /* libvalidator.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */,
 				CE93603325AC470300CEF503 /* validator.dll */,
+				30A9A7CC25ADC7D3000FA104 /* libvalidator.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +119,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		30A9A7C825ADC7D3000FA104 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE93602F25AC470300CEF503 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +143,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		30A9A7CB25ADC7D3000FA104 /* validator (Android) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A9A7D625ADC7D3000FA104 /* Build configuration list for PBXNativeTarget "validator (Android)" */;
+			buildPhases = (
+				30A9A7C825ADC7D3000FA104 /* Headers */,
+				30A9A7C925ADC7D3000FA104 /* Sources */,
+				30A9A7CA25ADC7D3000FA104 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "validator (Android)";
+			productName = "validator (Android)";
+			productReference = 30A9A7CC25ADC7D3000FA104 /* libvalidator.so */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		CE93603225AC470300CEF503 /* validator (Windows) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE93603D25AC470300CEF503 /* Build configuration list for PBXNativeTarget "validator (Windows)" */;
@@ -185,6 +219,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					30A9A7CB25ADC7D3000FA104 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					CE93603225AC470300CEF503 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -212,11 +249,20 @@
 				D644A040231ED82900B75B77 /* validator (macOS) */,
 				D6022C3423258B5D00B9BFB8 /* validator (iOS) */,
 				CE93603225AC470300CEF503 /* validator (Windows) */,
+				30A9A7CB25ADC7D3000FA104 /* validator (Android) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30A9A7C925ADC7D3000FA104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A9A7DF25ADC80D000FA104 /* validator.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE93603025AC470300CEF503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +290,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		30A9A7D425ADC7D3000FA104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Debug;
+		};
+		30A9A7D525ADC7D3000FA104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Release;
+		};
 		CE93603B25AC470300CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -489,6 +567,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30A9A7D625ADC7D3000FA104 /* Build configuration list for PBXNativeTarget "validator (Android)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A9A7D425ADC7D3000FA104 /* Debug */,
+				30A9A7D525ADC7D3000FA104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE93603D25AC470300CEF503 /* Build configuration list for PBXNativeTarget "validator (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,6 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30A9A71725ADC54F000FA104 /* ftbbox.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEE231EC9B800B75B77 /* ftbbox.c */; };
+		30A9A71825ADC54F000FA104 /* ftbdf.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FED231EC9B800B75B77 /* ftbdf.c */; };
+		30A9A71925ADC54F000FA104 /* ftbitmap.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF3231EC9B900B75B77 /* ftbitmap.c */; };
+		30A9A71A25ADC54F000FA104 /* ftcid.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF0231EC9B800B75B77 /* ftcid.c */; };
+		30A9A71B25ADC54F000FA104 /* ftfstype.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF1231EC9B800B75B77 /* ftfstype.c */; };
+		30A9A71C25ADC54F000FA104 /* ftgasp.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FFA231EC9B900B75B77 /* ftgasp.c */; };
+		30A9A71D25ADC54F000FA104 /* ftglyph.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF9231EC9B900B75B77 /* ftglyph.c */; };
+		30A9A71E25ADC54F000FA104 /* ftgxval.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF6231EC9B900B75B77 /* ftgxval.c */; };
+		30A9A71F25ADC54F000FA104 /* ftmm.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF5231EC9B900B75B77 /* ftmm.c */; };
+		30A9A72025ADC54F000FA104 /* ftotval.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF4231EC9B900B75B77 /* ftotval.c */; };
+		30A9A72125ADC54F000FA104 /* ftpatent.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEA231EC9B800B75B77 /* ftpatent.c */; };
+		30A9A72225ADC54F000FA104 /* ftpfr.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF8231EC9B900B75B77 /* ftpfr.c */; };
+		30A9A72325ADC54F000FA104 /* ftstroke.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF2231EC9B800B75B77 /* ftstroke.c */; };
+		30A9A72425ADC54F000FA104 /* ftsynth.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF7231EC9B900B75B77 /* ftsynth.c */; };
+		30A9A72525ADC54F000FA104 /* ftsystem.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEB231EC9B800B75B77 /* ftsystem.c */; };
+		30A9A72625ADC54F000FA104 /* fttype1.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEC231EC9B800B75B77 /* fttype1.c */; };
+		30A9A72725ADC54F000FA104 /* ftwinfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEF231EC9B800B75B77 /* ftwinfnt.c */; };
+		30A9A72825ADC54F000FA104 /* autofit.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A00C231ECAB800B75B77 /* autofit.c */; };
+		30A9A72925ADC54F000FA104 /* bdf.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A00E231ECAC700B75B77 /* bdf.c */; };
+		30A9A72A25ADC54F000FA104 /* cff.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A010231ECAD900B75B77 /* cff.c */; };
+		30A9A72B25ADC54F000FA104 /* ftbase.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A012231ECB1400B75B77 /* ftbase.c */; };
+		30A9A72C25ADC54F000FA104 /* ftcache.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A014231ECB2300B75B77 /* ftcache.c */; };
+		30A9A72D25ADC54F000FA104 /* ftdebug.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A016231ECB3300B75B77 /* ftdebug.c */; };
+		30A9A72E25ADC54F000FA104 /* ftgzip.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A018231ECB8800B75B77 /* ftgzip.c */; };
+		30A9A72F25ADC54F000FA104 /* ftinit.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A01A231ECB9B00B75B77 /* ftinit.c */; };
+		30A9A73025ADC54F000FA104 /* ftlzw.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A01C231ECCC000B75B77 /* ftlzw.c */; };
+		30A9A73125ADC54F000FA104 /* pcf.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A01E231ECCD000B75B77 /* pcf.c */; };
+		30A9A73225ADC54F000FA104 /* pfr.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A020231ECDDB00B75B77 /* pfr.c */; };
+		30A9A73325ADC54F000FA104 /* psaux.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A022231ECDF500B75B77 /* psaux.c */; };
+		30A9A73425ADC54F000FA104 /* pshinter.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A024231ECE0300B75B77 /* pshinter.c */; };
+		30A9A73525ADC54F000FA104 /* psmodule.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A026231ECE1800B75B77 /* psmodule.c */; };
+		30A9A73625ADC54F000FA104 /* raster.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A028231ECE2600B75B77 /* raster.c */; };
+		30A9A73725ADC54F000FA104 /* sfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A02A231ECE3900B75B77 /* sfnt.c */; };
+		30A9A73825ADC54F000FA104 /* smooth.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A02C231ECE4700B75B77 /* smooth.c */; };
+		30A9A73925ADC54F000FA104 /* truetype.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A02E231ECE5800B75B77 /* truetype.c */; };
+		30A9A73A25ADC54F000FA104 /* type1.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A030231ECE6700B75B77 /* type1.c */; };
+		30A9A73B25ADC54F000FA104 /* type1cid.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A036231ED5CB00B75B77 /* type1cid.c */; };
+		30A9A73C25ADC54F000FA104 /* type42.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A032231ED13200B75B77 /* type42.c */; };
+		30A9A73D25ADC54F000FA104 /* winfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A034231ED27D00B75B77 /* winfnt.c */; };
 		CE935ECB25AC268E00CEF503 /* ftbbox.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEE231EC9B800B75B77 /* ftbbox.c */; };
 		CE935ECC25AC268E00CEF503 /* ftbdf.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FED231EC9B800B75B77 /* ftbdf.c */; };
 		CE935ECD25AC268E00CEF503 /* ftbitmap.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF3231EC9B900B75B77 /* ftbitmap.c */; };
@@ -139,6 +178,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30A9A70B25ADC4B1000FA104 /* libfreetype.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935EC125AC264700CEF503 /* freetype.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = freetype.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +224,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30A9A70925ADC4B1000FA104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935EBF25AC264700CEF503 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,6 +291,7 @@
 				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
 				D6022C28232588CC00B9BFB8 /* libfreetype.bundle */,
 				CE935EC125AC264700CEF503 /* freetype.dll */,
+				30A9A70B25ADC4B1000FA104 /* libfreetype.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,6 +323,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		30A9A70725ADC4B1000FA104 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935EBD25AC264700CEF503 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +347,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		30A9A70A25ADC4B1000FA104 /* freetype (Android) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A9A70E25ADC4B1000FA104 /* Build configuration list for PBXNativeTarget "freetype (Android)" */;
+			buildPhases = (
+				30A9A70725ADC4B1000FA104 /* Headers */,
+				30A9A70825ADC4B1000FA104 /* Sources */,
+				30A9A70925ADC4B1000FA104 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "freetype (Android)";
+			productName = "freetype (Android)";
+			productReference = 30A9A70B25ADC4B1000FA104 /* libfreetype.so */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		CE935EC025AC264700CEF503 /* freetype (Windows) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE935EC425AC264700CEF503 /* Build configuration list for PBXNativeTarget "freetype (Windows)" */;
@@ -351,6 +423,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					30A9A70A25ADC4B1000FA104 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					CE935EC025AC264700CEF503 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -378,11 +453,58 @@
 				D6449FD9231EC3D800B75B77 /* freetype (macOS) */,
 				D6022C27232588CC00B9BFB8 /* freetype (iOS) */,
 				CE935EC025AC264700CEF503 /* freetype (Windows) */,
+				30A9A70A25ADC4B1000FA104 /* freetype (Android) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30A9A70825ADC4B1000FA104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A9A71725ADC54F000FA104 /* ftbbox.c in Sources */,
+				30A9A71825ADC54F000FA104 /* ftbdf.c in Sources */,
+				30A9A71925ADC54F000FA104 /* ftbitmap.c in Sources */,
+				30A9A71A25ADC54F000FA104 /* ftcid.c in Sources */,
+				30A9A71B25ADC54F000FA104 /* ftfstype.c in Sources */,
+				30A9A71C25ADC54F000FA104 /* ftgasp.c in Sources */,
+				30A9A71D25ADC54F000FA104 /* ftglyph.c in Sources */,
+				30A9A71E25ADC54F000FA104 /* ftgxval.c in Sources */,
+				30A9A71F25ADC54F000FA104 /* ftmm.c in Sources */,
+				30A9A72025ADC54F000FA104 /* ftotval.c in Sources */,
+				30A9A72125ADC54F000FA104 /* ftpatent.c in Sources */,
+				30A9A72225ADC54F000FA104 /* ftpfr.c in Sources */,
+				30A9A72325ADC54F000FA104 /* ftstroke.c in Sources */,
+				30A9A72425ADC54F000FA104 /* ftsynth.c in Sources */,
+				30A9A72525ADC54F000FA104 /* ftsystem.c in Sources */,
+				30A9A72625ADC54F000FA104 /* fttype1.c in Sources */,
+				30A9A72725ADC54F000FA104 /* ftwinfnt.c in Sources */,
+				30A9A72825ADC54F000FA104 /* autofit.c in Sources */,
+				30A9A72925ADC54F000FA104 /* bdf.c in Sources */,
+				30A9A72A25ADC54F000FA104 /* cff.c in Sources */,
+				30A9A72B25ADC54F000FA104 /* ftbase.c in Sources */,
+				30A9A72C25ADC54F000FA104 /* ftcache.c in Sources */,
+				30A9A72D25ADC54F000FA104 /* ftdebug.c in Sources */,
+				30A9A72E25ADC54F000FA104 /* ftgzip.c in Sources */,
+				30A9A72F25ADC54F000FA104 /* ftinit.c in Sources */,
+				30A9A73025ADC54F000FA104 /* ftlzw.c in Sources */,
+				30A9A73125ADC54F000FA104 /* pcf.c in Sources */,
+				30A9A73225ADC54F000FA104 /* pfr.c in Sources */,
+				30A9A73325ADC54F000FA104 /* psaux.c in Sources */,
+				30A9A73425ADC54F000FA104 /* pshinter.c in Sources */,
+				30A9A73525ADC54F000FA104 /* psmodule.c in Sources */,
+				30A9A73625ADC54F000FA104 /* raster.c in Sources */,
+				30A9A73725ADC54F000FA104 /* sfnt.c in Sources */,
+				30A9A73825ADC54F000FA104 /* smooth.c in Sources */,
+				30A9A73925ADC54F000FA104 /* truetype.c in Sources */,
+				30A9A73A25ADC54F000FA104 /* type1.c in Sources */,
+				30A9A73B25ADC54F000FA104 /* type1cid.c in Sources */,
+				30A9A73C25ADC54F000FA104 /* type42.c in Sources */,
+				30A9A73D25ADC54F000FA104 /* winfnt.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935EBE25AC264700CEF503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -524,6 +646,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		30A9A70C25ADC4B1000FA104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Debug;
+		};
+		30A9A70D25ADC4B1000FA104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Release;
+		};
 		CE935EC225AC264700CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -757,6 +911,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30A9A70E25ADC4B1000FA104 /* Build configuration list for PBXNativeTarget "freetype (Android)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A9A70C25ADC4B1000FA104 /* Debug */,
+				30A9A70D25ADC4B1000FA104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE935EC425AC264700CEF503 /* Build configuration list for PBXNativeTarget "freetype (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

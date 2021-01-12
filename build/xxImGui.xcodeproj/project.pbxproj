@@ -17,6 +17,12 @@
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		30A9A7AF25ADC75D000FA104 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
+		30A9A7B025ADC75D000FA104 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
+		30A9A7B125ADC75D000FA104 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
+		30A9A7B225ADC75D000FA104 /* mainJNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039F986244743DB00E671A7 /* mainJNI.cpp */; };
+		30A9A7B325ADC75D000FA104 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
+		30A9A7B425ADC75D000FA104 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -117,6 +123,7 @@
 		3039F986244743DB00E671A7 /* mainJNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mainJNI.cpp; path = ../xxImGui/mainJNI.cpp; sourceTree = "<group>"; };
 		303DDEB52448B7630042A480 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		303DDEB72448B7680042A480 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		30A9A7A925ADC726000FA104 /* libxxImGui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxImGui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A1244ACDC40096E6DC /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A3244ACDC40096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A5244ACDC50096E6DC /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +168,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30A9A7A725ADC726000FA104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935FE125AC428D00CEF503 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,6 +234,7 @@
 				D644A0C6231F021F00B75B77 /* xxImGui.app */,
 				D6022C4F23258C4E00B9BFB8 /* xxImGui.app */,
 				CE935FE325AC428D00CEF503 /* xxImGui.dll */,
+				30A9A7A925ADC726000FA104 /* libxxImGui.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +319,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		30A9A7A525ADC726000FA104 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935FDF25AC428D00CEF503 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +336,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		30A9A7A825ADC726000FA104 /* xxImGui (Android) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A9A7AC25ADC726000FA104 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */;
+			buildPhases = (
+				30A9A7A525ADC726000FA104 /* Headers */,
+				30A9A7A625ADC726000FA104 /* Sources */,
+				30A9A7A725ADC726000FA104 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "xxImGui (Android)";
+			productName = "xxImGui (Android)";
+			productReference = 30A9A7A925ADC726000FA104 /* libxxImGui.so */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		CE935FE225AC428D00CEF503 /* xxImGui (Windows) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE935FE625AC428D00CEF503 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */;
@@ -375,6 +414,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					30A9A7A825ADC726000FA104 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					CE935FE225AC428D00CEF503 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -402,6 +444,7 @@
 				D644A0C5231F021F00B75B77 /* xxImGui (macOS) */,
 				D6022C4E23258C4E00B9BFB8 /* xxImGui (iOS) */,
 				CE935FE225AC428D00CEF503 /* xxImGui (Windows) */,
+				30A9A7A825ADC726000FA104 /* xxImGui (Android) */,
 			);
 		};
 /* End PBXProject section */
@@ -437,6 +480,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30A9A7A625ADC726000FA104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A9A7AF25ADC75D000FA104 /* imgui_freetype.cpp in Sources */,
+				30A9A7B025ADC75D000FA104 /* imgui_impl_xx.cpp in Sources */,
+				30A9A7B125ADC75D000FA104 /* DearImGui.cpp in Sources */,
+				30A9A7B225ADC75D000FA104 /* mainJNI.cpp in Sources */,
+				30A9A7B325ADC75D000FA104 /* Plugin.cpp in Sources */,
+				30A9A7B425ADC75D000FA104 /* Renderer.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935FE025AC428D00CEF503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,12 +511,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C3242687B7004559E0 /* Plugin.cpp in Sources */,
 				D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */,
 				D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */,
 				D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */,
-				D690A3892333FE7B00A149EF /* Renderer.cpp in Sources */,
 				D690A3972334291E00A149EF /* main.mm in Sources */,
+				300264C3242687B7004559E0 /* Plugin.cpp in Sources */,
+				D690A3892333FE7B00A149EF /* Renderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,16 +527,48 @@
 				D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */,
 				D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */,
 				D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */,
-				300264C2242687B7004559E0 /* Plugin.cpp in Sources */,
-				D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */,
 				D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */,
 				D690A3962334291E00A149EF /* main.mm in Sources */,
+				300264C2242687B7004559E0 /* Plugin.cpp in Sources */,
+				D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		30A9A7AA25ADC726000FA104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Debug;
+		};
+		30A9A7AB25ADC726000FA104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Release;
+		};
 		CE935FE425AC428D00CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -739,6 +827,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30A9A7AC25ADC726000FA104 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A9A7AA25ADC726000FA104 /* Debug */,
+				30A9A7AB25ADC726000FA104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE935FE625AC428D00CEF503 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
