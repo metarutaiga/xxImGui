@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		3039FA02244766EF00E671A7 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039FA01244766EE00E671A7 /* IOSurface.framework */; };
+		30A9A76E25ADC667000FA104 /* xxGraphicNULL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A6231EDE9B00B75B77 /* xxGraphicNULL.cpp */; };
+		30A9A76F25ADC667000FA104 /* xxGraphicEGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7AC234730A90092806F /* xxGraphicEGL.cpp */; };
+		30A9A77025ADC667000FA104 /* xxGraphicGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A9231EDE9B00B75B77 /* xxGraphicGL.cpp */; };
+		30A9A77125ADC667000FA104 /* xxGraphicGLES2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A5231EDE9B00B75B77 /* xxGraphicGLES2.cpp */; };
+		30A9A77225ADC667000FA104 /* xxGraphicGLES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B423577DC40092806F /* xxGraphicGLES3.cpp */; };
+		30A9A77325ADC667000FA104 /* xxGraphicGLES31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B123577DC40092806F /* xxGraphicGLES31.cpp */; };
+		30A9A77425ADC667000FA104 /* xxGraphicGLES32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B323577DC40092806F /* xxGraphicGLES32.cpp */; };
+		30A9A77525ADC667000FA104 /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; };
+		30A9A77625ADC667000FA104 /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
+		30A9A77725ADC667000FA104 /* xxGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */; };
+		30A9A77825ADC667000FA104 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
 		CE4050B82445613000F30E38 /* xxGraphicGLES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B423577DC40092806F /* xxGraphicGLES3.cpp */; };
 		CE4050B92445613000F30E38 /* xxGraphicGLES31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B123577DC40092806F /* xxGraphicGLES31.cpp */; };
 		CE4050BA2445613000F30E38 /* xxGraphicGLES32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B323577DC40092806F /* xxGraphicGLES32.cpp */; };
@@ -144,6 +155,7 @@
 /* Begin PBXFileReference section */
 		3039FA01244766EE00E671A7 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
 		3039FA052447670900E671A7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		30A9A75E25ADC60D000FA104 /* libxxGraphic.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935F7425AC35B000CEF503 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9D56B624D163B20037EBE6 /* xxGraphicInternalMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicInternalMetal.h; path = ../xxGraphic/internal/xxGraphicInternalMetal.h; sourceTree = "<group>"; };
 		CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicMetal2.mm; path = ../xxGraphic/xxGraphicMetal2.mm; sourceTree = "<group>"; };
@@ -259,6 +271,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30A9A75C25ADC60D000FA104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935F7225AC35B000CEF503 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,6 +331,7 @@
 				D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */,
 				D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */,
 				CE935F7425AC35B000CEF503 /* xxGraphic.dll */,
+				30A9A75E25ADC60D000FA104 /* libxxGraphic.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -505,6 +525,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		30A9A75A25ADC60D000FA104 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935F7025AC35B000CEF503 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -585,6 +612,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		30A9A75D25ADC60D000FA104 /* xxGraphic (Android) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A9A76125ADC60D000FA104 /* Build configuration list for PBXNativeTarget "xxGraphic (Android)" */;
+			buildPhases = (
+				30A9A75A25ADC60D000FA104 /* Headers */,
+				30A9A75B25ADC60D000FA104 /* Sources */,
+				30A9A75C25ADC60D000FA104 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "xxGraphic (Android)";
+			productName = "xxGraphic (Android)";
+			productReference = 30A9A75E25ADC60D000FA104 /* libxxGraphic.so */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		CE935F7325AC35B000CEF503 /* xxGraphic (Windows) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE935F7725AC35B000CEF503 /* Build configuration list for PBXNativeTarget "xxGraphic (Windows)" */;
@@ -644,6 +688,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					30A9A75D25ADC60D000FA104 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					CE935F7325AC35B000CEF503 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -671,15 +718,35 @@
 				D644A091231EDDFA00B75B77 /* xxGraphic (macOS) */,
 				D6022C4123258BB600B9BFB8 /* xxGraphic (iOS) */,
 				CE935F7325AC35B000CEF503 /* xxGraphic (Windows) */,
+				30A9A75D25ADC60D000FA104 /* xxGraphic (Android) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30A9A75B25ADC60D000FA104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A9A77725ADC667000FA104 /* xxGraphic.cpp in Sources */,
+				30A9A76F25ADC667000FA104 /* xxGraphicEGL.cpp in Sources */,
+				30A9A77025ADC667000FA104 /* xxGraphicGL.cpp in Sources */,
+				30A9A77125ADC667000FA104 /* xxGraphicGLES2.cpp in Sources */,
+				30A9A77225ADC667000FA104 /* xxGraphicGLES3.cpp in Sources */,
+				30A9A77325ADC667000FA104 /* xxGraphicGLES31.cpp in Sources */,
+				30A9A77425ADC667000FA104 /* xxGraphicGLES32.cpp in Sources */,
+				30A9A76E25ADC667000FA104 /* xxGraphicNULL.cpp in Sources */,
+				30A9A77525ADC667000FA104 /* xxGraphicVulkan.cpp in Sources */,
+				30A9A77625ADC667000FA104 /* xxGraphicVulkanAsm.cpp in Sources */,
+				30A9A77825ADC667000FA104 /* xxSystem.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE935F7125AC35B000CEF503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE935F9525AC35DB00CEF503 /* xxGraphic.cpp in Sources */,
 				CE935F7B25AC35DB00CEF503 /* xxGraphicD3D6.cpp in Sources */,
 				CE935F7C25AC35DB00CEF503 /* xxGraphicD3D7.cpp in Sources */,
 				CE935F7D25AC35DB00CEF503 /* xxGraphicD3D8.cpp in Sources */,
@@ -694,9 +761,6 @@
 				CE935F8625AC35DB00CEF503 /* xxGraphicD3D11On12.cpp in Sources */,
 				CE935F8725AC35DB00CEF503 /* xxGraphicD3D12.cpp in Sources */,
 				CE935F8825AC35DB00CEF503 /* xxGraphicD3DAsm.cpp in Sources */,
-				CE935F8925AC35DB00CEF503 /* xxGraphicMantle.cpp in Sources */,
-				CE935F8A25AC35DB00CEF503 /* xxGraphicMantleAsm.cpp in Sources */,
-				CE935F8B25AC35DB00CEF503 /* xxGraphicNULL.cpp in Sources */,
 				CE935F8C25AC35DB00CEF503 /* xxGraphicEGL.cpp in Sources */,
 				CE935F8D25AC35DB00CEF503 /* xxGraphicGL.cpp in Sources */,
 				CE935F8E25AC35DB00CEF503 /* xxGraphicGLES2.cpp in Sources */,
@@ -704,9 +768,11 @@
 				CE935F9025AC35DB00CEF503 /* xxGraphicGLES31.cpp in Sources */,
 				CE935F9125AC35DB00CEF503 /* xxGraphicGLES32.cpp in Sources */,
 				CE935F9225AC35DB00CEF503 /* xxGraphicWGL.cpp in Sources */,
+				CE935F8925AC35DB00CEF503 /* xxGraphicMantle.cpp in Sources */,
+				CE935F8A25AC35DB00CEF503 /* xxGraphicMantleAsm.cpp in Sources */,
+				CE935F8B25AC35DB00CEF503 /* xxGraphicNULL.cpp in Sources */,
 				CE935F9325AC35DB00CEF503 /* xxGraphicVulkan.cpp in Sources */,
 				CE935F9425AC35DB00CEF503 /* xxGraphicVulkanAsm.cpp in Sources */,
-				CE935F9525AC35DB00CEF503 /* xxGraphic.cpp in Sources */,
 				CE935F9625AC35DB00CEF503 /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,10 +789,10 @@
 				CE4050B92445613000F30E38 /* xxGraphicGLES31.cpp in Sources */,
 				CE4050BA2445613000F30E38 /* xxGraphicGLES32.cpp in Sources */,
 				D6DA664B23258F6F00953C5B /* xxGraphicMetal.mm in Sources */,
+				CE9D56BB24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */,
 				D6DA664F23258F7A00953C5B /* xxGraphicNULL.cpp in Sources */,
 				D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
-				CE9D56BB24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */,
 				D6DA665023258F8E00953C5B /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -743,10 +809,10 @@
 				D667B7B723577DC40092806F /* xxGraphicGLES31.cpp in Sources */,
 				D667B7B923577DC40092806F /* xxGraphicGLES32.cpp in Sources */,
 				D6A727F3232318E4009981AD /* xxGraphicMetal.mm in Sources */,
+				CE9D56BA24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */,
 				D644A0B0231EDE9B00B75B77 /* xxGraphicNULL.cpp in Sources */,
 				D690A368232AC54600A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
-				CE9D56BA24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */,
 				D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,6 +820,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		30A9A75F25ADC60D000FA104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Debug;
+		};
+		30A9A76025ADC60D000FA104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Release;
+		};
 		CE935F7525AC35B000CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -988,6 +1086,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30A9A76125ADC60D000FA104 /* Build configuration list for PBXNativeTarget "xxGraphic (Android)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A9A75F25ADC60D000FA104 /* Debug */,
+				30A9A76025ADC60D000FA104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE935F7725AC35B000CEF503 /* Build configuration list for PBXNativeTarget "xxGraphic (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		300264C5242690D0004559E0 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
 		3039F9D92447499200E671A7 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
+		30A9A7C325ADC7C0000FA104 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
 		CE93601F25AC457A00CEF503 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
+		30A9A7BB25ADC792000FA104 /* libsample.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE93601825AC454200CEF503 /* sample.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sample.dll; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +38,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30A9A7B925ADC792000FA104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE93601625AC454200CEF503 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,6 +95,7 @@
 				D644A041231ED82900B75B77 /* libsample.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
 				CE93601825AC454200CEF503 /* sample.dll */,
+				30A9A7BB25ADC792000FA104 /* libsample.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +103,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		30A9A7B725ADC792000FA104 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE93601425AC454200CEF503 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +127,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		30A9A7BA25ADC792000FA104 /* sample (Android) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "sample (Android)" */;
+			buildPhases = (
+				30A9A7B725ADC792000FA104 /* Headers */,
+				30A9A7B825ADC792000FA104 /* Sources */,
+				30A9A7B925ADC792000FA104 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "sample (Android)";
+			productName = "sample (Android)";
+			productReference = 30A9A7BB25ADC792000FA104 /* libsample.so */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		CE93601725AC454200CEF503 /* sample (Windows) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */;
@@ -169,6 +203,9 @@
 			attributes = {
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					30A9A7BA25ADC792000FA104 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					CE93601725AC454200CEF503 = {
 						CreatedOnToolsVersion = 12.3;
 					};
@@ -196,11 +233,20 @@
 				D644A040231ED82900B75B77 /* sample (macOS) */,
 				D6022C3423258B5D00B9BFB8 /* sample (iOS) */,
 				CE93601725AC454200CEF503 /* sample (Windows) */,
+				30A9A7BA25ADC792000FA104 /* sample (Android) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30A9A7B825ADC792000FA104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A9A7C325ADC7C0000FA104 /* sample.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE93601525AC454200CEF503 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +274,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		30A9A7BC25ADC792000FA104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Debug;
+		};
+		30A9A7BD25ADC792000FA104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = so;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+				);
+			};
+			name = Release;
+		};
 		CE93601925AC454200CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -466,6 +544,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "sample (Android)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A9A7BC25ADC792000FA104 /* Debug */,
+				30A9A7BD25ADC792000FA104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
