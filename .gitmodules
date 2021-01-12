@@ -13,6 +13,6 @@
 [submodule "stb"]
 	path = stb
 	url = https://github.com/nothings/stb
-[submodule "WindowsHeaders"]
-	path = WindowsHeaders
-	url = https://github.com/metarutaiga/WindowsHeaders
+[submodule "msvc"]
+	path = msvc
+	url = https://github.com/metarutaiga/msvc
