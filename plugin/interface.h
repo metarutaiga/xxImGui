@@ -6,8 +6,8 @@
 //==============================================================================
 #pragma once
 
-#include <imgui/imgui.h>
 #include <xxGraphic/xxSystem.h>
+#include <imgui/imgui.h>
 
 #if defined(_MSC_VER) && defined(PLUGIN_BUILD_LIBRARY)
 #   define pluginAPI xxEXTERN __declspec(dllexport)
