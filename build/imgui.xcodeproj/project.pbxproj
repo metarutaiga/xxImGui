@@ -15,6 +15,10 @@
 		CE935F5E25AC2F8800CEF503 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		CE935F5F25AC2F8800CEF503 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
 		CE935F6025AC2F8800CEF503 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A075231ED90400B75B77 /* imgui.cpp */; };
+		CE9C2A2925AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
+		CE9C2A2A25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
+		CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
+		CE9C2A2C25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		D644A076231ED90400B75B77 /* imgui_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A06C231ED90300B75B77 /* imgui_internal.h */; };
 		D644A077231ED90400B75B77 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		D644A078231ED90400B75B77 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
@@ -46,6 +50,7 @@
 /* Begin PBXFileReference section */
 		30A9A74A25ADC5C3000FA104 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935F5325AC2F4800CEF503 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_tables.cpp; path = ../imgui/imgui_tables.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A06C231ED90300B75B77 /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../imgui/imgui_internal.h; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 				D644A06F231ED90300B75B77 /* imgui_demo.cpp */,
 				D644A06D231ED90300B75B77 /* imgui_draw.cpp */,
 				D644A06C231ED90300B75B77 /* imgui_internal.h */,
+				CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */,
 				D644A06E231ED90300B75B77 /* imgui_widgets.cpp */,
 				D644A075231ED90400B75B77 /* imgui.cpp */,
 				D644A072231ED90300B75B77 /* imgui.h */,
@@ -273,6 +279,7 @@
 				30A9A75225ADC5F8000FA104 /* imgui_demo.cpp in Sources */,
 				30A9A75325ADC5F8000FA104 /* imgui_draw.cpp in Sources */,
 				30A9A75425ADC5F8000FA104 /* imgui_widgets.cpp in Sources */,
+				CE9C2A2C25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +291,7 @@
 				CE935F5D25AC2F8800CEF503 /* imgui_demo.cpp in Sources */,
 				CE935F5E25AC2F8800CEF503 /* imgui_draw.cpp in Sources */,
 				CE935F5F25AC2F8800CEF503 /* imgui_widgets.cpp in Sources */,
+				CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +303,7 @@
 				D6DA664723258F3000953C5B /* imgui_demo.cpp in Sources */,
 				D6DA664823258F3000953C5B /* imgui_draw.cpp in Sources */,
 				D6DA664923258F3000953C5B /* imgui_widgets.cpp in Sources */,
+				CE9C2A2A25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +315,7 @@
 				D644A079231ED90400B75B77 /* imgui_demo.cpp in Sources */,
 				D644A077231ED90400B75B77 /* imgui_draw.cpp in Sources */,
 				D644A078231ED90400B75B77 /* imgui_widgets.cpp in Sources */,
+				CE9C2A2925AFCB9000AB37F6 /* imgui_tables.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
