@@ -140,6 +140,17 @@ bool Plugin::Update()
 {
     bool updated = false;
 
+    static int updateCount = 0;
+    if (updateCount)
+    {
+        updateCount--;
+        updated = true;
+    }
+    if (ImGui::IsMouseReleased(ImGuiMouseButton_Left))
+    {
+        updateCount = 1;
+    }
+
     UpdateData updateData;
     updateData.instance = Renderer::g_instance;
     updateData.device = Renderer::g_device;
