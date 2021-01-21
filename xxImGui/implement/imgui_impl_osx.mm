@@ -231,7 +231,7 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
     NSEvent* event = (__bridge NSEvent*)event_;
     NSView* view = (__bridge NSView*)view_;
 
-    [view setValue:@YES forKey:@"imguiUpdate"];
+    [[[NSApp mainWindow] contentView] setValue:@YES forKey:@"imguiUpdate"];
 
     ImGuiIO& io = ImGui::GetIO();
 
@@ -268,6 +268,7 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
         }
         mousePoint = NSMakePoint(mousePoint.x, size.height - mousePoint.y);
         io.MousePos = ImVec2(mousePoint.x, mousePoint.y);
+        return io.WantCaptureMouse;
     }
 
     if (event.type == NSEventTypeScrollWheel)

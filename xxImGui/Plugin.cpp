@@ -148,7 +148,7 @@ bool Plugin::Update()
     }
     if (ImGui::IsMouseReleased(ImGuiMouseButton_Left))
     {
-        updateCount = 2;
+        updateCount = 1;
     }
 
     UpdateData updateData;
