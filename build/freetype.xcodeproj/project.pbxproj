@@ -421,7 +421,7 @@
 		D6449FD2231EC3D800B75B77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					30A9A70A25ADC4B1000FA104 = {
 						CreatedOnToolsVersion = 12.3;
@@ -649,6 +649,7 @@
 		30A9A70C25ADC4B1000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = so;
 				EXECUTABLE_PREFIX = lib;
@@ -665,6 +666,7 @@
 		30A9A70D25ADC4B1000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = so;
 				EXECUTABLE_PREFIX = lib;
@@ -681,6 +683,7 @@
 		CE935EC225AC264700CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = dll;
 				EXECUTABLE_PREFIX = "";
@@ -712,6 +715,7 @@
 		CE935EC325AC264700CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = dll;
 				EXECUTABLE_PREFIX = "";
