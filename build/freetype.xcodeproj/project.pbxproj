@@ -178,7 +178,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		30A9A70B25ADC4B1000FA104 /* libfreetype.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.so; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A9A70B25ADC4B1000FA104 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935EC125AC264700CEF503 /* freetype.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = freetype.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,7 +291,7 @@
 				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
 				D6022C28232588CC00B9BFB8 /* libfreetype.bundle */,
 				CE935EC125AC264700CEF503 /* freetype.dll */,
-				30A9A70B25ADC4B1000FA104 /* libfreetype.so */,
+				30A9A70B25ADC4B1000FA104 /* libfreetype.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,6 +354,7 @@
 				30A9A70725ADC4B1000FA104 /* Headers */,
 				30A9A70825ADC4B1000FA104 /* Sources */,
 				30A9A70925ADC4B1000FA104 /* Frameworks */,
+				CEB7C2E025C8FF94002E92D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -361,7 +362,7 @@
 			);
 			name = "freetype (Android)";
 			productName = "freetype (Android)";
-			productReference = 30A9A70B25ADC4B1000FA104 /* libfreetype.so */;
+			productReference = 30A9A70B25ADC4B1000FA104 /* libfreetype.bundle */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		CE935EC025AC264700CEF503 /* freetype (Windows) */ = {
@@ -457,6 +458,26 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CEB7C2E025C8FF94002E92D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		30A9A70825ADC4B1000FA104 /* Sources */ = {
@@ -651,7 +672,6 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = so;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -659,6 +679,11 @@
 					"-target",
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+					"-fPIC",
+					"-fno-exceptions",
+					"-fno-rtti",
+					"-fno-threadsafe-statics",
+					"-fvisibility=hidden",
 				);
 			};
 			name = Debug;
@@ -668,7 +693,6 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = so;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -676,6 +700,11 @@
 					"-target",
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+					"-fPIC",
+					"-fno-exceptions",
+					"-fno-rtti",
+					"-fno-threadsafe-statics",
+					"-fvisibility=hidden",
 				);
 			};
 			name = Release;
