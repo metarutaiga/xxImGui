@@ -17,12 +17,6 @@
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		30A9A7AF25ADC75D000FA104 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
-		30A9A7B025ADC75D000FA104 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
-		30A9A7B125ADC75D000FA104 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
-		30A9A7B225ADC75D000FA104 /* mainJNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039F986244743DB00E671A7 /* mainJNI.cpp */; };
-		30A9A7B325ADC75D000FA104 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
-		30A9A7B425ADC75D000FA104 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -33,27 +27,48 @@
 		30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A5244ACDC50096E6DC /* libsample.bundle */; };
 		30B096A8244ACDC50096E6DC /* libvalidator.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A7244ACDC50096E6DC /* libvalidator.bundle */; };
 		30B096AA244ACDC50096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; };
-		30B096AD244ACDDD0096E6DC /* libfreetype.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A1244ACDC40096E6DC /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B096AE244ACDDD0096E6DC /* libimgui.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A3244ACDC40096E6DC /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B096AF244ACDDD0096E6DC /* libsample.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A5244ACDC50096E6DC /* libsample.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B096B0244ACDDD0096E6DC /* libvalidator.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A7244ACDC50096E6DC /* libvalidator.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096AD244ACDDD0096E6DC /* libfreetype.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = 30B096A1244ACDC40096E6DC /* libfreetype.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096AE244ACDDD0096E6DC /* libimgui.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = 30B096A3244ACDC40096E6DC /* libimgui.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096AF244ACDDD0096E6DC /* libsample.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = 30B096A5244ACDC50096E6DC /* libsample.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096B0244ACDDD0096E6DC /* libvalidator.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = 30B096A7244ACDC50096E6DC /* libvalidator.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = 30B096A9244ACDC50096E6DC /* libxxGraphic.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
 		30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; };
-		30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = 30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFF24DDA69E00C0F4EC /* UIKit.framework */; };
+		CE89FA7B254B9B9200EDEED9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; };
 		CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CE935FE925AC42CF00CEF503 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
-		CE935FEA25AC42CF00CEF503 /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */; };
-		CE935FEB25AC42CF00CEF503 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
-		CE935FEC25AC42CF00CEF503 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
-		CE935FED25AC42CF00CEF503 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3922334291E00A149EF /* main.cpp */; };
-		CE935FEE25AC42CF00CEF503 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
-		CE935FEF25AC42CF00CEF503 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
-		CEB0D82725399A300068F86C /* Default-844h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82425399A300068F86C /* Default-844h@3x.png */; };
-		CEB0D82825399A300068F86C /* Default-926h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82525399A300068F86C /* Default-926h@3x.png */; };
-		CEB0D82925399A300068F86C /* Default-780h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB0D82625399A300068F86C /* Default-780h@3x.png */; };
+		CEAF9CB625AE756C008B7C57 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
+		CEAF9CB725AE756C008B7C57 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
+		CEAF9CB825AE756C008B7C57 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
+		CEAF9CB925AE756C008B7C57 /* mainJNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039F986244743DB00E671A7 /* mainJNI.cpp */; };
+		CEAF9CBA25AE756C008B7C57 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
+		CEAF9CBB25AE756C008B7C57 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
+		CEB23D2225763BD0006BB47B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1D25763BBA006BB47B /* Default-568h@2x.png */; };
+		CEB23D2325763BD0006BB47B /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1525763BB9006BB47B /* Default-667h@2x.png */; };
+		CEB23D2425763BD0006BB47B /* Default-780h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1A25763BBA006BB47B /* Default-780h@3x.png */; };
+		CEB23D2525763BD0006BB47B /* Default-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1F25763BBA006BB47B /* Default-812h@3x.png */; };
+		CEB23D2625763BD0006BB47B /* Default-844h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1925763BB9006BB47B /* Default-844h@3x.png */; };
+		CEB23D2725763BD0006BB47B /* Default-896h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1E25763BBA006BB47B /* Default-896h@2x.png */; };
+		CEB23D2825763BD0006BB47B /* Default-926h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D2025763BBA006BB47B /* Default-926h@3x.png */; };
+		CEB23D2925763BD0006BB47B /* Default-Landscape-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1C25763BBA006BB47B /* Default-Landscape-736h@3x.png */; };
+		CEB23D2A25763BD0006BB47B /* Default-Landscape-1080h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1625763BB9006BB47B /* Default-Landscape-1080h@2x.png */; };
+		CEB23D2B25763BD0006BB47B /* Default-Landscape-1112h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1825763BB9006BB47B /* Default-Landscape-1112h@2x.png */; };
+		CEB23D2C25763BD0006BB47B /* Default-Landscape-1194h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1725763BB9006BB47B /* Default-Landscape-1194h@2x.png */; };
+		CEB23D2D25763BD0006BB47B /* Default-Landscape-1366h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D1B25763BBA006BB47B /* Default-Landscape-1366h@2x.png */; };
+		CEB23D2E25763BD0006BB47B /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB23D2125763BBA006BB47B /* Default-Landscape@2x.png */; };
+		CEB7C30C25C90112002E92D3 /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C30B25C90112002E92D3 /* libfreetype.bundle */; };
+		CEB7C30E25C90112002E92D3 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C30D25C90112002E92D3 /* libimgui.bundle */; };
+		CEB7C31025C90112002E92D3 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */; };
+		CEB7C31225C90112002E92D3 /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C31125C90112002E92D3 /* libxxGraphicPlus.bundle */; };
+		CEC4337725AD24A400936983 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
+		CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */; };
+		CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
+		CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
+		CEC4337B25AD24A400936983 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3922334291E00A149EF /* main.cpp */; };
+		CEC4337C25AD24A400936983 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
+		CEC4337D25AD24A400936983 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -65,16 +80,6 @@
 		D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		D690A3962334291E00A149EF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D690A3932334291E00A149EF /* main.mm */; };
 		D690A3972334291E00A149EF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D690A3932334291E00A149EF /* main.mm */; };
-		D6F38923232978BA00EE9716 /* Default-Landscape-1366h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3891C232978B900EE9716 /* Default-Landscape-1366h@2x.png */; };
-		D6F38924232978BA00EE9716 /* Default-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3891D232978B900EE9716 /* Default-812h@3x.png */; };
-		D6F38925232978BA00EE9716 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3891E232978B900EE9716 /* Default-667h@2x.png */; };
-		D6F38926232978BA00EE9716 /* Default-Landscape-1112h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3891F232978B900EE9716 /* Default-Landscape-1112h@2x.png */; };
-		D6F38927232978BA00EE9716 /* Default-Landscape-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F38920232978BA00EE9716 /* Default-Landscape-736h@3x.png */; };
-		D6F38928232978BA00EE9716 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F38921232978BA00EE9716 /* Default-Landscape@2x.png */; };
-		D6F38929232978BA00EE9716 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F38922232978BA00EE9716 /* Default-568h@2x.png */; };
-		D6F3892B232979A500EE9716 /* Default-Landscape-1194h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3892A232979A500EE9716 /* Default-Landscape-1194h@2x.png */; };
-		D6F3892D23297A4900EE9716 /* Default-896h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3892C23297A4900EE9716 /* Default-896h@2x.png */; };
-		D6F3892F23297C7800EE9716 /* Default-Landscape-1080h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6F3892E23297C7800EE9716 /* Default-Landscape-1080h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,19 +98,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3039F9692447314F00E671A7 /* CopyFiles */ = {
+		3039F9692447314F00E671A7 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				30B096AD244ACDDD0096E6DC /* libfreetype.bundle in CopyFiles */,
-				30B096AE244ACDDD0096E6DC /* libimgui.bundle in CopyFiles */,
-				30B096AF244ACDDD0096E6DC /* libsample.bundle in CopyFiles */,
-				30B096B0244ACDDD0096E6DC /* libvalidator.bundle in CopyFiles */,
-				30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in CopyFiles */,
-				30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in CopyFiles */,
+				30B096AD244ACDDD0096E6DC /* libfreetype.bundle in Copy Files */,
+				30B096AE244ACDDD0096E6DC /* libimgui.bundle in Copy Files */,
+				30B096AF244ACDDD0096E6DC /* libsample.bundle in Copy Files */,
+				30B096B0244ACDDD0096E6DC /* libvalidator.bundle in Copy Files */,
+				30B096B1244ACDDD0096E6DC /* libxxGraphic.bundle in Copy Files */,
+				30F22EFB24DDA64D00C0F4EC /* libxxGraphicPlus.bundle in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -119,11 +125,9 @@
 		3003454A244ACD9300E90C44 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		3003454C244ACD9300E90C44 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		302D20D4244AB62200D84267 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		3039F98524473A2000E671A7 /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		3039F986244743DB00E671A7 /* mainJNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mainJNI.cpp; path = ../xxImGui/mainJNI.cpp; sourceTree = "<group>"; };
 		303DDEB52448B7630042A480 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		303DDEB72448B7680042A480 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
-		30A9A7A925ADC726000FA104 /* libxxImGui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxImGui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A1244ACDC40096E6DC /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A3244ACDC40096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A5244ACDC50096E6DC /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,10 +139,30 @@
 		30F22EFF24DDA69E00C0F4EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE7582A4250B2D01003487A8 /* imgui_impl_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_impl_win32.h; path = ../xxImGui/implement/imgui_impl_win32.h; sourceTree = "<group>"; };
 		CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_win32.cpp; path = ../xxImGui/implement/imgui_impl_win32.cpp; sourceTree = "<group>"; };
-		CE935FE325AC428D00CEF503 /* xxImGui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEB0D82425399A300068F86C /* Default-844h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-844h@3x.png"; sourceTree = "<group>"; };
-		CEB0D82525399A300068F86C /* Default-926h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-926h@3x.png"; sourceTree = "<group>"; };
-		CEB0D82625399A300068F86C /* Default-780h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-780h@3x.png"; sourceTree = "<group>"; };
+		CEAF9CB225AE752C008B7C57 /* libxxImGui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxImGui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB23D1525763BB9006BB47B /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-667h@2x.png"; path = "../build/Default-667h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1625763BB9006BB47B /* Default-Landscape-1080h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape-1080h@2x.png"; path = "../build/Default-Landscape-1080h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1725763BB9006BB47B /* Default-Landscape-1194h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape-1194h@2x.png"; path = "../build/Default-Landscape-1194h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1825763BB9006BB47B /* Default-Landscape-1112h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape-1112h@2x.png"; path = "../build/Default-Landscape-1112h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1925763BB9006BB47B /* Default-844h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-844h@3x.png"; path = "../build/Default-844h@3x.png"; sourceTree = "<group>"; };
+		CEB23D1A25763BBA006BB47B /* Default-780h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-780h@3x.png"; path = "../build/Default-780h@3x.png"; sourceTree = "<group>"; };
+		CEB23D1B25763BBA006BB47B /* Default-Landscape-1366h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape-1366h@2x.png"; path = "../build/Default-Landscape-1366h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1C25763BBA006BB47B /* Default-Landscape-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape-736h@3x.png"; path = "../build/Default-Landscape-736h@3x.png"; sourceTree = "<group>"; };
+		CEB23D1D25763BBA006BB47B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../build/Default-568h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1E25763BBA006BB47B /* Default-896h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-896h@2x.png"; path = "../build/Default-896h@2x.png"; sourceTree = "<group>"; };
+		CEB23D1F25763BBA006BB47B /* Default-812h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-812h@3x.png"; path = "../build/Default-812h@3x.png"; sourceTree = "<group>"; };
+		CEB23D2025763BBA006BB47B /* Default-926h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-926h@3x.png"; path = "../build/Default-926h@3x.png"; sourceTree = "<group>"; };
+		CEB23D2125763BBA006BB47B /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x.png"; path = "../build/Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		CEB7C2F625C900C9002E92D3 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C2F825C900C9002E92D3 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C2FA25C900C9002E92D3 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C2FC25C900C9002E92D3 /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C30B25C90112002E92D3 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C30D25C90112002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C31125C90112002E92D3 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC4337325AD244E00936983 /* xxImGui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
@@ -155,27 +179,21 @@
 		D690A38B23341A8400A149EF /* DearImGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DearImGui.h; path = ../xxImGui/DearImGui.h; sourceTree = "<group>"; };
 		D690A3922334291E00A149EF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../xxImGui/main.cpp; sourceTree = "<group>"; };
 		D690A3932334291E00A149EF /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = ../xxImGui/main.mm; sourceTree = "<group>"; };
-		D6F3891C232978B900EE9716 /* Default-Landscape-1366h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-1366h@2x.png"; sourceTree = "<group>"; };
-		D6F3891D232978B900EE9716 /* Default-812h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-812h@3x.png"; sourceTree = "<group>"; };
-		D6F3891E232978B900EE9716 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
-		D6F3891F232978B900EE9716 /* Default-Landscape-1112h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-1112h@2x.png"; sourceTree = "<group>"; };
-		D6F38920232978BA00EE9716 /* Default-Landscape-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-736h@3x.png"; sourceTree = "<group>"; };
-		D6F38921232978BA00EE9716 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
-		D6F38922232978BA00EE9716 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		D6F3892A232979A500EE9716 /* Default-Landscape-1194h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-1194h@2x.png"; sourceTree = "<group>"; };
-		D6F3892C23297A4900EE9716 /* Default-896h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-896h@2x.png"; sourceTree = "<group>"; };
-		D6F3892E23297C7800EE9716 /* Default-Landscape-1080h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-1080h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		30A9A7A725ADC726000FA104 /* Frameworks */ = {
+		CEAF9CB025AE752B008B7C57 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB7C30C25C90112002E92D3 /* libfreetype.bundle in Frameworks */,
+				CEB7C30E25C90112002E92D3 /* libimgui.bundle in Frameworks */,
+				CEB7C31025C90112002E92D3 /* libxxGraphic.bundle in Frameworks */,
+				CEB7C31225C90112002E92D3 /* libxxGraphicPlus.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE935FE125AC428D00CEF503 /* Frameworks */ = {
+		CEC4337125AD244E00936983 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -186,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE89FA7B254B9B9200EDEED9 /* Metal.framework in Frameworks */,
 				30B096A2244ACDC40096E6DC /* libfreetype.bundle in Frameworks */,
 				30B096A4244ACDC40096E6DC /* libimgui.bundle in Frameworks */,
 				30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */,
@@ -219,7 +238,7 @@
 		D644A0BD231F021F00B75B77 = {
 			isa = PBXGroup;
 			children = (
-				3039F98524473A2000E671A7 /* xxImGui.entitlements */,
+				CEE9E620257640C000C180FB /* xxImGui.entitlements */,
 				D644A0DA231F107D00B75B77 /* implement */,
 				D690A3852333FDBC00A149EF /* main */,
 				D6F3891B232978A000EE9716 /* project */,
@@ -233,8 +252,8 @@
 			children = (
 				D644A0C6231F021F00B75B77 /* xxImGui.app */,
 				D6022C4F23258C4E00B9BFB8 /* xxImGui.app */,
-				CE935FE325AC428D00CEF503 /* xxImGui.dll */,
-				30A9A7A925ADC726000FA104 /* libxxImGui.so */,
+				CEC4337325AD244E00936983 /* xxImGui.dll */,
+				CEAF9CB225AE752C008B7C57 /* libxxImGui.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +277,14 @@
 		D644A0EB231F116C00B75B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEB7C30B25C90112002E92D3 /* libfreetype.bundle */,
+				CEB7C30D25C90112002E92D3 /* libimgui.bundle */,
+				CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */,
+				CEB7C31125C90112002E92D3 /* libxxGraphicPlus.bundle */,
+				CEB7C2F625C900C9002E92D3 /* libfreetype.dylib */,
+				CEB7C2F825C900C9002E92D3 /* libimgui.dylib */,
+				CEB7C2FA25C900C9002E92D3 /* libxxGraphic.dylib */,
+				CEB7C2FC25C900C9002E92D3 /* libxxGraphicPlus.dylib */,
 				30034544244ACD9300E90C44 /* libfreetype.dylib */,
 				30034546244ACD9300E90C44 /* libimgui.dylib */,
 				30034548244ACD9300E90C44 /* libsample.dylib */,
@@ -299,19 +326,19 @@
 			isa = PBXGroup;
 			children = (
 				D690A3802333F7FA00A149EF /* info.plist */,
-				D6F38922232978BA00EE9716 /* Default-568h@2x.png */,
-				D6F3891E232978B900EE9716 /* Default-667h@2x.png */,
-				D6F38920232978BA00EE9716 /* Default-Landscape-736h@3x.png */,
-				CEB0D82625399A300068F86C /* Default-780h@3x.png */,
-				D6F3891D232978B900EE9716 /* Default-812h@3x.png */,
-				CEB0D82425399A300068F86C /* Default-844h@3x.png */,
-				D6F3892C23297A4900EE9716 /* Default-896h@2x.png */,
-				CEB0D82525399A300068F86C /* Default-926h@3x.png */,
-				D6F38921232978BA00EE9716 /* Default-Landscape@2x.png */,
-				D6F3892E23297C7800EE9716 /* Default-Landscape-1080h@2x.png */,
-				D6F3891F232978B900EE9716 /* Default-Landscape-1112h@2x.png */,
-				D6F3892A232979A500EE9716 /* Default-Landscape-1194h@2x.png */,
-				D6F3891C232978B900EE9716 /* Default-Landscape-1366h@2x.png */,
+				CEB23D1D25763BBA006BB47B /* Default-568h@2x.png */,
+				CEB23D1525763BB9006BB47B /* Default-667h@2x.png */,
+				CEB23D1A25763BBA006BB47B /* Default-780h@3x.png */,
+				CEB23D1F25763BBA006BB47B /* Default-812h@3x.png */,
+				CEB23D1925763BB9006BB47B /* Default-844h@3x.png */,
+				CEB23D1E25763BBA006BB47B /* Default-896h@2x.png */,
+				CEB23D2025763BBA006BB47B /* Default-926h@3x.png */,
+				CEB23D1C25763BBA006BB47B /* Default-Landscape-736h@3x.png */,
+				CEB23D1625763BB9006BB47B /* Default-Landscape-1080h@2x.png */,
+				CEB23D1825763BB9006BB47B /* Default-Landscape-1112h@2x.png */,
+				CEB23D1725763BB9006BB47B /* Default-Landscape-1194h@2x.png */,
+				CEB23D1B25763BBA006BB47B /* Default-Landscape-1366h@2x.png */,
+				CEB23D2125763BBA006BB47B /* Default-Landscape@2x.png */,
 			);
 			name = project;
 			sourceTree = "<group>";
@@ -319,14 +346,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		30A9A7A525ADC726000FA104 /* Headers */ = {
+		CEAF9CAE25AE752B008B7C57 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE935FDF25AC428D00CEF503 /* Headers */ = {
+		CEC4336F25AD244E00936983 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -336,13 +363,14 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		30A9A7A825ADC726000FA104 /* xxImGui (Android) */ = {
+		CEAF9CB125AE752B008B7C57 /* xxImGui (Android) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30A9A7AC25ADC726000FA104 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */;
+			buildConfigurationList = CEAF9CB525AE752C008B7C57 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */;
 			buildPhases = (
-				30A9A7A525ADC726000FA104 /* Headers */,
-				30A9A7A625ADC726000FA104 /* Sources */,
-				30A9A7A725ADC726000FA104 /* Frameworks */,
+				CEAF9CAE25AE752B008B7C57 /* Headers */,
+				CEAF9CAF25AE752B008B7C57 /* Sources */,
+				CEAF9CB025AE752B008B7C57 /* Frameworks */,
+				CEB7C2FE25C900CF002E92D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -350,16 +378,16 @@
 			);
 			name = "xxImGui (Android)";
 			productName = "xxImGui (Android)";
-			productReference = 30A9A7A925ADC726000FA104 /* libxxImGui.so */;
+			productReference = CEAF9CB225AE752C008B7C57 /* libxxImGui.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		CE935FE225AC428D00CEF503 /* xxImGui (Windows) */ = {
+		CEC4337225AD244E00936983 /* xxImGui (Windows) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE935FE625AC428D00CEF503 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */;
+			buildConfigurationList = CEC4337625AD244E00936983 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */;
 			buildPhases = (
-				CE935FDF25AC428D00CEF503 /* Headers */,
-				CE935FE025AC428D00CEF503 /* Sources */,
-				CE935FE125AC428D00CEF503 /* Frameworks */,
+				CEC4336F25AD244E00936983 /* Headers */,
+				CEC4337025AD244E00936983 /* Sources */,
+				CEC4337125AD244E00936983 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,7 +395,7 @@
 			);
 			name = "xxImGui (Windows)";
 			productName = "xxImGui (Windows)";
-			productReference = CE935FE325AC428D00CEF503 /* xxImGui.dll */;
+			productReference = CEC4337325AD244E00936983 /* xxImGui.dll */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C4E23258C4E00B9BFB8 /* xxImGui (iOS) */ = {
@@ -377,7 +405,7 @@
 				D6022C4B23258C4E00B9BFB8 /* Sources */,
 				D6022C4C23258C4E00B9BFB8 /* Frameworks */,
 				D6022C4D23258C4E00B9BFB8 /* Resources */,
-				3039F9692447314F00E671A7 /* CopyFiles */,
+				3039F9692447314F00E671A7 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -412,12 +440,13 @@
 		D644A0BE231F021F00B75B77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				DefaultBuildSystemTypeForWorkspace = Original;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					30A9A7A825ADC726000FA104 = {
+					CEAF9CB125AE752B008B7C57 = {
 						CreatedOnToolsVersion = 12.3;
 					};
-					CE935FE225AC428D00CEF503 = {
+					CEC4337225AD244E00936983 = {
 						CreatedOnToolsVersion = 12.3;
 					};
 					D6022C4E23258C4E00B9BFB8 = {
@@ -443,8 +472,8 @@
 			targets = (
 				D644A0C5231F021F00B75B77 /* xxImGui (macOS) */,
 				D6022C4E23258C4E00B9BFB8 /* xxImGui (iOS) */,
-				CE935FE225AC428D00CEF503 /* xxImGui (Windows) */,
-				30A9A7A825ADC726000FA104 /* xxImGui (Android) */,
+				CEC4337225AD244E00936983 /* xxImGui (Windows) */,
+				CEAF9CB125AE752B008B7C57 /* xxImGui (Android) */,
 			);
 		};
 /* End PBXProject section */
@@ -454,19 +483,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6F38929232978BA00EE9716 /* Default-568h@2x.png in Resources */,
-				D6F38925232978BA00EE9716 /* Default-667h@2x.png in Resources */,
-				D6F38927232978BA00EE9716 /* Default-Landscape-736h@3x.png in Resources */,
-				CEB0D82925399A300068F86C /* Default-780h@3x.png in Resources */,
-				D6F38924232978BA00EE9716 /* Default-812h@3x.png in Resources */,
-				CEB0D82725399A300068F86C /* Default-844h@3x.png in Resources */,
-				D6F3892D23297A4900EE9716 /* Default-896h@2x.png in Resources */,
-				CEB0D82825399A300068F86C /* Default-926h@3x.png in Resources */,
-				D6F38928232978BA00EE9716 /* Default-Landscape@2x.png in Resources */,
-				D6F3892F23297C7800EE9716 /* Default-Landscape-1080h@2x.png in Resources */,
-				D6F38926232978BA00EE9716 /* Default-Landscape-1112h@2x.png in Resources */,
-				D6F3892B232979A500EE9716 /* Default-Landscape-1194h@2x.png in Resources */,
-				D6F38923232978BA00EE9716 /* Default-Landscape-1366h@2x.png in Resources */,
+				CEB23D2225763BD0006BB47B /* Default-568h@2x.png in Resources */,
+				CEB23D2325763BD0006BB47B /* Default-667h@2x.png in Resources */,
+				CEB23D2425763BD0006BB47B /* Default-780h@3x.png in Resources */,
+				CEB23D2525763BD0006BB47B /* Default-812h@3x.png in Resources */,
+				CEB23D2625763BD0006BB47B /* Default-844h@3x.png in Resources */,
+				CEB23D2725763BD0006BB47B /* Default-896h@2x.png in Resources */,
+				CEB23D2825763BD0006BB47B /* Default-926h@3x.png in Resources */,
+				CEB23D2E25763BD0006BB47B /* Default-Landscape@2x.png in Resources */,
+				CEB23D2925763BD0006BB47B /* Default-Landscape-736h@3x.png in Resources */,
+				CEB23D2A25763BD0006BB47B /* Default-Landscape-1080h@2x.png in Resources */,
+				CEB23D2B25763BD0006BB47B /* Default-Landscape-1112h@2x.png in Resources */,
+				CEB23D2C25763BD0006BB47B /* Default-Landscape-1194h@2x.png in Resources */,
+				CEB23D2D25763BD0006BB47B /* Default-Landscape-1366h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,31 +508,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CEB7C2FE25C900CF002E92D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		30A9A7A625ADC726000FA104 /* Sources */ = {
+		CEAF9CAF25AE752B008B7C57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A9A7AF25ADC75D000FA104 /* imgui_freetype.cpp in Sources */,
-				30A9A7B025ADC75D000FA104 /* imgui_impl_xx.cpp in Sources */,
-				30A9A7B125ADC75D000FA104 /* DearImGui.cpp in Sources */,
-				30A9A7B225ADC75D000FA104 /* mainJNI.cpp in Sources */,
-				30A9A7B325ADC75D000FA104 /* Plugin.cpp in Sources */,
-				30A9A7B425ADC75D000FA104 /* Renderer.cpp in Sources */,
+				CEAF9CB625AE756C008B7C57 /* imgui_freetype.cpp in Sources */,
+				CEAF9CB725AE756C008B7C57 /* imgui_impl_xx.cpp in Sources */,
+				CEAF9CB825AE756C008B7C57 /* DearImGui.cpp in Sources */,
+				CEAF9CB925AE756C008B7C57 /* mainJNI.cpp in Sources */,
+				CEAF9CBA25AE756C008B7C57 /* Plugin.cpp in Sources */,
+				CEAF9CBB25AE756C008B7C57 /* Renderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE935FE025AC428D00CEF503 /* Sources */ = {
+		CEC4337025AD244E00936983 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE935FE925AC42CF00CEF503 /* imgui_freetype.cpp in Sources */,
-				CE935FEA25AC42CF00CEF503 /* imgui_impl_win32.cpp in Sources */,
-				CE935FEB25AC42CF00CEF503 /* imgui_impl_xx.cpp in Sources */,
-				CE935FEC25AC42CF00CEF503 /* DearImGui.cpp in Sources */,
-				CE935FED25AC42CF00CEF503 /* main.cpp in Sources */,
-				CE935FEE25AC42CF00CEF503 /* Plugin.cpp in Sources */,
-				CE935FEF25AC42CF00CEF503 /* Renderer.cpp in Sources */,
+				CEC4337725AD24A400936983 /* imgui_freetype.cpp in Sources */,
+				CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */,
+				CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */,
+				CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */,
+				CEC4337B25AD24A400936983 /* main.cpp in Sources */,
+				CEC4337C25AD24A400936983 /* Plugin.cpp in Sources */,
+				CEC4337D25AD24A400936983 /* Renderer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,12 +586,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		30A9A7AA25ADC726000FA104 /* Debug */ = {
+		CEAF9CB325AE752C008B7C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = so;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -550,16 +598,20 @@
 					"-target",
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+					"-fPIC",
+					"-fno-exceptions",
+					"-fno-rtti",
+					"-fno-threadsafe-statics",
+					"-fvisibility=hidden",
 				);
 			};
 			name = Debug;
 		};
-		30A9A7AB25ADC726000FA104 /* Release */ = {
+		CEAF9CB425AE752C008B7C57 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = so;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -567,11 +619,16 @@
 					"-target",
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+					"-fPIC",
+					"-fno-exceptions",
+					"-fno-rtti",
+					"-fno-threadsafe-statics",
+					"-fvisibility=hidden",
 				);
 			};
 			name = Release;
 		};
-		CE935FE425AC428D00CEF503 /* Debug */ = {
+		CEC4337425AD244E00936983 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
@@ -603,7 +660,7 @@
 			};
 			name = Debug;
 		};
-		CE935FE525AC428D00CEF503 /* Release */ = {
+		CEC4337525AD244E00936983 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
@@ -638,12 +695,14 @@
 		D6022C6623258C5600B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = xxImGui.entitlements;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xx.imgui;
+				PRODUCT_NAME = xxImGui;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
 			};
@@ -652,12 +711,14 @@
 		D6022C6723258C5600B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = xxImGui.entitlements;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xx.imgui;
+				PRODUCT_NAME = xxImGui;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
 				VALIDATE_PRODUCT = YES;
@@ -814,6 +875,8 @@
 					"@executable_path/../Frameworks",
 				);
 				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xx.imgui;
+				PRODUCT_NAME = xxImGui;
 			};
 			name = Debug;
 		};
@@ -825,26 +888,28 @@
 					"@executable_path/../Frameworks",
 				);
 				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xx.imgui;
+				PRODUCT_NAME = xxImGui;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		30A9A7AC25ADC726000FA104 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */ = {
+		CEAF9CB525AE752C008B7C57 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				30A9A7AA25ADC726000FA104 /* Debug */,
-				30A9A7AB25ADC726000FA104 /* Release */,
+				CEAF9CB325AE752C008B7C57 /* Debug */,
+				CEAF9CB425AE752C008B7C57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE935FE625AC428D00CEF503 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */ = {
+		CEC4337625AD244E00936983 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE935FE425AC428D00CEF503 /* Debug */,
-				CE935FE525AC428D00CEF503 /* Release */,
+				CEC4337425AD244E00936983 /* Debug */,
+				CEC4337525AD244E00936983 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
