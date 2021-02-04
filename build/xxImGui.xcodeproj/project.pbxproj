@@ -161,7 +161,7 @@
 		CEB7C30D25C90112002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C31125C90112002E92D3 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC4337325AD244E00936983 /* xxImGui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC4337325AD244E00936983 /* xxImGui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +252,7 @@
 			children = (
 				D644A0C6231F021F00B75B77 /* xxImGui.app */,
 				D6022C4F23258C4E00B9BFB8 /* xxImGui.app */,
-				CEC4337325AD244E00936983 /* xxImGui.dll */,
+				CEC4337325AD244E00936983 /* xxImGui.dylib */,
 				CEAF9CB225AE752C008B7C57 /* libxxImGui.dylib */,
 			);
 			name = Products;
@@ -388,6 +388,7 @@
 				CEC4336F25AD244E00936983 /* Headers */,
 				CEC4337025AD244E00936983 /* Sources */,
 				CEC4337125AD244E00936983 /* Frameworks */,
+				CEC0669225CBCE94003A5768 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -395,7 +396,7 @@
 			);
 			name = "xxImGui (Windows)";
 			productName = "xxImGui (Windows)";
-			productReference = CEC4337325AD244E00936983 /* xxImGui.dll */;
+			productReference = CEC4337325AD244E00936983 /* xxImGui.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C4E23258C4E00B9BFB8 /* xxImGui (iOS) */ = {
@@ -526,6 +527,23 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
 		};
+		CEC0669225CBCE94003A5768 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../msvc/include \\\n    -I$PROJECT_DIR/../msvc/shared \\\n    -I$PROJECT_DIR/../msvc/um \\\n    -I$PROJECT_DIR/../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -D_HAVE_WINMAIN_ \\\n    -target x86_64-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../msvc/lib/um \\\n    /libpath:$BUILT_PRODUCTS_DIR \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.exe \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    imm32.lib \\\n    gdi32.lib \\\n    kernel32.lib \\\n    user32.lib \\\n    winmm.lib \\\n    freetype.lib \\\n    imgui.lib \\\n    xxGraphic.lib \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/$PROJECT_NAME.exe \\\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -633,17 +651,17 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = dll;
-				EXECUTABLE_PREFIX = "";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
+					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
 					"-Wno-ignored-attributes",
@@ -665,17 +683,17 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = dll;
-				EXECUTABLE_PREFIX = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
+					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
 					"-Wno-ignored-attributes",
