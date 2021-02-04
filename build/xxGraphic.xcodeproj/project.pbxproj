@@ -155,8 +155,8 @@
 /* Begin PBXFileReference section */
 		3039FA01244766EE00E671A7 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
 		3039FA052447670900E671A7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		30A9A75E25ADC60D000FA104 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE935F7425AC35B000CEF503 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A9A75E25ADC60D000FA104 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935F7425AC35B000CEF503 /* libxxGraphic.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9D56B624D163B20037EBE6 /* xxGraphicInternalMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicInternalMetal.h; path = ../xxGraphic/internal/xxGraphicInternalMetal.h; sourceTree = "<group>"; };
 		CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicMetal2.mm; path = ../xxGraphic/xxGraphicMetal2.mm; sourceTree = "<group>"; };
 		CE9D56B924D165130037EBE6 /* xxGraphicMetal2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicMetal2.h; path = ../xxGraphic/xxGraphicMetal2.h; sourceTree = "<group>"; };
@@ -330,8 +330,8 @@
 			children = (
 				D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */,
 				D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */,
-				CE935F7425AC35B000CEF503 /* libxxGraphic.bundle */,
-				30A9A75E25ADC60D000FA104 /* libxxGraphic.bundle */,
+				CE935F7425AC35B000CEF503 /* libxxGraphic.windows */,
+				30A9A75E25ADC60D000FA104 /* libxxGraphic.android */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 			);
 			name = "xxGraphic (Android)";
 			productName = "xxGraphic (Android)";
-			productReference = 30A9A75E25ADC60D000FA104 /* libxxGraphic.bundle */;
+			productReference = 30A9A75E25ADC60D000FA104 /* libxxGraphic.android */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		CE935F7325AC35B000CEF503 /* xxGraphic (Windows) */ = {
@@ -645,7 +645,7 @@
 			);
 			name = "xxGraphic (Windows)";
 			productName = "xxGraphic (Windows)";
-			productReference = CE935F7425AC35B000CEF503 /* libxxGraphic.bundle */;
+			productReference = CE935F7425AC35B000CEF503 /* libxxGraphic.windows */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C4123258BB600B9BFB8 /* xxGraphic (iOS) */ = {
@@ -864,6 +864,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -885,6 +886,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -906,6 +908,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"strdup=_strdup",
 					"strnicmp=_strnicmp",
@@ -943,6 +946,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"strdup=_strdup",
 					"strnicmp=_strnicmp",

@@ -48,8 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		30A9A74A25ADC5C3000FA104 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE935F5325AC2F4800CEF503 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A9A74A25ADC5C3000FA104 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935F5325AC2F4800CEF503 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_tables.cpp; path = ../imgui/imgui_tables.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,8 +120,8 @@
 			children = (
 				D644A041231ED82900B75B77 /* libimgui.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libimgui.bundle */,
-				CE935F5325AC2F4800CEF503 /* libimgui.bundle */,
-				30A9A74A25ADC5C3000FA104 /* libimgui.bundle */,
+				CE935F5325AC2F4800CEF503 /* libimgui.windows */,
+				30A9A74A25ADC5C3000FA104 /* libimgui.android */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 			);
 			name = "imgui (Android)";
 			productName = "imgui (Android)";
-			productReference = 30A9A74A25ADC5C3000FA104 /* libimgui.bundle */;
+			productReference = 30A9A74A25ADC5C3000FA104 /* libimgui.android */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		CE935F5225AC2F4800CEF503 /* imgui (Windows) */ = {
@@ -192,7 +192,7 @@
 			);
 			name = "imgui (Windows)";
 			productName = "imgui (Windows)";
-			productReference = CE935F5325AC2F4800CEF503 /* libimgui.bundle */;
+			productReference = CE935F5325AC2F4800CEF503 /* libimgui.windows */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C3423258B5D00B9BFB8 /* imgui (iOS) */ = {
@@ -367,6 +367,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
@@ -392,6 +393,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
@@ -417,6 +419,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__declspec(dllexport)",
 					"$(inherited)",
@@ -453,6 +456,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__declspec(dllexport)",
 					"$(inherited)",
