@@ -20,6 +20,9 @@
 		CEB7C31D25C9017C002E92D3 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C31C25C9017C002E92D3 /* libimgui.bundle */; };
 		CEB7C31F25C9017C002E92D3 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C31E25C9017C002E92D3 /* libxxGraphic.bundle */; };
 		CEB7C32125C9017C002E92D3 /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C32025C9017C002E92D3 /* libxxGraphicPlus.bundle */; };
+		CEC0678425CBDDF1003A5768 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0678325CBDDF1003A5768 /* libimgui.bundle */; };
+		CEC0678625CBDDF4003A5768 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0678525CBDDF4003A5768 /* libxxGraphic.bundle */; };
+		CEC0678825CBDDFC003A5768 /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0678725CBDDFC003A5768 /* libxxGraphicPlus.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +50,9 @@
 		CEB7C31C25C9017C002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C31E25C9017C002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C32025C9017C002E92D3 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0678325CBDDF1003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0678525CBDDF4003A5768 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0678725CBDDFC003A5768 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -66,6 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC0678425CBDDF1003A5768 /* libimgui.bundle in Frameworks */,
+				CEC0678625CBDDF4003A5768 /* libxxGraphic.bundle in Frameworks */,
+				CEC0678825CBDDFC003A5768 /* libxxGraphicPlus.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +104,9 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEC0678725CBDDFC003A5768 /* libxxGraphicPlus.bundle */,
+				CEC0678525CBDDF4003A5768 /* libxxGraphic.bundle */,
+				CEC0678325CBDDF1003A5768 /* libimgui.bundle */,
 				CEB7C31C25C9017C002E92D3 /* libimgui.bundle */,
 				CEB7C31E25C9017C002E92D3 /* libxxGraphic.bundle */,
 				CEB7C32025C9017C002E92D3 /* libxxGraphicPlus.bundle */,
@@ -301,7 +313,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../../msvc/include \\\n    -I$PROJECT_DIR/../../msvc/shared \\\n    -I$PROJECT_DIR/../../msvc/um \\\n    -I$PROJECT_DIR/../../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../../msvc/lib \\\n    /libpath:$PROJECT_DIR/../../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../../msvc/lib/um \\\n    /libpath:$BUILT_PRODUCTS_DIR \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    imgui.lib \\\n    xxGraphic.lib \\\n    xxGraphicPlus.lib \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../../msvc/include \\\n    -I$PROJECT_DIR/../../msvc/shared \\\n    -I$PROJECT_DIR/../../msvc/um \\\n    -I$PROJECT_DIR/../../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\nmkdir $BUILT_PRODUCTS_DIR/plugin\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../../msvc/lib \\\n    /libpath:$PROJECT_DIR/../../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../../msvc/lib/um \\\n    /libpath:$BUILT_PRODUCTS_DIR \\\n    /out:$BUILT_PRODUCTS_DIR/plugin/$PROJECT_NAME.$CONFIGURATION.x64.dll \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    imgui.lib \\\n    xxGraphic.lib \\\n    xxGraphicPlus.lib \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/plugin/$PROJECT_NAME.$CONFIGURATION.x64.dll \\\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -62,6 +62,9 @@
 		CEB7C30E25C90112002E92D3 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C30D25C90112002E92D3 /* libimgui.bundle */; };
 		CEB7C31025C90112002E92D3 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */; };
 		CEB7C31225C90112002E92D3 /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB7C31125C90112002E92D3 /* libxxGraphicPlus.bundle */; };
+		CEC0677625CBDDBC003A5768 /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0677525CBDDBC003A5768 /* libimgui.bundle */; };
+		CEC0677825CBDDBF003A5768 /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0677725CBDDBF003A5768 /* libfreetype.bundle */; };
+		CEC0677A25CBDDC3003A5768 /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0677925CBDDC3003A5768 /* libxxGraphic.bundle */; };
 		CEC4337725AD24A400936983 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */; };
 		CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -161,6 +164,9 @@
 		CEB7C30D25C90112002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C31125C90112002E92D3 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0677525CBDDBC003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0677725CBDDBF003A5768 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0677925CBDDC3003A5768 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4337325AD244E00936983 /* xxImGui.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +203,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC0677825CBDDBF003A5768 /* libfreetype.bundle in Frameworks */,
+				CEC0677625CBDDBC003A5768 /* libimgui.bundle in Frameworks */,
+				CEC0677A25CBDDC3003A5768 /* libxxGraphic.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +286,9 @@
 		D644A0EB231F116C00B75B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEC0677925CBDDC3003A5768 /* libxxGraphic.bundle */,
+				CEC0677725CBDDBF003A5768 /* libfreetype.bundle */,
+				CEC0677525CBDDBC003A5768 /* libimgui.bundle */,
 				CEB7C30B25C90112002E92D3 /* libfreetype.bundle */,
 				CEB7C30D25C90112002E92D3 /* libimgui.bundle */,
 				CEB7C30F25C90112002E92D3 /* libxxGraphic.bundle */,
