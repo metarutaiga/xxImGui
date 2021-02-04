@@ -178,8 +178,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		30A9A70B25ADC4B1000FA104 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE935EC125AC264700CEF503 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A9A70B25ADC4B1000FA104 /* libfreetype.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935EC125AC264700CEF503 /* libfreetype.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FEA231EC9B800B75B77 /* ftpatent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpatent.c; path = ../freetype/src/base/ftpatent.c; sourceTree = "<group>"; };
@@ -290,8 +290,8 @@
 			children = (
 				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
 				D6022C28232588CC00B9BFB8 /* libfreetype.bundle */,
-				CE935EC125AC264700CEF503 /* libfreetype.bundle */,
-				30A9A70B25ADC4B1000FA104 /* libfreetype.bundle */,
+				CE935EC125AC264700CEF503 /* libfreetype.windows */,
+				30A9A70B25ADC4B1000FA104 /* libfreetype.android */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -362,7 +362,7 @@
 			);
 			name = "freetype (Android)";
 			productName = "freetype (Android)";
-			productReference = 30A9A70B25ADC4B1000FA104 /* libfreetype.bundle */;
+			productReference = 30A9A70B25ADC4B1000FA104 /* libfreetype.android */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		CE935EC025AC264700CEF503 /* freetype (Windows) */ = {
@@ -380,7 +380,7 @@
 			);
 			name = "freetype (Windows)";
 			productName = freetype;
-			productReference = CE935EC125AC264700CEF503 /* libfreetype.bundle */;
+			productReference = CE935EC125AC264700CEF503 /* libfreetype.windows */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C27232588CC00B9BFB8 /* freetype (iOS) */ = {
@@ -690,6 +690,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -711,6 +712,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
 				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -732,6 +734,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLL_EXPORT,
 					_INC_SETJMPEX,
@@ -769,6 +772,7 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLL_EXPORT,
 					_INC_SETJMPEX,
