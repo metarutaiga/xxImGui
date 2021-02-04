@@ -49,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		30A9A74A25ADC5C3000FA104 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE935F5325AC2F4800CEF503 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935F5325AC2F4800CEF503 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_tables.cpp; path = ../imgui/imgui_tables.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +120,7 @@
 			children = (
 				D644A041231ED82900B75B77 /* libimgui.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libimgui.bundle */,
-				CE935F5325AC2F4800CEF503 /* imgui.dll */,
+				CE935F5325AC2F4800CEF503 /* libimgui.bundle */,
 				30A9A74A25ADC5C3000FA104 /* libimgui.bundle */,
 			);
 			name = Products;
@@ -184,6 +184,7 @@
 				CE935F4F25AC2F4800CEF503 /* Headers */,
 				CE935F5025AC2F4800CEF503 /* Sources */,
 				CE935F5125AC2F4800CEF503 /* Frameworks */,
+				CEC064C425CB9CA2003A5768 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -191,7 +192,7 @@
 			);
 			name = "imgui (Windows)";
 			productName = "imgui (Windows)";
-			productReference = CE935F5325AC2F4800CEF503 /* imgui.dll */;
+			productReference = CE935F5325AC2F4800CEF503 /* libimgui.bundle */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C3423258B5D00B9BFB8 /* imgui (iOS) */ = {
@@ -290,6 +291,23 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
 		};
+		CEC064C425CB9CA2003A5768 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../msvc/include \\\n    -I$PROJECT_DIR/../msvc/shared \\\n    -I$PROJECT_DIR/../msvc/um \\\n    -I$PROJECT_DIR/../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../msvc/lib/um \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    kernel32.lib \\\n    user32.lib \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -350,6 +368,10 @@
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
@@ -371,6 +393,10 @@
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
@@ -391,17 +417,21 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = dll;
-				EXECUTABLE_PREFIX = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__declspec(dllexport)",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
+					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
 					"-Wno-ignored-attributes",
@@ -423,17 +453,21 @@
 			buildSettings = {
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = dll;
-				EXECUTABLE_PREFIX = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__declspec(dllexport)",
+					"$(inherited)",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
+					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
 					"-Wno-ignored-attributes",
@@ -512,7 +546,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
-					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -586,7 +619,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
-					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -617,6 +649,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -624,6 +660,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
