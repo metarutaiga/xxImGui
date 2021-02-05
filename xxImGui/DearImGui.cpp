@@ -96,12 +96,12 @@ void DearImGui::Create(void* view, float scale, float font)
 #if defined(xxMACOS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
+    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
     io.Fonts->AddFontFromFileTTF("/System/Library/Fonts/PingFang.ttc", 16.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
 #elif defined(xxWINDOWS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
+    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
     if (io.FontGlobalScale == 1.0f)
     {
         if (GetFileAttributesA("C:\\Windows\\Fonts\\msgothic.ttc") != INVALID_FILE_ATTRIBUTES)
@@ -117,7 +117,9 @@ void DearImGui::Create(void* view, float scale, float font)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msjh.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
     }
 #endif
-    ImGuiFreeType::BuildFontAtlas(io.Fonts);
+    io.Fonts->FontBuilderIO         = ImGuiFreeType::GetBuilderForFreeType();
+    io.Fonts->FontBuilderFlags      = 0;
+    io.Fonts->Build();
     io.FontGlobalScale              = scale / font;
 }
 //------------------------------------------------------------------------------

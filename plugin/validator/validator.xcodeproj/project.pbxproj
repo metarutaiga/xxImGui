@@ -322,10 +322,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				$BUILT_PRODUCTS_DIR/libvalidator.windows,
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$BUILT_PRODUCTS_DIR/plugin/validator.$CONFIGURATION.x64.dll,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

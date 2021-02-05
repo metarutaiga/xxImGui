@@ -172,7 +172,7 @@
 		CEC0680D25CBEF2C003A5768 /* libfreetype.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libfreetype.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0680F25CBEF2C003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0681125CBEF2C003A5768 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEC4337325AD244E00936983 /* xxImGui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC4337325AD244E00936983 /* libxxImGui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxImGui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,7 +265,7 @@
 			children = (
 				D644A0C6231F021F00B75B77 /* xxImGui.app */,
 				D6022C4F23258C4E00B9BFB8 /* xxImGui.app */,
-				CEC4337325AD244E00936983 /* xxImGui.windows */,
+				CEC4337325AD244E00936983 /* libxxImGui.windows */,
 				CEAF9CB225AE752C008B7C57 /* libxxImGui.android */,
 			);
 			name = Products;
@@ -418,7 +418,7 @@
 			);
 			name = "xxImGui (Windows)";
 			productName = "xxImGui (Windows)";
-			productReference = CEC4337325AD244E00936983 /* xxImGui.windows */;
+			productReference = CEC4337325AD244E00936983 /* libxxImGui.windows */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C4E23258C4E00B9BFB8 /* xxImGui (iOS) */ = {
@@ -557,10 +557,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				$BUILT_PRODUCTS_DIR/libxxImGui.windows,
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$BUILT_PRODUCTS_DIR/xxImGui.exe,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -676,6 +678,7 @@
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = windows;
+				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (
@@ -709,6 +712,7 @@
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = windows;
+				EXECUTABLE_PREFIX = lib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = (

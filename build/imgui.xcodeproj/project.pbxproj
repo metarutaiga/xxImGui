@@ -299,10 +299,12 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				$BUILT_PRODUCTS_DIR/libimgui.windows,
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$BUILT_PRODUCTS_DIR/imgui.dll,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
