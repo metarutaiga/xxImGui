@@ -308,7 +308,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../msvc/include \\\n    -I$PROJECT_DIR/../msvc/shared \\\n    -I$PROJECT_DIR/../msvc/um \\\n    -I$PROJECT_DIR/../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../msvc/lib/um \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    kernel32.lib \\\n    user32.lib \\\n    $OBJECTS\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../msvc/include \\\n    -I$PROJECT_DIR/../msvc/shared \\\n    -I$PROJECT_DIR/../msvc/um \\\n    -I$PROJECT_DIR/../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../msvc/lib/um \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /pdb:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.pdb \\\n    /opt:ref,icf \\\n    /debug \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    kernel32.lib \\\n    user32.lib \\\n    $OBJECTS\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -419,6 +419,7 @@
 		CE935F5425AC2F4800CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = windows;
@@ -444,18 +445,22 @@
 					"-Wno-macro-redefined",
 					"-Wno-microsoft-cast",
 					"-Wno-microsoft-enum-forward-reference",
+					"-Wno-nonportable-include-path",
 					"-Wno-pragma-pack",
 					"-Wno-unreachable-code",
 					"-Wno-unused-command-line-argument",
+					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
 				);
+				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
 			};
 			name = Debug;
 		};
 		CE935F5525AC2F4800CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = windows;
@@ -481,12 +486,15 @@
 					"-Wno-macro-redefined",
 					"-Wno-microsoft-cast",
 					"-Wno-microsoft-enum-forward-reference",
+					"-Wno-nonportable-include-path",
 					"-Wno-pragma-pack",
 					"-Wno-unreachable-code",
 					"-Wno-unused-command-line-argument",
+					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
 				);
+				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
 			};
 			name = Release;
 		};
@@ -511,7 +519,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -548,6 +556,8 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -586,7 +596,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -622,6 +632,8 @@
 				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",

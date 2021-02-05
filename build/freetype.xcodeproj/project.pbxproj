@@ -495,7 +495,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /dll \\\n    /noentry \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    ucrtbase.lib \\\n    $OBJECTS\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /pdb:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.pdb \\\n    /opt:ref,icf \\\n    /debug \\\n    /dll \\\n    /noentry \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    ucrtbase.lib \\\n    $OBJECTS\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -734,6 +734,7 @@
 		CE935EC225AC264700CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = windows;
@@ -741,6 +742,7 @@
 					DLL_EXPORT,
 					_INC_SETJMPEX,
 					__STDC__,
+					_CRT_SECURE_NO_WARNINGS,
 					"$(inherited)",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -760,18 +762,22 @@
 					"-Wno-macro-redefined",
 					"-Wno-microsoft-cast",
 					"-Wno-microsoft-enum-forward-reference",
+					"-Wno-nonportable-include-path",
 					"-Wno-pragma-pack",
 					"-Wno-unreachable-code",
 					"-Wno-unused-command-line-argument",
+					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
 				);
+				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
 			};
 			name = Debug;
 		};
 		CE935EC325AC264700CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-windows";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = windows;
@@ -779,6 +785,7 @@
 					DLL_EXPORT,
 					_INC_SETJMPEX,
 					__STDC__,
+					_CRT_SECURE_NO_WARNINGS,
 					"$(inherited)",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -798,12 +805,15 @@
 					"-Wno-macro-redefined",
 					"-Wno-microsoft-cast",
 					"-Wno-microsoft-enum-forward-reference",
+					"-Wno-nonportable-include-path",
 					"-Wno-pragma-pack",
 					"-Wno-unreachable-code",
 					"-Wno-unused-command-line-argument",
+					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
 				);
+				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
 			};
 			name = Release;
 		};
@@ -828,7 +838,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -865,6 +875,8 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -899,7 +911,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -935,6 +947,8 @@
 				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					FT2_BUILD_LIBRARY,

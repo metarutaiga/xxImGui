@@ -34,14 +34,14 @@ A simulate Next-Generation Graphic API for ImGui
 | Vulkan          | ⭕       | ⭕   | ⭕     | ⭕       |                |
 
 ### Build and Run xxImGui for Windows on macOS
-* Install wine and llvm
+1. Install wine and llvm
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew tap gcenx/wine
 brew install gcenx-wine-staging
 brew install llvm
 ```
-* Edit build/xxImGui.xcodeproj/xcshareddata/xcschemes/xxImGui (Windows).xcscheme
+2. Edit build/xxImGui.xcodeproj/xcshareddata/xcschemes/xxImGui (Windows).xcscheme
 ```
    <LaunchAction
       buildConfiguration = "Release"
@@ -59,3 +59,4 @@ brew install llvm
       </CommandLineArguments>
    </LaunchAction>
 ```
+3. Set custom working directory
