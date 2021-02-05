@@ -102,7 +102,9 @@ bool Renderer::Create(void* view, int width, int height, const char* shortName)
 
     if (shortName == nullptr)
     {
-#if defined(xxWINDOWS)
+#if defined(xxWINDOWS) && defined(__llvm__)
+        shortName = "D3D9";
+#elif defined(xxWINDOWS)
         shortName = "D3D11";
 #elif defined(xxMACOS) || defined(xxIOS)
         shortName = "MTL";

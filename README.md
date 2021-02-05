@@ -32,3 +32,30 @@ A simulate Next-Generation Graphic API for ImGui
 | Metal           |         | ⭕   | ⭕     |         |                |
 | Metal 2         |         | ⭕   | ⭕     |         |                |
 | Vulkan          | ⭕       | ⭕   | ⭕     | ⭕       |                |
+
+### Build and Run xxImGui for Windows on macOS
+* Install wine and llvm
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew tap gcenx/wine
+brew install gcenx-wine-staging
+brew install llvm
+```
+* Edit build/xxImGui.xcodeproj/xcshareddata/xcschemes/xxImGui (Windows).xcscheme
+```
+   <LaunchAction
+      buildConfiguration = "Release"
+      ...
+      allowLocationSimulation = "YES">
+      <PathRunnable
+         runnableDebuggingMode = "0"
+         FilePath = "/usr/local/bin/wine64">
+      </PathRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "xxImGui.exe"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
+   </LaunchAction>
+```
