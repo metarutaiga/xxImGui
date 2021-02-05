@@ -495,7 +495,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /dll \\\n    /noentry \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    ucrtbase.lib \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /dll \\\n    /noentry \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    ucrtbase.lib \\\n    $OBJECTS\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
