@@ -61,11 +61,11 @@
 #define IMGUI_USE_BGRA_PACKED_COLOR
 #endif
 
-//---- Use 32-bit for ImWchar (default is 16-bit) to support full unicode code points.
+//---- Use 32-bit for ImWchar (default is 16-bit) to support unicode planes 1-16. (e.g. point beyond 0xFFFF like emoticons, dingbats, symbols, shapes, ancient languages, etc...)
 //#define IMGUI_USE_WCHAR32
 
 //---- Avoid multiple STB libraries implementations, or redefine path/filenames to prioritize another version
-// By default the embedded implementations are declared static and not available outside of imgui cpp files.
+// By default the embedded implementations are declared static and not available outside of Dear ImGui sources files.
 //#define IMGUI_STB_TRUETYPE_FILENAME   "my_folder/stb_truetype.h"
 //#define IMGUI_STB_RECT_PACK_FILENAME  "my_folder/stb_rect_pack.h"
 //#define IMGUI_DISABLE_STB_TRUETYPE_IMPLEMENTATION
@@ -75,6 +75,15 @@
 // Note that stb_sprintf.h is meant to be provided by the user and available in the include path at compile time. Also, the compatibility checks of the arguments and formats done by clang and GCC will be disabled in order to support the extra formats provided by STB sprintf.
 #define IMGUI_USE_STB_SPRINTF
 #define STB_SPRINTF_NOUNALIGNED
+
+//---- Use FreeType to build and rasterize the font atlas (instead of stb_truetype which is embedded by default in Dear ImGui)
+// Requires FreeType headers to be available in the include path. Requires program to be compiled with 'misc/freetype/imgui_freetype.cpp' (in this repository) + the FreeType library (not provided).
+// On Windows you may use vcpkg with 'vcpkg install freetype' + 'vcpkg integrate install'.
+//#define IMGUI_ENABLE_FREETYPE
+
+//---- Use stb_truetype to build and rasterize the font atlas (default)
+// The only purpose of this define is if you want force compilation of the stb_truetype backend ALONG with the FreeType backend.
+//#define IMGUI_ENABLE_STB_TRUETYPE
 
 //---- Define constructor and implicit cast operators to convert back<>forth between your math types and ImVec2/ImVec4.
 // This will be inlined as part of ImVec2 and ImVec4 class declarations.
