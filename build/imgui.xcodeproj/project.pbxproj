@@ -367,6 +367,7 @@
 		30A9A74B25ADC5C3000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = android;
@@ -382,10 +383,13 @@
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
 					"-fPIC",
-					"-fno-exceptions",
-					"-fno-rtti",
 					"-fno-threadsafe-statics",
 					"-fvisibility=hidden",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
 				);
 			};
 			name = Debug;
@@ -393,6 +397,7 @@
 		30A9A74C25ADC5C3000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = android;
@@ -408,10 +413,13 @@
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
 					"-fPIC",
-					"-fno-exceptions",
-					"-fno-rtti",
 					"-fno-threadsafe-statics",
 					"-fvisibility=hidden",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
 				);
 			};
 			name = Release;
@@ -432,13 +440,11 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
-					"-fdata-sections",
-					"-ffunction-sections",
-					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-fno-threadsafe-statics",
 					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
@@ -454,8 +460,12 @@
 					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
+					"$(inherited)",
 				);
-				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -475,13 +485,11 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
-					"-fdata-sections",
-					"-ffunction-sections",
-					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-fno-threadsafe-statics",
 					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
@@ -497,8 +505,12 @@
 					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
+					"$(inherited)",
 				);
-				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -586,6 +598,15 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fdata-sections",
+					"-ffunction-sections",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-dead_strip",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = imgui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -659,6 +680,15 @@
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
+				OTHER_CFLAGS = (
+					"-fdata-sections",
+					"-ffunction-sections",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-dead_strip",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = imgui;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

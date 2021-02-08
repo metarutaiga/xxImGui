@@ -393,6 +393,7 @@
 		30A9A78925ADC6D9000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = android;
@@ -404,10 +405,13 @@
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
 					"-fPIC",
-					"-fno-exceptions",
-					"-fno-rtti",
 					"-fno-threadsafe-statics",
 					"-fvisibility=hidden",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
 				);
 			};
 			name = Debug;
@@ -415,6 +419,7 @@
 		30A9A78A25ADC6D9000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
 				EXCLUDED_ARCHS = arm64;
 				EXECUTABLE_EXTENSION = android;
@@ -426,10 +431,13 @@
 					"aarch64-linux-android",
 					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
 					"-fPIC",
-					"-fno-exceptions",
-					"-fno-rtti",
 					"-fno-threadsafe-statics",
 					"-fvisibility=hidden",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
 				);
 			};
 			name = Release;
@@ -446,13 +454,11 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
-					"-fdata-sections",
-					"-ffunction-sections",
-					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-fno-threadsafe-statics",
 					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
@@ -468,14 +474,16 @@
 					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
+					"$(inherited)",
 				);
 				OTHER_CPLUSPLUSFLAGS = (
-					"-D_HAS_EXCEPTIONS=1",
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
 					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-					"$(OTHER_CFLAGS)",
+					"$(inherited)",
 				);
-				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -491,13 +499,11 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
-					"-fdata-sections",
-					"-ffunction-sections",
-					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
 					"-I../msvc/ucrt",
+					"-fno-threadsafe-statics",
 					"-GS-",
 					"-Wno-comment",
 					"-Wno-expansion-to-defined",
@@ -513,14 +519,16 @@
 					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
+					"$(inherited)",
 				);
 				OTHER_CPLUSPLUSFLAGS = (
-					"-D_HAS_EXCEPTIONS=1",
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
 					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-					"$(OTHER_CFLAGS)",
+					"$(inherited)",
 				);
-				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -605,6 +613,19 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fdata-sections",
+					"-ffunction-sections",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+					"$(OTHER_CFLAGS)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-dead_strip",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = xxGraphicPlus;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -675,6 +696,19 @@
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../temp;
+				OTHER_CFLAGS = (
+					"-fdata-sections",
+					"-ffunction-sections",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+					"$(OTHER_CFLAGS)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-dead_strip",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = xxGraphicPlus;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
