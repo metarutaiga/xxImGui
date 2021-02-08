@@ -750,6 +750,9 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
+					"-fdata-sections",
+					"-ffunction-sections",
+					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",
@@ -793,6 +796,9 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
+					"-fdata-sections",
+					"-ffunction-sections",
+					"-fno-threadsafe-statics",
 					"-I../msvc/include",
 					"-I../msvc/shared",
 					"-I../msvc/um",

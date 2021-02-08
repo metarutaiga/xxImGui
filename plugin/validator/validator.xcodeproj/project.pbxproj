@@ -427,9 +427,9 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
-					"-D_HAS_EXCEPTIONS=1",
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+					"-fdata-sections",
+					"-ffunction-sections",
+					"-fno-threadsafe-statics",
 					"-I../../msvc/include",
 					"-I../../msvc/shared",
 					"-I../../msvc/um",
@@ -450,6 +450,12 @@
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
 				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D_HAS_EXCEPTIONS=1",
+					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+					"$(OTHER_CFLAGS)",
+				);
 				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
 			};
 			name = Debug;
@@ -467,9 +473,9 @@
 				OTHER_CFLAGS = (
 					"-target",
 					"x86_64-pc-windows-msvc",
-					"-D_HAS_EXCEPTIONS=1",
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+					"-fdata-sections",
+					"-ffunction-sections",
+					"-fno-threadsafe-statics",
 					"-I../../msvc/include",
 					"-I../../msvc/shared",
 					"-I../../msvc/um",
@@ -489,6 +495,12 @@
 					"-Wno-unused-function",
 					"-Wno-unused-variable",
 					"-Wno-unused-value",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D_HAS_EXCEPTIONS=1",
+					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
+					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+					"$(OTHER_CFLAGS)",
 				);
 				OTHER_LDFLAGS = "-Wl,-no_arch_warnings";
 			};
