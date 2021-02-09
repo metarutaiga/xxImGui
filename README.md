@@ -41,10 +41,12 @@ brew tap gcenx/wine
 brew install gcenx-wine-staging
 brew install llvm
 ```
-2. Compile and install lld-link-wrapper
+2. Compile and install lld-link-wrapper and llvm-lib-wrapper
 ```
-clang++ -Ofast lld-link-wrapper.cpp -o lld-link-wrapper 
+clang++ -Ofast lld-link-wrapper.cpp -o lld-link-wrapper
+clang++ -Ofast llvm-lib-wrapper.cpp -o llvm-lib-wrapper
 cp lld-link-wrapper /usr/local/opt/llvm/bin
+cp llvm-lib-wrapper /usr/local/opt/llvm/bin
 ```
 3. Edit build/xxImGui.xcodeproj/xcshareddata/xcschemes/xxImGui (Windows).xcscheme
 ```
