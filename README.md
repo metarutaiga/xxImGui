@@ -41,7 +41,12 @@ brew tap gcenx/wine
 brew install gcenx-wine-staging
 brew install llvm
 ```
-2. Edit build/xxImGui.xcodeproj/xcshareddata/xcschemes/xxImGui (Windows).xcscheme
+2. Compile and install lld-link-wrapper
+```
+clang++ -Ofast lld-link-wrapper.cpp -o lld-link-wrapper 
+cp lld-link-wrapper /usr/local/opt/llvm/bin
+```
+3. Edit build/xxImGui.xcodeproj/xcshareddata/xcschemes/xxImGui (Windows).xcscheme
 ```
    <LaunchAction
       buildConfiguration = "Release"
@@ -59,4 +64,4 @@ brew install llvm
       </CommandLineArguments>
    </LaunchAction>
 ```
-3. Set custom working directory
+4. Set custom working directory

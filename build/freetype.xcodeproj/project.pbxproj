@@ -85,6 +85,7 @@
 		CE935EEF25AC268E00CEF503 /* type1cid.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A036231ED5CB00B75B77 /* type1cid.c */; };
 		CE935EF025AC268E00CEF503 /* type42.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A032231ED13200B75B77 /* type42.c */; };
 		CE935EF125AC268E00CEF503 /* winfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A034231ED27D00B75B77 /* winfnt.c */; };
+		CE999C9E25D248B600351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999C9925D2489800351116 /* llvm_wrapper.cpp */; };
 		D6022C7123258EFB00B9BFB8 /* ftbbox.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEE231EC9B800B75B77 /* ftbbox.c */; };
 		D6022C7223258EFB00B9BFB8 /* ftbdf.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FED231EC9B800B75B77 /* ftbdf.c */; };
 		D6022C7323258EFB00B9BFB8 /* ftbitmap.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FF3231EC9B900B75B77 /* ftbitmap.c */; };
@@ -179,7 +180,12 @@
 
 /* Begin PBXFileReference section */
 		30A9A70B25ADC4B1000FA104 /* libfreetype.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.android; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE935EC125AC264700CEF503 /* libfreetype.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.windows; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935EC125AC264700CEF503 /* freetype.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = freetype.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		CE999C9925D2489800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
+		CE999CA425D24AA400351116 /* chkstk.obj */ = {isa = PBXFileReference; lastKnownFileType = file; name = chkstk.obj; path = ../msvc/lib/chkstk.obj; sourceTree = "<group>"; };
+		CE999CAE25D2594D00351116 /* kernel32.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = kernel32.lib; path = ../msvc/lib/um/kernel32.lib; sourceTree = "<group>"; };
 		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FEA231EC9B800B75B77 /* ftpatent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpatent.c; path = ../freetype/src/base/ftpatent.c; sourceTree = "<group>"; };
@@ -255,9 +261,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE999BC825D21D9100351116 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				CE999C9925D2489800351116 /* llvm_wrapper.cpp */,
+				CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */,
+				CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
+		CE999CA325D24AA400351116 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE999CAE25D2594D00351116 /* kernel32.lib */,
+				CE999CA425D24AA400351116 /* chkstk.obj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D6449FD1231EC3D800B75B77 = {
 			isa = PBXGroup;
 			children = (
+				CE999BC825D21D9100351116 /* Configs */,
 				D6449FE9231EC8F100B75B77 /* FT_MODULES */,
 				D644A00C231ECAB800B75B77 /* autofit.c */,
 				D644A00E231ECAC700B75B77 /* bdf.c */,
@@ -282,6 +308,7 @@
 				D644A032231ED13200B75B77 /* type42.c */,
 				D644A034231ED27D00B75B77 /* winfnt.c */,
 				D6449FDB231EC3D800B75B77 /* Products */,
+				CE999CA325D24AA400351116 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,7 +317,7 @@
 			children = (
 				D6449FDA231EC3D800B75B77 /* libfreetype.dylib */,
 				D6022C28232588CC00B9BFB8 /* libfreetype.bundle */,
-				CE935EC125AC264700CEF503 /* libfreetype.windows */,
+				CE935EC125AC264700CEF503 /* freetype.dll */,
 				30A9A70B25ADC4B1000FA104 /* libfreetype.android */,
 			);
 			name = Products;
@@ -372,7 +399,6 @@
 				CE935EBD25AC264700CEF503 /* Headers */,
 				CE935EBE25AC264700CEF503 /* Sources */,
 				CE935EBF25AC264700CEF503 /* Frameworks */,
-				CEC0644F25CB92B2003A5768 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -380,7 +406,7 @@
 			);
 			name = "freetype (Windows)";
 			productName = freetype;
-			productReference = CE935EC125AC264700CEF503 /* libfreetype.windows */;
+			productReference = CE935EC125AC264700CEF503 /* freetype.dll */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C27232588CC00B9BFB8 /* freetype (iOS) */ = {
@@ -478,25 +504,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
 		};
-		CEC0644F25CB92B2003A5768 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				$BUILT_PRODUCTS_DIR/libfreetype.windows,
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$BUILT_PRODUCTS_DIR/freetype.dll,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /pdb:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.pdb \\\n    /opt:ref,icf \\\n    /debug \\\n    /dll \\\n    /noentry \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    ucrtbase.lib \\\n    $OBJECTS\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -589,6 +596,7 @@
 				CE935EEF25AC268E00CEF503 /* type1cid.c in Sources */,
 				CE935EF025AC268E00CEF503 /* type42.c in Sources */,
 				CE935EF125AC268E00CEF503 /* winfnt.c in Sources */,
+				CE999C9E25D248B600351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +697,7 @@
 /* Begin XCBuildConfiguration section */
 		30A9A70C25ADC4B1000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
@@ -715,6 +724,7 @@
 		};
 		30A9A70D25ADC4B1000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
@@ -741,11 +751,8 @@
 		};
 		CE935EC225AC264700CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-windows";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLL_EXPORT,
 					_INC_SETJMPEX,
@@ -755,45 +762,13 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"x86_64-pc-windows-msvc",
-					"-I../msvc/include",
-					"-I../msvc/shared",
-					"-I../msvc/um",
-					"-I../msvc/ucrt",
-					"-fno-threadsafe-statics",
-					"-GS-",
-					"-Wno-comment",
-					"-Wno-expansion-to-defined",
-					"-Wno-ignored-attributes",
-					"-Wno-ignored-pragma-intrinsic",
-					"-Wno-macro-redefined",
-					"-Wno-microsoft-cast",
-					"-Wno-microsoft-enum-forward-reference",
-					"-Wno-nonportable-include-path",
-					"-Wno-pragma-pack",
-					"-Wno-unreachable-code",
-					"-Wno-unused-command-line-argument",
-					"-Wno-unused-function",
-					"-Wno-unused-variable",
-					"-Wno-unused-value",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Debug;
 		};
 		CE935EC325AC264700CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-windows";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = windows;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLL_EXPORT,
 					_INC_SETJMPEX,
@@ -803,35 +778,6 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"x86_64-pc-windows-msvc",
-					"-I../msvc/include",
-					"-I../msvc/shared",
-					"-I../msvc/um",
-					"-I../msvc/ucrt",
-					"-fno-threadsafe-statics",
-					"-GS-",
-					"-Wno-comment",
-					"-Wno-expansion-to-defined",
-					"-Wno-ignored-attributes",
-					"-Wno-ignored-pragma-intrinsic",
-					"-Wno-macro-redefined",
-					"-Wno-microsoft-cast",
-					"-Wno-microsoft-enum-forward-reference",
-					"-Wno-nonportable-include-path",
-					"-Wno-pragma-pack",
-					"-Wno-unreachable-code",
-					"-Wno-unused-command-line-argument",
-					"-Wno-unused-function",
-					"-Wno-unused-variable",
-					"-Wno-unused-value",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Release;
 		};
@@ -920,10 +866,6 @@
 					"-ffunction-sections",
 					"$(inherited)",
 				);
-				OTHER_LDFLAGS = (
-					"-Wl,-dead_strip",
-					"$(inherited)",
-				);
 				PRODUCT_NAME = freetype;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -997,10 +939,6 @@
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-dead_strip",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = freetype;
