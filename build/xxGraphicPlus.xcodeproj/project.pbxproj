@@ -34,7 +34,8 @@
 		CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
 		CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
-		CEC0680425CBEEE0003A5768 /* libxxGraphic.windows in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680325CBEEE0003A5768 /* libxxGraphic.windows */; };
+		CE999BF825D2263C00351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999BF725D2263C00351116 /* llvm_wrapper.cpp */; };
+		CE999D2725D261DF00351116 /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D2625D261DF00351116 /* xxGraphic.dll */; };
 		CEC0680625CBEEE6003A5768 /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680525CBEEE6003A5768 /* libxxGraphic.android */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +65,11 @@
 		30F22EE124DDA2EA00C0F4EC /* xxMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxMaterial.h; path = ../xxGraphic/utility/xxMaterial.h; sourceTree = "<group>"; };
 		30F22EF524DDA33500C0F4EC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EF724DDA33B00C0F4EC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE935FF525AC43B300CEF503 /* libxxGraphicPlus.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphicPlus.windows; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphicPlus.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		CE999BF725D2263C00351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
+		CE999D2625D261DF00351116 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C2F325C900A4002E92D3 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C30925C900FC002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0677B25CBDDD0003A5768 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC0680425CBEEE0003A5768 /* libxxGraphic.windows in Frameworks */,
+				CE999D2725D261DF00351116 /* xxGraphic.dll in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,9 +115,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE999BCD25D21DE000351116 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				CE999BF725D2263C00351116 /* llvm_wrapper.cpp */,
+				CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */,
+				CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
 		D644A089231EDDFA00B75B77 = {
 			isa = PBXGroup;
 			children = (
+				CE999BCD25D21DE000351116 /* Configs */,
 				30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */,
 				30F22EDD24DDA2EA00C0F4EC /* xxImage.h */,
 				30F22EE024DDA2EA00C0F4EC /* xxMaterial.cpp */,
@@ -133,7 +149,7 @@
 			children = (
 				D644A092231EDDFA00B75B77 /* libxxGraphicPlus.dylib */,
 				D6022C4223258BB600B9BFB8 /* libxxGraphicPlus.bundle */,
-				CE935FF525AC43B300CEF503 /* libxxGraphicPlus.windows */,
+				CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */,
 				30A9A78125ADC6D9000FA104 /* libxxGraphicPlus.android */,
 			);
 			name = Products;
@@ -142,6 +158,7 @@
 		D6B33859232043FD0096D02F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE999D2625D261DF00351116 /* xxGraphic.dll */,
 				CEC0680525CBEEE6003A5768 /* libxxGraphic.android */,
 				CEC0680325CBEEE0003A5768 /* libxxGraphic.windows */,
 				CEC0677B25CBDDD0003A5768 /* libxxGraphic.bundle */,
@@ -210,7 +227,6 @@
 				CE935FF125AC43B300CEF503 /* Headers */,
 				CE935FF225AC43B300CEF503 /* Sources */,
 				CE935FF325AC43B300CEF503 /* Frameworks */,
-				CEC065B225CBB6CA003A5768 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -218,7 +234,7 @@
 			);
 			name = "xxGraphicPlus (Windows)";
 			productName = "xxGraphicPlus (Windows)";
-			productReference = CE935FF525AC43B300CEF503 /* libxxGraphicPlus.windows */;
+			productReference = CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C4123258BB600B9BFB8 /* xxGraphicPlus (iOS) */ = {
@@ -316,26 +332,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
 		};
-		CEC065B225CBB6CA003A5768 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				$BUILT_PRODUCTS_DIR/libxxGraphicPlus.windows,
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$BUILT_PRODUCTS_DIR/xxGraphicPlus.dll,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../msvc/include \\\n    -I$PROJECT_DIR/../msvc/shared \\\n    -I$PROJECT_DIR/../msvc/um \\\n    -I$PROJECT_DIR/../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-pc-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../msvc/lib \\\n    /libpath:$PROJECT_DIR/../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../msvc/lib/um \\\n    /libpath:$BUILT_PRODUCTS_DIR \\\n    /out:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.dll \\\n    /pdb:$BUILT_PRODUCTS_DIR/$PROJECT_NAME.pdb \\\n    /opt:ref,icf \\\n    /debug \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    kernel32.lib \\\n    user32.lib \\\n    winmm.lib \\\n    xxGraphic.lib \\\n    $OBJECTS\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -360,6 +356,7 @@
 				CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */,
 				CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */,
 				CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */,
+				CE999BF825D2263C00351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +389,7 @@
 /* Begin XCBuildConfiguration section */
 		30A9A78925ADC6D9000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
@@ -418,6 +416,7 @@
 		};
 		30A9A78A25ADC6D9000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
@@ -444,91 +443,19 @@
 		};
 		CE935FFD25AC43B300CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-windows";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = windows;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"x86_64-pc-windows-msvc",
-					"-I../msvc/include",
-					"-I../msvc/shared",
-					"-I../msvc/um",
-					"-I../msvc/ucrt",
-					"-fno-threadsafe-statics",
-					"-GS-",
-					"-Wno-comment",
-					"-Wno-expansion-to-defined",
-					"-Wno-ignored-attributes",
-					"-Wno-ignored-pragma-intrinsic",
-					"-Wno-macro-redefined",
-					"-Wno-microsoft-cast",
-					"-Wno-microsoft-enum-forward-reference",
-					"-Wno-nonportable-include-path",
-					"-Wno-pragma-pack",
-					"-Wno-unreachable-code",
-					"-Wno-unused-command-line-argument",
-					"-Wno-unused-function",
-					"-Wno-unused-variable",
-					"-Wno-unused-value",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Debug;
 		};
 		CE935FFE25AC43B300CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-windows";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = windows;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"x86_64-pc-windows-msvc",
-					"-I../msvc/include",
-					"-I../msvc/shared",
-					"-I../msvc/um",
-					"-I../msvc/ucrt",
-					"-fno-threadsafe-statics",
-					"-GS-",
-					"-Wno-comment",
-					"-Wno-expansion-to-defined",
-					"-Wno-ignored-attributes",
-					"-Wno-ignored-pragma-intrinsic",
-					"-Wno-macro-redefined",
-					"-Wno-microsoft-cast",
-					"-Wno-microsoft-enum-forward-reference",
-					"-Wno-nonportable-include-path",
-					"-Wno-pragma-pack",
-					"-Wno-unreachable-code",
-					"-Wno-unused-command-line-argument",
-					"-Wno-unused-function",
-					"-Wno-unused-variable",
-					"-Wno-unused-value",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Release;
 		};
@@ -618,14 +545,6 @@
 					"-ffunction-sections",
 					"$(inherited)",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"$(OTHER_CFLAGS)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-dead_strip",
-					"$(inherited)",
-				);
 				PRODUCT_NAME = xxGraphicPlus;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -699,14 +618,6 @@
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"$(OTHER_CFLAGS)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-dead_strip",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = xxGraphicPlus;

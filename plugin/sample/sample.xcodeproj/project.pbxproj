@@ -13,11 +13,23 @@
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
 		CE93601F25AC457A00CEF503 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		CEC0680025CBEEC3003A5768 /* libimgui.windows in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FF25CBEEC3003A5768 /* libimgui.windows */; };
+		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
+		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
+		CE999D9525D275A900351116 /* sample.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* sample.dll */; };
 		CEC0680225CBEECA003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680125CBEECA003A5768 /* libimgui.android */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CE999D9425D2759500351116 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = plugin;
+			dstSubfolderSpec = 16;
+			files = (
+				CE999D9525D275A900351116 /* sample.dll in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3323258B5D00B9BFB8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -34,7 +46,12 @@
 		30A9A7BB25ADC792000FA104 /* libsample.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE93601825AC454200CEF503 /* libsample.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.windows; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE93601825AC454200CEF503 /* sample.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sample.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
+		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0676F25CBDD9F003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC067FF25CBEEC3003A5768 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC0680025CBEEC3003A5768 /* libimgui.windows in Frameworks */,
+				CE999D5525D266E300351116 /* imgui.dll in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +99,8 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE999D5425D266E300351116 /* imgui.dll */,
+				CE999D3A25D2652F00351116 /* imgui.dll */,
 				CEC0680125CBEECA003A5768 /* libimgui.android */,
 				CEC067FF25CBEEC3003A5768 /* libimgui.windows */,
 				CEC0676F25CBDD9F003A5768 /* libimgui.bundle */,
@@ -92,10 +111,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE999BD625D21EC800351116 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				CE999D1025D2618800351116 /* llvm_wrapper.cpp */,
+				CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */,
+				CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
 				300264C4242690D0004559E0 /* sample.cpp */,
+				CE999BD625D21EC800351116 /* Configs */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -106,7 +136,7 @@
 			children = (
 				D644A041231ED82900B75B77 /* libsample.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
-				CE93601825AC454200CEF503 /* libsample.windows */,
+				CE93601825AC454200CEF503 /* sample.dll */,
 				30A9A7BB25ADC792000FA104 /* libsample.android */,
 			);
 			name = Products;
@@ -164,7 +194,7 @@
 				CE93601425AC454200CEF503 /* Headers */,
 				CE93601525AC454200CEF503 /* Sources */,
 				CE93601625AC454200CEF503 /* Frameworks */,
-				CEC0664725CBCB61003A5768 /* ShellScript */,
+				CE999D9425D2759500351116 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -172,7 +202,7 @@
 			);
 			name = "sample (Windows)";
 			productName = "sample (Windows)";
-			productReference = CE93601825AC454200CEF503 /* libsample.windows */;
+			productReference = CE93601825AC454200CEF503 /* sample.dll */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C3423258B5D00B9BFB8 /* sample (iOS) */ = {
@@ -270,25 +300,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
 		};
-		CEC0664725CBCB61003A5768 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				$BUILT_PRODUCTS_DIR/libsample.windows,
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$BUILT_PRODUCTS_DIR/plugin/sample.$CONFIGURATION.x64.dll,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\nclang++ \\\n    -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 \\\n    -I$PROJECT_DIR/../../msvc/include \\\n    -I$PROJECT_DIR/../../msvc/shared \\\n    -I$PROJECT_DIR/../../msvc/um \\\n    -I$PROJECT_DIR/../../msvc/ucrt \\\n    -D_HAS_EXCEPTIONS=1 \\\n    -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS \\\n    -target x86_64-pc-windows-msvc \\\n    -fno-exceptions \\\n    -fno-rtti \\\n    -Wno-expansion-to-defined \\\n    -Wno-ignored-pragma-intrinsic \\\n    -Wno-pragma-pack \\\n    -Wno-microsoft-anon-tag \\\n    -c $PROJECT_DIR/../../msvc/llvm_wrapper.cpp \\\n    -o llvm_wrapper.obj\n\nmkdir $BUILT_PRODUCTS_DIR/plugin\n\n/usr/local/opt/llvm/bin/lld-link \\\n    /libpath:$PROJECT_DIR/../../msvc/lib \\\n    /libpath:$PROJECT_DIR/../../msvc/lib/ucrt \\\n    /libpath:$PROJECT_DIR/../../msvc/lib/um \\\n    /libpath:$BUILT_PRODUCTS_DIR \\\n    /out:$BUILT_PRODUCTS_DIR/plugin/$PROJECT_NAME.$CONFIGURATION.x64.dll \\\n    /pdb:$BUILT_PRODUCTS_DIR/plugin/$PROJECT_NAME.$CONFIGURATION.x64.pdb \\\n    /opt:ref,icf \\\n    /debug \\\n    /dll \\\n    /nodefaultlib \\\n    chkstk.obj \\\n    llvm_wrapper.obj \\\n    ucrtbase.lib \\\n    imgui.lib \\\n    $OBJECTS\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -305,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE93601F25AC457A00CEF503 /* sample.cpp in Sources */,
+				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +341,7 @@
 /* Begin XCBuildConfiguration section */
 		30A9A7BC25ADC792000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
@@ -355,6 +368,7 @@
 		};
 		30A9A7BD25ADC792000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				EFFECTIVE_PLATFORM_NAME = "-android";
@@ -381,91 +395,19 @@
 		};
 		CE93601925AC454200CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-windows";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = windows;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"x86_64-pc-windows-msvc",
-					"-I../../msvc/include",
-					"-I../../msvc/shared",
-					"-I../../msvc/um",
-					"-I../../msvc/ucrt",
-					"-fno-threadsafe-statics",
-					"-GS-",
-					"-Wno-comment",
-					"-Wno-expansion-to-defined",
-					"-Wno-ignored-attributes",
-					"-Wno-ignored-pragma-intrinsic",
-					"-Wno-macro-redefined",
-					"-Wno-microsoft-cast",
-					"-Wno-microsoft-enum-forward-reference",
-					"-Wno-nonportable-include-path",
-					"-Wno-pragma-pack",
-					"-Wno-unreachable-code",
-					"-Wno-unused-command-line-argument",
-					"-Wno-unused-function",
-					"-Wno-unused-variable",
-					"-Wno-unused-value",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Debug;
 		};
 		CE93601A25AC454200CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-windows";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = windows;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"x86_64-pc-windows-msvc",
-					"-I../../msvc/include",
-					"-I../../msvc/shared",
-					"-I../../msvc/um",
-					"-I../../msvc/ucrt",
-					"-fno-threadsafe-statics",
-					"-GS-",
-					"-Wno-comment",
-					"-Wno-expansion-to-defined",
-					"-Wno-ignored-attributes",
-					"-Wno-ignored-pragma-intrinsic",
-					"-Wno-macro-redefined",
-					"-Wno-microsoft-cast",
-					"-Wno-microsoft-enum-forward-reference",
-					"-Wno-nonportable-include-path",
-					"-Wno-pragma-pack",
-					"-Wno-unreachable-code",
-					"-Wno-unused-command-line-argument",
-					"-Wno-unused-function",
-					"-Wno-unused-variable",
-					"-Wno-unused-value",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Release;
 		};
@@ -558,14 +500,6 @@
 					"-ffunction-sections",
 					"$(inherited)",
 				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"$(OTHER_CFLAGS)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-dead_strip",
-					"$(inherited)",
-				);
 				PRODUCT_NAME = sample;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -640,14 +574,6 @@
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS",
-					"$(OTHER_CFLAGS)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-dead_strip",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = sample;

@@ -23,12 +23,14 @@ void Plugin::Create(const char* path, uint64_t device)
     const char* arch = "";
     const char* extension = "";
 #if defined(xxWINDOWS)
-#if defined(_DEBUG)
+#if defined(__llvm__)
+#elif defined(_DEBUG)
     configuration = "Debug";
 #elif defined(NDEBUG)
     configuration = "Release";
 #endif
-#if defined(_M_AMD64)
+#if defined(__llvm__)
+#elif defined(_M_AMD64)
     arch = ".x64";
 #elif defined(_M_IX86)
     arch = ".x86";
