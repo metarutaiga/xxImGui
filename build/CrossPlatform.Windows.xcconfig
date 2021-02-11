@@ -1,17 +1,31 @@
-DEBUG_INFORMATION_FORMAT = dwarf
+ARCHS = armv7 arm64 i686 x86_64
+EXCLUDED_ARCHS = armv7 arm64 i686
+VALID_ARCHS = armv7 arm64 i686 x86_64
+DEBUG_INFORMATION_FORMAT =
 EFFECTIVE_PLATFORM_NAME = -windows
-EXCLUDED_ARCHS = arm64
 EXECUTABLE_EXTENSION = dll
 EXECUTABLE_PREFIX =
-HEADER_SEARCH_PATHS1 = ../msvc/include ../msvc/shared ../msvc/um ../msvc/ucrt
-HEADER_SEARCH_PATHS2 = ../../msvc/include ../../msvc/shared ../../msvc/um ../../msvc/ucrt
-HEADER_SEARCH_PATHS3 = ../xxImGui/msvc/include ../xxImGui/msvc/shared ../xxImGui/msvc/um ../xxImGui/msvc/ucrt
-HEADER_SEARCH_PATHS = $(HEADER_SEARCH_PATHS1) $(HEADER_SEARCH_PATHS2) $(HEADER_SEARCH_PATHS3) $(inherited)
-LIBRARY_SEARCH_PATH1 = -Wl,-libpath:$PROJECT_DIR/../msvc/lib -Wl,-libpath:$PROJECT_DIR/../msvc/lib/ucrt -Wl,-libpath:$PROJECT_DIR/../msvc/lib/um
-LIBRARY_SEARCH_PATH2 = -Wl,-libpath:$PROJECT_DIR/../../msvc/lib -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/ucrt -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/um
-LIBRARY_SEARCH_PATH3 = -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/ucrt -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/um
-LIBRARY_SEARCH_PATH = $(LIBRARY_SEARCH_PATH1) $(LIBRARY_SEARCH_PATH2) $(LIBRARY_SEARCH_PATH3) $(inherited)
-LINK_LIBRARY_NAME = -Wl,chkstk.obj -Wl,ucrtbase.lib -Wl,oldnames.lib -Wl,kernel32.lib -Wl,user32.lib -Wl,winmm.lib -Wl,imm32.lib -Wl,gdi32.lib
+HEADER_SEARCH_PATHS_1 = ../msvc/include ../msvc/shared ../msvc/um ../msvc/ucrt
+HEADER_SEARCH_PATHS_2 = ../../msvc/include ../../msvc/shared ../../msvc/um ../../msvc/ucrt
+HEADER_SEARCH_PATHS_3 = ../xxImGui/msvc/include ../xxImGui/msvc/shared ../xxImGui/msvc/um ../xxImGui/msvc/ucrt
+HEADER_SEARCH_PATHS = $(HEADER_SEARCH_PATHS_1) $(HEADER_SEARCH_PATHS_2) $(HEADER_SEARCH_PATHS_3) $(inherited)
+LIBRARY_SEARCH_PATH_ARM_1 = -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm/ucrt -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm/um
+LIBRARY_SEARCH_PATH_ARM_2 = -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm/ucrt -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm/um
+LIBRARY_SEARCH_PATH_ARM_3 = -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm/ucrt -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm/um
+LIBRARY_SEARCH_PATH_ARM64_1 = -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm64 -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm64/ucrt -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm64/um
+LIBRARY_SEARCH_PATH_ARM64_2 = -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm64 -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm64/ucrt -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm64/um
+LIBRARY_SEARCH_PATH_ARM64_3 = -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm64 -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm64/ucrt -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm64/um
+LIBRARY_SEARCH_PATH_X86_1 = -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x86 -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x86/ucrt -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x86/um
+LIBRARY_SEARCH_PATH_X86_2 = -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x86 -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x86/ucrt -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x86/um
+LIBRARY_SEARCH_PATH_X86_3 = -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x86 -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x86/ucrt -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x86/um
+LIBRARY_SEARCH_PATH_X64_1 = -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x64 -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x64/ucrt -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x64/um
+LIBRARY_SEARCH_PATH_X64_2 = -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x64 -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x64/ucrt -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x64/um
+LIBRARY_SEARCH_PATH_X64_3 = -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64 -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64/ucrt -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64/um
+LIBRARY_SEARCH_PATH[arch=armv7] = $(LIBRARY_SEARCH_PATH_ARM_1) $(LIBRARY_SEARCH_PATH_ARM_2) $(LIBRARY_SEARCH_PATH_ARM_3) $(inherited)
+LIBRARY_SEARCH_PATH[arch=arm64] = $(LIBRARY_SEARCH_PATH_ARM64_1) $(LIBRARY_SEARCH_PATH_ARM64_2) $(LIBRARY_SEARCH_PATH_ARM64_3) $(inherited)
+LIBRARY_SEARCH_PATH[arch=i686] = $(LIBRARY_SEARCH_PATH_X86_1) $(LIBRARY_SEARCH_PATH_X86_2) $(LIBRARY_SEARCH_PATH_X86_3) $(inherited)
+LIBRARY_SEARCH_PATH[arch=x86_64] = $(LIBRARY_SEARCH_PATH_X64_1) $(LIBRARY_SEARCH_PATH_X64_2) $(LIBRARY_SEARCH_PATH_X64_3) $(inherited)
+LINK_LIBRARY_NAME = -Wl,chkstk.obj -Wl,ucrtbase.lib -Wl,oldnames.lib -Wl,kernel32.lib -Wl,user32.lib -Wl,winmm.lib -Wl,imm32.lib -Wl,gdi32.lib 
 LD = /usr/local/opt/llvm/bin/clang
 LDPLUSPLUS = /usr/local/opt/llvm/bin/clang++
 LD_DEPENDENCY_INFO_FILE =
@@ -19,7 +33,17 @@ LD_LTO_OBJECT_FILE =
 LIBTOOL = /usr/local/opt/llvm/bin/llvm-lib-wrapper
 LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = lld-link-wrapper
-OTHER_CFLAGS = -target x86_64-pc-windows-msvc -fno-threadsafe-statics -GS- $(inherited)
+OTHER_CFLAGS[arch=armv7] = -target thumbv7a-pc-windows-msvc -fno-threadsafe-statics -GS- $(inherited)
+OTHER_CFLAGS[arch=arm64] = -target aarch64-pc-windows-msvc -fno-threadsafe-statics -GS- $(inherited)
+OTHER_CFLAGS[arch=i686] = -v -target i686-pc-windows-msvc -fno-threadsafe-statics -GS- $(inherited)
+OTHER_CFLAGS[arch=x86_64] = -target x86_64-pc-windows-msvc -fno-threadsafe-statics -GS- $(inherited)
 OTHER_CPLUSPLUSFLAGS = -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS $(inherited)
-OTHER_LDFLAGS = -target x86_64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_LIBRARY_NAME) $(inherited)
+OTHER_LDFLAGS[arch=armv7] = -target thumbv7a-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_LIBRARY_NAME) $(inherited)
+OTHER_LDFLAGS[arch=arm64] = -target aarch64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_LIBRARY_NAME) $(inherited)
+OTHER_LDFLAGS[arch=i686] = -target i686-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_LIBRARY_NAME) -Wl,int64.lib $(inherited)
+OTHER_LDFLAGS[arch=x86_64] = -target x86_64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_LIBRARY_NAME) $(inherited)
 WARNING_CFLAGS = -Wno-comment -Wno-expansion-to-defined -Wno-ignored-attributes -Wno-ignored-pragma-intrinsic -Wno-macro-redefined -Wno-microsoft-cast -Wno-microsoft-enum-forward-reference -Wno-nonportable-include-path -Wno-pragma-pack -Wno-unreachable-code -Wno-unused-command-line-argument -Wno-unused-function -Wno-unused-variable -Wno-unused-value $(inherited)
+
+//CC = /usr/local/opt/llvm/bin/clang
+//CXX = /usr/local/opt/llvm/bin/clang++
+//OTHER_CPLUSPLUSFLAGS = -I/usr/local/opt/llvm/include/c++/v1 -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS $(inherited)
