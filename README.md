@@ -34,7 +34,7 @@ A simulate Next-Generation Graphic API for ImGui
 | Vulkan          | ⭕       | ⭕   | ⭕     | ⭕       |                |
 
 ### Build and Run xxImGui for Windows on macOS
-1. Install wine and llvm
+1. Install wine and llvm (llvm-12 or above for ARM 32bit)
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew tap gcenx/wine
