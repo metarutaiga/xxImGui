@@ -39,7 +39,7 @@ OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -fno-threads
 OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules
 OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS
 //OTHER_CPLUSPLUSFLAGS = $(inherited) -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1
-OTHER_LDFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME)
+OTHER_LDFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME) -Wl,divide.obj,fptoi64.obj,helpexcept.obj,i64tofp.obj
 OTHER_LDFLAGS[arch=arm64] = $(inherited) -target aarch64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME)
 OTHER_LDFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME) -Wl,atlssup.obj,int64.lib
 OTHER_LDFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME)
