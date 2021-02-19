@@ -20,15 +20,9 @@
 		CE9C2A2A25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		CE9C2A2C25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
-		D644A076231ED90400B75B77 /* imgui_internal.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A06C231ED90300B75B77 /* imgui_internal.h */; };
 		D644A077231ED90400B75B77 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		D644A078231ED90400B75B77 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
 		D644A079231ED90400B75B77 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
-		D644A07A231ED90400B75B77 /* imconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A070231ED90300B75B77 /* imconfig.h */; };
-		D644A07B231ED90400B75B77 /* imstb_rectpack.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A071231ED90300B75B77 /* imstb_rectpack.h */; };
-		D644A07C231ED90400B75B77 /* imgui.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A072231ED90300B75B77 /* imgui.h */; };
-		D644A07D231ED90400B75B77 /* imstb_textedit.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A073231ED90300B75B77 /* imstb_textedit.h */; };
-		D644A07E231ED90400B75B77 /* imstb_truetype.h in Headers */ = {isa = PBXBuildFile; fileRef = D644A074231ED90400B75B77 /* imstb_truetype.h */; };
 		D644A07F231ED90400B75B77 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A075231ED90400B75B77 /* imgui.cpp */; };
 		D6DA664723258F3000953C5B /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
 		D6DA664823258F3000953C5B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
@@ -143,42 +137,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		30A9A74625ADC5C3000FA104 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE935F4F25AC2F4800CEF503 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D644A03D231ED82900B75B77 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D644A07C231ED90400B75B77 /* imgui.h in Headers */,
-				D644A07A231ED90400B75B77 /* imconfig.h in Headers */,
-				D644A07E231ED90400B75B77 /* imstb_truetype.h in Headers */,
-				D644A07D231ED90400B75B77 /* imstb_textedit.h in Headers */,
-				D644A07B231ED90400B75B77 /* imstb_rectpack.h in Headers */,
-				D644A076231ED90400B75B77 /* imgui_internal.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		30A9A74925ADC5C3000FA104 /* imgui (Android) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30A9A74D25ADC5C3000FA104 /* Build configuration list for PBXNativeTarget "imgui (Android)" */;
 			buildPhases = (
-				30A9A74625ADC5C3000FA104 /* Headers */,
 				30A9A74725ADC5C3000FA104 /* Sources */,
 				30A9A74825ADC5C3000FA104 /* Frameworks */,
 				CEB7C2E925C9006F002E92D3 /* Run Script */,
@@ -196,7 +159,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE935F5625AC2F4800CEF503 /* Build configuration list for PBXNativeTarget "imgui (Windows)" */;
 			buildPhases = (
-				CE935F4F25AC2F4800CEF503 /* Headers */,
 				CE935F5025AC2F4800CEF503 /* Sources */,
 				CE935F5125AC2F4800CEF503 /* Frameworks */,
 			);
@@ -230,7 +192,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "imgui (macOS)" */;
 			buildPhases = (
-				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
 			);
