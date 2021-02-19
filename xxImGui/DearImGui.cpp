@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Dear ImGui Source
 //
-// Copyright (c) 2019-2020 TAiGA
+// Copyright (c) 2019-2021 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #define _CRT_SECURE_NO_WARNINGS
@@ -221,7 +221,7 @@ void DearImGui::NewFrame(void* view)
         if (ImGui::Begin("About xxGraphic", &showAbout))
         {
             ImGui::Text("%s", "xxGraphic");
-            ImGui::Text("%s", "Copyright (c) 2019-2020 TAiGA");
+            ImGui::Text("%s", "Copyright (c) 2019-2021 TAiGA");
             ImGui::Separator();
             ImGui::Text("Build Date : %s %s", __DATE__, __TIME__);
 #if defined(__clang_version__)

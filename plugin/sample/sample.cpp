@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Plugin Sample Source
 //
-// Copyright (c) 2019-2020 TAiGA
+// Copyright (c) 2019-2021 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #define _CRT_SECURE_NO_WARNINGS
