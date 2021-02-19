@@ -388,29 +388,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		CEAF9CAE25AE752B008B7C57 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEC4336F25AD244E00936983 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		CEAF9CB125AE752B008B7C57 /* xxImGui (Android) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEAF9CB525AE752C008B7C57 /* Build configuration list for PBXNativeTarget "xxImGui (Android)" */;
 			buildPhases = (
-				CEAF9CAE25AE752B008B7C57 /* Headers */,
 				CEAF9CAF25AE752B008B7C57 /* Sources */,
 				CEAF9CB025AE752B008B7C57 /* Frameworks */,
 				CEB7C2FE25C900CF002E92D3 /* ShellScript */,
@@ -428,7 +410,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEC4337625AD244E00936983 /* Build configuration list for PBXNativeTarget "xxImGui (Windows)" */;
 			buildPhases = (
-				CEC4336F25AD244E00936983 /* Headers */,
 				CEC4337025AD244E00936983 /* Sources */,
 				CEC4337125AD244E00936983 /* Frameworks */,
 			);
