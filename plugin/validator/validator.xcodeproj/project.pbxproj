@@ -190,36 +190,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		30A9A7C825ADC7D3000FA104 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE93602F25AC470300CEF503 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D644A03D231ED82900B75B77 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		30A9A7CB25ADC7D3000FA104 /* validator (Android) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30A9A7D625ADC7D3000FA104 /* Build configuration list for PBXNativeTarget "validator (Android)" */;
 			buildPhases = (
-				30A9A7C825ADC7D3000FA104 /* Headers */,
 				30A9A7C925ADC7D3000FA104 /* Sources */,
 				30A9A7CA25ADC7D3000FA104 /* Frameworks */,
 				CEB7C32225C9017F002E92D3 /* ShellScript */,
@@ -237,7 +212,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE93603D25AC470300CEF503 /* Build configuration list for PBXNativeTarget "validator (Windows)" */;
 			buildPhases = (
-				CE93602F25AC470300CEF503 /* Headers */,
 				CE93603025AC470300CEF503 /* Sources */,
 				CE93603125AC470300CEF503 /* Frameworks */,
 				CE999D9A25D275BA00351116 /* CopyFiles */,
@@ -272,7 +246,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "validator (macOS)" */;
 			buildPhases = (
-				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
 			);

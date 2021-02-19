@@ -16,17 +16,12 @@
 		30F22EE324DDA2EA00C0F4EC /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
 		30F22EE424DDA2EA00C0F4EC /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
 		30F22EE524DDA2EA00C0F4EC /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
-		30F22EE624DDA2EA00C0F4EC /* xxMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F22EDA24DDA2EA00C0F4EC /* xxMath.h */; };
-		30F22EE724DDA2EA00C0F4EC /* xxMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F22EDB24DDA2EA00C0F4EC /* xxMesh.h */; };
-		30F22EE824DDA2EA00C0F4EC /* xxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F22EDC24DDA2EA00C0F4EC /* xxNode.h */; };
-		30F22EE924DDA2EA00C0F4EC /* xxImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F22EDD24DDA2EA00C0F4EC /* xxImage.h */; };
 		30F22EEA24DDA2EA00C0F4EC /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
 		30F22EEB24DDA2EA00C0F4EC /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
 		30F22EEC24DDA2EA00C0F4EC /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		30F22EED24DDA2EA00C0F4EC /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		30F22EEE24DDA2EA00C0F4EC /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EE024DDA2EA00C0F4EC /* xxMaterial.cpp */; };
 		30F22EEF24DDA2EA00C0F4EC /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EE024DDA2EA00C0F4EC /* xxMaterial.cpp */; };
-		30F22EF024DDA2EA00C0F4EC /* xxMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F22EE124DDA2EA00C0F4EC /* xxMaterial.h */; };
 		30F22EF624DDA33500C0F4EC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF524DDA33500C0F4EC /* libxxGraphic.dylib */; };
 		30F22EF824DDA33B00C0F4EC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF724DDA33B00C0F4EC /* libxxGraphic.bundle */; };
 		CE93600925AC440100CEF503 /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
@@ -172,41 +167,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		30A9A77D25ADC6D9000FA104 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE935FF125AC43B300CEF503 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D644A08E231EDDFA00B75B77 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30F22EF024DDA2EA00C0F4EC /* xxMaterial.h in Headers */,
-				30F22EE624DDA2EA00C0F4EC /* xxMath.h in Headers */,
-				30F22EE724DDA2EA00C0F4EC /* xxMesh.h in Headers */,
-				30F22EE924DDA2EA00C0F4EC /* xxImage.h in Headers */,
-				30F22EE824DDA2EA00C0F4EC /* xxNode.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		30A9A78025ADC6D9000FA104 /* xxGraphicPlus (Android) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30A9A78B25ADC6D9000FA104 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (Android)" */;
 			buildPhases = (
-				30A9A77D25ADC6D9000FA104 /* Headers */,
 				30A9A77E25ADC6D9000FA104 /* Sources */,
 				30A9A77F25ADC6D9000FA104 /* Frameworks */,
 				CEB7C2F525C900A7002E92D3 /* ShellScript */,
@@ -224,7 +189,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE935FFF25AC43B300CEF503 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (Windows)" */;
 			buildPhases = (
-				CE935FF125AC43B300CEF503 /* Headers */,
 				CE935FF225AC43B300CEF503 /* Sources */,
 				CE935FF325AC43B300CEF503 /* Frameworks */,
 			);
@@ -258,7 +222,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D644A09D231EDDFA00B75B77 /* Build configuration list for PBXNativeTarget "xxGraphicPlus (macOS)" */;
 			buildPhases = (
-				D644A08E231EDDFA00B75B77 /* Headers */,
 				D644A08F231EDDFA00B75B77 /* Sources */,
 				D644A090231EDDFA00B75B77 /* Frameworks */,
 			);
