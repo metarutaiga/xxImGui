@@ -32,9 +32,6 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
     ::RegisterClassEx(&wc);
     HWND hWnd = ::CreateWindow(wc.lpszClassName, _T("Dear ImGui XX Example"), WS_OVERLAPPEDWINDOW, 100, 100, (int)(1280 * scale), (int)(720 * scale), NULL, NULL, wc.hInstance, NULL);
 
-    // Use dark mode
-    ShouldUseDarkMode(hWnd);
-
     Renderer::Create(hWnd, (int)(1280 * scale), (int)(720 * scale));
     DearImGui::Create(hWnd, scale, scale);
     Plugin::Create("plugin", Renderer::g_device);
@@ -129,6 +126,9 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
     switch (msg)
     {
+    case WM_CREATE:
+        ShouldUseDarkMode(hWnd);
+        break;
     case WM_SIZE:
         if (wParam != SIZE_MINIMIZED)
         {
