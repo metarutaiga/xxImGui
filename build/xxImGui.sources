@@ -1,4 +1,6 @@
 ﻿/DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
+/Zc:__cplusplus
+/Zc:threadSafeInit-
 /I..\..\..
 /I..\..\..\freetype\include
 /I..\..\..\imgui

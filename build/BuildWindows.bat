@@ -49,8 +49,8 @@ if "%3" == "x64"    (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\*.x64.obj)
 if "%3" == "arm"    (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\arm\*.obj)
 if "%3" == "arm64"  (set LINKOPT=%LINKOPT% ..\..\..\xxMiniCRT\*.arm64.obj)
 if "%1" == "lib"    (lib  /nologo *.obj /OUT:..\..\..\lib\%2.Release.%3.lib)
-if "%1" == "dll"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.dll %LINKOPT% /dll)
-if "%1" == "exe"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.exe %LINKOPT% /LIBPATH:..\..\..\lib )
+if "%1" == "dll"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.dll %LINKOPT% /dll /noentry)
+if "%1" == "exe"    (link /nologo *.obj /OUT:..\..\..\bin\%2.Release.%3.exe %LINKOPT% /LIBPATH:..\..\..\lib)
 if "%1" == "plugin" (link /nologo *.obj /OUT:..\..\..\bin\plugin\%2.Release.%3.dll ..\..\..\bin\plugin\*.Release.%3.lib %LINKOPT% /dll)
 set LINKOPT=
 cd ..

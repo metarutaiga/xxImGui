@@ -4,6 +4,8 @@
 /D__STDC__
 /D_INC_SETJMPEX
 /DNDEBUG
+/Zc:__cplusplus
+/Zc:threadSafeInit-
 /I..\..\..\freetype\include
 ..\..\..\freetype\src\autofit\autofit.c
 ..\..\..\freetype\src\base\ftbase.c

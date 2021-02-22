@@ -1,5 +1,7 @@
 ﻿/DPLUGIN_BUILD_LIBRARY
 /DIMGUI_USER_CONFIG=\"../../xxImGui/implement/imgui_user_config.h\"
+/Zc:__cplusplus
+/Zc:threadSafeInit-
 /I..\..\..
 /I..\..\..\imgui
 /I..\..\..\plugin
