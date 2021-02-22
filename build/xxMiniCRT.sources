@@ -1,3 +1,5 @@
 /DNDEBUG
 /Zl
+/Zc:__cplusplus
+/Zc:threadSafeInit-
 ..\..\..\xxMiniCRT\xxMSVCRT.cpp
