@@ -420,6 +420,10 @@
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
+					"$(inherited)",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -427,6 +431,10 @@
 		D6022C3D23258B5D00B9BFB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
+					"$(inherited)",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
