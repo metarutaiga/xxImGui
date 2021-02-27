@@ -73,6 +73,8 @@
 		D6A86A7D25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A7A25EA335400074B9C /* xxGraphicInternalVulkan.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
 		D6A86A7E25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A7A25EA335400074B9C /* xxGraphicInternalVulkan.cpp */; };
 		D6A86A7F25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A7A25EA335400074B9C /* xxGraphicInternalVulkan.cpp */; };
+		D6A86A9A25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A9925EA790000074B9C /* xxGraphicInternalMetal.mm */; };
+		D6A86A9B25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A9925EA790000074B9C /* xxGraphicInternalMetal.mm */; };
 		D6B338562320209A0096D02F /* xxGraphicCGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6B33854232020990096D02F /* xxGraphicCGL.mm */; };
 		D6B3385D232044100096D02F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B3385C232044100096D02F /* Cocoa.framework */; };
 		D6B70EC823283AEC000FFCBB /* xxGraphicEAGL.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6D0AA6323283A3D0044D0CF /* xxGraphicEAGL.mm */; };
@@ -232,6 +234,7 @@
 		D6A86A7A25EA335400074B9C /* xxGraphicInternalVulkan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicInternalVulkan.cpp; path = ../xxGraphic/internal/xxGraphicInternalVulkan.cpp; sourceTree = "<group>"; };
 		D6A86A7B25EA335400074B9C /* xxGraphicInternalVulkan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicInternalVulkan.h; path = ../xxGraphic/internal/xxGraphicInternalVulkan.h; sourceTree = "<group>"; };
 		D6A86A9425EA33C700074B9C /* xxGraphicInternalD3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicInternalD3D.h; path = ../xxGraphic/internal/xxGraphicInternalD3D.h; sourceTree = "<group>"; };
+		D6A86A9925EA790000074B9C /* xxGraphicInternalMetal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicInternalMetal.mm; path = ../xxGraphic/internal/xxGraphicInternalMetal.mm; sourceTree = "<group>"; };
 		D6B33854232020990096D02F /* xxGraphicCGL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicCGL.mm; path = ../xxGraphic/xxGraphicCGL.mm; sourceTree = "<group>"; };
 		D6B33855232020990096D02F /* xxGraphicCGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicCGL.h; path = ../xxGraphic/xxGraphicCGL.h; sourceTree = "<group>"; };
 		D6B3385C232044100096D02F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -505,6 +508,7 @@
 		D6A86A5F25EA32D400074B9C /* internal */ = {
 			isa = PBXGroup;
 			children = (
+				D6A86A9925EA790000074B9C /* xxGraphicInternalMetal.mm */,
 				D6A86A6125EA32F100074B9C /* xxGraphicInternalMetal.h */,
 			);
 			name = internal;
@@ -780,6 +784,7 @@
 				D6DA664F23258F7A00953C5B /* xxGraphicNULL.cpp in Sources */,
 				D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
+				D6A86A9B25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */,
 				D6DA665023258F8E00953C5B /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -801,6 +806,7 @@
 				D644A0B0231EDE9B00B75B77 /* xxGraphicNULL.cpp in Sources */,
 				D690A368232AC54600A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
+				D6A86A9A25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */,
 				D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
