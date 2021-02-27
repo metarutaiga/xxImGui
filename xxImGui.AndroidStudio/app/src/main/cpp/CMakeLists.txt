@@ -157,9 +157,10 @@ target_include_directories( imgui
 
 add_library( xxGraphic
              SHARED
+             ../../../../../xxGraphic/internal/xxGraphicInternalGL.cpp
+             ../../../../../xxGraphic/internal/xxGraphicInternalVulkan.cpp
              ../../../../../xxGraphic/xxGraphic.cpp
              ../../../../../xxGraphic/xxGraphicEGL.cpp
-             ../../../../../xxGraphic/xxGraphicGL.cpp
              ../../../../../xxGraphic/xxGraphicGLES2.cpp
              ../../../../../xxGraphic/xxGraphicGLES3.cpp
              ../../../../../xxGraphic/xxGraphicGLES31.cpp

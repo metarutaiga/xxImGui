@@ -35,6 +35,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D10.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D10_1.cpp" />
@@ -51,7 +54,6 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D9PS.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3DAsm.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicGL.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES3.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES31.cpp" />
@@ -89,6 +91,9 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_icd.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_layer.h" />
     <ClInclude Include="..\xxGraphic\vulkan\vk_platform.h" />
@@ -126,7 +131,6 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3DAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicEGL.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h" />
