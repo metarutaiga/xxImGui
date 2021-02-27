@@ -92,17 +92,18 @@ static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t comman
             (L+R)/(L-R), (T+B)/(B-T), 0.5f, 1.0f
         };
 
-        xxSetTransform(commandEncoder, identity, identity, projection);
-        void* mapConstantBuffer = xxMapBuffer(g_device, constantBuffer);
+        char* mapConstantBuffer = (char*)xxMapBuffer(g_device, constantBuffer);
         if (mapConstantBuffer)
         {
-            memcpy(mapConstantBuffer, projection, sizeof(projection));
+            memcpy(mapConstantBuffer + sizeof(identity) * 0, identity, sizeof(identity));
+            memcpy(mapConstantBuffer + sizeof(identity) * 1, identity, sizeof(identity));
+            memcpy(mapConstantBuffer + sizeof(identity) * 2, projection, sizeof(projection));
             xxUnmapBuffer(g_device, constantBuffer);
         }
     }
 
     xxSetPipeline(commandEncoder, g_pipeline);
-    xxSetVertexConstantBuffer(commandEncoder, constantBuffer, 16 * sizeof(float));
+    xxSetVertexConstantBuffer(commandEncoder, constantBuffer, 16 * 3 * sizeof(float));
 }
 
 // Render function.
@@ -151,7 +152,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     }
     if (constantBuffer == 0)
     {
-        constantBuffer = xxCreateConstantBuffer(g_device, 16 * sizeof(float));
+        constantBuffer = xxCreateConstantBuffer(g_device, 16 * 3 * sizeof(float));
     }
 
     // Copy and convert all vertices into a swapped buffer.
