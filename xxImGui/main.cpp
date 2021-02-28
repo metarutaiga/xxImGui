@@ -173,7 +173,7 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
             DWORD buildNumber = 0;
             RtlGetNtVersionNumbers(&major, &minor, &buildNumber);
             buildNumber &= ~0xF0000000;
-            if (major >= 10 && buildNumber >= 17763 && buildNumber <= 19042)
+            if (major >= 10 && buildNumber >= 17763)
             {
                 BOOL(WINAPI * ShouldAppsUseDarkMode)();
                 (void*&)ShouldAppsUseDarkMode = ::GetProcAddress(uxtheme, MAKEINTRESOURCEA(132));
