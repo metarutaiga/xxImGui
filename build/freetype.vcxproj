@@ -75,11 +75,6 @@
     <ClCompile Include="..\freetype\src\type42\type42.c" />
     <ClCompile Include="..\freetype\src\winfonts\winfnt.c" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="xxMiniCRT.vcxproj">
-      <Project>{1e136574-0e51-4a54-bb25-0c0ec04a2ac3}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{D98A83DF-490D-46D9-809C-55C80BA9275F}</ProjectGuid>

@@ -52,9 +52,6 @@
     <ProjectReference Include="xxGraphic.vcxproj">
       <Project>{81c889fc-6908-4066-8c73-3215df6fffc9}</Project>
     </ProjectReference>
-    <ProjectReference Include="xxMiniCRT.vcxproj">
-      <Project>{1e136574-0e51-4a54-bb25-0c0ec04a2ac3}</Project>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
