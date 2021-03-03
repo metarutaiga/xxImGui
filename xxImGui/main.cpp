@@ -5,17 +5,11 @@
 #include "Plugin.h"
 #include "DearImGui.h"
 #include "implement/imgui_impl_win32.h"
-#include "xxMiniCRT/xxMSVCRT.h"
 
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <tchar.h>
-
-#define USE_MINICRT 1
-#if USE_MINICRT
-IMPLEMENT_MINICRT();
-#endif
 
 // Forward declarations of helper functions
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);

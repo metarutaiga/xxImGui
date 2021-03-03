@@ -41,9 +41,6 @@
     <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicGL.cpp">
-      <Filter>OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="..\xxGraphic\xxGraphicWGL.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
@@ -81,6 +78,9 @@
       <Filter>OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -145,9 +145,6 @@
       <Filter>Direct3D</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h">
-      <Filter>OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicGL.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h">
@@ -299,6 +296,9 @@
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">
