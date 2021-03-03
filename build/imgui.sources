@@ -1,8 +1,6 @@
 ﻿/DIMGUI_API=__declspec(dllexport)
 /DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
 /DNDEBUG
-/Zc:__cplusplus
-/Zc:threadSafeInit-
 /I..\..\..\stb
 ..\..\..\imgui\imgui.cpp
 ..\..\..\imgui\imgui_demo.cpp

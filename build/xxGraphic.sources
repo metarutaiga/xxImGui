@@ -1,7 +1,6 @@
 ﻿/DXX_BUILD_LIBRARY
 /DNDEBUG
-/Zc:__cplusplus
-/Zc:threadSafeInit-
+/I..\..\..\xxGraphic
 ..\..\..\xxGraphic\internal\xxGraphicInternalGL.cpp
 ..\..\..\xxGraphic\internal\xxGraphicInternalMantle.cpp
 ..\..\..\xxGraphic\internal\xxGraphicInternalVulkan.cpp
