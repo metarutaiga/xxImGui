@@ -1,7 +1,5 @@
 ﻿/DXXPLUS_BUILD_LIBRARY
 /DNDEBUG
-/Zc:__cplusplus
-/Zc:threadSafeInit-
 /I..\..\..\xxGraphic
 ..\..\..\xxGraphic\utility\xxImage.cpp
 ..\..\..\xxGraphic\utility\xxMaterial.cpp
