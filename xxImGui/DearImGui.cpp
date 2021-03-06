@@ -6,7 +6,7 @@
 //==============================================================================
 #define _CRT_SECURE_NO_WARNINGS
 #include <sys/stat.h>
-#include "implement/imgui_freetype.h"
+#include <imgui/misc/freetype/imgui_freetype.h>
 #include "implement/imgui_impl_osx.h"
 #include "implement/imgui_impl_win32.h"
 #include "implement/imgui_impl_xx.h"
