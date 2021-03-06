@@ -2,9 +2,8 @@
 /I..\..\..
 /I..\..\..\freetype\include
 /I..\..\..\imgui
-..\..\..\xxImGui\implement\imgui_impl_win32.cpp
+..\..\..\imgui\misc\freetype\imgui_freetype.cpp
 ..\..\..\xxImGui\implement\imgui_impl_xx.cpp
-..\..\..\xxImGui\implement\imgui_freetype.cpp
 ..\..\..\xxImGui\DearImGui.cpp
 ..\..\..\xxImGui\Renderer.cpp
 ..\..\..\xxImGui\main.cpp
