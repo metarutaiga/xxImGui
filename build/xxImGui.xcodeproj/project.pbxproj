@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3001404325F3282400B8B851 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3001404125F3282400B8B851 /* imgui_freetype.cpp */; };
+		3001404425F3282400B8B851 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3001404125F3282400B8B851 /* imgui_freetype.cpp */; };
+		3001404525F3282400B8B851 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3001404125F3282400B8B851 /* imgui_freetype.cpp */; };
+		3001404625F3282400B8B851 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3001404125F3282400B8B851 /* imgui_freetype.cpp */; };
 		300264C2242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		300264C3242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		30034545244ACD9300E90C44 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; };
@@ -43,7 +47,6 @@
 		CE999D2925D261FF00351116 /* freetype.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D2825D261FF00351116 /* freetype.dll */; };
 		CE999D2B25D261FF00351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D2A25D261FF00351116 /* imgui.dll */; };
 		CE999D2D25D261FF00351116 /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D2C25D261FF00351116 /* xxGraphic.dll */; };
-		CEAF9CB625AE756C008B7C57 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		CEAF9CB725AE756C008B7C57 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		CEAF9CB825AE756C008B7C57 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
 		CEAF9CB925AE756C008B7C57 /* mainJNI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039F986244743DB00E671A7 /* mainJNI.cpp */; };
@@ -65,7 +68,6 @@
 		CEC0680E25CBEF2C003A5768 /* libfreetype.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680D25CBEF2C003A5768 /* libfreetype.android */; };
 		CEC0681025CBEF2C003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680F25CBEF2C003A5768 /* libimgui.android */; };
 		CEC0681225CBEF2C003A5768 /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0681125CBEF2C003A5768 /* libxxGraphic.android */; };
-		CEC4337725AD24A400936983 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */; };
 		CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
@@ -75,12 +77,10 @@
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
-		D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		D690A3892333FE7B00A149EF /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
 		D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
-		D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A379233286EF00A149EF /* imgui_freetype.cpp */; };
 		D690A3962334291E00A149EF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D690A3932334291E00A149EF /* main.mm */; };
 		D690A3972334291E00A149EF /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D690A3932334291E00A149EF /* main.mm */; };
 /* End PBXBuildFile section */
@@ -120,6 +120,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3001404125F3282400B8B851 /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../imgui/misc/freetype/imgui_freetype.cpp; sourceTree = "<group>"; };
+		3001404225F3282400B8B851 /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../imgui/misc/freetype/imgui_freetype.h; sourceTree = "<group>"; };
 		300264C0242687B7004559E0 /* Plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Plugin.cpp; path = ../xxImGui/Plugin.cpp; sourceTree = "<group>"; };
 		300264C1242687B7004559E0 /* Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plugin.h; path = ../xxImGui/Plugin.h; sourceTree = "<group>"; };
 		30034544244ACD9300E90C44 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,8 +189,6 @@
 		D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_osx.mm; path = ../xxImGui/implement/imgui_impl_osx.mm; sourceTree = "<group>"; };
 		D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_xx.cpp; path = ../xxImGui/implement/imgui_impl_xx.cpp; sourceTree = "<group>"; };
 		D644A0E8231F109C00B75B77 /* imgui_impl_xx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_xx.h; path = ../xxImGui/implement/imgui_impl_xx.h; sourceTree = "<group>"; };
-		D690A379233286EF00A149EF /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../xxImGui/implement/imgui_freetype.cpp; sourceTree = "<group>"; };
-		D690A37A233286EF00A149EF /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../xxImGui/implement/imgui_freetype.h; sourceTree = "<group>"; };
 		D690A37B233286EF00A149EF /* imgui_user_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_user_config.h; path = ../xxImGui/implement/imgui_user_config.h; sourceTree = "<group>"; };
 		D690A3802333F7FA00A149EF /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		D690A3862333FE7B00A149EF /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Renderer.cpp; path = ../xxImGui/Renderer.cpp; sourceTree = "<group>"; };
@@ -255,6 +255,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3001404025F327DD00B8B851 /* misc */ = {
+			isa = PBXGroup;
+			children = (
+				3001404125F3282400B8B851 /* imgui_freetype.cpp */,
+				3001404225F3282400B8B851 /* imgui_freetype.h */,
+			);
+			name = misc;
+			sourceTree = "<group>";
+		};
 		CE999BD025D21E4B00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +281,7 @@
 				CE999BD025D21E4B00351116 /* Configs */,
 				D644A0DA231F107D00B75B77 /* implement */,
 				D690A3852333FDBC00A149EF /* main */,
+				3001404025F327DD00B8B851 /* misc */,
 				D6F3891B232978A000EE9716 /* project */,
 				D644A0C7231F021F00B75B77 /* Products */,
 				D644A0EB231F116C00B75B77 /* Frameworks */,
@@ -292,8 +302,6 @@
 		D644A0DA231F107D00B75B77 /* implement */ = {
 			isa = PBXGroup;
 			children = (
-				D690A379233286EF00A149EF /* imgui_freetype.cpp */,
-				D690A37A233286EF00A149EF /* imgui_freetype.h */,
 				D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */,
 				D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */,
 				CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */,
@@ -557,8 +565,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAF9CB625AE756C008B7C57 /* imgui_freetype.cpp in Sources */,
 				CEAF9CB725AE756C008B7C57 /* imgui_impl_xx.cpp in Sources */,
+				3001404625F3282400B8B851 /* imgui_freetype.cpp in Sources */,
 				CEAF9CB825AE756C008B7C57 /* DearImGui.cpp in Sources */,
 				CEAF9CB925AE756C008B7C57 /* mainJNI.cpp in Sources */,
 				CEAF9CBA25AE756C008B7C57 /* Plugin.cpp in Sources */,
@@ -570,8 +578,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC4337725AD24A400936983 /* imgui_freetype.cpp in Sources */,
 				CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */,
+				3001404525F3282400B8B851 /* imgui_freetype.cpp in Sources */,
 				CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */,
 				CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */,
 				CE999D0525D2615F00351116 /* llvm_wrapper.cpp in Sources */,
@@ -585,8 +593,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D690A3912334265600A149EF /* imgui_freetype.cpp in Sources */,
 				D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */,
+				3001404425F3282400B8B851 /* imgui_freetype.cpp in Sources */,
 				D690A38D23341A8400A149EF /* DearImGui.cpp in Sources */,
 				D690A3972334291E00A149EF /* main.mm in Sources */,
 				300264C3242687B7004559E0 /* Plugin.cpp in Sources */,
@@ -598,7 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D690A37C233286EF00A149EF /* imgui_freetype.cpp in Sources */,
+				3001404325F3282400B8B851 /* imgui_freetype.cpp in Sources */,
 				D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */,
 				D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */,
 				D690A38C23341A8400A149EF /* DearImGui.cpp in Sources */,

@@ -33,12 +33,12 @@ add_library( # Sets the name of the library.
 
              # Provides a relative path to your source file(s).
              dummy.cpp
+             ../../../../../imgui/misc/freetype/imgui_freetype.cpp
              ../../../../../xxImGui/DearImGui.cpp
              ../../../../../xxImGui/mainJNI.cpp
              ../../../../../xxImGui/Plugin.cpp
              ../../../../../xxImGui/Renderer.cpp
-             ../../../../../xxImGui/implement/imgui_impl_xx.cpp
-             ../../../../../xxImGui/implement/imgui_freetype.cpp )
+             ../../../../../xxImGui/implement/imgui_impl_xx.cpp )
 
 target_compile_definitions( xxImGui
                             PUBLIC
