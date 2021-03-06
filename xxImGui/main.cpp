@@ -4,7 +4,7 @@
 #include "Renderer.h"
 #include "Plugin.h"
 #include "DearImGui.h"
-#include "implement/imgui_impl_win32.h"
+#include <imgui/backends/imgui_impl_win32.h>
 
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN

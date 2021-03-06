@@ -469,8 +469,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\xxImGui\implement\imgui_freetype.cpp" />
-    <ClCompile Include="..\xxImGui\implement\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\imgui\misc\freetype\imgui_freetype.cpp" />
     <ClCompile Include="..\xxImGui\implement\imgui_impl_xx.cpp" />
     <ClCompile Include="..\xxImGui\DearImGui.cpp" />
     <ClCompile Include="..\xxImGui\main.cpp" />
@@ -503,9 +502,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\xxImGui\implement\imgui_freetype.h" />
+    <ClInclude Include="..\imgui\misc\freetype\imgui_freetype.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_impl_osx.h" />
-    <ClInclude Include="..\xxImGui\implement\imgui_impl_win32.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_impl_xx.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_user_config.h" />
     <ClInclude Include="..\xxImGui\DearImGui.h" />
