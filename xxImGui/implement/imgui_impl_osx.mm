@@ -464,7 +464,7 @@ void ImGui_ImplOSX_NewFrame(void* _Nullable view)
 
 bool ImGui_ImplOSX_HandleEvent(void* _Nonnull event, void* _Nullable view)
 {
-    [[[NSApp mainWindow] contentView] setValue:@YES forKey:@"imguiUpdate"];
+    [[g_Window contentView] setValue:@YES forKey:@"imguiUpdate"];
 
     NSEvent* nsEvent = (__bridge NSEvent*)event;
     NSView* nsView = (__bridge NSView*)view;
