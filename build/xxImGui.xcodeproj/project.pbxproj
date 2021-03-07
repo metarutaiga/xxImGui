@@ -68,7 +68,6 @@
 		CEC0680E25CBEF2C003A5768 /* libfreetype.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680D25CBEF2C003A5768 /* libfreetype.android */; };
 		CEC0681025CBEF2C003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680F25CBEF2C003A5768 /* libimgui.android */; };
 		CEC0681225CBEF2C003A5768 /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0681125CBEF2C003A5768 /* libxxGraphic.android */; };
-		CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */; };
 		CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A38A23341A8400A149EF /* DearImGui.cpp */; };
 		CEC4337B25AD24A400936983 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3922334291E00A149EF /* main.cpp */; };
@@ -142,8 +141,6 @@
 		30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EFF24DDA69E00C0F4EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CE7582A4250B2D01003487A8 /* imgui_impl_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = imgui_impl_win32.h; path = ../xxImGui/implement/imgui_impl_win32.h; sourceTree = "<group>"; };
-		CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_win32.cpp; path = ../xxImGui/implement/imgui_impl_win32.cpp; sourceTree = "<group>"; };
 		CE999BD125D21E5800351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999BD225D21E5800351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999D0425D2615F00351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
@@ -304,8 +301,6 @@
 			children = (
 				D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */,
 				D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */,
-				CE7582A5250B2D01003487A8 /* imgui_impl_win32.cpp */,
-				CE7582A4250B2D01003487A8 /* imgui_impl_win32.h */,
 				D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */,
 				D644A0E8231F109C00B75B77 /* imgui_impl_xx.h */,
 				D690A37B233286EF00A149EF /* imgui_user_config.h */,
@@ -578,7 +573,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC4337825AD24A400936983 /* imgui_impl_win32.cpp in Sources */,
 				3001404525F3282400B8B851 /* imgui_freetype.cpp in Sources */,
 				CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */,
 				CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */,
