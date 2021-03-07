@@ -12,6 +12,9 @@
     <ClCompile Include="..\imgui\misc\freetype\imgui_freetype.cpp">
       <Filter>misc</Filter>
     </ClCompile>
+    <ClCompile Include="..\imgui\backends\imgui_impl_win32.cpp">
+      <Filter>backends</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="implement">
@@ -19,6 +22,9 @@
     </Filter>
     <Filter Include="misc">
       <UniqueIdentifier>{2044e398-1380-4857-9c77-81f012e746a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="backends">
+      <UniqueIdentifier>{7952018d-e823-4385-9f62-5eff53ba7102}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +42,9 @@
     <ClInclude Include="..\xxImGui\Plugin.h" />
     <ClInclude Include="..\imgui\misc\freetype\imgui_freetype.h">
       <Filter>misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui\backends\imgui_impl_win32.h">
+      <Filter>backends</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
