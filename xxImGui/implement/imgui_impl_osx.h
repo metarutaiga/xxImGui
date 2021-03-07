@@ -15,8 +15,8 @@
 
 #include "imgui.h"      // IMGUI_IMPL_API
 
-IMGUI_IMPL_API bool     ImGui_ImplOSX_Init(void* view);
+IMGUI_IMPL_API bool     ImGui_ImplOSX_Init(void* _Nullable view);
 IMGUI_IMPL_API void     ImGui_ImplOSX_Shutdown();
-IMGUI_IMPL_API void     ImGui_ImplOSX_NewFrame(void* view);
-IMGUI_IMPL_API bool     ImGui_ImplOSX_HandleEvent(void* event, void* view);
-IMGUI_IMPL_API void     ImGui_ImplOSX_AddTrackingArea(void* controller);
+IMGUI_IMPL_API void     ImGui_ImplOSX_NewFrame(void* _Nullable view);
+IMGUI_IMPL_API bool     ImGui_ImplOSX_HandleEvent(void* _Nonnull event, void* _Nullable view);
+IMGUI_IMPL_API void     ImGui_ImplOSX_AddTrackingArea(void* _Nonnull controller);

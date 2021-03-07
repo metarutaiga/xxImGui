@@ -19,6 +19,8 @@
 
 // CHANGELOG
 // (minor and older changes stripped away, please see git history for details)
+//  2021-01-27: Inputs: Added a fix for mouse position not being reported when mouse buttons other than left one are down.
+//  2020-10-28: Inputs: Added a fix for handling keypad-enter key.
 //  2020-05-25: Inputs: Added a fix for missing trackpad clicks when done with "soft tap".
 //  2019-12-05: Inputs: Added support for ImGuiMouseCursor_NotAllowed mouse cursor.
 //  2019-10-11: Inputs:  Fix using Backspace key.
@@ -32,6 +34,9 @@
 
 // Data
 static NSWindow*      g_Window = nil;
+static NSArray*       g_Children = nil;
+static id             g_Monitor = nil;
+static CFAbsoluteTime g_Time = 0.0;
 static NSCursor*      g_MouseCursors[ImGuiMouseCursor_COUNT] = {};
 static bool           g_MouseCursorHidden = false;
 static bool           g_MouseJustPressed[ImGuiMouseButton_COUNT] = {};
@@ -52,10 +57,8 @@ static void ImGui_ImplOSX_UpdateMonitors();
 @end
 
 // Functions
-bool ImGui_ImplOSX_Init(void* view_)
+bool ImGui_ImplOSX_Init(NSView* view)
 {
-    NSView* view = (__bridge NSView*)view_;
-
     ImGuiIO& io = ImGui::GetIO();
 
     // Setup backend capabilities flags
@@ -93,7 +96,7 @@ bool ImGui_ImplOSX_Init(void* view_)
     io.KeyMap[ImGuiKey_Space]           = 32;
     io.KeyMap[ImGuiKey_Enter]           = 13;
     io.KeyMap[ImGuiKey_Escape]          = 27;
-    io.KeyMap[ImGuiKey_KeyPadEnter]     = 13;
+    io.KeyMap[ImGuiKey_KeyPadEnter]     = 3;
     io.KeyMap[ImGuiKey_A]               = 'A';
     io.KeyMap[ImGuiKey_C]               = 'C';
     io.KeyMap[ImGuiKey_V]               = 'V';
@@ -149,6 +152,12 @@ void ImGui_ImplOSX_Shutdown()
 {
     ImGui_ImplOSX_ShutdownPlatformInterface();
     g_Window = nil;
+    g_Children = nil;
+    if (g_Monitor != nil)
+    {
+        [NSEvent removeMonitor:g_Monitor];
+        g_Monitor = nil;
+    }
 }
 
 static void ImGui_ImplOSX_UpdateMouseCursorAndButtons()
@@ -187,21 +196,75 @@ static void ImGui_ImplOSX_UpdateMouseCursorAndButtons()
     }
 }
 
-void ImGui_ImplOSX_NewFrame(void* view_)
+void ImGui_ImplOSX_NewFrame(NSView* view)
 {
-    NSView* view = (__bridge NSView*)view_;
+    // Set other windows to floating when mouse hit the titlebar
+    NSRect rect = [g_Window frame];
+    NSRect contentRect = [g_Window contentRectForFrameRect:rect];
+    NSPoint mouse = [NSEvent mouseLocation];
+    if (mouse.x >= rect.origin.x && mouse.x <= rect.origin.x + rect.size.width &&
+        mouse.y >= rect.origin.y + contentRect.size.height && mouse.y <= rect.origin.y + rect.size.height)
+    {
+        if (g_Children == nil && [NSApp isActive])
+        {
+            g_Children = [g_Window childWindows].copy;
+            for (NSUInteger i = 0; i < g_Children.count; ++i)
+            {
+                NSWindow* window = g_Children[i];
+                [g_Window removeChildWindow:window];
+                [window setParentWindow:g_Window];
+                [window setLevel:NSFloatingWindowLevel];
+                [window setIsVisible:YES];
+            }
+        }
+    }
+    else if ([g_Window isMiniaturized])
+    {
+        if (g_Children)
+        {
+            for (NSUInteger i = 0; i < g_Children.count; ++i)
+            {
+                NSWindow* window = g_Children[i];
+                [window setLevel:NSNormalWindowLevel];
+                [window setIsVisible:NO];
+            }
+        }
+    }
+    else
+    {
+        NSUInteger pressed = [NSEvent pressedMouseButtons];
+        if (g_Children && (pressed & 1) == 0)
+        {
+            for (NSUInteger i = 0; i < g_Children.count; ++i)
+            {
+                NSWindow* window = g_Children[i];
+                if ([window contentView] == nil)
+                    continue;
+                [g_Window addChildWindow:window ordered:NSWindowAbove];
+                [window setLevel:NSNormalWindowLevel];
+                [window setIsVisible:YES];
+            }
+            g_Children = nil;
+        }
+    }
 
     // Setup display size
     ImGuiIO& io = ImGui::GetIO();
     if (view)
     {
-        NSSize size = [view bounds].size;
-        const float dpi = [view.window backingScaleFactor];
-        io.DisplaySize = ImVec2(size.width, size.height);
+        const float dpi = (float)[view.window backingScaleFactor];
+        io.DisplaySize = ImVec2((float)view.bounds.size.width, (float)view.bounds.size.height);
         io.DisplayFramebufferScale = ImVec2(dpi, dpi);
     }
     if (g_WantUpdateMonitors)
         ImGui_ImplOSX_UpdateMonitors();
+
+    // Setup time step
+    if (g_Time == 0.0)
+        g_Time = CFAbsoluteTimeGetCurrent();
+    CFAbsoluteTime current_time = CFAbsoluteTimeGetCurrent();
+    io.DeltaTime = (float)(current_time - g_Time);
+    g_Time = current_time;
 
     ImGui_ImplOSX_UpdateMouseCursorAndButtons();
 }
@@ -226,14 +289,19 @@ static void resetKeys()
         io.KeysDown[n] = false;
 }
 
-bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
+bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
 {
-    NSEvent* event = (__bridge NSEvent*)event_;
-    NSView* view = (__bridge NSView*)view_;
-
-    [[[NSApp mainWindow] contentView] setValue:@YES forKey:@"imguiUpdate"];
-
     ImGuiIO& io = ImGui::GetIO();
+
+    // Bring the window to top
+    if (event.type == NSEventTypeLeftMouseDown)
+    {
+        if (event.window.parentWindow == g_Window && event.window != [g_Window childWindows].lastObject)
+        {
+            [g_Window removeChildWindow:event.window];
+            [g_Window addChildWindow:event.window ordered:NSWindowAbove];
+        }
+    }
 
     if (event.type == NSEventTypeLeftMouseDown || event.type == NSEventTypeRightMouseDown || event.type == NSEventTypeOtherMouseDown)
     {
@@ -251,7 +319,7 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
         return io.WantCaptureMouse;
     }
 
-    if (event.type == NSEventTypeMouseMoved || event.type == NSEventTypeLeftMouseDragged)
+    if (event.type == NSEventTypeMouseMoved || event.type == NSEventTypeLeftMouseDragged || event.type == NSEventTypeRightMouseDragged || event.type == NSEventTypeOtherMouseDragged)
     {
         NSSize size;
         NSPoint mousePoint;
@@ -267,8 +335,7 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
             mousePoint = event.locationInWindow;
         }
         mousePoint = NSMakePoint(mousePoint.x, size.height - mousePoint.y);
-        io.MousePos = ImVec2(mousePoint.x, mousePoint.y);
-        return io.WantCaptureMouse;
+        io.MousePos = ImVec2((float)mousePoint.x, (float)mousePoint.y);
     }
 
     if (event.type == NSEventTypeScrollWheel)
@@ -295,9 +362,9 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
         }
 
         if (fabs(wheel_dx) > 0.0)
-            io.MouseWheelH += wheel_dx * 0.1f;
+            io.MouseWheelH += (float)wheel_dx * 0.1f;
         if (fabs(wheel_dy) > 0.0)
-            io.MouseWheel += wheel_dy * 0.1f;
+            io.MouseWheel += (float)wheel_dy * 0.1f;
         return io.WantCaptureMouse;
     }
 
@@ -305,8 +372,8 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
     if (event.type == NSEventTypeKeyDown)
     {
         NSString* str = [event characters];
-        int len = (int)[str length];
-        for (int i = 0; i < len; i++)
+        NSUInteger len = [str length];
+        for (NSUInteger i = 0; i < len; i++)
         {
             int c = [str characterAtIndex:i];
             if (!io.KeyCtrl && !(c >= 0xF700 && c <= 0xFFFF) && c != 127)
@@ -325,8 +392,8 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
     if (event.type == NSEventTypeKeyUp)
     {
         NSString* str = [event characters];
-        int len = (int)[str length];
-        for (int i = 0; i < len; i++)
+        NSUInteger len = [str length];
+        for (NSUInteger i = 0; i < len; i++)
         {
             int c = [str characterAtIndex:i];
             int key = mapCharacterToKey(c);
@@ -338,7 +405,6 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
 
     if (event.type == NSEventTypeFlagsChanged)
     {
-        ImGuiIO& io = ImGui::GetIO();
         unsigned int flags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
 
         bool oldKeyCtrl = io.KeyCtrl;
@@ -359,10 +425,8 @@ bool ImGui_ImplOSX_HandleEvent(void* event_, void* view_)
     return false;
 }
 
-void ImGui_ImplOSX_AddTrackingArea(void* controller_)
+void ImGui_ImplOSX_AddTrackingArea(NSViewController* _Nonnull controller)
 {
-    NSViewController* controller = (__bridge NSViewController*)controller_;
-
     // Add a tracking area in order to receive mouse events whenever the mouse is within the bounds of our view
     NSTrackingArea *trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect
                                                                 options:NSTrackingMouseMoved | NSTrackingInVisibleRect | NSTrackingActiveAlways
@@ -373,17 +437,44 @@ void ImGui_ImplOSX_AddTrackingArea(void* controller_)
     // If we want to receive key events, we either need to be in the responder chain of the key view,
     // or else we can install a local monitor. The consequence of this heavy-handed approach is that
     // we receive events for all controls, not just Dear ImGui widgets. If we had native controls in our
-    // window, we'd want to be much more careful than just ingesting the complete event stream, though we
-    // do make an effort to be good citizens by passing along events when Dear ImGui doesn't want to capture.
+    // window, we'd want to be much more careful than just ingesting the complete event stream.
+    // To match the behavior of other backends, we pass every event down to the OS.
+    if (g_Monitor)
+        return;
     NSEventMask eventMask = NSEventMaskKeyDown | NSEventMaskKeyUp | NSEventMaskFlagsChanged | NSEventTypeScrollWheel;
-    [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^NSEvent * _Nullable(NSEvent *event) {
-        BOOL wantsCapture = ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)controller.view);
-        if (event.type == NSEventTypeKeyDown && wantsCapture) {
-            return nil;
-        } else {
-            return event;
-        }
+    g_Monitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^NSEvent * _Nullable(NSEvent *event)
+    {
+        ImGui_ImplOSX_HandleEvent(event, controller.view);
+        return event;
     }];
+}
+
+// Wrapper
+bool ImGui_ImplOSX_Init(void* _Nullable view)
+{
+    NSView* nsView = (__bridge NSView*)view;
+    return ImGui_ImplOSX_Init(nsView);
+}
+
+void ImGui_ImplOSX_NewFrame(void* _Nullable view)
+{
+    NSView* nsView = (__bridge NSView*)view;
+    return ImGui_ImplOSX_NewFrame(nsView);
+}
+
+bool ImGui_ImplOSX_HandleEvent(void* _Nonnull event, void* _Nullable view)
+{
+    [[[NSApp mainWindow] contentView] setValue:@YES forKey:@"imguiUpdate"];
+
+    NSEvent* nsEvent = (__bridge NSEvent*)event;
+    NSView* nsView = (__bridge NSView*)view;
+    return ImGui_ImplOSX_HandleEvent(nsEvent, nsView);
+}
+
+void ImGui_ImplOSX_AddTrackingArea(void* _Nonnull controller)
+{
+    NSViewController* nsViewController = (__bridge NSViewController*)controller;
+    return ImGui_ImplOSX_AddTrackingArea(nsViewController);
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -402,7 +493,6 @@ struct ImGuiViewportDataOSX
 };
 
 @interface ImGui_ImplOSX_View : NSView
-@property (nonatomic) Boolean imguiUpdate;
 @end
 
 @implementation ImGui_ImplOSX_View
@@ -413,14 +503,14 @@ struct ImGuiViewportDataOSX
 
 @implementation ImGui_ImplOSX_ViewController
 -(void)loadView                         { self.view = [NSView new]; }
--(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseDown:(NSEvent *)event       { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseUp:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseMoved:(NSEvent *)event      { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseDragged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
--(void)scrollWheel:(NSEvent *)event     { ImGui_ImplOSX_HandleEvent((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)mouseDown:(NSEvent *)event       { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)mouseUp:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)mouseMoved:(NSEvent *)event      { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)mouseDragged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)scrollWheel:(NSEvent *)event     { ImGui_ImplOSX_HandleEvent(event, self.view); }
 @end
 
 static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
@@ -436,11 +526,7 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
     [window setTitle:@"Untitled"];
     [window setAcceptsMouseMovedEvents:YES];
     [window setOpaque:NO];
-    [window orderFront:NSApp];
-#if 0
-    [window setLevel:NSFloatingWindowLevel];
-    [window setHidesOnDeactivate:YES];
-#endif
+    [g_Window addChildWindow:window ordered:NSWindowAbove];
 
     ImGui_ImplOSX_View* view = [[ImGui_ImplOSX_View alloc] initWithFrame:rect];
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
@@ -451,9 +537,7 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
     ImGui_ImplOSX_ViewController* viewController = [ImGui_ImplOSX_ViewController new];
     window.contentViewController = viewController;
     window.contentViewController.view = view;
-#if 0
-    ImGui_ImplOSX_AddTrackingArea((__bridge void*)viewController);
-#endif
+    ImGui_ImplOSX_AddTrackingArea(viewController);
 
     data->Window = window;
     data->WindowOwned = true;
@@ -474,6 +558,7 @@ static void ImGui_ImplOSX_DestroyWindow(ImGuiViewport* viewport)
             [window setContentView:nil];
             [window setContentViewController:nil];
             [window orderOut:nil];
+            [g_Window removeChildWindow:window];
         }
         data->Window = nil;
         IM_DELETE(data);
@@ -489,6 +574,8 @@ static void ImGui_ImplOSX_ShowWindow(ImGuiViewport* viewport)
 
 static void ImGui_ImplOSX_UpdateWindow(ImGuiViewport* viewport)
 {
+    ImGuiViewportDataOSX* data = (ImGuiViewportDataOSX*)viewport->PlatformUserData;
+    IM_ASSERT(data->Window != 0);
 }
 
 static ImVec2 ImGui_ImplOSX_GetWindowPos(ImGuiViewport* viewport)
@@ -545,7 +632,15 @@ static void ImGui_ImplOSX_SetWindowFocus(ImGuiViewport* viewport)
     ImGuiViewportDataOSX* data = (ImGuiViewportDataOSX*)viewport->PlatformUserData;
     IM_ASSERT(data->Window != 0);
 
-    [data->Window orderFront:NSApp];
+    if (data->Window == g_Window)
+    {
+        [g_Window orderWindow:NSWindowAbove relativeTo:0];
+    }
+    else if (data->Window.parentWindow == g_Window)
+    {
+        [g_Window removeChildWindow:data->Window];
+        [g_Window addChildWindow:data->Window ordered:NSWindowAbove];
+    }
 }
 
 static bool ImGui_ImplOSX_GetWindowFocus(ImGuiViewport* viewport)
@@ -553,7 +648,15 @@ static bool ImGui_ImplOSX_GetWindowFocus(ImGuiViewport* viewport)
     ImGuiViewportDataOSX* data = (ImGuiViewportDataOSX*)viewport->PlatformUserData;
     IM_ASSERT(data->Window != 0);
 
-    return [NSApp orderedWindows].firstObject == data->Window;
+    NSArray<NSWindow*>* array = [NSApp orderedWindows];
+    for (NSInteger i = 0; i < array.count; ++i)
+    {
+        NSWindow* window = array[i];
+        if (window != g_Window && window.parentWindow != g_Window)
+            continue;
+        return (window == data->Window);
+    }
+    return false;
 }
 
 static bool ImGui_ImplOSX_GetWindowMinimized(ImGuiViewport* viewport)
