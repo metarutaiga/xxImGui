@@ -21,6 +21,7 @@
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		3083107725F4A00B0095892D /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3083107525F4A00B0095892D /* imgui_impl_win32.cpp */; };
 		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -132,6 +133,9 @@
 		3039F986244743DB00E671A7 /* mainJNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mainJNI.cpp; path = ../xxImGui/mainJNI.cpp; sourceTree = "<group>"; };
 		303DDEB52448B7630042A480 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		303DDEB72448B7680042A480 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		3083103E25F499EE0095892D /* ftmodule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ftmodule.h; path = ../xxImGui/implement/ftmodule.h; sourceTree = "<group>"; };
+		3083107525F4A00B0095892D /* imgui_impl_win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_win32.cpp; path = ../imgui/backends/imgui_impl_win32.cpp; sourceTree = "<group>"; };
+		3083107625F4A00B0095892D /* imgui_impl_win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_win32.h; path = ../imgui/backends/imgui_impl_win32.h; sourceTree = "<group>"; };
 		30B096A1244ACDC40096E6DC /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A3244ACDC40096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096A5244ACDC50096E6DC /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +265,15 @@
 			name = misc;
 			sourceTree = "<group>";
 		};
+		3083107425F49FEB0095892D /* backends */ = {
+			isa = PBXGroup;
+			children = (
+				3083107525F4A00B0095892D /* imgui_impl_win32.cpp */,
+				3083107625F4A00B0095892D /* imgui_impl_win32.h */,
+			);
+			name = backends;
+			sourceTree = "<group>";
+		};
 		CE999BD025D21E4B00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +289,7 @@
 			children = (
 				CEE9E620257640C000C180FB /* xxImGui.entitlements */,
 				CE999BD025D21E4B00351116 /* Configs */,
+				3083107425F49FEB0095892D /* backends */,
 				D644A0DA231F107D00B75B77 /* implement */,
 				D690A3852333FDBC00A149EF /* main */,
 				3001404025F327DD00B8B851 /* misc */,
@@ -299,6 +313,7 @@
 		D644A0DA231F107D00B75B77 /* implement */ = {
 			isa = PBXGroup;
 			children = (
+				3083103E25F499EE0095892D /* ftmodule.h */,
 				D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */,
 				D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */,
 				D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */,
@@ -576,6 +591,7 @@
 				3001404525F3282400B8B851 /* imgui_freetype.cpp in Sources */,
 				CEC4337925AD24A400936983 /* imgui_impl_xx.cpp in Sources */,
 				CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */,
+				3083107725F4A00B0095892D /* imgui_impl_win32.cpp in Sources */,
 				CE999D0525D2615F00351116 /* llvm_wrapper.cpp in Sources */,
 				CEC4337B25AD24A400936983 /* main.cpp in Sources */,
 				CEC4337C25AD24A400936983 /* Plugin.cpp in Sources */,

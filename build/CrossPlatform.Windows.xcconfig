@@ -23,7 +23,7 @@ LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../../
 LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64/um
 LINK_DEBUG_PATH[config=Debug] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb
 LINK_DEBUG_PATH[config=Release] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb,-opt:ref,-opt:icf
-LINK_LIBRARY_NAME = -Wl,chkstk.obj,ucrtbase.lib,oldnames.lib,kernel32.lib,user32.lib,winmm.lib,imm32.lib,gdi32.lib
+LINK_LIBRARY_NAME = -Wl,chkstk.obj,ucrtbase.lib,oldnames.lib,kernel32.lib,user32.lib,winmm.lib,imm32.lib,gdi32.lib,dwmapi.lib
 CC = /usr/local/opt/llvm/bin/clang
 CXX = /usr/local/opt/llvm/bin/clang++
 LD = /usr/local/opt/llvm/bin/clang

@@ -182,7 +182,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
 
     // Render command lists
     // (Because we merged all buffers into a single one, we maintain our own offset into them)
-    ImTextureID boundTextureID = 0;
+    uint64_t boundTextureID = 0;
     int global_vtx_offset = 0;
     int global_idx_offset = 0;
     for (int n = 0; n < draw_data->CmdListsCount; n++)
@@ -230,7 +230,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                     {
                         boundTextureID = pcmd->TextureId;
 
-                        xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
+                        xxSetFragmentTextures(commandEncoder, 1, &boundTextureID);
                         xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
                     }
 

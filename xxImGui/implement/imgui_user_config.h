@@ -15,8 +15,7 @@
 #pragma once
 
 //---- Using 64-bits texture ID (default is 32-bits)
-#include <stdint.h>
-#define ImTextureID uint64_t
+#define ImTextureID ImU64
 
 //---- Custom Vertex layout
 #define IMGUI_OVERRIDE_DRAWVERT_STRUCT_LAYOUT struct ImDrawVert { ImVec2 pos; float z; ImU32 col; ImVec2 uv; }
