@@ -1,14 +1,17 @@
 //==============================================================================
 // xxImGui : Dear ImGui Source
 //
-// Copyright (c) 2019-2020 TAiGA
+// Copyright (c) 2019-2021 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #define _CRT_SECURE_NO_WARNINGS
 #include <sys/stat.h>
-#include "implement/imgui_freetype.h"
+#include <imgui/misc/freetype/imgui_freetype.h>
+#if defined(__APPLE__)
 #include "implement/imgui_impl_osx.h"
-#include "implement/imgui_impl_win32.h"
+#elif defined(_WIN32)
+#include <imgui/backends/imgui_impl_win32.h>
+#endif
 #include "implement/imgui_impl_xx.h"
 #include "Renderer.h"
 #include "DearImGui.h"
@@ -62,7 +65,7 @@ void DearImGui::Create(void* view, float scale, float font)
 
     // Setup Platform/Renderer bindings
 #if defined(xxMACOS)
-    ImGui_ImplOSX_Init(view);
+    ImGui_ImplOSX_Init((__bridge NSView*)view);
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_Init(view);
 #endif
@@ -96,12 +99,12 @@ void DearImGui::Create(void* view, float scale, float font)
 #if defined(xxMACOS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
+    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
     io.Fonts->AddFontFromFileTTF("/System/Library/Fonts/PingFang.ttc", 16.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
 #elif defined(xxWINDOWS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.RasterizerFlags     = ImGuiFreeType::Bitmap;
+    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
     if (io.FontGlobalScale == 1.0f)
     {
         if (GetFileAttributesA("C:\\Windows\\Fonts\\msgothic.ttc") != INVALID_FILE_ATTRIBUTES)
@@ -117,7 +120,9 @@ void DearImGui::Create(void* view, float scale, float font)
             io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\msjh.ttc", 13.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
     }
 #endif
-    ImGuiFreeType::BuildFontAtlas(io.Fonts);
+    io.Fonts->FontBuilderIO         = ImGuiFreeType::GetBuilderForFreeType();
+    io.Fonts->FontBuilderFlags      = 0;
+    io.Fonts->Build();
     io.FontGlobalScale              = scale / font;
 }
 //------------------------------------------------------------------------------
@@ -152,10 +157,10 @@ void DearImGui::NewFrame(void* view)
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
 #if defined(xxMACOS)
-    ImGui_ImplOSX_NewFrame(view);
+    ImGui_ImplOSX_NewFrame((__bridge NSView*)view);
 #elif defined(xxIOS)
-    CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("contentScaleFactor"));
-    CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("bounds"));
+    CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("contentScaleFactor"));
+    CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("bounds"));
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
     ImGui::GetIO().DisplayFramebufferScale = ImVec2(contentScaleFactor, contentScaleFactor);
 #elif defined(xxWINDOWS)
@@ -219,9 +224,18 @@ void DearImGui::NewFrame(void* view)
         if (ImGui::Begin("About xxGraphic", &showAbout))
         {
             ImGui::Text("%s", "xxGraphic");
-            ImGui::Text("%s", "Copyright (c) 2019-2020 TAiGA");
+            ImGui::Text("%s", "Copyright (c) 2019-2021 TAiGA");
             ImGui::Separator();
             ImGui::Text("Build Date : %s %s", __DATE__, __TIME__);
+#if defined(__clang_version__)
+            ImGui::Text("Compiler Version : %s", __clang_version__);
+#endif
+#if defined(__GNUC__)
+            ImGui::Text("Compiler Version : %d.%d.%d", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+#endif
+#if defined(_MSC_FULL_VER)
+            ImGui::Text("Compiler Version : %d.%d.%d", _MSC_FULL_VER / 10000000 % 100, _MSC_FULL_VER / 100000 % 100, _MSC_FULL_VER % 100000);
+#endif
             ImGui::End();
         }
     }
@@ -354,13 +368,13 @@ void* DearImGui::PostUpdate(void* view, bool render)
         }
 
 #if defined(xxMACOS) || defined(xxIOS)
-        id window = objc_msgSend((id)view, sel_getUid("window"));
-        Renderer::Create(window, Renderer::g_width, Renderer::g_height, graphicShortName);
+        id window = objc_msgSend((__bridge id)view, sel_getUid("window"));
+        Renderer::Create((__bridge void*)window, Renderer::g_width, Renderer::g_height, graphicShortName);
 #else
         Renderer::Create(view, Renderer::g_width, Renderer::g_height, graphicShortName);
 #endif
 #if defined(xxMACOS)
-        ImGui_ImplOSX_Init(view);
+        ImGui_ImplOSX_Init((__bridge NSView*)view);
 #elif defined(xxWINDOWS)
         ImGui_ImplWin32_Init(view);
 #endif
@@ -385,7 +399,7 @@ bool DearImGui::PowerSaving()
 #if defined(xxMACOS)
 void DearImGui::HandleEventOSX(void* event, void* view)
 {
-    ImGui_ImplOSX_HandleEvent(event, view);
+    ImGui_ImplOSX_HandleEvent((__bridge NSEvent*)event, (__bridge NSView*)view);
 }
 #endif
 //------------------------------------------------------------------------------
@@ -405,6 +419,17 @@ void DearImGui::HandleEventAndroid(int type, float x, float y)
         break;
     case 2: // ACTION_MOVE
         io.MousePos = ImVec2(x, y);
+        break;
+    case 3: // ACTION_CANCEL
+    case 4: // ACTION_OUTSIDE
+    case 7: // ACTION_HOVER_MOVE
+    case 9: // ACTION_HOVER_ENTER
+    case 10:// ACTION_HOVER_EXIT
+        io.MouseDown[0] = false;
+        break;
+    case 5: // ACTION_POINTER_DOWN
+    case 6: // ACTION_POINTER_UP
+    case 8: // ACTION_SCROLL
         break;
     }
 }

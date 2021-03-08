@@ -9,19 +9,24 @@
 /* Begin PBXBuildFile section */
 		300264C5242690D0004559E0 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
 		3039F9D92447499200E671A7 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
+		30A9A7C325ADC7C0000FA104 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
-		CE69D74C2488E44600D883C2 /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libsample.dylib */; };
+		CE93601F25AC457A00CEF503 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
+		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
+		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
+		CE999D9525D275A900351116 /* sample.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* sample.dll */; };
+		CEC0680225CBEECA003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680125CBEECA003A5768 /* libimgui.android */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CE69D74B2488E43F00D883C2 /* CopyFiles */ = {
+		CE999D9425D2759500351116 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = xxImGui.app/Contents/Frameworks;
+			buildActionMask = 12;
+			dstPath = plugin;
 			dstSubfolderSpec = 16;
 			files = (
-				CE69D74C2488E44600D883C2 /* libsample.dylib in CopyFiles */,
+				CE999D9525D275A900351116 /* sample.dll in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,13 +43,40 @@
 
 /* Begin PBXFileReference section */
 		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
+		30A9A7BB25ADC792000FA104 /* libsample.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE93601825AC454200CEF503 /* sample.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sample.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
+		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0676F25CBDD9F003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC067FF25CBEEC3003A5768 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC0680125CBEECA003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30A9A7B925ADC792000FA104 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC0680225CBEECA003A5768 /* libimgui.android in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE93601625AC454200CEF503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE999D5525D266E300351116 /* imgui.dll in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3223258B5D00B9BFB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -67,16 +99,33 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE999D5425D266E300351116 /* imgui.dll */,
+				CE999D3A25D2652F00351116 /* imgui.dll */,
+				CEC0680125CBEECA003A5768 /* libimgui.android */,
+				CEC067FF25CBEEC3003A5768 /* libimgui.windows */,
+				CEC0676F25CBDD9F003A5768 /* libimgui.bundle */,
+				CEB7C31A25C90165002E92D3 /* libimgui.bundle */,
 				30B096C9244AD39C0096E6DC /* libimgui.bundle */,
 				30B096B7244ACE500096E6DC /* libimgui.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE999BD625D21EC800351116 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				CE999D1025D2618800351116 /* llvm_wrapper.cpp */,
+				CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */,
+				CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
 				300264C4242690D0004559E0 /* sample.cpp */,
+				CE999BD625D21EC800351116 /* Configs */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -87,23 +136,49 @@
 			children = (
 				D644A041231ED82900B75B77 /* libsample.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
+				CE93601825AC454200CEF503 /* sample.dll */,
+				30A9A7BB25ADC792000FA104 /* libsample.android */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		D644A03D231ED82900B75B77 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
+		30A9A7BA25ADC792000FA104 /* sample (Android) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "sample (Android)" */;
+			buildPhases = (
+				30A9A7B825ADC792000FA104 /* Sources */,
+				30A9A7B925ADC792000FA104 /* Frameworks */,
+				CEB7C31925C90156002E92D3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "sample (Android)";
+			productName = "sample (Android)";
+			productReference = 30A9A7BB25ADC792000FA104 /* libsample.android */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		CE93601725AC454200CEF503 /* sample (Windows) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */;
+			buildPhases = (
+				CE93601525AC454200CEF503 /* Sources */,
+				CE93601625AC454200CEF503 /* Frameworks */,
+				CE999D9425D2759500351116 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "sample (Windows)";
+			productName = "sample (Windows)";
+			productReference = CE93601825AC454200CEF503 /* sample.dll */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		D6022C3423258B5D00B9BFB8 /* sample (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */;
@@ -125,10 +200,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */;
 			buildPhases = (
-				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				CE69D74B2488E43F00D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -145,8 +218,14 @@
 		D644A039231ED82900B75B77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					30A9A7BA25ADC792000FA104 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					CE93601725AC454200CEF503 = {
+						CreatedOnToolsVersion = 12.3;
+					};
 					D6022C3423258B5D00B9BFB8 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -170,11 +249,50 @@
 			targets = (
 				D644A040231ED82900B75B77 /* sample (macOS) */,
 				D6022C3423258B5D00B9BFB8 /* sample (iOS) */,
+				CE93601725AC454200CEF503 /* sample (Windows) */,
+				30A9A7BA25ADC792000FA104 /* sample (Android) */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CEB7C31925C90156002E92D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		30A9A7B825ADC792000FA104 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30A9A7C325ADC7C0000FA104 /* sample.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE93601525AC454200CEF503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE93601F25AC457A00CEF503 /* sample.cpp in Sources */,
+				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D6022C3123258B5D00B9BFB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +312,86 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		30A9A7BC25ADC792000FA104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EFFECTIVE_PLATFORM_NAME = "-android";
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+					"-fPIC",
+					"-fno-threadsafe-statics",
+					"-fvisibility=hidden",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
+				);
+			};
+			name = Debug;
+		};
+		30A9A7BD25ADC792000FA104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EFFECTIVE_PLATFORM_NAME = "-android";
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_EXTENSION = android;
+				EXECUTABLE_PREFIX = lib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"-target",
+					"aarch64-linux-android",
+					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
+					"-fPIC",
+					"-fno-threadsafe-statics",
+					"-fvisibility=hidden",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = (
+					"-Wl,-no_arch_warnings",
+					"$(inherited)",
+				);
+			};
+			name = Release;
+		};
+		CE93601925AC454200CEF503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */;
+			buildSettings = {
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl,-noentry",
+				);
+			};
+			name = Debug;
+		};
+		CE93601A25AC454200CEF503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */;
+			buildSettings = {
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-Wl,-noentry",
+				);
+			};
+			name = Release;
+		};
 		D6022C3C23258B5D00B9BFB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -215,7 +413,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -252,11 +450,13 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"_DEBUG=1",
-					"$(inherited)",
+					PLUGIN_BUILD_LIBRARY,
+					"DEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -276,6 +476,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-fdata-sections",
+					"-ffunction-sections",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = sample;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -290,7 +495,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -326,11 +531,10 @@
 				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"NDEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = PLUGIN_BUILD_LIBRARY;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -348,6 +552,11 @@
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				OBJROOT = ../../temp;
+				OTHER_CFLAGS = (
+					"-fdata-sections",
+					"-ffunction-sections",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = sample;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -373,6 +582,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "sample (Android)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30A9A7BC25ADC792000FA104 /* Debug */,
+				30A9A7BD25ADC792000FA104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE93601925AC454200CEF503 /* Debug */,
+				CE93601A25AC454200CEF503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

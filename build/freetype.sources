@@ -2,7 +2,6 @@
 /DDLL_EXPORT
 /D_CRT_SECURE_NO_WARNINGS
 /D__STDC__
-/D_INC_SETJMPEX
 /DNDEBUG
 /I..\..\..\freetype\include
 ..\..\..\freetype\src\autofit\autofit.c
