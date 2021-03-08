@@ -21,6 +21,7 @@
 @interface ImGuiExampleView : NSView
 @property (nonatomic) Boolean imguiUpdate;
 @property (nonatomic) NSTimer* animationTimer;
+@property (nonatomic) id localMonitor;
 @end
 #elif defined(xxIOS)
 @interface ImGuiExampleView : UIView
@@ -38,6 +39,11 @@
 
     self.imguiUpdate = YES;
     self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:0 target:self selector:@selector(updateAndDraw) userInfo:nil repeats:YES];
+    self.localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskAny handler:^NSEvent * _Nullable(NSEvent *event)
+    {
+        self.imguiUpdate = YES;
+        return event;
+    }];
 
     [self setWantsLayer:YES];
     [self setPostsFrameChangedNotifications:YES];
