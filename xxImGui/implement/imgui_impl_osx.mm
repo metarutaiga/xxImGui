@@ -449,34 +449,6 @@ void ImGui_ImplOSX_AddTrackingArea(NSViewController* _Nonnull controller)
     }];
 }
 
-// Wrapper
-bool ImGui_ImplOSX_Init(void* _Nullable view)
-{
-    NSView* nsView = (__bridge NSView*)view;
-    return ImGui_ImplOSX_Init(nsView);
-}
-
-void ImGui_ImplOSX_NewFrame(void* _Nullable view)
-{
-    NSView* nsView = (__bridge NSView*)view;
-    return ImGui_ImplOSX_NewFrame(nsView);
-}
-
-bool ImGui_ImplOSX_HandleEvent(void* _Nonnull event, void* _Nullable view)
-{
-    [[g_Window contentView] setValue:@YES forKey:@"imguiUpdate"];
-
-    NSEvent* nsEvent = (__bridge NSEvent*)event;
-    NSView* nsView = (__bridge NSView*)view;
-    return ImGui_ImplOSX_HandleEvent(nsEvent, nsView);
-}
-
-void ImGui_ImplOSX_AddTrackingArea(void* _Nonnull controller)
-{
-    NSViewController* nsViewController = (__bridge NSViewController*)controller;
-    return ImGui_ImplOSX_AddTrackingArea(nsViewController);
-}
-
 //--------------------------------------------------------------------------------------------------------
 // MULTI-VIEWPORT / PLATFORM INTERFACE SUPPORT
 // This is an _advanced_ and _optional_ feature, allowing the back-end to create and handle multiple viewports simultaneously.

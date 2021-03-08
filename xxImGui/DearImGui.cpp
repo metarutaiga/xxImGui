@@ -62,7 +62,7 @@ void DearImGui::Create(void* view, float scale, float font)
 
     // Setup Platform/Renderer bindings
 #if defined(xxMACOS)
-    ImGui_ImplOSX_Init(view);
+    ImGui_ImplOSX_Init((__bridge NSView*)view);
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_Init(view);
 #endif
@@ -154,10 +154,10 @@ void DearImGui::NewFrame(void* view)
     // Start the Dear ImGui frame
     ImGui_ImplXX_NewFrame();
 #if defined(xxMACOS)
-    ImGui_ImplOSX_NewFrame(view);
+    ImGui_ImplOSX_NewFrame((__bridge NSView*)view);
 #elif defined(xxIOS)
-    CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("contentScaleFactor"));
-    CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((id)view, sel_registerName("bounds"));
+    CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("contentScaleFactor"));
+    CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("bounds"));
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
     ImGui::GetIO().DisplayFramebufferScale = ImVec2(contentScaleFactor, contentScaleFactor);
 #elif defined(xxWINDOWS)
@@ -365,13 +365,13 @@ void* DearImGui::PostUpdate(void* view, bool render)
         }
 
 #if defined(xxMACOS) || defined(xxIOS)
-        id window = objc_msgSend((id)view, sel_getUid("window"));
-        Renderer::Create(window, Renderer::g_width, Renderer::g_height, graphicShortName);
+        id window = objc_msgSend((__bridge id)view, sel_getUid("window"));
+        Renderer::Create((__bridge void*)window, Renderer::g_width, Renderer::g_height, graphicShortName);
 #else
         Renderer::Create(view, Renderer::g_width, Renderer::g_height, graphicShortName);
 #endif
 #if defined(xxMACOS)
-        ImGui_ImplOSX_Init(view);
+        ImGui_ImplOSX_Init((__bridge NSView*)view);
 #elif defined(xxWINDOWS)
         ImGui_ImplWin32_Init(view);
 #endif
@@ -396,7 +396,7 @@ bool DearImGui::PowerSaving()
 #if defined(xxMACOS)
 void DearImGui::HandleEventOSX(void* event, void* view)
 {
-    ImGui_ImplOSX_HandleEvent(event, view);
+    ImGui_ImplOSX_HandleEvent((__bridge NSEvent*)event, (__bridge NSView*)view);
 }
 #endif
 //------------------------------------------------------------------------------
