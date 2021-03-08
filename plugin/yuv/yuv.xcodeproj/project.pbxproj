@@ -136,30 +136,7 @@
 		CE4E3EBB244E7E6900CEDC62 /* cpu_id.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA7244E7E6800CEDC62 /* cpu_id.h */; };
 		CE4E3EBC244E7E6900CEDC62 /* basic_types.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA8244E7E6900CEDC62 /* basic_types.h */; };
 		CE4E3EBD244E7E6900CEDC62 /* scale.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA9244E7E6900CEDC62 /* scale.h */; };
-		CE69D7482488E40A00D883C2 /* libyuv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libyuv.dylib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		CE69D7472488E3FE00D883C2 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = xxImGui.app/Contents/Frameworks;
-			dstSubfolderSpec = 16;
-			files = (
-				CE69D7482488E40A00D883C2 /* libyuv.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D6022C3323258B5D00B9BFB8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		300264C4242690D0004559E0 /* yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yuv.cpp; sourceTree = "<group>"; };
@@ -442,7 +419,6 @@
 			buildPhases = (
 				D6022C3123258B5D00B9BFB8 /* Sources */,
 				D6022C3223258B5D00B9BFB8 /* Frameworks */,
-				D6022C3323258B5D00B9BFB8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -460,7 +436,6 @@
 				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				CE69D7472488E3FE00D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);

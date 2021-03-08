@@ -15,13 +15,16 @@
          </FileRef>
       </Group>
       <FileRef
-         location = "group:plugin/yuv/yuv.xcodeproj">
+         location = "group:plugin/matrix/matrix.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:plugin/sample/sample.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:plugin/validator/validator.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:plugin/sample/sample.xcodeproj">
+         location = "group:plugin/yuv/yuv.xcodeproj">
       </FileRef>
    </Group>
    <FileRef

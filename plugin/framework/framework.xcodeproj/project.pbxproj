@@ -11,34 +11,11 @@
 		3039F9D92447499200E671A7 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* framework.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
-		CE69D7462488E3EE00D883C2 /* libframework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libframework.dylib */; };
 		CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */; };
 		CE91E8882489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
 		CE91E8892489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
 		CE91E88A2489CCAD00912424 /* client.h in Headers */ = {isa = PBXBuildFile; fileRef = CE91E8872489CCAD00912424 /* client.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		CE69D7442488E38600D883C2 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = xxImGui.app/Contents/Frameworks;
-			dstSubfolderSpec = 16;
-			files = (
-				CE69D7462488E3EE00D883C2 /* libframework.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D6022C3323258B5D00B9BFB8 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		300264C4242690D0004559E0 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
@@ -122,7 +99,6 @@
 			buildPhases = (
 				D6022C3123258B5D00B9BFB8 /* Sources */,
 				D6022C3223258B5D00B9BFB8 /* Frameworks */,
-				D6022C3323258B5D00B9BFB8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -140,7 +116,6 @@
 				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				CE69D7442488E38600D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);

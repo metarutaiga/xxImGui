@@ -16,7 +16,6 @@
 		30DDC0BF24B5E86300D7B6DA /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30DDC0B724B5E86300D7B6DA /* Buffer.cpp */; };
 		30DDC0C024B5E86300D7B6DA /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30DDC0B724B5E86300D7B6DA /* Buffer.cpp */; };
 		30DDC0C124B5E86300D7B6DA /* Buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 30DDC0B824B5E86300D7B6DA /* Buffer.h */; };
-		CE69D74E2488E59300D883C2 /* libConcurrencyNetworkFramework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libConcurrencyNetworkFramework.dylib */; };
 		D6DFCEBF2493B956001F32F4 /* Listener.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DFCEB42493B955001F32F4 /* Listener.h */; };
 		D6DFCEC02493B956001F32F4 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEB52493B955001F32F4 /* Log.cpp */; };
 		D6DFCEC12493B956001F32F4 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEB52493B955001F32F4 /* Log.cpp */; };
@@ -32,28 +31,6 @@
 		D6DFCECB2493B956001F32F4 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBE2493B956001F32F4 /* Listener.cpp */; };
 		D6DFCECC2493B956001F32F4 /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6DFCEBE2493B956001F32F4 /* Listener.cpp */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		303FD9C3244C7F7200A8B5A9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE69D74D2488E58A00D883C2 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = xxImGui.app/Contents/Frameworks;
-			dstSubfolderSpec = 16;
-			files = (
-				CE69D74E2488E59300D883C2 /* libConcurrencyNetworkFramework.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		30317BB12560D61700F69115 /* thread */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = thread; path = ../ConcurrencyNetworkFramework/HackingSTL/thread; sourceTree = "<group>"; };
@@ -176,7 +153,6 @@
 			buildPhases = (
 				D6022C3123258B5D00B9BFB8 /* Sources */,
 				D6022C3223258B5D00B9BFB8 /* Frameworks */,
-				303FD9C3244C7F7200A8B5A9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -194,7 +170,6 @@
 				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				CE69D74D2488E58A00D883C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);

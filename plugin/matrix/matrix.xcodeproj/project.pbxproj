@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300264C5242690D0004559E0 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		3039F9D92447499200E671A7 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		30A9A7C325ADC7C0000FA104 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
+		300264C5242690D0004559E0 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* matrix.cpp */; };
+		3039F9D92447499200E671A7 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* matrix.cpp */; };
+		30A9A7C325ADC7C0000FA104 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* matrix.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
-		CE93601F25AC457A00CEF503 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
+		CE93601F25AC457A00CEF503 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* matrix.cpp */; };
 		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
 		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
-		CE999D9525D275A900351116 /* sample.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* sample.dll */; };
+		CE999D9525D275A900351116 /* matrix.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* matrix.dll */; };
 		CEC0680225CBEECA003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680125CBEECA003A5768 /* libimgui.android */; };
 /* End PBXBuildFile section */
 
@@ -26,18 +26,18 @@
 			dstPath = plugin;
 			dstSubfolderSpec = 16;
 			files = (
-				CE999D9525D275A900351116 /* sample.dll in CopyFiles */,
+				CE999D9525D275A900351116 /* matrix.dll in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		300264C4242690D0004559E0 /* sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sample.cpp; sourceTree = "<group>"; };
-		30A9A7BB25ADC792000FA104 /* libsample.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsample.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		300264C4242690D0004559E0 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		30A9A7BB25ADC792000FA104 /* libmatrix.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libmatrix.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE93601825AC454200CEF503 /* sample.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sample.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE93601825AC454200CEF503 /* matrix.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = matrix.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
@@ -47,8 +47,8 @@
 		CEC0676F25CBDD9F003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC067FF25CBEEC3003A5768 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0680125CBEECA003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6022C3523258B5D00B9BFB8 /* libmatrix.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmatrix.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D644A041231ED82900B75B77 /* libmatrix.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmatrix.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				300264C4242690D0004559E0 /* sample.cpp */,
+				300264C4242690D0004559E0 /* matrix.cpp */,
 				CE999BD625D21EC800351116 /* Configs */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
@@ -125,10 +125,10 @@
 		D644A042231ED82900B75B77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D644A041231ED82900B75B77 /* libsample.dylib */,
-				D6022C3523258B5D00B9BFB8 /* libsample.bundle */,
-				CE93601825AC454200CEF503 /* sample.dll */,
-				30A9A7BB25ADC792000FA104 /* libsample.android */,
+				D644A041231ED82900B75B77 /* libmatrix.dylib */,
+				D6022C3523258B5D00B9BFB8 /* libmatrix.bundle */,
+				CE93601825AC454200CEF503 /* matrix.dll */,
+				30A9A7BB25ADC792000FA104 /* libmatrix.android */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,9 +136,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		30A9A7BA25ADC792000FA104 /* sample (Android) */ = {
+		30A9A7BA25ADC792000FA104 /* matrix (Android) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "sample (Android)" */;
+			buildConfigurationList = 30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "matrix (Android)" */;
 			buildPhases = (
 				30A9A7B825ADC792000FA104 /* Sources */,
 				30A9A7B925ADC792000FA104 /* Frameworks */,
@@ -148,14 +148,14 @@
 			);
 			dependencies = (
 			);
-			name = "sample (Android)";
-			productName = "sample (Android)";
-			productReference = 30A9A7BB25ADC792000FA104 /* libsample.android */;
+			name = "matrix (Android)";
+			productName = "matrix (Android)";
+			productReference = 30A9A7BB25ADC792000FA104 /* libmatrix.android */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		CE93601725AC454200CEF503 /* sample (Windows) */ = {
+		CE93601725AC454200CEF503 /* matrix (Windows) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */;
+			buildConfigurationList = CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "matrix (Windows)" */;
 			buildPhases = (
 				CE93601525AC454200CEF503 /* Sources */,
 				CE93601625AC454200CEF503 /* Frameworks */,
@@ -165,14 +165,14 @@
 			);
 			dependencies = (
 			);
-			name = "sample (Windows)";
-			productName = "sample (Windows)";
-			productReference = CE93601825AC454200CEF503 /* sample.dll */;
+			name = "matrix (Windows)";
+			productName = "matrix (Windows)";
+			productReference = CE93601825AC454200CEF503 /* matrix.dll */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		D6022C3423258B5D00B9BFB8 /* sample (iOS) */ = {
+		D6022C3423258B5D00B9BFB8 /* matrix (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */;
+			buildConfigurationList = D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "matrix (iOS)" */;
 			buildPhases = (
 				D6022C3123258B5D00B9BFB8 /* Sources */,
 				D6022C3223258B5D00B9BFB8 /* Frameworks */,
@@ -181,14 +181,14 @@
 			);
 			dependencies = (
 			);
-			name = "sample (iOS)";
-			productName = sample;
-			productReference = D6022C3523258B5D00B9BFB8 /* libsample.bundle */;
+			name = "matrix (iOS)";
+			productName = matrix;
+			productReference = D6022C3523258B5D00B9BFB8 /* libmatrix.bundle */;
 			productType = "com.apple.product-type.library.static";
 		};
-		D644A040231ED82900B75B77 /* sample (macOS) */ = {
+		D644A040231ED82900B75B77 /* matrix (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */;
+			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "matrix (macOS)" */;
 			buildPhases = (
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
@@ -197,9 +197,9 @@
 			);
 			dependencies = (
 			);
-			name = "sample (macOS)";
-			productName = sample;
-			productReference = D644A041231ED82900B75B77 /* libsample.dylib */;
+			name = "matrix (macOS)";
+			productName = matrix;
+			productReference = D644A041231ED82900B75B77 /* libmatrix.dylib */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -224,7 +224,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "sample" */;
+			buildConfigurationList = D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "matrix" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -237,10 +237,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D644A040231ED82900B75B77 /* sample (macOS) */,
-				D6022C3423258B5D00B9BFB8 /* sample (iOS) */,
-				CE93601725AC454200CEF503 /* sample (Windows) */,
-				30A9A7BA25ADC792000FA104 /* sample (Android) */,
+				D644A040231ED82900B75B77 /* matrix (macOS) */,
+				D6022C3423258B5D00B9BFB8 /* matrix (iOS) */,
+				CE93601725AC454200CEF503 /* matrix (Windows) */,
+				30A9A7BA25ADC792000FA104 /* matrix (Android) */,
 			);
 		};
 /* End PBXProject section */
@@ -270,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A9A7C325ADC7C0000FA104 /* sample.cpp in Sources */,
+				30A9A7C325ADC7C0000FA104 /* matrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE93601F25AC457A00CEF503 /* sample.cpp in Sources */,
+				CE93601F25AC457A00CEF503 /* matrix.cpp in Sources */,
 				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039F9D92447499200E671A7 /* sample.cpp in Sources */,
+				3039F9D92447499200E671A7 /* matrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C5242690D0004559E0 /* sample.cpp in Sources */,
+				300264C5242690D0004559E0 /* matrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +471,7 @@
 					"-ffunction-sections",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = sample;
+				PRODUCT_NAME = matrix;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYMROOT = ../../bin;
@@ -547,7 +547,7 @@
 					"-ffunction-sections",
 					"$(inherited)",
 				);
-				PRODUCT_NAME = sample;
+				PRODUCT_NAME = matrix;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SYMROOT = ../../bin;
@@ -572,7 +572,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "sample (Android)" */ = {
+		30A9A7BE25ADC792000FA104 /* Build configuration list for PBXNativeTarget "matrix (Android)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				30A9A7BC25ADC792000FA104 /* Debug */,
@@ -581,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "sample (Windows)" */ = {
+		CE93601B25AC454200CEF503 /* Build configuration list for PBXNativeTarget "matrix (Windows)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE93601925AC454200CEF503 /* Debug */,
@@ -590,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "sample (iOS)" */ = {
+		D6022C3B23258B5D00B9BFB8 /* Build configuration list for PBXNativeTarget "matrix (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D6022C3C23258B5D00B9BFB8 /* Debug */,
@@ -599,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "sample" */ = {
+		D644A03C231ED82900B75B77 /* Build configuration list for PBXProject "matrix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D644A04A231ED82900B75B77 /* Debug */,
@@ -608,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "sample (macOS)" */ = {
+		D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "matrix (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D644A04D231ED82900B75B77 /* Debug */,
