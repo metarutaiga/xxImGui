@@ -92,17 +92,18 @@ static void ImGui_ImplXX_SetupRenderState(ImDrawData* draw_data, uint64_t comman
             (L+R)/(L-R), (T+B)/(B-T), 0.5f, 1.0f
         };
 
-        xxSetTransform(commandEncoder, identity, identity, projection);
-        void* mapConstantBuffer = xxMapBuffer(g_device, constantBuffer);
+        char* mapConstantBuffer = (char*)xxMapBuffer(g_device, constantBuffer);
         if (mapConstantBuffer)
         {
-            memcpy(mapConstantBuffer, projection, sizeof(projection));
+            memcpy(mapConstantBuffer + sizeof(identity) * 0, identity, sizeof(identity));
+            memcpy(mapConstantBuffer + sizeof(identity) * 1, identity, sizeof(identity));
+            memcpy(mapConstantBuffer + sizeof(identity) * 2, projection, sizeof(projection));
             xxUnmapBuffer(g_device, constantBuffer);
         }
     }
 
     xxSetPipeline(commandEncoder, g_pipeline);
-    xxSetVertexConstantBuffer(commandEncoder, constantBuffer, 16 * sizeof(float));
+    xxSetVertexConstantBuffer(commandEncoder, constantBuffer, 16 * 3 * sizeof(float));
 }
 
 // Render function.
@@ -151,7 +152,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     }
     if (constantBuffer == 0)
     {
-        constantBuffer = xxCreateConstantBuffer(g_device, 16 * sizeof(float));
+        constantBuffer = xxCreateConstantBuffer(g_device, 16 * 3 * sizeof(float));
     }
 
     // Copy and convert all vertices into a swapped buffer.
@@ -181,7 +182,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
 
     // Render command lists
     // (Because we merged all buffers into a single one, we maintain our own offset into them)
-    ImTextureID boundTextureID = 0;
+    uint64_t boundTextureID = 0;
     int global_vtx_offset = 0;
     int global_idx_offset = 0;
     for (int n = 0; n < draw_data->CmdListsCount; n++)
@@ -229,7 +230,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                     {
                         boundTextureID = pcmd->TextureId;
 
-                        xxSetFragmentTextures(commandEncoder, 1, &pcmd->TextureId);
+                        xxSetFragmentTextures(commandEncoder, 1, &boundTextureID);
                         xxSetFragmentSamplers(commandEncoder, 1, &g_fontSampler);
                     }
 

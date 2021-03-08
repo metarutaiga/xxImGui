@@ -4,18 +4,12 @@
 #include "Renderer.h"
 #include "Plugin.h"
 #include "DearImGui.h"
-#include "implement/imgui_impl_win32.h"
-#include "xxMiniCRT/xxMSVCRT.h"
+#include <imgui/backends/imgui_impl_win32.h>
 
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
+#include <windows.h>
 #include <tchar.h>
-
-#define USE_MINICRT 1
-#if USE_MINICRT
-IMPLEMENT_MINICRT();
-#endif
 
 // Forward declarations of helper functions
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -31,9 +25,6 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
     WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_OWNDC, WndProc, 0, 0, instance, NULL, NULL, NULL, NULL, _T("ImGui Example"), NULL };
     ::RegisterClassEx(&wc);
     HWND hWnd = ::CreateWindow(wc.lpszClassName, _T("Dear ImGui XX Example"), WS_OVERLAPPEDWINDOW, 100, 100, (int)(1280 * scale), (int)(720 * scale), NULL, NULL, wc.hInstance, NULL);
-
-    // Use dark mode
-    ShouldUseDarkMode(hWnd);
 
     Renderer::Create(hWnd, (int)(1280 * scale), (int)(720 * scale));
     DearImGui::Create(hWnd, scale, scale);
@@ -92,10 +83,11 @@ int WINAPI wWinMain(HINSTANCE instance, HINSTANCE prevInstance, LPWSTR cmdLine, 
         }
 
         HWND result = (HWND)DearImGui::PostUpdate(hWnd, imguiUpdate);
-        imguiUpdate = false;
 
-        if (DearImGui::PowerSaving())
+        if (imguiUpdate == false && DearImGui::PowerSaving())
             xxSleep(1000 / 120);
+
+        imguiUpdate = false;
 
         if (hWnd != result)
         {
@@ -128,6 +120,9 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
     switch (msg)
     {
+    case WM_CREATE:
+        ShouldUseDarkMode(hWnd);
+        break;
     case WM_SIZE:
         if (wParam != SIZE_MINIMIZED)
         {
@@ -172,7 +167,7 @@ VOID WINAPI ShouldUseDarkMode(HWND hWnd)
             DWORD buildNumber = 0;
             RtlGetNtVersionNumbers(&major, &minor, &buildNumber);
             buildNumber &= ~0xF0000000;
-            if (major >= 10 && buildNumber >= 17763 && buildNumber <= 19042)
+            if (major >= 10 && buildNumber >= 17763)
             {
                 BOOL(WINAPI * ShouldAppsUseDarkMode)();
                 (void*&)ShouldAppsUseDarkMode = ::GetProcAddress(uxtheme, MAKEINTRESOURCEA(132));

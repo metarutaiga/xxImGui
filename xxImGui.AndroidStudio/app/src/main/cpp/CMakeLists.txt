@@ -12,14 +12,18 @@ cmake_minimum_required(VERSION 3.4.1)
 
 add_compile_options( -fno-exceptions
                      -fno-rtti
+                     -fno-threadsafe-statics
                      -fvisibility=hidden )
 
-set (CMAKE_SHARED_LINKER_FLAGS "-fuse-ld=lld -Wl,--build-id=sha1")
+# Houdini don't known llvm-ld
+# if(NOT ${ANDROID_SYSROOT_ABI} STREQUAL "arm")
+#     set( CMAKE_SHARED_LINKER_FLAGS "-fuse-ld=lld -nostdlib++ -Wl,--build-id=sha1 -Wl,--Tbss=0x400" )
+# endif()
 
 # ARMv7 hidden symbols is broken since ndk-r17
-if(${ANDROID_SYSROOT_ABI} STREQUAL "arm")
-    add_compile_options( -mno-global-merge )
-endif()
+# if(${ANDROID_SYSROOT_ABI} STREQUAL "arm")
+#     add_compile_options( -mno-global-merge )
+# endif()
 
 add_library( # Sets the name of the library.
              xxImGui
@@ -29,12 +33,12 @@ add_library( # Sets the name of the library.
 
              # Provides a relative path to your source file(s).
              dummy.cpp
+             ../../../../../imgui/misc/freetype/imgui_freetype.cpp
              ../../../../../xxImGui/DearImGui.cpp
              ../../../../../xxImGui/mainJNI.cpp
              ../../../../../xxImGui/Plugin.cpp
              ../../../../../xxImGui/Renderer.cpp
-             ../../../../../xxImGui/implement/imgui_impl_xx.cpp
-             ../../../../../xxImGui/implement/imgui_freetype.cpp )
+             ../../../../../xxImGui/implement/imgui_impl_xx.cpp )
 
 target_compile_definitions( xxImGui
                             PUBLIC
@@ -136,6 +140,7 @@ add_library( imgui
              ../../../../../imgui/imgui.cpp
              ../../../../../imgui/imgui_demo.cpp
              ../../../../../imgui/imgui_draw.cpp
+             ../../../../../imgui/imgui_tables.cpp
              ../../../../../imgui/imgui_widgets.cpp )
 
 target_compile_definitions( imgui
@@ -152,9 +157,10 @@ target_include_directories( imgui
 
 add_library( xxGraphic
              SHARED
+             ../../../../../xxGraphic/internal/xxGraphicInternalGL.cpp
+             ../../../../../xxGraphic/internal/xxGraphicInternalVulkan.cpp
              ../../../../../xxGraphic/xxGraphic.cpp
              ../../../../../xxGraphic/xxGraphicEGL.cpp
-             ../../../../../xxGraphic/xxGraphicGL.cpp
              ../../../../../xxGraphic/xxGraphicGLES2.cpp
              ../../../../../xxGraphic/xxGraphicGLES3.cpp
              ../../../../../xxGraphic/xxGraphicGLES31.cpp

@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Plugin Validator Source
 //
-// Copyright (c) 2019-2020 TAiGA
+// Copyright (c) 2019-2021 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include <interface.h>
@@ -66,6 +66,15 @@ pluginAPI bool Update(const UpdateData& updateData)
             ImGui::Text("%s Plugin Version %d.%d", PLUGIN_NAME, PLUGIN_MAJOR, PLUGIN_MINOR);
             ImGui::Separator();
             ImGui::Text("Build Date : %s %s", __DATE__, __TIME__);
+#if defined(__clang_version__)
+            ImGui::Text("Compiler Version : %s", __clang_version__);
+#endif
+#if defined(__GNUC__)
+            ImGui::Text("Compiler Version : %d.%d.%d", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+#endif
+#if defined(_MSC_FULL_VER)
+            ImGui::Text("Compiler Version : %d.%d.%d", _MSC_FULL_VER / 10000000 % 100, _MSC_FULL_VER / 100000 % 100, _MSC_FULL_VER % 100000);
+#endif
             ImGui::End();
         }
     }

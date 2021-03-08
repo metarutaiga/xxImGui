@@ -3,13 +3,16 @@
 	url = https://github.com/metarutaiga/xxGraphic
 [submodule "freetype"]
 	path = freetype
-	url = https://github.com/freetype/freetype2
+	url = https://gitlab.freedesktop.org/freetype/freetype
 [submodule "imgui"]
 	path = imgui
 	url = https://github.com/ocornut/imgui
-[submodule "xxMiniCRT"]
-	path = xxMiniCRT
-	url = https://github.com/metarutaiga/xxMiniCRT
+[submodule "stb"]
+	path = stb
+	url = https://github.com/nothings/stb
+[submodule "msvc"]
+	path = msvc
+	url = https://github.com/metarutaiga/msvc
 [submodule "xxYUV"]
 	path = xxYUV
 	url = https://github.com/metarutaiga/xxYUV
@@ -19,6 +22,3 @@
 [submodule "ConcurrencyNetworkFramework"]
 	path = ConcurrencyNetworkFramework
 	url = https://github.com/metarutaiga/ConcurrencyNetworkFramework
-[submodule "stb"]
-	path = stb
-	url = https://github.com/nothings/stb

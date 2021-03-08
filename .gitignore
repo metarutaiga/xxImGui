@@ -18,3 +18,5 @@ xxImGui.AndroidStudio/app/.cxx
 xxImGui.AndroidStudio/app/.gitignore
 xxImGui.AndroidStudio/app/build
 xxImGui.AndroidStudio/build
+xxImGui.xcworkspace/xcshareddata
+xxImGui.xcworkspace/xcuserdata

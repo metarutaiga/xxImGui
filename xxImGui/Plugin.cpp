@@ -1,7 +1,7 @@
 //==============================================================================
 // xxImGui : Plugin Source
 //
-// Copyright (c) 2019-2020 TAiGA
+// Copyright (c) 2019-2021 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include "xxGraphic/xxSystem.h"
@@ -23,12 +23,18 @@ void Plugin::Create(const char* path, uint64_t device)
     const char* arch = "";
     const char* extension = "";
 #if defined(xxWINDOWS)
-#if defined(_DEBUG)
+#if defined(__llvm__)
+#elif defined(_DEBUG)
     configuration = "Debug";
 #elif defined(NDEBUG)
     configuration = "Release";
 #endif
-#if defined(_M_AMD64)
+#if defined(__llvm__)
+#elif defined(_M_ARM64EC)
+    arch = ".arm64ec";
+#elif defined(_M_HYBRID_X86_ARM64)
+    arch = ".chpe";
+#elif defined(_M_AMD64)
     arch = ".x64";
 #elif defined(_M_IX86)
     arch = ".x86";
@@ -139,6 +145,17 @@ int Plugin::Count()
 bool Plugin::Update()
 {
     bool updated = false;
+
+    static int updateCount = 0;
+    if (updateCount)
+    {
+        updateCount--;
+        updated = true;
+    }
+    if (ImGui::IsMouseReleased(ImGuiMouseButton_Left))
+    {
+        updateCount = 1;
+    }
 
     UpdateData updateData;
     updateData.instance = Renderer::g_instance;
