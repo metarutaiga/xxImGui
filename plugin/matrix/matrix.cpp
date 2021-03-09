@@ -12,6 +12,17 @@
 #define PLUGIN_MINOR    0
 
 //------------------------------------------------------------------------------
+namespace ImGui
+{
+bool InputShort(const char* label, short* v, int step = 1, int step_fast = 100, ImGuiInputTextFlags flags = 0)
+{
+    int temp = (*v);
+    bool result = ImGui::InputInt(label, &temp, step, step_fast, flags);
+    (*v) = temp;
+    return result;
+};
+}
+//------------------------------------------------------------------------------
 //  https://gist.github.com/dougallj/7cba721da1a94da725ee37c1e9cd1f21
 //------------------------------------------------------------------------------
 union amx_access
@@ -143,31 +154,19 @@ static void SetIdentity()
         }
         break;
     case 1:
-        for (int i = 0; i < 8; ++i)
+        for (int i = 0; i < 16; ++i)
         {
-            matrixX.f32[i * 2 + 0] = 1.0f;
-            matrixX.f32[i * 2 + 1] = 1.0f;
-            matrixY.f32[i * 2 + 0] = 1.0f;
-            matrixY.f32[i * 2 + 1] = 1.0f;
-            matrixZ[i].f32[i * 2 + 0] = 1.0f;
-            matrixZ[i].f32[i * 2 + 1] = 1.0f;
+            matrixX.f32[i] = 1.0f;
+            matrixY.f32[i] = 1.0f;
+            matrixZ[i].f32[i] = 1.0f;
         }
         break;
     case 2:
-        for (int i = 0; i < 8; ++i)
+        for (int i = 0; i < 32; ++i)
         {
-            matrixX.i16[i * 4 + 0] = 1.0f;
-            matrixX.i16[i * 4 + 1] = 1.0f;
-            matrixX.i16[i * 4 + 2] = 1.0f;
-            matrixX.i16[i * 4 + 3] = 1.0f;
-            matrixY.i16[i * 4 + 0] = 1.0f;
-            matrixY.i16[i * 4 + 1] = 1.0f;
-            matrixY.i16[i * 4 + 2] = 1.0f;
-            matrixY.i16[i * 4 + 3] = 1.0f;
-            matrixZ[i].i16[i * 4 + 0] = 1.0f;
-            matrixZ[i].i16[i * 4 + 1] = 1.0f;
-            matrixZ[i].i16[i * 4 + 2] = 1.0f;
-            matrixZ[i].i16[i * 4 + 3] = 1.0f;
+            matrixX.i16[i] = 1;
+            matrixY.i16[i] = 1;
+            matrixZ[i].i16[i] = 1;
         }
         break;
     }
@@ -259,12 +258,12 @@ static void RandomZ()
                 matrixZ[j].f64[i] = rand() / (double)RAND_MAX;
         break;
     case 1:
-        for (int j = 0; j < 8; ++j)
+        for (int j = 0; j < 16; ++j)
             for (int i = 0; i < 16; ++i)
                 matrixZ[j].f32[i] = rand() / (float)RAND_MAX;
         break;
     case 2:
-        for (int j = 0; j < 8; ++j)
+        for (int j = 0; j < 32; ++j)
             for (int i = 0; i < 32; ++i)
                 matrixZ[j].i16[i] = rand() % (256);
         break;
@@ -308,12 +307,11 @@ static void VectorMultiplyVector()
             break;
         }
 #endif
-        for (int y = 0; y < 8; ++y)
+        for (int y = 0; y < 16; ++y)
         {
-            for (int x = 0; x < 8; ++x)
+            for (int x = 0; x < 16; ++x)
             {
-                matrixZ[y].f32[x * 2 + 0] = matrixX.f32[x * 2 + 0] * matrixY.f32[y * 2 + 0];
-                matrixZ[y].f32[x * 2 + 1] = matrixX.f32[x * 2 + 1] * matrixY.f32[y * 2 + 1];
+                matrixZ[y].f32[x] = matrixX.f32[x] * matrixY.f32[y];
             }
         }
         break;
@@ -339,14 +337,11 @@ static void VectorMultiplyVector()
             break;
         }
 #endif
-        for (int y = 0; y < 8; ++y)
+        for (int y = 0; y < 32; ++y)
         {
-            for (int x = 0; x < 8; ++x)
+            for (int x = 0; x < 32; ++x)
             {
-                matrixZ[y].i16[x * 4 + 0] = matrixX.i16[x * 4 + 0] * matrixY.i16[y * 4 + 0];
-                matrixZ[y].i16[x * 4 + 1] = matrixX.i16[x * 4 + 1] * matrixY.i16[y * 4 + 1];
-                matrixZ[y].i16[x * 4 + 2] = matrixX.i16[x * 4 + 2] * matrixY.i16[y * 4 + 2];
-                matrixZ[y].i16[x * 4 + 3] = matrixX.i16[x * 4 + 3] * matrixY.i16[y * 4 + 3];
+                matrixZ[y].i16[x] = matrixX.i16[x] * matrixY.i16[y];
             }
         }
         break;
@@ -427,14 +422,6 @@ static void UserInterface()
         return id;
     };
 
-    auto InputShort = [](const char* label, short* v)
-    {
-        int temp = (*v);
-        bool result = ImGui::InputInt(label, &temp, 0, 0, ImGuiInputTextFlags_None);
-        (*v) = temp;
-        return result;
-    };
-
     ImGui::RadioButton("64bit Floating", &mode, 0);
     ImGui::SameLine();
     ImGui::RadioButton("32bit Floating", &mode, 1);
@@ -444,6 +431,12 @@ static void UserInterface()
     ImGui::SameLine();
     ImGui::Checkbox("Apple AMX", &amx);
 #endif
+
+    static int hoverX = -1;
+    static int hoverY = -1;
+
+    ImU32 unselectedColor = ImColor(ImGui::GetStyle().Colors[ImGuiCol_FrameBg]);
+    ImU32 selectdColor = ImColor(ImColor(unselectedColor).Value.z, ImColor(unselectedColor).Value.y, ImColor(unselectedColor).Value.x);
 
     float width = 0.0f;
     switch (mode)
@@ -455,25 +448,41 @@ static void UserInterface()
         for (int x = 0; x < 8; ++x)
         {
             ImGui::SetNextItemWidth(width);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x ? selectdColor : unselectedColor);
             ImGui::InputDouble(GetLabel(), &matrixX.f64[x]);
+            ImGui::PopStyleColor(1);
             if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d", x);
+            {
+                hoverX = x;
+                ImGui::SetTooltip("X:%d (%f)", x, matrixX.f64[x]);
+            }
             ImGui::SameLine();
         }
         ImGui::NewLine();
         for (int y = 0; y < 8; ++y)
         {
             ImGui::SetNextItemWidth(width);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverY == y ? selectdColor : unselectedColor);
             ImGui::InputDouble(GetLabel(), &matrixY.f64[y]);
+            ImGui::PopStyleColor(1);
             if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d", y);
+            {
+                hoverY = y;
+                ImGui::SetTooltip("Y:%d (%f)", y, matrixY.f64[y]);
+            }
             ImGui::SameLine();
             for (int x = 0; x < 8; ++x)
             {
                 ImGui::SetNextItemWidth(width);
+                ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x && hoverY == y ? selectdColor : unselectedColor);
                 ImGui::InputDouble(GetLabel(), &matrixZ[y].f64[x]);
+                ImGui::PopStyleColor(1);
                 if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d", x, y);
+                {
+                    hoverX = x;
+                    hoverY = y;
+                    ImGui::SetTooltip("X:%d (%f)\nY:%d (%f)\nZ:%d,%d (%f)", x, matrixX.f64[x], y, matrixY.f64[y], x, y, matrixZ[y].f64[x]);
+                }
                 ImGui::SameLine();
             }
             ImGui::NewLine();
@@ -483,135 +492,91 @@ static void UserInterface()
         width = 48.0f;
         ImGui::InvisibleButton("", ImVec2(width, 0.0f));
         ImGui::SameLine();
-        ImGui::InvisibleButton("", ImVec2(width, 0.0f));
-        ImGui::SameLine();
-        for (int x = 0; x < 8; ++x)
+        for (int x = 0; x < 16; ++x)
         {
             ImGui::SetNextItemWidth(width);
-            ImGui::InputFloat(GetLabel(), &matrixX.f32[x * 2 + 0]);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x ? selectdColor : unselectedColor);
+            ImGui::InputFloat(GetLabel(), &matrixX.f32[x]);
+            ImGui::PopStyleColor(1);
             if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d,%d", x, 0);
-            ImGui::SameLine();
-            ImGui::SetNextItemWidth(width);
-            ImGui::InputFloat(GetLabel(), &matrixX.f32[x * 2 + 1]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d,%d", x, 1);
+            {
+                hoverX = x;
+                ImGui::SetTooltip("X:%d (%f)", x, matrixX.f32[x]);
+            }
             ImGui::SameLine();
         }
         ImGui::NewLine();
-        for (int y = 0; y < 8; ++y)
+        for (int y = 0; y < 16; ++y)
         {
             ImGui::SetNextItemWidth(width);
-            ImGui::InputFloat(GetLabel(), &matrixY.f32[y * 2 + 0]);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverY == y ? selectdColor : unselectedColor);
+            ImGui::InputFloat(GetLabel(), &matrixY.f32[y]);
+            ImGui::PopStyleColor(1);
             if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d,%d", y, 0);
+            {
+                hoverY = y;
+                ImGui::SetTooltip("Y:%d (%f)", y, matrixY.f32[y]);
+            }
             ImGui::SameLine();
-            ImGui::SetNextItemWidth(width);
-            ImGui::InputFloat(GetLabel(), &matrixY.f32[y * 2 + 1]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d,%d", y, 1);
-            ImGui::SameLine();
-            for (int x = 0; x < 8; ++x)
+            for (int x = 0; x < 16; ++x)
             {
                 ImGui::SetNextItemWidth(width);
-                ImGui::InputFloat(GetLabel(), &matrixZ[y].f32[x * 2 + 0]);
+                ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x && hoverY == y ? selectdColor : unselectedColor);
+                ImGui::InputFloat(GetLabel(), &matrixZ[y].f32[x]);
+                ImGui::PopStyleColor(1);
                 if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d,%d", x, y, 0);
-                ImGui::SameLine();
-                ImGui::SetNextItemWidth(width);
-                ImGui::InputFloat(GetLabel(), &matrixZ[y].f32[x * 2 + 1]);
-                if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d,%d", x, y, 1);
+                {
+                    hoverX = x;
+                    hoverY = y;
+                    ImGui::SetTooltip("X:%d (%f)\nY:%d (%f)\nZ:%d,%d (%f)", x, matrixX.f32[x], y, matrixY.f32[y], x, y, matrixZ[y].f32[x]);
+                }
                 ImGui::SameLine();
             }
             ImGui::NewLine();
         }
         break;
     case 2:
-        width = 48.0f;
+        width = 32.0f;
         ImGui::InvisibleButton("", ImVec2(width, 0.0f));
         ImGui::SameLine();
-        ImGui::InvisibleButton("", ImVec2(width, 0.0f));
-        ImGui::SameLine();
-        for (int x = 0; x < 8; ++x)
+        for (int x = 0; x < 32; ++x)
         {
             ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixX.i16[x * 4 + 0]);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x ? selectdColor : unselectedColor);
+            ImGui::InputShort(GetLabel(), &matrixX.i16[x], 0);
+            ImGui::PopStyleColor(1);
             if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d,%d", x, 0);
-            ImGui::SameLine();
-            ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixX.i16[x * 4 + 1]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d,%d", x, 1);
-            ImGui::SameLine();
-        }
-        ImGui::NewLine();
-        ImGui::InvisibleButton("", ImVec2(width, 0.0f));
-        ImGui::SameLine();
-        ImGui::InvisibleButton("", ImVec2(width, 0.0f));
-        ImGui::SameLine();
-        for (int x = 0; x < 8; ++x)
-        {
-            ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixX.i16[x * 4 + 2]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d,%d", x, 2);
-            ImGui::SameLine();
-            ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixX.i16[x * 4 + 3]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("X:%d,%d", x, 3);
-            ImGui::SameLine();
-        }
-        ImGui::NewLine();
-        for (int y = 0; y < 8; ++y)
-        {
-            ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixY.i16[y * 4 + 0]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d,%d", y, 0);
-            ImGui::SameLine();
-            ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixY.i16[y * 4 + 1]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d,%d", y, 1);
-            ImGui::SameLine();
-            for (int x = 0; x < 8; ++x)
             {
-                ImGui::SetNextItemWidth(width);
-                InputShort(GetLabel(), &matrixZ[y].i16[x * 4 + 0]);
-                if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d,%d", x, y, 0);
-                ImGui::SameLine();
-                ImGui::SetNextItemWidth(width);
-                InputShort(GetLabel(), &matrixZ[y].i16[x * 4 + 1]);
-                if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d,%d", x, y, 1);
-                ImGui::SameLine();
+                hoverX = x;
+                ImGui::SetTooltip("X:%d (%d)", x, matrixX.i16[x]);
             }
-            ImGui::NewLine();
-            ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixY.i16[y * 4 + 2]);
-            if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d,%d", y, 2);
             ImGui::SameLine();
+        }
+        ImGui::NewLine();
+        for (int y = 0; y < 32; ++y)
+        {
             ImGui::SetNextItemWidth(width);
-            InputShort(GetLabel(), &matrixY.i16[y * 4 + 3]);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverY == y ? selectdColor : unselectedColor);
+            ImGui::InputShort(GetLabel(), &matrixY.i16[y], 0);
+            ImGui::PopStyleColor(1);
             if (ImGui::IsItemHovered())
-                ImGui::SetTooltip("Y:%d,%d", y, 3);
+            {
+                hoverY = y;
+                ImGui::SetTooltip("Y:%d (%d)", y, matrixY.i16[y]);
+            }
             ImGui::SameLine();
-            for (int x = 0; x < 8; ++x)
+            for (int x = 0; x < 32; ++x)
             {
                 ImGui::SetNextItemWidth(width);
-                InputShort(GetLabel(), &matrixZ[y].i16[x * 4 + 2]);
+                ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x && hoverY == y ? selectdColor : unselectedColor);
+                ImGui::InputShort(GetLabel(), &matrixZ[y].i16[x], 0);
+                ImGui::PopStyleColor(1);
                 if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d,%d", x, y, 2);
-                ImGui::SameLine();
-                ImGui::SetNextItemWidth(width);
-                InputShort(GetLabel(), &matrixZ[y].i16[x * 4 + 3]);
-                if (ImGui::IsItemHovered())
-                    ImGui::SetTooltip("Z:%d,%d,%d", x, y, 3);
+                {
+                    hoverX = x;
+                    hoverY = y;
+                    ImGui::SetTooltip("X:%d (%d)\nY:%d (%d)\nZ:%d,%d (%d)", x, matrixX.i16[x], y, matrixY.i16[y], x, y, matrixZ[y].i16[x]);
+                }
                 ImGui::SameLine();
             }
             ImGui::NewLine();
