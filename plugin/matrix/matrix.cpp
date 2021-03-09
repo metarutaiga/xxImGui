@@ -21,6 +21,13 @@ bool InputShort(const char* label, short* v, int step = 1, int step_fast = 100, 
     (*v) = temp;
     return result;
 };
+bool InputFloat16(const char* label, _Float16* v)
+{
+    float temp = (*v);
+    bool result = ImGui::InputFloat(label, &temp);
+    (*v) = temp;
+    return result;
+};
 }
 //------------------------------------------------------------------------------
 //  https://gist.github.com/dougallj/7cba721da1a94da725ee37c1e9cd1f21
@@ -50,71 +57,33 @@ union amx_operands
         uint64_t disable_x:7;
         uint64_t dummy_39:2;
         uint64_t disable_y:7;
-        uint64_t dummy_48:14;
+        uint64_t accumulate:1;
+        uint64_t dummy_49:13;
         uint64_t mode_32:1;
         uint64_t vector_matrix_add:1;
     };
     uint64_t value;
 };
 //------------------------------------------------------------------------------
-#define AMX_LDX(V)                                                             \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (0 << 5) | 0)" ::"r"((uint64_t)V)     \
-      : "x0", "memory")
-#define AMX_LDY(V)                                                             \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (1 << 5) | 0)" ::"r"((uint64_t)V)     \
-      : "x0", "memory")
-#define AMX_STX(V)                                                             \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (2 << 5) | 0)" ::"r"((uint64_t)V)     \
-      : "x0", "memory")
-#define AMX_STY(V)                                                             \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (3 << 5) | 0)" ::"r"((uint64_t)V)     \
-      : "x0", "memory")
-#define AMX_LDZ(V)                                                             \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (4 << 5) | 0)" ::"r"((uint64_t)V)     \
-      : "x0", "memory")
-#define AMX_STZ(V)                                                             \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (5 << 5) | 0)" ::"r"((uint64_t)V)     \
-      : "x0", "memory")
-#define AMX_FMA64(V)                                                           \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (10 << 5) | 0)" ::"r"((uint64_t)V)    \
-      : "x0", "memory")
-#define AMX_FMA32(V)                                                           \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (12 << 5) | 0)" ::"r"((uint64_t)V)    \
-      : "x0", "memory")
-#define AMX_MAC16(V)                                                           \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (14 << 5) | 0)" ::"r"((uint64_t)V)    \
-      : "x0", "memory")
-#define AMX_START()                                                            \
-  __asm__ volatile(                                                            \
-      "nop \r\n nop \r\n nop \r\n .word (0x201000 | (17 << 5) | 0)" ::         \
-          : "memory")
-#define AMX_STOP()                                                             \
-  __asm__ volatile(                                                            \
-      "nop \r\n nop \r\n nop \r\n .word (0x201000 | (17 << 5) | 1)" ::         \
-          : "memory")
-#define AMX_VECINT(V)                                                          \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (18 << 5) | 0)" ::"r"((uint64_t)V)    \
-      : "x0", "memory")
-#define AMX_VECFP(V)                                                           \
-  __asm__ volatile(                                                            \
-      "mov x0, %0 \r\n .word (0x201000 | (19 << 5) | 0)" ::"r"((uint64_t)V)    \
-      : "x0", "memory")
+#define AMX_LDX(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 0 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_LDY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 1 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_STX(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 2 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_STY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 3 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_LDZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 4 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_STZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 5 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_FMA64(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (10 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_FMA32(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (12 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_MAC16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (14 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_FMA16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (15 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_START()     __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 0)" ::: "memory")
+#define AMX_STOP()      __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 1)" ::: "memory")
 //------------------------------------------------------------------------------
 union vector
 {
-    int16_t i16[32];
-    float   f32[16];
-    double  f64[8];
+    double      f64[8];
+    float       f32[16];
+    _Float16    f16[32];
+    int16_t     i16[32];
 };
 static vector matrixX;
 static vector matrixY;
@@ -168,6 +137,14 @@ static void SetIdentity()
     case 2:
         for (int i = 0; i < 32; ++i)
         {
+            matrixX.f16[i] = 1.0f16;
+            matrixY.f16[i] = 1.0f16;
+            matrixZ[i].f16[i] = 1.0f16;
+        }
+        break;
+    case 3:
+        for (int i = 0; i < 32; ++i)
+        {
             matrixX.i16[i] = 1;
             matrixY.i16[i] = 1;
             matrixZ[i].i16[i] = 1;
@@ -182,15 +159,19 @@ static void SequenceX()
     {
     case 0:
         for (int i = 0; i < 8; ++i)
-            matrixX.f64[i] = i;
+            matrixX.f64[i] = i + 1;
         break;
     case 1:
         for (int i = 0; i < 16; ++i)
-            matrixX.f32[i] = i;
+            matrixX.f32[i] = i + 1;
         break;
     case 2:
         for (int i = 0; i < 32; ++i)
-            matrixX.i16[i] = i;
+            matrixX.f16[i] = i + 1;
+        break;
+    case 3:
+        for (int i = 0; i < 32; ++i)
+            matrixX.i16[i] = i + 1;
         break;
     }
 }
@@ -201,15 +182,19 @@ static void SequenceY()
     {
     case 0:
         for (int i = 0; i < 8; ++i)
-            matrixY.f64[i] = i;
+            matrixY.f64[i] = i + 1;
         break;
     case 1:
         for (int i = 0; i < 16; ++i)
-            matrixY.f32[i] = i;
+            matrixY.f32[i] = i + 1;
         break;
     case 2:
         for (int i = 0; i < 32; ++i)
-            matrixY.i16[i] = i;
+            matrixY.f16[i] = i + 1;
+        break;
+    case 3:
+        for (int i = 0; i < 32; ++i)
+            matrixY.i16[i] = i + 1;
         break;
     }
 }
@@ -228,7 +213,11 @@ static void RandomX()
         break;
     case 2:
         for (int i = 0; i < 32; ++i)
-            matrixX.i16[i] = rand() % (256);
+            matrixX.f16[i] = rand() / (float)RAND_MAX;
+        break;
+    case 3:
+        for (int i = 0; i < 32; ++i)
+            matrixX.i16[i] = (int8_t)rand();
         break;
     }
 }
@@ -247,7 +236,11 @@ static void RandomY()
         break;
     case 2:
         for (int i = 0; i < 32; ++i)
-            matrixY.i16[i] = rand() % (256);
+            matrixY.f16[i] = rand() / (float)RAND_MAX;
+        break;
+    case 3:
+        for (int i = 0; i < 32; ++i)
+            matrixY.i16[i] = (int8_t)rand();
         break;
     }
 }
@@ -267,6 +260,11 @@ static void RandomZ()
                 matrixZ[j].f32[i] = rand() / (float)RAND_MAX;
         break;
     case 2:
+        for (int j = 0; j < 32; ++j)
+            for (int i = 0; i < 32; ++i)
+                matrixZ[j].f16[i] = rand() / (float)RAND_MAX;
+        break;
+    case 3:
         for (int j = 0; j < 32; ++j)
             for (int i = 0; i < 32; ++i)
                 matrixZ[j].i16[i] = rand() % (256);
@@ -350,6 +348,36 @@ static void VectorMultiplyVector()
             AMX_START();
             AMX_LDX(&matrixX);
             AMX_LDY(&matrixY);
+            AMX_FMA16(operands.value);
+            for (int i = 0; i < 32; ++i)
+            {
+                AMX_STZ(access.value);
+                access.address += 0x40;
+                access.register_index += 2;
+            }
+            AMX_STOP();
+            break;
+        }
+#endif
+        for (int y = 0; y < 32; ++y)
+        {
+            for (int x = 0; x < 32; ++x)
+            {
+                matrixZ[y].f16[x] = matrixX.f16[x] * matrixY.f16[y];
+            }
+        }
+        break;
+    case 3:
+#if defined(__APPLE__) && defined(__aarch64__)
+        if (amx)
+        {
+            amx_operands operands = {};
+            operands.clear_z = true;
+            amx_access access = {};
+            access.address = (uint64_t)&matrixZ;
+            AMX_START();
+            AMX_LDX(&matrixX);
+            AMX_LDY(&matrixY);
             AMX_MAC16(operands.value);
             for (int i = 0; i < 32; ++i)
             {
@@ -416,6 +444,22 @@ static void VectorMultiplyMatrix(bool X)
             {
                 if (X)
                 {
+                    matrixZ[y].f16[x] = matrixZ[y].f16[x] * matrixX.f16[x];
+                }
+                else
+                {
+                    matrixZ[x].f16[y] = matrixZ[x].f16[y] * matrixY.f16[x];
+                }
+            }
+        }
+        break;
+    case 3:
+        for (int y = 0; y < 32; ++y)
+        {
+            for (int x = 0; x < 32; ++x)
+            {
+                if (X)
+                {
                     matrixZ[y].i16[x] = matrixZ[y].i16[x] * matrixX.i16[x];
                 }
                 else
@@ -442,7 +486,9 @@ static void UserInterface()
     ImGui::SameLine();
     ImGui::RadioButton("32bit Floating", &mode, 1);
     ImGui::SameLine();
-    ImGui::RadioButton("16bit Integer", &mode, 2);
+    ImGui::RadioButton("16bit Floating", &mode, 2);
+    ImGui::SameLine();
+    ImGui::RadioButton("16bit Integer", &mode, 3);
 #if defined(__APPLE__) && defined(__aarch64__)
     ImGui::SameLine();
     ImGui::Checkbox("Apple AMX", &amx);
@@ -552,6 +598,53 @@ static void UserInterface()
         }
         break;
     case 2:
+        width = 32.0f;
+        ImGui::InvisibleButton("", ImVec2(width, 0.0f));
+        ImGui::SameLine();
+        for (int x = 0; x < 32; ++x)
+        {
+            ImGui::SetNextItemWidth(width);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x ? selectdColor : unselectedColor);
+            ImGui::InputFloat16(GetLabel(), &matrixX.f16[x]);
+            ImGui::PopStyleColor(1);
+            if (ImGui::IsItemHovered())
+            {
+                hoverX = x;
+                ImGui::SetTooltip("X:%d (%f)", x, (float)matrixX.f16[x]);
+            }
+            ImGui::SameLine();
+        }
+        ImGui::NewLine();
+        for (int y = 0; y < 32; ++y)
+        {
+            ImGui::SetNextItemWidth(width);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverY == y ? selectdColor : unselectedColor);
+            ImGui::InputFloat16(GetLabel(), &matrixY.f16[y]);
+            ImGui::PopStyleColor(1);
+            if (ImGui::IsItemHovered())
+            {
+                hoverY = y;
+                ImGui::SetTooltip("Y:%d (%f)", y, (float)matrixY.f16[y]);
+            }
+            ImGui::SameLine();
+            for (int x = 0; x < 32; ++x)
+            {
+                ImGui::SetNextItemWidth(width);
+                ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x && hoverY == y ? selectdColor : unselectedColor);
+                ImGui::InputFloat16(GetLabel(), &matrixZ[y].f16[x]);
+                ImGui::PopStyleColor(1);
+                if (ImGui::IsItemHovered())
+                {
+                    hoverX = x;
+                    hoverY = y;
+                    ImGui::SetTooltip("X:%d (%f)\nY:%d (%f)\nZ:%d,%d (%f)", x, (float)matrixX.f16[x], y, (float)matrixY.f16[y], x, y, (float)matrixZ[y].f16[x]);
+                }
+                ImGui::SameLine();
+            }
+            ImGui::NewLine();
+        }
+        break;
+    case 3:
         width = 32.0f;
         ImGui::InvisibleButton("", ImVec2(width, 0.0f));
         ImGui::SameLine();
