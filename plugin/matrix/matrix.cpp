@@ -81,6 +81,10 @@ union amx_operands
   __asm__ volatile(                                                            \
       "mov x0, %0 \r\n .word (0x201000 | (5 << 5) | 0)" ::"r"((uint64_t)V)     \
       : "x0", "memory")
+#define AMX_FMA64(V)                                                           \
+  __asm__ volatile(                                                            \
+      "mov x0, %0 \r\n .word (0x201000 | (10 << 5) | 0)" ::"r"((uint64_t)V)    \
+      : "x0", "memory")
 #define AMX_FMA32(V)                                                           \
   __asm__ volatile(                                                            \
       "mov x0, %0 \r\n .word (0x201000 | (12 << 5) | 0)" ::"r"((uint64_t)V)    \
@@ -276,6 +280,27 @@ static void VectorMultiplyVector()
     switch (mode)
     {
     case 0:
+#if defined(__APPLE__) && defined(__aarch64__)
+        if (amx)
+        {
+            amx_operands operands = {};
+            operands.clear_z = true;
+            amx_access access = {};
+            access.address = (uint64_t)&matrixZ;
+            AMX_START();
+            AMX_LDX(&matrixX);
+            AMX_LDY(&matrixY);
+            AMX_FMA64(operands.value);
+            for (int i = 0; i < 8; ++i)
+            {
+                AMX_STZ(access.value);
+                access.address += 0x40;
+                access.register_index += 8;
+            }
+            AMX_STOP();
+            break;
+        }
+#endif
         for (int y = 0; y < 8; ++y)
         {
             for (int x = 0; x < 8; ++x)
@@ -290,18 +315,17 @@ static void VectorMultiplyVector()
         {
             amx_operands operands = {};
             operands.clear_z = true;
-            operands.mode_32 = true;
             amx_access access = {};
             access.address = (uint64_t)&matrixZ;
             AMX_START();
             AMX_LDX(&matrixX);
             AMX_LDY(&matrixY);
             AMX_FMA32(operands.value);
-            for (int i = 0; i < 8; ++i)
+            for (int i = 0; i < 16; ++i)
             {
                 AMX_STZ(access.value);
                 access.address += 0x40;
-                access.register_index += 8;
+                access.register_index += 4;
             }
             AMX_STOP();
             break;
@@ -327,11 +351,11 @@ static void VectorMultiplyVector()
             AMX_LDX(&matrixX);
             AMX_LDY(&matrixY);
             AMX_MAC16(operands.value);
-            for (int i = 0; i < 8; ++i)
+            for (int i = 0; i < 32; ++i)
             {
                 AMX_STZ(access.value);
                 access.address += 0x40;
-                access.register_index += 8;
+                access.register_index += 2;
             }
             AMX_STOP();
             break;
@@ -354,57 +378,49 @@ static void VectorMultiplyMatrix(bool X)
     switch (mode)
     {
     case 0:
-        for (int j = 0; j < 8; ++j)
+        for (int y = 0; y < 8; ++y)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int x = 0; x < 8; ++x)
             {
                 if (X)
                 {
-                    matrixZ[j].f64[i] = matrixZ[j].f64[i] * matrixX.f64[i];
+                    matrixZ[y].f64[x] = matrixZ[y].f64[x] * matrixX.f64[x];
                 }
                 else
                 {
-                    matrixZ[i].f64[j] = matrixZ[i].f64[j] * matrixY.f64[i];
+                    matrixZ[x].f64[y] = matrixZ[x].f64[y] * matrixY.f64[x];
                 }
             }
         }
         break;
     case 1:
-        for (int j = 0; j < 8; ++j)
+        for (int y = 0; y < 16; ++y)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int x = 0; x < 16; ++x)
             {
                 if (X)
                 {
-                    matrixZ[j].f32[i * 2 + 0] = matrixZ[j].f32[i * 2 + 0] * matrixX.f32[i * 2 + 0];
-                    matrixZ[j].f32[i * 2 + 1] = matrixZ[j].f32[i * 2 + 1] * matrixX.f32[i * 2 + 1];
+                    matrixZ[y].f32[x] = matrixZ[y].f32[x] * matrixX.f32[x];
                 }
                 else
                 {
-                    matrixZ[i].f32[j * 2 + 0] = matrixZ[i].f32[j * 2 + 0] * matrixY.f32[i * 2 + 0];
-                    matrixZ[i].f32[j * 2 + 1] = matrixZ[i].f32[j * 2 + 1] * matrixY.f32[i * 2 + 1];
+                    matrixZ[x].f32[y] = matrixZ[x].f32[y] * matrixY.f32[x];
                 }
             }
         }
         break;
     case 2:
-        for (int j = 0; j < 8; ++j)
+        for (int y = 0; y < 32; ++y)
         {
-            for (int i = 0; i < 8; ++i)
+            for (int x = 0; x < 32; ++x)
             {
                 if (X)
                 {
-                    matrixZ[j].i16[i * 4 + 0] = matrixZ[j].i16[i * 4 + 0] * matrixX.i16[i * 4 + 0];
-                    matrixZ[j].i16[i * 4 + 1] = matrixZ[j].i16[i * 4 + 1] * matrixX.i16[i * 4 + 1];
-                    matrixZ[j].i16[i * 4 + 2] = matrixZ[j].i16[i * 4 + 2] * matrixX.i16[i * 4 + 2];
-                    matrixZ[j].i16[i * 4 + 3] = matrixZ[j].i16[i * 4 + 3] * matrixX.i16[i * 4 + 3];
+                    matrixZ[y].i16[x] = matrixZ[y].i16[x] * matrixX.i16[x];
                 }
                 else
                 {
-                    matrixZ[i].i16[j * 4 + 0] = matrixZ[i].i16[j * 4 + 0] * matrixY.i16[i * 4 + 0];
-                    matrixZ[i].i16[j * 4 + 1] = matrixZ[i].i16[j * 4 + 1] * matrixY.i16[i * 4 + 1];
-                    matrixZ[i].i16[j * 4 + 2] = matrixZ[i].i16[j * 4 + 2] * matrixY.i16[i * 4 + 2];
-                    matrixZ[i].i16[j * 4 + 3] = matrixZ[i].i16[j * 4 + 3] * matrixY.i16[i * 4 + 3];
+                    matrixZ[x].i16[y] = matrixZ[x].i16[y] * matrixY.i16[x];
                 }
             }
         }
