@@ -150,15 +150,10 @@
 
 #if TARGET_OS_OSX
 
--(void)loadView                         { self.view = [NSView new]; }
--(void)keyUp:(NSEvent *)event           { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)keyDown:(NSEvent *)event         { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)flagsChanged:(NSEvent *)event    { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseDown:(NSEvent *)event       { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseUp:(NSEvent *)event         { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseMoved:(NSEvent *)event      { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseDragged:(NSEvent *)event    { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)scrollWheel:(NSEvent *)event     { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)loadView
+{
+    self.view = [NSView new];
+}
 
 #elif TARGET_OS_IOS
 

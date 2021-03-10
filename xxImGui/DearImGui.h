@@ -25,7 +25,6 @@ public:
 
     static bool PowerSaving();
 
-    static void HandleEventOSX(void* event, void* view);
     static void HandleEventAndroid(int type, float x, float y);
 
 protected:

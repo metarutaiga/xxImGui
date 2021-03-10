@@ -330,6 +330,7 @@ bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
         }
         mousePoint = NSMakePoint(mousePoint.x, size.height - mousePoint.y);
         io.MousePos = ImVec2((float)mousePoint.x, (float)mousePoint.y);
+        return io.WantCaptureMouse;
     }
 
     if (event.type == NSEventTypeScrollWheel)
@@ -435,7 +436,12 @@ void ImGui_ImplOSX_AddTrackingArea(NSViewController* _Nonnull controller)
     // To match the behavior of other backends, we pass every event down to the OS.
     if (g_Monitor)
         return;
-    NSEventMask eventMask = NSEventMaskKeyDown | NSEventMaskKeyUp | NSEventMaskFlagsChanged | NSEventTypeScrollWheel;
+    NSEventMask eventMask = 0;
+    eventMask |= NSEventMaskMouseMoved | NSEventTypeScrollWheel;
+    eventMask |= NSEventMaskLeftMouseDown | NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged;
+    eventMask |= NSEventMaskRightMouseDown | NSEventMaskRightMouseUp | NSEventMaskRightMouseDragged;
+    eventMask |= NSEventMaskOtherMouseDown | NSEventMaskOtherMouseUp | NSEventMaskOtherMouseDragged;
+    eventMask |= NSEventMaskKeyDown | NSEventMaskKeyUp | NSEventMaskFlagsChanged;
     g_Monitor = [NSEvent addLocalMonitorForEventsMatchingMask:eventMask handler:^NSEvent * _Nullable(NSEvent *event)
     {
         ImGui_ImplOSX_HandleEvent(event, controller.view);
@@ -468,15 +474,10 @@ struct ImGuiViewportDataOSX
 @end
 
 @implementation ImGui_ImplOSX_ViewController
--(void)loadView                         { self.view = [NSView new]; }
--(void)keyUp:(NSEvent *)event           { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)keyDown:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)flagsChanged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)mouseDown:(NSEvent *)event       { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)mouseUp:(NSEvent *)event         { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)mouseMoved:(NSEvent *)event      { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)mouseDragged:(NSEvent *)event    { ImGui_ImplOSX_HandleEvent(event, self.view); }
--(void)scrollWheel:(NSEvent *)event     { ImGui_ImplOSX_HandleEvent(event, self.view); }
+-(void)loadView
+{
+    self.view = [NSView new];
+}
 @end
 
 static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
