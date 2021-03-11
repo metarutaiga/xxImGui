@@ -53,7 +53,7 @@ static void loadTextureFromImage(uint64_t& texture, uint64_t device, const void*
                 char* output = pointer;
                 for (unsigned int x = 0; x < width; ++x)
                 {
-#if defined(xxMACOS) || defined(xxWINDOWS)
+#if defined(xxWINDOWS)
                     if (targetPixel >= 1) (*output++) = (sourcePixel >= 1) ? input[x * sourcePixel + 0] : -1;
                     if (targetPixel >= 2) (*output++) = (sourcePixel >= 2) ? input[x * sourcePixel + 1] : -1;
                     if (targetPixel >= 3) (*output++) = (sourcePixel >= 3) ? input[x * sourcePixel + 2] : -1;
@@ -78,7 +78,7 @@ static void loadTexture(const char* baseFolder, bool videoRange)
 {
     char path[1024];
 #if defined(xxMACOS)
-    snprintf(path, 1024, "%s/../%s/%s", baseFolder, "Resources", "lenna.rgb");
+    snprintf(path, 1024, "%s/../../../../%s/%s", baseFolder, "resource", "lenna.rgb");
 #elif defined(xxIOS)
     snprintf(path, 1024, "%s/%s", baseFolder, "lenna.rgb");
 #else

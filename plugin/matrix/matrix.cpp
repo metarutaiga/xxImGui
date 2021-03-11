@@ -11,9 +11,18 @@
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
+#define DEBUG_OPERANDS  0
+
 //------------------------------------------------------------------------------
 namespace ImGui
 {
+bool InputChar(const char* label, signed char* v, int step = 1, int step_fast = 100, ImGuiInputTextFlags flags = 0)
+{
+    int temp = (*v);
+    bool result = ImGui::InputInt(label, &temp, step, step_fast, flags);
+    (*v) = temp;
+    return result;
+};
 bool InputShort(const char* label, short* v, int step = 1, int step_fast = 100, ImGuiInputTextFlags flags = 0)
 {
     int temp = (*v);
@@ -50,17 +59,32 @@ union amx_operands
         uint64_t offset_x:10;
         uint64_t offset_y:10;
         uint64_t offset_z:7;
-        uint64_t clear_z:1;
+        uint64_t skip_z:1;
         uint64_t skip_y:1;
         uint64_t skip_x:1;
         uint64_t dummy_30:2;
         uint64_t disable_x:7;
         uint64_t dummy_39:2;
         uint64_t disable_y:7;
-        uint64_t accumulate:1;
-        uint64_t dummy_49:13;
+        uint64_t dummy_48:14;
         uint64_t mode_32:1;
         uint64_t vector_matrix_add:1;
+    };
+    struct
+    {
+        uint64_t dummy_0:26;
+        uint64_t dummy_26:1;
+        uint64_t count_x:2;
+        uint64_t count_y:2;
+        uint64_t dummy_31:1;
+        uint64_t mask_high:1;
+        uint64_t mask_low:1;
+        uint64_t dummy_34:13;
+        uint64_t neg:1;
+        uint64_t accum:1;
+        uint64_t dummy_49:9;
+        uint64_t shift_right:5;
+        uint64_t overflow:1;
     };
     uint64_t value;
 };
@@ -71,12 +95,16 @@ union amx_operands
 #define AMX_STY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 3 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_LDZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 4 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_STZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 5 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_EXTRX(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 8 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_EXTRY(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 9 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_FMA64(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (10 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_FMA32(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (12 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_MAC16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (14 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_FMA16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (15 << 5) | 0)" ::"r"(V) : "x0", "memory")
 #define AMX_START()     __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 0)" ::: "memory")
 #define AMX_STOP()      __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 1)" ::: "memory")
+#define AMX_VECINT(V)   __asm__ volatile("mov x0, %0        \n .word (0x201000 | (18 << 5) | 0)" ::"r"(V) : "x0", "memory")
+#define AMX_VECFP(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (19 << 5) | 0)" ::"r"(V) : "x0", "memory")
 //------------------------------------------------------------------------------
 union vector
 {
@@ -84,13 +112,17 @@ union vector
     float       f32[16];
     _Float16    f16[32];
     int16_t     i16[32];
+    uint16_t    u16[32];
+    int8_t      i8[64];
+    uint8_t     u8[64];
 };
 static vector matrixX;
 static vector matrixY;
-static vector matrixZ[32];
+static vector matrixZ[64];
 static int mode;
 #if defined(__APPLE__) && defined(__aarch64__)
 static bool amx;
+static bool amxOperand[64];
 static uint64_t amxX[64];
 static uint64_t amxY[64];
 static uint64_t amxZ[64 * 64];
@@ -148,7 +180,7 @@ static void SetZero()
     SetZeroZ();
 }
 //------------------------------------------------------------------------------
-static void SetIdentity()
+static void SetNumber(int value)
 {
     SetZero();
     switch (mode)
@@ -156,33 +188,41 @@ static void SetIdentity()
     case 0:
         for (int i = 0; i < 8; ++i)
         {
-            matrixX.f64[i] = 1.0;
-            matrixY.f64[i] = 1.0;
-            matrixZ[i].f64[i] = 1.0;
+            matrixX.f64[i] = value;
+            matrixY.f64[i] = value;
+            matrixZ[i].f64[i] = value;
         }
         break;
     case 1:
         for (int i = 0; i < 16; ++i)
         {
-            matrixX.f32[i] = 1.0f;
-            matrixY.f32[i] = 1.0f;
-            matrixZ[i].f32[i] = 1.0f;
+            matrixX.f32[i] = value;
+            matrixY.f32[i] = value;
+            matrixZ[i].f32[i] = value;
         }
         break;
     case 2:
         for (int i = 0; i < 32; ++i)
         {
-            matrixX.f16[i] = 1.0f16;
-            matrixY.f16[i] = 1.0f16;
-            matrixZ[i].f16[i] = 1.0f16;
+            matrixX.f16[i] = value;
+            matrixY.f16[i] = value;
+            matrixZ[i].f16[i] = value;
         }
         break;
     case 3:
         for (int i = 0; i < 32; ++i)
         {
-            matrixX.i16[i] = 1;
-            matrixY.i16[i] = 1;
-            matrixZ[i].i16[i] = 1;
+            matrixX.i16[i] = value;
+            matrixY.i16[i] = value;
+            matrixZ[i].i16[i] = value;
+        }
+        break;
+    case 4:
+        for (int i = 0; i < 64; ++i)
+        {
+            matrixX.i8[i] = value;
+            matrixY.i8[i] = value;
+            matrixZ[i].i8[i] = value;
         }
         break;
     }
@@ -208,6 +248,10 @@ static void SequenceX()
         for (int i = 0; i < 32; ++i)
             matrixX.i16[i] = i + 1;
         break;
+    case 4:
+        for (int i = 0; i < 64; ++i)
+            matrixX.i8[i] = i + 1;
+        break;
     }
 }
 //------------------------------------------------------------------------------
@@ -230,6 +274,10 @@ static void SequenceY()
     case 3:
         for (int i = 0; i < 32; ++i)
             matrixY.i16[i] = i + 1;
+        break;
+    case 4:
+        for (int i = 0; i < 64; ++i)
+            matrixY.i8[i] = i + 1;
         break;
     }
 }
@@ -254,6 +302,10 @@ static void RandomX()
         for (int i = 0; i < 32; ++i)
             matrixX.i16[i] = (int8_t)rand();
         break;
+    case 4:
+        for (int i = 0; i < 64; ++i)
+            matrixX.i8[i] = (int8_t)rand();
+        break;
     }
 }
 //------------------------------------------------------------------------------
@@ -276,6 +328,10 @@ static void RandomY()
     case 3:
         for (int i = 0; i < 32; ++i)
             matrixY.i16[i] = (int8_t)rand();
+        break;
+    case 4:
+        for (int i = 0; i < 64; ++i)
+            matrixY.i8[i] = (int8_t)rand();
         break;
     }
 }
@@ -302,14 +358,18 @@ static void RandomZ()
     case 3:
         for (int j = 0; j < 32; ++j)
             for (int i = 0; i < 32; ++i)
-                matrixZ[j].i16[i] = rand() % (256);
+                matrixZ[j].i16[i] = (int8_t)rand();
+        break;
+    case 4:
+        for (int j = 0; j < 64; ++j)
+            for (int i = 0; i < 64; ++i)
+                matrixZ[j].i8[i] = (int8_t)rand();
         break;
     }
 }
 //------------------------------------------------------------------------------
-static void VectorMultiplyVector()
+static void VectorMultiplyVectorToMatrix()
 {
-    SetZeroZ();
     switch (mode)
     {
     case 0:
@@ -317,7 +377,7 @@ static void VectorMultiplyVector()
         if (amx)
         {
             amx_operands operands = {};
-            operands.clear_z = true;
+            operands.skip_z = true;
             amx_access access = {};
             access.address = (uint64_t)&matrixZ;
             AMX_START();
@@ -348,7 +408,7 @@ static void VectorMultiplyVector()
         if (amx)
         {
             amx_operands operands = {};
-            operands.clear_z = true;
+            operands.skip_z = true;
             amx_access access = {};
             access.address = (uint64_t)&matrixZ;
             AMX_START();
@@ -379,7 +439,7 @@ static void VectorMultiplyVector()
         if (amx)
         {
             amx_operands operands = {};
-            operands.clear_z = true;
+            operands.skip_z = true;
             amx_access access = {};
             access.address = (uint64_t)&matrixZ;
             AMX_START();
@@ -410,7 +470,7 @@ static void VectorMultiplyVector()
         if (amx)
         {
             amx_operands operands = {};
-            operands.clear_z = true;
+            operands.skip_z = true;
             amx_access access = {};
             access.address = (uint64_t)&matrixZ;
             AMX_START();
@@ -436,76 +496,148 @@ static void VectorMultiplyVector()
             }
         }
         break;
+    case 4:
+        for (int y = 0; y < 64; ++y)
+        {
+            for (int x = 0; x < 64; ++x)
+            {
+                matrixZ[y].i8[x] = matrixX.i8[x] * matrixY.i8[y];
+            }
+        }
+        break;
     }
 }
 //------------------------------------------------------------------------------
-static void VectorMultiplyMatrix(bool X)
+static void VectorMultiplyVectorToVector()
 {
-    SetZeroZ();
     switch (mode)
     {
     case 0:
-        for (int y = 0; y < 8; ++y)
+        for (int i = 0; i < 8; ++i)
         {
-            for (int x = 0; x < 8; ++x)
-            {
-                if (X)
-                {
-                    matrixZ[y].f64[x] = matrixZ[y].f64[x] * matrixX.f64[x];
-                }
-                else
-                {
-                    matrixZ[x].f64[y] = matrixZ[x].f64[y] * matrixY.f64[x];
-                }
-            }
+            matrixZ[0].f64[i] = matrixX.f64[i] * matrixY.f64[i];
         }
         break;
     case 1:
-        for (int y = 0; y < 16; ++y)
+        for (int i = 0; i < 16; ++i)
         {
-            for (int x = 0; x < 16; ++x)
-            {
-                if (X)
-                {
-                    matrixZ[y].f32[x] = matrixZ[y].f32[x] * matrixX.f32[x];
-                }
-                else
-                {
-                    matrixZ[x].f32[y] = matrixZ[x].f32[y] * matrixY.f32[x];
-                }
-            }
+            matrixZ[0].f32[i] = matrixX.f32[i] * matrixY.f32[i];
         }
         break;
     case 2:
-        for (int y = 0; y < 32; ++y)
+#if defined(__APPLE__) && defined(__aarch64__)
+        if (amx)
         {
-            for (int x = 0; x < 32; ++x)
+            amx_operands operands = {};
+            amx_access access = {};
+            access.address = (uint64_t)&matrixZ;
+            AMX_START();
+            AMX_LDX(&matrixX);
+            AMX_LDY(&matrixY);
+            AMX_VECFP(operands.value);
+            for (int i = 0; i < 32; ++i)
             {
-                if (X)
-                {
-                    matrixZ[y].f16[x] = matrixZ[y].f16[x] * matrixX.f16[x];
-                }
-                else
-                {
-                    matrixZ[x].f16[y] = matrixZ[x].f16[y] * matrixY.f16[x];
-                }
+                AMX_STZ(access.value);
+                access.address += 0x40;
+                access.register_index += 2;
             }
+            amxDump();
+            AMX_STOP();
+            break;
+        }
+#endif
+        for (int i = 0; i < 32; ++i)
+        {
+            matrixZ[0].f16[i] = matrixX.f16[i] * matrixY.f16[i];
         }
         break;
     case 3:
-        for (int y = 0; y < 32; ++y)
+#if defined(__APPLE__) && defined(__aarch64__)
+        if (amx)
         {
-            for (int x = 0; x < 32; ++x)
+            amx_operands operands = {};
+#if DEBUG_OPERANDS
+            for (int i = 0; i < 64; ++i)
             {
-                if (X)
-                {
-                    matrixZ[y].i16[x] = matrixZ[y].i16[x] * matrixX.i16[x];
-                }
-                else
-                {
-                    matrixZ[x].i16[y] = matrixZ[x].i16[y] * matrixY.i16[x];
-                }
+                if (amxOperand[i])
+                    operands.value |= (1ull << i);
             }
+#endif
+            amx_access access = {};
+            access.address = (uint64_t)&matrixZ;
+            AMX_START();
+            AMX_LDX(&matrixX);
+            AMX_LDY(&matrixY);
+            AMX_VECINT(operands.value);
+            for (int i = 0; i < 32; ++i)
+            {
+                AMX_STZ(access.value);
+                access.address += 0x40;
+                access.register_index += 2;
+            }
+            amxDump();
+            AMX_STOP();
+            break;
+        }
+#endif
+        for (int i = 0; i < 32; ++i)
+        {
+            matrixZ[0].i16[i] = matrixX.i16[i] * matrixY.i16[i];
+        }
+        break;
+    case 4:
+#if defined(__APPLE__) && defined(__aarch64__)
+        if (amx)
+        {
+            static const uint16_t vector256[32] =
+            {
+                256, 256, 256, 256, 256, 256, 256, 256,
+                256, 256, 256, 256, 256, 256, 256, 256,
+                256, 256, 256, 256, 256, 256, 256, 256,
+                256, 256, 256, 256, 256, 256, 256, 256,
+            };
+            amx_access accessX = {};
+            amx_access accessY = {};
+            amx_access access256 = {};
+            amx_access accessZ = {};
+            accessX.address = (uint64_t)&matrixX;
+            accessY.address = (uint64_t)&matrixY;
+            access256.address = (uint64_t)&vector256;
+            access256.register_index = 1;
+            accessZ.address = (uint64_t)&matrixZ;
+            AMX_START();
+            AMX_LDX(accessX.value);
+            AMX_LDY(accessY.value);
+            AMX_LDY(access256.value);
+            AMX_EXTRX((amx_operands{ .offset_y = 0x40, .offset_z = 1, .skip_z = 1 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0x40, .offset_y = 0, .offset_z = 1 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0x40, .offset_y = 1, .offset_z = 2 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x40, .offset_z = 3 }));
+            AMX_VECINT((amx_operands{ .offset_x = 1, .offset_y = 0x40, .offset_z = 4 }));
+            AMX_EXTRX((amx_operands{ .offset_y = 0x80, .offset_z = 1 }));
+            AMX_EXTRX((amx_operands{ .offset_y = 0xC0, .offset_z = 2 }));
+            AMX_EXTRX((amx_operands{ .offset_y = 0x100, .offset_z = 3 }));
+            AMX_EXTRX((amx_operands{ .offset_y = 0x140, .offset_z = 4 }));
+            AMX_EXTRY((amx_operands{ .offset_x = 0x80, .offset_z = 4, .skip_z = 1 }));
+            AMX_EXTRY((amx_operands{ .offset_x = 0xC0, .offset_z = 5, .skip_z = 1 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0x81, .offset_y = 0x81, .offset_z = 0 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0xC1, .offset_y = 0xC1, .offset_z = 5 }));
+            AMX_EXTRX((amx_operands{ .offset_y = 0x180, .offset_z = 5 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0x40, .offset_y = 0x180, .offset_z = 0 }));
+            for (int i = 0; i < 8; ++i)
+            {
+                AMX_STZ(accessZ.value);
+                accessZ.address += 0x40;
+                accessZ.register_index += 8;
+            }
+            amxDump();
+            AMX_STOP();
+            break;
+        }
+#endif
+        for (int i = 0; i < 64; ++i)
+        {
+            matrixZ[0].i8[i] = matrixX.i8[i] * matrixY.i8[i];
         }
         break;
     }
@@ -528,6 +660,8 @@ static void UserInterface()
     ImGui::RadioButton("16bit Floating", &mode, 2);
     ImGui::SameLine();
     ImGui::RadioButton("16bit Integer", &mode, 3);
+    ImGui::SameLine();
+    ImGui::RadioButton("8bit Integer", &mode, 4);
 #if defined(__APPLE__) && defined(__aarch64__)
     ImGui::SameLine();
     ImGui::Checkbox("Apple AMX", &amx);
@@ -643,7 +777,12 @@ static void UserInterface()
                 {
                     currentHoverX = x;
                     currentHoverY = y;
-                    ImGui::SetTooltip("X:%d (%f)\nY:%d (%f)\nZ:%d,%d (%f)", x, matrixX.f64[x], y, matrixY.f64[y], x, y, matrixZ[y].f64[x]);
+                    ImGui::SetTooltip("X:%d (%f)\n"
+                                      "Y:%d (%f)\n"
+                                      "Z:%d,%d (%f)",
+                                      x, matrixX.f64[x],
+                                      y, matrixY.f64[y],
+                                      x, y, matrixZ[y].f64[x]);
                 }
                 ImGui::SameLine();
             }
@@ -690,7 +829,12 @@ static void UserInterface()
                 {
                     currentHoverX = x;
                     currentHoverY = y;
-                    ImGui::SetTooltip("X:%d (%f)\nY:%d (%f)\nZ:%d,%d (%f)", x, matrixX.f32[x], y, matrixY.f32[y], x, y, matrixZ[y].f32[x]);
+                    ImGui::SetTooltip("X:%d (%f)\n"
+                                      "Y:%d (%f)\n"
+                                      "Z:%d,%d (%f)",
+                                      x, matrixX.f32[x],
+                                      y, matrixY.f32[y],
+                                      x, y, matrixZ[y].f32[x]);
                 }
                 ImGui::SameLine();
             }
@@ -737,7 +881,12 @@ static void UserInterface()
                 {
                     currentHoverX = x;
                     currentHoverY = y;
-                    ImGui::SetTooltip("X:%d (%f)\nY:%d (%f)\nZ:%d,%d (%f)", x, (float)matrixX.f16[x], y, (float)matrixY.f16[y], x, y, (float)matrixZ[y].f16[x]);
+                    ImGui::SetTooltip("X:%d (%f)\n"
+                                      "Y:%d (%f)\n"
+                                      "Z:%d,%d (%f)",
+                                      x, (float)matrixX.f16[x],
+                                      y, (float)matrixY.f16[y],
+                                      x, y, (float)matrixZ[y].f16[x]);
                 }
                 ImGui::SameLine();
             }
@@ -784,7 +933,64 @@ static void UserInterface()
                 {
                     currentHoverX = x;
                     currentHoverY = y;
-                    ImGui::SetTooltip("X:%d (%d)\nY:%d (%d)\nZ:%d,%d (%d)", x, matrixX.i16[x], y, matrixY.i16[y], x, y, matrixZ[y].i16[x]);
+                    ImGui::SetTooltip("X:%d (%d) (%d)\n"
+                                      "Y:%d (%d) (%d)\n"
+                                      "Z:%d,%d (%d) (%d)",
+                                      x, matrixX.i16[x], matrixX.u16[x],
+                                      y, matrixY.i16[y], matrixY.u16[y],
+                                      x, y, matrixZ[y].i16[x], matrixZ[y].u16[x]);
+                }
+                ImGui::SameLine();
+            }
+            ImGui::NewLine();
+        }
+        break;
+    case 4:
+        width = 32.0f;
+        ImGui::InvisibleButton("", ImVec2(width, 0.0f));
+        ImGui::SameLine();
+        for (int x = 0; x < 32; ++x)
+        {
+            ImGui::SetNextItemWidth(width);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x ? selectedColor : unselectedColor);
+            ImGui::InputChar(GetLabel(), &matrixX.i8[x], 0);
+            ImGui::PopStyleColor(1);
+            if (ImGui::IsItemHovered())
+            {
+                currentHoverX = x;
+                ImGui::SetTooltip("X:%d (%d)", x, matrixX.i8[x]);
+            }
+            ImGui::SameLine();
+        }
+        ImGui::NewLine();
+        for (int y = 0; y < 32; ++y)
+        {
+            ImGui::SetNextItemWidth(width);
+            ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverY == y ? selectedColor : unselectedColor);
+            ImGui::InputChar(GetLabel(), &matrixY.i8[y], 0);
+            ImGui::PopStyleColor(1);
+            if (ImGui::IsItemHovered())
+            {
+                currentHoverY = y;
+                ImGui::SetTooltip("Y:%d (%d)", y, matrixY.i8[y]);
+            }
+            ImGui::SameLine();
+            for (int x = 0; x < 32; ++x)
+            {
+                ImGui::SetNextItemWidth(width);
+                ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x && hoverY == y ? selectedColor : unselectedColor);
+                ImGui::InputChar(GetLabel(), &matrixZ[y].i8[x], 0);
+                ImGui::PopStyleColor(1);
+                if (ImGui::IsItemHovered())
+                {
+                    currentHoverX = x;
+                    currentHoverY = y;
+                    ImGui::SetTooltip("X:%d (%d) (%d)\n"
+                                      "Y:%d (%d) (%d)\n"
+                                      "Z:%d,%d (%d) (%d)",
+                                      x, matrixX.i8[x], matrixX.u8[x],
+                                      y, matrixY.i8[y], matrixY.u8[y],
+                                      x, y, matrixZ[y].i8[x], matrixZ[y].u8[x]);
                 }
                 ImGui::SameLine();
             }
@@ -854,8 +1060,17 @@ pluginAPI bool Update(const UpdateData& updateData)
             if (ImGui::Button("Zero"))
                 SetZero();
             ImGui::SameLine();
-            if (ImGui::Button("Identity"))
-                SetIdentity();
+            if (ImGui::Button("One"))
+                SetNumber(1);
+            ImGui::SameLine();
+            if (ImGui::Button("-1"))
+                SetNumber(-1);
+            ImGui::SameLine();
+            if (ImGui::Button("256"))
+                SetNumber(256);
+            ImGui::SameLine();
+            if (ImGui::Button("-256"))
+                SetNumber(-256);
             ImGui::SameLine();
             if (ImGui::Button("Sequence X"))
                 SequenceX();
@@ -872,15 +1087,33 @@ pluginAPI bool Update(const UpdateData& updateData)
             if (ImGui::Button("Random Z"))
                 RandomZ();
 
-            if (ImGui::Button("V * V"))
-                VectorMultiplyVector();
+            if (ImGui::Button("V * V = M"))
+                VectorMultiplyVectorToMatrix();
             ImGui::SameLine();
-            if (ImGui::Button("Vx * M"))
-                VectorMultiplyMatrix(true);
-            ImGui::SameLine();
-            if (ImGui::Button("Vy * M"))
-                VectorMultiplyMatrix(false);
-            ImGui::SameLine();
+            if (ImGui::Button("V * V = V"))
+                VectorMultiplyVectorToVector();
+
+#if defined(__APPLE__) && defined(__aarch64__)
+#if DEBUG_OPERANDS
+            for (int i = 0; i < 64; ++i)
+            {
+                char label[16];
+                snprintf(label, 16, "##%d", i + 2000);
+                if (ImGui::Checkbox(label, &amxOperand[i]))
+                {
+                    VectorMultiplyVectorToVector();
+                }
+                if (ImGui::IsItemHovered())
+                {
+                    ImGui::SetTooltip("%d", i);
+                }
+                if (i != 31)
+                {
+                    ImGui::SameLine();
+                }
+            }
+#endif
+#endif
 
             ImGui::End();
         }

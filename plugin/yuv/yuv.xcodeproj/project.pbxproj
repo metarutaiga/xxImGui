@@ -10,9 +10,9 @@
 		300264C5242690D0004559E0 /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; };
 		302D20DC244AC55400D84267 /* yuv2rgb.h in Headers */ = {isa = PBXBuildFile; fileRef = 302D20D8244AC55400D84267 /* yuv2rgb.h */; };
 		302D20DD244AC55400D84267 /* rgb2yuv.h in Headers */ = {isa = PBXBuildFile; fileRef = 302D20D9244AC55400D84267 /* rgb2yuv.h */; };
-		302D20DE244AC55400D84267 /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; };
+		302D20DE244AC55400D84267 /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		302D20DF244AC55400D84267 /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; };
-		302D20E0244AC55400D84267 /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; };
+		302D20E0244AC55400D84267 /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		302D20E1244AC55400D84267 /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; };
 		30B096B4244ACE370096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B3244ACE370096E6DC /* libimgui.dylib */; };
 		30B096B6244ACE370096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B5244ACE370096E6DC /* libxxGraphic.dylib */; };
