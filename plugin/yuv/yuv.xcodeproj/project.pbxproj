@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300264C5242690D0004559E0 /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; };
+		300264C5242690D0004559E0 /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
 		302D20DC244AC55400D84267 /* yuv2rgb.h in Headers */ = {isa = PBXBuildFile; fileRef = 302D20D8244AC55400D84267 /* yuv2rgb.h */; };
 		302D20DD244AC55400D84267 /* rgb2yuv.h in Headers */ = {isa = PBXBuildFile; fileRef = 302D20D9244AC55400D84267 /* rgb2yuv.h */; };
 		302D20DE244AC55400D84267 /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
@@ -16,7 +16,7 @@
 		302D20E1244AC55400D84267 /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; };
 		30B096B4244ACE370096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B3244ACE370096E6DC /* libimgui.dylib */; };
 		30B096B6244ACE370096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B5244ACE370096E6DC /* libxxGraphic.dylib */; };
-		30B096C0244AD3090096E6DC /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; };
+		30B096C0244AD3090096E6DC /* yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* yuv.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
 		30B096C2244AD37A0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C1244AD37A0096E6DC /* libimgui.bundle */; };
 		30B096C4244AD37A0096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */; };
 		CE4E3E32244E7CFD00CEDC62 /* rotate_argb.cc in Sources */ = {isa = PBXBuildFile; fileRef = CE4E3E02244E7CFA00CEDC62 /* rotate_argb.cc */; };
@@ -136,6 +136,8 @@
 		CE4E3EBB244E7E6900CEDC62 /* cpu_id.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA7244E7E6800CEDC62 /* cpu_id.h */; };
 		CE4E3EBC244E7E6900CEDC62 /* basic_types.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA8244E7E6900CEDC62 /* basic_types.h */; };
 		CE4E3EBD244E7E6900CEDC62 /* scale.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA9244E7E6900CEDC62 /* scale.h */; };
+		CE65D62825FB08C900EB9883 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE65D62725FB08C900EB9883 /* Accelerate.framework */; };
+		CE65D62925FB08D300EB9883 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE65D62725FB08C900EB9883 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,7 +219,8 @@
 		CE4E3EA7244E7E6800CEDC62 /* cpu_id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu_id.h; path = ../../libyuv/include/libyuv/cpu_id.h; sourceTree = "<group>"; };
 		CE4E3EA8244E7E6900CEDC62 /* basic_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basic_types.h; path = ../../libyuv/include/libyuv/basic_types.h; sourceTree = "<group>"; };
 		CE4E3EA9244E7E6900CEDC62 /* scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale.h; path = ../../libyuv/include/libyuv/scale.h; sourceTree = "<group>"; };
-		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE65D62725FB08C900EB9883 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -228,6 +231,7 @@
 			files = (
 				30B096C2244AD37A0096E6DC /* libimgui.bundle in Frameworks */,
 				30B096C4244AD37A0096E6DC /* libxxGraphic.bundle in Frameworks */,
+				CE65D62925FB08D300EB9883 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +241,7 @@
 			files = (
 				30B096B4244ACE370096E6DC /* libimgui.dylib in Frameworks */,
 				30B096B6244ACE370096E6DC /* libxxGraphic.dylib in Frameworks */,
+				CE65D62825FB08C900EB9883 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +251,7 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE65D62725FB08C900EB9883 /* Accelerate.framework */,
 				30B096C1244AD37A0096E6DC /* libimgui.bundle */,
 				30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */,
 				30B096B3244ACE370096E6DC /* libimgui.dylib */,
