@@ -79,9 +79,11 @@ union amx_operands
         uint64_t dummy_31:1;
         uint64_t mask_high:1;
         uint64_t mask_low:1;
-        uint64_t dummy_34:13;
+        uint64_t dummy_34:8;
+        uint64_t dummy_42:4;
+        uint64_t dummy_46:1;
         uint64_t neg:1;
-        uint64_t accum:1;
+        uint64_t add:1;
         uint64_t dummy_49:9;
         uint64_t shift_right:5;
         uint64_t overflow:1;
@@ -119,9 +121,9 @@ union vector
 static vector matrixX;
 static vector matrixY;
 static vector matrixZ[64];
-static int mode;
+static int mode = 0;
 #if defined(__APPLE__) && defined(__aarch64__)
-static bool amx;
+static bool amx = false;
 static bool amxOperand[64];
 static uint64_t amxX[64];
 static uint64_t amxY[64];
@@ -643,6 +645,92 @@ static void VectorMultiplyVectorToVector()
     }
 }
 //------------------------------------------------------------------------------
+static void Experimental()
+{
+    switch (mode)
+    {
+    case 0:
+        break;
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+#if defined(__APPLE__) && defined(__aarch64__)
+        if (amx)
+        {
+            static uint8_t vectorY[64 * 4];
+            static uint8_t vectorU[64];
+            static uint8_t vectorV[64];
+            if (vectorV[0] == 0)
+            {
+                for (int i = 0; i < 64 * 4; ++i)
+                    vectorY[i] = i + 0;
+                for (int i = 0; i < 64; ++i)
+                    vectorU[i] = i + 64;
+                for (int i = 0; i < 64; ++i)
+                    vectorV[i] = i + 128;
+            }
+            static const uint16_t vector256[32] =
+            {
+                256, 256, 256, 256, 256, 256, 256, 256,
+                256, 256, 256, 256, 256, 256, 256, 256,
+                256, 256, 256, 256, 256, 256, 256, 256,
+                256, 256, 256, 256, 256, 256, 256, 256,
+            };
+            AMX_START();
+            
+            AMX_LDX((amx_access{ .address = (uint64_t)vectorY, .register_index = 2 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)vectorY, .register_index = 3 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x80, .offset_z = 0, .add = 1 }));
+
+#if 0
+            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[0], .register_index = 2 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[64], .register_index = 3 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[128], .register_index = 4 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[192], .register_index = 5 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)&vectorU[0], .register_index = 6 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)&vectorV[0], .register_index = 7 }));
+            AMX_LDY((amx_access{ .address = (uint64_t)&vector256[0], .register_index = 0 }));
+
+            // Y
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x80, .offset_z = 0 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x81, .offset_z = 1 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0xC0, .offset_z = 8 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0xC1, .offset_z = 9 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x100, .offset_z = 16 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x101, .offset_z = 17 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x140, .offset_z = 24 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x141, .offset_z = 25 }));
+
+            // U
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x180, .offset_z = 32 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x181, .offset_z = 33 }));
+
+            // V
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x1C0, .offset_z = 40 }));
+            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x1C1, .offset_z = 41 }));
+#endif
+
+            amx_access access = {};
+            access.address = (uint64_t)&matrixZ;
+            for (int i = 0; i < 8; ++i)
+            {
+                AMX_STZ(access.value);
+                access.address += 0x40;
+                access.register_index += 8;
+            }
+            amxDump();
+            AMX_STOP();
+            break;
+        }
+#endif
+        break;
+    }
+}
+//------------------------------------------------------------------------------
 static void UserInterface()
 {
     int label = 0;
@@ -667,19 +755,106 @@ static void UserInterface()
     ImGui::Checkbox("Apple AMX", &amx);
     if (amx)
     {
-        ImGui::SetNextWindowSize(ImVec2(512, 512));
+        ImGui::SetNextWindowSize(ImVec2(1280, 360));
         if (ImGui::Begin("Apple AMX Registers", nullptr, ImGuiWindowFlags_AlwaysAutoResize))
         {
+            static int opcode = 0;
+            static bool operands[64];
+            bool click = false;
+
+            click |= ImGui::RadioButton("MAC16", &opcode, 0);
+            ImGui::SameLine();
+            click |= ImGui::RadioButton("VECINT", &opcode, 1);
+
+            for (int i = 0; i < 64; ++i)
+            {
+                char label[16];
+                snprintf(label, 16, "##%d", i + 4000);
+                click |= ImGui::Checkbox(label, &operands[i]);
+                if (ImGui::IsItemHovered())
+                {
+                    ImGui::SetTooltip("%d", i);
+                }
+                if (i != 15 && i != 31 && i != 47 && i != 63)
+                {
+                    ImGui::SameLine();
+                }
+            }
+
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[0]));
+            ImGui::SameLine();
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[1]));
+            ImGui::SameLine();
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[2]));
+            ImGui::SameLine();
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[3]));
+
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[64]));
+            ImGui::SameLine();
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[65]));
+            ImGui::SameLine();
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[66]));
+            ImGui::SameLine();
+            ImGui::Text("%016llX", __builtin_bswap64(amxZ[67]));
+
+            if (click)
+            {
+                static uint16_t x[32];
+                static uint16_t y[32];
+                static uint16_t z[32];
+                for (int i = 0; i < 32; ++i)
+                    x[i] = i;
+                for (int i = 0; i < 32; ++i)
+                    y[i] = 1;
+                for (int i = 0; i < 32; ++i)
+                    z[i] = i;
+                uint64_t operand = 0;
+                for (int i = 0; i < 64; ++i)
+                    operand |= (uint64_t)operands[i] << i;
+                AMX_START();
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 0 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 1 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 2 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 3 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 4 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 5 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 6 }));
+                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 7 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 0 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 1 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 2 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 3 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 4 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 5 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 6 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 7 }));
+                //for (uint64_t i = 0; i < 64; ++i)
+                //    AMX_LDZ((amx_access{ .address = (uint64_t)z, .register_index = i }));
+                switch (opcode)
+                {
+                case 0:
+                    AMX_MAC16(operand);
+                    break;
+                case 1:
+                    AMX_VECINT(operand);
+                    break;
+                default:
+                    break;
+                }
+                amxDump();
+                AMX_STOP();
+            }
+
             ImDrawList* drawList = ImGui::GetWindowDrawList();
             ImVec2 pos = ImGui::GetCursorScreenPos();
-            float width = 7.0f;
+            float width = 16.0f;
 
             for (int x = 0; x < 64; ++x)
             {
                 ImVec2 rect[2] =
                 {
-                    ImVec2(pos.x + (x * 1 + 2) * width, pos.y + 0 * width),
-                    ImVec2(pos.x + (x * 1 + 3) * width, pos.y + 1 * width),
+                    ImVec2(pos.x + (x + 8 + 1) * width, pos.y + 0 * width),
+                    ImVec2(pos.x + (x + 8 + 2) * width, pos.y + 1 * width),
                 };
                 drawList->AddQuadFilled(ImVec2(rect[0].x, rect[0].y),
                                         ImVec2(rect[1].x, rect[0].y),
@@ -693,8 +868,8 @@ static void UserInterface()
             {
                 ImVec2 rect[2] =
                 {
-                    ImVec2(pos.x + 0 * width, pos.y + (y * 1 + 2) * width),
-                    ImVec2(pos.x + 1 * width, pos.y + (y * 1 + 3) * width),
+                    ImVec2(pos.x + (y % 8 + 0) * width, pos.y + (y / 8 + 2) * width),
+                    ImVec2(pos.x + (y % 8 + 1) * width, pos.y + (y / 8 + 3) * width),
                 };
                 drawList->AddQuadFilled(ImVec2(rect[0].x, rect[0].y),
                                         ImVec2(rect[1].x, rect[0].y),
@@ -703,12 +878,14 @@ static void UserInterface()
                                         amxY[y] == 0 ? y / 8 & 1 ? 0xFF3F3F3F : 0x7F7F7F7F : 0xFFFFFFFF);
                 if (ImGui::IsMouseHoveringRect(rect[0], rect[1]))
                     ImGui::SetTooltip("Y:%d.%d (%016zX)", y / 8, y % 8, (size_t)amxY[y]);
+                if (y >= 8)
+                    continue;
                 for (int x = 0; x < 64; ++x)
                 {
                     ImVec2 rect[2] =
                     {
-                        ImVec2(pos.x + (x * 1 + 2) * width, pos.y + (y * 1 + 2) * width),
-                        ImVec2(pos.x + (x * 1 + 3) * width, pos.y + (y * 1 + 3) * width),
+                        ImVec2(pos.x + (x + 8 + 1) * width, pos.y + (y + 2) * width),
+                        ImVec2(pos.x + (x + 8 + 2) * width, pos.y + (y + 3) * width),
                     };
                     drawList->AddQuadFilled(ImVec2(rect[0].x, rect[0].y),
                                             ImVec2(rect[1].x, rect[0].y),
@@ -946,10 +1123,10 @@ static void UserInterface()
         }
         break;
     case 4:
-        width = 32.0f;
+        width = 16.0f;
         ImGui::InvisibleButton("", ImVec2(width, 0.0f));
         ImGui::SameLine();
-        for (int x = 0; x < 32; ++x)
+        for (int x = 0; x < 64; ++x)
         {
             ImGui::SetNextItemWidth(width);
             ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x ? selectedColor : unselectedColor);
@@ -975,7 +1152,7 @@ static void UserInterface()
                 ImGui::SetTooltip("Y:%d (%d)", y, matrixY.i8[y]);
             }
             ImGui::SameLine();
-            for (int x = 0; x < 32; ++x)
+            for (int x = 0; x < 64; ++x)
             {
                 ImGui::SetNextItemWidth(width);
                 ImGui::PushStyleColor(ImGuiCol_FrameBg, hoverX == x && hoverY == y ? selectedColor : unselectedColor);
@@ -1092,6 +1269,9 @@ pluginAPI bool Update(const UpdateData& updateData)
             ImGui::SameLine();
             if (ImGui::Button("V * V = V"))
                 VectorMultiplyVectorToVector();
+            ImGui::SameLine();
+            if (ImGui::Button("Experimental"))
+                Experimental();
 
 #if defined(__APPLE__) && defined(__aarch64__)
 #if DEBUG_OPERANDS
