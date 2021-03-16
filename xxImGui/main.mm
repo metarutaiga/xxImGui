@@ -247,11 +247,10 @@
                                           styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable
                                             backing:NSBackingStoreBuffered
                                               defer:YES];
-    [_window setTitle:@"Dear ImGui XX Example"];
-    [_window setAcceptsMouseMovedEvents:YES];
-    [_window setOpaque:YES];
-    [_window makeKeyAndOrderFront:NSApp];
     [_window setDelegate:self];
+    [_window setOpaque:YES];
+    [_window setTitle:@"Dear ImGui XX Example"];
+    [_window makeKeyAndOrderFront:NSApp];
 
     return (_window);
 }
@@ -341,6 +340,7 @@ int main(int argc, char* argv[])
         NSApp = [NSApplication sharedApplication];
         ImGuiExampleAppDelegate* delegate = [ImGuiExampleAppDelegate new];
         [[NSApplication sharedApplication] setDelegate:delegate];
+        [NSApp activateIgnoringOtherApps:YES];
         [NSApp run];
         return NSApplicationMain(argc, (const char**)argv);
     }

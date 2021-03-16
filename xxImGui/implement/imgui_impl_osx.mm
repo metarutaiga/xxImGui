@@ -197,10 +197,8 @@ static void ImGui_ImplOSX_UpdateMouseCursorAndButtons()
 void ImGui_ImplOSX_NewFrame(NSView* view)
 {
     // Set other windows to floating when mouse hit the main window
-    NSRect rect = [g_Window frame];
-    NSPoint mouse = [NSEvent mouseLocation];
     NSArray<NSWindow*>* orderedWindows = [NSApp orderedWindows];
-    if ([g_Window isMiniaturized])
+    if ([NSApp isActive] == false || [g_Window isMiniaturized])
     {
         for (NSUInteger i = orderedWindows.count; i > 0; --i)
         {
@@ -208,12 +206,11 @@ void ImGui_ImplOSX_NewFrame(NSView* view)
             if (window.parentWindow != g_Window)
                 continue;
             [window setLevel:NSNormalWindowLevel];
-            [window setIsVisible:NO];
+            [window setIsVisible:[g_Window isMiniaturized] == NO];
             [window setParentWindow:g_Window];
         }
     }
-    else if (mouse.x >= rect.origin.x && mouse.x <= rect.origin.x + rect.size.width &&
-        mouse.y >= rect.origin.y && mouse.y <= rect.origin.y + rect.size.height)
+    else if (NSPointInRect([NSEvent mouseLocation], [g_Window frame]))
     {
         if ([NSApp isActive] && [g_Window isMiniaturized] == NO)
         {
@@ -230,6 +227,7 @@ void ImGui_ImplOSX_NewFrame(NSView* view)
     }
     else
     {
+        // Reorder other windows when the main window is focused
         bool foundMainWindow = false;
         for (NSUInteger i = orderedWindows.count; i > 0; --i)
         {
@@ -241,7 +239,6 @@ void ImGui_ImplOSX_NewFrame(NSView* view)
             }
             if (window.parentWindow != g_Window)
                 continue;
-            // Reorder other windows when the main window is focused
             if (foundMainWindow == false)
             {
                 [window orderWindow:NSWindowAbove relativeTo:0];
@@ -474,10 +471,12 @@ struct ImGuiViewportDataOSX
 @end
 
 @implementation ImGui_ImplOSX_ViewController
+
 -(void)loadView
 {
     self.view = [NSView new];
 }
+
 @end
 
 static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
@@ -491,7 +490,6 @@ static void ImGui_ImplOSX_CreateWindow(ImGuiViewport* viewport)
 
     NSWindow* window = [[NSWindow alloc] initWithContentRect:rect styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES];
     [window setTitle:@"Untitled"];
-    [window setAcceptsMouseMovedEvents:YES];
     [window setOpaque:NO];
     [window setParentWindow:g_Window];
 
