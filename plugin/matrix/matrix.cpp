@@ -755,18 +755,21 @@ static void UserInterface()
     ImGui::Checkbox("Apple AMX", &amx);
     if (amx)
     {
-        ImGui::SetNextWindowSize(ImVec2(1280, 360));
-        if (ImGui::Begin("Apple AMX Registers", nullptr, ImGuiWindowFlags_AlwaysAutoResize))
+        ImGui::SetNextWindowSize(ImVec2(1200, 440), ImGuiCond_Appearing);
+        if (ImGui::Begin("Apple AMX Registers"))
         {
             static int opcode = 0;
             static bool operands[64];
+            static int sequenceX = 0;
+            static int sequenceY = 0;
+            static bool direction = false;
             bool click = false;
 
             click |= ImGui::RadioButton("MAC16", &opcode, 0);
             ImGui::SameLine();
             click |= ImGui::RadioButton("VECINT", &opcode, 1);
 
-            for (int i = 0; i < 64; ++i)
+            for (int i = 64 - 1; i >= 0; --i)
             {
                 char label[16];
                 snprintf(label, 16, "##%d", i + 4000);
@@ -775,61 +778,96 @@ static void UserInterface()
                 {
                     ImGui::SetTooltip("%d", i);
                 }
-                if (i != 15 && i != 31 && i != 47 && i != 63)
+                if (i != 10 && i != 20 && i != 27 && i != 32 && i != 48 && i != 0)
                 {
                     ImGui::SameLine();
                 }
             }
 
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[0]));
-            ImGui::SameLine();
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[1]));
-            ImGui::SameLine();
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[2]));
-            ImGui::SameLine();
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[3]));
+            for (int i = 0; i < 8; ++i)
+            {
+                ImGui::Text("%016llX", direction ? __builtin_bswap64(amxX[i]) : amxX[7 - i]);
+                ImGui::SameLine();
+            }
+            ImGui::SetNextItemWidth(128.0f);
+            click |= ImGui::InputInt("X", &sequenceX);
 
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[64]));
-            ImGui::SameLine();
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[65]));
-            ImGui::SameLine();
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[66]));
-            ImGui::SameLine();
-            ImGui::Text("%016llX", __builtin_bswap64(amxZ[67]));
+            for (int i = 0; i < 8; ++i)
+            {
+                ImGui::Text("%016llX", direction ? __builtin_bswap64(amxY[i]) : amxY[7 - i]);
+                ImGui::SameLine();
+            }
+            ImGui::SetNextItemWidth(128.0f);
+            click |= ImGui::InputInt("Y", &sequenceY);
+
+            for (int i = 0; i < 8; ++i)
+            {
+                ImGui::Text("%016llX", direction ? __builtin_bswap64(amxZ[i]) : amxZ[7 - i]);
+                ImGui::SameLine();
+            }
+            ImGui::Checkbox("Direction", &direction);
+
+            for (int i = 0; i < 8; ++i)
+            {
+                ImGui::Text("%016llX", direction ? __builtin_bswap64(amxY[i + 64]) : amxY[7 - i + 64]);
+                ImGui::SameLine();
+            }
+            ImGui::NewLine();
 
             if (click)
             {
-                static uint16_t x[32];
-                static uint16_t y[32];
-                static uint16_t z[32];
-                for (int i = 0; i < 32; ++i)
-                    x[i] = i;
-                for (int i = 0; i < 32; ++i)
-                    y[i] = 1;
-                for (int i = 0; i < 32; ++i)
-                    z[i] = i;
+                auto generate = [](int type, uint64_t* array)
+                {
+                    switch (type)
+                    {
+                    case 0:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0;
+                        break;
+                    case 1:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 1;
+                        break;
+                    case 2:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = i;
+                        break;
+                    case 3:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0000000100000001ull;
+                        break;
+                    case 4:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0000000200000002ull * i + 0x0000000200000001ull;
+                        break;
+                    case 5:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0001000100010001ull;
+                        break;
+                    case 6:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0004000400040004ull * i + 0x0004000300020001ull;
+                        break;
+                    case 7:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0101010101010101ull;
+                        break;
+                    case 8:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0808080808080808ull * i + 0x0807060504030201ull;
+                        break;
+                    default:
+                        break;
+                    }
+                };
+                generate(sequenceX, amxX);
+                generate(sequenceY, amxY);
                 uint64_t operand = 0;
                 for (int i = 0; i < 64; ++i)
                     operand |= (uint64_t)operands[i] << i;
                 AMX_START();
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 0 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 1 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 2 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 3 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 4 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 5 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 6 }));
-                AMX_LDX((amx_access{ .address = (uint64_t)x, .register_index = 7 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 0 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 1 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 2 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 3 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 4 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 5 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 6 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)y, .register_index = 7 }));
-                //for (uint64_t i = 0; i < 64; ++i)
-                //    AMX_LDZ((amx_access{ .address = (uint64_t)z, .register_index = i }));
+                AMX_LDX((amx_access{ .address = (uint64_t)amxX, .register_index = 0 }));
+                AMX_LDY((amx_access{ .address = (uint64_t)amxY, .register_index = 0 }));
                 switch (opcode)
                 {
                 case 0:
@@ -851,10 +889,11 @@ static void UserInterface()
 
             for (int x = 0; x < 64; ++x)
             {
+                int blockX = (direction ? x + 8 + 1 : 64 - x - 1);
                 ImVec2 rect[2] =
                 {
-                    ImVec2(pos.x + (x + 8 + 1) * width, pos.y + 0 * width),
-                    ImVec2(pos.x + (x + 8 + 2) * width, pos.y + 1 * width),
+                    ImVec2(pos.x + (blockX + 0) * width, pos.y + 0 * width),
+                    ImVec2(pos.x + (blockX + 1) * width, pos.y + 1 * width),
                 };
                 drawList->AddQuadFilled(ImVec2(rect[0].x, rect[0].y),
                                         ImVec2(rect[1].x, rect[0].y),
@@ -862,14 +901,15 @@ static void UserInterface()
                                         ImVec2(rect[0].x, rect[1].y),
                                         amxX[x] == 0 ? x / 8 & 1 ? 0xFF3F3F3F : 0x7F7F7F7F : 0xFFFFFFFF);
                 if (ImGui::IsMouseHoveringRect(rect[0], rect[1]))
-                    ImGui::SetTooltip("X:%d.%d (%016zX)", x / 8, x % 8, (size_t)amxX[x]);
+                    ImGui::SetTooltip("X:%d.%d (%016llX)", x / 8, x % 8, direction ? __builtin_bswap64(amxX[x]) : amxX[x]);
             }
             for (int y = 0; y < 64; ++y)
             {
+                int blockX = (direction ? y % 8 + 0 : 64 - y % 8 + 8);
                 ImVec2 rect[2] =
                 {
-                    ImVec2(pos.x + (y % 8 + 0) * width, pos.y + (y / 8 + 2) * width),
-                    ImVec2(pos.x + (y % 8 + 1) * width, pos.y + (y / 8 + 3) * width),
+                    ImVec2(pos.x + (blockX + 0) * width, pos.y + (y / 8 + 2) * width),
+                    ImVec2(pos.x + (blockX + 1) * width, pos.y + (y / 8 + 3) * width),
                 };
                 drawList->AddQuadFilled(ImVec2(rect[0].x, rect[0].y),
                                         ImVec2(rect[1].x, rect[0].y),
@@ -877,15 +917,16 @@ static void UserInterface()
                                         ImVec2(rect[0].x, rect[1].y),
                                         amxY[y] == 0 ? y / 8 & 1 ? 0xFF3F3F3F : 0x7F7F7F7F : 0xFFFFFFFF);
                 if (ImGui::IsMouseHoveringRect(rect[0], rect[1]))
-                    ImGui::SetTooltip("Y:%d.%d (%016zX)", y / 8, y % 8, (size_t)amxY[y]);
+                    ImGui::SetTooltip("Y:%d.%d (%016llX)", y / 8, y % 8, direction ? __builtin_bswap64(amxY[y]) : amxY[y]);
                 if (y >= 8)
                     continue;
                 for (int x = 0; x < 64; ++x)
                 {
+                    int blockX = (direction ? x + 8 + 1 : 64 - x - 1);
                     ImVec2 rect[2] =
                     {
-                        ImVec2(pos.x + (x + 8 + 1) * width, pos.y + (y + 2) * width),
-                        ImVec2(pos.x + (x + 8 + 2) * width, pos.y + (y + 3) * width),
+                        ImVec2(pos.x + (blockX + 0) * width, pos.y + (y + 2) * width),
+                        ImVec2(pos.x + (blockX + 1) * width, pos.y + (y + 3) * width),
                     };
                     drawList->AddQuadFilled(ImVec2(rect[0].x, rect[0].y),
                                             ImVec2(rect[1].x, rect[0].y),
@@ -893,7 +934,7 @@ static void UserInterface()
                                             ImVec2(rect[0].x, rect[1].y),
                                             amxZ[y * 64 + x] == 0 ? ((x / 8) ^ (y / 8)) & 1 ? 0xFF3F3F3F : 0x7F7F7F7F : 0xFFFFFFFF);
                     if (ImGui::IsMouseHoveringRect(rect[0], rect[1]))
-                        ImGui::SetTooltip("Z:%d.%d,%d.%d (%016zX)", x / 8, x % 8, y / 8, y % 8, (size_t)amxZ[y * 64 + x]);
+                        ImGui::SetTooltip("Z:%d.%d,%d.%d (%016llX)", x / 8, x % 8, y / 8, y % 8, direction ? __builtin_bswap64(amxZ[y * 64 + x]) : amxZ[y * 64 + x]);
                 }
             }
             ImGui::End();

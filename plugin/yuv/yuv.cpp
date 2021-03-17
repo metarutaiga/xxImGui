@@ -252,7 +252,7 @@ pluginAPI void Update(const UpdateData& updateData)
                 unsigned char* temp = (unsigned char*)xxAlignedAlloc(4 * lennaWidth * lennaHeight, 256);
                 int sizeY = lennaWidth * lennaHeight;
                 int sizeUV = lennaWidth / 2 * lennaHeight / 2;
-                int count = 1;
+                int count = 1000;
 
                 if (temp)
                 {
@@ -383,6 +383,16 @@ pluginAPI void Update(const UpdateData& updateData)
                             if (appleamx)
                             {
                                 yuv2rgb_amx(lennaWidth, lennaHeight, lennaYU12,  lennaYU12 + sizeY, lennaYU12 + sizeY + sizeUV, lennaWidth, lennaWidth / 2, lennaWidth / 2, temp, lennaWidth * 4);
+                                if (i == count - 1)
+                                {
+                                    for (int x = 0; x < lennaWidth; ++x)
+                                    {
+                                        for (int y = 0; y < lennaHeight; ++y)
+                                        {
+                                            temp[(y * lennaWidth + x) * 4 + 3] = 0xFF;
+                                        }
+                                    }
+                                }
                                 break;
                             }
 #endif
@@ -666,9 +676,9 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
 {
     int halfWidth = width >> 1;
     int halfHeight = height >> 1;
-    void* o = rgb;
 
     int16_t Y, UG, UB, VR, VG;
+    if (true)
     {
         Y = (int)(fY * 256);
         UG = (int)(fUG * 255); UB = (int)(fUB * 255);
@@ -680,7 +690,7 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
         VG >>= 1;
     }
 
-    static const bool dump = true;
+    static const bool dump = false;
     static const int16_t vector256[32] =
     {
         256, 256, 256, 256, 256, 256, 256, 256,
@@ -756,16 +766,7 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
         int halfWidth128 = width / 128;
         for (int w = 0; w < halfWidth128; ++w)
         {
-            AMX_MAC16((amx_operands_matrix{ .offset_x = 0, .offset_y = 0, .offset_z = 0, .skip_x = 1, .skip_y = 1, .skip_z = 1, .mode_32 = 1 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 0 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 0 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 0 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 0 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 0 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 0 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 0 }));
-            //AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 0 }));
-
+            AMX_MAC16((amx_operands_matrix{ .skip_x = 1, .skip_y = 1, .skip_z = 1, .mode_32 = 1 }));
             if (dump && w == 2 && h == 8)
             {
                 dump_value(y0, 0);
@@ -775,12 +776,13 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
 #if 1
             //  0 RGBA
             //  8 RGBA
-            // 16 R = Y     + V
-            // 24 G = Y + U + V
-            // 32 B = Y + U
-            // 40 Y
-            // 48 U
-            // 56 V
+            // 16 RGBA
+            // 24 RGBA
+            // 32 R = Y     + V
+            // 40 G = Y + U + V
+            // 48 B = Y + U     (Y0 Y1)
+            // 56 U
+            // 60 V
             int16_t hintY0 = y0[0];
             int16_t hintY1 = y1[0];
             int16_t hintU = u0[0] - 128;
@@ -789,98 +791,95 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
             int16_t hintG = ((hintY0 * Y) >> 7) + ((hintU * UG) >> 7) + ((hintV * VG) >> 7);
             int16_t hintB = ((hintY0 * Y) >> 7) + ((hintU * UB) >> 5);
 
+            // Load
+            AMX_LDX((amx_access{ .address = (uint64_t)y0 +  0, .register_index = 0 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)y0 + 64, .register_index = 1 }));  y0 += 128;
+            AMX_LDX((amx_access{ .address = (uint64_t)y1 +  0, .register_index = 2 }));
+            AMX_LDX((amx_access{ .address = (uint64_t)y1 + 64, .register_index = 3 }));  y1 += 128;
+            AMX_LDX((amx_access{ .address = (uint64_t)u0 +  0, .register_index = 4 }));  u0 += 64;
+            AMX_LDX((amx_access{ .address = (uint64_t)v0 +  0, .register_index = 5 }));  v0 += 64;
+
             // Y
-            AMX_LDX((amx_access{ .address = (uint64_t)y0 +  0, .register_index = 4 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)y0 + 64, .register_index = 5 }));  y0 += 128;
-            AMX_LDX((amx_access{ .address = (uint64_t)y1 +  0, .register_index = 6 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)y1 + 64, .register_index = 7 }));  y1 += 128;
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x0C0, .offset_z = 32, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x0C0, .offset_z = 34, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x0C0, .offset_z = 36, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x0C0, .offset_z = 38, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x0C0, .offset_z = 40, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x0C0, .offset_z = 42, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x0C0, .offset_z = 44, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x0C0, .offset_z = 46, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x0C0, .offset_z = 48, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x0C0, .offset_z = 50, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x0C0, .offset_z = 52, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x0C0, .offset_z = 54, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x0C0, .offset_z = 32, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x0C0, .offset_z = 40, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x0C0, .offset_z = 48, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x0C0, .offset_z = 34, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x0C0, .offset_z = 42, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x0C0, .offset_z = 50, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x0C0, .offset_z = 36, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x0C0, .offset_z = 44, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x0C0, .offset_z = 52, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x0C0, .offset_z = 38, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x0C0, .offset_z = 46, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x0C0, .offset_z = 54, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
             if (dump && w == 2 && h == 8)
             {
                 dump_amx(48, hintY0);
                 dump_amx(52, hintY1);
             }
 
-            // U
-            AMX_LDX((amx_access{ .address = (uint64_t)u0, .register_index = 4 }));  u0 += 64;
+            // UV
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x080, .offset_z = 56, .count_x = 2, .extended = 12, .add = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 56 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 57 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 58 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 59 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 56, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 57, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 58, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 59, .add = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 56 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 57 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 58 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 59 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x140, .offset_z = 40, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x140, .offset_z = 41, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x140, .offset_z = 42, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x140, .offset_z = 43, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x140, .offset_z = 44, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x140, .offset_z = 45, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x140, .offset_z = 46, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x140, .offset_z = 47, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x1C0, .offset_z = 48, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x1C0, .offset_z = 49, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x1C0, .offset_z = 50, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x1C0, .offset_z = 51, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x1C0, .offset_z = 52, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x1C0, .offset_z = 53, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x1C0, .offset_z = 54, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x1C0, .offset_z = 55, .shift_right = 5 }));
-            if (dump && w == 2 && h == 8)
-            {
-                dump_amx(56, hintU);
-            }
-
-            // V
-            AMX_LDX((amx_access{ .address = (uint64_t)v0, .register_index = 4 }));  v0 += 64;
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x080, .offset_z = 60, .count_x = 2, .extended = 12, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x080, .offset_z = 60, .count_x = 2, .extended = 12, .add = 1 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 56 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 57 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 58 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 59 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 60 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 61 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 62 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 63 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x200 - 2, .offset_y = 0, .offset_z = 56, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040 - 2, .offset_y = 0, .offset_z = 57, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080 - 2, .offset_y = 0, .offset_z = 58, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0 - 2, .offset_y = 0, .offset_z = 59, .add = 1 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 60, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 61, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 62, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 63, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140 - 2, .offset_y = 0, .offset_z = 61, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180 - 2, .offset_y = 0, .offset_z = 62, .add = 1 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0 - 2, .offset_y = 0, .offset_z = 63, .add = 1 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 56 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 57 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 58 }));
+            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 59 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 60 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 61 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 62 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 63 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x140, .offset_z = 40, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x140, .offset_z = 44, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x140, .offset_z = 41, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x140, .offset_z = 45, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x140, .offset_z = 42, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x140, .offset_z = 46, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x140, .offset_z = 43, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x140, .offset_z = 47, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x1C0, .offset_z = 48, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x1C0, .offset_z = 52, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x1C0, .offset_z = 49, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x1C0, .offset_z = 53, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x1C0, .offset_z = 50, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x1C0, .offset_z = 54, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x1C0, .offset_z = 51, .shift_right = 5 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x1C0, .offset_z = 55, .shift_right = 5 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x100, .offset_z = 32, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x100, .offset_z = 33, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x100, .offset_z = 34, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x100, .offset_z = 35, .shift_right = 6 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x100, .offset_z = 36, .shift_right = 6 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x100, .offset_z = 33, .shift_right = 6 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x100, .offset_z = 37, .shift_right = 6 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x100, .offset_z = 34, .shift_right = 6 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x100, .offset_z = 38, .shift_right = 6 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x100, .offset_z = 35, .shift_right = 6 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x100, .offset_z = 39, .shift_right = 6 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x180, .offset_z = 40, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x180, .offset_z = 41, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x180, .offset_z = 42, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x180, .offset_z = 43, .shift_right = 7 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x180, .offset_z = 44, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x180, .offset_z = 41, .shift_right = 7 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x180, .offset_z = 45, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x180, .offset_z = 42, .shift_right = 7 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x180, .offset_z = 46, .shift_right = 7 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x180, .offset_z = 43, .shift_right = 7 }));
             AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x180, .offset_z = 47, .shift_right = 7 }));
             if (dump && w == 2 && h == 8)
             {
+                dump_amx(56, hintU);
                 dump_amx(60, hintV);
             }
 
@@ -909,22 +908,14 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 45 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 46 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 47 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x040, .offset_z =  0, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x020, .offset_y = 0x040, .offset_z =  1, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x040, .offset_z =  4, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x060, .offset_y = 0x040, .offset_z =  5, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x040, .offset_z =  8, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0A0, .offset_y = 0x040, .offset_z =  9, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x040, .offset_z = 12, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0E0, .offset_y = 0x040, .offset_z = 13, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x040, .offset_z = 16, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x120, .offset_y = 0x040, .offset_z = 17, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x040, .offset_z = 20, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x160, .offset_y = 0x040, .offset_z = 21, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x040, .offset_z = 24, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1A0, .offset_y = 0x040, .offset_z = 25, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x040, .offset_z = 28, .count_x = 1, .mask = 2 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1E0, .offset_y = 0x040, .offset_z = 29, .count_x = 1, .mask = 2 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x040, .offset_z =  0, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x040, .offset_z =  4, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x040, .offset_z =  8, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x040, .offset_z = 12, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x040, .offset_z = 16, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x040, .offset_z = 20, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x040, .offset_z = 24, .count_x = 1, .extended = 12 }));
+            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x040, .offset_z = 28, .count_x = 1, .extended = 12 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 32 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 33 }));
             AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 34 }));
@@ -1019,14 +1010,6 @@ void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void
         }
     }
     AMX_STOP();
-
-    for (int x = 0; x < width; ++x)
-    {
-        for (int y = 0; y < height; ++y)
-        {
-            ((char*)o)[(y * width + x) * 4 + 3] = 0xFF;
-        }
-    }
 }
 #endif
 //------------------------------------------------------------------------------
