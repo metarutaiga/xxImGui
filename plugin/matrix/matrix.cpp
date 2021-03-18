@@ -11,8 +11,6 @@
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
-#define DEBUG_OPERANDS  0
-
 //------------------------------------------------------------------------------
 namespace ImGui
 {
@@ -39,75 +37,6 @@ bool InputFloat16(const char* label, _Float16* v)
 };
 }
 //------------------------------------------------------------------------------
-//  https://gist.github.com/dougallj/7cba721da1a94da725ee37c1e9cd1f21
-//------------------------------------------------------------------------------
-union amx_access
-{
-    struct
-    {
-        uint64_t address:56;
-        uint64_t register_index:6;
-        uint64_t double_width:1;
-    };
-    uint64_t value;
-};
-//------------------------------------------------------------------------------
-union amx_operands
-{
-    struct
-    {
-        uint64_t offset_x:10;
-        uint64_t offset_y:10;
-        uint64_t offset_z:7;
-        uint64_t skip_z:1;
-        uint64_t skip_y:1;
-        uint64_t skip_x:1;
-        uint64_t dummy_30:2;
-        uint64_t disable_x:7;
-        uint64_t dummy_39:2;
-        uint64_t disable_y:7;
-        uint64_t dummy_48:14;
-        uint64_t mode_32:1;
-        uint64_t vector_matrix_add:1;
-    };
-    struct
-    {
-        uint64_t dummy_0:26;
-        uint64_t dummy_26:1;
-        uint64_t count_x:2;
-        uint64_t count_y:2;
-        uint64_t dummy_31:1;
-        uint64_t mask_high:1;
-        uint64_t mask_low:1;
-        uint64_t dummy_34:8;
-        uint64_t dummy_42:4;
-        uint64_t dummy_46:1;
-        uint64_t neg:1;
-        uint64_t add:1;
-        uint64_t dummy_49:9;
-        uint64_t shift_right:5;
-        uint64_t overflow:1;
-    };
-    uint64_t value;
-};
-//------------------------------------------------------------------------------
-#define AMX_LDX(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 0 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_LDY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 1 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_STX(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 2 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_STY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 3 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_LDZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 4 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_STZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 5 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_EXTRX(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 8 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_EXTRY(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 9 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_FMA64(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (10 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_FMA32(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (12 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_MAC16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (14 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_FMA16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (15 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_START()     __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 0)" ::: "memory")
-#define AMX_STOP()      __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 1)" ::: "memory")
-#define AMX_VECINT(V)   __asm__ volatile("mov x0, %0        \n .word (0x201000 | (18 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_VECFP(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (19 << 5) | 0)" ::"r"(V) : "x0", "memory")
-//------------------------------------------------------------------------------
 union vector
 {
     double      f64[8];
@@ -123,37 +52,37 @@ static vector matrixY;
 static vector matrixZ[64];
 static int mode = 0;
 #if defined(__APPLE__) && defined(__aarch64__)
+#include <xxYUV/apple_amx.h>
 static bool amx = false;
-static bool amxOperand[64];
 static uint64_t amxX[64];
 static uint64_t amxY[64];
 static uint64_t amxZ[64 * 64];
 //------------------------------------------------------------------------------
 static void amxDump()
 {
-    amx_access access = {};
-    access.address = (uint64_t)&amxX;
+    amx_operands_access access = {};
+    access.memory_offset = (uint64_t)amxX;
     access.register_index = 0;
     for (int i = 0; i < 8; ++i)
     {
-        AMX_STX(access.value);
-        access.address += 0x40;
+        amx_stx(access);
+        access.memory_offset += 0x40;
         access.register_index++;
     }
-    access.address = (uint64_t)&amxY;
+    access.memory_offset = (uint64_t)amxY;
     access.register_index = 0;
     for (int i = 0; i < 8; ++i)
     {
-        AMX_STY(access.value);
-        access.address += 0x40;
+        amx_sty(access);
+        access.memory_offset += 0x40;
         access.register_index++;
     }
-    access.address = (uint64_t)&amxZ;
+    access.memory_offset = (uint64_t)amxZ;
     access.register_index = 0;
     for (int i = 0; i < 8 * 8; ++i)
     {
-        AMX_STZ(access.value);
-        access.address += 0x40;
+        amx_stz(access);
+        access.memory_offset += 0x40;
         access.register_index++;
     }
 }
@@ -378,22 +307,20 @@ static void VectorMultiplyVectorToMatrix()
 #if defined(__APPLE__) && defined(__aarch64__)
         if (amx)
         {
-            amx_operands operands = {};
-            operands.skip_z = true;
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(&matrixX);
-            AMX_LDY(&matrixY);
-            AMX_FMA64(operands.value);
+            amx_operands_access access = {};
+            access.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_fma64( .skip_z = true );
             for (int i = 0; i < 8; ++i)
             {
-                AMX_STZ(access.value);
-                access.address += 0x40;
+                amx_stz(access);
+                access.memory_offset += 0x40;
                 access.register_index += 8;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -409,22 +336,20 @@ static void VectorMultiplyVectorToMatrix()
 #if defined(__APPLE__) && defined(__aarch64__)
         if (amx)
         {
-            amx_operands operands = {};
-            operands.skip_z = true;
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(&matrixX);
-            AMX_LDY(&matrixY);
-            AMX_FMA32(operands.value);
+            amx_operands_access access = {};
+            access.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_fma64( .skip_z = true );
             for (int i = 0; i < 16; ++i)
             {
-                AMX_STZ(access.value);
-                access.address += 0x40;
+                amx_stz(access);
+                access.memory_offset += 0x40;
                 access.register_index += 4;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -440,22 +365,20 @@ static void VectorMultiplyVectorToMatrix()
 #if defined(__APPLE__) && defined(__aarch64__)
         if (amx)
         {
-            amx_operands operands = {};
-            operands.skip_z = true;
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(&matrixX);
-            AMX_LDY(&matrixY);
-            AMX_FMA16(operands.value);
+            amx_operands_access access = {};
+            access.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_fma16( .skip_z = true );
             for (int i = 0; i < 32; ++i)
             {
-                AMX_STZ(access.value);
-                access.address += 0x40;
+                amx_stz(access);
+                access.memory_offset += 0x40;
                 access.register_index += 2;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -471,22 +394,20 @@ static void VectorMultiplyVectorToMatrix()
 #if defined(__APPLE__) && defined(__aarch64__)
         if (amx)
         {
-            amx_operands operands = {};
-            operands.skip_z = true;
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(&matrixX);
-            AMX_LDY(&matrixY);
-            AMX_MAC16(operands.value);
+            amx_operands_access access = {};
+            access.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_mac16( .skip_z = true );
             for (int i = 0; i < 32; ++i)
             {
-                AMX_STZ(access.value);
-                access.address += 0x40;
+                amx_stz(access);
+                access.memory_offset += 0x40;
                 access.register_index += 2;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -530,21 +451,20 @@ static void VectorMultiplyVectorToVector()
 #if defined(__APPLE__) && defined(__aarch64__)
         if (amx)
         {
-            amx_operands operands = {};
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(&matrixX);
-            AMX_LDY(&matrixY);
-            AMX_VECFP(operands.value);
+            amx_operands_access access = {};
+            access.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_vecfp();
             for (int i = 0; i < 32; ++i)
             {
-                AMX_STZ(access.value);
-                access.address += 0x40;
+                amx_stz(access);
+                access.memory_offset += 0x40;
                 access.register_index += 2;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -557,28 +477,20 @@ static void VectorMultiplyVectorToVector()
 #if defined(__APPLE__) && defined(__aarch64__)
         if (amx)
         {
-            amx_operands operands = {};
-#if DEBUG_OPERANDS
-            for (int i = 0; i < 64; ++i)
-            {
-                if (amxOperand[i])
-                    operands.value |= (1ull << i);
-            }
-#endif
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(&matrixX);
-            AMX_LDY(&matrixY);
-            AMX_VECINT(operands.value);
+            amx_operands_access access = {};
+            access.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_vecint();
             for (int i = 0; i < 32; ++i)
             {
-                AMX_STZ(access.value);
-                access.address += 0x40;
+                amx_stz(access);
+                access.memory_offset += 0x40;
                 access.register_index += 2;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -598,42 +510,35 @@ static void VectorMultiplyVectorToVector()
                 256, 256, 256, 256, 256, 256, 256, 256,
                 256, 256, 256, 256, 256, 256, 256, 256,
             };
-            amx_access accessX = {};
-            amx_access accessY = {};
-            amx_access access256 = {};
-            amx_access accessZ = {};
-            accessX.address = (uint64_t)&matrixX;
-            accessY.address = (uint64_t)&matrixY;
-            access256.address = (uint64_t)&vector256;
-            access256.register_index = 1;
-            accessZ.address = (uint64_t)&matrixZ;
-            AMX_START();
-            AMX_LDX(accessX.value);
-            AMX_LDY(accessY.value);
-            AMX_LDY(access256.value);
-            AMX_EXTRX((amx_operands{ .offset_y = 0x40, .offset_z = 1, .skip_z = 1 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0x40, .offset_y = 0, .offset_z = 1 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0x40, .offset_y = 1, .offset_z = 2 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x40, .offset_z = 3 }));
-            AMX_VECINT((amx_operands{ .offset_x = 1, .offset_y = 0x40, .offset_z = 4 }));
-            AMX_EXTRX((amx_operands{ .offset_y = 0x80, .offset_z = 1 }));
-            AMX_EXTRX((amx_operands{ .offset_y = 0xC0, .offset_z = 2 }));
-            AMX_EXTRX((amx_operands{ .offset_y = 0x100, .offset_z = 3 }));
-            AMX_EXTRX((amx_operands{ .offset_y = 0x140, .offset_z = 4 }));
-            AMX_EXTRY((amx_operands{ .offset_x = 0x80, .offset_z = 4, .skip_z = 1 }));
-            AMX_EXTRY((amx_operands{ .offset_x = 0xC0, .offset_z = 5, .skip_z = 1 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0x81, .offset_y = 0x81, .offset_z = 0 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0xC1, .offset_y = 0xC1, .offset_z = 5 }));
-            AMX_EXTRX((amx_operands{ .offset_y = 0x180, .offset_z = 5 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0x40, .offset_y = 0x180, .offset_z = 0 }));
+            amx_operands_access accessZ = {};
+            accessZ.memory_offset = (uint64_t)&matrixZ;
+            amx_set();
+            amx_ldx( .memory_offset = (uint64_t)&matrixX );
+            amx_ldy( .memory_offset = (uint64_t)&matrixY );
+            amx_ldy( .memory_offset = (uint64_t)&vector256, .register_index = 1 );
+            amx_extrx( .offset_y = 0x40, .offset_z = 1, );
+            amx_vecint( .offset_x = 0x40, .offset_y = 0, .offset_z = 1 );
+            amx_vecint( .offset_x = 0x40, .offset_y = 1, .offset_z = 2 );
+            amx_vecint( .offset_x = 0, .offset_y = 0x40, .offset_z = 3 );
+            amx_vecint( .offset_x = 1, .offset_y = 0x40, .offset_z = 4 );
+            amx_extrx( .offset_y = 0x80, .offset_z = 1 );
+            amx_extrx( .offset_y = 0xC0, .offset_z = 2 );
+            amx_extrx( .offset_y = 0x100, .offset_z = 3 );
+            amx_extrx( .offset_y = 0x140, .offset_z = 4 );
+            amx_extry( .offset_x = 0x80, .offset_z = 4, );
+            amx_extry( .offset_x = 0xC0, .offset_z = 5, );
+            amx_vecint( .offset_x = 0x81, .offset_y = 0x81, .offset_z = 0 );
+            amx_vecint( .offset_x = 0xC1, .offset_y = 0xC1, .offset_z = 5 );
+            amx_extrx( .offset_y = 0x180, .offset_z = 5 );
+            amx_vecint( .offset_x = 0x40, .offset_y = 0x180, .offset_z = 0 );
             for (int i = 0; i < 8; ++i)
             {
-                AMX_STZ(accessZ.value);
-                accessZ.address += 0x40;
+                amx_stz(accessZ);
+                accessZ.memory_offset += 0x40;
                 accessZ.register_index += 8;
             }
             amxDump();
-            AMX_STOP();
+            amx_clr();
             break;
         }
 #endif
@@ -641,92 +546,6 @@ static void VectorMultiplyVectorToVector()
         {
             matrixZ[0].i8[i] = matrixX.i8[i] * matrixY.i8[i];
         }
-        break;
-    }
-}
-//------------------------------------------------------------------------------
-static void Experimental()
-{
-    switch (mode)
-    {
-    case 0:
-        break;
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
-    case 4:
-#if defined(__APPLE__) && defined(__aarch64__)
-        if (amx)
-        {
-            static uint8_t vectorY[64 * 4];
-            static uint8_t vectorU[64];
-            static uint8_t vectorV[64];
-            if (vectorV[0] == 0)
-            {
-                for (int i = 0; i < 64 * 4; ++i)
-                    vectorY[i] = i + 0;
-                for (int i = 0; i < 64; ++i)
-                    vectorU[i] = i + 64;
-                for (int i = 0; i < 64; ++i)
-                    vectorV[i] = i + 128;
-            }
-            static const uint16_t vector256[32] =
-            {
-                256, 256, 256, 256, 256, 256, 256, 256,
-                256, 256, 256, 256, 256, 256, 256, 256,
-                256, 256, 256, 256, 256, 256, 256, 256,
-                256, 256, 256, 256, 256, 256, 256, 256,
-            };
-            AMX_START();
-            
-            AMX_LDX((amx_access{ .address = (uint64_t)vectorY, .register_index = 2 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)vectorY, .register_index = 3 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x80, .offset_z = 0, .add = 1 }));
-
-#if 0
-            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[0], .register_index = 2 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[64], .register_index = 3 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[128], .register_index = 4 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)&vectorY[192], .register_index = 5 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)&vectorU[0], .register_index = 6 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)&vectorV[0], .register_index = 7 }));
-            AMX_LDY((amx_access{ .address = (uint64_t)&vector256[0], .register_index = 0 }));
-
-            // Y
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x80, .offset_z = 0 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x81, .offset_z = 1 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0xC0, .offset_z = 8 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0xC1, .offset_z = 9 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x100, .offset_z = 16 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x101, .offset_z = 17 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x140, .offset_z = 24 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x141, .offset_z = 25 }));
-
-            // U
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x180, .offset_z = 32 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x181, .offset_z = 33 }));
-
-            // V
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x1C0, .offset_z = 40 }));
-            AMX_VECINT((amx_operands{ .offset_x = 0, .offset_y = 0x1C1, .offset_z = 41 }));
-#endif
-
-            amx_access access = {};
-            access.address = (uint64_t)&matrixZ;
-            for (int i = 0; i < 8; ++i)
-            {
-                AMX_STZ(access.value);
-                access.address += 0x40;
-                access.register_index += 8;
-            }
-            amxDump();
-            AMX_STOP();
-            break;
-        }
-#endif
         break;
     }
 }
@@ -768,6 +587,8 @@ static void UserInterface()
             click |= ImGui::RadioButton("MAC16", &opcode, 0);
             ImGui::SameLine();
             click |= ImGui::RadioButton("VECINT", &opcode, 1);
+            ImGui::SameLine();
+            click |= ImGui::RadioButton("MATINT", &opcode, 2);
 
             for (int i = 64 - 1; i >= 0; --i)
             {
@@ -826,33 +647,37 @@ static void UserInterface()
                         break;
                     case 1:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = 1;
+                            array[i] = 0xFFFFFFFFFFFFFFFFull;
                         break;
                     case 2:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = i;
+                            array[i] = 1;
                         break;
                     case 3:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = 0x0000000100000001ull;
+                            array[i] = i;
                         break;
                     case 4:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = 0x0000000200000002ull * i + 0x0000000200000001ull;
+                            array[i] = 0x0000000100000001ull;
                         break;
                     case 5:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = 0x0001000100010001ull;
+                            array[i] = 0x0000000200000002ull * i + 0x0000000200000001ull;
                         break;
                     case 6:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = 0x0004000400040004ull * i + 0x0004000300020001ull;
+                            array[i] = 0x0001000100010001ull;
                         break;
                     case 7:
                         for (uint64_t i = 0; i < 8; ++i)
-                            array[i] = 0x0101010101010101ull;
+                            array[i] = 0x0004000400040004ull * i + 0x0004000300020001ull;
                         break;
                     case 8:
+                        for (uint64_t i = 0; i < 8; ++i)
+                            array[i] = 0x0101010101010101ull;
+                        break;
+                    case 9:
                         for (uint64_t i = 0; i < 8; ++i)
                             array[i] = 0x0808080808080808ull * i + 0x0807060504030201ull;
                         break;
@@ -865,22 +690,25 @@ static void UserInterface()
                 uint64_t operand = 0;
                 for (int i = 0; i < 64; ++i)
                     operand |= (uint64_t)operands[i] << i;
-                AMX_START();
-                AMX_LDX((amx_access{ .address = (uint64_t)amxX, .register_index = 0 }));
-                AMX_LDY((amx_access{ .address = (uint64_t)amxY, .register_index = 0 }));
+                amx_set();
+                amx_ldx( .memory_offset = (uint64_t)amxX, .register_index = 0 );
+                amx_ldy( .memory_offset = (uint64_t)amxY, .register_index = 0 );
                 switch (opcode)
                 {
                 case 0:
-                    AMX_MAC16(operand);
+                    amx_mac16( .value = operand );
                     break;
                 case 1:
-                    AMX_VECINT(operand);
+                    amx_vecint( .value = operand );
+                    break;
+                case 2:
+                    amx_matint( .value = operand );
                     break;
                 default:
                     break;
                 }
                 amxDump();
-                AMX_STOP();
+                amx_clr();
             }
 
             ImDrawList* drawList = ImGui::GetWindowDrawList();
@@ -1310,31 +1138,6 @@ pluginAPI bool Update(const UpdateData& updateData)
             ImGui::SameLine();
             if (ImGui::Button("V * V = V"))
                 VectorMultiplyVectorToVector();
-            ImGui::SameLine();
-            if (ImGui::Button("Experimental"))
-                Experimental();
-
-#if defined(__APPLE__) && defined(__aarch64__)
-#if DEBUG_OPERANDS
-            for (int i = 0; i < 64; ++i)
-            {
-                char label[16];
-                snprintf(label, 16, "##%d", i + 2000);
-                if (ImGui::Checkbox(label, &amxOperand[i]))
-                {
-                    VectorMultiplyVectorToVector();
-                }
-                if (ImGui::IsItemHovered())
-                {
-                    ImGui::SetTooltip("%d", i);
-                }
-                if (i != 31)
-                {
-                    ImGui::SameLine();
-                }
-            }
-#endif
-#endif
 
             ImGui::End();
         }
