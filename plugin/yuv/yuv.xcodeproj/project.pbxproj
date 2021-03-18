@@ -138,6 +138,9 @@
 		CE4E3EBD244E7E6900CEDC62 /* scale.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4E3EA9244E7E6900CEDC62 /* scale.h */; };
 		CE65D62825FB08C900EB9883 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE65D62725FB08C900EB9883 /* Accelerate.framework */; };
 		CE65D62925FB08D300EB9883 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE65D62725FB08C900EB9883 /* Accelerate.framework */; };
+		D6812B66260330F6001436B7 /* yuv2rgb_amx.h in Headers */ = {isa = PBXBuildFile; fileRef = D6812B60260330F6001436B7 /* yuv2rgb_amx.h */; };
+		D6812B67260330F6001436B7 /* yuv2rgb_amx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */; };
+		D6812B68260330F6001436B7 /* yuv2rgb_amx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -222,6 +225,9 @@
 		CE65D62725FB08C900EB9883 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6812B472602F014001436B7 /* apple_amx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_amx.h; path = ../../xxYUV/apple_amx.h; sourceTree = "<group>"; };
+		D6812B60260330F6001436B7 /* yuv2rgb_amx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb_amx.h; path = ../../xxYUV/yuv2rgb_amx.h; sourceTree = "<group>"; };
+		D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb_amx.cpp; path = ../../xxYUV/yuv2rgb_amx.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,8 +269,11 @@
 		302D20D6244AC53A00D84267 /* xxYUV */ = {
 			isa = PBXGroup;
 			children = (
+				D6812B472602F014001436B7 /* apple_amx.h */,
 				302D20DA244AC55400D84267 /* rgb2yuv.cpp */,
 				302D20D9244AC55400D84267 /* rgb2yuv.h */,
+				D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */,
+				D6812B60260330F6001436B7 /* yuv2rgb_amx.h */,
 				302D20DB244AC55400D84267 /* yuv2rgb.cpp */,
 				302D20D8244AC55400D84267 /* yuv2rgb.h */,
 			);
@@ -407,6 +416,7 @@
 				CE4E3EBA244E7E6900CEDC62 /* convert.h in Headers */,
 				CE4E3EAD244E7E6900CEDC62 /* row.h in Headers */,
 				CE4E3EAA244E7E6900CEDC62 /* compare.h in Headers */,
+				D6812B66260330F6001436B7 /* yuv2rgb_amx.h in Headers */,
 				CE4E3EB2244E7E6900CEDC62 /* convert_from_argb.h in Headers */,
 				CE4E3EBC244E7E6900CEDC62 /* basic_types.h in Headers */,
 				CE4E3EB5244E7E6900CEDC62 /* planar_functions.h in Headers */,
@@ -502,6 +512,7 @@
 				CE4E3E5F244E7CFD00CEDC62 /* mjpeg_validate.cc in Sources */,
 				CE4E3E7D244E7CFD00CEDC62 /* scale_neon64.cc in Sources */,
 				CE4E3E73244E7CFD00CEDC62 /* scale_common.cc in Sources */,
+				D6812B68260330F6001436B7 /* yuv2rgb_amx.cpp in Sources */,
 				CE4E3E55244E7CFD00CEDC62 /* rotate_msa.cc in Sources */,
 				CE4E3E77244E7CFD00CEDC62 /* rotate_win.cc in Sources */,
 				CE4E3E43244E7CFD00CEDC62 /* convert_to_i420.cc in Sources */,
@@ -560,6 +571,7 @@
 				CE4E3E5E244E7CFD00CEDC62 /* mjpeg_validate.cc in Sources */,
 				CE4E3E7C244E7CFD00CEDC62 /* scale_neon64.cc in Sources */,
 				CE4E3E72244E7CFD00CEDC62 /* scale_common.cc in Sources */,
+				D6812B67260330F6001436B7 /* yuv2rgb_amx.cpp in Sources */,
 				CE4E3E54244E7CFD00CEDC62 /* rotate_msa.cc in Sources */,
 				CE4E3E76244E7CFD00CEDC62 /* rotate_win.cc in Sources */,
 				CE4E3E42244E7CFD00CEDC62 /* convert_to_i420.cc in Sources */,
@@ -628,7 +640,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -704,7 +716,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -775,7 +787,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
-				OTHER_CFLAGS = "-mavx2";
+				"OTHER_CFLAGS[arch=x86_64]" = "-mavx2";
 			};
 			name = Debug;
 		};
@@ -783,7 +795,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = dylib;
-				OTHER_CFLAGS = "-mavx2";
+				"OTHER_CFLAGS[arch=x86_64]" = "-mavx2";
 			};
 			name = Release;
 		};

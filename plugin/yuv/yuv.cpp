@@ -7,6 +7,7 @@
 #include <xxGraphic/xxGraphic.h>
 #include <xxYUV/rgb2yuv.h>
 #include <xxYUV/yuv2rgb.h>
+#include <xxYUV/yuv2rgb_amx.h>
 #include <interface.h>
 
 #if defined(__APPLE__)
@@ -16,10 +17,6 @@
 #define LIBYUV 1
 #if defined(LIBYUV)
 #include <libyuv.h>
-#endif
-
-#if defined(__APPLE__) && defined(__aarch64__)
-void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void* v, int strideY, int strideU, int strideV, void* rgb, int strideRGB);
 #endif
 
 #define PLUGIN_NAME     "YUV"
@@ -382,7 +379,7 @@ pluginAPI void Update(const UpdateData& updateData)
 #if defined(__APPLE__) && defined(__aarch64__)
                             if (appleamx)
                             {
-                                yuv2rgb_amx(lennaWidth, lennaHeight, lennaYU12,  lennaYU12 + sizeY, lennaYU12 + sizeY + sizeUV, lennaWidth, lennaWidth / 2, lennaWidth / 2, temp, lennaWidth * 4);
+                                yuv2rgb_yu12_amx(lennaWidth, lennaHeight, lennaYU12, temp, decodeFullRange, 4, true);
                                 if (i == count - 1)
                                 {
                                     for (int x = 0; x < lennaWidth; ++x)
@@ -435,6 +432,23 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
+#if defined(__APPLE__) && defined(__aarch64__)
+                            if (appleamx)
+                            {
+                                yuv2rgb_yv12_amx(lennaWidth, lennaHeight, lennaYV12, temp, decodeFullRange, 4, true);
+                                if (i == count - 1)
+                                {
+                                    for (int x = 0; x < lennaWidth; ++x)
+                                    {
+                                        for (int y = 0; y < lennaHeight; ++y)
+                                        {
+                                            temp[(y * lennaWidth + x) * 4 + 3] = 0xFF;
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+#endif
                             yuv2rgb_yv12(lennaWidth, lennaHeight, lennaYV12, temp, decodeFullRange, 4, true);
                             break;
                         case 2:
@@ -472,6 +486,23 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
+#if defined(__APPLE__) && defined(__aarch64__)
+                            if (appleamx)
+                            {
+                                yuv2rgb_nv12_amx(lennaWidth, lennaHeight, lennaNV12, temp, decodeFullRange, 4, true);
+                                if (i == count - 1)
+                                {
+                                    for (int x = 0; x < lennaWidth; ++x)
+                                    {
+                                        for (int y = 0; y < lennaHeight; ++y)
+                                        {
+                                            temp[(y * lennaWidth + x) * 4 + 3] = 0xFF;
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+#endif
                             yuv2rgb_nv12(lennaWidth, lennaHeight, lennaNV12, temp, decodeFullRange, 4, true);
                             break;
                         case 3:
@@ -506,6 +537,23 @@ pluginAPI void Update(const UpdateData& updateData)
 
                                 uint8_t permuteMap[4] = { 3, 2, 1, 0 };
                                 vImageConvert_420Yp8_CbCr8ToARGB8888(&Y, &CbCr, &RGBA, decodeFullRange ? &fullRange : &videoRange, permuteMap, 255, kvImageDoNotTile);
+                                break;
+                            }
+#endif
+#if defined(__APPLE__) && defined(__aarch64__)
+                            if (appleamx)
+                            {
+                                yuv2rgb_nv21_amx(lennaWidth, lennaHeight, lennaNV21, temp, decodeFullRange, 4, true);
+                                if (i == count - 1)
+                                {
+                                    for (int x = 0; x < lennaWidth; ++x)
+                                    {
+                                        for (int y = 0; y < lennaHeight; ++y)
+                                        {
+                                            temp[(y * lennaWidth + x) * 4 + 3] = 0xFF;
+                                        }
+                                    }
+                                }
                                 break;
                             }
 #endif
@@ -553,463 +601,4 @@ pluginAPI void Render(const RenderData& renderData)
 {
 
 }
-//------------------------------------------------------------------------------
-#if defined(__APPLE__) && defined(__aarch64__)
-//------------------------------------------------------------------------------
-//  https://gist.github.com/dougallj/7cba721da1a94da725ee37c1e9cd1f21
-//------------------------------------------------------------------------------
-union amx_access
-{
-    struct
-    {
-        uint64_t address:56;
-        uint64_t register_index:6;
-        uint64_t double_width:1;
-    };
-    uint64_t value;
-};
-//------------------------------------------------------------------------------
-union amx_operands_matrix
-{
-    struct
-    {
-        uint64_t offset_x:10;
-        uint64_t offset_y:10;
-        uint64_t offset_z:7;
-        uint64_t skip_z:1;
-        uint64_t skip_y:1;
-        uint64_t skip_x:1;
-        uint64_t dummy_30:2;
-        uint64_t disable_x:7;
-        uint64_t dummy_39:2;
-        uint64_t disable_y:7;
-        uint64_t dummy_48:13;
-        uint64_t mode_8:1;
-        uint64_t mode_32:1;
-        uint64_t vector_matrix_add:1;
-    };
-    uint64_t value;
-};
-union amx_operands_vector
-{
-    struct
-    {
-        uint64_t offset_y:10;
-        uint64_t offset_x:10;
-        uint64_t offset_z:7;
-        uint64_t count_y:2;
-        uint64_t count_x:2;
-        uint64_t dummy_31:1;
-        uint64_t mask:10;
-        uint64_t extended:4;
-        uint64_t dummy_46:1;
-        uint64_t neg:1;
-        uint64_t add:1;
-        uint64_t dummy_49:9;
-        uint64_t shift_right:5;
-        uint64_t sign:1;
-    };
-    uint64_t value;
-};
-//------------------------------------------------------------------------------
-#define AMX_LDX(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 0 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_LDY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 1 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_STX(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 2 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_STY(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 3 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_LDZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 4 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_STZ(V)      __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 5 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_EXTRX(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 8 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_EXTRY(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | ( 9 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_FMA64(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (10 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_FMA32(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (12 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_MAC16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (14 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_FMA16(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (15 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_START()     __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 0)" ::: "memory")
-#define AMX_STOP()      __asm__ volatile("nop \n nop \n nop \n .word (0x201000 | (17 << 5) | 1)" ::: "memory")
-#define AMX_VECINT(V)   __asm__ volatile("mov x0, %0        \n .word (0x201000 | (18 << 5) | 0)" ::"r"(V) : "x0", "memory")
-#define AMX_VECFP(V)    __asm__ volatile("mov x0, %0        \n .word (0x201000 | (19 << 5) | 0)" ::"r"(V) : "x0", "memory")
-//------------------------------------------------------------------------------
-// BT.709 - Full Range
-//     Y         U         V
-// R = 1.000000  0.000000  1.581000
-// G = 1.000000 -0.188062 -0.469967
-// B = 1.000000  1.862906  0.000000
-#define fY   1.000000
-#define fUG -0.188062
-#define fUB  1.862906
-#define fVR  1.581000
-#define fVG -0.469967
-//------------------------------------------------------------------------------
-void dump_value(const void* data, size_t index)
-{
-    uint8_t row[64];
-    memcpy(row, data, 64);
-    printf("%2zd : ", index);
-    for (int i = 0; i < 64; ++i)
-    {
-        printf("%02X", row[i]);
-        if (i % 8 == 7)
-            printf(" ");
-    }
-    printf("\n");
-}
-//------------------------------------------------------------------------------
-void dump_amx(size_t index, int16_t hint)
-{
-    uint8_t row[64];
-    AMX_STZ((amx_access{ .address = (uint64_t)row, .register_index = index }));
-    printf("%2zd : ", index);
-    for (int i = 0; i < 64; ++i)
-    {
-        if (i == 0)
-        {
-            printf("(%04X) ", __builtin_bswap16(hint) & 0xFFFF);
-        }
-        printf("%02X", row[i]);
-        if (i % 8 == 7)
-            printf(" ");
-    }
-    printf("\n");
-}
-//------------------------------------------------------------------------------
-void yuv2rgb_amx(int width, int height, const void* y, const void* u, const void* v, int strideY, int strideU, int strideV, void* rgb, int strideRGB)
-{
-    int halfWidth = width >> 1;
-    int halfHeight = height >> 1;
-
-    int16_t Y, UG, UB, VR, VG;
-    if (true)
-    {
-        Y = (int)(fY * 256);
-        UG = (int)(fUG * 255); UB = (int)(fUB * 255);
-        VR = (int)(fVR * 255); VG = (int)(fVG * 255);
-        Y >>= 1;
-        UG >>= 1;
-        UB >>= 3;
-        VR >>= 2;
-        VG >>= 1;
-    }
-
-    static const bool dump = false;
-    static const int16_t vector256[32] =
-    {
-        256, 256, 256, 256, 256, 256, 256, 256,
-        256, 256, 256, 256, 256, 256, 256, 256,
-        256, 256, 256, 256, 256, 256, 256, 256,
-        256, 256, 256, 256, 256, 256, 256, 256,
-    };
-
-    static const int16_t vectorN128[32] =
-    {
-        -128, -128, -128, -128, -128, -128, -128, -128,
-        -128, -128, -128, -128, -128, -128, -128, -128,
-        -128, -128, -128, -128, -128, -128, -128, -128,
-        -128, -128, -128, -128, -128, -128, -128, -128,
-    };
-
-    static const int16_t vectorY[32] =
-    {
-        Y, Y, Y, Y, Y, Y, Y, Y,
-        Y, Y, Y, Y, Y, Y, Y, Y,
-        Y, Y, Y, Y, Y, Y, Y, Y,
-        Y, Y, Y, Y, Y, Y, Y, Y,
-    };
-
-    static const int16_t vectorVR[32] =
-    {
-        VR, VR, VR, VR, VR, VR, VR, VR,
-        VR, VR, VR, VR, VR, VR, VR, VR,
-        VR, VR, VR, VR, VR, VR, VR, VR,
-        VR, VR, VR, VR, VR, VR, VR, VR,
-    };
-
-    static const int16_t vectorUG[32] =
-    {
-        UG, UG, UG, UG, UG, UG, UG, UG,
-        UG, UG, UG, UG, UG, UG, UG, UG,
-        UG, UG, UG, UG, UG, UG, UG, UG,
-        UG, UG, UG, UG, UG, UG, UG, UG,
-    };
-
-    static const int16_t vectorVG[32] =
-    {
-        VG, VG, VG, VG, VG, VG, VG, VG,
-        VG, VG, VG, VG, VG, VG, VG, VG,
-        VG, VG, VG, VG, VG, VG, VG, VG,
-        VG, VG, VG, VG, VG, VG, VG, VG,
-    };
-
-    static const int16_t vectorUB[32] =
-    {
-        UB, UB, UB, UB, UB, UB, UB, UB,
-        UB, UB, UB, UB, UB, UB, UB, UB,
-        UB, UB, UB, UB, UB, UB, UB, UB,
-        UB, UB, UB, UB, UB, UB, UB, UB,
-    };
-
-    AMX_START();
-    AMX_LDY((amx_access{ .address = (uint64_t)vector256, .register_index = 1 }));
-    AMX_LDY((amx_access{ .address = (uint64_t)vectorN128, .register_index = 2 }));
-    AMX_LDY((amx_access{ .address = (uint64_t)vectorY, .register_index = 3 }));
-    AMX_LDY((amx_access{ .address = (uint64_t)vectorVR, .register_index = 4 }));
-    AMX_LDY((amx_access{ .address = (uint64_t)vectorUG, .register_index = 5 }));
-    AMX_LDY((amx_access{ .address = (uint64_t)vectorVG, .register_index = 6 }));
-    AMX_LDY((amx_access{ .address = (uint64_t)vectorUB, .register_index = 7 }));
-    for (int h = 0; h < halfHeight; ++h)
-    {
-        const unsigned char* y0 = (unsigned char*)y;
-        const unsigned char* y1 = y0 + strideY;         y = y1 + strideY;
-        const unsigned char* u0 = (unsigned char*)u;    u = u0 + strideU;
-        const unsigned char* v0 = (unsigned char*)v;    v = v0 + strideV;
-        unsigned char* rgb0 = (unsigned char*)rgb;
-        unsigned char* rgb1 = rgb0 + strideRGB;         rgb = rgb1 + strideRGB;
-        int halfWidth128 = width / 128;
-        for (int w = 0; w < halfWidth128; ++w)
-        {
-            AMX_MAC16((amx_operands_matrix{ .skip_x = 1, .skip_y = 1, .skip_z = 1, .mode_32 = 1 }));
-            if (dump && w == 2 && h == 8)
-            {
-                dump_value(y0, 0);
-                dump_value(y1, 1);
-            }
-
-#if 1
-            //  0 RGBA
-            //  8 RGBA
-            // 16 RGBA
-            // 24 RGBA
-            // 32 R = Y     + V
-            // 40 G = Y + U + V
-            // 48 B = Y + U     (Y0 Y1)
-            // 56 U
-            // 60 V
-            int16_t hintY0 = y0[0];
-            int16_t hintY1 = y1[0];
-            int16_t hintU = u0[0] - 128;
-            int16_t hintV = v0[0] - 128;
-            int16_t hintR = ((hintY0 * Y) >> 7) +                       ((hintV * VR) >> 6);
-            int16_t hintG = ((hintY0 * Y) >> 7) + ((hintU * UG) >> 7) + ((hintV * VG) >> 7);
-            int16_t hintB = ((hintY0 * Y) >> 7) + ((hintU * UB) >> 5);
-
-            // Load
-            AMX_LDX((amx_access{ .address = (uint64_t)y0 +  0, .register_index = 0 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)y0 + 64, .register_index = 1 }));  y0 += 128;
-            AMX_LDX((amx_access{ .address = (uint64_t)y1 +  0, .register_index = 2 }));
-            AMX_LDX((amx_access{ .address = (uint64_t)y1 + 64, .register_index = 3 }));  y1 += 128;
-            AMX_LDX((amx_access{ .address = (uint64_t)u0 +  0, .register_index = 4 }));  u0 += 64;
-            AMX_LDX((amx_access{ .address = (uint64_t)v0 +  0, .register_index = 5 }));  v0 += 64;
-
-            // Y
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x0C0, .offset_z = 32, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x0C0, .offset_z = 40, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x0C0, .offset_z = 48, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x0C0, .offset_z = 34, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x0C0, .offset_z = 42, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x0C0, .offset_z = 50, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x0C0, .offset_z = 36, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x0C0, .offset_z = 44, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x0C0, .offset_z = 52, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x0C0, .offset_z = 38, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x0C0, .offset_z = 46, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x0C0, .offset_z = 54, .count_x = 1, .mask = 64, .extended = 11, .shift_right = 7 }));
-            if (dump && w == 2 && h == 8)
-            {
-                dump_amx(48, hintY0);
-                dump_amx(52, hintY1);
-            }
-
-            // UV
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x080, .offset_z = 56, .count_x = 2, .extended = 12, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x080, .offset_z = 60, .count_x = 2, .extended = 12, .add = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 56 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 57 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 58 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 59 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 60 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 61 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 62 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 63 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x200 - 2, .offset_y = 0, .offset_z = 56, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040 - 2, .offset_y = 0, .offset_z = 57, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080 - 2, .offset_y = 0, .offset_z = 58, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0 - 2, .offset_y = 0, .offset_z = 59, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 60, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140 - 2, .offset_y = 0, .offset_z = 61, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180 - 2, .offset_y = 0, .offset_z = 62, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0 - 2, .offset_y = 0, .offset_z = 63, .add = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 56 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 57 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 58 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 59 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 60 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 61 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 62 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 63 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x140, .offset_z = 40, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x140, .offset_z = 44, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x140, .offset_z = 41, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x140, .offset_z = 45, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x140, .offset_z = 42, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x140, .offset_z = 46, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x140, .offset_z = 43, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x140, .offset_z = 47, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x1C0, .offset_z = 48, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x1C0, .offset_z = 52, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x1C0, .offset_z = 49, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x1C0, .offset_z = 53, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x1C0, .offset_z = 50, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x1C0, .offset_z = 54, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x1C0, .offset_z = 51, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x1C0, .offset_z = 55, .shift_right = 5 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x100, .offset_z = 32, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x100, .offset_z = 36, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x100, .offset_z = 33, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x100, .offset_z = 37, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x100, .offset_z = 34, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x100, .offset_z = 38, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x100, .offset_z = 35, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x100, .offset_z = 39, .shift_right = 6 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x180, .offset_z = 40, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x180, .offset_z = 44, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x180, .offset_z = 41, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x180, .offset_z = 45, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x180, .offset_z = 42, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x180, .offset_z = 46, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x180, .offset_z = 43, .shift_right = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x180, .offset_z = 47, .shift_right = 7 }));
-            if (dump && w == 2 && h == 8)
-            {
-                dump_amx(56, hintU);
-                dump_amx(60, hintV);
-            }
-
-            // RGBA
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 48 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 49 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 50 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 51 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 52 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 53 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 54 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 55 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x000, .offset_z =  0, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x000, .offset_z =  4, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x000, .offset_z =  8, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x000, .offset_z = 12, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x000, .offset_z = 16, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x000, .offset_z = 20, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x000, .offset_z = 24, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x000, .offset_z = 28, .count_x = 1, .count_y = 1, .extended = 10, .add = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 40 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 41 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 42 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 43 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 44 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 45 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 46 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 47 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x040, .offset_z =  0, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x040, .offset_z =  4, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x040, .offset_z =  8, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x040, .offset_z = 12, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x040, .offset_z = 16, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x040, .offset_z = 20, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x040, .offset_z = 24, .count_x = 1, .extended = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x040, .offset_z = 28, .count_x = 1, .extended = 12 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x000, .offset_z = 32 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x040, .offset_z = 33 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x080, .offset_z = 34 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x0C0, .offset_z = 35 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 36 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 37 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 38 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 39 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1E0, .offset_y = 0x040, .offset_z =  0, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x000, .offset_y = 0x040, .offset_z =  1, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x020, .offset_y = 0x040, .offset_z =  4, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x040, .offset_y = 0x040, .offset_z =  5, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x060, .offset_y = 0x040, .offset_z =  8, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x080, .offset_y = 0x040, .offset_z =  9, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0A0, .offset_y = 0x040, .offset_z = 12, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0C0, .offset_y = 0x040, .offset_z = 13, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x0E0, .offset_y = 0x040, .offset_z = 16, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100, .offset_y = 0x040, .offset_z = 17, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x120, .offset_y = 0x040, .offset_z = 20, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140, .offset_y = 0x040, .offset_z = 21, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x160, .offset_y = 0x040, .offset_z = 24, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180, .offset_y = 0x040, .offset_z = 25, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1A0, .offset_y = 0x040, .offset_z = 28, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0, .offset_y = 0x040, .offset_z = 29, .count_x = 1, .mask = 1, .extended = 6, .shift_right = 8 }));
-            if (dump && w == 2 && h == 8)
-            {
-                dump_amx(0, 0);
-                dump_amx(8, 0);
-                dump_amx(16, 0);
-                dump_amx(24, 0);
-                dump_amx(32, hintR);
-                dump_amx(40, hintG);
-                dump_amx(48, hintB);
-             }
-
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 +   0, .register_index =  0 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 +  64, .register_index =  1 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 128, .register_index =  4 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 192, .register_index =  5 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 256, .register_index =  8 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 320, .register_index =  9 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 384, .register_index = 12 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 448, .register_index = 13 }));  rgb0 += 128 * 4;
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 +   0, .register_index = 16 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 +  64, .register_index = 17 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 128, .register_index = 20 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 192, .register_index = 21 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 256, .register_index = 24 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 320, .register_index = 25 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 384, .register_index = 28 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 448, .register_index = 29 }));  rgb1 += 128 * 4;
-#else
-            AMX_LDX((amx_access{ .address = (uint64_t)y0, .register_index = 2, .double_width = 1 }));  y0 += 128;
-            AMX_LDX((amx_access{ .address = (uint64_t)y1, .register_index = 4, .double_width = 1 }));  y1 += 128;
-            AMX_LDX((amx_access{ .address = (uint64_t)u0, .register_index = 0 }));  u0 += 64;
-            AMX_LDX((amx_access{ .address = (uint64_t)v0, .register_index = 1 }));  v0 += 64;
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x00, .offset_y = 0x40, .offset_z = 0, .count_x = 2, .dummy_42 = 12 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x40, .offset_y = 0x40, .offset_z = 4, .count_x = 2, .dummy_42 = 12 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 0 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 2 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 3 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 0, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140 - 2, .offset_y = 0, .offset_z = 1, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180 - 2, .offset_y = 0, .offset_z = 2, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0 - 2, .offset_y = 0, .offset_z = 3, .add = 1 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x100, .offset_z = 4 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x140, .offset_z = 5 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x180, .offset_z = 6 }));
-            AMX_EXTRX((amx_operands_vector{ .offset_x = 0x1C0, .offset_z = 7 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x100 - 2, .offset_y = 0, .offset_z = 4, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x140 - 2, .offset_y = 0, .offset_z = 5, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x180 - 2, .offset_y = 0, .offset_z = 6, .add = 1 }));
-            AMX_VECINT((amx_operands_vector{ .offset_x = 0x1C0 - 2, .offset_y = 0, .offset_z = 7, .add = 1 }));
-            if (dump && w == 0 && h == 0)
-            {
-                dump_amx(0);
-                dump_amx(1);
-                dump_amx(2);
-                dump_amx(3);
-            }
-
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 +   0, .register_index =  0 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 +  64, .register_index =  1 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 128, .register_index =  2 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb0 + 192, .register_index =  3 })); rgb0 += 64 * 4;
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 +   0, .register_index =  8 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 +  64, .register_index =  9 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 128, .register_index = 10 }));
-            AMX_STZ((amx_access{ .address = (uint64_t)rgb1 + 192, .register_index = 11 })); rgb1 += 64 * 4;
-#endif
-        }
-    }
-    AMX_STOP();
-}
-#endif
 //------------------------------------------------------------------------------
