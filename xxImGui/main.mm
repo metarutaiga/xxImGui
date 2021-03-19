@@ -150,15 +150,10 @@
 
 #if TARGET_OS_OSX
 
--(void)loadView                         { self.view = [NSView new]; }
--(void)keyUp:(NSEvent *)event           { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)keyDown:(NSEvent *)event         { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)flagsChanged:(NSEvent *)event    { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseDown:(NSEvent *)event       { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseUp:(NSEvent *)event         { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseMoved:(NSEvent *)event      { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)mouseDragged:(NSEvent *)event    { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
--(void)scrollWheel:(NSEvent *)event     { DearImGui::HandleEventOSX((__bridge void*)event, (__bridge void*)self.view);  }
+-(void)loadView
+{
+    self.view = [NSView new];
+}
 
 #elif TARGET_OS_IOS
 
@@ -252,11 +247,10 @@
                                           styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable
                                             backing:NSBackingStoreBuffered
                                               defer:YES];
-    [_window setTitle:@"Dear ImGui XX Example"];
-    [_window setAcceptsMouseMovedEvents:YES];
-    [_window setOpaque:YES];
-    [_window makeKeyAndOrderFront:NSApp];
     [_window setDelegate:self];
+    [_window setOpaque:YES];
+    [_window setTitle:@"Dear ImGui XX Example"];
+    [_window makeKeyAndOrderFront:NSApp];
 
     return (_window);
 }
@@ -346,6 +340,7 @@ int main(int argc, char* argv[])
         NSApp = [NSApplication sharedApplication];
         ImGuiExampleAppDelegate* delegate = [ImGuiExampleAppDelegate new];
         [[NSApplication sharedApplication] setDelegate:delegate];
+        [NSApp activateIgnoringOtherApps:YES];
         [NSApp run];
         return NSApplicationMain(argc, (const char**)argv);
     }

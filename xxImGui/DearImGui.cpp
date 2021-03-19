@@ -8,6 +8,12 @@
 #include <sys/stat.h>
 #include <imgui/misc/freetype/imgui_freetype.h>
 #if defined(__APPLE__)
+#include <TargetConditionals.h>
+#if TARGET_OS_OSX
+#include <Cocoa/Cocoa.h>
+#elif TARGET_OS_IOS
+#include <UIKit/UIKit.h>
+#endif
 #include "implement/imgui_impl_osx.h"
 #elif defined(_WIN32)
 #include <imgui/backends/imgui_impl_win32.h>
@@ -65,7 +71,10 @@ void DearImGui::Create(void* view, float scale, float font)
 
     // Setup Platform/Renderer bindings
 #if defined(xxMACOS)
-    ImGui_ImplOSX_Init((__bridge NSView*)view);
+    NSView* nsView = (__bridge NSView*)view;
+    NSViewController* nsViewController = (NSViewController*)[[nsView window] contentViewController];
+    ImGui_ImplOSX_Init(nsView);
+    ImGui_ImplOSX_AddTrackingArea(nsViewController);
 #elif defined(xxWINDOWS)
     ImGui_ImplWin32_Init(view);
 #endif
@@ -395,13 +404,6 @@ bool DearImGui::PowerSaving()
 {
     return g_powerSaving;
 }
-//------------------------------------------------------------------------------
-#if defined(xxMACOS)
-void DearImGui::HandleEventOSX(void* event, void* view)
-{
-    ImGui_ImplOSX_HandleEvent((__bridge NSEvent*)event, (__bridge NSView*)view);
-}
-#endif
 //------------------------------------------------------------------------------
 #if defined(xxANDROID)
 void DearImGui::HandleEventAndroid(int type, float x, float y)
