@@ -12,9 +12,22 @@
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
 		CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */; };
+		CE8A72F526044A1900AEFD2B /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E226044A1800AEFD2B /* Log.cpp */; };
+		CE8A72F626044A1900AEFD2B /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E226044A1800AEFD2B /* Log.cpp */; };
+		CE8A72F926044A1900AEFD2B /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E326044A1800AEFD2B /* Base.cpp */; };
+		CE8A72FA26044A1900AEFD2B /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E326044A1800AEFD2B /* Base.cpp */; };
+		CE8A72FD26044A1A00AEFD2B /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E626044A1800AEFD2B /* Connection.cpp */; };
+		CE8A72FE26044A1A00AEFD2B /* Connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E626044A1800AEFD2B /* Connection.cpp */; };
+		CE8A730126044A1A00AEFD2B /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E826044A1800AEFD2B /* Buffer.cpp */; };
+		CE8A730226044A1A00AEFD2B /* Buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E826044A1800AEFD2B /* Buffer.cpp */; };
+		CE8A730526044A1A00AEFD2B /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EA26044A1800AEFD2B /* Socket.cpp */; };
+		CE8A730626044A1A00AEFD2B /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EA26044A1800AEFD2B /* Socket.cpp */; };
+		CE8A730926044A1B00AEFD2B /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EC26044A1800AEFD2B /* Listener.cpp */; };
+		CE8A730A26044A1B00AEFD2B /* Listener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EC26044A1800AEFD2B /* Listener.cpp */; };
+		CE8A730D26044A1B00AEFD2B /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EF26044A1800AEFD2B /* Framework.cpp */; };
+		CE8A730E26044A1B00AEFD2B /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EF26044A1800AEFD2B /* Framework.cpp */; };
 		CE91E8882489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
 		CE91E8892489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
-		CE91E88A2489CCAD00912424 /* client.h in Headers */ = {isa = PBXBuildFile; fileRef = CE91E8872489CCAD00912424 /* client.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +35,32 @@
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConcurrencyNetworkFramework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE8A71412604451B00AEFD2B /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		CE8A71422604451B00AEFD2B /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		CE8A72AC2604485A00AEFD2B /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
+		CE8A72DC26044A0900AEFD2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../ConcurrencyNetworkFramework/HackingSTL/README.md; sourceTree = "<group>"; };
+		CE8A72DD26044A0900AEFD2B /* thread */ = {isa = PBXFileReference; lastKnownFileType = text; name = thread; path = ../../ConcurrencyNetworkFramework/HackingSTL/thread; sourceTree = "<group>"; };
+		CE8A72DE26044A0900AEFD2B /* semaphore */ = {isa = PBXFileReference; lastKnownFileType = text; name = semaphore; path = ../../ConcurrencyNetworkFramework/HackingSTL/semaphore; sourceTree = "<group>"; };
+		CE8A72DF26044A1800AEFD2B /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../../ConcurrencyNetworkFramework/Log.h; sourceTree = "<group>"; };
+		CE8A72E026044A1800AEFD2B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../ConcurrencyNetworkFramework/LICENSE.txt; sourceTree = "<group>"; };
+		CE8A72E126044A1800AEFD2B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../ConcurrencyNetworkFramework/Makefile; sourceTree = "<group>"; };
+		CE8A72E226044A1800AEFD2B /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Log.cpp; path = ../../ConcurrencyNetworkFramework/Log.cpp; sourceTree = "<group>"; };
+		CE8A72E326044A1800AEFD2B /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base.cpp; path = ../../ConcurrencyNetworkFramework/Base.cpp; sourceTree = "<group>"; };
+		CE8A72E426044A1800AEFD2B /* FrameworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameworkHeader.h; path = ../../ConcurrencyNetworkFramework/FrameworkHeader.h; sourceTree = "<group>"; };
+		CE8A72E526044A1800AEFD2B /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base.h; path = ../../ConcurrencyNetworkFramework/Base.h; sourceTree = "<group>"; };
+		CE8A72E626044A1800AEFD2B /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connection.cpp; path = ../../ConcurrencyNetworkFramework/Connection.cpp; sourceTree = "<group>"; };
+		CE8A72E726044A1800AEFD2B /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../ConcurrencyNetworkFramework/Listener.h; sourceTree = "<group>"; };
+		CE8A72E826044A1800AEFD2B /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buffer.cpp; path = ../../ConcurrencyNetworkFramework/Buffer.cpp; sourceTree = "<group>"; };
+		CE8A72E926044A1800AEFD2B /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connection.h; path = ../../ConcurrencyNetworkFramework/Connection.h; sourceTree = "<group>"; };
+		CE8A72EA26044A1800AEFD2B /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../ConcurrencyNetworkFramework/Socket.cpp; sourceTree = "<group>"; };
+		CE8A72EB26044A1800AEFD2B /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Socket.h; path = ../../ConcurrencyNetworkFramework/Socket.h; sourceTree = "<group>"; };
+		CE8A72EC26044A1800AEFD2B /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listener.cpp; path = ../../ConcurrencyNetworkFramework/Listener.cpp; sourceTree = "<group>"; };
+		CE8A72ED26044A1800AEFD2B /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Framework.h; path = ../../ConcurrencyNetworkFramework/Framework.h; sourceTree = "<group>"; };
+		CE8A72EE26044A1800AEFD2B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../../ConcurrencyNetworkFramework/Event.h; sourceTree = "<group>"; };
+		CE8A72EF26044A1800AEFD2B /* Framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Framework.cpp; path = ../../ConcurrencyNetworkFramework/Framework.cpp; sourceTree = "<group>"; };
+		CE8A72F026044A1800AEFD2B /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buffer.h; path = ../../ConcurrencyNetworkFramework/Buffer.h; sourceTree = "<group>"; };
+		CE8A734D260451F900AEFD2B /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE8A734F260451FC00AEFD2B /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE91E8862489CCAD00912424 /* client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		CE91E8872489CCAD00912424 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libframework.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libframework.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +91,8 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE8A734F260451FC00AEFD2B /* libimgui.android */,
+				CE8A734D260451F900AEFD2B /* imgui.dll */,
 				CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */,
 				30B096C9244AD39C0096E6DC /* libimgui.bundle */,
 				30B096B7244ACE500096E6DC /* libimgui.dylib */,
@@ -59,12 +100,60 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE8A71402604450600AEFD2B /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				CE8A72AC2604485A00AEFD2B /* llvm_wrapper.cpp */,
+				CE8A71422604451B00AEFD2B /* CrossPlatform.Android.xcconfig */,
+				CE8A71412604451B00AEFD2B /* CrossPlatform.Windows.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
+		CE8A72D6260449E400AEFD2B /* ConcurrencyNetworkFramework */ = {
+			isa = PBXGroup;
+			children = (
+				CE8A72DB260449F600AEFD2B /* HackingSTL */,
+				CE8A72E326044A1800AEFD2B /* Base.cpp */,
+				CE8A72E526044A1800AEFD2B /* Base.h */,
+				CE8A72E826044A1800AEFD2B /* Buffer.cpp */,
+				CE8A72F026044A1800AEFD2B /* Buffer.h */,
+				CE8A72E626044A1800AEFD2B /* Connection.cpp */,
+				CE8A72E926044A1800AEFD2B /* Connection.h */,
+				CE8A72EE26044A1800AEFD2B /* Event.h */,
+				CE8A72EF26044A1800AEFD2B /* Framework.cpp */,
+				CE8A72ED26044A1800AEFD2B /* Framework.h */,
+				CE8A72E426044A1800AEFD2B /* FrameworkHeader.h */,
+				CE8A72E026044A1800AEFD2B /* LICENSE.txt */,
+				CE8A72EC26044A1800AEFD2B /* Listener.cpp */,
+				CE8A72E726044A1800AEFD2B /* Listener.h */,
+				CE8A72E226044A1800AEFD2B /* Log.cpp */,
+				CE8A72DF26044A1800AEFD2B /* Log.h */,
+				CE8A72E126044A1800AEFD2B /* Makefile */,
+				CE8A72EA26044A1800AEFD2B /* Socket.cpp */,
+				CE8A72EB26044A1800AEFD2B /* Socket.h */,
+			);
+			name = ConcurrencyNetworkFramework;
+			sourceTree = "<group>";
+		};
+		CE8A72DB260449F600AEFD2B /* HackingSTL */ = {
+			isa = PBXGroup;
+			children = (
+				CE8A72DC26044A0900AEFD2B /* README.md */,
+				CE8A72DE26044A0900AEFD2B /* semaphore */,
+				CE8A72DD26044A0900AEFD2B /* thread */,
+			);
+			name = HackingSTL;
+			sourceTree = "<group>";
+		};
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
+				CE8A72D6260449E400AEFD2B /* ConcurrencyNetworkFramework */,
 				CE91E8862489CCAD00912424 /* client.cpp */,
 				CE91E8872489CCAD00912424 /* client.h */,
 				300264C4242690D0004559E0 /* framework.cpp */,
+				CE8A71402604450600AEFD2B /* Configs */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -80,17 +169,6 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		D644A03D231ED82900B75B77 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE91E88A2489CCAD00912424 /* client.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		D6022C3423258B5D00B9BFB8 /* framework (iOS) */ = {
@@ -113,7 +191,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D644A04C231ED82900B75B77 /* Build configuration list for PBXNativeTarget "framework (macOS)" */;
 			buildPhases = (
-				D644A03D231ED82900B75B77 /* Headers */,
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
 			);
@@ -166,8 +243,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039F9D92447499200E671A7 /* framework.cpp in Sources */,
 				CE91E8892489CCAD00912424 /* client.cpp in Sources */,
+				3039F9D92447499200E671A7 /* framework.cpp in Sources */,
+				CE8A72FA26044A1900AEFD2B /* Base.cpp in Sources */,
+				CE8A730226044A1A00AEFD2B /* Buffer.cpp in Sources */,
+				CE8A72FE26044A1A00AEFD2B /* Connection.cpp in Sources */,
+				CE8A730E26044A1B00AEFD2B /* Framework.cpp in Sources */,
+				CE8A730A26044A1B00AEFD2B /* Listener.cpp in Sources */,
+				CE8A72F626044A1900AEFD2B /* Log.cpp in Sources */,
+				CE8A730626044A1A00AEFD2B /* Socket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,8 +259,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300264C5242690D0004559E0 /* framework.cpp in Sources */,
 				CE91E8882489CCAD00912424 /* client.cpp in Sources */,
+				300264C5242690D0004559E0 /* framework.cpp in Sources */,
+				CE8A72F926044A1900AEFD2B /* Base.cpp in Sources */,
+				CE8A730126044A1A00AEFD2B /* Buffer.cpp in Sources */,
+				CE8A72FD26044A1A00AEFD2B /* Connection.cpp in Sources */,
+				CE8A730D26044A1B00AEFD2B /* Framework.cpp in Sources */,
+				CE8A730926044A1B00AEFD2B /* Listener.cpp in Sources */,
+				CE8A72F526044A1900AEFD2B /* Log.cpp in Sources */,
+				CE8A730526044A1A00AEFD2B /* Socket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,10 +332,14 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"_DEBUG=1",
+					PLUGIN_BUILD_LIBRARY,
+					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
+					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -314,9 +409,12 @@
 				EXECUTABLE_EXTENSION = bundle;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"NDEBUG=1",
+					PLUGIN_BUILD_LIBRARY,
+					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
