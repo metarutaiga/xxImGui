@@ -227,6 +227,10 @@
 		CE8A73582604526500AEFD2B /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A73572604526500AEFD2B /* xxGraphic.dll */; };
 		CE8A735A2604526D00AEFD2B /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A73592604526D00AEFD2B /* libxxGraphic.android */; };
 		CE8A73AE2604567400AEFD2B /* yuv.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE8A711B260443CD00AEFD2B /* yuv.dll */; };
+		CEA24D5826048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
+		CEA24D5926048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
+		CEA24D5A26048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
+		CEA24D5B26048B9C005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -331,6 +335,7 @@
 		CE8A731B26044A5B00AEFD2B /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A73572604526500AEFD2B /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A73592604526D00AEFD2B /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA24D5726048B9B005DBA21 /* scale_uv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_uv.cc; path = ../../libyuv/source/scale_uv.cc; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6812B472602F014001436B7 /* apple_amx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_amx.h; path = ../../xxYUV/apple_amx.h; sourceTree = "<group>"; };
@@ -459,6 +464,7 @@
 				CE4E3E10244E7CFA00CEDC62 /* scale_msa.cc */,
 				CE4E3E25244E7CFC00CEDC62 /* scale_neon.cc */,
 				CE4E3E27244E7CFC00CEDC62 /* scale_neon64.cc */,
+				CEA24D5726048B9B005DBA21 /* scale_uv.cc */,
 				CE4E3E2A244E7CFC00CEDC62 /* scale_win.cc */,
 				CE4E3E12244E7CFB00CEDC62 /* scale.cc */,
 				CE4E3E2B244E7CFD00CEDC62 /* video_common.cc */,
@@ -708,6 +714,7 @@
 				CE8A71AD260446B600AEFD2B /* scale_msa.cc in Sources */,
 				CE8A71AE260446B600AEFD2B /* scale_neon.cc in Sources */,
 				CE8A71AF260446B600AEFD2B /* scale_neon64.cc in Sources */,
+				CEA24D5A26048B9B005DBA21 /* scale_uv.cc in Sources */,
 				CE8A71B0260446B600AEFD2B /* scale_win.cc in Sources */,
 				CE8A71B1260446B600AEFD2B /* scale.cc in Sources */,
 				CE8A71B2260446B600AEFD2B /* video_common.cc in Sources */,
@@ -768,6 +775,7 @@
 				CE8A729B2604482300AEFD2B /* scale_msa.cc in Sources */,
 				CE8A729C2604482300AEFD2B /* scale_neon.cc in Sources */,
 				CE8A729D2604482300AEFD2B /* scale_neon64.cc in Sources */,
+				CEA24D5B26048B9C005DBA21 /* scale_uv.cc in Sources */,
 				CE8A729E2604482300AEFD2B /* scale_win.cc in Sources */,
 				CE8A729F2604482300AEFD2B /* scale.cc in Sources */,
 				CE8A72A02604482300AEFD2B /* video_common.cc in Sources */,
@@ -827,6 +835,7 @@
 				CE8A721B260447D300AEFD2B /* scale_msa.cc in Sources */,
 				CE8A721C260447D300AEFD2B /* scale_neon.cc in Sources */,
 				CE8A721D260447D300AEFD2B /* scale_neon64.cc in Sources */,
+				CEA24D5926048B9B005DBA21 /* scale_uv.cc in Sources */,
 				CE8A721E260447D300AEFD2B /* scale_win.cc in Sources */,
 				CE8A721F260447D300AEFD2B /* scale.cc in Sources */,
 				CE8A7220260447D400AEFD2B /* video_common.cc in Sources */,
@@ -886,6 +895,7 @@
 				CE8A7257260447E600AEFD2B /* scale_msa.cc in Sources */,
 				CE8A7258260447E600AEFD2B /* scale_neon.cc in Sources */,
 				CE8A7259260447E600AEFD2B /* scale_neon64.cc in Sources */,
+				CEA24D5826048B9B005DBA21 /* scale_uv.cc in Sources */,
 				CE8A725A260447E600AEFD2B /* scale_win.cc in Sources */,
 				CE8A725B260447E600AEFD2B /* scale.cc in Sources */,
 				CE8A725C260447E600AEFD2B /* video_common.cc in Sources */,

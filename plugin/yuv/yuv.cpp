@@ -17,6 +17,7 @@
 #define LIBYUV 1
 #if defined(LIBYUV)
 #include <libyuv.h>
+#include <libyuv/convert_argb.h>
 #endif
 
 #define PLUGIN_NAME     "YUV"
@@ -343,8 +344,12 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                auto converter = decodeFullRange ? libyuv::J420ToARGB : libyuv::I420ToARGB;
-                                converter(lennaYU12, lennaWidth, lennaYU12 + sizeY, lennaWidth / 2, lennaYU12 + sizeY + sizeUV, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaHeight);
+                                libyuv::I420ToARGBMatrix(lennaYU12, lennaWidth,
+                                                         lennaYU12 + sizeY, lennaWidth / 2,
+                                                         lennaYU12 + sizeY + sizeUV, lennaWidth / 2,
+                                                         temp, lennaWidth * 4,
+                                                         decodeFullRange ? &libyuv::kYuvF709Constants : &libyuv::kYuvH709Constants,
+                                                         lennaWidth, lennaHeight);
                                 break;
                             }
 #endif
@@ -399,8 +404,12 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                auto converter = decodeFullRange ? libyuv::J420ToARGB : libyuv::I420ToARGB;
-                                converter(lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, temp, lennaWidth * 4, lennaWidth, lennaHeight);
+                                libyuv::I420ToARGBMatrix(lennaYV12, lennaWidth,
+                                                         lennaYV12 + sizeY + sizeUV, lennaWidth / 2,
+                                                         lennaYV12 + sizeY, lennaWidth / 2,
+                                                         temp, lennaWidth * 4,
+                                                         decodeFullRange ? &libyuv::kYuvF709Constants : &libyuv::kYuvH709Constants,
+                                                         lennaWidth, lennaHeight);
                                 break;
                             }
 #endif
@@ -455,7 +464,11 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                libyuv::NV12ToARGB(lennaNV12, lennaWidth, lennaNV12 + sizeY, lennaWidth, temp, lennaWidth * 4, lennaWidth, lennaHeight);
+                                libyuv::NV12ToARGBMatrix(lennaNV12, lennaWidth,
+                                                         lennaNV12 + sizeY, lennaWidth,
+                                                         temp, lennaWidth * 4,
+                                                         decodeFullRange ? &libyuv::kYuvF709Constants : &libyuv::kYuvH709Constants,
+                                                         lennaWidth, lennaHeight);
                                 break;
                             }
 #endif
@@ -509,7 +522,11 @@ pluginAPI void Update(const UpdateData& updateData)
 #if LIBYUV
                             if (libyuv)
                             {
-                                libyuv::NV21ToARGB(lennaNV21, lennaWidth, lennaNV21 + sizeY, lennaWidth, temp, lennaWidth * 4, lennaWidth, lennaHeight);
+                                libyuv::NV21ToARGBMatrix(lennaNV21, lennaWidth,
+                                                         lennaNV21 + sizeY, lennaWidth,
+                                                         temp, lennaWidth * 4,
+                                                         decodeFullRange ? &libyuv::kYuvF709Constants : &libyuv::kYuvH709Constants,
+                                                         lennaWidth, lennaHeight);
                                 break;
                             }
 #endif
