@@ -383,7 +383,10 @@ void* DearImGui::PostUpdate(void* view, bool render)
         Renderer::Create(view, Renderer::g_width, Renderer::g_height, graphicShortName);
 #endif
 #if defined(xxMACOS)
-        ImGui_ImplOSX_Init((__bridge NSView*)view);
+        NSView* nsView = (__bridge NSView*)view;
+        NSViewController* nsViewController = (NSViewController*)[[nsView window] contentViewController];
+        ImGui_ImplOSX_Init(nsView);
+        ImGui_ImplOSX_AddTrackingArea(nsViewController);
 #elif defined(xxWINDOWS)
         ImGui_ImplWin32_Init(view);
 #endif
