@@ -7,6 +7,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <interface.h>
 
+#if defined(_WIN32)
+#define _Float16 short
+#endif
+
 #define PLUGIN_NAME     "Matrix"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
