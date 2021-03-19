@@ -345,6 +345,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\libyuv\source\scale_uv.cc" />
     <ClCompile Include="..\..\libyuv\source\scale_win.cc" />
     <ClCompile Include="..\..\libyuv\source\video_common.cc" />
     <ClCompile Include="..\..\xxYUV\rgb2yuv.cpp" />

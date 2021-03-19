@@ -146,6 +146,9 @@
     <ClCompile Include="..\..\libyuv\source\scale_neon64.cc">
       <Filter>libyuv</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libyuv\source\scale_uv.cc">
+      <Filter>libyuv</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\libyuv\source\scale_win.cc">
       <Filter>libyuv</Filter>
     </ClCompile>
