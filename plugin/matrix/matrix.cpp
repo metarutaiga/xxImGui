@@ -578,7 +578,7 @@ static void UserInterface()
     ImGui::Checkbox("Apple AMX", &amx);
     if (amx)
     {
-        ImGui::SetNextWindowSize(ImVec2(1200, 440), ImGuiCond_Appearing);
+        ImGui::SetNextWindowSize(ImVec2(1280, 512), ImGuiCond_Appearing);
         if (ImGui::Begin("Apple AMX Registers"))
         {
             static int opcode = 0;
@@ -594,18 +594,24 @@ static void UserInterface()
             ImGui::SameLine();
             click |= ImGui::RadioButton("MATINT", &opcode, 2);
 
+            int number = 0;
             for (int i = 64 - 1; i >= 0; --i)
             {
-                char label[16];
-                snprintf(label, 16, "##%d", i + 4000);
-                click |= ImGui::Checkbox(label, &operands[i]);
+                number = (number << 1) | operands[i];
+                click |= ImGui::Checkbox(GetLabel(), &operands[i]);
                 if (ImGui::IsItemHovered())
                 {
                     ImGui::SetTooltip("%d", i);
                 }
-                if (i != 10 && i != 20 && i != 27 && i != 32 && i != 48 && i != 0)
+                if (i != 0 && i != 10 && i != 20 && i != 27 && i != 32 && i != 47 && i != 0 && (opcode == 0 || (i != 42 && i != 58)))
                 {
                     ImGui::SameLine();
+                }
+                else
+                {
+                    ImGui::SameLine();
+                    ImGui::Text("%d", number);
+                    number = 0;
                 }
             }
 
