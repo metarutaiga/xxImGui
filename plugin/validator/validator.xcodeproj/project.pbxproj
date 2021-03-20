@@ -25,6 +25,7 @@
 		CEC067FA25CBEEB2003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067F925CBEEB2003A5768 /* libimgui.android */; };
 		CEC067FC25CBEEB2003A5768 /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FB25CBEEB2003A5768 /* libxxGraphic.android */; };
 		CEC067FE25CBEEB2003A5768 /* libxxGraphicPlus.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FD25CBEEB2003A5768 /* libxxGraphicPlus.android */; };
+		D67E07E7260630B100D3F089 /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libvalidator.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,16 @@
 			dstSubfolderSpec = 16;
 			files = (
 				CE999D9B25D275C200351116 /* validator.dll in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D67E07E6260630A700D3F089 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = xxImGui.app/Contents/Frameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				D67E07E7260630B100D3F089 /* libvalidator.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +249,7 @@
 			buildPhases = (
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
+				D67E07E6260630A700D3F089 /* CopyFiles */,
 			);
 			buildRules = (
 			);
