@@ -231,6 +231,8 @@
 		CEA24D5926048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5A26048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5B26048B9C005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
+		D67E07FB260630CD00D3F089 /* libyuv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libyuv.dylib */; };
+		D67E07FC260630E100D3F089 /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = D67E07CA26062ED700D3F089 /* lenna.rgb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -241,6 +243,26 @@
 			dstSubfolderSpec = 16;
 			files = (
 				CE8A73AE2604567400AEFD2B /* yuv.dll in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D67E07C826062E4B00D3F089 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = xxImGui.app/Contents/Frameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				D67E07FB260630CD00D3F089 /* libyuv.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D67E07E8260630B800D3F089 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = xxImGui.app/Contents/Resources;
+			dstSubfolderSpec = 7;
+			files = (
+				D67E07FC260630E100D3F089 /* lenna.rgb in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +360,7 @@
 		CEA24D5726048B9B005DBA21 /* scale_uv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_uv.cc; path = ../../libyuv/source/scale_uv.cc; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D67E07CA26062ED700D3F089 /* lenna.rgb */ = {isa = PBXFileReference; lastKnownFileType = text; path = lenna.rgb; sourceTree = "<group>"; };
 		D6812B472602F014001436B7 /* apple_amx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_amx.h; path = ../../xxYUV/apple_amx.h; sourceTree = "<group>"; };
 		D6812B60260330F6001436B7 /* yuv2rgb_amx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb_amx.h; path = ../../xxYUV/yuv2rgb_amx.h; sourceTree = "<group>"; };
 		D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb_amx.cpp; path = ../../xxYUV/yuv2rgb_amx.cpp; sourceTree = "<group>"; };
@@ -525,6 +548,7 @@
 				CE4E3DF1244E7CA900CEDC62 /* libyuv */,
 				302D20D6244AC53A00D84267 /* xxYUV */,
 				CE8A71142604439100AEFD2B /* Configs */,
+				D67E07C926062E5400D3F089 /* Resources */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -539,6 +563,14 @@
 				CE8A71292604444C00AEFD2B /* libyuv.android */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D67E07C926062E5400D3F089 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D67E07CA26062ED700D3F089 /* lenna.rgb */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +642,8 @@
 			buildPhases = (
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
+				D67E07C826062E4B00D3F089 /* CopyFiles */,
+				D67E07E8260630B800D3F089 /* CopyFiles */,
 			);
 			buildRules = (
 			);

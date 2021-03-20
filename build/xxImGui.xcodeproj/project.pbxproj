@@ -15,8 +15,6 @@
 		300264C3242687B7004559E0 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		30034545244ACD9300E90C44 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; };
 		30034547244ACD9300E90C44 /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; };
-		30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; };
-		3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; };
 		3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; };
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -24,11 +22,8 @@
 		3083107725F4A00B0095892D /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3083107525F4A00B0095892D /* imgui_impl_win32.cpp */; };
 		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096CC244AD3ED0096E6DC /* QuartzCore.framework */; };
-		30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EFF24DDA69E00C0F4EC /* UIKit.framework */; };
 		CE89FA7B254B9B9200EDEED9 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; };
 		CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -62,33 +57,13 @@
 		CEC4337B25AD24A400936983 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3922334291E00A149EF /* main.cpp */; };
 		CEC4337C25AD24A400936983 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		CEC4337D25AD24A400936983 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
-		CEEB8AC525F619FD00B76E5A /* libConcurrencyNetworkFramework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AC425F619FD00B76E5A /* libConcurrencyNetworkFramework.dylib */; };
-		CEEB8AC725F619FD00B76E5A /* libframework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AC625F619FD00B76E5A /* libframework.dylib */; };
-		CEEB8AC925F619FD00B76E5A /* libmatrix.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AC825F619FD00B76E5A /* libmatrix.dylib */; };
-		CEEB8ACB25F619FD00B76E5A /* libyuv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8ACA25F619FD00B76E5A /* libyuv.dylib */; };
-		CEEB8ACD25F61A0E00B76E5A /* libConcurrencyNetworkFramework.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8ACC25F61A0E00B76E5A /* libConcurrencyNetworkFramework.bundle */; };
-		CEEB8ACF25F61A0E00B76E5A /* libframework.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8ACE25F61A0E00B76E5A /* libframework.bundle */; };
 		CEEB8AD125F61A0E00B76E5A /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AD025F61A0E00B76E5A /* libfreetype.bundle */; };
 		CEEB8AD325F61A0E00B76E5A /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AD225F61A0E00B76E5A /* libimgui.bundle */; };
-		CEEB8AD525F61A0E00B76E5A /* libmatrix.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AD425F61A0E00B76E5A /* libmatrix.bundle */; };
-		CEEB8AD725F61A0E00B76E5A /* libsample.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AD625F61A0E00B76E5A /* libsample.bundle */; };
-		CEEB8AD925F61A0E00B76E5A /* libvalidator.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8AD825F61A0E00B76E5A /* libvalidator.bundle */; };
 		CEEB8ADB25F61A0E00B76E5A /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8ADA25F61A0E00B76E5A /* libxxGraphic.bundle */; };
-		CEEB8ADD25F61A0E00B76E5A /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8ADC25F61A0E00B76E5A /* libxxGraphicPlus.bundle */; };
-		CEEB8AF425F61A3F00B76E5A /* libConcurrencyNetworkFramework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEEB8AC425F619FD00B76E5A /* libConcurrencyNetworkFramework.dylib */; };
-		CEEB8AF525F61A3F00B76E5A /* libframework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEEB8AC625F619FD00B76E5A /* libframework.dylib */; };
-		CEEB8AF625F61A4000B76E5A /* libmatrix.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEEB8AC825F619FD00B76E5A /* libmatrix.dylib */; };
-		CEEB8AF725F61A4000B76E5A /* libyuv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEEB8ACA25F619FD00B76E5A /* libyuv.dylib */; };
-		CEEB8B0125F61A5F00B76E5A /* libConcurrencyNetworkFramework.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8ACC25F61A0E00B76E5A /* libConcurrencyNetworkFramework.bundle */; };
-		CEEB8B0225F61A5F00B76E5A /* libframework.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8ACE25F61A0E00B76E5A /* libframework.bundle */; };
 		CEEB8B0325F61A5F00B76E5A /* libfreetype.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8AD025F61A0E00B76E5A /* libfreetype.bundle */; };
 		CEEB8B0425F61A5F00B76E5A /* libimgui.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8AD225F61A0E00B76E5A /* libimgui.bundle */; };
-		CEEB8B0525F61A5F00B76E5A /* libmatrix.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8AD425F61A0E00B76E5A /* libmatrix.bundle */; };
-		CEEB8B0625F61A5F00B76E5A /* libsample.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8AD625F61A0E00B76E5A /* libsample.bundle */; };
-		CEEB8B0725F61A5F00B76E5A /* libvalidator.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8AD825F61A0E00B76E5A /* libvalidator.bundle */; };
 		CEEB8B0825F61A5F00B76E5A /* libxxGraphic.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8ADA25F61A0E00B76E5A /* libxxGraphic.bundle */; };
 		CEEB8B0925F61A5F00B76E5A /* libxxGraphicPlus.bundle in Copy Files */ = {isa = PBXBuildFile; fileRef = CEEB8ADC25F61A0E00B76E5A /* libxxGraphicPlus.bundle */; };
-		CEEB8B0B25F61A6F00B76E5A /* libyuv.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEB8B0A25F61A6F00B76E5A /* libyuv.bundle */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
@@ -107,16 +82,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CEEB8AF425F61A3F00B76E5A /* libConcurrencyNetworkFramework.dylib in CopyFiles */,
-				CEEB8AF525F61A3F00B76E5A /* libframework.dylib in CopyFiles */,
-				CEEB8AF625F61A4000B76E5A /* libmatrix.dylib in CopyFiles */,
-				CEEB8AF725F61A4000B76E5A /* libyuv.dylib in CopyFiles */,
 				30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */,
 				30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */,
 				30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */,
 				CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */,
-				30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */,
-				30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,13 +95,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CEEB8B0125F61A5F00B76E5A /* libConcurrencyNetworkFramework.bundle in Copy Files */,
-				CEEB8B0225F61A5F00B76E5A /* libframework.bundle in Copy Files */,
 				CEEB8B0325F61A5F00B76E5A /* libfreetype.bundle in Copy Files */,
 				CEEB8B0425F61A5F00B76E5A /* libimgui.bundle in Copy Files */,
-				CEEB8B0525F61A5F00B76E5A /* libmatrix.bundle in Copy Files */,
-				CEEB8B0625F61A5F00B76E5A /* libsample.bundle in Copy Files */,
-				CEEB8B0725F61A5F00B76E5A /* libvalidator.bundle in Copy Files */,
 				CEEB8B0825F61A5F00B76E5A /* libxxGraphic.bundle in Copy Files */,
 				CEEB8B0925F61A5F00B76E5A /* libxxGraphicPlus.bundle in Copy Files */,
 			);
@@ -262,16 +226,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEEB8ACD25F61A0E00B76E5A /* libConcurrencyNetworkFramework.bundle in Frameworks */,
-				CEEB8ACF25F61A0E00B76E5A /* libframework.bundle in Frameworks */,
 				CEEB8AD125F61A0E00B76E5A /* libfreetype.bundle in Frameworks */,
 				CEEB8AD325F61A0E00B76E5A /* libimgui.bundle in Frameworks */,
-				CEEB8AD525F61A0E00B76E5A /* libmatrix.bundle in Frameworks */,
-				CEEB8AD725F61A0E00B76E5A /* libsample.bundle in Frameworks */,
-				CEEB8AD925F61A0E00B76E5A /* libvalidator.bundle in Frameworks */,
 				CEEB8ADB25F61A0E00B76E5A /* libxxGraphic.bundle in Frameworks */,
-				CEEB8ADD25F61A0E00B76E5A /* libxxGraphicPlus.bundle in Frameworks */,
-				CEEB8B0B25F61A6F00B76E5A /* libyuv.bundle in Frameworks */,
 				CE89FA7B254B9B9200EDEED9 /* Metal.framework in Frameworks */,
 				30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */,
 				30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */,
@@ -282,16 +239,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEEB8AC525F619FD00B76E5A /* libConcurrencyNetworkFramework.dylib in Frameworks */,
-				CEEB8AC725F619FD00B76E5A /* libframework.dylib in Frameworks */,
 				30034545244ACD9300E90C44 /* libfreetype.dylib in Frameworks */,
 				30034547244ACD9300E90C44 /* libimgui.dylib in Frameworks */,
-				CEEB8AC925F619FD00B76E5A /* libmatrix.dylib in Frameworks */,
-				30034549244ACD9300E90C44 /* libsample.dylib in Frameworks */,
-				3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */,
 				3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */,
-				30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */,
-				CEEB8ACB25F619FD00B76E5A /* libyuv.dylib in Frameworks */,
 				302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */,
 				303DDEB82448B7680042A480 /* Metal.framework in Frameworks */,
 				303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */,

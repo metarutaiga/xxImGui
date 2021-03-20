@@ -11,7 +11,6 @@
 		3039F9D92447499200E671A7 /* framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* framework.cpp */; };
 		30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B7244ACE500096E6DC /* libimgui.dylib */; };
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
-		CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */; };
 		CE8A72F526044A1900AEFD2B /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E226044A1800AEFD2B /* Log.cpp */; };
 		CE8A72F626044A1900AEFD2B /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E226044A1800AEFD2B /* Log.cpp */; };
 		CE8A72F926044A1900AEFD2B /* Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72E326044A1800AEFD2B /* Base.cpp */; };
@@ -28,7 +27,21 @@
 		CE8A730E26044A1B00AEFD2B /* Framework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72EF26044A1800AEFD2B /* Framework.cpp */; };
 		CE91E8882489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
 		CE91E8892489CCAD00912424 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE91E8862489CCAD00912424 /* client.cpp */; };
+		D67E07E12606306C00D3F089 /* libframework.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libframework.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D67E07E02606304B00D3F089 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = xxImGui.app/Contents/Frameworks;
+			dstSubfolderSpec = 16;
+			files = (
+				D67E07E12606306C00D3F089 /* libframework.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		300264C4242690D0004559E0 /* framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = framework.cpp; sourceTree = "<group>"; };
@@ -80,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE69D7502488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib in Frameworks */,
 				30B096B8244ACE500096E6DC /* libimgui.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +205,7 @@
 			buildPhases = (
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
+				D67E07E02606304B00D3F089 /* CopyFiles */,
 			);
 			buildRules = (
 			);

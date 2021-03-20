@@ -84,7 +84,7 @@ static void loadTexture(const char* baseFolder, bool videoRange)
 {
     char path[1024];
 #if defined(xxMACOS)
-    snprintf(path, 1024, "%s/../../../../%s/%s", baseFolder, "resource", "lenna.rgb");
+    snprintf(path, 1024, "%s/../%s/%s", baseFolder, "Resources", "lenna.rgb");
 #elif defined(xxIOS)
     snprintf(path, 1024, "%s/%s", baseFolder, "lenna.rgb");
 #else
