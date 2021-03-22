@@ -167,7 +167,9 @@ uint64_t Renderer::Begin()
     uint64_t framebuffer = xxGetFramebuffer(g_device, g_swapchain, &g_scale);
     xxBeginCommandBuffer(commandBuffer);
 
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, g_width * g_scale, g_height * g_scale, g_clearColor, g_clearDepth, g_clearStencil);
+    int width = (int)(g_width * g_scale);
+    int height = (int)(g_height * g_scale);
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, g_renderPass, width, height, g_clearColor, g_clearDepth, g_clearStencil);
 
     g_currentCommandBuffer = commandBuffer;
     g_currentCommandEncoder = commandEncoder;
