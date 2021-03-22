@@ -24,8 +24,6 @@
 		3083107725F4A00B0095892D /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3083107525F4A00B0095892D /* imgui_impl_win32.cpp */; };
 		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034548244ACD9300E90C44 /* libsample.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B096A2244ACDC40096E6DC /* libfreetype.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A1244ACDC40096E6DC /* libfreetype.bundle */; };
 		30B096A4244ACDC40096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096A3244ACDC40096E6DC /* libimgui.bundle */; };
@@ -94,8 +92,6 @@
 			files = (
 				30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */,
 				30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */,
-				30B0969D244ACDB40096E6DC /* libsample.dylib in CopyFiles */,
-				30B0969E244ACDB40096E6DC /* libvalidator.dylib in CopyFiles */,
 				30B0969F244ACDB40096E6DC /* libxxGraphic.dylib in CopyFiles */,
 				CE8D465724E0D60900B082CF /* libxxGraphicPlus.dylib in CopyFiles */,
 			);
