@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		30A9A79C25ADC711000FA104 /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
 		30A9A79D25ADC711000FA104 /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EE024DDA2EA00C0F4EC /* xxMaterial.cpp */; };
-		30A9A79E25ADC711000FA104 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
+		30A9A79E25ADC711000FA104 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		30A9A79F25ADC711000FA104 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		30A9A7A025ADC711000FA104 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
-		30F22EE224DDA2EA00C0F4EC /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
-		30F22EE324DDA2EA00C0F4EC /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
+		30F22EE224DDA2EA00C0F4EC /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
+		30F22EE324DDA2EA00C0F4EC /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		30F22EE424DDA2EA00C0F4EC /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
 		30F22EE524DDA2EA00C0F4EC /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
 		30F22EEA24DDA2EA00C0F4EC /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
@@ -26,7 +26,7 @@
 		30F22EF824DDA33B00C0F4EC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF724DDA33B00C0F4EC /* libxxGraphic.bundle */; };
 		CE93600925AC440100CEF503 /* xxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDE24DDA2EA00C0F4EC /* xxImage.cpp */; };
 		CE93600A25AC440100CEF503 /* xxMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EE024DDA2EA00C0F4EC /* xxMaterial.cpp */; };
-		CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; };
+		CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
 		CE999BF825D2263C00351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999BF725D2263C00351116 /* llvm_wrapper.cpp */; };
