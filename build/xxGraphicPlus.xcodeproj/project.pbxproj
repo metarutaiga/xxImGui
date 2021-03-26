@@ -514,6 +514,7 @@
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
+					"-faligned-allocation",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = xxGraphicPlus;
@@ -589,6 +590,7 @@
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
+					"-faligned-allocation",
 					"$(inherited)",
 				);
 				PRODUCT_NAME = xxGraphicPlus;

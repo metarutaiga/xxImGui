@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3039FA02244766EF00E671A7 /* IOSurface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039FA01244766EE00E671A7 /* IOSurface.framework */; };
+		30A1B644260E4C3100941EB3 /* xxGraphicD3D5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30A1B643260E4C3100941EB3 /* xxGraphicD3D5.cpp */; };
 		30A9A76E25ADC667000FA104 /* xxGraphicNULL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A6231EDE9B00B75B77 /* xxGraphicNULL.cpp */; };
 		30A9A76F25ADC667000FA104 /* xxGraphicEGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7AC234730A90092806F /* xxGraphicEGL.cpp */; };
 		30A9A77125ADC667000FA104 /* xxGraphicGLES2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A5231EDE9B00B75B77 /* xxGraphicGLES2.cpp */; };
@@ -100,6 +101,8 @@
 /* Begin PBXFileReference section */
 		3039FA01244766EE00E671A7 /* IOSurface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSurface.framework; path = System/Library/Frameworks/IOSurface.framework; sourceTree = SDKROOT; };
 		3039FA052447670900E671A7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		30A1B642260E4C3100941EB3 /* xxGraphicD3D5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D5.h; path = ../xxGraphic/xxGraphicD3D5.h; sourceTree = "<group>"; };
+		30A1B643260E4C3100941EB3 /* xxGraphicD3D5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D5.cpp; path = ../xxGraphic/xxGraphicD3D5.cpp; sourceTree = "<group>"; };
 		30A9A75E25ADC60D000FA104 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE05B09925DFAED1007B76D7 /* d3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = d3d.h; path = ../xxGraphic/dxsdk/d3d.h; sourceTree = "<group>"; };
 		CE05B09A25DFAED1007B76D7 /* dxgi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxgi.h; path = ../xxGraphic/dxsdk/dxgi.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 			children = (
 				D6A86A4A25EA325D00074B9C /* internal */,
 				D6A727C823231125009981AD /* dxsdk */,
+				30A1B643260E4C3100941EB3 /* xxGraphicD3D5.cpp */,
+				30A1B642260E4C3100941EB3 /* xxGraphicD3D5.h */,
 				D6F761BE233C8E9F006BE7E1 /* xxGraphicD3D6.cpp */,
 				D6F761C0233C8E9F006BE7E1 /* xxGraphicD3D6.h */,
 				D6F761C1233C8E9F006BE7E1 /* xxGraphicD3D7.cpp */,
@@ -733,6 +738,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A1B644260E4C3100941EB3 /* xxGraphicD3D5.cpp in Sources */,
 				D6A86A6D25EA332A00074B9C /* xxGraphicInternalGL.cpp in Sources */,
 				D6A86A5A25EA32CC00074B9C /* xxGraphicInternalMantle.cpp in Sources */,
 				D6A86A7E25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */,
