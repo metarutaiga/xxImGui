@@ -13,6 +13,7 @@ A simulate Next-Generation Graphic API for ImGui
 ### Supported Graphic API
 | API             | Android | iOS | macOS | Windows | Windows on ARM |
 | --------------- | ------- | --- | ----- | ------- | -------------- |
+| Direct3D 5.0    |         |     |       | ⭕       |                |
 | Direct3D 6.0    |         |     |       | ⭕       |                |
 | Direct3D 7.0    |         |     |       | ⭕       |                |
 | Direct3D 8.0    |         |     | 🍷     | ⭕       |                |

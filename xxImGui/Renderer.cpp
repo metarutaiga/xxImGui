@@ -7,6 +7,7 @@
 #include <xxGraphic/xxGraphic.h>
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
+#include <xxGraphic/xxGraphicD3D5.h>
 #include <xxGraphic/xxGraphicD3D6.h>
 #include <xxGraphic/xxGraphicD3D7.h>
 #include <xxGraphic/xxGraphicD3D8.h>
@@ -56,6 +57,7 @@ static struct { const char* shortName; const char* fullName; uint64_t (*createIn
 {
 #if defined(xxWINDOWS)
 #if defined(_M_IX86)
+    { "D3D5",           xxGetDeviceNameD3D5(),          xxCreateInstanceD3D5            },
     { "D3D6",           xxGetDeviceNameD3D6(),          xxCreateInstanceD3D6            },
     { "D3D7",           xxGetDeviceNameD3D7(),          xxCreateInstanceD3D7            },
     { "D3D8",           xxGetDeviceNameD3D8(),          xxCreateInstanceD3D8            },

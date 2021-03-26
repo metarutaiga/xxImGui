@@ -78,9 +78,18 @@
       <Filter>OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp">
+      <Filter>Mantle\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp">
+      <Filter>OpenGL\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp">
+      <Filter>Vulkan\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicD3D5.cpp">
+      <Filter>Direct3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -296,9 +305,18 @@
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h">
+      <Filter>Mantle\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h">
+      <Filter>Vulkan\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h">
+      <Filter>Metal\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicD3D5.h">
+      <Filter>Direct3D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">
@@ -337,6 +355,15 @@
     <Filter Include="OpenGL\internal">
       <UniqueIdentifier>{c3011753-b73c-4828-8f5b-35c69ff52d18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mantle\internal">
+      <UniqueIdentifier>{b9dc2225-31d0-43a7-b3eb-4623a2767089}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vulkan\internal">
+      <UniqueIdentifier>{25064d74-c28d-4753-9148-fae5d3094586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Metal\internal">
+      <UniqueIdentifier>{cad3ddbe-aa9c-4ff5-88c3-d5060f7dd883}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\xxGraphic\xxGraphicCGL.mm">
@@ -347,6 +374,9 @@
     </None>
     <None Include="..\xxGraphic\xxGraphicMetal.mm">
       <Filter>Metal</Filter>
+    </None>
+    <None Include="..\xxGraphic\internal\xxGraphicInternalMetal.mm">
+      <Filter>Metal\internal</Filter>
     </None>
   </ItemGroup>
 </Project>

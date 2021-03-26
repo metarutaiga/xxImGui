@@ -60,6 +60,7 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D11.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D11On12.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D12.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicD3D5.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D6.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D7.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D8.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3D11.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D11On12.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D12.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicD3D5.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D6.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D7.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D8.h" />
@@ -161,6 +163,7 @@
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\xxGraphic\internal\xxGraphicInternalMetal.mm" />
     <None Include="..\xxGraphic\xxGraphicCGL.mm" />
     <None Include="..\xxGraphic\xxGraphicEAGL.mm" />
     <None Include="..\xxGraphic\xxGraphicMetal.mm" />
