@@ -19,6 +19,10 @@
 		30A9A77625ADC667000FA104 /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		30A9A77725ADC667000FA104 /* xxGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */; };
 		30A9A77825ADC667000FA104 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
+		30C406752610CE2F008B134A /* xxGraphicGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C406742610CE2F008B134A /* xxGraphicGlide.cpp */; };
+		30C406812610CF02008B134A /* xxGraphicInternalGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */; };
+		30C4068626121EB4008B134A /* xxGraphicInternalGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */; };
+		30C4068726121EB4008B134A /* xxGraphicGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C406742610CE2F008B134A /* xxGraphicGlide.cpp */; };
 		CE4050B82445613000F30E38 /* xxGraphicGLES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B423577DC40092806F /* xxGraphicGLES3.cpp */; };
 		CE4050B92445613000F30E38 /* xxGraphicGLES31.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B123577DC40092806F /* xxGraphicGLES31.cpp */; };
 		CE4050BA2445613000F30E38 /* xxGraphicGLES32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B323577DC40092806F /* xxGraphicGLES32.cpp */; };
@@ -104,6 +108,15 @@
 		30A1B642260E4C3100941EB3 /* xxGraphicD3D5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D5.h; path = ../xxGraphic/xxGraphicD3D5.h; sourceTree = "<group>"; };
 		30A1B643260E4C3100941EB3 /* xxGraphicD3D5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D5.cpp; path = ../xxGraphic/xxGraphicD3D5.cpp; sourceTree = "<group>"; };
 		30A9A75E25ADC60D000FA104 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		30C4066E2610CE22008B134A /* glide.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glide.h; path = ../xxGraphic/glide/glide.h; sourceTree = "<group>"; };
+		30C4066F2610CE22008B134A /* glideutl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glideutl.h; path = ../xxGraphic/glide/glideutl.h; sourceTree = "<group>"; };
+		30C406702610CE22008B134A /* glidesys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = glidesys.h; path = ../xxGraphic/glide/glidesys.h; sourceTree = "<group>"; };
+		30C406712610CE22008B134A /* 3dfx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = 3dfx.h; path = ../xxGraphic/glide/3dfx.h; sourceTree = "<group>"; };
+		30C406722610CE22008B134A /* sst1vid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sst1vid.h; path = ../xxGraphic/glide/sst1vid.h; sourceTree = "<group>"; };
+		30C406732610CE2F008B134A /* xxGraphicGlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicGlide.h; path = ../xxGraphic/xxGraphicGlide.h; sourceTree = "<group>"; };
+		30C406742610CE2F008B134A /* xxGraphicGlide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicGlide.cpp; path = ../xxGraphic/xxGraphicGlide.cpp; sourceTree = "<group>"; };
+		30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicInternalGlide.cpp; path = ../xxGraphic/internal/xxGraphicInternalGlide.cpp; sourceTree = "<group>"; };
+		30C406802610CF02008B134A /* xxGraphicInternalGlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicInternalGlide.h; path = ../xxGraphic/internal/xxGraphicInternalGlide.h; sourceTree = "<group>"; };
 		CE05B09925DFAED1007B76D7 /* d3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = d3d.h; path = ../xxGraphic/dxsdk/d3d.h; sourceTree = "<group>"; };
 		CE05B09A25DFAED1007B76D7 /* dxgi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxgi.h; path = ../xxGraphic/dxsdk/dxgi.h; sourceTree = "<group>"; };
 		CE05B09B25DFAED1007B76D7 /* dxgitype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dxgitype.h; path = ../xxGraphic/dxsdk/dxgitype.h; sourceTree = "<group>"; };
@@ -284,6 +297,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		309C87182610B13F0011DFB9 /* Glide */ = {
+			isa = PBXGroup;
+			children = (
+				30C4067E2610CEEF008B134A /* internal */,
+				30C4066D2610CE11008B134A /* glide */,
+				30C406742610CE2F008B134A /* xxGraphicGlide.cpp */,
+				30C406732610CE2F008B134A /* xxGraphicGlide.h */,
+			);
+			name = Glide;
+			sourceTree = "<group>";
+		};
+		30C4066D2610CE11008B134A /* glide */ = {
+			isa = PBXGroup;
+			children = (
+				30C406712610CE22008B134A /* 3dfx.h */,
+				30C4066E2610CE22008B134A /* glide.h */,
+				30C406702610CE22008B134A /* glidesys.h */,
+				30C4066F2610CE22008B134A /* glideutl.h */,
+				30C406722610CE22008B134A /* sst1vid.h */,
+			);
+			name = glide;
+			sourceTree = "<group>";
+		};
+		30C4067E2610CEEF008B134A /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */,
+				30C406802610CF02008B134A /* xxGraphicInternalGlide.h */,
+			);
+			name = internal;
+			sourceTree = "<group>";
+		};
 		CE999BCA25D21DAA00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +344,7 @@
 			children = (
 				CE999BCA25D21DAA00351116 /* Configs */,
 				D6A72795232310E1009981AD /* Direct3D */,
+				309C87182610B13F0011DFB9 /* Glide */,
 				D6A727D92323113F009981AD /* Mantle */,
 				D6A727EF232318C7009981AD /* Metal */,
 				D6CA4E292327F563008FFA94 /* NULL */,
@@ -738,11 +784,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A1B644260E4C3100941EB3 /* xxGraphicD3D5.cpp in Sources */,
 				D6A86A6D25EA332A00074B9C /* xxGraphicInternalGL.cpp in Sources */,
+				30C4068626121EB4008B134A /* xxGraphicInternalGlide.cpp in Sources */,
 				D6A86A5A25EA32CC00074B9C /* xxGraphicInternalMantle.cpp in Sources */,
 				D6A86A7E25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */,
 				CE935F9525AC35DB00CEF503 /* xxGraphic.cpp in Sources */,
+				30A1B644260E4C3100941EB3 /* xxGraphicD3D5.cpp in Sources */,
 				CE935F7B25AC35DB00CEF503 /* xxGraphicD3D6.cpp in Sources */,
 				CE935F7C25AC35DB00CEF503 /* xxGraphicD3D7.cpp in Sources */,
 				CE935F7D25AC35DB00CEF503 /* xxGraphicD3D8.cpp in Sources */,
@@ -758,6 +805,7 @@
 				CE935F8725AC35DB00CEF503 /* xxGraphicD3D12.cpp in Sources */,
 				CE935F8825AC35DB00CEF503 /* xxGraphicD3DAsm.cpp in Sources */,
 				CE935F8C25AC35DB00CEF503 /* xxGraphicEGL.cpp in Sources */,
+				30C4068726121EB4008B134A /* xxGraphicGlide.cpp in Sources */,
 				CE935F8E25AC35DB00CEF503 /* xxGraphicGLES2.cpp in Sources */,
 				CE935F8F25AC35DB00CEF503 /* xxGraphicGLES3.cpp in Sources */,
 				CE935F9025AC35DB00CEF503 /* xxGraphicGLES31.cpp in Sources */,
@@ -778,6 +826,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6A86A6C25EA332A00074B9C /* xxGraphicInternalGL.cpp in Sources */,
+				D6A86A9B25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */,
 				D6A86A7D25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */,
 				D6DA664E23258F6F00953C5B /* xxGraphic.cpp in Sources */,
 				D6B70EC823283AEC000FFCBB /* xxGraphicEAGL.mm in Sources */,
@@ -790,7 +839,6 @@
 				D6DA664F23258F7A00953C5B /* xxGraphicNULL.cpp in Sources */,
 				D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
-				D6A86A9B25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */,
 				D6DA665023258F8E00953C5B /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,9 +848,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6A86A6B25EA332A00074B9C /* xxGraphicInternalGL.cpp in Sources */,
+				30C406812610CF02008B134A /* xxGraphicInternalGlide.cpp in Sources */,
+				D6A86A9A25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */,
 				D6A86A7C25EA335400074B9C /* xxGraphicInternalVulkan.cpp in Sources */,
 				D644A0AD231EDE9B00B75B77 /* xxGraphic.cpp in Sources */,
 				D6B338562320209A0096D02F /* xxGraphicCGL.mm in Sources */,
+				30C406752610CE2F008B134A /* xxGraphicGlide.cpp in Sources */,
 				D644A0AF231EDE9B00B75B77 /* xxGraphicGLES2.cpp in Sources */,
 				D667B7BA23577DC40092806F /* xxGraphicGLES3.cpp in Sources */,
 				D667B7B723577DC40092806F /* xxGraphicGLES31.cpp in Sources */,
@@ -812,7 +863,6 @@
 				D644A0B0231EDE9B00B75B77 /* xxGraphicNULL.cpp in Sources */,
 				D690A368232AC54600A149EF /* xxGraphicVulkan.cpp in Sources */,
 				D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */,
-				D6A86A9A25EA790000074B9C /* xxGraphicInternalMetal.mm in Sources */,
 				D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

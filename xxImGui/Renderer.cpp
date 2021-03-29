@@ -5,14 +5,11 @@
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include <xxGraphic/xxGraphic.h>
-#if defined(xxWINDOWS)
-#if defined(_M_IX86)
 #include <xxGraphic/xxGraphicD3D5.h>
 #include <xxGraphic/xxGraphicD3D6.h>
 #include <xxGraphic/xxGraphicD3D7.h>
 #include <xxGraphic/xxGraphicD3D8.h>
 #include <xxGraphic/xxGraphicD3D8PS.h>
-#endif
 #include <xxGraphic/xxGraphicD3D9.h>
 #include <xxGraphic/xxGraphicD3D9PS.h>
 #include <xxGraphic/xxGraphicD3D9Ex.h>
@@ -22,15 +19,13 @@
 #include <xxGraphic/xxGraphicD3D11.h>
 #include <xxGraphic/xxGraphicD3D11On12.h>
 #include <xxGraphic/xxGraphicD3D12.h>
-#endif
+#include <xxGraphic/xxGraphicGlide.h>
 #include <xxGraphic/xxGraphicGLES2.h>
 #include <xxGraphic/xxGraphicGLES3.h>
 #include <xxGraphic/xxGraphicGLES31.h>
 #include <xxGraphic/xxGraphicGLES32.h>
-#if defined(xxMACOS) || defined(xxIOS)
 #include <xxGraphic/xxGraphicMetal.h>
 #include <xxGraphic/xxGraphicMetal2.h>
-#endif
 #include <xxGraphic/xxGraphicNULL.h>
 #include <xxGraphic/xxGraphicVulkan.h>
 
@@ -76,6 +71,9 @@ static struct { const char* shortName; const char* fullName; uint64_t (*createIn
     { "D3D11",          xxGetDeviceNameD3D11(),         xxCreateInstanceD3D11           },
     { "D3D11On12",      xxGetDeviceNameD3D11On12(),     xxCreateInstanceD3D11On12       },
     { "D3D12",          xxGetDeviceNameD3D12(),         xxCreateInstanceD3D12           },
+#endif
+#if defined(xxWINDOWS)
+    { "Glide",          xxGetDeviceNameGlide(),         xxCreateInstanceGlide           },
 #endif
 #if defined(xxMACCATALYST)
 #else
