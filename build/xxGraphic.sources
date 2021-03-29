@@ -2,6 +2,7 @@
 /DNDEBUG
 /I..\..\..\xxGraphic
 ..\..\..\xxGraphic\internal\xxGraphicInternalGL.cpp
+..\..\..\xxGraphic\internal\xxGraphicInternalGlide.cpp
 ..\..\..\xxGraphic\internal\xxGraphicInternalMantle.cpp
 ..\..\..\xxGraphic\internal\xxGraphicInternalVulkan.cpp
 ..\..\..\xxGraphic\xxGraphic.cpp
@@ -19,6 +20,7 @@
 ..\..\..\xxGraphic\xxGraphicD3D11On12.cpp
 ..\..\..\xxGraphic\xxGraphicD3D12.cpp
 ..\..\..\xxGraphic\xxGraphicD3DAsm.cpp
+..\..\..\xxGraphic\xxGraphicGlide.cpp
 ..\..\..\xxGraphic\xxGraphicGLES2.cpp
 ..\..\..\xxGraphic\xxGraphicGLES3.cpp
 ..\..\..\xxGraphic\xxGraphicGLES31.cpp
