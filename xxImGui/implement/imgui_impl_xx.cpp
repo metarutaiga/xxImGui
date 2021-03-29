@@ -173,7 +173,6 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     xxUnmapBuffer(g_device, indexBuffer);
 
     xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
-    xxSetIndexBuffer(commandEncoder, indexBuffer);
 
     ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
 
