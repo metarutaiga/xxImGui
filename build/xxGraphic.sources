@@ -6,6 +6,7 @@
 ..\..\..\xxGraphic\internal\xxGraphicInternalMantle.cpp
 ..\..\..\xxGraphic\internal\xxGraphicInternalVulkan.cpp
 ..\..\..\xxGraphic\xxGraphic.cpp
+..\..\..\xxGraphic\xxGraphicD3D5.cpp
 ..\..\..\xxGraphic\xxGraphicD3D6.cpp
 ..\..\..\xxGraphic\xxGraphicD3D7.cpp
 ..\..\..\xxGraphic\xxGraphicD3D8.cpp

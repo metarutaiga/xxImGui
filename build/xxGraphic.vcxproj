@@ -98,6 +98,11 @@
     <ClInclude Include="..\xxGraphic\dxsdk\d3dcaps.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\d3dtypes.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h" />
+    <ClInclude Include="..\xxGraphic\glide\3dfx.h" />
+    <ClInclude Include="..\xxGraphic\glide\glide.h" />
+    <ClInclude Include="..\xxGraphic\glide\glidesys.h" />
+    <ClInclude Include="..\xxGraphic\glide\glideutl.h" />
+    <ClInclude Include="..\xxGraphic\glide\sst1vid.h" />
     <ClInclude Include="..\xxGraphic\gl\egl.h" />
     <ClInclude Include="..\xxGraphic\gl\eglplatform.h" />
     <ClInclude Include="..\xxGraphic\gl\gl32.h" />

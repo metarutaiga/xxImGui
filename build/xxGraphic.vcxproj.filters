@@ -90,6 +90,12 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D5.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGlide.cpp">
+      <Filter>Glide\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xxGraphic\xxGraphicGlide.cpp">
+      <Filter>Glide</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\xxGraphic\xxGraphic.h" />
@@ -317,6 +323,27 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3D5.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGlide.h">
+      <Filter>Glide\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\xxGraphicGlide.h">
+      <Filter>Glide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\glide\3dfx.h">
+      <Filter>Glide\glide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\glide\glide.h">
+      <Filter>Glide\glide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\glide\glidesys.h">
+      <Filter>Glide\glide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\glide\glideutl.h">
+      <Filter>Glide\glide</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxGraphic\glide\sst1vid.h">
+      <Filter>Glide\glide</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Direct3D">
@@ -363,6 +390,15 @@
     </Filter>
     <Filter Include="Metal\internal">
       <UniqueIdentifier>{cad3ddbe-aa9c-4ff5-88c3-d5060f7dd883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glide">
+      <UniqueIdentifier>{11e30ae6-99ae-4ebe-b6a2-ffb2eb9f6bef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glide\glide">
+      <UniqueIdentifier>{0748a4e9-af5e-4199-9f70-00f6849817d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glide\internal">
+      <UniqueIdentifier>{e949b1e7-e13d-4f03-97d5-da14c90a7772}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
