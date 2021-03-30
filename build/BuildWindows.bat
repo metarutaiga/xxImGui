@@ -40,7 +40,7 @@ mkdir temp\%2\%3 >nul 2>nul
 cd temp
 cd %2
 cd %3
-cl.exe /MP /nologo /c /O2 /GS- /GR- /fp:fast /Z7 /wd4819 @..\..\..\build\%2.sources
+cl.exe /MP /nologo /c /O2 /GS- /GR- /fp:fast /Z7 /wd4819 /std:c++latest /utf-8 @..\..\..\build\%2.sources
 del ..\..\..\bin\%2.Release.%3.lib >nul 2>nul
 del ..\..\..\bin\plugin\%2.Release.%3.lib >nul 2>nul
 set LINKOPT=kernel32.lib user32.lib ..\..\..\bin\*.Release.%3.lib ..\..\..\lib\*.Release.%3.lib /DEBUG /OPT:REF /OPT:ICF
