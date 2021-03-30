@@ -170,6 +170,7 @@
     <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\xxGraphic\xxVector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\xxGraphic\internal\xxGraphicInternalMetal.mm" />

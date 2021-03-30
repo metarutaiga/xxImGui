@@ -311,6 +311,7 @@
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\xxGraphic\xxVector.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h">
       <Filter>Mantle\internal</Filter>
     </ClInclude>
