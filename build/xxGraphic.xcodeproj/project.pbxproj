@@ -19,8 +19,8 @@
 		30A9A77625ADC667000FA104 /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		30A9A77725ADC667000FA104 /* xxGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */; };
 		30A9A77825ADC667000FA104 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
-		30C406752610CE2F008B134A /* xxGraphicGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C406742610CE2F008B134A /* xxGraphicGlide.cpp */; };
-		30C406812610CF02008B134A /* xxGraphicInternalGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */; };
+		30C406752610CE2F008B134A /* xxGraphicGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C406742610CE2F008B134A /* xxGraphicGlide.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
+		30C406812610CF02008B134A /* xxGraphicInternalGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
 		30C4068626121EB4008B134A /* xxGraphicInternalGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C4067F2610CF02008B134A /* xxGraphicInternalGlide.cpp */; };
 		30C4068726121EB4008B134A /* xxGraphicGlide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C406742610CE2F008B134A /* xxGraphicGlide.cpp */; };
 		CE4050B82445613000F30E38 /* xxGraphicGLES3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D667B7B423577DC40092806F /* xxGraphicGLES3.cpp */; };

@@ -37,6 +37,7 @@ bool        DearImGui::g_powerSaving = false;
 #else
 bool        DearImGui::g_powerSaving = true;
 #endif
+bool        DearImGui::g_demoWindow = false;
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
@@ -223,6 +224,8 @@ void DearImGui::NewFrame(void* view)
             }
 #endif
 
+            ImGui::Separator();
+            ImGui::MenuItem("Demo Window", nullptr, &g_demoWindow);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -270,6 +273,10 @@ bool DearImGui::Update(bool demo)
 
     if (demo == false)
     {
+        if (g_demoWindow)
+        {
+            ImGui::ShowDemoWindow(&g_demoWindow);
+        }
         ImGui::EndFrame();
         ImGui::Render();
         return g_powerSaving == false;

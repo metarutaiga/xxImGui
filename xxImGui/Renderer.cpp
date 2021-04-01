@@ -72,7 +72,7 @@ static struct { const char* shortName; const char* fullName; uint64_t (*createIn
     { "D3D11On12",      xxGetDeviceNameD3D11On12(),     xxCreateInstanceD3D11On12       },
     { "D3D12",          xxGetDeviceNameD3D12(),         xxCreateInstanceD3D12           },
 #endif
-#if defined(xxWINDOWS)
+#if defined(xxMACOS) || defined(xxWINDOWS)
     { "Glide",          xxGetDeviceNameGlide(),         xxCreateInstanceGlide           },
 #endif
 #if defined(xxMACCATALYST)
