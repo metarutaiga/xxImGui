@@ -20,6 +20,7 @@ struct ImGuiViewportDataXX
     uint64_t                CommandEncoder = 0;
     uint64_t                Swapchain = 0;
     uint64_t                RenderPass = 0;
+    float                   Color[4] = {};
     void*                   Handle = nullptr;
     int                     Width = 0;
     int                     Height = 0;
@@ -172,7 +173,6 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
     xxUnmapBuffer(g_device, indexBuffer);
 
     xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
-    xxSetIndexBuffer(commandEncoder, indexBuffer);
 
     ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
 
@@ -253,6 +253,7 @@ bool ImGui_ImplXX_Init(uint64_t instance, uint64_t device, uint64_t renderPass)
 #if defined(xxWINDOWS)
     const char* deviceString = xxGetDeviceName();
     g_halfPixel = false;
+    g_halfPixel |= (strncmp(deviceString, "Direct3D 5", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 6", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 7", 10) == 0);
     g_halfPixel |= (strncmp(deviceString, "Direct3D 8", 10) == 0);
@@ -438,8 +439,9 @@ static void ImGui_ImplXX_RenderWindow(ImGuiViewport* viewport, void*)
     viewport->DpiScale = scale;
     viewport->DrawData->FramebufferScale = ImVec2(scale, scale);
 
-    float color[] = { 0, 0, 0, 0 };
-    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, (int)(data->Width * scale), (int)(data->Height * scale), color, 1.0f, 0);
+    int width = (int)(data->Width * scale);
+    int height = (int)(data->Height * scale);
+    uint64_t commandEncoder = xxBeginRenderPass(commandBuffer, framebuffer, data->RenderPass, width, height, data->Color, 1.0f, 0);
     ImGui_ImplXX_RenderDrawData(viewport->DrawData, commandEncoder);
     xxEndRenderPass(commandEncoder, framebuffer, data->RenderPass);
 

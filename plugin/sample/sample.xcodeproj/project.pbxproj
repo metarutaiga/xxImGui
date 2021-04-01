@@ -16,8 +16,8 @@
 		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
 		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
 		CE999D9525D275A900351116 /* sample.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* sample.dll */; };
+		CEB0E87A2608197500D13FE3 /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libsample.dylib */; };
 		CEC0680225CBEECA003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC0680125CBEECA003A5768 /* libimgui.android */; };
-		D67E07E52606309600D3F089 /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libsample.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,13 +31,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D67E07E42606308E00D3F089 /* CopyFiles */ = {
+		CEB0E8792608196A00D13FE3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = xxImGui.app/Contents/Frameworks;
 			dstSubfolderSpec = 16;
 			files = (
-				D67E07E52606309600D3F089 /* libsample.dylib in CopyFiles */,
+				CEB0E87A2608197500D13FE3 /* libsample.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +203,7 @@
 			buildPhases = (
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				D67E07E42606308E00D3F089 /* CopyFiles */,
+				CEB0E8792608196A00D13FE3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -444,6 +444,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -528,6 +529,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;

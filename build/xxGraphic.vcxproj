@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp" />
+    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGlide.cpp" />
     <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp" />
     <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
@@ -60,6 +61,7 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D11.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D11On12.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D12.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicD3D5.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D6.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D7.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3D8.cpp" />
@@ -70,6 +72,7 @@
     <ClCompile Include="..\xxGraphic\xxGraphicD3D9PS.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicD3DAsm.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp" />
+    <ClCompile Include="..\xxGraphic\xxGraphicGlide.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES3.cpp" />
     <ClCompile Include="..\xxGraphic\xxGraphicGLES31.cpp" />
@@ -95,6 +98,11 @@
     <ClInclude Include="..\xxGraphic\dxsdk\d3dcaps.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\d3dtypes.h" />
     <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h" />
+    <ClInclude Include="..\xxGraphic\glide\3dfx.h" />
+    <ClInclude Include="..\xxGraphic\glide\glide.h" />
+    <ClInclude Include="..\xxGraphic\glide\glidesys.h" />
+    <ClInclude Include="..\xxGraphic\glide\glideutl.h" />
+    <ClInclude Include="..\xxGraphic\glide\sst1vid.h" />
     <ClInclude Include="..\xxGraphic\gl\egl.h" />
     <ClInclude Include="..\xxGraphic\gl\eglplatform.h" />
     <ClInclude Include="..\xxGraphic\gl\gl32.h" />
@@ -107,6 +115,7 @@
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h" />
+    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGlide.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h" />
     <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h" />
@@ -136,6 +145,7 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3D11.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D11On12.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D12.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicD3D5.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D6.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D7.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicD3D8.h" />
@@ -147,6 +157,7 @@
     <ClInclude Include="..\xxGraphic\xxGraphicD3DAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicEGL.h" />
+    <ClInclude Include="..\xxGraphic\xxGraphicGlide.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h" />
@@ -159,8 +170,10 @@
     <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h" />
     <ClInclude Include="..\xxGraphic\xxGraphicWGL.h" />
     <ClInclude Include="..\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\xxGraphic\xxVector.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\xxGraphic\internal\xxGraphicInternalMetal.mm" />
     <None Include="..\xxGraphic\xxGraphicCGL.mm" />
     <None Include="..\xxGraphic\xxGraphicEAGL.mm" />
     <None Include="..\xxGraphic\xxGraphicMetal.mm" />

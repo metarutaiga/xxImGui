@@ -37,6 +37,7 @@ bool        DearImGui::g_powerSaving = false;
 #else
 bool        DearImGui::g_powerSaving = true;
 #endif
+bool        DearImGui::g_demoWindow = false;
 //==============================================================================
 //  Dear ImGui
 //==============================================================================
@@ -223,6 +224,8 @@ void DearImGui::NewFrame(void* view)
             }
 #endif
 
+            ImGui::Separator();
+            ImGui::MenuItem("Demo Window", nullptr, &g_demoWindow);
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
@@ -270,6 +273,10 @@ bool DearImGui::Update(bool demo)
 
     if (demo == false)
     {
+        if (g_demoWindow)
+        {
+            ImGui::ShowDemoWindow(&g_demoWindow);
+        }
         ImGui::EndFrame();
         ImGui::Render();
         return g_powerSaving == false;
@@ -383,7 +390,10 @@ void* DearImGui::PostUpdate(void* view, bool render)
         Renderer::Create(view, Renderer::g_width, Renderer::g_height, graphicShortName);
 #endif
 #if defined(xxMACOS)
-        ImGui_ImplOSX_Init((__bridge NSView*)view);
+        NSView* nsView = (__bridge NSView*)view;
+        NSViewController* nsViewController = (NSViewController*)[[nsView window] contentViewController];
+        ImGui_ImplOSX_Init(nsView);
+        ImGui_ImplOSX_AddTrackingArea(nsViewController);
 #elif defined(xxWINDOWS)
         ImGui_ImplWin32_Init(view);
 #endif

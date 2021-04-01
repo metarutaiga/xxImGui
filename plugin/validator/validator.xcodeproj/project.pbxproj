@@ -22,10 +22,10 @@
 		CE999D3725D2652500351116 /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D3625D2652500351116 /* xxGraphic.dll */; };
 		CE999D3925D2652500351116 /* xxGraphicPlus.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D3825D2652500351116 /* xxGraphicPlus.dll */; };
 		CE999D9B25D275C200351116 /* validator.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93603325AC470300CEF503 /* validator.dll */; };
+		CEB0E87C2608198500D13FE3 /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libvalidator.dylib */; };
 		CEC067FA25CBEEB2003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067F925CBEEB2003A5768 /* libimgui.android */; };
 		CEC067FC25CBEEB2003A5768 /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FB25CBEEB2003A5768 /* libxxGraphic.android */; };
 		CEC067FE25CBEEB2003A5768 /* libxxGraphicPlus.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FD25CBEEB2003A5768 /* libxxGraphicPlus.android */; };
-		D67E07E7260630B100D3F089 /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libvalidator.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,13 +39,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D67E07E6260630A700D3F089 /* CopyFiles */ = {
+		CEB0E87B2608197B00D13FE3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = xxImGui.app/Contents/Frameworks;
 			dstSubfolderSpec = 16;
 			files = (
-				D67E07E7260630B100D3F089 /* libvalidator.dylib in CopyFiles */,
+				CEB0E87C2608198500D13FE3 /* libvalidator.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +249,7 @@
 			buildPhases = (
 				D644A03E231ED82900B75B77 /* Sources */,
 				D644A03F231ED82900B75B77 /* Frameworks */,
-				D67E07E6260630A700D3F089 /* CopyFiles */,
+				CEB0E87B2608197B00D13FE3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -490,6 +490,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -575,6 +576,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;

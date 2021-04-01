@@ -352,7 +352,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					PLUGIN_BUILD_LIBRARY,
 					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
-					"DEBUG=1",
+					"_DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
