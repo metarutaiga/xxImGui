@@ -8,7 +8,6 @@ A simulate Next-Generation Graphic API for ImGui
 | freetype2 | https://gitlab.freedesktop.org/freetype/freetype |
 | stb       | https://github.com/nothings/stb                  |
 | xxGraphic | https://github.com/metarutaiga/xxGraphic         |
-| xxMiniCRT | https://github.com/metarutaiga/xxMiniCRT         |
 
 ### Supported Graphic API
 | API             | Android | iOS | macOS | Windows | Windows on ARM |
