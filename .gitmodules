@@ -9,7 +9,7 @@
 	url = https://github.com/ocornut/imgui
 [submodule "stb"]
 	path = stb
-	url = https://github.com/nothings/stb
+	url = https://github.com/metarutaiga/stb
 [submodule "msvc"]
 	path = msvc
 	url = https://github.com/metarutaiga/msvc
