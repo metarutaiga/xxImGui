@@ -279,6 +279,34 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
+#if defined(__APPLE__)
+                            if (accelerate)
+                            {
+                                static vImage_ARGBToYpCbCr fullRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 0, 128, 255, 255, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_Cb8_Cr8, kvImageNoFlags);
+                                    return info;
+                                }();
+                                static vImage_ARGBToYpCbCr videoRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 16, 128, 235, 240, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_Cb8_Cr8, kvImageNoFlags);
+                                    return info;
+                                }();
+
+                                vImage_Buffer Y = { lennaYU12, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth };
+                                vImage_Buffer Cb = { lennaYU12 + sizeY, (vImagePixelCount)lennaHeight / 2, (vImagePixelCount)lennaWidth / 2, (size_t)lennaWidth / 2 };
+                                vImage_Buffer Cr = { lennaYU12 + sizeY + sizeUV, (vImagePixelCount)lennaHeight / 2, (vImagePixelCount)lennaWidth / 2, (size_t)lennaWidth / 2 };
+                                vImage_Buffer RGBA = { temp, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth * 4 };
+
+                                uint8_t permuteMap[4] = { 3, 2, 1, 0 };
+                                vImageConvert_ARGB8888To420Yp8_Cb8_Cr8(&RGBA, &Y, &Cb, &Cr, decodeFullRange ? &fullRange : &videoRange, permuteMap, kvImageDoNotTile);
+                                break;
+                            }
+#endif
                             if (temp && lennaYU12)
                             {
                                 rgb2yuv_yu12(lennaWidth, lennaHeight, temp, lennaYU12, 4, true, encodeFullRange);
@@ -290,6 +318,34 @@ pluginAPI void Update(const UpdateData& updateData)
                             {
                                 auto converter = encodeFullRange ? libyuv::ARGBToJ420 : libyuv::ARGBToI420;
                                 converter(temp, lennaWidth * 4, lennaYV12, lennaWidth, lennaYV12 + sizeY + sizeUV, lennaWidth / 2, lennaYV12 + sizeY, lennaWidth / 2, lennaWidth, lennaWidth);
+                                break;
+                            }
+#endif
+#if defined(__APPLE__)
+                            if (accelerate)
+                            {
+                                static vImage_ARGBToYpCbCr fullRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 0, 128, 255, 255, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_Cb8_Cr8, kvImageNoFlags);
+                                    return info;
+                                }();
+                                static vImage_ARGBToYpCbCr videoRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 16, 128, 235, 240, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_Cb8_Cr8, kvImageNoFlags);
+                                    return info;
+                                }();
+
+                                vImage_Buffer Y = { lennaYV12, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth };
+                                vImage_Buffer Cb = { lennaYV12 + sizeY + sizeUV, (vImagePixelCount)lennaHeight / 2, (vImagePixelCount)lennaWidth / 2, (size_t)lennaWidth / 2 };
+                                vImage_Buffer Cr = { lennaYV12 + sizeY, (vImagePixelCount)lennaHeight / 2, (vImagePixelCount)lennaWidth / 2, (size_t)lennaWidth / 2 };
+                                vImage_Buffer RGBA = { temp, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth * 4 };
+
+                                uint8_t permuteMap[4] = { 3, 2, 1, 0 };
+                                vImageConvert_ARGB8888To420Yp8_Cb8_Cr8(&RGBA, &Y, &Cb, &Cr, decodeFullRange ? &fullRange : &videoRange, permuteMap, kvImageDoNotTile);
                                 break;
                             }
 #endif
@@ -306,6 +362,33 @@ pluginAPI void Update(const UpdateData& updateData)
                                 break;
                             }
 #endif
+#if defined(__APPLE__)
+                            if (accelerate)
+                            {
+                                static vImage_ARGBToYpCbCr fullRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 0, 128, 255, 255, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_CbCr8, kvImageNoFlags);
+                                    return info;
+                                }();
+                                static vImage_ARGBToYpCbCr videoRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 16, 128, 235, 240, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_CbCr8, kvImageNoFlags);
+                                    return info;
+                                }();
+
+                                vImage_Buffer Y = { lennaNV12, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth };
+                                vImage_Buffer CbCr = { lennaNV12 + sizeY, (vImagePixelCount)lennaHeight / 2, (vImagePixelCount)lennaWidth / 2, (size_t)lennaWidth };
+                                vImage_Buffer RGBA = { temp, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth * 4 };
+
+                                uint8_t permuteMap[4] = { 3, 2, 1, 0 };
+                                vImageConvert_ARGB8888To420Yp8_CbCr8(&RGBA, &Y, &CbCr, decodeFullRange ? &fullRange : &videoRange, permuteMap, kvImageDoNotTile);
+                                break;
+                            }
+#endif
                             if (temp && lennaNV12)
                             {
                                 rgb2yuv_nv12(lennaWidth, lennaHeight, temp, lennaNV12, 4, true, encodeFullRange);
@@ -313,6 +396,33 @@ pluginAPI void Update(const UpdateData& updateData)
                             break;
                         case 3:
 #if LIBYUV
+#if defined(__APPLE__)
+                            if (accelerate)
+                            {
+                                static vImage_ARGBToYpCbCr fullRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 0, 128, 255, 255, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_CbCr8, kvImageNoFlags);
+                                    return info;
+                                }();
+                                static vImage_ARGBToYpCbCr videoRange = []()
+                                {
+                                    vImage_YpCbCrPixelRange range = { 16, 128, 235, 240, 255, 0, 255, 0 };
+                                    vImage_ARGBToYpCbCr info;
+                                    vImageConvert_ARGBToYpCbCr_GenerateConversion(kvImage_ARGBToYpCbCrMatrix_ITU_R_709_2, &range, &info, kvImageARGB8888, kvImage420Yp8_CbCr8, kvImageNoFlags);
+                                    return info;
+                                }();
+
+                                vImage_Buffer Y = { lennaNV21, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth };
+                                vImage_Buffer CbCr = { lennaNV21 + sizeY, (vImagePixelCount)lennaHeight / 2, (vImagePixelCount)lennaWidth / 2, (size_t)lennaWidth };
+                                vImage_Buffer RGBA = { temp, (vImagePixelCount)lennaHeight, (vImagePixelCount)lennaWidth, (size_t)lennaWidth * 4 };
+
+                                uint8_t permuteMap[4] = { 3, 2, 1, 0 };
+                                vImageConvert_ARGB8888To420Yp8_CbCr8(&RGBA, &Y, &CbCr, decodeFullRange ? &fullRange : &videoRange, permuteMap, kvImageDoNotTile);
+                                break;
+                            }
+#endif
                             if (libyuv)
                             {
                                 libyuv::ARGBToNV21(temp, lennaWidth * 4, lennaNV21, lennaWidth, lennaNV21 + sizeY, lennaWidth, lennaWidth, lennaWidth);
