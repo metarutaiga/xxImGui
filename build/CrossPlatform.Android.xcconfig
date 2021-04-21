@@ -2,5 +2,8 @@ DEBUG_INFORMATION_FORMAT = dwarf
 EFFECTIVE_PLATFORM_NAME = -android
 EXCLUDED_ARCHS = arm64
 EXECUTABLE_EXTENSION = android
-OTHER_CFLAGS = -target aarch64-linux-android --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -fno-threadsafe-statics -fPIC $(inherited)
+OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections
+OTHER_CFLAGS = $(inherited) -fsigned-char -fno-threadsafe-statics -fvisibility=hidden
+OTHER_CFLAGS = $(inherited) -target aarch64-linux-android --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot $(inherited)
+OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS
 OTHER_LDFLAGS = -Wl,-no_arch_warnings $(inherited)
