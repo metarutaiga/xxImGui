@@ -154,6 +154,7 @@ pluginAPI void Update(const UpdateData& updateData)
 {
     static bool showDialog = false;
     static bool showAbout = false;
+    static int loopCount = 1000;
 
     if (ImGui::BeginMainMenuBar())
     {
@@ -196,6 +197,9 @@ pluginAPI void Update(const UpdateData& updateData)
             click |= ImGui::RadioButton("NV12", &format, 2);
             ImGui::SameLine();
             click |= ImGui::RadioButton("NV21", &format, 3);
+
+            ImGui::SameLine();
+            ImGui::SliderInt("Loop", &loopCount, 1, 10000);
 
             static bool decodeFullRange = false;
             click |= ImGui::Checkbox("Decode FullRange", &decodeFullRange);
@@ -250,7 +254,7 @@ pluginAPI void Update(const UpdateData& updateData)
                 unsigned char* temp = (unsigned char*)xxAlignedAlloc(4 * lennaWidth * lennaHeight, 256);
                 int sizeY = lennaWidth * lennaHeight;
                 int sizeUV = lennaWidth / 2 * lennaHeight / 2;
-                int count = 1000;
+                int count = loopCount;
 
                 if (temp)
                 {
@@ -716,8 +720,8 @@ pluginAPI void Update(const UpdateData& updateData)
                 ImGui::Image((ImTextureID)target, ImVec2(lennaWidth * windowScale, lennaHeight * windowScale));
             }
 
-            ImGui::Text("Encode TSC : %.3fus %llu", encodeTime * 1000.0f, encodeTSC);
-            ImGui::Text("Decode TSC : %.3fus %llu", decodeTime * 1000.0f, decodeTSC);
+            ImGui::Text("Encode TSC : %.3fus %llu", encodeTime * 1000000.0f, encodeTSC);
+            ImGui::Text("Decode TSC : %.3fus %llu", decodeTime * 1000000.0f, decodeTSC);
 
             ImGui::End();
         }
