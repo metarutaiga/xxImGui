@@ -13,6 +13,9 @@
 [submodule "msvc"]
 	path = msvc
 	url = https://github.com/metarutaiga/msvc
+[submodule "ndk"]
+	path = ndk
+	url = https://github.com/metarutaiga/ndk
 [submodule "xxYUV"]
 	path = xxYUV
 	url = https://github.com/metarutaiga/xxYUV

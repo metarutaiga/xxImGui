@@ -13,6 +13,9 @@
 		30B096BC244ACE5E0096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */; };
 		30B096C6244AD3940096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C5244AD3940096E6DC /* libimgui.bundle */; };
 		30B096C8244AD3940096E6DC /* libxxGraphic.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C7244AD3940096E6DC /* libxxGraphic.bundle */; };
+		30ED317226355E0A00AA60B2 /* libimgui.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED317126355E0A00AA60B2 /* libimgui.so */; };
+		30ED317426355E0A00AA60B2 /* libxxGraphic.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED317326355E0A00AA60B2 /* libxxGraphic.so */; };
+		30ED317626355E0A00AA60B2 /* libxxGraphicPlus.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED317526355E0A00AA60B2 /* libxxGraphicPlus.so */; };
 		30EDB9E12427CD3A00D599B5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
 		30F22EF224DDA30D00C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22EF424DDA31400C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */; };
@@ -23,9 +26,6 @@
 		CE999D3925D2652500351116 /* xxGraphicPlus.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D3825D2652500351116 /* xxGraphicPlus.dll */; };
 		CE999D9B25D275C200351116 /* validator.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93603325AC470300CEF503 /* validator.dll */; };
 		CEB0E87C2608198500D13FE3 /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libvalidator.dylib */; };
-		CEC067FA25CBEEB2003A5768 /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067F925CBEEB2003A5768 /* libimgui.android */; };
-		CEC067FC25CBEEB2003A5768 /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FB25CBEEB2003A5768 /* libxxGraphic.android */; };
-		CEC067FE25CBEEB2003A5768 /* libxxGraphicPlus.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC067FD25CBEEB2003A5768 /* libxxGraphicPlus.android */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,11 +52,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		30A9A7CC25ADC7D3000FA104 /* libvalidator.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libvalidator.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		30A9A7CC25ADC7D3000FA104 /* libvalidator.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libvalidator.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B9244ACE5E0096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096BB244ACE5E0096E6DC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C5244AD3940096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C7244AD3940096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		30ED317126355E0A00AA60B2 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
+		30ED317326355E0A00AA60B2 /* libxxGraphic.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.so; sourceTree = BUILT_PRODUCTS_DIR; };
+		30ED317526355E0A00AA60B2 /* libxxGraphicPlus.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30EDB9E02427CD3A00D599B5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
 		30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,9 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC067FA25CBEEB2003A5768 /* libimgui.android in Frameworks */,
-				CEC067FC25CBEEB2003A5768 /* libxxGraphic.android in Frameworks */,
-				CEC067FE25CBEEB2003A5768 /* libxxGraphicPlus.android in Frameworks */,
+				30ED317226355E0A00AA60B2 /* libimgui.so in Frameworks */,
+				30ED317426355E0A00AA60B2 /* libxxGraphic.so in Frameworks */,
+				30ED317626355E0A00AA60B2 /* libxxGraphicPlus.so in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +135,9 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30ED317126355E0A00AA60B2 /* libimgui.so */,
+				30ED317326355E0A00AA60B2 /* libxxGraphic.so */,
+				30ED317526355E0A00AA60B2 /* libxxGraphicPlus.so */,
 				CE999D3425D2652500351116 /* imgui.dll */,
 				CE999D3625D2652500351116 /* xxGraphic.dll */,
 				CE999D3825D2652500351116 /* xxGraphicPlus.dll */,
@@ -185,7 +191,7 @@
 				D644A041231ED82900B75B77 /* libvalidator.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */,
 				CE93603325AC470300CEF503 /* validator.dll */,
-				30A9A7CC25ADC7D3000FA104 /* libvalidator.android */,
+				30A9A7CC25ADC7D3000FA104 /* libvalidator.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,7 +205,6 @@
 			buildPhases = (
 				30A9A7C925ADC7D3000FA104 /* Sources */,
 				30A9A7CA25ADC7D3000FA104 /* Frameworks */,
-				CEB7C32225C9017F002E92D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -207,7 +212,7 @@
 			);
 			name = "validator (Android)";
 			productName = "validator (Android)";
-			productReference = 30A9A7CC25ADC7D3000FA104 /* libvalidator.android */;
+			productReference = 30A9A7CC25ADC7D3000FA104 /* libvalidator.so */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		CE93603225AC470300CEF503 /* validator (Windows) */ = {
@@ -303,26 +308,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		CEB7C32225C9017F002E92D3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nOBJECTS=\nfor object in \"$OBJECT_FILE_DIR_normal\"/$ARCHS/*.o\ndo\n    OBJECTS+=\" ${object##*/}\"\ndone\n\ncd \"$OBJECT_FILE_DIR_normal\"/$ARCHS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang \\\n    -v \\\n    -fuse-ld=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/ld.lld \\\n    --sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot \\\n    -target aarch64-linux-android21 \\\n    -o $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n    -shared \\\n    $OBJECTS\n\n$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip \\\n    --strip-unneeded \\\n    $BUILT_PRODUCTS_DIR/lib$PROJECT_NAME.so \\\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		30A9A7C925ADC7D3000FA104 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -364,26 +349,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE999BD525D21EC000351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-android";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = android;
-				EXECUTABLE_PREFIX = lib;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"aarch64-linux-android",
-					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
-					"-fPIC",
-					"-fno-threadsafe-statics",
-					"-fvisibility=hidden",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Debug;
 		};
@@ -391,26 +356,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE999BD525D21EC000351116 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				EFFECTIVE_PLATFORM_NAME = "-android";
-				EXCLUDED_ARCHS = arm64;
-				EXECUTABLE_EXTENSION = android;
-				EXECUTABLE_PREFIX = lib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				OTHER_CFLAGS = (
-					"-target",
-					"aarch64-linux-android",
-					"--sysroot=$USER_LIBRARY_DIR/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot",
-					"-fPIC",
-					"-fno-threadsafe-statics",
-					"-fvisibility=hidden",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = (
-					"-Wl,-no_arch_warnings",
-					"$(inherited)",
-				);
 			};
 			name = Release;
 		};
