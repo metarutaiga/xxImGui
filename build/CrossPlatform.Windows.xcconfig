@@ -24,11 +24,11 @@ LINK_DEBUG_PATH[config=Debug] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NA
 LINK_DEBUG_PATH[config=Release] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb,-opt:ref,-opt:icf
 LINK_LIBRARY_NAME = -Wl,chkstk.obj,ucrtbase.lib,oldnames.lib,kernel32.lib,user32.lib,winmm.lib,imm32.lib,gdi32.lib,dwmapi.lib
 
-OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections
-OTHER_CFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmp
-OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmpex
-OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmp
-OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmpex
+OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections -fno-threadsafe-statics -GS- -fno-modules
+OTHER_CFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmp
+OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-pc-windows-msvc -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmpex
+OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmp
+OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmpex
 OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS
 
 OTHER_LDFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME) -Wl,divide.obj,fptoi64.obj,helpexcept.obj,i64tofp.obj

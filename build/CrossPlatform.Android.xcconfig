@@ -4,8 +4,8 @@ EFFECTIVE_PLATFORM_NAME = -android
 EXECUTABLE_EXTENSION = so
 EXECUTABLE_PREFIX = lib
 
-//CC = /usr/local/opt/llvm/bin/clang
-//CXX = /usr/local/opt/llvm/bin/clang++
+CC = /usr/local/opt/llvm/bin/clang
+CXX = /usr/local/opt/llvm/bin/clang++
 LD = /usr/local/opt/llvm/bin/clang
 LDPLUSPLUS = /usr/local/opt/llvm/bin/clang++
 LD_DEPENDENCY_INFO_FILE =
@@ -14,9 +14,7 @@ LIBTOOL = /usr/local/opt/llvm/bin/llvm-ar-wrapper
 LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = /usr/local/opt/llvm/bin/lld-wrapper
 
-OTHER_CFLAGS = $(inherited) -fPIC -Wno-modules-import-nested-redundant
-OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections
-OTHER_CFLAGS = $(inherited) -fsigned-char -fno-threadsafe-statics
+OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections -fPIC -fsigned-char -fno-threadsafe-statics -Wno-modules-import-nested-redundant -Wno-modules-ambiguous-internal-linkage
 OTHER_CFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../ndk -march=armv7-a -mthumb -mfpu=neon
 OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../ndk
 OTHER_CFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../ndk
