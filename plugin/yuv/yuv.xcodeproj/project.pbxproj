@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30042DE92636D099005CAD82 /* libimgui.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30042DE82636D099005CAD82 /* libimgui.so */; };
+		30042DEB2636D099005CAD82 /* libxxGraphic.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30042DEA2636D099005CAD82 /* libxxGraphic.so */; };
 		30B096B4244ACE370096E6DC /* libimgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B3244ACE370096E6DC /* libimgui.dylib */; };
 		30B096B6244ACE370096E6DC /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096B5244ACE370096E6DC /* libxxGraphic.dylib */; };
 		30B096C2244AD37A0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C1244AD37A0096E6DC /* libimgui.bundle */; };
@@ -223,9 +225,7 @@
 		CE8A72A32604482300AEFD2B /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		CE8A72B92604487B00AEFD2B /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72B82604487B00AEFD2B /* llvm_wrapper.cpp */; };
 		CE8A731A26044A4B00AEFD2B /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A731926044A4B00AEFD2B /* imgui.dll */; };
-		CE8A731C26044A5B00AEFD2B /* libimgui.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A731B26044A5B00AEFD2B /* libimgui.android */; };
 		CE8A73582604526500AEFD2B /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A73572604526500AEFD2B /* xxGraphic.dll */; };
-		CE8A735A2604526D00AEFD2B /* libxxGraphic.android in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A73592604526D00AEFD2B /* libxxGraphic.android */; };
 		CE8A73AE2604567400AEFD2B /* yuv.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE8A711B260443CD00AEFD2B /* yuv.dll */; };
 		CEA24D5826048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5926048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
@@ -270,6 +270,8 @@
 
 /* Begin PBXFileReference section */
 		300264C4242690D0004559E0 /* yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yuv.cpp; sourceTree = "<group>"; };
+		30042DE82636D099005CAD82 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
+		30042DEA2636D099005CAD82 /* libxxGraphic.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		302D20D8244AC55400D84267 /* yuv2rgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb.h; path = ../../xxYUV/yuv2rgb.h; sourceTree = "<group>"; };
 		302D20D9244AC55400D84267 /* rgb2yuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgb2yuv.h; path = ../../xxYUV/rgb2yuv.h; sourceTree = "<group>"; };
 		302D20DA244AC55400D84267 /* rgb2yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgb2yuv.cpp; path = ../../xxYUV/rgb2yuv.cpp; sourceTree = "<group>"; };
@@ -351,7 +353,7 @@
 		CE8A7115260443B000AEFD2B /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE8A7116260443B000AEFD2B /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE8A711B260443CD00AEFD2B /* yuv.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = yuv.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE8A71292604444C00AEFD2B /* libyuv.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.android; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE8A71292604444C00AEFD2B /* libyuv.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A72B82604487B00AEFD2B /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE8A731926044A4B00AEFD2B /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A731B26044A5B00AEFD2B /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,8 +382,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8A731C26044A5B00AEFD2B /* libimgui.android in Frameworks */,
-				CE8A735A2604526D00AEFD2B /* libxxGraphic.android in Frameworks */,
+				30042DE92636D099005CAD82 /* libimgui.so in Frameworks */,
+				30042DEB2636D099005CAD82 /* libxxGraphic.so in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +413,8 @@
 		300264BD24266097004559E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30042DE82636D099005CAD82 /* libimgui.so */,
+				30042DEA2636D099005CAD82 /* libxxGraphic.so */,
 				CE8A73592604526D00AEFD2B /* libxxGraphic.android */,
 				CE8A73572604526500AEFD2B /* xxGraphic.dll */,
 				CE8A731B26044A5B00AEFD2B /* libimgui.android */,
@@ -560,7 +564,7 @@
 				D644A041231ED82900B75B77 /* libyuv.dylib */,
 				D6022C3523258B5D00B9BFB8 /* libyuv.bundle */,
 				CE8A711B260443CD00AEFD2B /* yuv.dll */,
-				CE8A71292604444C00AEFD2B /* libyuv.android */,
+				CE8A71292604444C00AEFD2B /* libyuv.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -574,16 +578,6 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		CE8A71252604444C00AEFD2B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		CE8A711A260443CD00AEFD2B /* yuv (Windows) */ = {
@@ -607,7 +601,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8A712A2604444C00AEFD2B /* Build configuration list for PBXNativeTarget "yuv (Android)" */;
 			buildPhases = (
-				CE8A71252604444C00AEFD2B /* Headers */,
 				CE8A71262604444C00AEFD2B /* Sources */,
 				CE8A71272604444C00AEFD2B /* Frameworks */,
 			);
@@ -617,7 +610,7 @@
 			);
 			name = "yuv (Android)";
 			productName = "yuv (Android)";
-			productReference = CE8A71292604444C00AEFD2B /* libyuv.android */;
+			productReference = CE8A71292604444C00AEFD2B /* libyuv.so */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		D6022C3423258B5D00B9BFB8 /* yuv (iOS) */ = {
@@ -972,8 +965,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE8A7115260443B000AEFD2B /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
 			};
 			name = Debug;
 		};
@@ -981,8 +972,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE8A7115260443B000AEFD2B /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 			};
 			name = Release;
 		};

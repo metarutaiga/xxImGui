@@ -7,7 +7,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <interface.h>
 
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(__ANDROID__)
 #define _Float16 short
 #endif
 
