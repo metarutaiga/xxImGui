@@ -4,13 +4,13 @@ EFFECTIVE_PLATFORM_NAME = -android
 EXECUTABLE_EXTENSION = so
 EXECUTABLE_PREFIX = lib
 
-CC = /usr/local/opt/llvm/bin/clang
-CXX = /usr/local/opt/llvm/bin/clang++
+//CC = /usr/local/opt/llvm/bin/clang
+//CXX = /usr/local/opt/llvm/bin/clang++
 LD = /usr/local/opt/llvm/bin/clang
 LDPLUSPLUS = /usr/local/opt/llvm/bin/clang++
 LD_DEPENDENCY_INFO_FILE =
 LD_LTO_OBJECT_FILE =
-LIBTOOL = /usr/local/opt/llvm/bin/llvm-lib-wrapper
+LIBTOOL = /usr/local/opt/llvm/bin/llvm-ar-wrapper
 LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = /usr/local/opt/llvm/bin/lld-wrapper
 
