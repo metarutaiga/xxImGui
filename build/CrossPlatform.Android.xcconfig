@@ -8,7 +8,6 @@ CC = /usr/local/opt/llvm/bin/clang
 CXX = /usr/local/opt/llvm/bin/clang++
 LD = /usr/local/opt/llvm/bin/clang
 LDPLUSPLUS = /usr/local/opt/llvm/bin/clang++
-
 LD_DEPENDENCY_INFO_FILE =
 LD_LTO_OBJECT_FILE =
 LIBTOOL = /usr/local/opt/llvm/bin/llvm-lib-wrapper

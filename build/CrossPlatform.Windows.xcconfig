@@ -1,30 +1,9 @@
-ARCHS = armv7 arm64 i686 x86_64
-EXCLUDED_ARCHS = armv7 arm64 i686
-VALID_ARCHS = armv7 arm64 i686 x86_64
 COMPILER_INDEX_STORE_ENABLE = NO
 DEBUG_INFORMATION_FORMAT =
 EFFECTIVE_PLATFORM_NAME = -windows
 EXECUTABLE_EXTENSION = dll
 EXECUTABLE_PREFIX =
-HEADER_SEARCH_PATHS = $(inherited) /usr/local/opt/llvm/include/c++/v1
-HEADER_SEARCH_PATHS = $(inherited) ../msvc/include ../msvc/shared ../msvc/um ../msvc/ucrt
-HEADER_SEARCH_PATHS = $(inherited) ../../msvc/include ../../msvc/shared ../../msvc/um ../../msvc/ucrt
-HEADER_SEARCH_PATHS = $(inherited) ../xxImGui/msvc/include ../xxImGui/msvc/shared ../xxImGui/msvc/um ../xxImGui/msvc/ucrt
-LIBRARY_SEARCH_PATH[arch=armv7] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm,-libpath:$PROJECT_DIR/../msvc/lib/arm/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/arm/um
-LIBRARY_SEARCH_PATH[arch=armv7] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm,-libpath:$PROJECT_DIR/../../msvc/lib/arm/ucrt,-libpath:$PROJECT_DIR/../../msvc/lib/arm/um
-LIBRARY_SEARCH_PATH[arch=armv7] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm/ucrt,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm/um
-LIBRARY_SEARCH_PATH[arch=arm64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm64,-libpath:$PROJECT_DIR/../msvc/lib/arm64/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/arm64/um
-LIBRARY_SEARCH_PATH[arch=arm64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/arm64,-libpath:$PROJECT_DIR/../../msvc/lib/arm64/ucrt,-libpath:$PROJECT_DIR/../../msvc/lib/arm64/um
-LIBRARY_SEARCH_PATH[arch=arm64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm64,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm64/ucrt,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/arm64/um
-LIBRARY_SEARCH_PATH[arch=i686] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x86,-libpath:$PROJECT_DIR/../msvc/lib/x86/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/x86/um
-LIBRARY_SEARCH_PATH[arch=i686] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x86,-libpath:$PROJECT_DIR/../../msvc/lib/x86/ucrt,-libpath:$PROJECT_DIR/../../msvc/lib/x86/um
-LIBRARY_SEARCH_PATH[arch=i686] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x86,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x86/ucrt,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x86/um
-LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x64,-libpath:$PROJECT_DIR/../msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/x64/um
-LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../../msvc/lib/x64,-libpath:$PROJECT_DIR/../../msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../../msvc/lib/x64/um
-LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../xxImGui/msvc/lib/x64/um
-LINK_DEBUG_PATH[config=Debug] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb
-LINK_DEBUG_PATH[config=Release] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb,-opt:ref,-opt:icf
-LINK_LIBRARY_NAME = -Wl,chkstk.obj,ucrtbase.lib,oldnames.lib,kernel32.lib,user32.lib,winmm.lib,imm32.lib,gdi32.lib,dwmapi.lib
+
 CC = /usr/local/opt/llvm/bin/clang
 CXX = /usr/local/opt/llvm/bin/clang++
 LD = /usr/local/opt/llvm/bin/clang
@@ -34,14 +13,30 @@ LD_LTO_OBJECT_FILE =
 LIBTOOL = /usr/local/opt/llvm/bin/llvm-lib-wrapper
 LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = lld-link-wrapper
+
+HEADER_SEARCH_PATHS = $(inherited) /usr/local/opt/llvm/include/c++/v1
+HEADER_SEARCH_PATHS = $(inherited) ../msvc/include ../msvc/shared ../msvc/um ../msvc/ucrt
+LIBRARY_SEARCH_PATH[arch=armv7] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm,-libpath:$PROJECT_DIR/../msvc/lib/arm/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/arm/um
+LIBRARY_SEARCH_PATH[arch=arm64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm64,-libpath:$PROJECT_DIR/../msvc/lib/arm64/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/arm64/um
+LIBRARY_SEARCH_PATH[arch=i686] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x86,-libpath:$PROJECT_DIR/../msvc/lib/x86/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/x86/um
+LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x64,-libpath:$PROJECT_DIR/../msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/x64/um
+LINK_DEBUG_PATH[config=Debug] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb
+LINK_DEBUG_PATH[config=Release] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb,-opt:ref,-opt:icf
+LINK_LIBRARY_NAME = -Wl,chkstk.obj,ucrtbase.lib,oldnames.lib,kernel32.lib,user32.lib,winmm.lib,imm32.lib,gdi32.lib,dwmapi.lib
+
 OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections
 OTHER_CFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmp
 OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmpex
 OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmp
 OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -fno-threadsafe-statics -GS- -fno-modules -D_INC_SETJMPEX -Dsetjmp=__intrinsic_setjmpex
 OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS
+
 OTHER_LDFLAGS[arch=armv7] = $(inherited) -target thumbv7a-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME) -Wl,divide.obj,fptoi64.obj,helpexcept.obj,i64tofp.obj
 OTHER_LDFLAGS[arch=arm64] = $(inherited) -target aarch64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME)
 OTHER_LDFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME) -Wl,atlssup.obj,int64.lib
 OTHER_LDFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME)
 WARNING_CFLAGS = $(inherited) -Wno-comment -Wno-expansion-to-defined -Wno-ignored-attributes -Wno-ignored-pragma-intrinsic -Wno-macro-redefined -Wno-microsoft-cast -Wno-microsoft-enum-forward-reference -Wno-nonportable-include-path -Wno-pragma-pack -Wno-unreachable-code -Wno-unused-command-line-argument -Wno-unused-function -Wno-unused-variable -Wno-unused-value
+
+ARCHS = armv7 arm64 i686 x86_64
+VALID_ARCHS = armv7 arm64 i686 x86_64
+EXCLUDED_ARCHS = armv7 arm64 i686
