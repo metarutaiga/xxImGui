@@ -25,3 +25,6 @@
 [submodule "ConcurrencyNetworkFramework"]
 	path = ConcurrencyNetworkFramework
 	url = https://github.com/metarutaiga/ConcurrencyNetworkFramework
+[submodule "mips"]
+	path = mips
+	url = https://github.com/metarutaiga/mips
