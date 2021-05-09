@@ -5,13 +5,16 @@
       location = "container:"
       name = "plugin">
       <FileRef
-         location = "group:plugin/mips/mips.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:plugin/framework/framework.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:plugin/matrix/matrix.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:plugin/mips/mips.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:plugin/riscv/riscv.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:plugin/sample/sample.xcodeproj">

@@ -28,3 +28,6 @@
 [submodule "mips"]
 	path = mips
 	url = https://github.com/metarutaiga/mips
+[submodule "riscv"]
+	path = riscv
+	url = https://github.com/metarutaiga/riscv

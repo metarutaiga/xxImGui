@@ -1,7 +1,7 @@
 //==============================================================================
-// xxImGui : Plugin MIPS Source
+// xxImGui : Plugin RISC-V Source
 //
-// Copyright (c) 2019-2021 TAiGA
+// Copyright (c) 2021 TAiGA
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #define _CRT_SECURE_NO_WARNINGS
@@ -11,7 +11,7 @@
 #   include <sys/time.h>
 #endif
 
-#define PLUGIN_NAME     "MIPS"
+#define PLUGIN_NAME     "RISC-V"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
