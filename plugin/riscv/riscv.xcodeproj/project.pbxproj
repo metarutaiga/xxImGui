@@ -22,6 +22,14 @@
 		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
 		CE999D9525D275A900351116 /* riscv.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* riscv.dll */; };
 		CEB0E87A2608197500D13FE3 /* libriscv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libriscv.dylib */; };
+		CEB2AA182648D245008C0A34 /* riscv_rv32i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */; };
+		CEB2AA192648D245008C0A34 /* riscv_rv32i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */; };
+		CEB2AA1A2648D245008C0A34 /* riscv_rv32i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */; };
+		CEB2AA1B2648D245008C0A34 /* riscv_rv32i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */; };
+		CEB2AA1D2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
+		CEB2AA1E2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
+		CEB2AA1F2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
+		CEB2AA202648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +70,8 @@
 		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32i.cpp; path = ../../riscv/riscv_rv32i.cpp; sourceTree = "<group>"; };
+		CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64i.cpp; path = ../../riscv/riscv_rv64i.cpp; sourceTree = "<group>"; };
 		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0676F25CBDD9F003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC067FF25CBEEC3003A5768 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +138,8 @@
 				30DFAD572648450D00018DFA /* riscv_cpu.cpp */,
 				30DFAD582648450D00018DFA /* riscv_cpu.h */,
 				30DFAD562648449F00018DFA /* riscv_instruction.h */,
+				CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */,
+				CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */,
 			);
 			name = riscv;
 			sourceTree = "<group>";
@@ -282,7 +294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFAD5C2648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEB2AA202648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 				30A9A7C325ADC7C0000FA104 /* riscv.cpp in Sources */,
+				CEB2AA1B2648D245008C0A34 /* riscv_rv32i.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,9 +304,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB2AA1A2648D245008C0A34 /* riscv_rv32i.cpp in Sources */,
 				CE93601F25AC457A00CEF503 /* riscv.cpp in Sources */,
 				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
 				30DFAD5B2648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEB2AA1F2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +317,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFAD5A2648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEB2AA1E2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 				3039F9D92447499200E671A7 /* riscv.cpp in Sources */,
+				CEB2AA192648D245008C0A34 /* riscv_rv32i.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +328,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFAD592648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEB2AA1D2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 				300264C5242690D0004559E0 /* riscv.cpp in Sources */,
+				CEB2AA182648D245008C0A34 /* riscv_rv32i.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
