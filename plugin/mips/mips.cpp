@@ -7,10 +7,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <interface.h>
 
-#if defined(xxANDROID) || defined(xxMACOS) || defined(xxIOS)
-#   include <sys/time.h>
-#endif
-
 #define PLUGIN_NAME     "MIPS"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
