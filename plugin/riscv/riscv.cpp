@@ -123,9 +123,18 @@ pluginAPI bool Update(const UpdateData& updateData)
                         {
                             for (size_t i = 0, count = elf_getNumSections(&elf); i < count; ++i)
                             {
-                                xxLog("RISC-V", "%zd : %010p %8d %s", i, elf_getSectionAddr(&elf, i),
-                                                                         elf_getSectionSize(&elf, i),
-                                                                         elf_getSectionName(&elf, i));
+                                uintptr_t address = elf_getSectionAddr(&elf, i);
+                                size_t offset = elf_getSectionOffset(&elf, i);
+                                size_t size = elf_getSectionSize(&elf, i);
+                                const char* name = elf_getSectionName(&elf, i);
+                                xxLog("RISC-V", "%zd : %010p %8d %8d %s", i, address,
+                                                                             offset,
+                                                                             size,
+                                                                             name);
+                                if (strncmp(name, ".text", 5) == 0)
+                                {
+                                    cpu->program((char*)code + offset, size);
+                                }
                             }
                         }
                         else
