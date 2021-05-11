@@ -6,7 +6,25 @@
 //==============================================================================
 #define _CRT_SECURE_NO_WARNINGS
 #include <riscv/riscv_cpu.h>
+#include <riscv/libelf/elf.h>
 #include <interface.h>
+
+#include "riscv-tests/rv64ui-p-add.h"
+#include "riscv-tests/rv64ui-p-addiw.h"
+#include "riscv-tests/rv64ui-p-addw.h"
+#include "riscv-tests/rv64ui-p-and.h"
+#include "riscv-tests/rv64ui-p-andi.h"
+#include "riscv-tests/rv64ui-p-auipc.h"
+#include "riscv-tests/rv64ui-p-beq.h"
+#include "riscv-tests/rv64ui-p-bge.h"
+#include "riscv-tests/rv64ui-p-bgeu.h"
+#include "riscv-tests/rv64ui-p-blt.h"
+#include "riscv-tests/rv64ui-p-bltu.h"
+#include "riscv-tests/rv64ui-p-bne.h"
+#include "riscv-tests/rv64ui-p-fence_i.h"
+#include "riscv-tests/rv64ui-p-jal.h"
+#include "riscv-tests/rv64ui-p-jalr.h"
+#include "riscv-tests/rv64ui-p-xor.h"
 
 #define PLUGIN_NAME     "RISC-V"
 #define PLUGIN_MAJOR    1
@@ -66,7 +84,7 @@ pluginAPI bool Update(const UpdateData& updateData)
     {
         if (ImGui::Begin("CPU", &showCPU, ImGuiWindowFlags_AlwaysAutoResize))
         {
-            ImGui::BeginTable("Registers", 3);
+            ImGui::BeginTable("Registers", 5);
 
             ImGui::TableNextColumn();
             if (cpu == nullptr && ImGui::Button("Start"))
@@ -80,42 +98,102 @@ pluginAPI bool Update(const UpdateData& updateData)
             }
             if (cpu)
             {
+                if (ImGui::Button("Run"))
+                {
+                    cpu->run();
+                }
+                if (ImGui::Button("Run Once"))
+                {
+                    cpu->runOnce();
+                }
+                static int nameType = 0;
+                ImGui::RadioButton("ABI Name", &nameType, 0);
+                ImGui::RadioButton("Register Name", &nameType, 1);
+
+                ImGui::TableNextColumn();
+                ImU32 unselectedColor = ImColor(ImGui::GetStyle().Colors[ImGuiCol_Button]);
+                ImU32 selectedColor = ImColor(ImColor(unselectedColor).Value.z, ImColor(unselectedColor).Value.y, ImColor(unselectedColor).Value.x);
+                auto test = [&](const char* name, auto&& code)
+                {
+                    ImGui::PushStyleColor(ImGuiCol_Button, cpu->begin == (uintptr_t)code ? selectedColor : unselectedColor);
+                    if (ImGui::Button(name))
+                    {
+                        elf_t elf = { .elfFile = code, .elfSize = sizeof(code), .elfClass = ELFCLASS64 };
+                        if (elf_checkFile(&elf) == 0)
+                        {
+                            for (size_t i = 0, count = elf_getNumSections(&elf); i < count; ++i)
+                            {
+                                xxLog("RISC-V", "%zd : %010p %8d %s", i, elf_getSectionAddr(&elf, i),
+                                                                         elf_getSectionSize(&elf, i),
+                                                                         elf_getSectionName(&elf, i));
+                            }
+                        }
+                        else
+                        {
+                            cpu->program(code, sizeof(code));
+                        }
+                    }
+                    ImGui::PopStyleColor();
+                };
+                test("rv64ui-p-add",    rv64ui_p_add);
+                test("rv64ui-p-addiw",  rv64ui_p_addiw);
+                test("rv64ui-p-addw",   rv64ui_p_addw);
+                test("rv64ui-p-and",    rv64ui_p_and);
+                test("rv64ui-p-andi",   rv64ui_p_andi);
+                test("rv64ui-p-auipc",  rv64ui_p_auipc);
+                test("rv64ui-p-beq",    rv64ui_p_beq);
+                test("rv64ui-p-bge",    rv64ui_p_bge);
+                test("rv64ui-p-bgeu",   rv64ui_p_bgeu);
+                test("rv64ui-p-blt",    rv64ui_p_blt);
+                test("rv64ui-p-bltu",   rv64ui_p_bltu);
+                test("rv64ui-p-bne",    rv64ui_p_bne);
+                test("rv64ui-p-fence_i",rv64ui_p_fence_i);
+                test("rv64ui-p-jal",    rv64ui_p_jal);
+                test("rv64ui-p-jalr",   rv64ui_p_jalr);
+                test("rv64ui-p-xor",    rv64ui_p_xor);
+
+                ImGui::TableNextColumn();
+                static const char* const registerName[32] =
+                {
+                    "x0",   "x1",   "x2",   "x3",   "x4",   "x5",   "x6",   "x7",
+                    "x8",   "x9",   "x10",  "x11",  "x12",  "x13",  "x14",  "x15",
+                    "x16",  "x17",  "x18",  "x19",  "x20",  "x21",  "x22",  "x23",
+                    "x24",  "x25",  "x26",  "x27",  "x28",  "x29",  "x30",  "x31",
+                };
+                static const char* const abiName[32] =
+                {
+                    "zero", "ra",   "sp",   "gp",   "tp",   "t0",   "t1",   "t2",
+                    "s0/fp","s1",   "a0",   "a1",   "a2",   "a3",   "a4",   "a5",
+                    "a6",   "a7",   "s2",   "s3",   "s4",   "s5",   "s6",   "s7",
+                    "s8",   "s9",   "s10",  "s11",  "t3",   "t4",   "t5",   "t6",
+                };
                 float width = 128.0f;
+                for (int i = 0; i < 16; ++i)
+                {
+                    ImGui::SetNextItemWidth(width);
+                    ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016X");
+                }
                 ImGui::SetNextItemWidth(width); ImGui::InputScalar("pc", ImGuiDataType_U64, &cpu->pc, nullptr, nullptr, "%016X");
                 ImGui::TableNextColumn();
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x0", ImGuiDataType_U64, &cpu->x[0], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x1", ImGuiDataType_U64, &cpu->x[1], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x2", ImGuiDataType_U64, &cpu->x[2], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x3", ImGuiDataType_U64, &cpu->x[3], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x4", ImGuiDataType_U64, &cpu->x[4], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x5", ImGuiDataType_U64, &cpu->x[5], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x6", ImGuiDataType_U64, &cpu->x[6], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x7", ImGuiDataType_U64, &cpu->x[7], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x8", ImGuiDataType_U64, &cpu->x[8], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x9", ImGuiDataType_U64, &cpu->x[9], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x10", ImGuiDataType_U64, &cpu->x[10], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x11", ImGuiDataType_U64, &cpu->x[11], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x12", ImGuiDataType_U64, &cpu->x[12], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x13", ImGuiDataType_U64, &cpu->x[13], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x14", ImGuiDataType_U64, &cpu->x[14], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x15", ImGuiDataType_U64, &cpu->x[15], nullptr, nullptr, "%016X");
+                for (int i = 16; i < 32; ++i)
+                {
+                    ImGui::SetNextItemWidth(width);
+                    ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016X");
+                }
+
                 ImGui::TableNextColumn();
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x16", ImGuiDataType_U64, &cpu->x[16], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x17", ImGuiDataType_U64, &cpu->x[17], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x18", ImGuiDataType_U64, &cpu->x[18], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x19", ImGuiDataType_U64, &cpu->x[19], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x20", ImGuiDataType_U64, &cpu->x[20], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x21", ImGuiDataType_U64, &cpu->x[21], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x22", ImGuiDataType_U64, &cpu->x[22], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x23", ImGuiDataType_U64, &cpu->x[23], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x24", ImGuiDataType_U64, &cpu->x[24], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x25", ImGuiDataType_U64, &cpu->x[25], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x26", ImGuiDataType_U64, &cpu->x[26], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x27", ImGuiDataType_U64, &cpu->x[27], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x28", ImGuiDataType_U64, &cpu->x[28], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x29", ImGuiDataType_U64, &cpu->x[29], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x30", ImGuiDataType_U64, &cpu->x[30], nullptr, nullptr, "%016X");
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("x31", ImGuiDataType_U64, &cpu->x[31], nullptr, nullptr, "%016X");
+                ImGui::SetNextItemWidth(width); ImGui::InputScalar("format", ImGuiDataType_U32, &cpu->format, nullptr, nullptr, "%08X");
+                ImGui::Text("opcode : %X", cpu->opcode);
+                ImGui::Text("rd : %X", cpu->rd);
+                ImGui::Text("funct3 : %X", cpu->funct3);
+                ImGui::Text("rs1 : %X", cpu->rs1);
+                ImGui::Text("rs2 : %X", cpu->rs2);
+                ImGui::Text("funct7 : %X", cpu->funct7);
+                ImGui::Text("immediateI : %X", cpu->immI());
+                ImGui::Text("immediateS : %X", cpu->immS());
+                ImGui::Text("immediateB : %X", cpu->immB());
+                ImGui::Text("immediateU : %X", cpu->immU());
+                ImGui::Text("immediateJ : %X", cpu->immJ());
             }
 
             ImGui::EndTable();
