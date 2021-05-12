@@ -34,6 +34,10 @@
 		CEAD042B264A5BA900399490 /* elf.c in Sources */ = {isa = PBXBuildFile; fileRef = CEAD0420264A5BA900399490 /* elf.c */; };
 		CEAD042C264A5BA900399490 /* elf.c in Sources */ = {isa = PBXBuildFile; fileRef = CEAD0420264A5BA900399490 /* elf.c */; };
 		CEAD0437264A84B700399490 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAD0436264A84B700399490 /* libxxGraphic.dylib */; };
+		CEAEE361264B7A0200212732 /* riscv_zicsr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */; };
+		CEAEE362264B7A0200212732 /* riscv_zicsr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */; };
+		CEAEE363264B7A0200212732 /* riscv_zicsr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */; };
+		CEAEE364264B7A0200212732 /* riscv_zicsr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */; };
 		CEB0E87A2608197500D13FE3 /* libriscv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libriscv.dylib */; };
 		CEB2AA182648D245008C0A34 /* riscv_rv32i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */; };
 		CEB2AA192648D245008C0A34 /* riscv_rv32i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */; };
@@ -83,30 +87,15 @@
 		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAD03FA264A371600399490 /* rv64ui-p-bne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-bne.h"; path = "riscv-tests/rv64ui-p-bne.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD03FB264A371600399490 /* rv64ui-p-auipc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-auipc.h"; path = "riscv-tests/rv64ui-p-auipc.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD03FC264A371600399490 /* rv64ui-p-and.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-and.h"; path = "riscv-tests/rv64ui-p-and.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD03FD264A371600399490 /* rv64ui-p-bge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-bge.h"; path = "riscv-tests/rv64ui-p-bge.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD03FE264A371600399490 /* rv64ui-p-bgeu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-bgeu.h"; path = "riscv-tests/rv64ui-p-bgeu.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD03FF264A371600399490 /* rv64ui-p-andi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-andi.h"; path = "riscv-tests/rv64ui-p-andi.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0400264A371600399490 /* rv64ui-p-add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-add.h"; path = "riscv-tests/rv64ui-p-add.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0401264A371600399490 /* rv64ui-p-beq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-beq.h"; path = "riscv-tests/rv64ui-p-beq.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0402264A371600399490 /* rv64ui-p-blt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-blt.h"; path = "riscv-tests/rv64ui-p-blt.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0403264A371600399490 /* rv64ui-p-bltu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-bltu.h"; path = "riscv-tests/rv64ui-p-bltu.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0404264A371600399490 /* rv64ui-p-addiw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-addiw.h"; path = "riscv-tests/rv64ui-p-addiw.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0405264A371600399490 /* rv64ui-p-addw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-addw.h"; path = "riscv-tests/rv64ui-p-addw.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0406264A39A200399490 /* rv64ui-p-fence_i.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-fence_i.h"; path = "riscv-tests/rv64ui-p-fence_i.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0407264A3C3400399490 /* rv64ui-p-jal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-jal.h"; path = "riscv-tests/rv64ui-p-jal.h"; sourceTree = "<group>"; tabWidth = 8; };
-		CEAD0408264A3C3400399490 /* rv64ui-p-jalr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-jalr.h"; path = "riscv-tests/rv64ui-p-jalr.h"; sourceTree = "<group>"; tabWidth = 8; };
 		CEAD041E264A5BA900399490 /* elf32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf32.c; path = ../../riscv/libelf/elf32.c; sourceTree = "<group>"; };
 		CEAD041F264A5BA900399490 /* elf64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf64.c; path = ../../riscv/libelf/elf64.c; sourceTree = "<group>"; };
 		CEAD0420264A5BA900399490 /* elf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf.c; path = ../../riscv/libelf/elf.c; sourceTree = "<group>"; };
 		CEAD0430264A5C0600399490 /* elf64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf64.h; path = ../../riscv/libelf/elf64.h; sourceTree = "<group>"; };
 		CEAD0431264A5C0600399490 /* elf32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf32.h; path = ../../riscv/libelf/elf32.h; sourceTree = "<group>"; };
 		CEAD0432264A5C0600399490 /* elf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf.h; path = ../../riscv/libelf/elf.h; sourceTree = "<group>"; };
-		CEAD0433264A844100399490 /* rv64ui-p-xor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "rv64ui-p-xor.h"; path = "riscv-tests/rv64ui-p-xor.h"; sourceTree = "<group>"; };
 		CEAD0434264A84B100399490 /* libxxGraphic.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAD0436264A84B700399490 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_zicsr.cpp; path = ../../riscv/riscv_zicsr.cpp; sourceTree = "<group>"; };
 		CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32i.cpp; path = ../../riscv/riscv_rv32i.cpp; sourceTree = "<group>"; };
 		CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64i.cpp; path = ../../riscv/riscv_rv64i.cpp; sourceTree = "<group>"; };
 		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +169,7 @@
 				30DFAD562648449F00018DFA /* riscv_instruction.h */,
 				CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */,
 				CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */,
+				CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */,
 			);
 			name = riscv;
 			sourceTree = "<group>";
@@ -192,29 +182,6 @@
 				CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */,
 			);
 			name = Configs;
-			sourceTree = "<group>";
-		};
-		CEAD03F8264A313600399490 /* riscv-tests */ = {
-			isa = PBXGroup;
-			children = (
-				CEAD0400264A371600399490 /* rv64ui-p-add.h */,
-				CEAD0404264A371600399490 /* rv64ui-p-addiw.h */,
-				CEAD0405264A371600399490 /* rv64ui-p-addw.h */,
-				CEAD03FC264A371600399490 /* rv64ui-p-and.h */,
-				CEAD03FF264A371600399490 /* rv64ui-p-andi.h */,
-				CEAD03FB264A371600399490 /* rv64ui-p-auipc.h */,
-				CEAD0401264A371600399490 /* rv64ui-p-beq.h */,
-				CEAD03FD264A371600399490 /* rv64ui-p-bge.h */,
-				CEAD03FE264A371600399490 /* rv64ui-p-bgeu.h */,
-				CEAD0402264A371600399490 /* rv64ui-p-blt.h */,
-				CEAD0403264A371600399490 /* rv64ui-p-bltu.h */,
-				CEAD03FA264A371600399490 /* rv64ui-p-bne.h */,
-				CEAD0406264A39A200399490 /* rv64ui-p-fence_i.h */,
-				CEAD0407264A3C3400399490 /* rv64ui-p-jal.h */,
-				CEAD0408264A3C3400399490 /* rv64ui-p-jalr.h */,
-				CEAD0433264A844100399490 /* rv64ui-p-xor.h */,
-			);
-			name = "riscv-tests";
 			sourceTree = "<group>";
 		};
 		CEAD0409264A5B4600399490 /* libelf */ = {
@@ -235,7 +202,6 @@
 			children = (
 				CEAD0409264A5B4600399490 /* libelf */,
 				30BADE952642D1E000AD8F26 /* riscv */,
-				CEAD03F8264A313600399490 /* riscv-tests */,
 				300264C4242690D0004559E0 /* riscv.cpp */,
 				CE999BD625D21EC800351116 /* Configs */,
 				D644A042231ED82900B75B77 /* Products */,
@@ -372,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFAD5C2648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEAEE364264B7A0200212732 /* riscv_zicsr.cpp in Sources */,
 				CEB2AA202648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 				30A9A7C325ADC7C0000FA104 /* riscv.cpp in Sources */,
 				CEAD0428264A5BA900399490 /* elf64.c in Sources */,
@@ -386,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAD0423264A5BA900399490 /* elf32.c in Sources */,
+				CEAEE363264B7A0200212732 /* riscv_zicsr.cpp in Sources */,
 				CEB2AA1A2648D245008C0A34 /* riscv_rv32i.cpp in Sources */,
 				CE93601F25AC457A00CEF503 /* riscv.cpp in Sources */,
 				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
@@ -401,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFAD5A2648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEAEE362264B7A0200212732 /* riscv_zicsr.cpp in Sources */,
 				CEB2AA1E2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 				3039F9D92447499200E671A7 /* riscv.cpp in Sources */,
 				CEAD0426264A5BA900399490 /* elf64.c in Sources */,
@@ -415,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30DFAD592648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				CEAEE361264B7A0200212732 /* riscv_zicsr.cpp in Sources */,
 				CEB2AA1D2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
 				300264C5242690D0004559E0 /* riscv.cpp in Sources */,
 				CEAD0425264A5BA900399490 /* elf64.c in Sources */,

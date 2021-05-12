@@ -7,30 +7,16 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <riscv/riscv_cpu.h>
 #include <riscv/libelf/elf.h>
+#include <string>
+#include <vector>
 #include <interface.h>
-
-#include "riscv-tests/rv64ui-p-add.h"
-#include "riscv-tests/rv64ui-p-addiw.h"
-#include "riscv-tests/rv64ui-p-addw.h"
-#include "riscv-tests/rv64ui-p-and.h"
-#include "riscv-tests/rv64ui-p-andi.h"
-#include "riscv-tests/rv64ui-p-auipc.h"
-#include "riscv-tests/rv64ui-p-beq.h"
-#include "riscv-tests/rv64ui-p-bge.h"
-#include "riscv-tests/rv64ui-p-bgeu.h"
-#include "riscv-tests/rv64ui-p-blt.h"
-#include "riscv-tests/rv64ui-p-bltu.h"
-#include "riscv-tests/rv64ui-p-bne.h"
-#include "riscv-tests/rv64ui-p-fence_i.h"
-#include "riscv-tests/rv64ui-p-jal.h"
-#include "riscv-tests/rv64ui-p-jalr.h"
-#include "riscv-tests/rv64ui-p-xor.h"
 
 #define PLUGIN_NAME     "RISC-V"
 #define PLUGIN_MAJOR    1
 #define PLUGIN_MINOR    0
 
 static riscv_cpu* cpu = nullptr;
+static std::vector<std::pair<std::string, std::vector<char>>> riscv_tests;
 //------------------------------------------------------------------------------
 pluginAPI const char* Create(const CreateData& createData)
 {
@@ -39,7 +25,7 @@ pluginAPI const char* Create(const CreateData& createData)
 //------------------------------------------------------------------------------
 pluginAPI void Shutdown(const ShutdownData& shutdownData)
 {
-
+    riscv_tests = std::vector<std::pair<std::string, std::vector<char>>>();
 }
 //------------------------------------------------------------------------------
 pluginAPI bool Update(const UpdateData& updateData)
@@ -82,9 +68,39 @@ pluginAPI bool Update(const UpdateData& updateData)
 
     if (showCPU)
     {
+        if (riscv_tests.empty())
+        {
+            const char* app = xxGetExecutablePath();
+
+            char temp[4096];
+            snprintf(temp, 4096, "%s/../../../../../riscv/riscv-tests", app);
+
+            uint64_t handle = 0;
+            while (char* filename = xxOpenDirectory(&handle, temp, "rv64ui", nullptr))
+            {
+                snprintf(temp, 4096, "%s/../../../../../riscv/riscv-tests/%s", app, filename);
+                FILE* file = fopen(temp, "rb");
+                if (file)
+                {
+                    fseek(file, 0, SEEK_END);
+                    size_t size = ftell(file);
+                    fseek(file, 0, SEEK_SET);
+
+                    riscv_tests.resize(riscv_tests.size() + 1);
+                    riscv_tests.back().first = filename;
+                    riscv_tests.back().second.resize(size);
+                    fread(riscv_tests.back().second.data(), size, 1, file);
+                }
+                free(filename);
+            }
+            xxCloseDirectory(&handle);
+
+            std::sort(riscv_tests.begin(), riscv_tests.end());
+        }
+
         if (ImGui::Begin("CPU", &showCPU, ImGuiWindowFlags_AlwaysAutoResize))
         {
-            ImGui::BeginTable("Registers", 5);
+            ImGui::BeginTable("Registers", 5 + (int)riscv_tests.size() / 16);
 
             ImGui::TableNextColumn();
             if (cpu == nullptr && ImGui::Button("Start"))
@@ -109,57 +125,6 @@ pluginAPI bool Update(const UpdateData& updateData)
                 static int nameType = 0;
                 ImGui::RadioButton("ABI Name", &nameType, 0);
                 ImGui::RadioButton("Register Name", &nameType, 1);
-
-                ImGui::TableNextColumn();
-                ImU32 unselectedColor = ImColor(ImGui::GetStyle().Colors[ImGuiCol_Button]);
-                ImU32 selectedColor = ImColor(ImColor(unselectedColor).Value.z, ImColor(unselectedColor).Value.y, ImColor(unselectedColor).Value.x);
-                auto test = [&](const char* name, auto&& code)
-                {
-                    ImGui::PushStyleColor(ImGuiCol_Button, cpu->begin == (uintptr_t)code ? selectedColor : unselectedColor);
-                    if (ImGui::Button(name))
-                    {
-                        elf_t elf = { .elfFile = code, .elfSize = sizeof(code), .elfClass = ELFCLASS64 };
-                        if (elf_checkFile(&elf) == 0)
-                        {
-                            for (size_t i = 0, count = elf_getNumSections(&elf); i < count; ++i)
-                            {
-                                uintptr_t address = elf_getSectionAddr(&elf, i);
-                                size_t offset = elf_getSectionOffset(&elf, i);
-                                size_t size = elf_getSectionSize(&elf, i);
-                                const char* name = elf_getSectionName(&elf, i);
-                                xxLog("RISC-V", "%zd : %010p %8d %8d %s", i, address,
-                                                                             offset,
-                                                                             size,
-                                                                             name);
-                                if (strncmp(name, ".text", 5) == 0)
-                                {
-                                    cpu->program((char*)code + offset, size);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            cpu->program(code, sizeof(code));
-                        }
-                    }
-                    ImGui::PopStyleColor();
-                };
-                test("rv64ui-p-add",    rv64ui_p_add);
-                test("rv64ui-p-addiw",  rv64ui_p_addiw);
-                test("rv64ui-p-addw",   rv64ui_p_addw);
-                test("rv64ui-p-and",    rv64ui_p_and);
-                test("rv64ui-p-andi",   rv64ui_p_andi);
-                test("rv64ui-p-auipc",  rv64ui_p_auipc);
-                test("rv64ui-p-beq",    rv64ui_p_beq);
-                test("rv64ui-p-bge",    rv64ui_p_bge);
-                test("rv64ui-p-bgeu",   rv64ui_p_bgeu);
-                test("rv64ui-p-blt",    rv64ui_p_blt);
-                test("rv64ui-p-bltu",   rv64ui_p_bltu);
-                test("rv64ui-p-bne",    rv64ui_p_bne);
-                test("rv64ui-p-fence_i",rv64ui_p_fence_i);
-                test("rv64ui-p-jal",    rv64ui_p_jal);
-                test("rv64ui-p-jalr",   rv64ui_p_jalr);
-                test("rv64ui-p-xor",    rv64ui_p_xor);
 
                 ImGui::TableNextColumn();
                 static const char* const registerName[32] =
@@ -203,6 +168,62 @@ pluginAPI bool Update(const UpdateData& updateData)
                 ImGui::Text("immediateB : %X", cpu->immB());
                 ImGui::Text("immediateU : %X", cpu->immU());
                 ImGui::Text("immediateJ : %X", cpu->immJ());
+
+                ImGui::TableNextColumn();
+                ImU32 unselectedColor = ImColor(ImGui::GetStyle().Colors[ImGuiCol_Button]);
+                ImU32 selectedColor = ImColor(ImColor(unselectedColor).Value.z, ImColor(unselectedColor).Value.y, ImColor(unselectedColor).Value.x);
+                auto test = [&](const char* name, const void* code, size_t size)
+                {
+                    bool selected = (cpu->begin >= (uintptr_t)code && cpu->end <= (uintptr_t)code + size);
+                    ImGui::PushStyleColor(ImGuiCol_Button, selected ? selectedColor : unselectedColor);
+                    if (ImGui::Button(name))
+                    {
+                        elf_t elf = { .elfFile = code, .elfSize = size, .elfClass = ELFCLASS64 };
+                        if (elf_checkFile(&elf) == 0)
+                        {
+                            for (size_t i = 0, count = elf_getNumSections(&elf); i < count; ++i)
+                            {
+                                uintptr_t address = elf_getSectionAddr(&elf, i);
+                                size_t offset = elf_getSectionOffset(&elf, i);
+                                size_t size = elf_getSectionSize(&elf, i);
+                                size_t flags = elf_getSectionFlags(&elf, i);
+                                const char* name = elf_getSectionName(&elf, i);
+                                xxLog("RISC-V", "%zd : %010p %8d %8d %-20s%s%s", i, address,
+                                                                                    offset,
+                                                                                    size,
+                                                                                    name,
+                                                                                    flags & SHF_WRITE ? " WRITE" : "",
+                                                                                    flags & SHF_EXECINSTR ? " EXECUTE" : "");
+                                if (strncmp(name, ".text", 5) == 0)
+                                {
+                                    cpu->program((char*)code + offset, size);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            cpu->program(code, size);
+                        }
+                        cpu->environmentCall = [](riscv_cpu& cpu)
+                        {
+                            xxLog("RISC-V", "ECALL : %016p %016p", cpu.pc, cpu.x[3]);
+                        };
+                        if (ImGui::GetIO().KeyCtrl)
+                        {
+                            cpu->run();
+                        }
+                    }
+                    ImGui::PopStyleColor();
+                };
+                for (size_t i = 0; i < riscv_tests.size(); ++i)
+                {
+                    auto& pair = riscv_tests[i];
+                    test(pair.first.c_str(), pair.second.data(), pair.second.size());
+                    if ((i % 16) == 15)
+                    {
+                        ImGui::TableNextColumn();
+                    }
+                }
             }
 
             ImGui::EndTable();
