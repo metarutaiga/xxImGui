@@ -16,6 +16,7 @@
 #define PLUGIN_MINOR    0
 
 static riscv_cpu* cpu = nullptr;
+static std::vector<char> memory;
 static std::vector<std::pair<std::string, std::vector<char>>> riscv_tests;
 //------------------------------------------------------------------------------
 pluginAPI const char* Create(const CreateData& createData)
@@ -25,6 +26,7 @@ pluginAPI const char* Create(const CreateData& createData)
 //------------------------------------------------------------------------------
 pluginAPI void Shutdown(const ShutdownData& shutdownData)
 {
+    memory = std::vector<char>();
     riscv_tests = std::vector<std::pair<std::string, std::vector<char>>>();
 }
 //------------------------------------------------------------------------------
@@ -131,6 +133,12 @@ pluginAPI bool Update(const UpdateData& updateData)
                 ImGui::RadioButton("Integer", &testType, 0);
                 ImGui::RadioButton("Multiply", &testType, 1);
                 static std::string message;
+                static bool autoTest = false;
+                if (ImGui::Button("Auto Test"))
+                {
+                    message.clear();
+                    autoTest = true;
+                }
 
                 ImGui::TableNextColumn();
                 static const char* const registerName[32] =
@@ -182,11 +190,21 @@ pluginAPI bool Update(const UpdateData& updateData)
                 {
                     bool selected = (cpu->begin >= (uintptr_t)code && cpu->end <= (uintptr_t)code + size);
                     ImGui::PushStyleColor(ImGuiCol_Button, selected ? selectedColor : unselectedColor);
-                    if (ImGui::Button(name))
+                    if (ImGui::Button(name) || autoTest)
                     {
                         elf_t elf = { .elfFile = code, .elfSize = size, .elfClass = ELFCLASS64 };
                         if (elf_checkFile(&elf) == 0)
                         {
+                            uintptr_t min = 0;
+                            uintptr_t max = 0;
+                            elf_getMemoryBounds(&elf, PHYSICAL, &min, &max);
+                            xxLog("RISC-V", "Memory Minimum : %p", min);
+                            xxLog("RISC-V", "Memory Maximum : %p", max);
+                            size_t memorySize = max - min;
+                            if (memorySize < 1048576)
+                            {
+                                memory.resize(memorySize);
+                            }
                             for (size_t i = 0, count = elf_getNumSections(&elf); i < count; ++i)
                             {
                                 uintptr_t address = elf_getSectionAddr(&elf, i);
@@ -200,10 +218,17 @@ pluginAPI bool Update(const UpdateData& updateData)
                                                                                     name,
                                                                                     flags & SHF_WRITE ? " WRITE" : "",
                                                                                     flags & SHF_EXECINSTR ? " EXECUTE" : "");
-                                if (strncmp(name, ".text", 5) == 0)
+                                if (memory.empty() == false)
                                 {
-                                    cpu->program((char*)code + offset, size);
-                                    message.clear();
+                                    if (address >= min && address + size <= max)
+                                    {
+                                        memcpy(memory.data() + address - min, (char*)code + offset, size);
+                                    }
+                                    if (flags & SHF_EXECINSTR)
+                                    {
+                                        cpu->program(memory.data() + address - min, size);
+                                        message.clear();
+                                    }
                                 }
                             }
                         }
@@ -217,6 +242,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                             if (cpu.x[3] > 1)
                             {
                                 message = "failed";
+                                autoTest = false;
                             }
                             if (message.empty())
                             {
@@ -224,7 +250,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                             }
                             xxLog("RISC-V", "ECALL : %016p %016p", cpu.pc, cpu.x[3]);
                         };
-                        if (ImGui::GetIO().KeyCtrl)
+                        if (ImGui::GetIO().KeyCtrl || autoTest)
                         {
                             cpu->run();
                         }
@@ -248,6 +274,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                     }
                 }
                 ImGui::TextUnformatted(message.c_str());
+                autoTest = false;
             }
 
             ImGui::EndTable();
