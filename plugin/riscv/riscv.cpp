@@ -76,7 +76,7 @@ pluginAPI bool Update(const UpdateData& updateData)
             snprintf(temp, 4096, "%s/../../../../../riscv/riscv-tests", app);
 
             uint64_t handle = 0;
-            while (char* filename = xxOpenDirectory(&handle, temp, "rv64ui", nullptr))
+            while (char* filename = xxOpenDirectory(&handle, temp, "rv64", nullptr))
             {
                 snprintf(temp, 4096, "%s/../../../../../riscv/riscv-tests/%s", app, filename);
                 FILE* file = fopen(temp, "rb");
@@ -95,6 +95,8 @@ pluginAPI bool Update(const UpdateData& updateData)
             }
             xxCloseDirectory(&handle);
 
+            if (riscv_tests.empty())
+                riscv_tests.resize(riscv_tests.size() + 1);
             std::sort(riscv_tests.begin(), riscv_tests.end());
         }
 
@@ -125,6 +127,10 @@ pluginAPI bool Update(const UpdateData& updateData)
                 static int nameType = 0;
                 ImGui::RadioButton("ABI Name", &nameType, 0);
                 ImGui::RadioButton("Register Name", &nameType, 1);
+                static int testType = 0;
+                ImGui::RadioButton("Integer", &testType, 0);
+                ImGui::RadioButton("Multiply", &testType, 1);
+                static std::string message;
 
                 ImGui::TableNextColumn();
                 static const char* const registerName[32] =
@@ -145,14 +151,14 @@ pluginAPI bool Update(const UpdateData& updateData)
                 for (int i = 0; i < 16; ++i)
                 {
                     ImGui::SetNextItemWidth(width);
-                    ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016X");
+                    ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016llX");
                 }
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("pc", ImGuiDataType_U64, &cpu->pc, nullptr, nullptr, "%016X");
+                ImGui::SetNextItemWidth(width); ImGui::InputScalar("pc", ImGuiDataType_U64, &cpu->pc, nullptr, nullptr, "%016llX");
                 ImGui::TableNextColumn();
                 for (int i = 16; i < 32; ++i)
                 {
                     ImGui::SetNextItemWidth(width);
-                    ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016X");
+                    ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016llX");
                 }
 
                 ImGui::TableNextColumn();
@@ -197,15 +203,25 @@ pluginAPI bool Update(const UpdateData& updateData)
                                 if (strncmp(name, ".text", 5) == 0)
                                 {
                                     cpu->program((char*)code + offset, size);
+                                    message.clear();
                                 }
                             }
                         }
                         else
                         {
                             cpu->program(code, size);
+                            message.clear();
                         }
                         cpu->environmentCall = [](riscv_cpu& cpu)
                         {
+                            if (cpu.x[3] > 1)
+                            {
+                                message = "failed";
+                            }
+                            if (message.empty())
+                            {
+                                message = "succeed";
+                            }
                             xxLog("RISC-V", "ECALL : %016p %016p", cpu.pc, cpu.x[3]);
                         };
                         if (ImGui::GetIO().KeyCtrl)
@@ -215,15 +231,23 @@ pluginAPI bool Update(const UpdateData& updateData)
                     }
                     ImGui::PopStyleColor();
                 };
-                for (size_t i = 0; i < riscv_tests.size(); ++i)
+                int index = 0;
+                for (auto& pair : riscv_tests)
                 {
-                    auto& pair = riscv_tests[i];
+                    bool match = false;
+                    if (match == false && testType == 0 && pair.first.find("rv64ui") == 0)
+                        match = true;
+                    if (match == false && testType == 1 && pair.first.find("rv64um") == 0)
+                        match = true;
+                    if (match == false)
+                        continue;
                     test(pair.first.c_str(), pair.second.data(), pair.second.size());
-                    if ((i % 16) == 15)
+                    if ((index++ % 16) == 15)
                     {
                         ImGui::TableNextColumn();
                     }
                 }
+                ImGui::TextUnformatted(message.c_str());
             }
 
             ImGui::EndTable();
