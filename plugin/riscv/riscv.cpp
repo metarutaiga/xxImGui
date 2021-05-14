@@ -104,7 +104,7 @@ pluginAPI bool Update(const UpdateData& updateData)
 
         if (ImGui::Begin("CPU", &showCPU, ImGuiWindowFlags_AlwaysAutoResize))
         {
-            ImGui::BeginTable("Registers", 5 + (int)riscv_tests.size() / 16);
+            ImGui::BeginTable("Registers", 7 + (int)riscv_tests.size() / 16);
 
             ImGui::TableNextColumn();
             if (cpu == nullptr && ImGui::Button("Start"))
@@ -132,6 +132,9 @@ pluginAPI bool Update(const UpdateData& updateData)
                 static int testType = 0;
                 ImGui::RadioButton("Integer", &testType, 0);
                 ImGui::RadioButton("Multiply", &testType, 1);
+                ImGui::RadioButton("Atomic", &testType, 2);
+                ImGui::RadioButton("Single Floating", &testType, 3);
+                static const char* testName = nullptr;
                 static std::string message;
                 static bool autoTest = false;
                 if (ImGui::Button("Auto Test"))
@@ -168,6 +171,31 @@ pluginAPI bool Update(const UpdateData& updateData)
                     ImGui::SetNextItemWidth(width);
                     ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016llX");
                 }
+                uintptr_t offset = cpu->pc - cpu->begin;
+                ImGui::SetNextItemWidth(width); ImGui::InputScalar("offset", ImGuiDataType_U64, &offset, nullptr, nullptr, "%016llX");
+
+                if (testType == 3)
+                {
+                    static const char* const registerName[32] =
+                    {
+                        "f0",   "f1",   "f2",   "f3",   "f4",   "f5",   "f6",   "f7",
+                        "f8",   "f9",   "f10",  "f11",  "f12",  "f13",  "f14",  "f15",
+                        "f16",  "f17",  "f18",  "f19",  "f20",  "f21",  "f22",  "f23",
+                        "f24",  "f25",  "f26",  "f27",  "f28",  "f29",  "f30",  "f31",
+                    };
+                    ImGui::TableNextColumn();
+                    for (int i = 0; i < 16; ++i)
+                    {
+                        ImGui::SetNextItemWidth(width);
+                        ImGui::InputScalar(registerName[i], ImGuiDataType_U32, &cpu->f[i], nullptr, nullptr, "%08X");
+                    }
+                    ImGui::TableNextColumn();
+                    for (int i = 16; i < 32; ++i)
+                    {
+                        ImGui::SetNextItemWidth(width);
+                        ImGui::InputScalar(registerName[i], ImGuiDataType_U32, &cpu->f[i], nullptr, nullptr, "%08X");
+                    }
+                }
 
                 ImGui::TableNextColumn();
                 ImGui::SetNextItemWidth(width); ImGui::InputScalar("format", ImGuiDataType_U32, &cpu->format, nullptr, nullptr, "%08X");
@@ -188,10 +216,11 @@ pluginAPI bool Update(const UpdateData& updateData)
                 ImU32 selectedColor = ImColor(ImColor(unselectedColor).Value.z, ImColor(unselectedColor).Value.y, ImColor(unselectedColor).Value.x);
                 auto test = [&](const char* name, const void* code, size_t size)
                 {
-                    bool selected = (cpu->begin >= (uintptr_t)code && cpu->end <= (uintptr_t)code + size);
+                    bool selected = (testName == name);
                     ImGui::PushStyleColor(ImGuiCol_Button, selected ? selectedColor : unselectedColor);
                     if (ImGui::Button(name) || autoTest)
                     {
+                        testName = name;
                         elf_t elf = { .elfFile = code, .elfSize = size, .elfClass = ELFCLASS64 };
                         if (elf_checkFile(&elf) == 0)
                         {
@@ -264,6 +293,10 @@ pluginAPI bool Update(const UpdateData& updateData)
                     if (match == false && testType == 0 && pair.first.find("rv64ui") == 0)
                         match = true;
                     if (match == false && testType == 1 && pair.first.find("rv64um") == 0)
+                        match = true;
+                    if (match == false && testType == 2 && pair.first.find("rv64ua") == 0)
+                        match = true;
+                    if (match == false && testType == 3 && pair.first.find("rv64uf") == 0)
                         match = true;
                     if (match == false)
                         continue;
