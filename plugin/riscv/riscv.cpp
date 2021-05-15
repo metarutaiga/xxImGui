@@ -163,16 +163,33 @@ pluginAPI bool Update(const UpdateData& updateData)
                 {
                     ImGui::SetNextItemWidth(width);
                     ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016llX");
+                    if (ImGui::IsItemHovered())
+                    {
+                        ImGui::SetTooltip("Signed : %lld\n"
+                                          "Unsigned : %llu", cpu->x[i].u,
+                                                             cpu->x[i].s);
+                    }
                 }
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("pc", ImGuiDataType_U64, &cpu->pc, nullptr, nullptr, "%016llX");
+                ImGui::SetNextItemWidth(width);
+                ImGui::InputScalar("pc", ImGuiDataType_U64, &cpu->pc, nullptr, nullptr, "%016llX");
                 ImGui::TableNextColumn();
                 for (int i = 16; i < 32; ++i)
                 {
                     ImGui::SetNextItemWidth(width);
                     ImGui::InputScalar(nameType ? registerName[i] : abiName[i], ImGuiDataType_U64, &cpu->x[i], nullptr, nullptr, "%016llX");
+                    if (ImGui::IsItemHovered())
+                    {
+                        ImGui::SetTooltip("Signed : %lld\n"
+                                          "Unsigned : %llu", cpu->x[i].u,
+                                                             cpu->x[i].s);
+                    }
                 }
                 uintptr_t offset = cpu->pc - cpu->begin;
-                ImGui::SetNextItemWidth(width); ImGui::InputScalar("offset", ImGuiDataType_U64, &offset, nullptr, nullptr, "%016llX");
+                ImGui::SetNextItemWidth(width);
+                if (ImGui::InputScalar("offset", ImGuiDataType_U64, &offset, nullptr, nullptr, "%016llX", ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_EnterReturnsTrue))
+                {
+                    cpu->pc = cpu->begin + offset;
+                }
 
                 if (testType == 3)
                 {
@@ -188,12 +205,21 @@ pluginAPI bool Update(const UpdateData& updateData)
                     {
                         ImGui::SetNextItemWidth(width);
                         ImGui::InputScalar(registerName[i], ImGuiDataType_U32, &cpu->f[i], nullptr, nullptr, "%08X");
+                        if (ImGui::IsItemHovered())
+                        {
+                            ImGui::SetTooltip("%f", cpu->f[i].f);
+                        }
                     }
+                    ImGui::SetNextItemWidth(width); ImGui::InputScalar("fscr", ImGuiDataType_U32, &cpu->fcsr, nullptr, nullptr, "%08X");
                     ImGui::TableNextColumn();
                     for (int i = 16; i < 32; ++i)
                     {
                         ImGui::SetNextItemWidth(width);
                         ImGui::InputScalar(registerName[i], ImGuiDataType_U32, &cpu->f[i], nullptr, nullptr, "%08X");
+                        if (ImGui::IsItemHovered())
+                        {
+                            ImGui::SetTooltip("%f", cpu->f[i].f);
+                        }
                     }
                 }
 
@@ -277,7 +303,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                             {
                                 message = "succeed";
                             }
-                            xxLog("RISC-V", "ECALL : %016p %016p", cpu.pc, cpu.x[3]);
+                            xxLog("RISC-V", "ECALL : %016p %016p", cpu.pc, cpu.x[3].u);
                         };
                         if (ImGui::GetIO().KeyCtrl || autoTest)
                         {
