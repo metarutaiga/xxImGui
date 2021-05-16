@@ -134,6 +134,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                 ImGui::RadioButton("Multiply", &testType, 1);
                 ImGui::RadioButton("Atomic", &testType, 2);
                 ImGui::RadioButton("Single Floating", &testType, 3);
+                ImGui::RadioButton("Double Floating", &testType, 4);
                 static const char* testName = nullptr;
                 static std::string message;
                 static bool autoTest = false;
@@ -204,10 +205,10 @@ pluginAPI bool Update(const UpdateData& updateData)
                     for (int i = 0; i < 16; ++i)
                     {
                         ImGui::SetNextItemWidth(width);
-                        ImGui::InputScalar(registerName[i], ImGuiDataType_U32, &cpu->f[i], nullptr, nullptr, "%08X");
+                        ImGui::InputScalar(registerName[i], ImGuiDataType_U64, &cpu->f[i], nullptr, nullptr, "%016llX");
                         if (ImGui::IsItemHovered())
                         {
-                            ImGui::SetTooltip("%f", cpu->f[i].f);
+                            ImGui::SetTooltip("%f", (float)cpu->f[i].f);
                         }
                     }
                     ImGui::SetNextItemWidth(width); ImGui::InputScalar("fscr", ImGuiDataType_U32, &cpu->fcsr, nullptr, nullptr, "%08X");
@@ -215,10 +216,42 @@ pluginAPI bool Update(const UpdateData& updateData)
                     for (int i = 16; i < 32; ++i)
                     {
                         ImGui::SetNextItemWidth(width);
-                        ImGui::InputScalar(registerName[i], ImGuiDataType_U32, &cpu->f[i], nullptr, nullptr, "%08X");
+                        ImGui::InputScalar(registerName[i], ImGuiDataType_U64, &cpu->f[i], nullptr, nullptr, "%016llX");
                         if (ImGui::IsItemHovered())
                         {
-                            ImGui::SetTooltip("%f", cpu->f[i].f);
+                            ImGui::SetTooltip("%f", (float)cpu->f[i].f);
+                        }
+                    }
+                }
+
+                if (testType == 4)
+                {
+                    static const char* const registerName[32] =
+                    {
+                        "d0",   "d1",   "d2",   "d3",   "d4",   "d5",   "d6",   "d7",
+                        "d8",   "d9",   "d10",  "d11",  "d12",  "d13",  "d14",  "d15",
+                        "d16",  "d17",  "d18",  "d19",  "d20",  "d21",  "d22",  "d23",
+                        "d24",  "d25",  "d26",  "d27",  "d28",  "d29",  "d30",  "d31",
+                    };
+                    ImGui::TableNextColumn();
+                    for (int i = 0; i < 16; ++i)
+                    {
+                        ImGui::SetNextItemWidth(width);
+                        ImGui::InputScalar(registerName[i], ImGuiDataType_U64, &cpu->f[i], nullptr, nullptr, "%016llX");
+                        if (ImGui::IsItemHovered())
+                        {
+                            ImGui::SetTooltip("%f", (double)cpu->f[i].d);
+                        }
+                    }
+                    ImGui::SetNextItemWidth(width); ImGui::InputScalar("fscr", ImGuiDataType_U32, &cpu->fcsr, nullptr, nullptr, "%08X");
+                    ImGui::TableNextColumn();
+                    for (int i = 16; i < 32; ++i)
+                    {
+                        ImGui::SetNextItemWidth(width);
+                        ImGui::InputScalar(registerName[i], ImGuiDataType_U64, &cpu->f[i], nullptr, nullptr, "%016llX");
+                        if (ImGui::IsItemHovered())
+                        {
+                            ImGui::SetTooltip("%f", (double)cpu->f[i].d);
                         }
                     }
                 }
@@ -303,7 +336,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                             {
                                 message = "succeed";
                             }
-                            xxLog("RISC-V", "ECALL : %016p %016p", cpu.pc, cpu.x[3].u);
+                            xxLog("RISC-V", "ECALL : %016p %llu", cpu.pc, cpu.x[3].u);
                         };
                         if (ImGui::GetIO().KeyCtrl || autoTest)
                         {
@@ -323,6 +356,8 @@ pluginAPI bool Update(const UpdateData& updateData)
                     if (match == false && testType == 2 && pair.first.find("rv64ua") == 0)
                         match = true;
                     if (match == false && testType == 3 && pair.first.find("rv64uf") == 0)
+                        match = true;
+                    if (match == false && testType == 4 && pair.first.find("rv64ud") == 0)
                         match = true;
                     if (match == false)
                         continue;
