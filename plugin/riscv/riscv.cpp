@@ -133,8 +133,12 @@ pluginAPI bool Update(const UpdateData& updateData)
                 ImGui::RadioButton("Integer", &testType, 0);
                 ImGui::RadioButton("Multiply", &testType, 1);
                 ImGui::RadioButton("Atomic", &testType, 2);
+#if RISCV_HAVE_SINGLE
                 ImGui::RadioButton("Single Floating", &testType, 3);
+#endif
+#if RISCV_HAVE_DOUBLE
                 ImGui::RadioButton("Double Floating", &testType, 4);
+#endif
                 static const char* testName = nullptr;
                 static std::string message;
                 static bool autoTest = false;
@@ -192,6 +196,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                     cpu->pc = cpu->begin + offset;
                 }
 
+#if RISCV_HAVE_SINGLE
                 if (testType == 3)
                 {
                     static const char* const registerName[32] =
@@ -223,7 +228,9 @@ pluginAPI bool Update(const UpdateData& updateData)
                         }
                     }
                 }
+#endif
 
+#if RISCV_HAVE_DOUBLE
                 if (testType == 4)
                 {
                     static const char* const registerName[32] =
@@ -255,6 +262,7 @@ pluginAPI bool Update(const UpdateData& updateData)
                         }
                     }
                 }
+#endif
 
                 ImGui::TableNextColumn();
                 ImGui::SetNextItemWidth(width); ImGui::InputScalar("format", ImGuiDataType_U32, &cpu->format, nullptr, nullptr, "%08X");
