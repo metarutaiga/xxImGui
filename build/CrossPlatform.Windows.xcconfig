@@ -38,6 +38,8 @@ OTHER_LDFLAGS[arch=i686] = $(inherited) -target i686-pc-windows-msvc -v -Wl,-nod
 OTHER_LDFLAGS[arch=x86_64] = $(inherited) -target x86_64-pc-windows-msvc -v -Wl,-nodefaultlib $(LIBRARY_SEARCH_PATH) $(LINK_DEBUG_PATH) $(LINK_LIBRARY_NAME)
 WARNING_CFLAGS = $(inherited) -Wno-comment -Wno-expansion-to-defined -Wno-ignored-attributes -Wno-ignored-pragma-intrinsic -Wno-macro-redefined -Wno-microsoft-cast -Wno-microsoft-enum-forward-reference -Wno-nonportable-include-path -Wno-pragma-pack -Wno-unreachable-code -Wno-unused-command-line-argument -Wno-unused-function -Wno-unused-variable -Wno-unused-value
 
+GCC_OPTIMIZATION_LEVEL[arch=i686][config=Release] = 1
+
 ARCHS = armv7 arm64 i686 x86_64
 VALID_ARCHS = armv7 arm64 i686 x86_64
 EXCLUDED_ARCHS = armv7 arm64 i686
