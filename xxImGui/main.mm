@@ -188,10 +188,118 @@
     io.MouseDown[0] = hasActiveTouch;
 }
 
+-(void)updateIOWithPresses:(NSSet<UIPress *> *)presses
+{
+    ImGuiIO& io = ImGui::GetIO();
+    if (io.KeyMap[ImGuiKey_Tab] == -1)
+    {
+        io.KeyMap[ImGuiKey_Tab]         = UIKeyboardHIDUsageKeyboardTab;
+        io.KeyMap[ImGuiKey_LeftArrow]   = UIKeyboardHIDUsageKeyboardLeftArrow;
+        io.KeyMap[ImGuiKey_RightArrow]  = UIKeyboardHIDUsageKeyboardRightArrow;
+        io.KeyMap[ImGuiKey_UpArrow]     = UIKeyboardHIDUsageKeyboardUpArrow;
+        io.KeyMap[ImGuiKey_DownArrow]   = UIKeyboardHIDUsageKeyboardDownArrow;
+        io.KeyMap[ImGuiKey_PageUp]      = UIKeyboardHIDUsageKeyboardPageUp;
+        io.KeyMap[ImGuiKey_PageDown]    = UIKeyboardHIDUsageKeyboardPageDown;
+        io.KeyMap[ImGuiKey_Home]        = UIKeyboardHIDUsageKeyboardHome;
+        io.KeyMap[ImGuiKey_End]         = UIKeyboardHIDUsageKeyboardEnd;
+        io.KeyMap[ImGuiKey_Insert]      = UIKeyboardHIDUsageKeyboardInsert;
+        io.KeyMap[ImGuiKey_Delete]      = UIKeyboardHIDUsageKeyboardDeleteForward;
+        io.KeyMap[ImGuiKey_Backspace]   = UIKeyboardHIDUsageKeyboardDeleteOrBackspace;
+        io.KeyMap[ImGuiKey_Space]       = UIKeyboardHIDUsageKeyboardSpacebar;
+        io.KeyMap[ImGuiKey_Enter]       = UIKeyboardHIDUsageKeyboardReturnOrEnter;
+        io.KeyMap[ImGuiKey_Escape]      = UIKeyboardHIDUsageKeyboardEscape;
+        io.KeyMap[ImGuiKey_KeyPadEnter] = UIKeyboardHIDUsageKeypadEnter;
+        io.KeyMap[ImGuiKey_A]           = UIKeyboardHIDUsageKeyboardA;
+        io.KeyMap[ImGuiKey_C]           = UIKeyboardHIDUsageKeyboardC;
+        io.KeyMap[ImGuiKey_V]           = UIKeyboardHIDUsageKeyboardV;
+        io.KeyMap[ImGuiKey_X]           = UIKeyboardHIDUsageKeyboardX;
+        io.KeyMap[ImGuiKey_Y]           = UIKeyboardHIDUsageKeyboardY;
+        io.KeyMap[ImGuiKey_Z]           = UIKeyboardHIDUsageKeyboardZ;
+
+        // TODO
+        io.ConfigMacOSXBehaviors = false;
+    }
+    for (UIPress* press : presses)
+    {
+        if (press.key == nil)
+            continue;
+
+        switch (press.phase)
+        {
+        case UIPressPhaseBegan:
+        case UIPressPhaseChanged:
+        case UIPressPhaseStationary:
+            switch (press.key.keyCode)
+            {
+            case UIKeyboardHIDUsageKeyboardA ... UIKeyboardHIDUsageKeyboard0:
+            case UIKeyboardHIDUsageKeyboardSpacebar:
+            case UIKeyboardHIDUsageKeyboardHyphen ... UIKeyboardHIDUsageKeyboardSlash:
+                io.AddInputCharactersUTF8(press.key.characters.UTF8String);
+                break;
+            case UIKeyboardHIDUsageKeyboardLeftControl:
+            case UIKeyboardHIDUsageKeyboardRightControl:
+                io.KeyCtrl = true;
+                break;
+            case UIKeyboardHIDUsageKeyboardLeftShift:
+            case UIKeyboardHIDUsageKeyboardRightShift:
+                io.KeyShift = true;
+                break;
+            case UIKeyboardHIDUsageKeyboardLeftAlt:
+            case UIKeyboardHIDUsageKeyboardRightAlt:
+                io.KeyAlt = true;
+                break;
+#if 0
+            case UIKeyboardHIDUsageKeyboardLeftGUI:
+            case UIKeyboardHIDUsageKeyboardRightGUI:
+                io.KeySuper = true;
+                break;
+#endif
+            default:
+                break;
+            }
+            io.KeysDown[press.key.keyCode] = true;
+            break;
+        case UIPressPhaseEnded:
+        case UIPressPhaseCancelled:
+        default:
+            switch (press.key.keyCode)
+            {
+            case UIKeyboardHIDUsageKeyboardLeftControl:
+            case UIKeyboardHIDUsageKeyboardRightControl:
+                io.KeyCtrl = false;
+                break;
+            case UIKeyboardHIDUsageKeyboardLeftShift:
+            case UIKeyboardHIDUsageKeyboardRightShift:
+                io.KeyShift = false;
+                break;
+            case UIKeyboardHIDUsageKeyboardLeftAlt:
+            case UIKeyboardHIDUsageKeyboardRightAlt:
+                io.KeyAlt = false;
+                break;
+#if 0
+            case UIKeyboardHIDUsageKeyboardLeftGUI:
+            case UIKeyboardHIDUsageKeyboardRightGUI:
+                io.KeySuper = false;
+                break;
+#endif
+            default:
+                break;
+            }
+            io.KeysDown[press.key.keyCode] = false;
+            break;
+        }
+    }
+}
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event      { [self updateIOWithTouchEvent:event];  }
 -(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event  { [self updateIOWithTouchEvent:event];  }
+
+-(void)pressesBegan:(NSSet<UIPress *> *)presses withEvent:(nullable UIPressesEvent *)event      { [self updateIOWithPresses:presses];   }
+-(void)pressesChanged:(NSSet<UIPress *> *)presses withEvent:(nullable UIPressesEvent *)event    { [self updateIOWithPresses:presses];   }
+-(void)pressesEnded:(NSSet<UIPress *> *)presses withEvent:(nullable UIPressesEvent *)event      { [self updateIOWithPresses:presses];   }
+-(void)pressesCancelled:(NSSet<UIPress *> *)presses withEvent:(nullable UIPressesEvent *)event  { [self updateIOWithPresses:presses];   }
 
 #endif
 
