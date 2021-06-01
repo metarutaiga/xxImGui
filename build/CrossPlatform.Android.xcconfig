@@ -30,7 +30,7 @@ OTHER_LDFLAGS = $(inherited) -shared -fPIC -landroid -llog
 OTHER_LDFLAGS[config=Release] = $(inherited) -Wl,--gc-sections -Wl,--strip-all
 OTHER_LDFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../ndk/arch-arm
 OTHER_LDFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-arm64
-OTHER_LDFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-mips 
+OTHER_LDFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-mips -Wl,-z,notext
 OTHER_LDFLAGS[arch=mips64] = $(inherited) -target mips64el-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-mips64
 OTHER_LDFLAGS[arch=riscv32] = $(inherited) -target riscv32-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-riscv32 
 OTHER_LDFLAGS[arch=riscv64] = $(inherited) -target riscv64-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-riscv64
