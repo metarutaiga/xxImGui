@@ -26,7 +26,7 @@ OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-linux-android --sysroot=$PRO
 OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-linux-android --sysroot=$PROJECT_DIR/../ndk
 OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS -I/usr/local/opt/llvm/include/c++/v1
 
-OTHER_LDFLAGS = $(inherited) -shared -Wl,-z,notext -llog
+OTHER_LDFLAGS = $(inherited) -shared -fPIC -landroid -llog
 OTHER_LDFLAGS[config=Release] = $(inherited) -Wl,--gc-sections -Wl,--strip-all
 OTHER_LDFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../ndk/arch-arm
 OTHER_LDFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-arm64
