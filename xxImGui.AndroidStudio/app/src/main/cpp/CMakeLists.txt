@@ -1,9 +1,11 @@
 # For more information about using CMake with Android Studio, read the
 # documentation: https://d.android.com/studio/projects/add-native-code.html
 
+project( xxImGui )
+
 # Sets the minimum version of CMake required to build the native library.
 
-cmake_minimum_required(VERSION 3.4.1)
+cmake_minimum_required( VERSION 3.18.1 )
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -146,11 +148,12 @@ add_library( imgui
 
 target_compile_definitions( imgui
                             PUBLIC
-                            IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h"
+                            IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h"
                             IMGUI_API=__attribute__\(\(visibility\(\"default\"\)\)\) )
 
 target_include_directories( imgui
                             PUBLIC
+                            ../../../../../3rdParty
                             ../../../../../3rdParty/imgui
                             ../../../../../3rdParty/stb )
 
