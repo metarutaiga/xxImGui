@@ -30,8 +30,8 @@
 		CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED824DDA2EA00C0F4EC /* xxMath.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
-		CE999BF825D2263C00351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999BF725D2263C00351116 /* llvm_wrapper.cpp */; };
 		CE999D2725D261DF00351116 /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D2625D261DF00351116 /* xxGraphic.dll */; };
+		D698A4DA266BAC7C00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D9266BAC7C00C74361 /* llvm_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,7 +64,6 @@
 		CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphicPlus.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999BF725D2263C00351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D2625D261DF00351116 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C2F325C900A4002E92D3 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C30925C900FC002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +72,7 @@
 		CEC0680525CBEEE6003A5768 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A092231EDDFA00B75B77 /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D698A4D9266BAC7C00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 		CE999BCD25D21DE000351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999BF725D2263C00351116 /* llvm_wrapper.cpp */,
+				D698A4D9266BAC7C00C74361 /* llvm_wrapper.cpp */,
 				CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */,
 			);
@@ -297,10 +297,10 @@
 			files = (
 				CE93600925AC440100CEF503 /* xxImage.cpp in Sources */,
 				CE93600A25AC440100CEF503 /* xxMaterial.cpp in Sources */,
+				D698A4DA266BAC7C00C74361 /* llvm_wrapper.cpp in Sources */,
 				CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */,
 				CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */,
 				CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */,
-				CE999BF825D2263C00351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

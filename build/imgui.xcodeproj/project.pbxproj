@@ -15,7 +15,6 @@
 		CE935F5E25AC2F8800CEF503 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		CE935F5F25AC2F8800CEF503 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
 		CE935F6025AC2F8800CEF503 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A075231ED90400B75B77 /* imgui.cpp */; };
-		CE999CF125D260C100351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999CF025D260C100351116 /* llvm_wrapper.cpp */; };
 		CE9C2A2925AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		CE9C2A2A25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
@@ -24,6 +23,7 @@
 		D644A078231ED90400B75B77 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
 		D644A079231ED90400B75B77 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
 		D644A07F231ED90400B75B77 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A075231ED90400B75B77 /* imgui.cpp */; };
+		D698A4D6266BAC5A00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D5266BAC5A00C74361 /* llvm_wrapper.cpp */; };
 		D6DA664723258F3000953C5B /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
 		D6DA664823258F3000953C5B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		D6DA664923258F3000953C5B /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
@@ -47,20 +47,20 @@
 		CE935F5325AC2F4800CEF503 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BC225D21D1600351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999BC325D21D1600351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		CE999CF025D260C100351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
-		CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_tables.cpp; path = ../imgui/imgui_tables.cpp; sourceTree = "<group>"; };
+		CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_tables.cpp; path = ../3rdParty/imgui/imgui_tables.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D644A06C231ED90300B75B77 /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../imgui/imgui_internal.h; sourceTree = "<group>"; };
-		D644A06D231ED90300B75B77 /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../imgui/imgui_draw.cpp; sourceTree = "<group>"; };
-		D644A06E231ED90300B75B77 /* imgui_widgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_widgets.cpp; path = ../imgui/imgui_widgets.cpp; sourceTree = "<group>"; };
-		D644A06F231ED90300B75B77 /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../imgui/imgui_demo.cpp; sourceTree = "<group>"; };
-		D644A070231ED90300B75B77 /* imconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imconfig.h; path = ../imgui/imconfig.h; sourceTree = "<group>"; };
-		D644A071231ED90300B75B77 /* imstb_rectpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_rectpack.h; path = ../imgui/imstb_rectpack.h; sourceTree = "<group>"; };
-		D644A072231ED90300B75B77 /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../imgui/imgui.h; sourceTree = "<group>"; };
-		D644A073231ED90300B75B77 /* imstb_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_textedit.h; path = ../imgui/imstb_textedit.h; sourceTree = "<group>"; };
-		D644A074231ED90400B75B77 /* imstb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_truetype.h; path = ../imgui/imstb_truetype.h; sourceTree = "<group>"; };
-		D644A075231ED90400B75B77 /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../imgui/imgui.cpp; sourceTree = "<group>"; };
+		D644A06C231ED90300B75B77 /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../3rdParty/imgui/imgui_internal.h; sourceTree = "<group>"; };
+		D644A06D231ED90300B75B77 /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../3rdParty/imgui/imgui_draw.cpp; sourceTree = "<group>"; };
+		D644A06E231ED90300B75B77 /* imgui_widgets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_widgets.cpp; path = ../3rdParty/imgui/imgui_widgets.cpp; sourceTree = "<group>"; };
+		D644A06F231ED90300B75B77 /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_demo.cpp; path = ../3rdParty/imgui/imgui_demo.cpp; sourceTree = "<group>"; };
+		D644A070231ED90300B75B77 /* imconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imconfig.h; path = ../3rdParty/imgui/imconfig.h; sourceTree = "<group>"; };
+		D644A071231ED90300B75B77 /* imstb_rectpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_rectpack.h; path = ../3rdParty/imgui/imstb_rectpack.h; sourceTree = "<group>"; };
+		D644A072231ED90300B75B77 /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui.h; path = ../3rdParty/imgui/imgui.h; sourceTree = "<group>"; };
+		D644A073231ED90300B75B77 /* imstb_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_textedit.h; path = ../3rdParty/imgui/imstb_textedit.h; sourceTree = "<group>"; };
+		D644A074231ED90400B75B77 /* imstb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_truetype.h; path = ../3rdParty/imgui/imstb_truetype.h; sourceTree = "<group>"; };
+		D644A075231ED90400B75B77 /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../3rdParty/imgui/imgui.cpp; sourceTree = "<group>"; };
+		D698A4D5266BAC5A00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 		CE999BC925D21D9F00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999CF025D260C100351116 /* llvm_wrapper.cpp */,
+				D698A4D5266BAC5A00C74361 /* llvm_wrapper.cpp */,
 				CE999BC325D21D1600351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BC225D21D1600351116 /* CrossPlatform.Windows.xcconfig */,
 			);
@@ -265,10 +265,10 @@
 			files = (
 				CE935F6025AC2F8800CEF503 /* imgui.cpp in Sources */,
 				CE935F5D25AC2F8800CEF503 /* imgui_demo.cpp in Sources */,
+				D698A4D6266BAC5A00C74361 /* llvm_wrapper.cpp in Sources */,
 				CE935F5E25AC2F8800CEF503 /* imgui_draw.cpp in Sources */,
 				CE935F5F25AC2F8800CEF503 /* imgui_widgets.cpp in Sources */,
 				CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */,
-				CE999CF125D260C100351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +427,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
+					"IMGUI_USER_CONFIG=\\\"../../xxImGui/implement/imgui_user_config.h\\\"",
 					"DEBUG=1",
 					"$(inherited)",
 				);
@@ -439,8 +439,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../imgui,
-					../stb,
+					../3rdParty/imgui,
+					../3rdParty/stb,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
@@ -508,7 +508,7 @@
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"IMGUI_USER_CONFIG=\\\"../xxImGui/implement/imgui_user_config.h\\\"",
+					"IMGUI_USER_CONFIG=\\\"../../xxImGui/implement/imgui_user_config.h\\\"",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -519,8 +519,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../imgui,
-					../stb,
+					../3rdParty/imgui,
+					../3rdParty/stb,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";

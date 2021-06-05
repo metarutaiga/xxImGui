@@ -14,10 +14,10 @@
 		30B096CA244AD39C0096E6DC /* libimgui.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B096C9244AD39C0096E6DC /* libimgui.bundle */; };
 		30ED317026355DFD00AA60B2 /* libimgui.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED316F26355DFD00AA60B2 /* libimgui.so */; };
 		CE93601F25AC457A00CEF503 /* sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* sample.cpp */; };
-		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
 		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
 		CE999D9525D275A900351116 /* sample.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* sample.dll */; };
 		CEB0E87A2608197500D13FE3 /* libsample.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libsample.dylib */; };
+		D698A4DC266BAC8D00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4DB266BAC8D00C74361 /* llvm_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,7 +52,6 @@
 		CE93601825AC454200CEF503 /* sample.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = sample.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +60,7 @@
 		CEC0680125CBEECA003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libsample.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libsample.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsample.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D698A4DB266BAC8D00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 		CE999BD625D21EC800351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999D1025D2618800351116 /* llvm_wrapper.cpp */,
+				D698A4DB266BAC8D00C74361 /* llvm_wrapper.cpp */,
 				CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */,
 			);
@@ -271,8 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D698A4DC266BAC8D00C74361 /* llvm_wrapper.cpp in Sources */,
 				CE93601F25AC457A00CEF503 /* sample.cpp in Sources */,
-				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +414,7 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
@@ -496,7 +496,7 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";

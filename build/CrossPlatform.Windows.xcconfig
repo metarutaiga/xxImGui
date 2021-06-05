@@ -16,11 +16,11 @@ LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = lld-link-wrapper
 
 HEADER_SEARCH_PATHS = $(inherited) /usr/local/opt/llvm/include/c++/v1
-HEADER_SEARCH_PATHS = $(inherited) ../msvc/include ../msvc/shared ../msvc/um ../msvc/ucrt
-LIBRARY_SEARCH_PATH[arch=armv7] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm,-libpath:$PROJECT_DIR/../msvc/lib/arm/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/arm/um
-LIBRARY_SEARCH_PATH[arch=arm64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/arm64,-libpath:$PROJECT_DIR/../msvc/lib/arm64/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/arm64/um
-LIBRARY_SEARCH_PATH[arch=i686] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x86,-libpath:$PROJECT_DIR/../msvc/lib/x86/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/x86/um
-LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../msvc/lib/x64,-libpath:$PROJECT_DIR/../msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../msvc/lib/x64/um
+HEADER_SEARCH_PATHS = $(inherited) ../3rdParty/msvc/include ../3rdParty/msvc/shared ../3rdParty/msvc/um ../3rdParty/msvc/ucrt
+LIBRARY_SEARCH_PATH[arch=armv7] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/arm,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/arm/ucrt,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/arm/um
+LIBRARY_SEARCH_PATH[arch=arm64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/arm64,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/arm64/ucrt,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/arm64/um
+LIBRARY_SEARCH_PATH[arch=i686] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/x86,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/x86/ucrt,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/x86/um
+LIBRARY_SEARCH_PATH[arch=x86_64] = $(inherited) -Wl,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/x64,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/x64/ucrt,-libpath:$PROJECT_DIR/../3rdParty/msvc/lib/x64/um
 LINK_DEBUG_PATH[config=Debug] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb
 LINK_DEBUG_PATH[config=Release] = -Wl,-debug,-pdb:$(TARGET_BUILD_DIR)/$(PROJECT_NAME).pdb,-opt:ref,-opt:icf
 LINK_LIBRARY_NAME = -Wl,chkstk.obj,ucrtbase.lib,oldnames.lib,kernel32.lib,user32.lib,winmm.lib,imm32.lib,gdi32.lib,dwmapi.lib

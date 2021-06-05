@@ -53,7 +53,6 @@
 		CE935F9425AC35DB00CEF503 /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		CE935F9525AC35DB00CEF503 /* xxGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */; };
 		CE935F9625AC35DB00CEF503 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
-		CE999CF725D2611C00351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999CF625D2611C00351116 /* llvm_wrapper.cpp */; };
 		CE9D56BA24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */; };
 		CE9D56BB24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */; };
 		D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
@@ -67,6 +66,7 @@
 		D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
+		D698A4D8266BAC6E00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D7266BAC6E00C74361 /* llvm_wrapper.cpp */; };
 		D6A727F3232318E4009981AD /* xxGraphicMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A727F1232318E4009981AD /* xxGraphicMetal.mm */; };
 		D6A727F7232414A7009981AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A727F6232414A7009981AD /* QuartzCore.framework */; };
 		D6A86A5A25EA32CC00074B9C /* xxGraphicInternalMantle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A5825EA32CC00074B9C /* xxGraphicInternalMantle.cpp */; };
@@ -145,7 +145,6 @@
 		CE935F7425AC35B000CEF503 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BCB25D21DB700351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999BCC25D21DB700351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		CE999CF625D2611C00351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicMetal2.mm; path = ../xxGraphic/xxGraphicMetal2.mm; sourceTree = "<group>"; };
 		CE9D56B924D165130037EBE6 /* xxGraphicMetal2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicMetal2.h; path = ../xxGraphic/xxGraphicMetal2.h; sourceTree = "<group>"; };
 		CEACD48E2612AC4F00D1AFC0 /* xxVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxVector.h; path = ../xxGraphic/xxVector.h; sourceTree = "<group>"; };
@@ -199,6 +198,7 @@
 		D690A37523300D3800A149EF /* spirv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spirv.h; path = ../xxGraphic/vulkan/spirv.h; sourceTree = "<group>"; };
 		D690A37623300D3800A149EF /* GLSL.std.450.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLSL.std.450.h; path = ../xxGraphic/vulkan/GLSL.std.450.h; sourceTree = "<group>"; };
 		D690A37F2332DAB700A149EF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../xxGraphic/LICENSE.txt; sourceTree = "<group>"; };
+		D698A4D7266BAC6E00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		D6A72796232310F2009981AD /* xxGraphicD3DAsm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3DAsm.h; path = ../xxGraphic/xxGraphicD3DAsm.h; sourceTree = "<group>"; };
 		D6A72797232310F2009981AD /* xxGraphicD3D11On12.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D11On12.cpp; path = ../xxGraphic/xxGraphicD3D11On12.cpp; sourceTree = "<group>"; };
 		D6A72798232310F3009981AD /* xxGraphicD3D8PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D8PS.h; path = ../xxGraphic/xxGraphicD3D8PS.h; sourceTree = "<group>"; };
@@ -333,7 +333,7 @@
 		CE999BCA25D21DAA00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999CF625D2611C00351116 /* llvm_wrapper.cpp */,
+				D698A4D7266BAC6E00C74361 /* llvm_wrapper.cpp */,
 				CE999BCC25D21DB700351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BCB25D21DB700351116 /* CrossPlatform.Windows.xcconfig */,
 			);
@@ -795,10 +795,10 @@
 				CE935F8925AC35DB00CEF503 /* xxGraphicMantle.cpp in Sources */,
 				CE935F8A25AC35DB00CEF503 /* xxGraphicMantleAsm.cpp in Sources */,
 				CE935F8B25AC35DB00CEF503 /* xxGraphicNULL.cpp in Sources */,
+				D698A4D8266BAC6E00C74361 /* llvm_wrapper.cpp in Sources */,
 				CE935F9325AC35DB00CEF503 /* xxGraphicVulkan.cpp in Sources */,
 				CE935F9425AC35DB00CEF503 /* xxGraphicVulkanAsm.cpp in Sources */,
 				CE935F9625AC35DB00CEF503 /* xxSystem.cpp in Sources */,
-				CE999CF725D2611C00351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

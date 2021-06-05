@@ -16,26 +16,26 @@ LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = /usr/local/opt/llvm/bin/lld-wrapper
 
 OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections -fPIC -fsigned-char -fno-threadsafe-statics -Wno-modules-import-nested-redundant -Wno-modules-ambiguous-internal-linkage
-OTHER_CFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../ndk -march=armv7-a -mthumb -mfpu=neon
-OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../ndk
-OTHER_CFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../ndk
-OTHER_CFLAGS[arch=mips64] = $(inherited) -target mips64el-linux-android --sysroot=$PROJECT_DIR/../ndk
-OTHER_CFLAGS[arch=riscv32] = $(inherited) -target riscv32-linux-android --sysroot=$PROJECT_DIR/../ndk -menable-experimental-extensions -march=rv32gcv0p10 -I$PROJECT_DIR/../ndk/usr/include -I$PROJECT_DIR/../ndk/usr/include/riscv32-linux-android
-OTHER_CFLAGS[arch=riscv64] = $(inherited) -target riscv64-linux-android --sysroot=$PROJECT_DIR/../ndk -menable-experimental-extensions -march=rv64gcv0p10 -I$PROJECT_DIR/../ndk/usr/include -I$PROJECT_DIR/../ndk/usr/include/riscv64-linux-android
-OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-linux-android --sysroot=$PROJECT_DIR/../ndk
-OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-linux-android --sysroot=$PROJECT_DIR/../ndk
+OTHER_CFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../3rdParty/ndk -march=armv7-a -mthumb -mfpu=neon
+OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
+OTHER_CFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
+OTHER_CFLAGS[arch=mips64] = $(inherited) -target mips64el-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
+OTHER_CFLAGS[arch=riscv32] = $(inherited) -target riscv32-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk -menable-experimental-extensions -march=rv32gcv0p10 -I$PROJECT_DIR/../3rdParty/ndk/usr/include -I$PROJECT_DIR/../3rdParty/ndk/usr/include/riscv32-linux-android
+OTHER_CFLAGS[arch=riscv64] = $(inherited) -target riscv64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk -menable-experimental-extensions -march=rv64gcv0p10 -I$PROJECT_DIR/../3rdParty/ndk/usr/include -I$PROJECT_DIR/../3rdParty/ndk/usr/include/riscv64-linux-android
+OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
+OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
 OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS -I/usr/local/opt/llvm/include/c++/v1
 
 OTHER_LDFLAGS = $(inherited) -shared -fPIC -landroid -llog
 OTHER_LDFLAGS[config=Release] = $(inherited) -Wl,--gc-sections -Wl,--strip-all
-OTHER_LDFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../ndk/arch-arm
-OTHER_LDFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-arm64
-OTHER_LDFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-mips -Wl,-z,notext
-OTHER_LDFLAGS[arch=mips64] = $(inherited) -target mips64el-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-mips64
-OTHER_LDFLAGS[arch=riscv32] = $(inherited) -target riscv32-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-riscv32 
-OTHER_LDFLAGS[arch=riscv64] = $(inherited) -target riscv64-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-riscv64
-OTHER_LDFLAGS[arch=i686] = $(inherited) -target i686-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-x86
-OTHER_LDFLAGS[arch=x86_64] = $(inherited) -target x86_64-linux-android --sysroot=$PROJECT_DIR/../ndk/arch-x86_64
+OTHER_LDFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-arm
+OTHER_LDFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-arm64
+OTHER_LDFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-mips -Wl,-z,notext
+OTHER_LDFLAGS[arch=mips64] = $(inherited) -target mips64el-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-mips64
+OTHER_LDFLAGS[arch=riscv32] = $(inherited) -target riscv32-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-riscv32 
+OTHER_LDFLAGS[arch=riscv64] = $(inherited) -target riscv64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-riscv64
+OTHER_LDFLAGS[arch=i686] = $(inherited) -target i686-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-x86
+OTHER_LDFLAGS[arch=x86_64] = $(inherited) -target x86_64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk/arch-x86_64
 
 ARCHS = armv7 arm64 mips mips64 riscv32 riscv64 i686 x86_64
 VALID_ARCHS = armv7 arm64 mips mips64 riscv32 riscv64 i686 x86_64

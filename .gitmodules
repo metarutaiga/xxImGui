@@ -2,17 +2,17 @@
 	path = xxGraphic
 	url = https://github.com/metarutaiga/xxGraphic
 [submodule "freetype"]
-	path = freetype
+	path = 3rdParty/freetype
 	url = https://gitlab.freedesktop.org/freetype/freetype
 [submodule "imgui"]
-	path = imgui
+	path = 3rdParty/imgui
 	url = https://github.com/ocornut/imgui
 [submodule "stb"]
-	path = stb
+	path = 3rdParty/stb
 	url = https://github.com/metarutaiga/stb
 [submodule "msvc"]
-	path = msvc
+	path = 3rdParty/msvc
 	url = https://github.com/metarutaiga/msvc
 [submodule "ndk"]
-	path = ndk
+	path = 3rdParty/ndk
 	url = https://github.com/metarutaiga/ndk

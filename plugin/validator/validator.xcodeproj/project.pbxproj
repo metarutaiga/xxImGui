@@ -20,12 +20,12 @@
 		30F22EF224DDA30D00C0F4EC /* libxxGraphicPlus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF124DDA30D00C0F4EC /* libxxGraphicPlus.dylib */; };
 		30F22EF424DDA31400C0F4EC /* libxxGraphicPlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F22EF324DDA31400C0F4EC /* libxxGraphicPlus.bundle */; };
 		CE93604725AC476F00CEF503 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30EDB9E02427CD3A00D599B5 /* validator.cpp */; };
-		CE999D1925D261A500351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1825D261A500351116 /* llvm_wrapper.cpp */; };
 		CE999D3525D2652500351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D3425D2652500351116 /* imgui.dll */; };
 		CE999D3725D2652500351116 /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D3625D2652500351116 /* xxGraphic.dll */; };
 		CE999D3925D2652500351116 /* xxGraphicPlus.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D3825D2652500351116 /* xxGraphicPlus.dll */; };
 		CE999D9B25D275C200351116 /* validator.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93603325AC470300CEF503 /* validator.dll */; };
 		CEB0E87C2608198500D13FE3 /* libvalidator.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libvalidator.dylib */; };
+		D698A4DE266BAC9700C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4DD266BAC9700C74361 /* llvm_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,7 +66,6 @@
 		CE93603325AC470300CEF503 /* validator.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = validator.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BD425D21EC000351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999BD525D21EC000351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		CE999D1825D261A500351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D3425D2652500351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D3625D2652500351116 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D3825D2652500351116 /* xxGraphicPlus.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphicPlus.dll; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +85,7 @@
 		CEC067FD25CBEEB2003A5768 /* libxxGraphicPlus.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphicPlus.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libvalidator.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A041231ED82900B75B77 /* libvalidator.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvalidator.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		D698A4DD266BAC9700C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +168,7 @@
 		CE999BD325D21EB300351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999D1825D261A500351116 /* llvm_wrapper.cpp */,
+				D698A4DD266BAC9700C74361 /* llvm_wrapper.cpp */,
 				CE999BD525D21EC000351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BD425D21EC000351116 /* CrossPlatform.Windows.xcconfig */,
 			);
@@ -321,8 +321,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D698A4DE266BAC9700C74361 /* llvm_wrapper.cpp in Sources */,
 				CE93604725AC476F00CEF503 /* validator.cpp in Sources */,
-				CE999D1925D261A500351116 /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +464,7 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
 					../../xxGraphic,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -547,7 +547,7 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
 					../../xxGraphic,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
