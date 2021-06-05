@@ -1,4 +1,4 @@
-﻿/DIMGUI_USER_CONFIG=\"../../xxImGui/implement/imgui_user_config.h\"
+﻿/DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
 /I..\..\..
 /I..\..\..\3rdParty
 /I..\..\..\3rdParty\imgui

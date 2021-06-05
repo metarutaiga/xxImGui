@@ -1,6 +1,7 @@
 ﻿/DIMGUI_API=__declspec(dllexport)
-/DIMGUI_USER_CONFIG=\"../../xxImGui/implement/imgui_user_config.h\"
+/DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
 /DNDEBUG
+/I..\..\..\3rdParty
 /I..\..\..\3rdParty\stb
 ..\..\..\3rdParty\imgui\imgui.cpp
 ..\..\..\3rdParty\imgui\imgui_demo.cpp
