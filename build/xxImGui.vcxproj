@@ -238,9 +238,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -254,9 +254,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -270,9 +270,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -286,9 +286,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -302,9 +302,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -318,9 +318,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
@@ -334,10 +334,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
@@ -357,10 +357,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
@@ -380,10 +380,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
@@ -403,10 +403,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
@@ -426,10 +426,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
@@ -449,10 +449,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../imgui;../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..;../3rdParty;../3rdParty/imgui;../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
@@ -469,8 +469,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\imgui\backends\imgui_impl_win32.cpp" />
-    <ClCompile Include="..\imgui\misc\freetype\imgui_freetype.cpp" />
+    <ClCompile Include="..\3rdParty\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\3rdParty\imgui\misc\freetype\imgui_freetype.cpp" />
     <ClCompile Include="..\xxImGui\implement\imgui_impl_xx.cpp" />
     <ClCompile Include="..\xxImGui\DearImGui.cpp" />
     <ClCompile Include="..\xxImGui\main.cpp" />
@@ -503,8 +503,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\imgui\backends\imgui_impl_win32.h" />
-    <ClInclude Include="..\imgui\misc\freetype\imgui_freetype.h" />
+    <ClInclude Include="..\3rdParty\imgui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="..\3rdParty\imgui\misc\freetype\imgui_freetype.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_impl_osx.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_impl_xx.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_user_config.h" />

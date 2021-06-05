@@ -257,11 +257,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -274,11 +274,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -291,11 +291,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -308,11 +308,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -325,11 +325,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -342,11 +342,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -359,16 +359,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -383,16 +383,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -407,16 +407,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -431,16 +431,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -455,16 +455,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -479,16 +479,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../imgui;../stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/imgui;../3rdParty/stb;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>

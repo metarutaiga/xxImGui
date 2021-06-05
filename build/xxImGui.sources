@@ -1,9 +1,10 @@
-﻿/DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
+﻿/DIMGUI_USER_CONFIG=\"../../xxImGui/implement/imgui_user_config.h\"
 /I..\..\..
-/I..\..\..\freetype\include
-/I..\..\..\imgui
-..\..\..\imgui\backends\imgui_impl_win32.cpp
-..\..\..\imgui\misc\freetype\imgui_freetype.cpp
+/I..\..\..\3rdParty
+/I..\..\..\3rdParty\imgui
+/I..\..\..\3rdParty\freetype\include
+..\..\..\3rdParty\imgui\backends\imgui_impl_win32.cpp
+..\..\..\3rdParty\imgui\misc\freetype\imgui_freetype.cpp
 ..\..\..\xxImGui\implement\imgui_impl_xx.cpp
 ..\..\..\xxImGui\DearImGui.cpp
 ..\..\..\xxImGui\Renderer.cpp

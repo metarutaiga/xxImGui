@@ -241,8 +241,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -255,8 +255,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -269,8 +269,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -283,8 +283,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -297,8 +297,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -311,8 +311,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -325,8 +325,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>false</ExceptionHandling>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -346,8 +346,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>false</ExceptionHandling>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -367,8 +367,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>false</ExceptionHandling>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -388,8 +388,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>false</ExceptionHandling>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -409,8 +409,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>false</ExceptionHandling>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -430,8 +430,8 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>..;../..;../../imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..;../..;../../3rdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PLUGIN_BUILD_LIBRARY;IMGUI_USER_CONFIG="../../xxImGui/implement/imgui_user_config.h";NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>false</ExceptionHandling>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>

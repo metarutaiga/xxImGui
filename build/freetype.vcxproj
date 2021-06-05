@@ -285,10 +285,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -303,10 +303,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -321,10 +321,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -339,10 +339,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -357,10 +357,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -375,10 +375,10 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <StringPooling>true</StringPooling>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -393,7 +393,7 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
@@ -401,7 +401,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -418,7 +418,7 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
@@ -426,7 +426,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -443,7 +443,7 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
@@ -451,7 +451,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -468,7 +468,7 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
@@ -476,7 +476,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -493,7 +493,7 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
@@ -501,7 +501,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -518,7 +518,7 @@
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>../freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <StringPooling>true</StringPooling>
@@ -526,7 +526,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <ForcedIncludeFiles>..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>..\..\..\xxGraphic\xxSystem.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>

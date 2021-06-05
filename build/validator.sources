@@ -2,6 +2,5 @@
 /DIMGUI_USER_CONFIG=\"../../xxImGui/implement/imgui_user_config.h\"
 /I..\..\..
 /I..\..\..\plugin
-/I..\..\..\xxGraphic
-/I..\..\..\3rdParty\imgui
+/I..\..\..\3rdParty
 ..\..\..\plugin\validator\validator.cpp
