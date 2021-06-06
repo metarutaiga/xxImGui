@@ -170,7 +170,11 @@ void DearImGui::NewFrame(void* view)
     ImGui_ImplOSX_NewFrame((__bridge NSView*)view);
 #elif defined(xxIOS)
     CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("contentScaleFactor"));
+#if TARGET_CPU_X86_64
+    CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend_stret)((__bridge id)view, sel_registerName("bounds"));
+#else
     CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("bounds"));
+#endif
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
     ImGui::GetIO().DisplayFramebufferScale = ImVec2(contentScaleFactor, contentScaleFactor);
 #elif defined(xxWINDOWS)
