@@ -16,7 +16,10 @@ LIBTOOL = /usr/local/opt/llvm/bin/llvm-ar-wrapper
 LIBTOOL_DEPENDENCY_INFO_FILE =
 ALTERNATE_LINKER = /usr/local/opt/llvm/bin/lld-wrapper
 
-OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections -fPIC -fsigned-char -fno-threadsafe-statics -Wno-modules-import-nested-redundant -Wno-modules-ambiguous-internal-linkage
+HEADER_SEARCH_PATHS = $(inherited) /usr/local/opt/llvm/include/c++/v1
+
+OTHER_CFLAGS = $(inherited) -fdata-sections -ffunction-sections -fno-threadsafe-statics
+OTHER_CFLAGS = $(inherited) -fPIC -fsigned-char 
 OTHER_CFLAGS[arch=armv7] = $(inherited) -target arm-linux-androideabi --sysroot=$PROJECT_DIR/../3rdParty/ndk -march=armv7-a -mthumb -mfpu=neon
 OTHER_CFLAGS[arch=arm64] = $(inherited) -target aarch64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
 OTHER_CFLAGS[arch=mips] = $(inherited) -target mipsel-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
@@ -25,7 +28,7 @@ OTHER_CFLAGS[arch=riscv32] = $(inherited) -target riscv32-linux-android --sysroo
 OTHER_CFLAGS[arch=riscv64] = $(inherited) -target riscv64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk -menable-experimental-extensions -march=rv64gcv0p10 -I$PROJECT_DIR/../3rdParty/ndk/usr/include -I$PROJECT_DIR/../3rdParty/ndk/usr/include/riscv64-linux-android
 OTHER_CFLAGS[arch=i686] = $(inherited) -target i686-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
 OTHER_CFLAGS[arch=x86_64] = $(inherited) -target x86_64-linux-android --sysroot=$PROJECT_DIR/../3rdParty/ndk
-OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS -I/usr/local/opt/llvm/include/c++/v1
+OTHER_CPLUSPLUSFLAGS = $(inherited) -D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS
 
 OTHER_LDFLAGS = $(inherited) -shared -fPIC -landroid -llog
 OTHER_LDFLAGS[config=Release] = $(inherited) -Wl,--gc-sections -Wl,--strip-all
