@@ -109,12 +109,14 @@ void DearImGui::Create(void* view, float scale, float font)
 #if defined(xxMACOS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.FontBuilderFlags    = io.FontGlobalScale >= 2.0f ? 0 : ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8 : 0;
     io.Fonts->AddFontFromFileTTF("/System/Library/Fonts/PingFang.ttc", 16.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
 #elif defined(xxWINDOWS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.FontBuilderFlags    = io.FontGlobalScale >= 2.0f ? 0 : ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8 : 0;
     if (io.FontGlobalScale == 1.0f)
     {
         if (GetFileAttributesA("C:\\Windows\\Fonts\\msgothic.ttc") != INVALID_FILE_ATTRIBUTES)
