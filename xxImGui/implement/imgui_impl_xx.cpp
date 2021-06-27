@@ -197,6 +197,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 // (ImDrawCallback_ResetRenderState is a special callback value used by the user to request the renderer to reset render state.)
                 if (pcmd->UserCallback == ImDrawCallback_ResetRenderState)
                 {
+                    xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
                     ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
                     boundTextureID = 0;
                 }
