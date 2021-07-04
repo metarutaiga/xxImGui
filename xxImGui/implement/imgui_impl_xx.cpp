@@ -329,7 +329,7 @@ bool ImGui_ImplXX_CreateDeviceObjects()
     g_vertexAttribute = xxCreateVertexAttribute(g_device, 3, attributes);
     g_vertexShader = xxCreateVertexShader(g_device, "default", g_vertexAttribute);
     g_fragmentShader = xxCreateFragmentShader(g_device, "default");
-    g_blendState = xxCreateBlendState(g_device, BLEND_FACTOR_SRC_ALPHA, BLEND_FACTOR_ONE_MINUS_SRC_ALPHA);
+    g_blendState = xxCreateBlendState(g_device, "SrcAlpha", "+", "1-SrcAlpha", "1", "+", "0");
     g_depthStencilState = xxCreateDepthStencilState(g_device, false, false);
     g_rasterizerState = xxCreateRasterizerState(g_device, false, true);
     g_pipeline = xxCreatePipeline(g_device, g_renderPass, g_blendState, g_depthStencilState, g_rasterizerState, g_vertexAttribute, g_vertexShader, g_fragmentShader);
