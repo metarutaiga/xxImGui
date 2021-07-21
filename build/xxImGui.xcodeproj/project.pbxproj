@@ -67,6 +67,7 @@
 		CEC4337C25AD24A400936983 /* Plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C0242687B7004559E0 /* Plugin.cpp */; };
 		CEC4337D25AD24A400936983 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
 		D6022C6A23258E9500B9BFB8 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
+		D60EC64326A85C0A0051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC64226A85C0A0051A948 /* llvm_wrapper.cpp */; };
 		D644A0E9231F109D00B75B77 /* imgui_impl_osx.mm in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */; };
 		D644A0EA231F109D00B75B77 /* imgui_impl_xx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */; };
 		D690A3882333FE7B00A149EF /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A3862333FE7B00A149EF /* Renderer.cpp */; };
@@ -79,7 +80,6 @@
 		D698A4CE266BABB200C74361 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4CB266BABB200C74361 /* imgui_freetype.cpp */; };
 		D698A4CF266BABB200C74361 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4CB266BABB200C74361 /* imgui_freetype.cpp */; };
 		D698A4D0266BABB200C74361 /* imgui_freetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4CB266BABB200C74361 /* imgui_freetype.cpp */; };
-		D698A4D2266BAC2800C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D1266BAC2800C74361 /* llvm_wrapper.cpp */; };
 		D698A4E1266BACBD00C74361 /* imgui_impl_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4E0266BACBD00C74361 /* imgui_impl_win32.cpp */; };
 /* End PBXBuildFile section */
 
@@ -140,8 +140,6 @@
 		30F22EF924DDA63B00C0F4EC /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EFC24DDA66800C0F4EC /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EFF24DDA69E00C0F4EC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		CE999BD125D21E5800351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		CE999BD225D21E5800351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999D2825D261FF00351116 /* freetype.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = freetype.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D2A25D261FF00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D2C25D261FF00351116 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +177,9 @@
 		CEC4337325AD244E00936983 /* xxImGui.exe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.exe; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		D60EC64226A85C0A0051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
 		D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = imgui_impl_osx.mm; path = ../xxImGui/implement/imgui_impl_osx.mm; sourceTree = "<group>"; };
@@ -194,7 +195,6 @@
 		D690A3932334291E00A149EF /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = ../xxImGui/main.mm; sourceTree = "<group>"; };
 		D698A4CB266BABB200C74361 /* imgui_freetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_freetype.cpp; path = ../3rdParty/imgui/misc/freetype/imgui_freetype.cpp; sourceTree = "<group>"; };
 		D698A4CC266BABB200C74361 /* imgui_freetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_freetype.h; path = ../3rdParty/imgui/misc/freetype/imgui_freetype.h; sourceTree = "<group>"; };
-		D698A4D1266BAC2800C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		D698A4DF266BACBD00C74361 /* imgui_impl_win32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_win32.h; path = ../3rdParty/imgui/backends/imgui_impl_win32.h; sourceTree = "<group>"; };
 		D698A4E0266BACBD00C74361 /* imgui_impl_win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_impl_win32.cpp; path = ../3rdParty/imgui/backends/imgui_impl_win32.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,9 +276,9 @@
 		CE999BD025D21E4B00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				D698A4D1266BAC2800C74361 /* llvm_wrapper.cpp */,
-				CE999BD125D21E5800351116 /* CrossPlatform.Android.xcconfig */,
-				CE999BD225D21E5800351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */,
+				D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */,
+				D60EC64226A85C0A0051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -573,7 +573,7 @@
 				D698A4CF266BABB200C74361 /* imgui_freetype.cpp in Sources */,
 				CEC4337A25AD24A400936983 /* DearImGui.cpp in Sources */,
 				D698A4E1266BACBD00C74361 /* imgui_impl_win32.cpp in Sources */,
-				D698A4D2266BAC2800C74361 /* llvm_wrapper.cpp in Sources */,
+				D60EC64326A85C0A0051A948 /* llvm_wrapper.cpp in Sources */,
 				CEC4337B25AD24A400936983 /* main.cpp in Sources */,
 				CEC4337C25AD24A400936983 /* Plugin.cpp in Sources */,
 				CEC4337D25AD24A400936983 /* Renderer.cpp in Sources */,
@@ -612,21 +612,21 @@
 /* Begin XCBuildConfiguration section */
 		CEAF9CB325AE752C008B7C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BD125D21E5800351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		CEAF9CB425AE752C008B7C57 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BD125D21E5800351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		CEC4337425AD244E00936983 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BD225D21E5800351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = exe;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -641,7 +641,7 @@
 		};
 		CEC4337525AD244E00936983 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BD225D21E5800351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				EXECUTABLE_EXTENSION = exe;
 				GCC_PREPROCESSOR_DEFINITIONS = (

@@ -55,6 +55,7 @@
 		CE935F9625AC35DB00CEF503 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
 		CE9D56BA24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */; };
 		CE9D56BB24D165130037EBE6 /* xxGraphicMetal2.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */; };
+		D60EC63B26A85BCE0051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC63A26A85BCE0051A948 /* llvm_wrapper.cpp */; };
 		D644A0AC231EDE9B00B75B77 /* xxSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */; };
 		D644A0AD231EDE9B00B75B77 /* xxGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A3231EDE9A00B75B77 /* xxGraphic.cpp */; };
 		D644A0AF231EDE9B00B75B77 /* xxGraphicGLES2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A0A5231EDE9B00B75B77 /* xxGraphicGLES2.cpp */; };
@@ -66,7 +67,6 @@
 		D690A36D232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		D690A36E232C346500A149EF /* xxGraphicVulkanAsm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A36B232C346500A149EF /* xxGraphicVulkanAsm.cpp */; };
 		D690A370232D90DC00A149EF /* xxGraphicVulkan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690A366232AC54600A149EF /* xxGraphicVulkan.cpp */; settings = {COMPILER_FLAGS = "-x objective-c++ -fobjc-arc -fobjc-weak -fmodules"; }; };
-		D698A4D8266BAC6E00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D7266BAC6E00C74361 /* llvm_wrapper.cpp */; };
 		D6A727F3232318E4009981AD /* xxGraphicMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6A727F1232318E4009981AD /* xxGraphicMetal.mm */; };
 		D6A727F7232414A7009981AD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A727F6232414A7009981AD /* QuartzCore.framework */; };
 		D6A86A5A25EA32CC00074B9C /* xxGraphicInternalMantle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6A86A5825EA32CC00074B9C /* xxGraphicInternalMantle.cpp */; };
@@ -143,12 +143,13 @@
 		CE05B0B425DFB88A007B76D7 /* vulkan_directfb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vulkan_directfb.h; path = ../xxGraphic/vulkan/vulkan_directfb.h; sourceTree = "<group>"; };
 		CE05B0B525DFB88A007B76D7 /* vulkan_beta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vulkan_beta.h; path = ../xxGraphic/vulkan/vulkan_beta.h; sourceTree = "<group>"; };
 		CE935F7425AC35B000CEF503 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE999BCB25D21DB700351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999BCC25D21DB700351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE9D56B824D165130037EBE6 /* xxGraphicMetal2.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = xxGraphicMetal2.mm; path = ../xxGraphic/xxGraphicMetal2.mm; sourceTree = "<group>"; };
 		CE9D56B924D165130037EBE6 /* xxGraphicMetal2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicMetal2.h; path = ../xxGraphic/xxGraphicMetal2.h; sourceTree = "<group>"; };
 		CEACD48E2612AC4F00D1AFC0 /* xxVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxVector.h; path = ../xxGraphic/xxVector.h; sourceTree = "<group>"; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC63826A85BC30051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		D60EC63926A85BC30051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		D60EC63A26A85BCE0051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A092231EDDFA00B75B77 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0A0231EDE9A00B75B77 /* xxGraphicNULL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicNULL.h; path = ../xxGraphic/xxGraphicNULL.h; sourceTree = "<group>"; };
 		D644A0A2231EDE9A00B75B77 /* xxSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxSystem.cpp; path = ../xxGraphic/xxSystem.cpp; sourceTree = "<group>"; };
@@ -198,7 +199,6 @@
 		D690A37523300D3800A149EF /* spirv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = spirv.h; path = ../xxGraphic/vulkan/spirv.h; sourceTree = "<group>"; };
 		D690A37623300D3800A149EF /* GLSL.std.450.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLSL.std.450.h; path = ../xxGraphic/vulkan/GLSL.std.450.h; sourceTree = "<group>"; };
 		D690A37F2332DAB700A149EF /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../xxGraphic/LICENSE.txt; sourceTree = "<group>"; };
-		D698A4D7266BAC6E00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		D6A72796232310F2009981AD /* xxGraphicD3DAsm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3DAsm.h; path = ../xxGraphic/xxGraphicD3DAsm.h; sourceTree = "<group>"; };
 		D6A72797232310F2009981AD /* xxGraphicD3D11On12.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = xxGraphicD3D11On12.cpp; path = ../xxGraphic/xxGraphicD3D11On12.cpp; sourceTree = "<group>"; };
 		D6A72798232310F3009981AD /* xxGraphicD3D8PS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxGraphicD3D8PS.h; path = ../xxGraphic/xxGraphicD3D8PS.h; sourceTree = "<group>"; };
@@ -333,9 +333,9 @@
 		CE999BCA25D21DAA00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				D698A4D7266BAC6E00C74361 /* llvm_wrapper.cpp */,
-				CE999BCC25D21DB700351116 /* CrossPlatform.Android.xcconfig */,
-				CE999BCB25D21DB700351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63926A85BC30051A948 /* CrossPlatform.Android.xcconfig */,
+				D60EC63826A85BC30051A948 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63A26A85BCE0051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -795,7 +795,7 @@
 				CE935F8925AC35DB00CEF503 /* xxGraphicMantle.cpp in Sources */,
 				CE935F8A25AC35DB00CEF503 /* xxGraphicMantleAsm.cpp in Sources */,
 				CE935F8B25AC35DB00CEF503 /* xxGraphicNULL.cpp in Sources */,
-				D698A4D8266BAC6E00C74361 /* llvm_wrapper.cpp in Sources */,
+				D60EC63B26A85BCE0051A948 /* llvm_wrapper.cpp in Sources */,
 				CE935F9325AC35DB00CEF503 /* xxGraphicVulkan.cpp in Sources */,
 				CE935F9425AC35DB00CEF503 /* xxGraphicVulkanAsm.cpp in Sources */,
 				CE935F9625AC35DB00CEF503 /* xxSystem.cpp in Sources */,
@@ -853,21 +853,21 @@
 /* Begin XCBuildConfiguration section */
 		30A9A75F25ADC60D000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCC25D21DB700351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63926A85BC30051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		30A9A76025ADC60D000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCC25D21DB700351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63926A85BC30051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		CE935F7525AC35B000CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCB25D21DB700351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63826A85BC30051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -880,7 +880,7 @@
 		};
 		CE935F7625AC35B000CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCB25D21DB700351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63826A85BC30051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

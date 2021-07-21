@@ -124,6 +124,7 @@
 		D6022C9523258EFB00B9BFB8 /* type1cid.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A036231ED5CB00B75B77 /* type1cid.c */; };
 		D6022C9623258EFB00B9BFB8 /* type42.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A032231ED13200B75B77 /* type42.c */; };
 		D6022C9723258EFB00B9BFB8 /* winfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A034231ED27D00B75B77 /* winfnt.c */; };
+		D60EC63126A85B7F0051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC63026A85B7F0051A948 /* llvm_wrapper.cpp */; };
 		D6449FFB231EC9B900B75B77 /* ftpatent.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEA231EC9B800B75B77 /* ftpatent.c */; };
 		D6449FFC231EC9B900B75B77 /* ftsystem.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEB231EC9B800B75B77 /* ftsystem.c */; };
 		D6449FFD231EC9B900B75B77 /* fttype1.c in Sources */ = {isa = PBXBuildFile; fileRef = D6449FEC231EC9B800B75B77 /* fttype1.c */; };
@@ -163,7 +164,6 @@
 		D644A033231ED13200B75B77 /* type42.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A032231ED13200B75B77 /* type42.c */; };
 		D644A035231ED27D00B75B77 /* winfnt.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A034231ED27D00B75B77 /* winfnt.c */; };
 		D644A037231ED5CB00B75B77 /* type1cid.c in Sources */ = {isa = PBXBuildFile; fileRef = D644A036231ED5CB00B75B77 /* type1cid.c */; };
-		D698A4D4266BAC4B00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D3266BAC4B00C74361 /* llvm_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -181,11 +181,12 @@
 /* Begin PBXFileReference section */
 		30A9A70B25ADC4B1000FA104 /* libfreetype.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libfreetype.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935EC125AC264700CEF503 /* freetype.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = freetype.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999CA425D24AA400351116 /* chkstk.obj */ = {isa = PBXFileReference; lastKnownFileType = file; name = chkstk.obj; path = ../msvc/lib/chkstk.obj; sourceTree = "<group>"; };
 		CE999CAE25D2594D00351116 /* kernel32.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = kernel32.lib; path = ../msvc/lib/um/kernel32.lib; sourceTree = "<group>"; };
 		D6022C28232588CC00B9BFB8 /* libfreetype.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC63026A85B7F0051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
+		D60EC63226A85B920051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		D60EC63326A85B920051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		D6449FDA231EC3D800B75B77 /* libfreetype.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfreetype.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6449FEA231EC9B800B75B77 /* ftpatent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftpatent.c; path = ../3rdParty/freetype/src/base/ftpatent.c; sourceTree = "<group>"; };
 		D6449FEB231EC9B800B75B77 /* ftsystem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftsystem.c; path = ../3rdParty/freetype/src/base/ftsystem.c; sourceTree = "<group>"; };
@@ -226,7 +227,6 @@
 		D644A032231ED13200B75B77 /* type42.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type42.c; path = ../3rdParty/freetype/src/type42/type42.c; sourceTree = "<group>"; };
 		D644A034231ED27D00B75B77 /* winfnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = winfnt.c; path = ../3rdParty/freetype/src/winfonts/winfnt.c; sourceTree = "<group>"; };
 		D644A036231ED5CB00B75B77 /* type1cid.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = type1cid.c; path = ../3rdParty/freetype/src/cid/type1cid.c; sourceTree = "<group>"; };
-		D698A4D3266BAC4B00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,9 +264,9 @@
 		CE999BC825D21D9100351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				D698A4D3266BAC4B00C74361 /* llvm_wrapper.cpp */,
-				CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */,
-				CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63326A85B920051A948 /* CrossPlatform.Android.xcconfig */,
+				D60EC63226A85B920051A948 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63026A85B7F0051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -513,7 +513,7 @@
 				CE935ECC25AC268E00CEF503 /* ftbdf.c in Sources */,
 				CE935ECD25AC268E00CEF503 /* ftbitmap.c in Sources */,
 				CE935ECE25AC268E00CEF503 /* ftcid.c in Sources */,
-				D698A4D4266BAC4B00C74361 /* llvm_wrapper.cpp in Sources */,
+				D60EC63126A85B7F0051A948 /* llvm_wrapper.cpp in Sources */,
 				CE935ECF25AC268E00CEF503 /* ftfstype.c in Sources */,
 				CE935ED025AC268E00CEF503 /* ftgasp.c in Sources */,
 				CE935ED125AC268E00CEF503 /* ftglyph.c in Sources */,
@@ -649,21 +649,21 @@
 /* Begin XCBuildConfiguration section */
 		30A9A70C25ADC4B1000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63326A85B920051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		30A9A70D25ADC4B1000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BB925D21A9700351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63326A85B920051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		CE935EC225AC264700CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63226A85B920051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLL_EXPORT,
@@ -683,7 +683,7 @@
 		};
 		CE935EC325AC264700CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BB425D2182800351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63226A85B920051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLL_EXPORT,

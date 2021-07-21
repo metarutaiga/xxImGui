@@ -10,9 +10,6 @@
 [submodule "stb"]
 	path = 3rdParty/stb
 	url = https://github.com/metarutaiga/stb
-[submodule "msvc"]
-	path = 3rdParty/msvc
-	url = https://github.com/metarutaiga/msvc
-[submodule "ndk"]
-	path = 3rdParty/ndk
-	url = https://github.com/metarutaiga/ndk
+[submodule "3rdParty/ClangPlatform"]
+	path = 3rdParty/ClangPlatform
+	url = https://github.com/metarutaiga/ClangPlatform

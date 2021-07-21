@@ -31,7 +31,7 @@
 		CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22EDF24DDA2EA00C0F4EC /* xxMesh.cpp */; };
 		CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F22ED924DDA2EA00C0F4EC /* xxNode.cpp */; };
 		CE999D2725D261DF00351116 /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D2625D261DF00351116 /* xxGraphic.dll */; };
-		D698A4DA266BAC7C00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D9266BAC7C00C74361 /* llvm_wrapper.cpp */; };
+		D60EC63F26A85BE90051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC63E26A85BE90051A948 /* llvm_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,8 +62,6 @@
 		30F22EF524DDA33500C0F4EC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F22EF724DDA33B00C0F4EC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935FF525AC43B300CEF503 /* xxGraphicPlus.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxGraphicPlus.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE999D2625D261DF00351116 /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C2F325C900A4002E92D3 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C30925C900FC002E92D3 /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,8 +69,10 @@
 		CEC0680325CBEEE0003A5768 /* libxxGraphic.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0680525CBEEE6003A5768 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C4223258BB600B9BFB8 /* libxxGraphicPlus.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphicPlus.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC63C26A85BE00051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		D60EC63D26A85BE00051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		D60EC63E26A85BE90051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A092231EDDFA00B75B77 /* libxxGraphicPlus.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxxGraphicPlus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D698A4D9266BAC7C00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +114,9 @@
 		CE999BCD25D21DE000351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				D698A4D9266BAC7C00C74361 /* llvm_wrapper.cpp */,
-				CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */,
-				CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63C26A85BE00051A948 /* CrossPlatform.Android.xcconfig */,
+				D60EC63D26A85BE00051A948 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63E26A85BE90051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -297,7 +297,7 @@
 			files = (
 				CE93600925AC440100CEF503 /* xxImage.cpp in Sources */,
 				CE93600A25AC440100CEF503 /* xxMaterial.cpp in Sources */,
-				D698A4DA266BAC7C00C74361 /* llvm_wrapper.cpp in Sources */,
+				D60EC63F26A85BE90051A948 /* llvm_wrapper.cpp in Sources */,
 				CE93600B25AC440100CEF503 /* xxMath.cpp in Sources */,
 				CE93600C25AC440100CEF503 /* xxMesh.cpp in Sources */,
 				CE93600D25AC440100CEF503 /* xxNode.cpp in Sources */,
@@ -333,21 +333,21 @@
 /* Begin XCBuildConfiguration section */
 		30A9A78925ADC6D9000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63C26A85BE00051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		30A9A78A25ADC6D9000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCE25D21DEB00351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63C26A85BE00051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
 		};
 		CE935FFD25AC43B300CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63D26A85BE00051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -360,7 +360,7 @@
 		};
 		CE935FFE25AC43B300CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BCF25D21DEB00351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63D26A85BE00051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

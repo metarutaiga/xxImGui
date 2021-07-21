@@ -19,11 +19,11 @@
 		CE9C2A2A25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
 		CE9C2A2C25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */; };
+		D60EC63726A85BB10051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC63626A85BB00051A948 /* llvm_wrapper.cpp */; };
 		D644A077231ED90400B75B77 /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		D644A078231ED90400B75B77 /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
 		D644A079231ED90400B75B77 /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
 		D644A07F231ED90400B75B77 /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A075231ED90400B75B77 /* imgui.cpp */; };
-		D698A4D6266BAC5A00C74361 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D698A4D5266BAC5A00C74361 /* llvm_wrapper.cpp */; };
 		D6DA664723258F3000953C5B /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06F231ED90300B75B77 /* imgui_demo.cpp */; };
 		D6DA664823258F3000953C5B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06D231ED90300B75B77 /* imgui_draw.cpp */; };
 		D6DA664923258F3000953C5B /* imgui_widgets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D644A06E231ED90300B75B77 /* imgui_widgets.cpp */; };
@@ -45,10 +45,11 @@
 /* Begin PBXFileReference section */
 		30A9A74A25ADC5C3000FA104 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE935F5325AC2F4800CEF503 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE999BC225D21D1600351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999BC325D21D1600351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE9C2A2825AFCB9000AB37F6 /* imgui_tables.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_tables.cpp; path = ../3rdParty/imgui/imgui_tables.cpp; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC63426A85BA60051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		D60EC63526A85BA70051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../3rdParty/ClangPlatform/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		D60EC63626A85BB00051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A041231ED82900B75B77 /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A06C231ED90300B75B77 /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_internal.h; path = ../3rdParty/imgui/imgui_internal.h; sourceTree = "<group>"; };
 		D644A06D231ED90300B75B77 /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui_draw.cpp; path = ../3rdParty/imgui/imgui_draw.cpp; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		D644A073231ED90300B75B77 /* imstb_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_textedit.h; path = ../3rdParty/imgui/imstb_textedit.h; sourceTree = "<group>"; };
 		D644A074231ED90400B75B77 /* imstb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imstb_truetype.h; path = ../3rdParty/imgui/imstb_truetype.h; sourceTree = "<group>"; };
 		D644A075231ED90400B75B77 /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = imgui.cpp; path = ../3rdParty/imgui/imgui.cpp; sourceTree = "<group>"; };
-		D698A4D5266BAC5A00C74361 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../3rdParty/msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +98,9 @@
 		CE999BC925D21D9F00351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				D698A4D5266BAC5A00C74361 /* llvm_wrapper.cpp */,
-				CE999BC325D21D1600351116 /* CrossPlatform.Android.xcconfig */,
-				CE999BC225D21D1600351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63426A85BA60051A948 /* CrossPlatform.Android.xcconfig */,
+				D60EC63526A85BA70051A948 /* CrossPlatform.Windows.xcconfig */,
+				D60EC63626A85BB00051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 			files = (
 				CE935F6025AC2F8800CEF503 /* imgui.cpp in Sources */,
 				CE935F5D25AC2F8800CEF503 /* imgui_demo.cpp in Sources */,
-				D698A4D6266BAC5A00C74361 /* llvm_wrapper.cpp in Sources */,
+				D60EC63726A85BB10051A948 /* llvm_wrapper.cpp in Sources */,
 				CE935F5E25AC2F8800CEF503 /* imgui_draw.cpp in Sources */,
 				CE935F5F25AC2F8800CEF503 /* imgui_widgets.cpp in Sources */,
 				CE9C2A2B25AFCB9000AB37F6 /* imgui_tables.cpp in Sources */,
@@ -301,7 +301,7 @@
 /* Begin XCBuildConfiguration section */
 		30A9A74B25ADC5C3000FA104 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BC325D21D1600351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63426A85BA60051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
@@ -312,7 +312,7 @@
 		};
 		30A9A74C25ADC5C3000FA104 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BC325D21D1600351116 /* CrossPlatform.Android.xcconfig */;
+			baseConfigurationReference = D60EC63426A85BA60051A948 /* CrossPlatform.Android.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__attribute__((visibility(\\\"default\\\")))",
@@ -323,7 +323,7 @@
 		};
 		CE935F5425AC2F4800CEF503 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BC225D21D1600351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63526A85BA70051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__declspec(dllexport)",
@@ -340,7 +340,7 @@
 		};
 		CE935F5525AC2F4800CEF503 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE999BC225D21D1600351116 /* CrossPlatform.Windows.xcconfig */;
+			baseConfigurationReference = D60EC63526A85BA70051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"IMGUI_API=__declspec(dllexport)",
