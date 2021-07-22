@@ -5,7 +5,7 @@
 // https://github.com/metarutaiga/xxImGui
 //==============================================================================
 #include <interface.h>
-#include "../../ConcurrencyNetworkFramework/Connection.h"
+#include <ConcurrencyNetworkFramework/Connection.h>
 #include "client.h"
 
 //------------------------------------------------------------------------------

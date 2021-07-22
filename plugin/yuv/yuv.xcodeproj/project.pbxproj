@@ -223,7 +223,6 @@
 		CE8A72A12604482300AEFD2B /* rgb2yuv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DA244AC55400D84267 /* rgb2yuv.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		CE8A72A22604482300AEFD2B /* yuv2rgb_amx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
 		CE8A72A32604482300AEFD2B /* yuv2rgb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302D20DB244AC55400D84267 /* yuv2rgb.cpp */; settings = {COMPILER_FLAGS = "-Ofast"; }; };
-		CE8A72B92604487B00AEFD2B /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE8A72B82604487B00AEFD2B /* llvm_wrapper.cpp */; };
 		CE8A731A26044A4B00AEFD2B /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A731926044A4B00AEFD2B /* imgui.dll */; };
 		CE8A73582604526500AEFD2B /* xxGraphic.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8A73572604526500AEFD2B /* xxGraphic.dll */; };
 		CE8A73AE2604567400AEFD2B /* yuv.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE8A711B260443CD00AEFD2B /* yuv.dll */; };
@@ -231,6 +230,7 @@
 		CEA24D5926048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5A26048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5B26048B9C005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
+		D60EC64B26A966560051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC64A26A966560051A948 /* llvm_wrapper.cpp */; };
 		D67E07FB260630CD00D3F089 /* libyuv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libyuv.dylib */; };
 		D67E07FC260630E100D3F089 /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = D67E07CA26062ED700D3F089 /* lenna.rgb */; };
 /* End PBXBuildFile section */
@@ -272,100 +272,100 @@
 		300264C4242690D0004559E0 /* yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yuv.cpp; sourceTree = "<group>"; };
 		30042DE82636D099005CAD82 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30042DEA2636D099005CAD82 /* libxxGraphic.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.so; sourceTree = BUILT_PRODUCTS_DIR; };
-		302D20D8244AC55400D84267 /* yuv2rgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb.h; path = ../../xxYUV/yuv2rgb.h; sourceTree = "<group>"; };
-		302D20D9244AC55400D84267 /* rgb2yuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgb2yuv.h; path = ../../xxYUV/rgb2yuv.h; sourceTree = "<group>"; };
-		302D20DA244AC55400D84267 /* rgb2yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgb2yuv.cpp; path = ../../xxYUV/rgb2yuv.cpp; sourceTree = "<group>"; };
-		302D20DB244AC55400D84267 /* yuv2rgb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb.cpp; path = ../../xxYUV/yuv2rgb.cpp; sourceTree = "<group>"; };
+		302D20D8244AC55400D84267 /* yuv2rgb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb.h; path = ../../3rdParty/xxYUV/yuv2rgb.h; sourceTree = "<group>"; };
+		302D20D9244AC55400D84267 /* rgb2yuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rgb2yuv.h; path = ../../3rdParty/xxYUV/rgb2yuv.h; sourceTree = "<group>"; };
+		302D20DA244AC55400D84267 /* rgb2yuv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rgb2yuv.cpp; path = ../../3rdParty/xxYUV/rgb2yuv.cpp; sourceTree = "<group>"; };
+		302D20DB244AC55400D84267 /* yuv2rgb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb.cpp; path = ../../3rdParty/xxYUV/yuv2rgb.cpp; sourceTree = "<group>"; };
 		30B096B3244ACE370096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B5244ACE370096E6DC /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C1244AD37A0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C3244AD37A0096E6DC /* libxxGraphic.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE4E3E02244E7CFA00CEDC62 /* rotate_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_argb.cc; path = ../../libyuv/source/rotate_argb.cc; sourceTree = "<group>"; };
-		CE4E3E03244E7CFA00CEDC62 /* rotate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate.cc; path = ../../libyuv/source/rotate.cc; sourceTree = "<group>"; };
-		CE4E3E04244E7CFA00CEDC62 /* rotate_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_common.cc; path = ../../libyuv/source/rotate_common.cc; sourceTree = "<group>"; };
-		CE4E3E05244E7CFA00CEDC62 /* row_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_mmi.cc; path = ../../libyuv/source/row_mmi.cc; sourceTree = "<group>"; };
-		CE4E3E06244E7CFA00CEDC62 /* row_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_neon64.cc; path = ../../libyuv/source/row_neon64.cc; sourceTree = "<group>"; };
-		CE4E3E07244E7CFA00CEDC62 /* scale_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_mmi.cc; path = ../../libyuv/source/scale_mmi.cc; sourceTree = "<group>"; };
-		CE4E3E08244E7CFA00CEDC62 /* planar_functions.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planar_functions.cc; path = ../../libyuv/source/planar_functions.cc; sourceTree = "<group>"; };
-		CE4E3E09244E7CFA00CEDC62 /* convert_from_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_from_argb.cc; path = ../../libyuv/source/convert_from_argb.cc; sourceTree = "<group>"; };
-		CE4E3E0A244E7CFA00CEDC62 /* convert_to_i420.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_to_i420.cc; path = ../../libyuv/source/convert_to_i420.cc; sourceTree = "<group>"; };
-		CE4E3E0B244E7CFA00CEDC62 /* rotate_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_gcc.cc; path = ../../libyuv/source/rotate_gcc.cc; sourceTree = "<group>"; };
-		CE4E3E0C244E7CFA00CEDC62 /* rotate_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_neon64.cc; path = ../../libyuv/source/rotate_neon64.cc; sourceTree = "<group>"; };
-		CE4E3E0D244E7CFA00CEDC62 /* row_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_common.cc; path = ../../libyuv/source/row_common.cc; sourceTree = "<group>"; };
-		CE4E3E0E244E7CFA00CEDC62 /* compare_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_msa.cc; path = ../../libyuv/source/compare_msa.cc; sourceTree = "<group>"; };
-		CE4E3E0F244E7CFA00CEDC62 /* row_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_win.cc; path = ../../libyuv/source/row_win.cc; sourceTree = "<group>"; };
-		CE4E3E10244E7CFA00CEDC62 /* scale_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_msa.cc; path = ../../libyuv/source/scale_msa.cc; sourceTree = "<group>"; };
-		CE4E3E11244E7CFA00CEDC62 /* compare_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_mmi.cc; path = ../../libyuv/source/compare_mmi.cc; sourceTree = "<group>"; };
-		CE4E3E12244E7CFB00CEDC62 /* scale.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale.cc; path = ../../libyuv/source/scale.cc; sourceTree = "<group>"; };
-		CE4E3E13244E7CFB00CEDC62 /* rotate_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_msa.cc; path = ../../libyuv/source/rotate_msa.cc; sourceTree = "<group>"; };
-		CE4E3E14244E7CFB00CEDC62 /* compare.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare.cc; path = ../../libyuv/source/compare.cc; sourceTree = "<group>"; };
-		CE4E3E15244E7CFB00CEDC62 /* convert_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_argb.cc; path = ../../libyuv/source/convert_argb.cc; sourceTree = "<group>"; };
-		CE4E3E16244E7CFB00CEDC62 /* row_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_any.cc; path = ../../libyuv/source/row_any.cc; sourceTree = "<group>"; };
-		CE4E3E17244E7CFB00CEDC62 /* convert_from.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_from.cc; path = ../../libyuv/source/convert_from.cc; sourceTree = "<group>"; };
-		CE4E3E18244E7CFB00CEDC62 /* mjpeg_validate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mjpeg_validate.cc; path = ../../libyuv/source/mjpeg_validate.cc; sourceTree = "<group>"; };
-		CE4E3E19244E7CFB00CEDC62 /* scale_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_argb.cc; path = ../../libyuv/source/scale_argb.cc; sourceTree = "<group>"; };
-		CE4E3E1A244E7CFB00CEDC62 /* scale_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_gcc.cc; path = ../../libyuv/source/scale_gcc.cc; sourceTree = "<group>"; };
-		CE4E3E1B244E7CFB00CEDC62 /* compare_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_common.cc; path = ../../libyuv/source/compare_common.cc; sourceTree = "<group>"; };
-		CE4E3E1C244E7CFB00CEDC62 /* compare_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_gcc.cc; path = ../../libyuv/source/compare_gcc.cc; sourceTree = "<group>"; };
-		CE4E3E1D244E7CFB00CEDC62 /* mjpeg_decoder.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mjpeg_decoder.cc; path = ../../libyuv/source/mjpeg_decoder.cc; sourceTree = "<group>"; };
-		CE4E3E1E244E7CFB00CEDC62 /* convert.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert.cc; path = ../../libyuv/source/convert.cc; sourceTree = "<group>"; };
-		CE4E3E1F244E7CFC00CEDC62 /* rotate_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_mmi.cc; path = ../../libyuv/source/rotate_mmi.cc; sourceTree = "<group>"; };
-		CE4E3E20244E7CFC00CEDC62 /* row_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_gcc.cc; path = ../../libyuv/source/row_gcc.cc; sourceTree = "<group>"; };
-		CE4E3E21244E7CFC00CEDC62 /* scale_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_any.cc; path = ../../libyuv/source/scale_any.cc; sourceTree = "<group>"; };
-		CE4E3E22244E7CFC00CEDC62 /* scale_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_common.cc; path = ../../libyuv/source/scale_common.cc; sourceTree = "<group>"; };
-		CE4E3E23244E7CFC00CEDC62 /* compare_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_neon.cc; path = ../../libyuv/source/compare_neon.cc; sourceTree = "<group>"; };
-		CE4E3E24244E7CFC00CEDC62 /* rotate_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_win.cc; path = ../../libyuv/source/rotate_win.cc; sourceTree = "<group>"; };
-		CE4E3E25244E7CFC00CEDC62 /* scale_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_neon.cc; path = ../../libyuv/source/scale_neon.cc; sourceTree = "<group>"; };
-		CE4E3E26244E7CFC00CEDC62 /* row_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_msa.cc; path = ../../libyuv/source/row_msa.cc; sourceTree = "<group>"; };
-		CE4E3E27244E7CFC00CEDC62 /* scale_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_neon64.cc; path = ../../libyuv/source/scale_neon64.cc; sourceTree = "<group>"; };
-		CE4E3E28244E7CFC00CEDC62 /* rotate_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_any.cc; path = ../../libyuv/source/rotate_any.cc; sourceTree = "<group>"; };
-		CE4E3E29244E7CFC00CEDC62 /* compare_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_win.cc; path = ../../libyuv/source/compare_win.cc; sourceTree = "<group>"; };
-		CE4E3E2A244E7CFC00CEDC62 /* scale_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_win.cc; path = ../../libyuv/source/scale_win.cc; sourceTree = "<group>"; };
-		CE4E3E2B244E7CFD00CEDC62 /* video_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = video_common.cc; path = ../../libyuv/source/video_common.cc; sourceTree = "<group>"; };
-		CE4E3E2C244E7CFD00CEDC62 /* rotate_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_neon.cc; path = ../../libyuv/source/rotate_neon.cc; sourceTree = "<group>"; };
-		CE4E3E2D244E7CFD00CEDC62 /* row_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_neon.cc; path = ../../libyuv/source/row_neon.cc; sourceTree = "<group>"; };
-		CE4E3E2E244E7CFD00CEDC62 /* cpu_id.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu_id.cc; path = ../../libyuv/source/cpu_id.cc; sourceTree = "<group>"; };
-		CE4E3E2F244E7CFD00CEDC62 /* convert_to_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_to_argb.cc; path = ../../libyuv/source/convert_to_argb.cc; sourceTree = "<group>"; };
-		CE4E3E30244E7CFD00CEDC62 /* convert_jpeg.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_jpeg.cc; path = ../../libyuv/source/convert_jpeg.cc; sourceTree = "<group>"; };
-		CE4E3E31244E7CFD00CEDC62 /* compare_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_neon64.cc; path = ../../libyuv/source/compare_neon64.cc; sourceTree = "<group>"; };
-		CE4E3E93244E7E5500CEDC62 /* libyuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libyuv.h; path = ../../libyuv/include/libyuv.h; sourceTree = "<group>"; };
-		CE4E3E96244E7E6700CEDC62 /* compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = compare.h; path = ../../libyuv/include/libyuv/compare.h; sourceTree = "<group>"; };
-		CE4E3E97244E7E6700CEDC62 /* convert_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert_argb.h; path = ../../libyuv/include/libyuv/convert_argb.h; sourceTree = "<group>"; };
-		CE4E3E98244E7E6700CEDC62 /* mjpeg_decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mjpeg_decoder.h; path = ../../libyuv/include/libyuv/mjpeg_decoder.h; sourceTree = "<group>"; };
-		CE4E3E99244E7E6700CEDC62 /* row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = row.h; path = ../../libyuv/include/libyuv/row.h; sourceTree = "<group>"; };
-		CE4E3E9A244E7E6800CEDC62 /* scale_row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale_row.h; path = ../../libyuv/include/libyuv/scale_row.h; sourceTree = "<group>"; };
-		CE4E3E9B244E7E6800CEDC62 /* rotate_row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotate_row.h; path = ../../libyuv/include/libyuv/rotate_row.h; sourceTree = "<group>"; };
-		CE4E3E9C244E7E6800CEDC62 /* rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotate.h; path = ../../libyuv/include/libyuv/rotate.h; sourceTree = "<group>"; };
-		CE4E3E9D244E7E6800CEDC62 /* scale_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale_argb.h; path = ../../libyuv/include/libyuv/scale_argb.h; sourceTree = "<group>"; };
-		CE4E3E9E244E7E6800CEDC62 /* convert_from_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert_from_argb.h; path = ../../libyuv/include/libyuv/convert_from_argb.h; sourceTree = "<group>"; };
-		CE4E3E9F244E7E6800CEDC62 /* video_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = video_common.h; path = ../../libyuv/include/libyuv/video_common.h; sourceTree = "<group>"; };
-		CE4E3EA0244E7E6800CEDC62 /* macros_msa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros_msa.h; path = ../../libyuv/include/libyuv/macros_msa.h; sourceTree = "<group>"; };
-		CE4E3EA1244E7E6800CEDC62 /* planar_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = planar_functions.h; path = ../../libyuv/include/libyuv/planar_functions.h; sourceTree = "<group>"; };
-		CE4E3EA2244E7E6800CEDC62 /* compare_row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = compare_row.h; path = ../../libyuv/include/libyuv/compare_row.h; sourceTree = "<group>"; };
-		CE4E3EA3244E7E6800CEDC62 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../libyuv/include/libyuv/version.h; sourceTree = "<group>"; };
-		CE4E3EA4244E7E6800CEDC62 /* rotate_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotate_argb.h; path = ../../libyuv/include/libyuv/rotate_argb.h; sourceTree = "<group>"; };
-		CE4E3EA5244E7E6800CEDC62 /* convert_from.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert_from.h; path = ../../libyuv/include/libyuv/convert_from.h; sourceTree = "<group>"; };
-		CE4E3EA6244E7E6800CEDC62 /* convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert.h; path = ../../libyuv/include/libyuv/convert.h; sourceTree = "<group>"; };
-		CE4E3EA7244E7E6800CEDC62 /* cpu_id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu_id.h; path = ../../libyuv/include/libyuv/cpu_id.h; sourceTree = "<group>"; };
-		CE4E3EA8244E7E6900CEDC62 /* basic_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basic_types.h; path = ../../libyuv/include/libyuv/basic_types.h; sourceTree = "<group>"; };
-		CE4E3EA9244E7E6900CEDC62 /* scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale.h; path = ../../libyuv/include/libyuv/scale.h; sourceTree = "<group>"; };
+		CE4E3E02244E7CFA00CEDC62 /* rotate_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_argb.cc; path = ../../3rdParty/libyuv/source/rotate_argb.cc; sourceTree = "<group>"; };
+		CE4E3E03244E7CFA00CEDC62 /* rotate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate.cc; path = ../../3rdParty/libyuv/source/rotate.cc; sourceTree = "<group>"; };
+		CE4E3E04244E7CFA00CEDC62 /* rotate_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_common.cc; path = ../../3rdParty/libyuv/source/rotate_common.cc; sourceTree = "<group>"; };
+		CE4E3E05244E7CFA00CEDC62 /* row_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_mmi.cc; path = ../../3rdParty/libyuv/source/row_mmi.cc; sourceTree = "<group>"; };
+		CE4E3E06244E7CFA00CEDC62 /* row_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_neon64.cc; path = ../../3rdParty/libyuv/source/row_neon64.cc; sourceTree = "<group>"; };
+		CE4E3E07244E7CFA00CEDC62 /* scale_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_mmi.cc; path = ../../3rdParty/libyuv/source/scale_mmi.cc; sourceTree = "<group>"; };
+		CE4E3E08244E7CFA00CEDC62 /* planar_functions.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planar_functions.cc; path = ../../3rdParty/libyuv/source/planar_functions.cc; sourceTree = "<group>"; };
+		CE4E3E09244E7CFA00CEDC62 /* convert_from_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_from_argb.cc; path = ../../3rdParty/libyuv/source/convert_from_argb.cc; sourceTree = "<group>"; };
+		CE4E3E0A244E7CFA00CEDC62 /* convert_to_i420.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_to_i420.cc; path = ../../3rdParty/libyuv/source/convert_to_i420.cc; sourceTree = "<group>"; };
+		CE4E3E0B244E7CFA00CEDC62 /* rotate_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_gcc.cc; path = ../../3rdParty/libyuv/source/rotate_gcc.cc; sourceTree = "<group>"; };
+		CE4E3E0C244E7CFA00CEDC62 /* rotate_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_neon64.cc; path = ../../3rdParty/libyuv/source/rotate_neon64.cc; sourceTree = "<group>"; };
+		CE4E3E0D244E7CFA00CEDC62 /* row_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_common.cc; path = ../../3rdParty/libyuv/source/row_common.cc; sourceTree = "<group>"; };
+		CE4E3E0E244E7CFA00CEDC62 /* compare_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_msa.cc; path = ../../3rdParty/libyuv/source/compare_msa.cc; sourceTree = "<group>"; };
+		CE4E3E0F244E7CFA00CEDC62 /* row_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_win.cc; path = ../../3rdParty/libyuv/source/row_win.cc; sourceTree = "<group>"; };
+		CE4E3E10244E7CFA00CEDC62 /* scale_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_msa.cc; path = ../../3rdParty/libyuv/source/scale_msa.cc; sourceTree = "<group>"; };
+		CE4E3E11244E7CFA00CEDC62 /* compare_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_mmi.cc; path = ../../3rdParty/libyuv/source/compare_mmi.cc; sourceTree = "<group>"; };
+		CE4E3E12244E7CFB00CEDC62 /* scale.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale.cc; path = ../../3rdParty/libyuv/source/scale.cc; sourceTree = "<group>"; };
+		CE4E3E13244E7CFB00CEDC62 /* rotate_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_msa.cc; path = ../../3rdParty/libyuv/source/rotate_msa.cc; sourceTree = "<group>"; };
+		CE4E3E14244E7CFB00CEDC62 /* compare.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare.cc; path = ../../3rdParty/libyuv/source/compare.cc; sourceTree = "<group>"; };
+		CE4E3E15244E7CFB00CEDC62 /* convert_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_argb.cc; path = ../../3rdParty/libyuv/source/convert_argb.cc; sourceTree = "<group>"; };
+		CE4E3E16244E7CFB00CEDC62 /* row_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_any.cc; path = ../../3rdParty/libyuv/source/row_any.cc; sourceTree = "<group>"; };
+		CE4E3E17244E7CFB00CEDC62 /* convert_from.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_from.cc; path = ../../3rdParty/libyuv/source/convert_from.cc; sourceTree = "<group>"; };
+		CE4E3E18244E7CFB00CEDC62 /* mjpeg_validate.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mjpeg_validate.cc; path = ../../3rdParty/libyuv/source/mjpeg_validate.cc; sourceTree = "<group>"; };
+		CE4E3E19244E7CFB00CEDC62 /* scale_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_argb.cc; path = ../../3rdParty/libyuv/source/scale_argb.cc; sourceTree = "<group>"; };
+		CE4E3E1A244E7CFB00CEDC62 /* scale_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_gcc.cc; path = ../../3rdParty/libyuv/source/scale_gcc.cc; sourceTree = "<group>"; };
+		CE4E3E1B244E7CFB00CEDC62 /* compare_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_common.cc; path = ../../3rdParty/libyuv/source/compare_common.cc; sourceTree = "<group>"; };
+		CE4E3E1C244E7CFB00CEDC62 /* compare_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_gcc.cc; path = ../../3rdParty/libyuv/source/compare_gcc.cc; sourceTree = "<group>"; };
+		CE4E3E1D244E7CFB00CEDC62 /* mjpeg_decoder.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mjpeg_decoder.cc; path = ../../3rdParty/libyuv/source/mjpeg_decoder.cc; sourceTree = "<group>"; };
+		CE4E3E1E244E7CFB00CEDC62 /* convert.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert.cc; path = ../../3rdParty/libyuv/source/convert.cc; sourceTree = "<group>"; };
+		CE4E3E1F244E7CFC00CEDC62 /* rotate_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_mmi.cc; path = ../../3rdParty/libyuv/source/rotate_mmi.cc; sourceTree = "<group>"; };
+		CE4E3E20244E7CFC00CEDC62 /* row_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_gcc.cc; path = ../../3rdParty/libyuv/source/row_gcc.cc; sourceTree = "<group>"; };
+		CE4E3E21244E7CFC00CEDC62 /* scale_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_any.cc; path = ../../3rdParty/libyuv/source/scale_any.cc; sourceTree = "<group>"; };
+		CE4E3E22244E7CFC00CEDC62 /* scale_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_common.cc; path = ../../3rdParty/libyuv/source/scale_common.cc; sourceTree = "<group>"; };
+		CE4E3E23244E7CFC00CEDC62 /* compare_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_neon.cc; path = ../../3rdParty/libyuv/source/compare_neon.cc; sourceTree = "<group>"; };
+		CE4E3E24244E7CFC00CEDC62 /* rotate_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_win.cc; path = ../../3rdParty/libyuv/source/rotate_win.cc; sourceTree = "<group>"; };
+		CE4E3E25244E7CFC00CEDC62 /* scale_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_neon.cc; path = ../../3rdParty/libyuv/source/scale_neon.cc; sourceTree = "<group>"; };
+		CE4E3E26244E7CFC00CEDC62 /* row_msa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_msa.cc; path = ../../3rdParty/libyuv/source/row_msa.cc; sourceTree = "<group>"; };
+		CE4E3E27244E7CFC00CEDC62 /* scale_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_neon64.cc; path = ../../3rdParty/libyuv/source/scale_neon64.cc; sourceTree = "<group>"; };
+		CE4E3E28244E7CFC00CEDC62 /* rotate_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_any.cc; path = ../../3rdParty/libyuv/source/rotate_any.cc; sourceTree = "<group>"; };
+		CE4E3E29244E7CFC00CEDC62 /* compare_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_win.cc; path = ../../3rdParty/libyuv/source/compare_win.cc; sourceTree = "<group>"; };
+		CE4E3E2A244E7CFC00CEDC62 /* scale_win.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_win.cc; path = ../../3rdParty/libyuv/source/scale_win.cc; sourceTree = "<group>"; };
+		CE4E3E2B244E7CFD00CEDC62 /* video_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = video_common.cc; path = ../../3rdParty/libyuv/source/video_common.cc; sourceTree = "<group>"; };
+		CE4E3E2C244E7CFD00CEDC62 /* rotate_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rotate_neon.cc; path = ../../3rdParty/libyuv/source/rotate_neon.cc; sourceTree = "<group>"; };
+		CE4E3E2D244E7CFD00CEDC62 /* row_neon.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = row_neon.cc; path = ../../3rdParty/libyuv/source/row_neon.cc; sourceTree = "<group>"; };
+		CE4E3E2E244E7CFD00CEDC62 /* cpu_id.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu_id.cc; path = ../../3rdParty/libyuv/source/cpu_id.cc; sourceTree = "<group>"; };
+		CE4E3E2F244E7CFD00CEDC62 /* convert_to_argb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_to_argb.cc; path = ../../3rdParty/libyuv/source/convert_to_argb.cc; sourceTree = "<group>"; };
+		CE4E3E30244E7CFD00CEDC62 /* convert_jpeg.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = convert_jpeg.cc; path = ../../3rdParty/libyuv/source/convert_jpeg.cc; sourceTree = "<group>"; };
+		CE4E3E31244E7CFD00CEDC62 /* compare_neon64.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = compare_neon64.cc; path = ../../3rdParty/libyuv/source/compare_neon64.cc; sourceTree = "<group>"; };
+		CE4E3E93244E7E5500CEDC62 /* libyuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libyuv.h; path = ../../3rdParty/libyuv/include/libyuv.h; sourceTree = "<group>"; };
+		CE4E3E96244E7E6700CEDC62 /* compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = compare.h; path = ../../3rdParty/libyuv/include/libyuv/compare.h; sourceTree = "<group>"; };
+		CE4E3E97244E7E6700CEDC62 /* convert_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert_argb.h; path = ../../3rdParty/libyuv/include/libyuv/convert_argb.h; sourceTree = "<group>"; };
+		CE4E3E98244E7E6700CEDC62 /* mjpeg_decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mjpeg_decoder.h; path = ../../3rdParty/libyuv/include/libyuv/mjpeg_decoder.h; sourceTree = "<group>"; };
+		CE4E3E99244E7E6700CEDC62 /* row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = row.h; path = ../../3rdParty/libyuv/include/libyuv/row.h; sourceTree = "<group>"; };
+		CE4E3E9A244E7E6800CEDC62 /* scale_row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale_row.h; path = ../../3rdParty/libyuv/include/libyuv/scale_row.h; sourceTree = "<group>"; };
+		CE4E3E9B244E7E6800CEDC62 /* rotate_row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotate_row.h; path = ../../3rdParty/libyuv/include/libyuv/rotate_row.h; sourceTree = "<group>"; };
+		CE4E3E9C244E7E6800CEDC62 /* rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotate.h; path = ../../3rdParty/libyuv/include/libyuv/rotate.h; sourceTree = "<group>"; };
+		CE4E3E9D244E7E6800CEDC62 /* scale_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale_argb.h; path = ../../3rdParty/libyuv/include/libyuv/scale_argb.h; sourceTree = "<group>"; };
+		CE4E3E9E244E7E6800CEDC62 /* convert_from_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert_from_argb.h; path = ../../3rdParty/libyuv/include/libyuv/convert_from_argb.h; sourceTree = "<group>"; };
+		CE4E3E9F244E7E6800CEDC62 /* video_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = video_common.h; path = ../../3rdParty/libyuv/include/libyuv/video_common.h; sourceTree = "<group>"; };
+		CE4E3EA0244E7E6800CEDC62 /* macros_msa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros_msa.h; path = ../../3rdParty/libyuv/include/libyuv/macros_msa.h; sourceTree = "<group>"; };
+		CE4E3EA1244E7E6800CEDC62 /* planar_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = planar_functions.h; path = ../../3rdParty/libyuv/include/libyuv/planar_functions.h; sourceTree = "<group>"; };
+		CE4E3EA2244E7E6800CEDC62 /* compare_row.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = compare_row.h; path = ../../3rdParty/libyuv/include/libyuv/compare_row.h; sourceTree = "<group>"; };
+		CE4E3EA3244E7E6800CEDC62 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../3rdParty/libyuv/include/libyuv/version.h; sourceTree = "<group>"; };
+		CE4E3EA4244E7E6800CEDC62 /* rotate_argb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rotate_argb.h; path = ../../3rdParty/libyuv/include/libyuv/rotate_argb.h; sourceTree = "<group>"; };
+		CE4E3EA5244E7E6800CEDC62 /* convert_from.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert_from.h; path = ../../3rdParty/libyuv/include/libyuv/convert_from.h; sourceTree = "<group>"; };
+		CE4E3EA6244E7E6800CEDC62 /* convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = convert.h; path = ../../3rdParty/libyuv/include/libyuv/convert.h; sourceTree = "<group>"; };
+		CE4E3EA7244E7E6800CEDC62 /* cpu_id.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu_id.h; path = ../../3rdParty/libyuv/include/libyuv/cpu_id.h; sourceTree = "<group>"; };
+		CE4E3EA8244E7E6900CEDC62 /* basic_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basic_types.h; path = ../../3rdParty/libyuv/include/libyuv/basic_types.h; sourceTree = "<group>"; };
+		CE4E3EA9244E7E6900CEDC62 /* scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = scale.h; path = ../../3rdParty/libyuv/include/libyuv/scale.h; sourceTree = "<group>"; };
 		CE65D62725FB08C900EB9883 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		CE8A7115260443B000AEFD2B /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE8A7116260443B000AEFD2B /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE8A711B260443CD00AEFD2B /* yuv.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = yuv.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A71292604444C00AEFD2B /* libyuv.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyuv.so; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE8A72B82604487B00AEFD2B /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE8A731926044A4B00AEFD2B /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A731B26044A5B00AEFD2B /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A73572604526500AEFD2B /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A73592604526D00AEFD2B /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEA24D5726048B9B005DBA21 /* scale_uv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_uv.cc; path = ../../libyuv/source/scale_uv.cc; sourceTree = "<group>"; };
+		CEA24D5726048B9B005DBA21 /* scale_uv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_uv.cc; path = ../../3rdParty/libyuv/source/scale_uv.cc; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC64A26A966560051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67E07CA26062ED700D3F089 /* lenna.rgb */ = {isa = PBXFileReference; lastKnownFileType = text; path = lenna.rgb; sourceTree = "<group>"; };
-		D6812B472602F014001436B7 /* apple_amx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_amx.h; path = ../../xxYUV/apple_amx.h; sourceTree = "<group>"; };
-		D6812B60260330F6001436B7 /* yuv2rgb_amx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb_amx.h; path = ../../xxYUV/yuv2rgb_amx.h; sourceTree = "<group>"; };
-		D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb_amx.cpp; path = ../../xxYUV/yuv2rgb_amx.cpp; sourceTree = "<group>"; };
+		D6812B472602F014001436B7 /* apple_amx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apple_amx.h; path = ../../3rdParty/xxYUV/apple_amx.h; sourceTree = "<group>"; };
+		D6812B60260330F6001436B7 /* yuv2rgb_amx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2rgb_amx.h; path = ../../3rdParty/xxYUV/yuv2rgb_amx.h; sourceTree = "<group>"; };
+		D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2rgb_amx.cpp; path = ../../3rdParty/xxYUV/yuv2rgb_amx.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +540,7 @@
 			children = (
 				CE8A7115260443B000AEFD2B /* CrossPlatform.Android.xcconfig */,
 				CE8A7116260443B000AEFD2B /* CrossPlatform.Windows.xcconfig */,
+				D60EC64A26A966560051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -547,7 +548,6 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				CE8A72B82604487B00AEFD2B /* llvm_wrapper.cpp */,
 				300264C4242690D0004559E0 /* yuv.cpp */,
 				CE4E3DF1244E7CA900CEDC62 /* libyuv */,
 				302D20D6244AC53A00D84267 /* xxYUV */,
@@ -745,10 +745,10 @@
 				CE8A71B0260446B600AEFD2B /* scale_win.cc in Sources */,
 				CE8A71B1260446B600AEFD2B /* scale.cc in Sources */,
 				CE8A71B2260446B600AEFD2B /* video_common.cc in Sources */,
+				D60EC64B26A966560051A948 /* llvm_wrapper.cpp in Sources */,
 				CE8A71B3260446B600AEFD2B /* rgb2yuv.cpp in Sources */,
 				CE8A71B4260446B600AEFD2B /* yuv2rgb_amx.cpp in Sources */,
 				CE8A71B5260446B600AEFD2B /* yuv2rgb.cpp in Sources */,
-				CE8A72B92604487B00AEFD2B /* llvm_wrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,8 +1052,9 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
-					../../libyuv/include,
+					../../3rdParty,
+					../../3rdParty/imgui,
+					../../3rdParty/libyuv/include,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
@@ -1128,8 +1129,9 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
-					../../libyuv/include,
+					../../3rdParty,
+					../../3rdParty/imgui,
+					../../3rdParty/libyuv/include,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";

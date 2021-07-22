@@ -26,7 +26,6 @@
 		30DFAD5C2648450D00018DFA /* riscv_cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30DFAD572648450D00018DFA /* riscv_cpu.cpp */; };
 		30ED317026355DFD00AA60B2 /* libimgui.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED316F26355DFD00AA60B2 /* libimgui.so */; };
 		CE93601F25AC457A00CEF503 /* riscv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* riscv.cpp */; };
-		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
 		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
 		CE999D9525D275A900351116 /* riscv.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* riscv.dll */; };
 		CEAD0421264A5BA900399490 /* elf32.c in Sources */ = {isa = PBXBuildFile; fileRef = CEAD041E264A5BA900399490 /* elf32.c */; };
@@ -55,6 +54,7 @@
 		CEB2AA1E2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
 		CEB2AA1F2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
 		CEB2AA202648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */; };
+		D60EC64926A966410051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC64826A966410051A948 /* llvm_wrapper.cpp */; };
 		D6260EFB264D1B7D005CFDF4 /* riscv_rv64a.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6260EF9264D1B7D005CFDF4 /* riscv_rv64a.cpp */; };
 		D6260EFC264D1B7D005CFDF4 /* riscv_rv64a.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6260EF9264D1B7D005CFDF4 /* riscv_rv64a.cpp */; };
 		D6260EFD264D1B7D005CFDF4 /* riscv_rv64a.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6260EF9264D1B7D005CFDF4 /* riscv_rv64a.cpp */; };
@@ -113,43 +113,43 @@
 		30A9A7BB25ADC792000FA104 /* libriscv.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libriscv.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		30DCA6B4265018B3000EC903 /* riscv_rv32d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32d.cpp; path = ../../riscv/riscv_rv32d.cpp; sourceTree = "<group>"; };
-		30DCA6B5265018B3000EC903 /* riscv_rv64d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64d.cpp; path = ../../riscv/riscv_rv64d.cpp; sourceTree = "<group>"; };
-		30DFAD562648449F00018DFA /* riscv_instruction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = riscv_instruction.h; path = ../../riscv/riscv_instruction.h; sourceTree = "<group>"; };
-		30DFAD572648450D00018DFA /* riscv_cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_cpu.cpp; path = ../../riscv/riscv_cpu.cpp; sourceTree = "<group>"; };
-		30DFAD582648450D00018DFA /* riscv_cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = riscv_cpu.h; path = ../../riscv/riscv_cpu.h; sourceTree = "<group>"; };
+		30DCA6B4265018B3000EC903 /* riscv_rv32d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32d.cpp; path = ../../3rdParty/riscv/riscv_rv32d.cpp; sourceTree = "<group>"; };
+		30DCA6B5265018B3000EC903 /* riscv_rv64d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64d.cpp; path = ../../3rdParty/riscv/riscv_rv64d.cpp; sourceTree = "<group>"; };
+		30DFAD562648449F00018DFA /* riscv_instruction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = riscv_instruction.h; path = ../../3rdParty/riscv/riscv_instruction.h; sourceTree = "<group>"; };
+		30DFAD572648450D00018DFA /* riscv_cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_cpu.cpp; path = ../../3rdParty/riscv/riscv_cpu.cpp; sourceTree = "<group>"; };
+		30DFAD582648450D00018DFA /* riscv_cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = riscv_cpu.h; path = ../../3rdParty/riscv/riscv_cpu.h; sourceTree = "<group>"; };
 		30ED316F26355DFD00AA60B2 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE93601825AC454200CEF503 /* riscv.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = riscv.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAD041E264A5BA900399490 /* elf32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf32.c; path = ../../riscv/libelf/elf32.c; sourceTree = "<group>"; };
-		CEAD041F264A5BA900399490 /* elf64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf64.c; path = ../../riscv/libelf/elf64.c; sourceTree = "<group>"; };
-		CEAD0420264A5BA900399490 /* elf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf.c; path = ../../riscv/libelf/elf.c; sourceTree = "<group>"; };
-		CEAD0430264A5C0600399490 /* elf64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf64.h; path = ../../riscv/libelf/elf64.h; sourceTree = "<group>"; };
-		CEAD0431264A5C0600399490 /* elf32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf32.h; path = ../../riscv/libelf/elf32.h; sourceTree = "<group>"; };
-		CEAD0432264A5C0600399490 /* elf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf.h; path = ../../riscv/libelf/elf.h; sourceTree = "<group>"; };
+		CEAD041E264A5BA900399490 /* elf32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf32.c; path = ../../3rdParty/riscv/libelf/elf32.c; sourceTree = "<group>"; };
+		CEAD041F264A5BA900399490 /* elf64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf64.c; path = ../../3rdParty/riscv/libelf/elf64.c; sourceTree = "<group>"; };
+		CEAD0420264A5BA900399490 /* elf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = elf.c; path = ../../3rdParty/riscv/libelf/elf.c; sourceTree = "<group>"; };
+		CEAD0430264A5C0600399490 /* elf64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf64.h; path = ../../3rdParty/riscv/libelf/elf64.h; sourceTree = "<group>"; };
+		CEAD0431264A5C0600399490 /* elf32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf32.h; path = ../../3rdParty/riscv/libelf/elf32.h; sourceTree = "<group>"; };
+		CEAD0432264A5C0600399490 /* elf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = elf.h; path = ../../3rdParty/riscv/libelf/elf.h; sourceTree = "<group>"; };
 		CEAD0434264A84B100399490 /* libxxGraphic.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAD0436264A84B700399490 /* libxxGraphic.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libxxGraphic.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_zicsr.cpp; path = ../../riscv/riscv_zicsr.cpp; sourceTree = "<group>"; };
-		CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32i.cpp; path = ../../riscv/riscv_rv32i.cpp; sourceTree = "<group>"; };
-		CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64i.cpp; path = ../../riscv/riscv_rv64i.cpp; sourceTree = "<group>"; };
+		CEAEE360264B7A0200212732 /* riscv_zicsr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_zicsr.cpp; path = ../../3rdParty/riscv/riscv_zicsr.cpp; sourceTree = "<group>"; };
+		CEB2AA172648D245008C0A34 /* riscv_rv32i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32i.cpp; path = ../../3rdParty/riscv/riscv_rv32i.cpp; sourceTree = "<group>"; };
+		CEB2AA1C2648E5BC008C0A34 /* riscv_rv64i.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64i.cpp; path = ../../3rdParty/riscv/riscv_rv64i.cpp; sourceTree = "<group>"; };
 		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0676F25CBDD9F003A5768 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC067FF25CBEEC3003A5768 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0680125CBEECA003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libriscv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libriscv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6260EF9264D1B7D005CFDF4 /* riscv_rv64a.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64a.cpp; path = ../../riscv/riscv_rv64a.cpp; sourceTree = "<group>"; };
-		D6260EFA264D1B7D005CFDF4 /* riscv_rv32a.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32a.cpp; path = ../../riscv/riscv_rv32a.cpp; sourceTree = "<group>"; };
-		D6260F03264E05C3005CFDF4 /* riscv_rv32f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32f.cpp; path = ../../riscv/riscv_rv32f.cpp; sourceTree = "<group>"; };
-		D6260F04264E05C3005CFDF4 /* riscv_rv64f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64f.cpp; path = ../../riscv/riscv_rv64f.cpp; sourceTree = "<group>"; };
-		D6260F0D26540DB5005CFDF4 /* riscv_float.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = riscv_float.h; path = ../../riscv/riscv_float.h; sourceTree = "<group>"; };
+		D60EC64826A966410051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
+		D6260EF9264D1B7D005CFDF4 /* riscv_rv64a.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64a.cpp; path = ../../3rdParty/riscv/riscv_rv64a.cpp; sourceTree = "<group>"; };
+		D6260EFA264D1B7D005CFDF4 /* riscv_rv32a.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32a.cpp; path = ../../3rdParty/riscv/riscv_rv32a.cpp; sourceTree = "<group>"; };
+		D6260F03264E05C3005CFDF4 /* riscv_rv32f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32f.cpp; path = ../../3rdParty/riscv/riscv_rv32f.cpp; sourceTree = "<group>"; };
+		D6260F04264E05C3005CFDF4 /* riscv_rv64f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64f.cpp; path = ../../3rdParty/riscv/riscv_rv64f.cpp; sourceTree = "<group>"; };
+		D6260F0D26540DB5005CFDF4 /* riscv_float.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = riscv_float.h; path = ../../3rdParty/riscv/riscv_float.h; sourceTree = "<group>"; };
 		D644A041231ED82900B75B77 /* libriscv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libriscv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		D660011C264C29CA006A98ED /* riscv_rv32m.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32m.cpp; path = ../../riscv/riscv_rv32m.cpp; sourceTree = "<group>"; };
-		D660011D264C29CA006A98ED /* riscv_rv64m.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64m.cpp; path = ../../riscv/riscv_rv64m.cpp; sourceTree = "<group>"; };
-		D6600126264CC021006A98ED /* riscv_zifencei.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_zifencei.cpp; path = ../../riscv/riscv_zifencei.cpp; sourceTree = "<group>"; };
+		D660011C264C29CA006A98ED /* riscv_rv32m.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv32m.cpp; path = ../../3rdParty/riscv/riscv_rv32m.cpp; sourceTree = "<group>"; };
+		D660011D264C29CA006A98ED /* riscv_rv64m.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_rv64m.cpp; path = ../../3rdParty/riscv/riscv_rv64m.cpp; sourceTree = "<group>"; };
+		D6600126264CC021006A98ED /* riscv_zifencei.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = riscv_zifencei.cpp; path = ../../3rdParty/riscv/riscv_zifencei.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,9 +233,9 @@
 		CE999BD625D21EC800351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999D1025D2618800351116 /* llvm_wrapper.cpp */,
 				CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC64826A966410051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -425,13 +425,13 @@
 				CEB2AA1A2648D245008C0A34 /* riscv_rv32i.cpp in Sources */,
 				CE93601F25AC457A00CEF503 /* riscv.cpp in Sources */,
 				D6260F07264E05C3005CFDF4 /* riscv_rv32f.cpp in Sources */,
-				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
 				CEAD0427264A5BA900399490 /* elf64.c in Sources */,
 				D6600129264CC021006A98ED /* riscv_zifencei.cpp in Sources */,
 				D6600124264C29CA006A98ED /* riscv_rv64m.cpp in Sources */,
 				CEAD042B264A5BA900399490 /* elf.c in Sources */,
 				D6260EFD264D1B7D005CFDF4 /* riscv_rv64a.cpp in Sources */,
 				30DFAD5B2648450D00018DFA /* riscv_cpu.cpp in Sources */,
+				D60EC64926A966410051A948 /* llvm_wrapper.cpp in Sources */,
 				D6600120264C29CA006A98ED /* riscv_rv32m.cpp in Sources */,
 				D6260F0B264E05C3005CFDF4 /* riscv_rv64f.cpp in Sources */,
 				CEB2AA1F2648E5BD008C0A34 /* riscv_rv64i.cpp in Sources */,
@@ -608,7 +608,8 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
+					../../3rdParty/imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
@@ -690,7 +691,8 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
+					../../3rdParty/imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";

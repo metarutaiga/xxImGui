@@ -50,28 +50,27 @@
 		CE69D74F2488ED5F00D883C2 /* libConcurrencyNetworkFramework.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConcurrencyNetworkFramework.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A71412604451B00AEFD2B /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		CE8A71422604451B00AEFD2B /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		CE8A72AC2604485A00AEFD2B /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
-		CE8A72DC26044A0900AEFD2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../ConcurrencyNetworkFramework/HackingSTL/README.md; sourceTree = "<group>"; };
-		CE8A72DD26044A0900AEFD2B /* thread */ = {isa = PBXFileReference; lastKnownFileType = text; name = thread; path = ../../ConcurrencyNetworkFramework/HackingSTL/thread; sourceTree = "<group>"; };
-		CE8A72DE26044A0900AEFD2B /* semaphore */ = {isa = PBXFileReference; lastKnownFileType = text; name = semaphore; path = ../../ConcurrencyNetworkFramework/HackingSTL/semaphore; sourceTree = "<group>"; };
-		CE8A72DF26044A1800AEFD2B /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../../ConcurrencyNetworkFramework/Log.h; sourceTree = "<group>"; };
-		CE8A72E026044A1800AEFD2B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../ConcurrencyNetworkFramework/LICENSE.txt; sourceTree = "<group>"; };
-		CE8A72E126044A1800AEFD2B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../ConcurrencyNetworkFramework/Makefile; sourceTree = "<group>"; };
-		CE8A72E226044A1800AEFD2B /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Log.cpp; path = ../../ConcurrencyNetworkFramework/Log.cpp; sourceTree = "<group>"; };
-		CE8A72E326044A1800AEFD2B /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base.cpp; path = ../../ConcurrencyNetworkFramework/Base.cpp; sourceTree = "<group>"; };
-		CE8A72E426044A1800AEFD2B /* FrameworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameworkHeader.h; path = ../../ConcurrencyNetworkFramework/FrameworkHeader.h; sourceTree = "<group>"; };
-		CE8A72E526044A1800AEFD2B /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base.h; path = ../../ConcurrencyNetworkFramework/Base.h; sourceTree = "<group>"; };
-		CE8A72E626044A1800AEFD2B /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connection.cpp; path = ../../ConcurrencyNetworkFramework/Connection.cpp; sourceTree = "<group>"; };
-		CE8A72E726044A1800AEFD2B /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../ConcurrencyNetworkFramework/Listener.h; sourceTree = "<group>"; };
-		CE8A72E826044A1800AEFD2B /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buffer.cpp; path = ../../ConcurrencyNetworkFramework/Buffer.cpp; sourceTree = "<group>"; };
-		CE8A72E926044A1800AEFD2B /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connection.h; path = ../../ConcurrencyNetworkFramework/Connection.h; sourceTree = "<group>"; };
-		CE8A72EA26044A1800AEFD2B /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../ConcurrencyNetworkFramework/Socket.cpp; sourceTree = "<group>"; };
-		CE8A72EB26044A1800AEFD2B /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Socket.h; path = ../../ConcurrencyNetworkFramework/Socket.h; sourceTree = "<group>"; };
-		CE8A72EC26044A1800AEFD2B /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listener.cpp; path = ../../ConcurrencyNetworkFramework/Listener.cpp; sourceTree = "<group>"; };
-		CE8A72ED26044A1800AEFD2B /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Framework.h; path = ../../ConcurrencyNetworkFramework/Framework.h; sourceTree = "<group>"; };
-		CE8A72EE26044A1800AEFD2B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../../ConcurrencyNetworkFramework/Event.h; sourceTree = "<group>"; };
-		CE8A72EF26044A1800AEFD2B /* Framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Framework.cpp; path = ../../ConcurrencyNetworkFramework/Framework.cpp; sourceTree = "<group>"; };
-		CE8A72F026044A1800AEFD2B /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buffer.h; path = ../../ConcurrencyNetworkFramework/Buffer.h; sourceTree = "<group>"; };
+		CE8A72DC26044A0900AEFD2B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../3rdParty/ConcurrencyNetworkFramework/HackingSTL/README.md; sourceTree = "<group>"; };
+		CE8A72DD26044A0900AEFD2B /* thread */ = {isa = PBXFileReference; lastKnownFileType = text; name = thread; path = ../../3rdParty/ConcurrencyNetworkFramework/HackingSTL/thread; sourceTree = "<group>"; };
+		CE8A72DE26044A0900AEFD2B /* semaphore */ = {isa = PBXFileReference; lastKnownFileType = text; name = semaphore; path = ../../3rdParty/ConcurrencyNetworkFramework/HackingSTL/semaphore; sourceTree = "<group>"; };
+		CE8A72DF26044A1800AEFD2B /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Log.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Log.h; sourceTree = "<group>"; };
+		CE8A72E026044A1800AEFD2B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../../3rdParty/ConcurrencyNetworkFramework/LICENSE.txt; sourceTree = "<group>"; };
+		CE8A72E126044A1800AEFD2B /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../../3rdParty/ConcurrencyNetworkFramework/Makefile; sourceTree = "<group>"; };
+		CE8A72E226044A1800AEFD2B /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Log.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Log.cpp; sourceTree = "<group>"; };
+		CE8A72E326044A1800AEFD2B /* Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Base.cpp; sourceTree = "<group>"; };
+		CE8A72E426044A1800AEFD2B /* FrameworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrameworkHeader.h; path = ../../3rdParty/ConcurrencyNetworkFramework/FrameworkHeader.h; sourceTree = "<group>"; };
+		CE8A72E526044A1800AEFD2B /* Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Base.h; sourceTree = "<group>"; };
+		CE8A72E626044A1800AEFD2B /* Connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Connection.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Connection.cpp; sourceTree = "<group>"; };
+		CE8A72E726044A1800AEFD2B /* Listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Listener.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Listener.h; sourceTree = "<group>"; };
+		CE8A72E826044A1800AEFD2B /* Buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Buffer.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Buffer.cpp; sourceTree = "<group>"; };
+		CE8A72E926044A1800AEFD2B /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connection.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Connection.h; sourceTree = "<group>"; };
+		CE8A72EA26044A1800AEFD2B /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Socket.cpp; sourceTree = "<group>"; };
+		CE8A72EB26044A1800AEFD2B /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Socket.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Socket.h; sourceTree = "<group>"; };
+		CE8A72EC26044A1800AEFD2B /* Listener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Listener.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Listener.cpp; sourceTree = "<group>"; };
+		CE8A72ED26044A1800AEFD2B /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Framework.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Framework.h; sourceTree = "<group>"; };
+		CE8A72EE26044A1800AEFD2B /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Event.h; sourceTree = "<group>"; };
+		CE8A72EF26044A1800AEFD2B /* Framework.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Framework.cpp; path = ../../3rdParty/ConcurrencyNetworkFramework/Framework.cpp; sourceTree = "<group>"; };
+		CE8A72F026044A1800AEFD2B /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buffer.h; path = ../../3rdParty/ConcurrencyNetworkFramework/Buffer.h; sourceTree = "<group>"; };
 		CE8A734D260451F900AEFD2B /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A734F260451FC00AEFD2B /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE91E8862489CCAD00912424 /* client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 		CE8A71402604450600AEFD2B /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE8A72AC2604485A00AEFD2B /* llvm_wrapper.cpp */,
 				CE8A71422604451B00AEFD2B /* CrossPlatform.Android.xcconfig */,
 				CE8A71412604451B00AEFD2B /* CrossPlatform.Windows.xcconfig */,
 			);
@@ -364,7 +362,8 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
+					../../3rdParty/imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
@@ -439,7 +438,8 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
+					../../3rdParty/imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";

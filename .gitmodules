@@ -14,17 +14,17 @@
 	path = 3rdParty/ClangPlatform
 	url = https://github.com/metarutaiga/ClangPlatform
 [submodule "xxYUV"]
-	path = xxYUV
+	path = 3rdParty/xxYUV
 	url = https://github.com/metarutaiga/xxYUV
 [submodule "libyuv"]
-	path = libyuv
+	path = 3rdParty/libyuv
 	url = https://chromium.googlesource.com/libyuv/libyuv
 [submodule "ConcurrencyNetworkFramework"]
-	path = ConcurrencyNetworkFramework
+	path = 3rdParty/ConcurrencyNetworkFramework
 	url = https://github.com/metarutaiga/ConcurrencyNetworkFramework
 [submodule "mips"]
-	path = mips
+	path = 3rdParty/mips
 	url = https://github.com/metarutaiga/mips
 [submodule "riscv"]
-	path = riscv
+	path = 3rdParty/riscv
 	url = https://github.com/metarutaiga/riscv

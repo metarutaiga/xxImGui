@@ -50,10 +50,10 @@
 		30BADEC82642D20000AD8F26 /* pcrel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30BADEA42642D1FF00AD8F26 /* pcrel.cpp */; };
 		30ED317026355DFD00AA60B2 /* libimgui.so in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED316F26355DFD00AA60B2 /* libimgui.so */; };
 		CE93601F25AC457A00CEF503 /* mips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 300264C4242690D0004559E0 /* mips.cpp */; };
-		CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE999D1025D2618800351116 /* llvm_wrapper.cpp */; };
 		CE999D5525D266E300351116 /* imgui.dll in Frameworks */ = {isa = PBXBuildFile; fileRef = CE999D5425D266E300351116 /* imgui.dll */; };
 		CE999D9525D275A900351116 /* mips.dll in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE93601825AC454200CEF503 /* mips.dll */; };
 		CEB0E87A2608197500D13FE3 /* libmips.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libmips.dylib */; };
+		D60EC64726A9662E0051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC64626A9662E0051A948 /* llvm_wrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,26 +84,25 @@
 		30A9A7BB25ADC792000FA104 /* libmips.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libmips.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096B7244ACE500096E6DC /* libimgui.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B096C9244AD39C0096E6DC /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		30BADE962642D1FF00AD8F26 /* sysctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sysctl.h; path = ../../mips/sysctl.h; sourceTree = "<group>"; };
-		30BADE972642D1FF00AD8F26 /* cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu.cpp; path = ../../mips/cpu.cpp; sourceTree = "<group>"; };
-		30BADE982642D1FF00AD8F26 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform.h; path = ../../mips/platform.h; sourceTree = "<group>"; };
-		30BADE992642D1FF00AD8F26 /* regimm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = regimm.cpp; path = ../../mips/regimm.cpp; sourceTree = "<group>"; };
-		30BADE9A2642D1FF00AD8F26 /* opcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opcode.cpp; path = ../../mips/opcode.cpp; sourceTree = "<group>"; };
-		30BADE9B2642D1FF00AD8F26 /* cop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cop.h; path = ../../mips/cop.h; sourceTree = "<group>"; };
-		30BADE9C2642D1FF00AD8F26 /* instr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = instr.h; path = ../../mips/instr.h; sourceTree = "<group>"; };
-		30BADE9D2642D1FF00AD8F26 /* cop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cop.cpp; path = ../../mips/cop.cpp; sourceTree = "<group>"; };
-		30BADE9E2642D1FF00AD8F26 /* fpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fpu.h; path = ../../mips/fpu.h; sourceTree = "<group>"; };
-		30BADE9F2642D1FF00AD8F26 /* sysctl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sysctl.cpp; path = ../../mips/sysctl.cpp; sourceTree = "<group>"; };
-		30BADEA02642D1FF00AD8F26 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu.h; path = ../../mips/cpu.h; sourceTree = "<group>"; };
-		30BADEA12642D1FF00AD8F26 /* special.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = special.cpp; path = ../../mips/special.cpp; sourceTree = "<group>"; };
-		30BADEA22642D1FF00AD8F26 /* fpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fpu.cpp; path = ../../mips/fpu.cpp; sourceTree = "<group>"; };
-		30BADEA32642D1FF00AD8F26 /* special3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = special3.cpp; path = ../../mips/special3.cpp; sourceTree = "<group>"; };
-		30BADEA42642D1FF00AD8F26 /* pcrel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pcrel.cpp; path = ../../mips/pcrel.cpp; sourceTree = "<group>"; };
+		30BADE962642D1FF00AD8F26 /* sysctl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sysctl.h; path = ../../3rdParty/mips/sysctl.h; sourceTree = "<group>"; };
+		30BADE972642D1FF00AD8F26 /* cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu.cpp; path = ../../3rdParty/mips/cpu.cpp; sourceTree = "<group>"; };
+		30BADE982642D1FF00AD8F26 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = platform.h; path = ../../3rdParty/mips/platform.h; sourceTree = "<group>"; };
+		30BADE992642D1FF00AD8F26 /* regimm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = regimm.cpp; path = ../../3rdParty/mips/regimm.cpp; sourceTree = "<group>"; };
+		30BADE9A2642D1FF00AD8F26 /* opcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = opcode.cpp; path = ../../3rdParty/mips/opcode.cpp; sourceTree = "<group>"; };
+		30BADE9B2642D1FF00AD8F26 /* cop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cop.h; path = ../../3rdParty/mips/cop.h; sourceTree = "<group>"; };
+		30BADE9C2642D1FF00AD8F26 /* instr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = instr.h; path = ../../3rdParty/mips/instr.h; sourceTree = "<group>"; };
+		30BADE9D2642D1FF00AD8F26 /* cop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cop.cpp; path = ../../3rdParty/mips/cop.cpp; sourceTree = "<group>"; };
+		30BADE9E2642D1FF00AD8F26 /* fpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fpu.h; path = ../../3rdParty/mips/fpu.h; sourceTree = "<group>"; };
+		30BADE9F2642D1FF00AD8F26 /* sysctl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sysctl.cpp; path = ../../3rdParty/mips/sysctl.cpp; sourceTree = "<group>"; };
+		30BADEA02642D1FF00AD8F26 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu.h; path = ../../3rdParty/mips/cpu.h; sourceTree = "<group>"; };
+		30BADEA12642D1FF00AD8F26 /* special.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = special.cpp; path = ../../3rdParty/mips/special.cpp; sourceTree = "<group>"; };
+		30BADEA22642D1FF00AD8F26 /* fpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fpu.cpp; path = ../../3rdParty/mips/fpu.cpp; sourceTree = "<group>"; };
+		30BADEA32642D1FF00AD8F26 /* special3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = special3.cpp; path = ../../3rdParty/mips/special3.cpp; sourceTree = "<group>"; };
+		30BADEA42642D1FF00AD8F26 /* pcrel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pcrel.cpp; path = ../../3rdParty/mips/pcrel.cpp; sourceTree = "<group>"; };
 		30ED316F26355DFD00AA60B2 /* libimgui.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE93601825AC454200CEF503 /* mips.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mips.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = ../../build/CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
 		CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = ../../build/CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
-		CE999D1025D2618800351116 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = ../../msvc/llvm_wrapper.cpp; sourceTree = "<group>"; };
 		CE999D3A25D2652F00351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE999D5425D266E300351116 /* imgui.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = imgui.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB7C31A25C90165002E92D3 /* libimgui.bundle */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +110,7 @@
 		CEC067FF25CBEEC3003A5768 /* libimgui.windows */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.windows; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0680125CBEECA003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6022C3523258B5D00B9BFB8 /* libmips.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmips.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60EC64626A9662E0051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A041231ED82900B75B77 /* libmips.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmips.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,9 +191,9 @@
 		CE999BD625D21EC800351116 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				CE999D1025D2618800351116 /* llvm_wrapper.cpp */,
 				CE999BD725D21ED500351116 /* CrossPlatform.Android.xcconfig */,
 				CE999BD825D21ED500351116 /* CrossPlatform.Windows.xcconfig */,
+				D60EC64626A9662E0051A948 /* llvm_wrapper.cpp */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -355,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BADEB32642D20000AD8F26 /* cop.cpp in Sources */,
+				D60EC64726A9662E0051A948 /* llvm_wrapper.cpp in Sources */,
 				30BADEB72642D20000AD8F26 /* sysctl.cpp in Sources */,
 				30BADEAB2642D20000AD8F26 /* regimm.cpp in Sources */,
 				30BADEBF2642D20000AD8F26 /* fpu.cpp in Sources */,
@@ -362,7 +363,6 @@
 				CE93601F25AC457A00CEF503 /* mips.cpp in Sources */,
 				30BADEBB2642D20000AD8F26 /* special.cpp in Sources */,
 				30BADEC32642D20000AD8F26 /* special3.cpp in Sources */,
-				CE999D1125D2618800351116 /* llvm_wrapper.cpp in Sources */,
 				30BADEA72642D20000AD8F26 /* cpu.cpp in Sources */,
 				30BADEC72642D20000AD8F26 /* pcrel.cpp in Sources */,
 			);
@@ -524,7 +524,8 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
+					../../3rdParty/imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
@@ -606,7 +607,8 @@
 				HEADER_SEARCH_PATHS = (
 					..,
 					../..,
-					../../imgui,
+					../../3rdParty,
+					../../3rdParty/imgui,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
