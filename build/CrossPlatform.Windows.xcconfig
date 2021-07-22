@@ -1,0 +1,2 @@
+CLANG_PLATFORM_DIR = $PROJECT_DIR/../3rdParty/ClangPlatform
+#include "../3rdParty/ClangPlatform/CrossPlatform.Windows.xcconfig"
