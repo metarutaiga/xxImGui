@@ -9,11 +9,11 @@
     <ClCompile Include="..\xxImGui\main.cpp" />
     <ClCompile Include="..\xxImGui\Plugin.cpp" />
     <ClCompile Include="..\xxImGui\mainJNI.cpp" />
-    <ClCompile Include="..\imgui\misc\freetype\imgui_freetype.cpp">
-      <Filter>misc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\imgui\backends\imgui_impl_win32.cpp">
+    <ClCompile Include="..\3rdParty\imgui\backends\imgui_impl_win32.cpp">
       <Filter>backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rdParty\imgui\misc\freetype\imgui_freetype.cpp">
+      <Filter>misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -40,11 +40,11 @@
     <ClInclude Include="..\xxImGui\DearImGui.h" />
     <ClInclude Include="..\xxImGui\Renderer.h" />
     <ClInclude Include="..\xxImGui\Plugin.h" />
-    <ClInclude Include="..\imgui\misc\freetype\imgui_freetype.h">
-      <Filter>misc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\imgui\backends\imgui_impl_win32.h">
+    <ClInclude Include="..\3rdParty\imgui\backends\imgui_impl_win32.h">
       <Filter>backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rdParty\imgui\misc\freetype\imgui_freetype.h">
+      <Filter>misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

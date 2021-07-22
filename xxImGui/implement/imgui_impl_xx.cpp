@@ -197,6 +197,7 @@ void ImGui_ImplXX_RenderDrawData(ImDrawData* draw_data, uint64_t commandEncoder)
                 // (ImDrawCallback_ResetRenderState is a special callback value used by the user to request the renderer to reset render state.)
                 if (pcmd->UserCallback == ImDrawCallback_ResetRenderState)
                 {
+                    xxSetVertexBuffers(commandEncoder, 1, &vertexBuffer, g_vertexAttribute);
                     ImGui_ImplXX_SetupRenderState(draw_data, commandEncoder, constantBuffer);
                     boundTextureID = 0;
                 }
@@ -328,8 +329,8 @@ bool ImGui_ImplXX_CreateDeviceObjects()
     g_vertexAttribute = xxCreateVertexAttribute(g_device, 3, attributes);
     g_vertexShader = xxCreateVertexShader(g_device, "default", g_vertexAttribute);
     g_fragmentShader = xxCreateFragmentShader(g_device, "default");
-    g_blendState = xxCreateBlendState(g_device, true);
-    g_depthStencilState = xxCreateDepthStencilState(g_device, false, false);
+    g_blendState = xxCreateBlendState(g_device, "SrcAlpha", "+", "1-SrcAlpha", "1", "+", "0");
+    g_depthStencilState = xxCreateDepthStencilState(g_device, "Always", false);
     g_rasterizerState = xxCreateRasterizerState(g_device, false, true);
     g_pipeline = xxCreatePipeline(g_device, g_renderPass, g_blendState, g_depthStencilState, g_rasterizerState, g_vertexAttribute, g_vertexShader, g_fragmentShader);
 

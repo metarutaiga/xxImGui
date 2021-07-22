@@ -109,12 +109,14 @@ void DearImGui::Create(void* view, float scale, float font)
 #if defined(xxMACOS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.FontBuilderFlags    = io.FontGlobalScale >= 2.0f ? 0 : ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8 : 0;
     io.Fonts->AddFontFromFileTTF("/System/Library/Fonts/PingFang.ttc", 16.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
 #elif defined(xxWINDOWS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
-    font_config.FontBuilderFlags    = ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.FontBuilderFlags    = io.FontGlobalScale >= 2.0f ? 0 : ImGuiFreeTypeBuilderFlags_Bitmap;
+    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8 : 0;
     if (io.FontGlobalScale == 1.0f)
     {
         if (GetFileAttributesA("C:\\Windows\\Fonts\\msgothic.ttc") != INVALID_FILE_ATTRIBUTES)
@@ -170,7 +172,11 @@ void DearImGui::NewFrame(void* view)
     ImGui_ImplOSX_NewFrame((__bridge NSView*)view);
 #elif defined(xxIOS)
     CGFloat contentScaleFactor = ((CGFloat(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("contentScaleFactor"));
+#if TARGET_CPU_X86_64
+    CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend_stret)((__bridge id)view, sel_registerName("bounds"));
+#else
     CGRect rect = ((CGRect(*)(id, SEL, ...))objc_msgSend)((__bridge id)view, sel_registerName("bounds"));
+#endif
     ImGui::GetIO().DisplaySize = ImVec2(rect.size.width, rect.size.height);
     ImGui::GetIO().DisplayFramebufferScale = ImVec2(contentScaleFactor, contentScaleFactor);
 #elif defined(xxWINDOWS)
