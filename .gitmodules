@@ -1,5 +1,5 @@
 [submodule "xxGraphic"]
-	path = xxGraphic
+	path = 3rdParty/xxGraphic
 	url = https://github.com/metarutaiga/xxGraphic
 [submodule "freetype"]
 	path = 3rdParty/freetype

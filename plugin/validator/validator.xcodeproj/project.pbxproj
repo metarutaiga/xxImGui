@@ -178,8 +178,8 @@
 		D644A038231ED82900B75B77 = {
 			isa = PBXGroup;
 			children = (
-				30EDB9E02427CD3A00D599B5 /* validator.cpp */,
 				CE999BD325D21EB300351116 /* Configs */,
+				30EDB9E02427CD3A00D599B5 /* validator.cpp */,
 				D644A042231ED82900B75B77 /* Products */,
 				300264BD24266097004559E0 /* Frameworks */,
 			);
@@ -471,7 +471,7 @@
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OBJROOT = ../../temp;
+				OBJROOT = ../../build/temp;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-fdata-sections",
@@ -554,7 +554,7 @@
 				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PREFIX)$(PRODUCT_NAME).$(EXECUTABLE_EXTENSION)";
 				MACH_O_TYPE = mh_dylib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OBJROOT = ../../temp;
+				OBJROOT = ../../build/temp;
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
