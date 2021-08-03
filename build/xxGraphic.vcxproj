@@ -51,132 +51,132 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGlide.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D10.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D10_1.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D11.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D11On12.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D12.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D5.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D6.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D7.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D8.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D8PS.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9Ex.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9On12.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9PS.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3DAsm.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicGlide.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES3.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES31.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicMantle.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicMantleAsm.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicNULL.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicVulkan.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicVulkanAsm.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicWGL.cpp" />
-    <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGL.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGlide.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMantle.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalVulkan.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphic.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D10.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D10_1.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D11.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D11On12.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D12.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D5.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D6.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D7.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D8.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D8PS.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9Ex.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9On12.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9PS.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3DAsm.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicEGL.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGlide.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES2.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES3.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES31.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES32.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicMantle.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicMantleAsm.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicNULL.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicVulkan.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicVulkanAsm.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicWGL.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d10TokenizedProgramFormat.hpp" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d8.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d8caps.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d8types.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9caps.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9on12.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9types.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3dcaps.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3dtypes.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h" />
-    <ClInclude Include="..\xxGraphic\glide\3dfx.h" />
-    <ClInclude Include="..\xxGraphic\glide\glide.h" />
-    <ClInclude Include="..\xxGraphic\glide\glidesys.h" />
-    <ClInclude Include="..\xxGraphic\glide\glideutl.h" />
-    <ClInclude Include="..\xxGraphic\glide\sst1vid.h" />
-    <ClInclude Include="..\xxGraphic\gl\egl.h" />
-    <ClInclude Include="..\xxGraphic\gl\eglplatform.h" />
-    <ClInclude Include="..\xxGraphic\gl\gl32.h" />
-    <ClInclude Include="..\xxGraphic\gl\gl3platform.h" />
-    <ClInclude Include="..\xxGraphic\gl\khrplatform.h" />
-    <ClInclude Include="..\xxGraphic\gl\wgl.h" />
-    <ClInclude Include="..\xxGraphic\gr\amdil.h" />
-    <ClInclude Include="..\xxGraphic\gr\mantle.h" />
-    <ClInclude Include="..\xxGraphic\gr\mantleWsiWinExt.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGlide.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vk_icd.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vk_layer.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vk_platform.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vk_sdk_platform.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_android.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_core.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_fuchsia.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_ggp.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_ios.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_macos.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_metal.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_prototype.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_vi.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_wayland.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_win32.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_xcb.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib.h" />
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib_xrandr.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphic.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicCGL.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D10.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D10_1.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D11.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D11On12.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D12.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D5.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D6.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D7.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D8.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D8PS.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9Ex.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9On12.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9PS.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicD3DAsm.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicEGL.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicGlide.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES32.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicMantle.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicMantleAsm.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicMetal.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicNULL.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicVulkan.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h" />
-    <ClInclude Include="..\xxGraphic\xxGraphicWGL.h" />
-    <ClInclude Include="..\xxGraphic\xxSystem.h" />
-    <ClInclude Include="..\xxGraphic\xxVector.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d10TokenizedProgramFormat.hpp" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d8.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d8caps.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d8types.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9caps.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9on12.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9types.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3dcaps.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3dtypes.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\ddraw.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\3dfx.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\glide.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\glidesys.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\glideutl.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\sst1vid.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\egl.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\eglplatform.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\gl32.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\gl3platform.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\khrplatform.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\wgl.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gr\amdil.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gr\mantle.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\gr\mantleWsiWinExt.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternal.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalD3D.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGL.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGlide.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMantle.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMetal.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalVulkan.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_icd.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_layer.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_platform.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_sdk_platform.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_android.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_core.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_fuchsia.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_ggp.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_ios.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_macos.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_metal.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_prototype.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_vi.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_wayland.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_win32.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_xcb.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_xlib.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_xlib_xrandr.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphic.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicCGL.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D10.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D10_1.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D11.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D11On12.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D12.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D5.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D6.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D7.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D8.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D8PS.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9Ex.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9On12.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9PS.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3DAsm.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicEAGL.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicEGL.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGlide.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES2.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES3.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES31.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES32.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicMantle.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicMantleAsm.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicMetal.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicNULL.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicVulkan.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicVulkanAsm.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicWGL.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxVector.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\xxGraphic\internal\xxGraphicInternalMetal.mm" />
-    <None Include="..\xxGraphic\xxGraphicCGL.mm" />
-    <None Include="..\xxGraphic\xxGraphicEAGL.mm" />
-    <None Include="..\xxGraphic\xxGraphicMetal.mm" />
+    <None Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMetal.mm" />
+    <None Include="..\3rdParty\xxGraphic\xxGraphicCGL.mm" />
+    <None Include="..\3rdParty\xxGraphic\xxGraphicEAGL.mm" />
+    <None Include="..\3rdParty\xxGraphic\xxGraphicMetal.mm" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -304,68 +304,68 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|CHPE'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64EC'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|CHPE'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64EC'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -374,7 +374,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -390,7 +390,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -406,7 +406,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -422,7 +422,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -438,7 +438,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -454,7 +454,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -475,7 +475,7 @@
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -498,7 +498,7 @@
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -521,7 +521,7 @@
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -544,7 +544,7 @@
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -567,7 +567,7 @@
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -590,7 +590,7 @@
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>XX_BUILD_LIBRARY;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>../xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rdParty/xxGraphic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>

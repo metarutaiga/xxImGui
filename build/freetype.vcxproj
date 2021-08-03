@@ -216,74 +216,74 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|CHPE'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64EC'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|CHPE'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64EC'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>$(ProjectName).$(Configuration).$(Platform)</TargetName>
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\</OutDir>
-    <IntDir>$(SolutionDir)temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
+    <IntDir>$(SolutionDir)build\temp\$(Configuration).$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -301,7 +301,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -319,7 +319,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -337,7 +337,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -355,7 +355,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -373,7 +373,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -391,7 +391,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -416,7 +416,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -441,7 +441,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -466,7 +466,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -491,7 +491,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>
@@ -516,7 +516,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
-      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FT_CONFIG_MODULES_H="../../../../xxImGui/implement/ftmodule.h";FT2_BUILD_LIBRARY;DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;__STDC__;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>../3rdParty/freetype/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4018;4244;4267;4312</DisableSpecificWarnings>

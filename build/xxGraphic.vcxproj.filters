@@ -1,348 +1,348 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\xxGraphic\xxGraphic.cpp" />
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D8.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphic.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D8.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D8PS.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D8PS.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9Ex.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9Ex.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9On12.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9On12.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D9PS.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D9PS.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D10.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D10.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D10_1.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D10_1.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D11.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D11.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D11On12.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D11On12.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D12.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D12.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3DAsm.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3DAsm.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES2.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES2.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicWGL.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicWGL.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicMantleAsm.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicMantleAsm.cpp">
       <Filter>Mantle</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicMantle.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicMantle.cpp">
       <Filter>Mantle</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicVulkan.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicVulkan.cpp">
       <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicVulkanAsm.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicVulkanAsm.cpp">
       <Filter>Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicNULL.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicNULL.cpp">
       <Filter>NULL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D7.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D7.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D6.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D6.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicEGL.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicEGL.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES3.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES3.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES31.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES31.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicGLES32.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGLES32.cpp">
       <Filter>OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxSystem.cpp" />
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalMantle.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxSystem.cpp" />
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMantle.cpp">
       <Filter>Mantle\internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGL.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGL.cpp">
       <Filter>OpenGL\internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalVulkan.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalVulkan.cpp">
       <Filter>Vulkan\internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicD3D5.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicD3D5.cpp">
       <Filter>Direct3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\internal\xxGraphicInternalGlide.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGlide.cpp">
       <Filter>Glide\internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\xxGraphic\xxGraphicGlide.cpp">
+    <ClCompile Include="..\3rdParty\xxGraphic\xxGraphicGlide.cpp">
       <Filter>Glide</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\xxGraphic\xxGraphic.h" />
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d8.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphic.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d8.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d8caps.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d8caps.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d8types.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d8types.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9caps.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9caps.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9types.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9types.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d10TokenizedProgramFormat.hpp">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d10TokenizedProgramFormat.hpp">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d9on12.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d9on12.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D8.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D8.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D8PS.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D8PS.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9Ex.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9Ex.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9On12.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9On12.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D9PS.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D9PS.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D10.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D10.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D10_1.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D10_1.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D11.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D11.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D11On12.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D11On12.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D12.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D12.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3DAsm.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3DAsm.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES2.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES2.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicWGL.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicWGL.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\khrplatform.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\khrplatform.h">
       <Filter>OpenGL\gl</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\wgl.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\wgl.h">
       <Filter>OpenGL\gl</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gr\amdil.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gr\amdil.h">
       <Filter>Mantle\mantle</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicMantleAsm.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicMantleAsm.h">
       <Filter>Mantle</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicMantle.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicMantle.h">
       <Filter>Mantle</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gr\mantleWsiWinExt.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gr\mantleWsiWinExt.h">
       <Filter>Mantle\mantle</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gr\mantle.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gr\mantle.h">
       <Filter>Mantle\mantle</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vk_icd.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_icd.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vk_layer.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_layer.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vk_platform.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_platform.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vk_sdk_platform.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vk_sdk_platform.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_android.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_android.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_core.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_core.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_fuchsia.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_fuchsia.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_ggp.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_ggp.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_ios.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_ios.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_macos.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_macos.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_metal.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_metal.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_vi.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_vi.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_wayland.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_wayland.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_win32.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_win32.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_xcb.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_xcb.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_xlib.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_xlib_xrandr.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_xlib_xrandr.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicVulkan.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicVulkan.h">
       <Filter>Vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\vulkan\vulkan_prototype.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\vulkan\vulkan_prototype.h">
       <Filter>Vulkan\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicVulkanAsm.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicVulkanAsm.h">
       <Filter>Vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicNULL.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicNULL.h">
       <Filter>NULL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicCGL.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicCGL.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicEAGL.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicEAGL.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicMetal.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicMetal.h">
       <Filter>Metal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D7.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D7.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D6.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D6.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3d.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3d.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3dcaps.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3dcaps.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\d3dtypes.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\d3dtypes.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\dxsdk\ddraw.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\dxsdk\ddraw.h">
       <Filter>Direct3D\dxsdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicEGL.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicEGL.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\egl.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\egl.h">
       <Filter>OpenGL\gl</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\eglplatform.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\eglplatform.h">
       <Filter>OpenGL\gl</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\gl3platform.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\gl3platform.h">
       <Filter>OpenGL\gl</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\gl\gl32.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\gl\gl32.h">
       <Filter>OpenGL\gl</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES3.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES3.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES31.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES31.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicGLES32.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGLES32.h">
       <Filter>OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternal.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalD3D.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternal.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalD3D.h">
       <Filter>Direct3D\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGL.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGL.h">
       <Filter>OpenGL\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxSystem.h" />
-    <ClInclude Include="..\xxGraphic\xxVector.h" />
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMantle.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxSystem.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\xxVector.h" />
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMantle.h">
       <Filter>Mantle\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalVulkan.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalVulkan.h">
       <Filter>Vulkan\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalMetal.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMetal.h">
       <Filter>Metal\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicD3D5.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicD3D5.h">
       <Filter>Direct3D</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\internal\xxGraphicInternalGlide.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalGlide.h">
       <Filter>Glide\internal</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\xxGraphicGlide.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\xxGraphicGlide.h">
       <Filter>Glide</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\glide\3dfx.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\3dfx.h">
       <Filter>Glide\glide</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\glide\glide.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\glide.h">
       <Filter>Glide\glide</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\glide\glidesys.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\glidesys.h">
       <Filter>Glide\glide</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\glide\glideutl.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\glideutl.h">
       <Filter>Glide\glide</Filter>
     </ClInclude>
-    <ClInclude Include="..\xxGraphic\glide\sst1vid.h">
+    <ClInclude Include="..\3rdParty\xxGraphic\glide\sst1vid.h">
       <Filter>Glide\glide</Filter>
     </ClInclude>
   </ItemGroup>
@@ -403,16 +403,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\xxGraphic\xxGraphicCGL.mm">
+    <None Include="..\3rdParty\xxGraphic\xxGraphicCGL.mm">
       <Filter>OpenGL</Filter>
     </None>
-    <None Include="..\xxGraphic\xxGraphicEAGL.mm">
+    <None Include="..\3rdParty\xxGraphic\xxGraphicEAGL.mm">
       <Filter>OpenGL</Filter>
     </None>
-    <None Include="..\xxGraphic\xxGraphicMetal.mm">
+    <None Include="..\3rdParty\xxGraphic\xxGraphicMetal.mm">
       <Filter>Metal</Filter>
     </None>
-    <None Include="..\xxGraphic\internal\xxGraphicInternalMetal.mm">
+    <None Include="..\3rdParty\xxGraphic\internal\xxGraphicInternalMetal.mm">
       <Filter>Metal\internal</Filter>
     </None>
   </ItemGroup>

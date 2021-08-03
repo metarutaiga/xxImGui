@@ -1,5 +1,7 @@
 .vs/
 bin/
+lib/
+temp/
 build/lib/
 build/temp/
 *.iml
