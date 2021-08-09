@@ -161,18 +161,18 @@ target_include_directories( imgui
 
 add_library( xxGraphic
              SHARED
-             ../../../../../xxGraphic/internal/xxGraphicInternalGL.cpp
-             ../../../../../xxGraphic/internal/xxGraphicInternalVulkan.cpp
-             ../../../../../xxGraphic/xxGraphic.cpp
-             ../../../../../xxGraphic/xxGraphicEGL.cpp
-             ../../../../../xxGraphic/xxGraphicGLES2.cpp
-             ../../../../../xxGraphic/xxGraphicGLES3.cpp
-             ../../../../../xxGraphic/xxGraphicGLES31.cpp
-             ../../../../../xxGraphic/xxGraphicGLES32.cpp
-             ../../../../../xxGraphic/xxGraphicNULL.cpp
-             ../../../../../xxGraphic/xxGraphicVulkan.cpp
-             ../../../../../xxGraphic/xxGraphicVulkanAsm.cpp
-             ../../../../../xxGraphic/xxSystem.cpp )
+             ../../../../../3rdParty/xxGraphic/internal/xxGraphicInternalGL.cpp
+             ../../../../../3rdParty/xxGraphic/internal/xxGraphicInternalVulkan.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphic.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicEGL.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicGLES2.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicGLES3.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicGLES31.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicGLES32.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicNULL.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicVulkan.cpp
+             ../../../../../3rdParty/xxGraphic/xxGraphicVulkanAsm.cpp
+             ../../../../../3rdParty/xxGraphic/xxSystem.cpp )
 
 target_compile_definitions( xxGraphic
                             PUBLIC
@@ -180,7 +180,7 @@ target_compile_definitions( xxGraphic
 
 target_include_directories( xxGraphic
                             PUBLIC
-                            ../../../../../xxGraphic )
+                            ../../../../../3rdParty/xxGraphic )
 
 target_link_libraries( xxGraphic
                        ${log-lib}
@@ -190,11 +190,11 @@ target_link_libraries( xxGraphic
 
 add_library( xxGraphicPlus
              SHARED
-             ../../../../../xxGraphic/utility/xxImage.cpp
-             ../../../../../xxGraphic/utility/xxMaterial.cpp
-             ../../../../../xxGraphic/utility/xxMath.cpp
-             ../../../../../xxGraphic/utility/xxMesh.cpp
-             ../../../../../xxGraphic/utility/xxNode.cpp )
+             ../../../../../3rdParty/xxGraphic/utility/xxImage.cpp
+             ../../../../../3rdParty/xxGraphic/utility/xxMaterial.cpp
+             ../../../../../3rdParty/xxGraphic/utility/xxMath.cpp
+             ../../../../../3rdParty/xxGraphic/utility/xxMesh.cpp
+             ../../../../../3rdParty/xxGraphic/utility/xxNode.cpp )
 
 target_compile_definitions( xxGraphicPlus
                             PUBLIC
@@ -202,7 +202,7 @@ target_compile_definitions( xxGraphicPlus
 
 target_include_directories( xxGraphicPlus
                             PUBLIC
-                            ../../../../../xxGraphic )
+                            ../../../../../3rdParty/xxGraphic )
 
 target_link_libraries( xxGraphicPlus
                        ${log-lib}
@@ -242,7 +242,7 @@ target_include_directories( validator
                             PUBLIC
                             ../../../../..
                             ../../../../../3rdParty
-                            ../../../../../xxGraphic
+                            ../../../../../3rdParty/xxGraphic
                             ../../../../../plugin )
 
 target_link_libraries( validator
