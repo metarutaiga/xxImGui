@@ -767,6 +767,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					FT2_BUILD_LIBRARY,
 					"FT_CONFIG_MODULES_H=\\\"../../../xxImGui/implement/ftmodule.h\\\"",
+					"FT_CONFIG_OPTIONS_H=\\\"../../../xxImGui/implement/ftoption.h\\\"",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
@@ -845,6 +846,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					FT2_BUILD_LIBRARY,
 					"FT_CONFIG_MODULES_H=\\\"../../../xxImGui/implement/ftmodule.h\\\"",
+					"FT_CONFIG_OPTIONS_H=\\\"../../../xxImGui/implement/ftoption.h\\\"",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;

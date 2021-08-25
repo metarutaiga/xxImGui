@@ -174,6 +174,7 @@
 		CEC0680F25CBEF2C003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0681125CBEF2C003A5768 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4337325AD244E00936983 /* xxImGui.exe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.exe; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECB7C4A26D62EC900C350C7 /* ftoption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ftoption.h; path = ../xxImGui/implement/ftoption.h; sourceTree = "<group>"; };
 		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
@@ -311,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				3083103E25F499EE0095892D /* ftmodule.h */,
+				CECB7C4A26D62EC900C350C7 /* ftoption.h */,
 				D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */,
 				D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */,
 				D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */,
