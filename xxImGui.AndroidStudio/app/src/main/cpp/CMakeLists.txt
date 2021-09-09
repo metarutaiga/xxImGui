@@ -130,6 +130,8 @@ add_library( freetype
 
 target_compile_definitions( freetype
                             PUBLIC
+                            FT_CONFIG_MODULES_H="../../../xxImGui/implement/ftmodule.h"
+                            FT_CONFIG_OPTIONS_H="../../../xxImGui/implement/ftoption.h"
                             FT2_BUILD_LIBRARY )
 
 target_include_directories( freetype
