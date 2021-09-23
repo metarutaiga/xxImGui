@@ -16,6 +16,8 @@
 #endif
 #include "implement/imgui_impl_osx.h"
 #elif defined(_WIN32)
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #include <imgui/backends/imgui_impl_win32.h>
 #endif
 #include "implement/imgui_impl_xx.h"
