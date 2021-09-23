@@ -17,6 +17,7 @@
 
 #include <freetype/config/ftoption.h>
 
+#undef FT_CONFIG_OPTION_ENVIRONMENT_PROPERTIES
 #undef FT_CONFIG_OPTION_USE_LZW
 #undef FT_CONFIG_OPTION_USE_ZLIB
 

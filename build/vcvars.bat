@@ -16,6 +16,48 @@ if not "%5" == "" set WindowsSDKVersion=%5
 if %VisualStudioYear% == 2022 goto vc2022
 if %VisualStudioYear% == 2019 goto vc2017_2019
 if %VisualStudioYear% == 2017 goto vc2017_2019
+if %VisualStudioYear% == WINCE600 goto wince600
+
+:wince600
+
+if "%Platform%" == "arm" set PlatformBin=arm
+if "%Platform%" == "mipsii" set PlatformBin=mips
+if "%Platform%" == "mipsiii" set PlatformBin=mips
+if "%Platform%" == "mipsiv" set PlatformBin=mips
+if "%Platform%" == "mipsv" set PlatformBin=mips
+if "%Platform%" == "mips16" set PlatformBin=mips
+if "%Platform%" == "mips32" set PlatformBin=mips
+if "%Platform%" == "mips64" set PlatformBin=mips
+if "%Platform%" == "sh4" set PlatformBin=sh
+if "%Platform%" == "x86" set PlatformBin=x86
+
+if "%Platform%" == "arm" set PlatformLib=arm
+if "%Platform%" == "mipsii" set PlatformLib=mips
+if "%Platform%" == "mipsiii" set PlatformLib=mipsfpu
+if "%Platform%" == "mipsiv" set PlatformLib=mipsfpu
+if "%Platform%" == "mipsv" set PlatformLib=mipsfpu
+if "%Platform%" == "mips16" set PlatformLib=mips16
+if "%Platform%" == "mips32" set PlatformLib=mips
+if "%Platform%" == "mips64" set PlatformLib=mipsfpu
+if "%Platform%" == "sh4" set PlatformLib=sh4
+if "%Platform%" == "x86" set PlatformLib=x86
+
+if "%Platform%" == "mipsii" set CL=/QMmips2
+if "%Platform%" == "mipsiii" set CL=/QMmips3
+if "%Platform%" == "mipsiv" set CL=/QMmips4
+if "%Platform%" == "mipsv" set CL=/QMmips5
+if "%Platform%" == "mips16" set CL=/QMmips16
+if "%Platform%" == "mips32" set CL=/QMmips32
+if "%Platform%" == "mips64" set CL=/QMmips64
+
+set VSINSTALLDIR=C:\WINCE600
+set VCINSTALLDIR=%VSINSTALLDIR%\BIN
+
+set PATH="%VCINSTALLDIR%\%PlatformBin%";%PATH%
+set INCLUDE="%VSINSTALLDIR%\inc";%INCLUDE%
+set LIB="%VSINSTALLDIR%\lib\%PlatformLib%";%LIB%
+set LINKOPT=coredll.lib /NOENTRY /NODEFAULTLIB /SUBSYSTEM:WINDOWSCE /LIBPATH:"%VSINSTALLDIR%\lib\%PlatformLib%" %LINKOPT%
+goto end
 
 :vc2015
 
@@ -33,6 +75,7 @@ set VCINSTALLDIR=%VSINSTALLDIR%\VC
 set PATH="%VCINSTALLDIR%\bin\%PlatformBin%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
 set LIB="%VCINSTALLDIR%\lib\%PlatformLib%";%LIB%
+set LINKOPT=kernel32.lib user32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%PlatformLib%" %LINKOPT%
 goto winSDK
 
 :vc2017_2019
@@ -42,6 +85,7 @@ set VCINSTALLDIR=%VSINSTALLDIR%\VC\Tools\MSVC\%VisualStudioVersion%
 set PATH="%VCINSTALLDIR%\bin\Hostx64\%Platform%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
 set LIB="%VCINSTALLDIR%\lib\%Platform%";%LIB%
+set LINKOPT=kernel32.lib user32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%Platform%" %LINKOPT%
 goto winSDK
 
 :vc2022
@@ -56,6 +100,7 @@ set VCINSTALLDIR=%VSINSTALLDIR%\VC\Tools\MSVC\%VisualStudioVersion%
 set PATH="%VCINSTALLDIR%\bin\Hostx64\%Platform%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
 set LIB="%VCINSTALLDIR%\lib\%Platform%";%LIB%
+set LINKOPT=kernel32.lib user32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%Platform%" %LINKOPT%
 goto winSDK
 
 :winSDK
@@ -66,6 +111,8 @@ set INCLUDE="%WindowsSdkDir%\include\%WindowsSDKVersion%\ucrt";%INCLUDE%
 set INCLUDE="%WindowsSdkDir%\include\%WindowsSDKVersion%\um";%INCLUDE%
 set LIB="%WindowsSdkDir%\lib\%WindowsSDKVersion%\ucrt\%Platform%";%LIB%
 set LIB="%WindowsSdkDir%\lib\%WindowsSDKVersion%\um\%Platform%";%LIB%
+set LINKOPT=/LIBPATH:"%WindowsSdkDir%\lib\%WindowsSDKVersion%\ucrt\%Platform%" %LINKOPT%
+set LINKOPT=/LIBPATH:"%WindowsSdkDir%\lib\%WindowsSDKVersion%\um\%Platform%" %LINKOPT%
 
 if "%1" == "" echo vcvars.bat [Platform] [VisualStudioYear] [VisualStudioEdition] [VisualStudioVersion] [WindowsSDKVersion]
 if "%1" == "" echo For example:
@@ -74,3 +121,5 @@ if "%1" == "" echo   vcvars.bat x64 2017 Community 14.13.26128
 if "%1" == "" echo   vcvars.bat x64 2019 Community 14.24.28314 10.0.19041.0
 
 set CL=/I"%VCINSTALLDIR%\include" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\shared" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\ucrt" /I"%WindowsSdkDir%\include\%WindowsSDKVersion%\um"
+
+:end

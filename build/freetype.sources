@@ -1,3 +1,5 @@
+/DFT_CONFIG_MODULES_H=\"../../../../xxImGui/implement/ftmodule.h\"
+/DFT_CONFIG_OPTIONS_H=\"../../../../xxImGui/implement/ftoption.h\"
 /DFT2_BUILD_LIBRARY
 /DDLL_EXPORT
 /D_CRT_SECURE_NO_WARNINGS
