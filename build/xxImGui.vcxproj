@@ -349,6 +349,8 @@
   <ItemGroup>
     <ClInclude Include="..\3rdParty\imgui\backends\imgui_impl_win32.h" />
     <ClInclude Include="..\3rdParty\imgui\misc\freetype\imgui_freetype.h" />
+    <ClInclude Include="..\xxImGui\implement\ftmodule.h" />
+    <ClInclude Include="..\xxImGui\implement\ftoption.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_impl_osx.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_impl_xx.h" />
     <ClInclude Include="..\xxImGui\implement\imgui_user_config.h" />
