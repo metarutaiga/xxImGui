@@ -1,8 +1,8 @@
 ﻿/DXXPLUS_BUILD_LIBRARY
 /DNDEBUG
-/I..\..\..\3rdParty\xxGraphic
-..\..\..\3rdParty\xxGraphic\utility\xxImage.cpp
-..\..\..\3rdParty\xxGraphic\utility\xxMaterial.cpp
-..\..\..\3rdParty\xxGraphic\utility\xxMath.cpp
-..\..\..\3rdParty\xxGraphic\utility\xxMesh.cpp
-..\..\..\3rdParty\xxGraphic\utility\xxNode.cpp
+/I..\..\..\..\3rdParty\xxGraphic
+..\..\..\..\3rdParty\xxGraphic\utility\xxImage.cpp
+..\..\..\..\3rdParty\xxGraphic\utility\xxMaterial.cpp
+..\..\..\..\3rdParty\xxGraphic\utility\xxMath.cpp
+..\..\..\..\3rdParty\xxGraphic\utility\xxMesh.cpp
+..\..\..\..\3rdParty\xxGraphic\utility\xxNode.cpp

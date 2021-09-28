@@ -19,6 +19,7 @@ if %VisualStudioYear% == 2017 goto vc2017_2019
 if %VisualStudioYear% == XBOX360 goto xbox360
 if %VisualStudioYear% == WINCE700 goto wince
 if %VisualStudioYear% == WINCE600 goto wince
+goto :eof
 
 :xbox360
 
@@ -93,7 +94,7 @@ set VCINSTALLDIR=%VSINSTALLDIR%\VC
 set PATH="%VCINSTALLDIR%\bin\%PlatformBin%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
 set LIB="%VCINSTALLDIR%\lib\%PlatformLib%";%LIB%
-set LINKOPT=kernel32.lib user32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%PlatformLib%" %LINKOPT%
+set LINKOPT=kernel32.lib user32.lib gdi32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%PlatformLib%" %LINKOPT%
 goto winSDK
 
 :vc2017_2019
@@ -103,7 +104,7 @@ set VCINSTALLDIR=%VSINSTALLDIR%\VC\Tools\MSVC\%VisualStudioVersion%
 set PATH="%VCINSTALLDIR%\bin\Hostx64\%Platform%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
 set LIB="%VCINSTALLDIR%\lib\%Platform%";%LIB%
-set LINKOPT=kernel32.lib user32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%Platform%" %LINKOPT%
+set LINKOPT=kernel32.lib user32.lib gdi32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%Platform%" %LINKOPT%
 goto winSDK
 
 :vc2022
@@ -118,7 +119,7 @@ set VCINSTALLDIR=%VSINSTALLDIR%\VC\Tools\MSVC\%VisualStudioVersion%
 set PATH="%VCINSTALLDIR%\bin\Hostx64\%Platform%";%PATH%
 set INCLUDE="%VCINSTALLDIR%\include";%INCLUDE%
 set LIB="%VCINSTALLDIR%\lib\%Platform%";%LIB%
-set LINKOPT=kernel32.lib user32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%Platform%" %LINKOPT%
+set LINKOPT=kernel32.lib user32.lib gdi32.lib /DEBUG /LIBPATH:"%VCINSTALLDIR%\lib\%Platform%" %LINKOPT%
 goto winSDK
 
 :winSDK

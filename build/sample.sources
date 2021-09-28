@@ -1,6 +1,6 @@
 ﻿/DPLUGIN_BUILD_LIBRARY
 /DIMGUI_USER_CONFIG=\"../xxImGui/implement/imgui_user_config.h\"
-/I..\..\..
-/I..\..\..\plugin
-/I..\..\..\3rdParty
-..\..\..\plugin\sample\sample.cpp
+/I..\..\..\..
+/I..\..\..\..\plugin
+/I..\..\..\..\3rdParty
+..\..\..\..\plugin\sample\sample.cpp
