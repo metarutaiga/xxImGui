@@ -30,7 +30,7 @@ set PATH="%VCINSTALLDIR%\win32";%PATH%
 set INCLUDE="%VSINSTALLDIR%\include\xbox";%INCLUDE%
 set LIB="%VSINSTALLDIR%\lib\xbox";%LIB%
 set CL=%CL% /I"%VSINSTALLDIR%\include\xbox"
-set LINKOPT=/NODEFAULTLIB /LIBPATH:"%VSINSTALLDIR%\lib\xbox" %LINKOPT%
+set LINKOPT=/XEX:NO /LIBPATH:"%VSINSTALLDIR%\lib\xbox" %LINKOPT%
 goto :eof
 
 :wince
