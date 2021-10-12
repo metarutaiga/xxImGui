@@ -10,11 +10,11 @@
 #include <imgui/imgui.h>
 
 #if defined(_MSC_VER) && defined(PLUGIN_BUILD_LIBRARY)
-#   define pluginAPI xxEXTERN __declspec(dllexport)
+#   define pluginAPI __declspec(dllexport) extern "C"
 #elif defined(_MSC_VER)
-#   define pluginAPI xxEXTERN __declspec(dllimport)
+#   define pluginAPI __declspec(dllimport) extern "C"
 #else
-#   define pluginAPI xxEXTERN
+#   define pluginAPI __attribute__((visibility("default"))) extern "C"
 #endif
 
 struct CreateData
