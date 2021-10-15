@@ -8,23 +8,22 @@
 #include <sys/stat.h>
 #include <imgui/misc/freetype/imgui_freetype.h>
 #if defined(__APPLE__)
-#include <TargetConditionals.h>
+#   include <TargetConditionals.h>
+#   include <CoreGraphics/CoreGraphics.h>
 #if TARGET_OS_OSX
-#include <Cocoa/Cocoa.h>
+#   include <Cocoa/Cocoa.h>
 #elif TARGET_OS_IOS
-#include <UIKit/UIKit.h>
+#   include <UIKit/UIKit.h>
 #endif
-#include "implement/imgui_impl_osx.h"
+#   include "implement/imgui_impl_osx.h"
 #elif defined(_WIN32)
-#include <imgui/backends/imgui_impl_win32.h>
+#   define WIN32_LEAN_AND_MEAN
+#   include <windows.h>
+#   include <imgui/backends/imgui_impl_win32.h>
 #endif
 #include "implement/imgui_impl_xx.h"
 #include "Renderer.h"
 #include "DearImGui.h"
-
-#if defined(xxMACOS) || defined(xxIOS)
-#   include <CoreGraphics/CoreGraphics.h>
-#endif
 
 // Allocator Wrapper
 static void* MallocWrapper(size_t size, void* user_data)    { IM_UNUSED(user_data); return calloc(size, 1); }
@@ -110,13 +109,13 @@ void DearImGui::Create(void* view, float scale, float font)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
     font_config.FontBuilderFlags    = io.FontGlobalScale >= 2.0f ? 0 : ImGuiFreeTypeBuilderFlags_Bitmap;
-    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8 : 0;
+    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8.0f : 0.0f;
     io.Fonts->AddFontFromFileTTF("/System/Library/Fonts/PingFang.ttc", 16.0f * io.FontGlobalScale, &font_config, io.Fonts->GetGlyphRangesJapanese());
 #elif defined(xxWINDOWS)
     font_config.SizePixels          = 13.0f * io.FontGlobalScale;
     font_config.RasterizerMultiply  = 2.0f / io.FontGlobalScale;
     font_config.FontBuilderFlags    = io.FontGlobalScale >= 2.0f ? 0 : ImGuiFreeTypeBuilderFlags_Bitmap;
-    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8 : 0;
+    font_config.GlyphExtraSpacing.x = io.FontGlobalScale >= 2.0f ? 8.0f : 0.0f;
     if (io.FontGlobalScale == 1.0f)
     {
         if (GetFileAttributesA("C:\\Windows\\Fonts\\msgothic.ttc") != INVALID_FILE_ATTRIBUTES)
@@ -270,7 +269,7 @@ bool DearImGui::Update(bool demo)
         if (ImGui::IsItemHovered())
         {
             time_t t = time(NULL);
-            struct tm *tm = localtime(&t);
+            struct tm* tm = localtime(&t);
             strftime(text, sizeof(text), "%c", tm);
             ImGui::SetTooltip("%s", text);
         }

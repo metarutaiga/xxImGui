@@ -15,7 +15,6 @@
 		3003454B244ACD9300E90C44 /* libvalidator.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454A244ACD9300E90C44 /* libvalidator.dylib */; };
 		3003454D244ACD9300E90C44 /* libxxGraphic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3003454C244ACD9300E90C44 /* libxxGraphic.dylib */; };
 		302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D20D4244AB62200D84267 /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB52448B7630042A480 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		303DDEB82448B7680042A480 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 303DDEB72448B7680042A480 /* Metal.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		30B0969B244ACDB40096E6DC /* libfreetype.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034544244ACD9300E90C44 /* libfreetype.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		30B0969C244ACDB40096E6DC /* libimgui.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30034546244ACD9300E90C44 /* libimgui.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -175,10 +174,11 @@
 		CEC0680F25CBEF2C003A5768 /* libimgui.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libimgui.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC0681125CBEF2C003A5768 /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC4337325AD244E00936983 /* xxImGui.exe */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = xxImGui.exe; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECB7C4A26D62EC900C350C7 /* ftoption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ftoption.h; path = ../xxImGui/implement/ftoption.h; sourceTree = "<group>"; };
 		CEE9E620257640C000C180FB /* xxImGui.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xxImGui.entitlements; sourceTree = "<group>"; };
 		D6022C4F23258C4E00B9BFB8 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Android.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
-		D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = CrossPlatform.Windows.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
+		D60EC64026A85C000051A948 /* CrossPlatform.Android.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Android.xcconfig; sourceTree = "<group>"; };
+		D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CrossPlatform.Windows.xcconfig; sourceTree = "<group>"; };
 		D60EC64226A85C0A0051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A0C6231F021F00B75B77 /* xxImGui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xxImGui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = imgui_impl_osx.h; path = ../xxImGui/implement/imgui_impl_osx.h; sourceTree = "<group>"; };
@@ -224,13 +224,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE89FA7B254B9B9200EDEED9 /* Metal.framework in Frameworks */,
 				30B096A2244ACDC40096E6DC /* libfreetype.bundle in Frameworks */,
 				30B096A4244ACDC40096E6DC /* libimgui.bundle in Frameworks */,
 				30B096A6244ACDC50096E6DC /* libsample.bundle in Frameworks */,
 				30B096A8244ACDC50096E6DC /* libvalidator.bundle in Frameworks */,
 				30B096AA244ACDC50096E6DC /* libxxGraphic.bundle in Frameworks */,
 				30F22EFA24DDA63B00C0F4EC /* libxxGraphicPlus.bundle in Frameworks */,
+				CE89FA7B254B9B9200EDEED9 /* Metal.framework in Frameworks */,
 				30B096CD244AD3ED0096E6DC /* QuartzCore.framework in Frameworks */,
 				30F22F0024DDA69E00C0F4EC /* UIKit.framework in Frameworks */,
 			);
@@ -248,7 +248,6 @@
 				30F22EFD24DDA66800C0F4EC /* libxxGraphicPlus.dylib in Frameworks */,
 				302D20D5244AB62200D84267 /* AppKit.framework in Frameworks */,
 				303DDEB82448B7680042A480 /* Metal.framework in Frameworks */,
-				303DDEB62448B7630042A480 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				3083103E25F499EE0095892D /* ftmodule.h */,
+				CECB7C4A26D62EC900C350C7 /* ftoption.h */,
 				D644A0E5231F109C00B75B77 /* imgui_impl_osx.h */,
 				D644A0E6231F109C00B75B77 /* imgui_impl_osx.mm */,
 				D644A0E7231F109C00B75B77 /* imgui_impl_xx.cpp */,
@@ -484,7 +484,7 @@
 			isa = PBXProject;
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Original;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					CEAF9CB125AE752B008B7C57 = {
 						CreatedOnToolsVersion = 12.3;
@@ -628,6 +628,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				EXECUTABLE_EXTENSION = exe;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_HAVE_WINMAIN_,
@@ -643,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D60EC64126A85C000051A948 /* CrossPlatform.Windows.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				EXECUTABLE_EXTENSION = exe;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					_HAVE_WINMAIN_,
@@ -658,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = xxImGui.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -674,6 +677,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = xxImGui.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -753,7 +757,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OBJROOT = ../temp;
+				OBJROOT = ../build/temp;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-fdata-sections",
@@ -832,7 +836,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				OBJROOT = ../temp;
+				OBJROOT = ../build/temp;
 				OTHER_CFLAGS = (
 					"-fdata-sections",
 					"-ffunction-sections",
@@ -850,6 +854,7 @@
 		D644A0D8231F022200B75B77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -863,6 +868,7 @@
 		D644A0D9231F022200B75B77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

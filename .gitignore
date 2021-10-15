@@ -2,7 +2,8 @@
 bin/
 lib/
 temp/
-project/build/
+build/lib/
+build/temp/
 *.iml
 *.vcxproj.user
 *.xcscheme

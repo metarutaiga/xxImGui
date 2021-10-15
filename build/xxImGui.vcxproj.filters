@@ -46,6 +46,12 @@
     <ClInclude Include="..\3rdParty\imgui\misc\freetype\imgui_freetype.h">
       <Filter>misc</Filter>
     </ClInclude>
+    <ClInclude Include="..\xxImGui\implement\ftmodule.h">
+      <Filter>implement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xxImGui\implement\ftoption.h">
+      <Filter>implement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\xxImGui\implement\imgui_impl_osx.mm">
