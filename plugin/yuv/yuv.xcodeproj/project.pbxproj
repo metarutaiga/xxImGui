@@ -230,6 +230,14 @@
 		CEA24D5926048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5A26048B9B005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
 		CEA24D5B26048B9C005DBA21 /* scale_uv.cc in Sources */ = {isa = PBXBuildFile; fileRef = CEA24D5726048B9B005DBA21 /* scale_uv.cc */; };
+		CECFCCF4271917610026D002 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEB271917610026D002 /* cpu.cpp */; };
+		CECFCCF5271917610026D002 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEB271917610026D002 /* cpu.cpp */; };
+		CECFCCF6271917610026D002 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEB271917610026D002 /* cpu.cpp */; };
+		CECFCCF7271917610026D002 /* cpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEB271917610026D002 /* cpu.cpp */; };
+		CECFCCF8271917610026D002 /* yuv2yuva.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEC271917610026D002 /* yuv2yuva.cpp */; };
+		CECFCCF9271917610026D002 /* yuv2yuva.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEC271917610026D002 /* yuv2yuva.cpp */; };
+		CECFCCFA271917610026D002 /* yuv2yuva.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEC271917610026D002 /* yuv2yuva.cpp */; };
+		CECFCCFB271917610026D002 /* yuv2yuva.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CECFCCEC271917610026D002 /* yuv2yuva.cpp */; };
 		D60EC64B26A966560051A948 /* llvm_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D60EC64A26A966560051A948 /* llvm_wrapper.cpp */; };
 		D67E07FB260630CD00D3F089 /* libyuv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = D644A041231ED82900B75B77 /* libyuv.dylib */; };
 		D67E07FC260630E100D3F089 /* lenna.rgb in CopyFiles */ = {isa = PBXBuildFile; fileRef = D67E07CA26062ED700D3F089 /* lenna.rgb */; };
@@ -359,6 +367,14 @@
 		CE8A73572604526500AEFD2B /* xxGraphic.dll */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = xxGraphic.dll; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8A73592604526D00AEFD2B /* libxxGraphic.android */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libxxGraphic.android; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA24D5726048B9B005DBA21 /* scale_uv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scale_uv.cc; path = ../../3rdParty/libyuv/source/scale_uv.cc; sourceTree = "<group>"; };
+		CECFCCEA271917610026D002 /* yuv2rgb.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = yuv2rgb.inl; path = ../../3rdParty/xxYUV/yuv2rgb.inl; sourceTree = "<group>"; };
+		CECFCCEB271917610026D002 /* cpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu.cpp; path = ../../3rdParty/xxYUV/cpu.cpp; sourceTree = "<group>"; };
+		CECFCCEC271917610026D002 /* yuv2yuva.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = yuv2yuva.cpp; path = ../../3rdParty/xxYUV/yuv2yuva.cpp; sourceTree = "<group>"; };
+		CECFCCED271917610026D002 /* yuv2yuva.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv2yuva.h; path = ../../3rdParty/xxYUV/yuv2yuva.h; sourceTree = "<group>"; };
+		CECFCCEE271917610026D002 /* rgb2yuv.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rgb2yuv.inl; path = ../../3rdParty/xxYUV/rgb2yuv.inl; sourceTree = "<group>"; };
+		CECFCCF0271917610026D002 /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu.h; path = ../../3rdParty/xxYUV/cpu.h; sourceTree = "<group>"; };
+		CECFCCF1271917610026D002 /* yuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuv.h; path = ../../3rdParty/xxYUV/yuv.h; sourceTree = "<group>"; };
+		CECFCCF2271917610026D002 /* yuv2yuva.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = yuv2yuva.inl; path = ../../3rdParty/xxYUV/yuv2yuva.inl; sourceTree = "<group>"; };
 		D6022C3523258B5D00B9BFB8 /* libyuv.bundle */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D60EC64A26A966560051A948 /* llvm_wrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llvm_wrapper.cpp; path = "../../3rdParty/ClangPlatform/windows-msvc/llvm_wrapper.cpp"; sourceTree = "<group>"; };
 		D644A041231ED82900B75B77 /* libyuv.dylib */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -432,12 +448,20 @@
 			isa = PBXGroup;
 			children = (
 				D6812B472602F014001436B7 /* apple_amx.h */,
+				CECFCCEB271917610026D002 /* cpu.cpp */,
+				CECFCCF0271917610026D002 /* cpu.h */,
 				302D20DA244AC55400D84267 /* rgb2yuv.cpp */,
 				302D20D9244AC55400D84267 /* rgb2yuv.h */,
+				CECFCCEE271917610026D002 /* rgb2yuv.inl */,
+				CECFCCF1271917610026D002 /* yuv.h */,
 				D6812B61260330F6001436B7 /* yuv2rgb_amx.cpp */,
 				D6812B60260330F6001436B7 /* yuv2rgb_amx.h */,
 				302D20DB244AC55400D84267 /* yuv2rgb.cpp */,
 				302D20D8244AC55400D84267 /* yuv2rgb.h */,
+				CECFCCEA271917610026D002 /* yuv2rgb.inl */,
+				CECFCCEC271917610026D002 /* yuv2yuva.cpp */,
+				CECFCCED271917610026D002 /* yuv2yuva.h */,
+				CECFCCF2271917610026D002 /* yuv2yuva.inl */,
 			);
 			name = xxYUV;
 			sourceTree = "<group>";
@@ -695,9 +719,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECFCCFA271917610026D002 /* yuv2yuva.cpp in Sources */,
 				CE8A7182260446B600AEFD2B /* yuv.cpp in Sources */,
 				CE8A7183260446B600AEFD2B /* compare_common.cc in Sources */,
 				CE8A7184260446B600AEFD2B /* compare_gcc.cc in Sources */,
+				CECFCCF6271917610026D002 /* cpu.cpp in Sources */,
 				CE8A7185260446B600AEFD2B /* compare_mmi.cc in Sources */,
 				CE8A7186260446B600AEFD2B /* compare_msa.cc in Sources */,
 				CE8A7187260446B600AEFD2B /* compare_neon.cc in Sources */,
@@ -770,6 +796,7 @@
 				CE8A727B2604482300AEFD2B /* convert_from.cc in Sources */,
 				CE8A727C2604482300AEFD2B /* convert_jpeg.cc in Sources */,
 				CE8A727D2604482300AEFD2B /* convert_to_argb.cc in Sources */,
+				CECFCCFB271917610026D002 /* yuv2yuva.cpp in Sources */,
 				CE8A727E2604482300AEFD2B /* convert_to_i420.cc in Sources */,
 				CE8A727F2604482300AEFD2B /* convert.cc in Sources */,
 				CE8A72802604482300AEFD2B /* cpu_id.cc in Sources */,
@@ -786,6 +813,7 @@
 				CE8A728B2604482300AEFD2B /* rotate_neon64.cc in Sources */,
 				CE8A728C2604482300AEFD2B /* rotate_win.cc in Sources */,
 				CE8A728D2604482300AEFD2B /* rotate.cc in Sources */,
+				CECFCCF7271917610026D002 /* cpu.cpp in Sources */,
 				CE8A728E2604482300AEFD2B /* row_any.cc in Sources */,
 				CE8A728F2604482300AEFD2B /* row_common.cc in Sources */,
 				CE8A72902604482300AEFD2B /* row_gcc.cc in Sources */,
@@ -830,6 +858,7 @@
 				CE8A71FB260447D300AEFD2B /* convert_from.cc in Sources */,
 				CE8A71FC260447D300AEFD2B /* convert_jpeg.cc in Sources */,
 				CE8A71FD260447D300AEFD2B /* convert_to_argb.cc in Sources */,
+				CECFCCF9271917610026D002 /* yuv2yuva.cpp in Sources */,
 				CE8A71FE260447D300AEFD2B /* convert_to_i420.cc in Sources */,
 				CE8A71FF260447D300AEFD2B /* convert.cc in Sources */,
 				CE8A7200260447D300AEFD2B /* cpu_id.cc in Sources */,
@@ -846,6 +875,7 @@
 				CE8A720B260447D300AEFD2B /* rotate_neon64.cc in Sources */,
 				CE8A720C260447D300AEFD2B /* rotate_win.cc in Sources */,
 				CE8A720D260447D300AEFD2B /* rotate.cc in Sources */,
+				CECFCCF5271917610026D002 /* cpu.cpp in Sources */,
 				CE8A720E260447D300AEFD2B /* row_any.cc in Sources */,
 				CE8A720F260447D300AEFD2B /* row_common.cc in Sources */,
 				CE8A7210260447D300AEFD2B /* row_gcc.cc in Sources */,
@@ -890,6 +920,7 @@
 				CE8A7237260447E600AEFD2B /* convert_from.cc in Sources */,
 				CE8A7238260447E600AEFD2B /* convert_jpeg.cc in Sources */,
 				CE8A7239260447E600AEFD2B /* convert_to_argb.cc in Sources */,
+				CECFCCF8271917610026D002 /* yuv2yuva.cpp in Sources */,
 				CE8A723A260447E600AEFD2B /* convert_to_i420.cc in Sources */,
 				CE8A723B260447E600AEFD2B /* convert.cc in Sources */,
 				CE8A723C260447E600AEFD2B /* cpu_id.cc in Sources */,
@@ -906,6 +937,7 @@
 				CE8A7247260447E600AEFD2B /* rotate_neon64.cc in Sources */,
 				CE8A7248260447E600AEFD2B /* rotate_win.cc in Sources */,
 				CE8A7249260447E600AEFD2B /* rotate.cc in Sources */,
+				CECFCCF4271917610026D002 /* cpu.cpp in Sources */,
 				CE8A724A260447E600AEFD2B /* row_any.cc in Sources */,
 				CE8A724B260447E600AEFD2B /* row_common.cc in Sources */,
 				CE8A724C260447E600AEFD2B /* row_gcc.cc in Sources */,
