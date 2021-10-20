@@ -75,12 +75,12 @@ pluginAPI bool Update(const UpdateData& updateData)
             const char* app = xxGetExecutablePath();
 
             char temp[4096];
-            snprintf(temp, 4096, "%s/../../../../../riscv/riscv-tests", app);
+            snprintf(temp, 4096, "%s/../../../../../3rdParty/riscv/riscv-tests", app);
 
             uint64_t handle = 0;
             while (char* filename = xxOpenDirectory(&handle, temp, "rv64", nullptr))
             {
-                snprintf(temp, 4096, "%s/../../../../../riscv/riscv-tests/%s", app, filename);
+                snprintf(temp, 4096, "%s/../../../../../3rdParty/riscv/riscv-tests/%s", app, filename);
                 FILE* file = fopen(temp, "rb");
                 if (file)
                 {
